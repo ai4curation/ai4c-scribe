@@ -1,0 +1,187 @@
+# Justfile for running ai4c-scribe analyses
+# Run from the analyses/ directory
+
+# Default limit for PR extraction
+default_limit := "2000"
+
+# Repository definitions
+go_repo := "geneontology/go-ontology"
+mondo_repo := "monarch-initiative/mondo"
+uberon_repo := "obophenotype/uberon"
+oeo_repo := "OpenEnergyPlatform/ontology"
+efo_repo := "EBISPOT/efo"
+cl_repo := "obophenotype/cell-ontology"
+
+# Worktree paths (adjust these to your local setup)
+go_worktree := "../../go-ontology-worktree-test"
+mondo_worktree := "../mondo-worktree-test"
+uberon_worktree := "../uberon-worktree-test"
+oeo_worktree := "../../oeo-worktree-test"
+efo_worktree := "../efo-worktree-test"
+cl_worktree := "../cell-ontology-worktree-test"
+
+# ============================================================================
+# GO-ONTOLOGY
+# ============================================================================
+
+# Extract PRs from go-ontology
+extract-go limit=default_limit:
+    uv run ai4c-scribe extract {{go_repo}} -l {{limit}} -o data/prs-go-extracted-{{limit}}.jsonl
+
+# Create review cases for go-ontology
+cases-go limit=default_limit:
+    uv run ai4c-scribe create-review-cases --include-all --include-implicit data/prs-go-extracted-{{limit}}.jsonl -o data/prs-go-cases-{{limit}}.jsonl
+
+cases-go-md limit=default_limit:
+    uv run ai4c-scribe create-review-cases --include-implicit data/prs-go-extracted-{{limit}}.jsonl -f markdown -o data/prs-go-cases-{{limit}}.md
+
+cases-go-html limit=default_limit: cases-go
+    uv run ai4c-scribe browse data/prs-go-cases-{{limit}}.jsonl -o app/go/
+
+# Distill vignettes for go-ontology
+distill-go limit=default_limit worktree=go_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-go-cases-{{limit}}.jsonl -o vignettes/go -vv
+
+# Full pipeline for go-ontology
+all-go limit=default_limit worktree=go_worktree: (extract-go limit) (cases-go limit) (distill-go limit worktree)
+
+# ============================================================================
+# MONDO
+# ============================================================================
+
+# Extract PRs from mondo
+extract-mondo limit=default_limit:
+    uv run ai4c-scribe extract {{mondo_repo}} -l {{limit}} -o data/prs-mondo-extracted-{{limit}}.jsonl
+
+# Create review cases for mondo
+cases-mondo limit=default_limit:
+    uv run ai4c-scribe create-review-cases data/prs-mondo-extracted-{{limit}}.jsonl -o data/prs-mondo-cases-{{limit}}.jsonl
+
+# Distill vignettes for mondo
+distill-mondo limit=default_limit worktree=mondo_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-mondo-cases-{{limit}}.jsonl -o vignettes/mondo -vv
+
+# Full pipeline for mondo
+all-mondo limit=default_limit worktree=mondo_worktree: (extract-mondo limit) (cases-mondo limit) (distill-mondo limit worktree)
+
+# ============================================================================
+# UBERON
+# ============================================================================
+
+# Extract PRs from uberon
+extract-uberon limit=default_limit:
+    uv run ai4c-scribe extract {{uberon_repo}} -l {{limit}} -o data/prs-uberon-extracted-{{limit}}.jsonl
+
+# Create review cases for uberon
+cases-uberon limit=default_limit:
+    uv run ai4c-scribe create-review-cases data/prs-uberon-extracted-{{limit}}.jsonl -o data/prs-uberon-cases-{{limit}}.jsonl
+
+# Distill vignettes for uberon
+distill-uberon limit=default_limit worktree=uberon_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-uberon-cases-{{limit}}.jsonl -o vignettes/uberon -vv
+
+# Full pipeline for uberon
+all-uberon limit=default_limit worktree=uberon_worktree: (extract-uberon limit) (cases-uberon limit) (distill-uberon limit worktree)
+
+# ============================================================================
+# OEO
+# ============================================================================
+
+# Extract PRs from oeo
+extract-oeo limit=default_limit:
+    uv run ai4c-scribe extract {{oeo_repo}} -l {{limit}} -o data/prs-oeo-extracted-{{limit}}.jsonl
+
+# Create review cases for oeo
+cases-oeo limit=default_limit:
+    uv run ai4c-scribe create-review-cases data/prs-oeo-extracted-{{limit}}.jsonl -o data/prs-oeo-cases-{{limit}}.jsonl
+
+# Distill vignettes for oeo
+distill-oeo limit=default_limit worktree=oeo_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-oeo-cases-{{limit}}.jsonl -o vignettes/oeo -vv
+
+# Full pipeline for oeo
+all-oeo limit=default_limit worktree=oeo_worktree: (extract-oeo limit) (cases-oeo limit) (distill-oeo limit worktree)
+
+# ============================================================================
+# EFO
+# ============================================================================
+
+# Extract PRs from efo
+extract-efo limit=default_limit:
+    uv run ai4c-scribe extract {{efo_repo}} -l {{limit}} -o data/prs-efo-extracted-{{limit}}.jsonl
+
+# Create review cases for efo
+cases-efo limit=default_limit:
+    uv run ai4c-scribe create-review-cases data/prs-efo-extracted-{{limit}}.jsonl -o data/prs-efo-cases-{{limit}}.jsonl
+
+
+# Distill vignettes for efo
+distill-efo limit=default_limit worktree=efo_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-efo-cases-{{limit}}.jsonl -o vignettes/efo -vv
+
+# Full pipeline for efo
+all-efo limit=default_limit worktree=efo_worktree: (extract-efo limit) (cases-efo limit) (distill-efo limit worktree)
+
+# ============================================================================
+# CELL-ONTOLOGY
+# ============================================================================
+
+# Extract PRs from cell-ontology
+extract-cl limit=default_limit:
+    uv run ai4c-scribe extract {{cl_repo}} -l {{limit}} -o data/prs-cl-extracted-{{limit}}.jsonl
+
+# Create review cases for cell-ontology
+cases-cl limit=default_limit:
+    uv run ai4c-scribe create-review-cases data/prs-cl-extracted-{{limit}}.jsonl -o data/prs-cl-cases-{{limit}}.jsonl
+
+# Distill vignettes for cell-ontology
+distill-cl limit=default_limit worktree=cl_worktree:
+    uv run ai4c-scribe distill -w {{worktree}} data/prs-cl-cases-{{limit}}.jsonl -o vignettes/cl -vv
+
+# Full pipeline for cell-ontology
+all-cl limit=default_limit worktree=cl_worktree: (extract-cl limit) (cases-cl limit) (distill-cl limit worktree)
+
+# ============================================================================
+# UTILITIES
+# ============================================================================
+
+# Show statistics for all data and vignettes
+stats:
+    #!/usr/bin/env bash
+    echo "=== Extracted PRs ==="
+    for f in data/prs-*-extracted-*.jsonl; do
+        if [ -f "$f" ]; then
+            count=$(wc -l < "$f" | tr -d ' ')
+            echo "  $f: $count PRs"
+        fi
+    done
+    echo ""
+    echo "=== Review Cases ==="
+    for f in data/prs-*-cases-*.jsonl; do
+        if [ -f "$f" ]; then
+            count=$(wc -l < "$f" | tr -d ' ')
+            echo "  $f: $count cases"
+        fi
+    done
+    echo ""
+    echo "=== Vignettes ==="
+    for d in vignettes/*/; do
+        if [ -d "$d" ]; then
+            count=$(find "$d" -name "*.md" | wc -l | tr -d ' ')
+            echo "  $d: $count vignettes"
+        fi
+    done
+
+# List available data files
+list:
+    @echo "=== Data Files ==="
+    @ls -lh data/*.jsonl 2>/dev/null || echo "  No data files"
+    @echo ""
+    @echo "=== Vignette Directories ==="
+    @ls -d vignettes/*/ 2>/dev/null || echo "  No vignettes"
+
+# Clean generated files (use with caution)
+clean:
+    @echo "This will remove all data and vignettes. Are you sure? (Ctrl+C to cancel)"
+    @read -p "Press Enter to continue..."
+    rm -rf data/*.jsonl vignettes/*/

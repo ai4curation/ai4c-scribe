@@ -1,0 +1,51 @@
+# Example workflow configuration for agent evaluation
+#
+# This config demonstrates matrix expansion for running evaluations
+# across multiple models, issues, and configurations.
+#
+# Usage:
+#   ai4c-scribe workflows run workflows/example-eval-config.yaml --dry-run
+#   ai4c-scribe workflows run workflows/example-eval-config.yaml --wait
+
+workflow: eval-agent-on-issue.yml
+repo: your-org/your-eval-repo
+description: "Evaluate agents on mondo issues"
+tags: ["eval", "mondo", "test"]
+
+# Workflow inputs
+# - Scalar values are passed as-is
+# - List values trigger matrix expansion (cross-product)
+inputs:
+  issue_repo: monarch-initiative/mondo
+  agent_config_repo: your-org/your-agent-config
+  agent_config_tag: v1.0.0
+  agent_config_directory: "."
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+
+  # Matrix inputs - these will be expanded as cross-product
+  model:
+    - claude-sonnet-4-5-20250929
+    - claude-opus-4-5-20251101
+
+# Input sets are expanded together (zip), not cross-product
+# Each dict is one complete combination of related inputs
+input_sets:
+  - issue_number: "7712"
+    pr_number: "8116"
+  - issue_number: "7800"
+    pr_number: "8200"
+  - issue_number: "7900"
+    pr_number: "8300"
+
+# Rate limiting to avoid spamming GitHub Actions
+limits:
+  max_concurrent: 5    # Maximum concurrent workflow runs
+  batch_size: 10       # Maximum runs to submit per invocation
+  poll_interval_seconds: 30  # Seconds between status checks
+
+# With this config:
+# - 2 models x 3 paired (issue, pr) = 6 total jobs
+# - Jobs are deduplicated by params_hash, so re-running won't resubmit
+# - Use --dry-run to see what would be submitted without actually submitting

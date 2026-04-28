@@ -1,0 +1,11 @@
+AGENT_FILES := "CLAUDE.md AGENTS.md .goosehints .github/copilot-instructions.md .claude .codex"
+
+# Remove agent instructions from the target directory
+[no-cd]
+pre_clean target-directory=".":
+    cd {{target-directory}} && rm -rf {{AGENT_FILES}}
+
+# Install the template into the target (current directory by default) directory
+[no-cd]
+install target-directory=".": (pre_clean target-directory)
+    copier copy -f {{ justfile_directory() }}/template {{ target-directory }}
