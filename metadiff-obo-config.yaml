@@ -1,0 +1,125 @@
+# Metadiff Configuration for OBO (Open Biomedical Ontology) Files
+# ================================================================
+#
+# This configuration is optimized for comparing diffs in OBO format files
+# (Gene Ontology, Human Phenotype Ontology, Mondo, etc.)
+#
+# Use case: Evaluate agents that fix ontology issues
+# Example: Agent adds new term with different ID than human, should still match
+#
+# Key behaviors:
+# - Masks arbitrary CURIE IDs (GO:0000001 → GO:NNNNNNN)
+# - Ignores metadata fields that vary by author/time (created_by, creation_date)
+# - Preserves semantic content (name, definition, relationships)
+#
+# Usage:
+#   # CLI
+#   ai4c-scribe metadiff compare human.obo agent.obo -c obo
+#
+#   # Python API
+#   from ai4c_scribe.metadiff import compare_diff_files, get_config
+#   result = compare_diff_files(Path("human.diff"), Path("agent.diff"), config=get_config("obo"))
+
+name: "obo"
+description: |
+  OBO (Open Biomedical Ontology) file comparison.
+  Masks arbitrary term IDs and ignores author/timestamp metadata.
+
+normalizer:
+  # Mask CURIE-format IDs (GO:0000001 -> GO:NNNNNNN)
+  # This is crucial: new term IDs are semantically arbitrary.
+  # We care about the term content (name, definition, relationships), not the ID.
+  mask_ids: true
+
+  # Strip leading/trailing whitespace from each line
+  strip_whitespace: true
+
+  # Not case-sensitive for OBO (IDs are case-sensitive, but content isn't)
+  case_insensitive: false
+
+  # Regex patterns to skip entirely (not compared at all)
+  ignore_patterns: []
+
+  # Exact substring matches to skip (if line contains any of these, skip it)
+  ignore_keys:
+    # Metadata that varies by author - not semantic
+    - "created_by"
+    - "dc-contributor"
+
+    # Metadata that varies by time - not semantic
+    - "creation_date"
+    - "dcterms-date"
+    - "property_value: dcterms-date"
+    - "relationship: dc-contributor"
+
+  # Custom normalizers to apply (in order)
+  custom_normalizers:
+    - mask_timestamps      # Normalize date formats
+    - mask_version_numbers # Normalize version number changes
+
+# Generate visual diff using icdiff (colored side-by-side comparison)
+generate_visual: true
+
+# Arguments to pass to icdiff command
+icdiff_args: ["-E", "@@"]
+
+
+# ================================================================
+# EXAMPLES
+# ================================================================
+#
+# Example 1: Identical terms with different IDs
+# --------------------------------------------------
+# Human PR:
+#   +[Term]
+#   +id: GO:0000001
+#   +name: biological process
+#   +def: "Process related to biology"
+#
+# Agent PR (different ID, same content):
+#   +[Term]
+#   +id: GO:0000999
+#   +name: biological process
+#   +def: "Process related to biology"
+#
+# Result with OBO config: similarity=1.0 (IDs are masked to GO:NNNNNNN)
+#
+#
+# Example 2: Same term with different metadata
+# --------------------------------------------------
+# Human PR:
+#   +[Term]
+#   +id: GO:0000001
+#   +name: protein binding
+#   +created_by: alice
+#   +creation_date: 2024-01-15
+#
+# Agent PR (same content, different author/date):
+#   +[Term]
+#   +id: GO:0000001
+#   +name: protein binding
+#   +created_by: bob
+#   +creation_date: 2024-01-20
+#
+# Result with OBO config: similarity=1.0 (metadata ignored)
+#
+#
+# Example 3: Different definitions (should be caught)
+# --------------------------------------------------
+# Human PR:
+#   +name: kinase activity
+#   +def: "Activity that transfers phosphate groups"
+#
+# Agent PR:
+#   +name: kinase activity
+#   +def: "Activity that transfers molecules"
+#
+# Result with OBO config: similarity<1.0 (definitions differ - SHOULD be caught)
+#
+# ================================================================
+
+# For comparison with CODE diffs, use the 'python' config instead:
+#   ai4c-scribe metadiff compare code.diff agent.diff -c python
+#
+# For strict byte-for-byte comparison, use:
+#   ai4c-scribe metadiff compare file1.diff file2.diff -c strict

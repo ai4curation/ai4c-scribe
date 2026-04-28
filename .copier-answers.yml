@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier
+_commit: 34d23a0
+_src_path: monarch-project-copier
+copyright_year: '2025'
+email: my-name@my-org.org
+full_name: My Name
+gh_action_docs_preview: false
+github_handle: cmungall
+github_org: ai4curation
+license: BSD-3-Clause
+project_description: Learns best practice from your github repo
+project_name: ai4c-scribe
+project_slug: ai4c_scribe
+

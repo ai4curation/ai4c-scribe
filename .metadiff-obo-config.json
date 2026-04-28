@@ -1,0 +1,44 @@
+{
+  "name": "obo",
+  "description": "OBO (Open Biomedical Ontology) file comparison configuration. Masks arbitrary term IDs and ignores metadata fields that vary by author/time but don't affect semantic content.",
+  "normalizer": {
+    "mask_ids": true,
+    "strip_whitespace": true,
+    "case_insensitive": false,
+    "ignore_patterns": [],
+    "ignore_keys": [
+      "created_by",
+      "creation_date",
+      "property_value: dcterms-date",
+      "relationship: dc-contributor",
+      "dc-contributor",
+      "dcterms-date"
+    ],
+    "custom_normalizers": [
+      "mask_timestamps",
+      "mask_version_numbers"
+    ]
+  },
+  "generate_visual": true,
+  "icdiff_args": ["-E", "@@"],
+  "_comments": {
+    "mask_ids": "Masks CURIE-format IDs (GO:0000001 → GO:NNNNNNN). Essential for ontologies since new term IDs are arbitrary but semantically equivalent if the content is the same.",
+    "ignore_keys": [
+      "created_by: Author who created the term. Varies by person, not semantic.",
+      "creation_date: When term was added. Varies by time, not semantic.",
+      "dcterms-date: ISO format date field. Varies by time, not semantic.",
+      "dc-contributor: Dublin Core contributor field. Varies by author, not semantic."
+    ],
+    "custom_normalizers": [
+      "mask_timestamps: Normalizes date fields like 2024-01-15T10:30:00Z to YYYY-MM-DDTHH:MM:SSZ",
+      "mask_version_numbers: Normalizes data-version field changes like 1.2.3 → X.Y.Z"
+    ],
+    "use_case": "Compare human ontology PR with agent-generated PR. Example: 'Add new term for protein binding' - human uses GO:0000001, agent uses GO:0000999. Should be considered identical if all other content matches.",
+    "typical_workflow": [
+      "1. Human fixes ontology issue, creates PR with new term",
+      "2. Agent attempts same fix, generates PR with (possibly different) new term ID",
+      "3. metadiff compares diffs using this config",
+      "4. Result: similarity=1.0 if semantic content matches (ID differences ignored)"
+    ]
+  }
+}

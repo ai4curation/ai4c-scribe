@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai4c_scribe"
+description = "Learns best practice from your github repo"
+authors = [
+  {name = "My Name", email = "my-name@my-org.org"},
+]
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dynamic = ["version"]
+
+dependencies = [
+  "typer >= 0.9.0",
+  "linkml-runtime >=1.9.4",
+  "pydantic >= 2.0.0",
+  "pyyaml >= 6.0",
+  "cyberian >= 0.2.1",
+  "duckdb >= 1.0.0",
+]
+
+
+[dependency-groups]
+dev = [
+    "linkml>=1.9.3",
+    "mypy>=1.17.1",
+    "ruff>=0.4.8",
+    "mkdocs-material>=8.2.8",
+    "mkdocs-mermaid2-plugin>=1.1.1",
+    "jupyter>=1.0.0",
+    "mkdocs-jupyter>=0.24.0",
+    "types-pyyaml>=6.0.12.20250915",
+]
+
+[project.scripts]
+ai4c-scribe = "ai4c_scribe.cli:main"
+
+
+# See https://hatch.pypa.io/latest/config/build/#file-selection for how to
+# explicitly include files other than default into the build distributions.
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+# Ref.: https://github.com/ninoseki/uv-dynamic-versioning/
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+fallback-version = "0.0.0"
+
+# Pytest config is in pytest.ini (takes precedence over pyproject.toml)
+# See pytest.ini for marker definitions and default options
+
+# Ref.: https://github.com/codespell-project/codespell
+[tool.codespell]
+skip = [
+  "LICENSE",
+  "pyproject.toml",
+  "uv.lock",
+  "project/*",
+  "src/ai4c_scribe/datamodel/ai4c_scribe_pydantic.py",
+  "src/ai4c_scribe/datamodel/ai4c_scribe.py",
+]
+
+# Reminder: words have to be lowercased for the ignore-words-list
+ignore-words-list = "linke"
+quiet-level = 3
+
+# Ref.: https://github.com/crate-ci/typos (spell checker)
+[tool.typos.default.extend-words]
+linke = "linke"
+[tool.typos.files]
+extend-exclude = [
+  "LICENSE",
+  "uv.lock",
+  "pyproject.toml",
+  "project/*",
+  "src/ai4c_scribe/datamodel/ai4c_scribe_pydantic.py",
+  "src/ai4c_scribe/datamodel/ai4c_scribe.py",
+]
