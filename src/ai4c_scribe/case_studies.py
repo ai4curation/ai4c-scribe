@@ -91,6 +91,51 @@ def load_case_studies_dir(directory: Path) -> list[CaseStudy]:
     return cases
 
 
+def filter_case_studies(
+    cases: list[CaseStudy],
+    filters: dict[str, list[str]],
+) -> list[CaseStudy]:
+    """Filter case studies by metadata field values.
+
+    Each key in filters is a field name, and the value is a list of
+    acceptable values. A case passes if it matches ALL filter keys
+    (AND logic across keys, OR logic within a key's values).
+
+    Args:
+        cases: List of case studies to filter.
+        filters: Dict mapping field names to lists of acceptable values.
+
+    Returns:
+        Filtered list of case studies.
+
+    >>> from pathlib import Path
+    >>> cases = load_case_studies_dir(Path("tests/fixtures/cases"))
+    >>> filtered = filter_case_studies(cases, {"difficulty": ["simple"]})
+    >>> all(c.difficulty == "simple" for c in filtered)
+    True
+    >>> filtered = filter_case_studies(cases, {"task_type": ["obsoletion"]})
+    >>> all(c.task_type == "obsoletion" for c in filtered)
+    True
+    """
+    if not filters:
+        return cases
+
+    result = []
+    for case in cases:
+        matches = True
+        for field, values in filters.items():
+            attr = getattr(case, field, None)
+            if attr is None:
+                matches = False
+                break
+            if str(attr) not in values:
+                matches = False
+                break
+        if matches:
+            result.append(case)
+    return result
+
+
 def case_study_to_input_set(case: CaseStudy) -> dict[str, str]:
     """Convert a case study to a workflow input_set dictionary.
 
