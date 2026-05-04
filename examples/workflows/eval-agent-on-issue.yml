@@ -429,17 +429,20 @@ jobs:
           CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
         run: |
           npm install -g @openai/codex
-          export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+          export CODEX_HOME="${HOME}/.codex"
           mkdir -p "$CODEX_HOME"
-          printf '%s' "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
+          echo "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
           chmod 600 "$CODEX_HOME/auth.json"
+          echo "CODEX_HOME=$CODEX_HOME" >> $GITHUB_ENV
+          # Verify auth.json is valid
+          python3 -c "import json; json.load(open('$CODEX_HOME/auth.json')); print('auth.json valid')"
 
       - name: Run Codex
         if: inputs.agent_runtime == 'codex'
         run: |
           codex exec "$(cat __agent_prompt__.md)" \
             --model ${{ inputs.model }} \
-            --sandbox workspace-write
+            --sandbox danger-full-access
 
       - name: Add signature blocks to comment files
         run: |
