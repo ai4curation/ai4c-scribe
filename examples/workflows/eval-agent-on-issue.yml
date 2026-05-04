@@ -3,7 +3,7 @@
 #
 # Required secrets (depending on agent_runtime):
 #   claude: ANTHROPIC_API_KEY or CLAUDE_CODE_OAUTH_TOKEN
-#   codex:  OPENAI_API_KEY
+#   codex:  CODEX_AUTH_JSON (from ~/.codex/auth.json after `codex login`)
 # Optional secrets: GH_PAT (for private cross-repo access)
 #
 # ============================================================================
@@ -423,14 +423,23 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      - name: Install and authenticate Codex
+        if: inputs.agent_runtime == 'codex'
+        env:
+          CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
+        run: |
+          npm install -g @openai/codex
+          export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+          mkdir -p "$CODEX_HOME"
+          printf '%s' "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
+          chmod 600 "$CODEX_HOME/auth.json"
+
       - name: Run Codex
         if: inputs.agent_runtime == 'codex'
-        uses: openai/codex-action@v1
-        with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          prompt-file: __agent_prompt__.md
-          model: ${{ inputs.model }}
-          sandbox: workspace-write
+        run: |
+          codex exec "$(cat __agent_prompt__.md)" \
+            --model ${{ inputs.model }} \
+            --sandbox workspace-write
 
       - name: Add signature blocks to comment files
         run: |
