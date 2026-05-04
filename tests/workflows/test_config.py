@@ -280,6 +280,24 @@ class TestConfigToYaml:
         # List should be present
         assert "- a" in yaml_str or "['a'" in yaml_str or "[a," in yaml_str
 
+    def test_load_config_with_input_sets_dir(self, tmp_path):
+        """Config with input_sets_dir loads case studies as input_sets."""
+        cases_dir = Path(__file__).parent.parent / "fixtures" / "cases"
+        config_yaml = tmp_path / "config.yaml"
+        config_yaml.write_text(
+            f"workflow: test.yml\n"
+            f"repo: owner/repo\n"
+            f"input_sets_dir: {cases_dir}\n"
+            f"inputs:\n"
+            f"  model: claude-sonnet-4-5-20250929\n"
+        )
+        config = load_config(config_yaml)
+        assert len(config.input_sets) >= 2
+        # Should have both fixtures loaded (sorted by filename)
+        issue_numbers = [s["issue_number"] for s in config.input_sets]
+        assert "31158" in issue_numbers
+        assert "27880" in issue_numbers
+
     def test_roundtrip(self, temp_config_file):
         """Test that we can load and serialize back."""
         config = load_config(temp_config_file)

@@ -29,6 +29,7 @@ from pathlib import Path
 
 import yaml
 
+from ai4c_scribe.case_studies import case_study_to_input_set, load_case_studies_dir
 from ai4c_scribe.workflows.models import (
     WorkflowConfig,
     WorkflowLimits,
@@ -67,8 +68,17 @@ def load_config(config_path: Path) -> WorkflowConfig:
     if "limits" in data:
         limits = WorkflowLimits(**data.pop("limits"))
 
-    # input_sets is already in the right format (list of dicts)
-    # just pass it through
+    # Handle input_sets_dir: load case studies and convert to input_sets
+    input_sets_dir = data.pop("input_sets_dir", None)
+    if input_sets_dir is not None:
+        cases_dir = Path(input_sets_dir)
+        # Resolve relative paths against config file location
+        if not cases_dir.is_absolute():
+            cases_dir = config_path.parent / cases_dir
+        cases = load_case_studies_dir(cases_dir)
+        case_input_sets = [case_study_to_input_set(c) for c in cases]
+        existing = data.get("input_sets", [])
+        data["input_sets"] = existing + case_input_sets
 
     return WorkflowConfig(
         limits=limits,
