@@ -1,0 +1,171 @@
+id: https://w3id.org/ai4c-scribe/case-study
+name: case_study
+title: Case Study Schema
+description: >-
+  Schema for evaluation case study frontmatter. Each case study describes
+  one issue/PR pair suitable for agent evaluation replay.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ai4cs: https://w3id.org/ai4c-scribe/
+  schema: http://schema.org/
+
+imports:
+  - linkml:types
+
+default_range: string
+
+
+classes:
+  CaseStudy:
+    description: >-
+      A single issue/PR evaluation case. Represented as YAML frontmatter
+      in a markdown file, with the markdown body containing an agentic
+      narrative summary of the issue and its resolution.
+    attributes:
+      # === Identity (required by runner) ===
+      repo:
+        description: Repository in owner/name format
+        required: true
+        examples:
+          - value: geneontology/go-ontology
+          - value: monarch-initiative/mondo
+
+      issue_number:
+        description: GitHub issue number
+        range: integer
+        required: true
+
+      pr_number:
+        description: PR number of the human's actual fix
+        range: integer
+        required: true
+
+      # === GitHub Metadata Snapshot ===
+      issue_title:
+        description: Issue title at time of curation
+        required: true
+
+      issue_labels:
+        description: GitHub labels on the issue
+        multivalued: true
+        range: string
+
+      issue_created_at:
+        description: When the issue was created
+        range: date
+        required: true
+
+      issue_closed_at:
+        description: When the issue was closed
+        range: date
+
+      pr_author:
+        description: PR author GitHub username
+        required: true
+
+      pr_merged_at:
+        description: When the PR was merged
+        range: date
+
+      pr_num_commits:
+        description: Number of commits in the PR
+        range: integer
+
+      milestone:
+        description: GitHub milestone name
+
+      # === Custom Tagging ===
+      task_type:
+        description: Primary task type for this case
+        range: TaskTypeEnum
+        required: true
+
+      difficulty:
+        description: Estimated difficulty level
+        range: DifficultyEnum
+        required: true
+
+      scope:
+        description: Scope of changes in the PR
+        range: ScopeEnum
+        required: true
+
+      review_outcome:
+        description: How the review process went
+        range: ReviewOutcomeEnum
+        required: true
+
+      domain_area:
+        description: Free-form domain area (e.g. cellular-component, infectious-disease)
+
+      tags:
+        description: Free-form additional tags for filtering
+        multivalued: true
+        range: string
+
+      # === Curation Metadata ===
+      curated_by:
+        description: Who or what created this case study (agent model, human username)
+        required: true
+
+      curated_at:
+        description: When this case study was curated
+        range: date
+        required: true
+
+      rationale:
+        description: One-liner explaining why this is a good test case
+        required: true
+
+
+enums:
+  TaskTypeEnum:
+    description: The primary type of work performed in the PR
+    permissible_values:
+      new_term:
+        description: Adding a new ontology term
+      obsoletion:
+        description: Obsoleting an existing term
+      reclassification:
+        description: Moving a term in the hierarchy
+      synonym_update:
+        description: Adding or modifying synonyms
+      axiom_repair:
+        description: Fixing logical axioms or definitions
+      bulk_edit:
+        description: Batch changes across many terms
+      documentation:
+        description: Documentation or metadata-only changes
+      other:
+        description: Does not fit other categories
+
+  DifficultyEnum:
+    description: Estimated difficulty for an agent to reproduce the fix
+    permissible_values:
+      simple:
+        description: Straightforward, mechanical change
+      medium:
+        description: Requires some domain knowledge or multi-step reasoning
+      hard:
+        description: Complex reasoning, multiple interacting changes, or deep domain expertise
+
+  ScopeEnum:
+    description: Scope of the changes in the PR
+    permissible_values:
+      single_term:
+        description: Changes affect a single term
+      multi_term:
+        description: Changes affect multiple terms
+      structural_refactor:
+        description: Broad structural or organizational changes
+
+  ReviewOutcomeEnum:
+    description: How the PR review process went
+    permissible_values:
+      approved_first_time:
+        description: PR approved without revision requests
+      changes_requested:
+        description: One round of changes requested before merge
+      multiple_rounds:
+        description: Multiple rounds of review feedback before merge
