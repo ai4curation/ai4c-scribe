@@ -10,6 +10,11 @@ issue_closed_at: "2025-08-12"
 pr_author: pgaudet
 pr_merged_at: "2025-08-12"
 pr_num_commits: 1
+files_changed:
+  - path: src/ontology/go-edit.obo
+    additions: 4
+    deletions: 8
+scoping: tightly_scoped
 task_type: obsoletion
 difficulty: simple
 scope: single_term

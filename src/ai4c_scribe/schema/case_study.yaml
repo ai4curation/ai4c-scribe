@@ -75,6 +75,24 @@ classes:
       milestone:
         description: GitHub milestone name
 
+      # === PR File Changes ===
+      files_changed:
+        description: Files modified in the PR with line change counts
+        multivalued: true
+        range: FileChange
+        inlined_as_list: true
+
+      # === Scoping Assessment ===
+      scoping:
+        description: Assessment of how well-scoped the PR is
+        range: ScopingEnum
+        required: true
+
+      scoping_notes:
+        description: >-
+          Brief explanation of scoping assessment. Note any unrelated changes,
+          scope creep, or reasons the PR is not cleanly scoped.
+
       # === Custom Tagging ===
       task_type:
         description: Primary task type for this case
@@ -118,6 +136,22 @@ classes:
         description: One-liner explaining why this is a good test case
         required: true
 
+
+  FileChange:
+    description: >-
+      A single file changed in the PR, with line counts.
+    attributes:
+      path:
+        description: File path relative to repo root
+        required: true
+      additions:
+        description: Number of lines added
+        range: integer
+        required: true
+      deletions:
+        description: Number of lines deleted
+        range: integer
+        required: true
 
 enums:
   TaskTypeEnum:
@@ -169,3 +203,13 @@ enums:
         description: One round of changes requested before merge
       multiple_rounds:
         description: Multiple rounds of review feedback before merge
+
+  ScopingEnum:
+    description: How well-scoped the PR is relative to its issue
+    permissible_values:
+      tightly_scoped:
+        description: All changes directly address the issue, no unrelated modifications
+      mostly_scoped:
+        description: Primary changes address the issue, minor incidental cleanup included
+      loosely_scoped:
+        description: Significant unrelated changes mixed in, harder to isolate the fix

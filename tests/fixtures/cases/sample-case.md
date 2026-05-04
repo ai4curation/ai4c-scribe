@@ -11,6 +11,11 @@ issue_closed_at: "2025-11-15"
 pr_author: ValWood
 pr_merged_at: "2025-11-15"
 pr_num_commits: 3
+files_changed:
+  - path: src/ontology/go-edit.obo
+    additions: 15
+    deletions: 0
+scoping: tightly_scoped
 task_type: new_term
 difficulty: simple
 scope: single_term

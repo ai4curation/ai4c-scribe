@@ -138,6 +138,18 @@ class ReviewOutcomeEnum(str, Enum):
     multiple_rounds = "multiple_rounds"
 
 
+class ScopingEnum(str, Enum):
+    """
+    How well-scoped the PR is relative to its issue
+    """
+    # All changes directly address the issue, no unrelated modifications
+    tightly_scoped = "tightly_scoped"
+    # Primary changes address the issue, minor incidental cleanup included
+    mostly_scoped = "mostly_scoped"
+    # Significant unrelated changes mixed in, harder to isolate the fix
+    loosely_scoped = "loosely_scoped"
+
+
 
 class CaseStudy(ConfiguredBaseModel):
     """
@@ -159,6 +171,9 @@ class CaseStudy(ConfiguredBaseModel):
     pr_merged_at: Optional[date] = Field(default=None, description="""When the PR was merged""", json_schema_extra = { "linkml_meta": {'alias': 'pr_merged_at', 'domain_of': ['CaseStudy']} })
     pr_num_commits: Optional[int] = Field(default=None, description="""Number of commits in the PR""", json_schema_extra = { "linkml_meta": {'alias': 'pr_num_commits', 'domain_of': ['CaseStudy']} })
     milestone: Optional[str] = Field(default=None, description="""GitHub milestone name""", json_schema_extra = { "linkml_meta": {'alias': 'milestone', 'domain_of': ['CaseStudy']} })
+    files_changed: Optional[List[FileChange]] = Field(default=None, description="""Files modified in the PR with line change counts""", json_schema_extra = { "linkml_meta": {'alias': 'files_changed', 'domain_of': ['CaseStudy']} })
+    scoping: ScopingEnum = Field(default=..., description="""Assessment of how well-scoped the PR is""", json_schema_extra = { "linkml_meta": {'alias': 'scoping', 'domain_of': ['CaseStudy']} })
+    scoping_notes: Optional[str] = Field(default=None, description="""Brief explanation of scoping assessment. Note any unrelated changes, scope creep, or reasons the PR is not cleanly scoped.""", json_schema_extra = { "linkml_meta": {'alias': 'scoping_notes', 'domain_of': ['CaseStudy']} })
     task_type: TaskTypeEnum = Field(default=..., description="""Primary task type for this case""", json_schema_extra = { "linkml_meta": {'alias': 'task_type', 'domain_of': ['CaseStudy']} })
     difficulty: DifficultyEnum = Field(default=..., description="""Estimated difficulty level""", json_schema_extra = { "linkml_meta": {'alias': 'difficulty', 'domain_of': ['CaseStudy']} })
     scope: ScopeEnum = Field(default=..., description="""Scope of changes in the PR""", json_schema_extra = { "linkml_meta": {'alias': 'scope', 'domain_of': ['CaseStudy']} })
@@ -170,7 +185,19 @@ class CaseStudy(ConfiguredBaseModel):
     rationale: str = Field(default=..., description="""One-liner explaining why this is a good test case""", json_schema_extra = { "linkml_meta": {'alias': 'rationale', 'domain_of': ['CaseStudy']} })
 
 
+class FileChange(ConfiguredBaseModel):
+    """
+    A single file changed in the PR, with line counts.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/ai4c-scribe/case-study'})
+
+    path: str = Field(default=..., description="""File path relative to repo root""", json_schema_extra = { "linkml_meta": {'alias': 'path', 'domain_of': ['FileChange']} })
+    additions: int = Field(default=..., description="""Number of lines added""", json_schema_extra = { "linkml_meta": {'alias': 'additions', 'domain_of': ['FileChange']} })
+    deletions: int = Field(default=..., description="""Number of lines deleted""", json_schema_extra = { "linkml_meta": {'alias': 'deletions', 'domain_of': ['FileChange']} })
+
+
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
 CaseStudy.model_rebuild()
+FileChange.model_rebuild()
 
