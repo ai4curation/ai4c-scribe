@@ -51,8 +51,8 @@ In `src/ontology/go-edit.obo` (66 additions, 38 deletions across multiple term s
 - GO:0010277 (chlorophyllide a oxygenase): moved from GO:0016703 (internal monooxygenases) to GO:0016709 (paired donors, NAD(P)H)
 
 **Definition updates**:
-- GO:0008762: updated substrate names to use correct alpha-D- stereochemistry, changed xref from EC to RHEA
-- GO:0018525: updated reaction equation to use explicit ferredoxin notation from RHEA:29603
+- GO:0008762: updated substrate names to use correct alpha-D- stereochemistry, changed xref from EC to RHEA:12248
+- GO:0018525 (4-hydroxybenzoyl-CoA reductase): updated reaction equation to use explicit oxidized/reduced ferredoxin notation from RHEA:29603
 
 **Added provenance**: term_tracker_item linking to #31969 on all modified terms.
 

@@ -56,10 +56,14 @@ def load_case_study(path: Path) -> CaseStudy:
 
 
 def load_case_studies_dir(directory: Path) -> list[CaseStudy]:
-    """Load all case studies from markdown files in a directory.
+    """Load all case studies from a directory.
+
+    Supports two layouts:
+    - Flat: directory contains .md files directly (e.g., ``cases/31158.md``)
+    - Nested: directory contains subdirs with METADATA.md (e.g., ``cases/pr32015/METADATA.md``)
 
     Args:
-        directory: Path to directory containing .md case study files.
+        directory: Path to directory containing case study files.
 
     Returns:
         List of validated CaseStudy instances.
@@ -68,10 +72,22 @@ def load_case_studies_dir(directory: Path) -> list[CaseStudy]:
     >>> cases = load_case_studies_dir(Path("tests/fixtures/cases"))
     >>> len(cases) >= 1
     True
+    >>> cases = load_case_studies_dir(Path("examples/cases/go-ontology"))
+    >>> len(cases) >= 1
+    True
     """
     cases = []
-    for md_file in sorted(directory.glob("*.md")):
-        cases.append(load_case_study(md_file))
+
+    # Check for nested layout (subdirs with METADATA.md)
+    metadata_files = sorted(directory.glob("*/METADATA.md"))
+    if metadata_files:
+        for md_file in metadata_files:
+            cases.append(load_case_study(md_file))
+    else:
+        # Flat layout (*.md files directly in directory)
+        for md_file in sorted(directory.glob("*.md")):
+            cases.append(load_case_study(md_file))
+
     return cases
 
 

@@ -26,6 +26,7 @@ tags:
   - autophagy
   - selective-autophagy
   - ferritin
+  - NCOA4
   - PMID:25327288
   - PMID:26436293
 curated_by: claude-opus-4
@@ -41,11 +42,12 @@ A new term request (NTR) was filed for "ferritinophagy" — the selective degrad
 
 Added new term GO:7770069 to `src/ontology/go-edit.obo`:
 
+- **ID**: GO:7770069
 - **Name**: ferritinophagy
 - **Definition**: "The selective degradation of ferritin to release iron by macroautophagy." [PMID:25327288, PMID:26436293, PMID:38714719]
 - **Synonym**: "ferritin-specific autophagy" (EXACT)
 - **Parent**: is_a GO:0016236 (macroautophagy)
-- **Provenance**: Three PMIDs supporting the term, term_tracker_item linking to issue
+- **Provenance**: Three PMIDs supporting the term, term_tracker_item linking to issue #30894
 
 ## Resolution
 
@@ -54,4 +56,4 @@ The key decisions were:
 2. **Definition style**: Genus-differentia pattern — "The selective degradation of [cargo] ... by [mechanism]"
 3. **Evidence**: Three supporting publications spanning the discovery and characterization of the pathway
 
-Medium difficulty because it requires knowledge of the selective autophagy hierarchy and the specific mechanism (macroautophagy vs other autophagy types).
+Medium difficulty because it requires knowledge of the selective autophagy hierarchy and the specific mechanism (macroautophagy vs other autophagy types). An agent would need to determine the correct parent by understanding that ferritinophagy operates via the macroautophagy machinery.

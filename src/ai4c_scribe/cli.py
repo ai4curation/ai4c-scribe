@@ -32,12 +32,20 @@ cases_app = typer.Typer(help="Manage case study files.")
 app.add_typer(cases_app, name="cases")
 
 
+def _find_case_files(directory: Path) -> list[Path]:
+    """Find case study files in a directory (flat or nested layout)."""
+    metadata_files = sorted(directory.glob("*/METADATA.md"))
+    if metadata_files:
+        return metadata_files
+    return sorted(directory.glob("*.md"))
+
+
 @cases_app.command()
-def validate(directory: Path = typer.Argument(..., help="Directory of case study .md files")):
+def validate(directory: Path = typer.Argument(..., help="Directory of case study files")):
     """Validate all case study files in a directory."""
     errors = []
     count = 0
-    for md_file in sorted(directory.glob("*.md")):
+    for md_file in _find_case_files(directory):
         count += 1
         try:
             load_case_study(md_file)

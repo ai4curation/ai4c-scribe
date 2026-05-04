@@ -41,8 +41,8 @@ In `src/ontology/go-edit.obo`, the term GO:0008785 was modified:
 
 - Name prefixed with "obsolete" -> "obsolete alkyl hydroperoxide reductase activity"
 - Definition prefixed with "OBSOLETE."
-- Added explanatory comment about why the term was obsoleted (substrate specificity mismatch)
-- Removed `is_a` relationship to GO:0016668
+- Added explanatory comment about why the term was obsoleted (substrate specificity mismatch with EC:1.11.1.26)
+- Removed `is_a` relationship to GO:0016668 (oxidoreductase activity, acting on a sulfur group of donors, NAD(P) as acceptor)
 - Added `is_obsolete: true`
 - Added `replaced_by: GO:0102039` (NADH-dependent peroxiredoxin activity)
 - Added term_tracker_item linking to issue #31961
