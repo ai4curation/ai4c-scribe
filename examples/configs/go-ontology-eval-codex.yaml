@@ -1,0 +1,35 @@
+# Eval config for go-ontology using Codex (OpenAI)
+# Usage:
+#   uv run ai4c-scribe workflows run examples/configs/go-ontology-eval-codex.yaml --dry-run
+
+workflow: eval-agent-on-issue.yml
+repo: cmungall/go-ontology-eval-2026
+description: "Evaluate Codex agent on curated go-ontology case studies"
+tags: ["go-ontology", "case-studies", "codex"]
+
+workdir: ../go-ontology-eval-2026
+
+# Load case studies from the examples directory (relative to this config file)
+input_sets_dir: ../cases/go-ontology
+
+# Start with simple cases only for initial Codex testing
+input_sets_filter:
+  difficulty: [simple, medium]
+
+inputs:
+  issue_repo: geneontology/go-ontology
+  timeout_minutes: 90
+  agent_config_repo: cmungall/go-ontology-agent-config
+  agent_config_tag: v6
+  agent_config_directory: .
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+  agent_runtime: codex
+  model: gpt-5.4
+  container: obolibrary/odkfull:latest
+
+limits:
+  max_concurrent: 5
+  batch_size: 5
+  poll_interval_seconds: 30
