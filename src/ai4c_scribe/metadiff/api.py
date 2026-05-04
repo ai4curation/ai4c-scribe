@@ -13,6 +13,8 @@ Example:
     0.6666666666666666
 """
 
+from __future__ import annotations
+
 from difflib import unified_diff
 from pathlib import Path
 from typing import Optional
