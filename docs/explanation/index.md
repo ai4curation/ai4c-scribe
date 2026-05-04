@@ -9,46 +9,37 @@ Explanation sections are **understanding-oriented** - they provide background, c
 | [Why SCRIBE?](why-scribe.md) | The problem SCRIBE solves and the AI4Curation vision |
 | [Shadow repos](shadow-repos.md) | Why shadow repositories enable reproducible evaluation |
 
-## Data pipeline
-
-| Topic | Description |
-|-------|-------------|
-| [PR categories](pr-categories.md) | How PRs are classified (merged_no_mods, merged_with_mods, etc.) |
-| [Data model](data-model.md) | Structure of extracted PR data |
-| [Review cases](review-cases.md) | The "first revision" concept for training data |
-| [Distillation](distillation.md) | AI-powered refinement of training data |
-
 ## The two pipelines
 
 SCRIBE supports two complementary workflows:
 
-### Training Data Pipeline
+### Case Study Curation
 
 ```mermaid
 graph LR
-    GH[GitHub Repo] --> EXT[Extract]
-    EXT --> RC[Review Cases]
-    RC --> DIST[Distill]
-    DIST --> TD[Training Data]
+    GH[GitHub Repo] --> SKILL[/find-training-cases]
+    SKILL --> CS[Case Study Files]
+    CS --> VAL[Validate]
+    VAL --> READY[Ready for Eval]
 
-    style EXT fill:#e1f5fe
-    style RC fill:#e1f5fe
-    style DIST fill:#e1f5fe
+    style SKILL fill:#e1f5fe
+    style CS fill:#e1f5fe
+    style VAL fill:#e1f5fe
 ```
 
-**Purpose**: Create datasets for training and evaluating LLM code reviewers.
+**Purpose**: Curate diverse, high-quality case studies for agent evaluation.
 
-**Key insight**: Mature repositories contain years of human expertise encoded in PR reviews and discussions. SCRIBE extracts this knowledge as structured training data.
+**Key insight**: An AI agent with judgment selects better training cases than deterministic heuristics. The agent can assess difficulty, identify diverse task types, and write rich context notes.
 
 ### Agent Evaluation Pipeline
 
 ```mermaid
 graph LR
     ORIG[Original Repo] --> IMP[Shadow Repo]
-    ISSUE[Issue + PR] --> BASE[Base Commit]
+    CS[Case Studies] --> BASE[Parent SHA]
     IMP --> BASE
     BASE --> AGENT[Run Agent]
-    AGENT --> CMP[Compare]
+    AGENT --> CMP[Metadiff]
     PR[Human PR] --> CMP
 
     style IMP fill:#fff3e0
@@ -59,9 +50,18 @@ graph LR
 
 **Purpose**: Systematically evaluate AI coding agents against real-world tasks.
 
-**Key insight**: GitHub issues with merged PRs provide ground truth. By resetting to the commit state before the PR, agents face the same challenge as human developers.
+**Key insight**: GitHub issues with merged PRs provide ground truth. By resetting to the commit state before the PR (the parent SHA recorded in the case study), agents face the same challenge as human developers.
 
 ## Design philosophy
+
+### Agentic curation over deterministic extraction
+
+SCRIBE originally used a deterministic pipeline (`extract -> create-review-cases -> distill`). This was replaced by agentic curation because:
+
+- Agents can assess case quality holistically
+- Agents select for diversity across task types and difficulty
+- Agents write useful context that aids evaluation interpretation
+- The resulting case studies are validated against a LinkML schema
 
 ### CLI-first
 
@@ -72,54 +72,14 @@ SCRIBE prioritizes command-line workflows:
 - Works in CI/CD pipelines
 - Python API available but secondary
 
-### Rich context preservation
-
-All extracted data maintains relationships:
-
-```python
-# Not just strings
-review_bodies = ["Fix the typo"]  # ❌ Loses context
-
-# Full context
-reviews = [{
-    "author": "reviewer",
-    "state": "CHANGES_REQUESTED",
-    "body": "Fix the typo",
-    "submitted_at": "2024-08-29T00:10:43Z",
-    "commit_id": "abc123"  # Which commit was reviewed
-}]  # ✅ Preserves relationships
-```
-
-### Explicit caching
-
-API responses are cached in a structured, inspectable format:
-
-```
-.ai4cscribe/cache/
-└── owner/
-    └── repo/
-        ├── pr/1234/
-        │   ├── pr_data.json
-        │   ├── reviews.json
-        │   └── commits_detailed_raw.json
-        └── issue/5678/
-            └── issue_data.json
-```
-
-Benefits:
-- Fast repeated extractions
-- Reproducible results
-- Inspectable for debugging
-- No external dependencies
-
 ### Reproducible evaluation
 
 Agent evaluations are designed for reproducibility:
 
 - Versioned agent configurations (`agent_config_tag`)
-- Iteration tracking (`iter_num`)
+- Case studies record the exact parent SHA for checkout
 - Full execution traces (artifacts)
-- Deterministic commit reset
+- Metadiff provides objective comparison metrics
 
 ## AI4Curation context
 

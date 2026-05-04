@@ -6,12 +6,10 @@ Reference documentation is **information-oriented** - it provides technical desc
 
 | Command | Description |
 |---------|-------------|
-| [extract](cli.md#extract) | Extract PRs from a GitHub repository |
-| [create-review-cases](cli.md#create-review-cases) | Create review cases from extracted PRs |
-| [distill](cli.md#distill) | Distill review cases into AI-refined vignettes |
+| [cases validate](cli.md#cases-validate) | Validate case study files against the schema |
+| [cases list](cli.md#cases-list) | List case studies with summary metadata |
 | [fix-issue](cli.md#fix-issue) | Run agent to fix a GitHub issue |
 | [metadiff](cli.md#metadiff) | Compare two diffs and compute metrics |
-| [cache](cli.md#cache) | Manage the local cache |
 
 See [CLI Reference](cli.md) for complete documentation.
 
@@ -25,12 +23,11 @@ See [CLI Reference](cli.md) for complete documentation.
 
 See [GitHub Workflows Reference](github-workflows.md) for parameters and configuration.
 
-## Data formats
+## Case study schema
 
 | Topic | Description |
 |-------|-------------|
-| [Data structures](data-structures.md) | Pydantic model definitions |
-| [Output format](output-format.md) | JSONL and markdown output formats |
+| [Case study schema](case-study-schema.md) | LinkML schema for case study frontmatter |
 
 ## Python API
 
@@ -42,21 +39,14 @@ For developers extending SCRIBE programmatically:
 
 ## Quick reference
 
-### Training data extraction (CLI)
+### Case study management (CLI)
 
 ```bash
-# Extract PRs
-ai4c-scribe extract owner/repo -o output.jsonl [options]
+# Validate case studies against schema
+ai4c-scribe cases validate cases/go-ontology/
 
-# Create review cases
-ai4c-scribe create-review-cases input.jsonl -o cases.jsonl [options]
-
-# Distill vignettes
-ai4c-scribe distill cases.jsonl -o vignettes/ [options]
-
-# Cache management
-ai4c-scribe cache stats [--repo owner/repo]
-ai4c-scribe cache clear [--repo owner/repo]
+# List case studies
+ai4c-scribe cases list cases/go-ontology/
 ```
 
 ### Agent evaluation (CLI)
@@ -87,22 +77,16 @@ gh workflow run eval-agent-on-issue \
   --field create_pr=true
 ```
 
-### Python API
+### Workflow config with case studies
 
-```python
-from ai4c_scribe.api import extract_prs, create_review_cases, distill_review_cases
-from ai4c_scribe.cache import get_cache_stats, clear_cache
-
-# Extract PRs
-result = extract_prs("owner/repo", output="prs.jsonl", limit=100)
-
-# Create review cases
-cases_result = create_review_cases("prs.jsonl", output="cases.jsonl")
-
-# Distill vignettes
-distill_result = distill_review_cases("cases.jsonl", output_dir="vignettes/")
-
-# Cache management
-stats = get_cache_stats("owner/repo")
-clear_cache("owner/repo")
+```yaml
+# eval-config.yaml
+workflow: eval-agent-on-issue.yml
+repo: cmungall/go-ontology-eval-2026
+input_sets_dir: cases/go-ontology/
+inputs:
+  issue_repo: geneontology/go-ontology
+  model: [claude-opus-4-5-20251101, claude-sonnet-4-5-20250929]
+  agent_config_repo: cmungall/go-ontology-agent-config
+  agent_config_tag: v6
 ```

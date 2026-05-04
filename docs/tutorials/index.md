@@ -4,15 +4,13 @@ Tutorials are **learning-oriented** guides that walk you through complete workfl
 
 ## Learning Paths
 
-### Path 1: Training Data Extraction
+### Path 1: Case Study Curation
 
-If you want to mine PRs from GitHub repositories for training or evaluation data:
+If you want to curate case studies from GitHub repositories for agent evaluation:
 
 | Tutorial | Time | Description |
 |----------|------|-------------|
 | [Installation](installation.md) | 5 min | Install SCRIBE and its dependencies |
-| [Your first extraction](first-extraction.md) | 10 min | Extract PRs from a repository |
-| [Complete workflow](full-workflow.md) | 15 min | Full pipeline: extract, create review cases, distill |
 
 ### Path 2: Agent Evaluation
 
@@ -21,24 +19,24 @@ If you want to evaluate AI coding agents at scale using shadow repositories:
 | Tutorial | Time | Description |
 |----------|------|-------------|
 | [Installation](installation.md) | 5 min | Install SCRIBE and its dependencies |
-| [Shadow repo evaluation](shadow-repo-eval.md) | 20 min | Set up and run agent evaluations |
+| [Shadow repo evaluation](shadow-repo-eval.md) | 20 min | Set up and run agent evaluations using case study folders |
 
 ## What you'll learn
 
-**Training Data Path:**
+**Case Study Curation Path:**
 
 - Install SCRIBE with all dependencies
-- Extract PR data from any GitHub repository
-- Create review cases capturing the "first revision" state
-- Generate AI-refined vignettes with quality ratings
-- Manage the local cache for efficient extraction
+- Use the `/find-training-cases` skill to discover candidate PRs
+- Validate case study files against the LinkML schema
+- Organize case studies by repository and domain
 
 **Agent Evaluation Path:**
 
 - Create shadow repositories for evaluation
 - Configure agent instructions (CLAUDE.md)
+- Point workflow config at a case study folder via `input_sets_dir`
 - Run evaluations via GitHub Actions workflows
-- Compare agent solutions against human ground truth
+- Compare agent solutions against human ground truth using metadiff
 - Iterate on agent configurations
 
 ## Prerequisites

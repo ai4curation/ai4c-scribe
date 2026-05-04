@@ -2,7 +2,7 @@
 
 **Social Coding Repository artificial Intelligence Benchmarking and Evaluation**
 
-SCRIBE helps teams evaluate and improve AI coding agents by mining GitHub repositories for training data and running systematic evaluations at scale.
+SCRIBE helps teams evaluate and improve AI coding agents by curating case studies from GitHub repositories and running systematic evaluations at scale.
 
 Part of the [AI4Curation](https://github.com/ai4curation) initiative for integrating AI into knowledge curation workflows.
 
@@ -12,35 +12,36 @@ SCRIBE is designed for teams that:
 
 - **Maintain GitHub-based repositories** (code, ontologies, knowledge bases, documentation)
 - **Want to evaluate AI coding agents** systematically against real-world tasks
-- **Need training data** from historical PRs and code reviews
+- **Need curated case studies** from historical PRs with validated metadata
 - **Run projects with established review processes** that contain valuable institutional knowledge
 
 Common use cases include ontology development teams (OBO Foundry projects), open-source maintainers, and research groups using GitHub for collaborative knowledge engineering.
 
 ## Two Core Capabilities
 
-### 1. Training Data Extraction
+### 1. Case Study Curation
 
-Mine your repository's "pre-AI" history to extract high-quality training and evaluation datasets:
+Use an agent skill to discover and curate high-quality case studies from your repository's history:
 
 ```bash
-# Extract PRs with rich context (commits, reviews, linked issues)
-ai4c-scribe extract monarch-initiative/mondo -o prs.jsonl -l 100
+# Use the /find-training-cases skill in Claude Code to curate cases
+# The skill searches for PRs with clean issue-to-PR mappings and writes
+# markdown case study files with validated frontmatter
 
-# Create review cases for LLM training
-ai4c-scribe create-review-cases prs.jsonl -o review-cases.jsonl
+# Validate curated case studies
+ai4c-scribe cases validate cases/go-ontology/
 
-# Distill into curated vignettes with AI
-ai4c-scribe distill review-cases.jsonl -o vignettes/
+# List case studies with summary
+ai4c-scribe cases list cases/go-ontology/
 ```
 
 **What you get:**
 
-- Complete PR metadata with commit history and diffs
-- Code review feedback linked to specific changes
-- Issue discussions that motivated each PR
-- Categorized PRs (merged as-is, merged with modifications, abandoned)
-- AI-refined vignettes rated for clarity and difficulty
+- Markdown files with LinkML-validated YAML frontmatter
+- Rich metadata: difficulty, scope, task type, domain area, review outcome
+- Context and resolution notes written by the curation agent
+- Diverse coverage across task types and difficulty levels
+- Machine-readable schema for downstream tooling
 
 ### 2. Agent Evaluation at Scale
 
@@ -49,10 +50,11 @@ Use "shadow repositories" to evaluate AI agents against known-good human solutio
 ```bash
 # Run agent evaluation via GitHub Actions workflow
 gh workflow run eval-agent-on-issue \
-  --field issue_repo=monarch-initiative/mondo \
-  --field issue_number=7712 \
-  --field pr_number=8116 \
-  --field agent_config_repo=my-org/mondo-agent \
+  --repo your-org/repo-eval \
+  --field issue_repo=original-org/repo \
+  --field issue_number=123 \
+  --field pr_number=456 \
+  --field agent_config_repo=your-org/agent-config \
   --field agent_config_tag=v1.0.0 \
   --field model=claude-sonnet-4-5-20250929 \
   --field create_pr=true
@@ -60,11 +62,11 @@ gh workflow run eval-agent-on-issue \
 
 **How it works:**
 
-1. **Import** the target repository as a "shadow repo" in your organization
-2. **Select issues** with known merged PRs as ground truth
-3. **Run agents** from the exact commit state before the original PR
-4. **Compare** agent solutions against human solutions
-5. **Iterate** on agent configurations and prompts
+1. **Curate** case studies from your repository's history (using the skill)
+2. **Import** the target repository as a "shadow repo" in your organization
+3. **Point** workflow config at your case study folder via `input_sets_dir`
+4. **Run agents** from the exact commit state before the original PR
+5. **Compare** agent solutions against human solutions using metadiff
 
 This approach keeps the original repository clean while enabling systematic, reproducible evaluation.
 
@@ -88,14 +90,31 @@ ai4c-scribe --help
 - Python 3.11+
 - [GitHub CLI (gh)](https://cli.github.com/) authenticated with `gh auth login`
 
-### Extract Your First PR Dataset
+### Curate Your First Case Studies
 
 ```bash
-# Extract 10 merged PRs from any GitHub repository
-ai4c-scribe extract owner/repo -o my-prs.jsonl -l 10
+# In Claude Code, use the /find-training-cases skill:
+# /find-training-cases geneontology/go-ontology --limit 20
 
-# View extraction summary
-head -1 my-prs.jsonl | jq '.pr_number, .category, .commits.total_commits'
+# This creates markdown files like cases/go-ontology/31158.md
+# with validated YAML frontmatter
+
+# Validate the output
+ai4c-scribe cases validate cases/go-ontology/
+```
+
+### Configure an Evaluation Run
+
+```yaml
+# eval-config.yaml
+workflow: eval-agent-on-issue.yml
+repo: cmungall/go-ontology-eval-2026
+input_sets_dir: cases/go-ontology/
+inputs:
+  issue_repo: geneontology/go-ontology
+  model: [claude-opus-4-5-20251101, claude-sonnet-4-5-20250929]
+  agent_config_repo: cmungall/go-ontology-agent-config
+  agent_config_tag: v6
 ```
 
 See the [tutorials](tutorials/index.md) for complete walkthroughs.
@@ -132,7 +151,7 @@ See the [tutorials](tutorials/index.md) for complete walkthroughs.
 
     ---
 
-    CLI commands, GitHub workflows, and data structures
+    CLI commands, GitHub workflows, and case study schema
 
     [:octicons-arrow-right-24: Reference](reference/index.md)
 
@@ -142,18 +161,18 @@ See the [tutorials](tutorials/index.md) for complete walkthroughs.
 
 ```mermaid
 graph TB
-    subgraph "Training Data Pipeline"
-        GH1[GitHub Repository] --> EXT[Extract PRs]
-        EXT --> RC[Create Review Cases]
-        RC --> DIST[Distill Vignettes]
-        DIST --> TD[Training Data]
+    subgraph "Case Study Curation"
+        GH1[GitHub Repository] --> SKILL[/find-training-cases Skill]
+        SKILL --> CS[Case Study .md Files]
+        CS --> VAL[Validate Schema]
     end
 
     subgraph "Agent Evaluation Pipeline"
+        CS --> CFG[Workflow Config]
         GH2[Original Repository] --> IMP[Import as Shadow Repo]
-        IMP --> SEL[Select Issue + PR]
-        SEL --> RUN[Run Agent at Base Commit]
-        RUN --> CMP[Compare to Human Solution]
+        CFG --> RUN[Run Agent at Parent SHA]
+        IMP --> RUN
+        RUN --> CMP[Metadiff vs Human Solution]
         CMP --> MET[Evaluation Metrics]
     end
 ```
@@ -164,7 +183,9 @@ SCRIBE emerged from the [AI4Curation](https://github.com/ai4curation) project, w
 
 Key insights driving SCRIBE's design:
 
-- **GitHub history is valuable training data.** Mature repositories have extensive PR history with reviews, discussions, and iterative refinements that encode institutional knowledge.
+- **Case studies encode institutional knowledge.** Mature repositories have extensive PR history with reviews, discussions, and iterative refinements. Case studies capture this as structured, reusable evaluation data.
+
+- **Agentic curation beats heuristics.** Rather than deterministic extraction pipelines, an AI agent with judgment can select diverse, high-quality cases and annotate them with rich metadata.
 
 - **Reproducible evaluation requires careful setup.** Agents must start from the same commit state as human developers to enable fair comparison.
 
