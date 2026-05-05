@@ -697,3 +697,35 @@ jobs:
           name: run-metadata-${{ github.run_id }}
           path: /tmp/run-metadata.json
           retention-days: ${{ inputs.artifact_retention_days }}
+
+      # Persist traces permanently to the repo (artifacts expire, these don't)
+      - name: Persist traces to repo
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          TRACE_PATH="traces/${{ github.run_id }}"
+          BRANCH="master"
+          REPO="${{ github.repository }}"
+          MSG_PREFIX="traces(${{ inputs.issue_number }}/${{ inputs.model }})"
+
+          upload_file() {
+            local filepath="$1"
+            local filename="$2"
+            if [ -f "$filepath" ]; then
+              echo "Uploading ${filename}..."
+              gh api "repos/${REPO}/contents/${TRACE_PATH}/${filename}" \
+                --method PUT \
+                -f message="${MSG_PREFIX}: ${filename}" \
+                -f content="$(base64 < "$filepath")" \
+                -f branch="${BRANCH}" \
+                --silent || echo "  Warning: failed to upload ${filename}"
+            fi
+          }
+
+          upload_file "__issue_context__.json" "issue-context.json"
+          upload_file "/tmp/run-metadata.json" "run-metadata.json"
+          upload_file "ISSUE_COMMENTS.md" "ISSUE_COMMENTS.md"
+          upload_file "PR_COMMENTS.md" "PR_COMMENTS.md"
+          # Claude trace (only exists for claude runtime)
+          upload_file "/home/runner/work/_temp/claude-execution-output.json" "agent-trace.json"
