@@ -169,5 +169,5 @@ The runner reads each `.md` file from `input_sets_dir`, extracts the frontmatter
 
 ## See also
 
-- [How to curate case studies](../how-to/curate-case-studies.md)
+- [Tutorial](../tutorial.md) -- Covers case study curation end-to-end
 - [CLI Reference](cli.md#cases-validate)

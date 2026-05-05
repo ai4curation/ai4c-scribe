@@ -236,6 +236,6 @@ The workflow reads public information (issues, PRs) but writes only to your shad
 
 ## Related
 
-- [How-to: Set up shadow repos](../how-to/shadow-repos.md)
-- [Tutorial: Shadow repo evaluation](../tutorials/shadow-repo-eval.md)
-- [Reference: GitHub workflows](../reference/github-workflows.md)
+- [Tutorial](../tutorial.md) -- End-to-end walkthrough
+- [Workflow reference](../reference/workflow.md) -- Workflow inputs and outputs
+- [How to add a new repo](../how-to/add-new-repo.md) -- Setting up a new shadow repo

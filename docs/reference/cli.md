@@ -238,8 +238,7 @@ The `obo` config is optimized for OBO ontology diffs:
 
 ## See also
 
-- [Case study schema](case-study-schema.md): Schema for case study files
-- [GitHub Workflows](github-workflows.md): GitHub Actions workflows
-- [Python API](python-api.md): Programmatic interface
-- [How-to guides](../how-to/index.md): Task-oriented guides
-- [Tutorials](../tutorials/index.md): Step-by-step learning
+- [Case study schema](case-study-schema.md) -- Schema for case study files
+- [Workflow reference](workflow.md) -- GitHub Actions workflow inputs
+- [Metadiff reference](metadiff.md) -- Diff comparison details
+- [Tutorial](../tutorial.md) -- End-to-end walkthrough
