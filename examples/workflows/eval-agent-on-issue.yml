@@ -412,16 +412,38 @@ jobs:
           Follow any CODE_OF_CONDUCT.md or other relevant files in the repository.
           PROMPT
 
+      - name: Install Claude Code
+        if: inputs.agent_runtime == 'claude'
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Run Claude Code
         if: inputs.agent_runtime == 'claude'
-        uses: anthropics/claude-code-base-action@beta
-        with:
-          prompt_file: __agent_prompt__.md
-          allowed_tools: "Bash,Read,Write,Edit,Glob,Grep,LS,MultiEdit,NotebookEdit,TodoRead,TodoWrite,WebFetch,WebSearch"
-          model: ${{ inputs.model }}
-          timeout_minutes: ${{ inputs.timeout_minutes }}
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Write a runner script to avoid shell quoting issues
+          cat > /tmp/run-claude.sh << 'SCRIPT'
+          #!/bin/bash
+          cd "$1"
+          PROMPT=$(cat __agent_prompt__.md)
+          claude -p "$PROMPT" \
+            --model "$2" \
+            --dangerously-skip-permissions \
+            --output-format stream-json \
+            --verbose \
+            2>&1 | tee /tmp/claude-trace.json
+          SCRIPT
+          chmod +x /tmp/run-claude.sh
+
+          # Run as non-root to avoid --dangerously-skip-permissions root restriction
+          if [ "$(id -u)" = "0" ]; then
+            useradd -m -s /bin/bash claudeuser 2>/dev/null || true
+            chown -R claudeuser:claudeuser . /tmp
+            su claudeuser -c "/tmp/run-claude.sh $(pwd) ${{ inputs.model }}"
+          else
+            /tmp/run-claude.sh "$(pwd)" "${{ inputs.model }}"
+          fi
 
       - name: Install and authenticate Codex
         if: inputs.agent_runtime == 'codex'
@@ -643,7 +665,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: claude-response-${{ github.run_id }}
-          path: /home/runner/work/_temp/claude-execution-output.json
+          path: /tmp/claude-trace.json
           retention-days: ${{ inputs.artifact_retention_days }}
 
       - name: Upload issue comments
@@ -699,36 +721,41 @@ jobs:
           retention-days: ${{ inputs.artifact_retention_days }}
 
       # Persist traces permanently to the repo (artifacts expire, these don't)
+      # Uses git worktree + push to handle large files (agent traces can be MBs)
       - name: Persist traces to repo
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          TRACE_PATH="traces/${{ github.run_id }}"
-          BRANCH="master"
+          TRACE_DIR="traces/${{ github.run_id }}"
           REPO="${{ github.repository }}"
-          MSG_PREFIX="traces(${{ inputs.issue_number }}/${{ inputs.model }})"
+          MSG="traces(${{ inputs.issue_number }}/${{ inputs.model }}): run ${{ github.run_id }}"
 
-          upload_file() {
-            local filepath="$1"
-            local filename="$2"
-            if [ -f "$filepath" ]; then
-              echo "Uploading ${filename}..."
-              gh api "repos/${REPO}/contents/${TRACE_PATH}/${filename}" \
-                --method PUT \
-                -f message="${MSG_PREFIX}: ${filename}" \
-                -f content="$(base64 < "$filepath")" \
-                -f branch="${BRANCH}" \
-                --silent || echo "  Warning: failed to upload ${filename}"
+          # Clone just master (shallow) into a temp dir for the commit
+          WORK="/tmp/trace-push"
+          rm -rf "$WORK"
+          git clone --depth=1 --branch=master "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "$WORK"
+
+          mkdir -p "$WORK/$TRACE_DIR"
+
+          # Copy trace files
+          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json; do
+            if [ -f "$src" ]; then
+              fname=$(basename "$src")
+              # Rename claude-trace.json to agent-trace.json
+              [ "$fname" = "claude-trace.json" ] && fname="agent-trace.json"
+              cp "$src" "$WORK/$TRACE_DIR/$fname"
+              echo "  Added $fname ($(wc -c < "$src") bytes)"
             fi
-          }
+          done
 
-          upload_file "__issue_context__.json" "issue-context.json"
-          upload_file "/tmp/run-metadata.json" "run-metadata.json"
-          upload_file "ISSUE_COMMENTS.md" "ISSUE_COMMENTS.md"
-          upload_file "PR_COMMENTS.md" "PR_COMMENTS.md"
-          # Claude trace (only exists for claude runtime)
-          upload_file "/home/runner/work/_temp/claude-execution-output.json" "agent-trace.json"
+          # Commit and push
+          cd "$WORK"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$TRACE_DIR"
+          git commit -m "$MSG" || echo "No traces to commit"
+          git push origin master || echo "Warning: failed to push traces"
 
       # Add a comment to the PR linking to the traces folder
       - name: Comment trace link on PR
