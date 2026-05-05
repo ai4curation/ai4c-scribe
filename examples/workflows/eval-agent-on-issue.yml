@@ -729,3 +729,14 @@ jobs:
           upload_file "PR_COMMENTS.md" "PR_COMMENTS.md"
           # Claude trace (only exists for claude runtime)
           upload_file "/home/runner/work/_temp/claude-execution-output.json" "agent-trace.json"
+
+      # Add a comment to the PR linking to the traces folder
+      - name: Comment trace link on PR
+        if: steps.create_pr.outputs.created_pr_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          TRACE_URL="https://github.com/${{ github.repository }}/tree/master/traces/${{ github.run_id }}"
+          gh pr comment "${{ steps.create_pr.outputs.created_pr_number }}" \
+            --repo "${{ github.repository }}" \
+            --body "📋 **Traces**: [traces/${{ github.run_id }}](${TRACE_URL})"
