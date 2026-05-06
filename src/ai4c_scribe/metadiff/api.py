@@ -13,11 +13,9 @@ Example:
     0.6666666666666666
 """
 
-from __future__ import annotations
-
 from difflib import unified_diff
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
 from ai4c_scribe.metadiff.models import (
     Change,
@@ -179,8 +177,8 @@ def lines_to_changes(
 
 
 def compare_diffs(
-    diff1: str | list[str],
-    diff2: str | list[str],
+    diff1: Union[str, list[str]],
+    diff2: Union[str, list[str]],
     config: Optional[MetadiffConfig] = None,
     silent: bool = False,
 ) -> DiffComparisonResult:
