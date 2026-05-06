@@ -464,7 +464,9 @@ jobs:
         run: |
           codex exec "$(cat __agent_prompt__.md)" \
             --model ${{ inputs.model }} \
-            --sandbox danger-full-access
+            --sandbox danger-full-access \
+            --json \
+            2>&1 | tee /tmp/codex-trace.json
 
       - name: Add signature blocks to comment files
         run: |
@@ -739,11 +741,12 @@ jobs:
           mkdir -p "$WORK/$TRACE_DIR"
 
           # Copy trace files
-          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json; do
+          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json; do
             if [ -f "$src" ]; then
               fname=$(basename "$src")
-              # Rename claude-trace.json to agent-trace.json
+              # Rename runtime-specific traces to agent-trace.json
               [ "$fname" = "claude-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "codex-trace.json" ] && fname="agent-trace.json"
               cp "$src" "$WORK/$TRACE_DIR/$fname"
               echo "  Added $fname ($(wc -c < "$src") bytes)"
             fi
