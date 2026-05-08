@@ -12,241 +12,90 @@ ai4c-scribe --help
 |--------|-------------|
 | `--help` | Show help and exit |
 
-## extract
+## cases validate
 
-Extract PRs from a GitHub repository.
+Validate case study files against the LinkML schema.
 
 ### Synopsis
 
 ```bash
-ai4c-scribe extract REPO -o OUTPUT [OPTIONS]
+ai4c-scribe cases validate DIR
 ```
 
 ### Arguments
 
 | Argument | Required | Description |
 |----------|----------|-------------|
-| `REPO` | Yes | Repository in `owner/repo` format |
-
-### Options
-
-| Option | Short | Default | Description |
-|--------|-------|---------|-------------|
-| `--output` | `-o` | Required | Output JSONL file path |
-| `--limit` | `-l` | 50 | Maximum number of PRs to process |
-| `--start-from` | `-s` | None | Start from this PR number (inclusive) |
-| `--state` | | `merged` | PR state: `merged`, `closed`, or `all` |
-| `--one-to-one-only` | | False | Only PRs with 1-to-1 issue mapping |
+| `DIR` | Yes | Directory containing case study `.md` files |
 
 ### Examples
 
 ```bash
-# Basic extraction
-ai4c-scribe extract monarch-initiative/mondo -o prs.jsonl -l 100
+# Validate all case studies in a directory
+ai4c-scribe cases validate cases/go-ontology/
 
-# Start from specific PR
-ai4c-scribe extract monarch-initiative/mondo -o prs.jsonl -s 8000 -l 50
-
-# Only 1-to-1 issue mappings
-ai4c-scribe extract monarch-initiative/mondo -o prs.jsonl --one-to-one-only
-
-# All PR states
-ai4c-scribe extract monarch-initiative/mondo -o prs.jsonl --state all
+# Validate a different set
+ai4c-scribe cases validate cases/mondo/
 ```
 
 ### Output
 
-Creates a JSONL file with one `PRMiningRecord` per line. Also prints summary:
+Reports validation results for each file:
 
 ```
-✅ Mining complete!
-📊 Results saved to: prs.jsonl
-📈 Total records: 100
+Validating cases/go-ontology/...
+  31158.md: OK
+  31200.md: OK
+  31305.md: ERROR - missing required field 'task_type'
 
-Category breakdown:
-  merged_no_mods: 25
-  merged_with_mods: 75
-
-🔗 One-to-one issue mappings: 45
-⏱️  Average time to merge: 36.5 hours
+2/3 valid, 1 error(s)
 ```
+
+### What is validated
+
+- All required fields present (`repo`, `issue_number`, `pr_number`, `issue_title`, `pr_author`, `task_type`, `difficulty`, `scope`)
+- Enum values match allowed values
+- Date fields are valid ISO 8601 format
+- `repo` matches `owner/repo` pattern
+- Numeric fields are positive integers
 
 ---
 
-## create-review-cases
+## cases list
 
-Create review cases from extracted PR mining records.
+List case studies with summary metadata.
 
 ### Synopsis
 
 ```bash
-ai4c-scribe create-review-cases INPUT [OPTIONS]
+ai4c-scribe cases list DIR
 ```
 
 ### Arguments
 
 | Argument | Required | Description |
 |----------|----------|-------------|
-| `INPUT` | Yes | Input JSONL file from `extract` |
-
-### Options
-
-| Option | Short | Default | Description |
-|--------|-------|---------|-------------|
-| `--output` | `-o` | None | Output file path |
-| `--format` | `-f` | `jsonl` | Output format: `jsonl` or `markdown` |
-| `--skip-no-reviews` | | True | Skip PRs without reviews |
-| `--include-all` | | False | Include PRs without reviews |
+| `DIR` | Yes | Directory containing case study `.md` files |
 
 ### Examples
 
 ```bash
-# Create JSONL review cases
-ai4c-scribe create-review-cases prs.jsonl -o cases.jsonl
+# List all case studies
+ai4c-scribe cases list cases/go-ontology/
 
-# Create markdown review cases
-ai4c-scribe create-review-cases prs.jsonl -o cases.md -f markdown
-
-# Include PRs without reviews
-ai4c-scribe create-review-cases prs.jsonl -o cases.jsonl --include-all
+# Pipe to other tools
+ai4c-scribe cases list cases/go-ontology/ | grep "complex"
 ```
 
 ### Output
 
-JSONL file with one `ReviewCase` per line, or single markdown file.
+Displays a summary table of case studies:
 
 ```
-✅ Review case creation complete!
-📊 Results saved to: cases.jsonl (format: jsonl)
-📈 Input records: 100
-📝 Review cases created: 75
-⏭️  Skipped (no reviews): 25
-```
-
----
-
-## distill
-
-Distill review cases into AI-refined vignettes.
-
-### Synopsis
-
-```bash
-ai4c-scribe distill INPUT [OPTIONS]
-```
-
-### Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `INPUT` | Yes | Input JSONL file from `create-review-cases` |
-
-### Options
-
-| Option | Short | Default | Description |
-|--------|-------|---------|-------------|
-| `--output-dir` | `-o` | None | Output directory for vignette files |
-| `--working-dir` | `-w` | Temp dir | Working directory for agent servers |
-| `--repo-worktree` | `-r` | None | Git worktree for repository exploration |
-| `--input-format` | `-f` | `jsonl` | Input format: `jsonl` or `markdown` |
-| `--verbose` | `-v` | 0 | Verbose output (`-v` info, `-vv` debug) |
-
-### Examples
-
-```bash
-# Basic distillation
-ai4c-scribe distill cases.jsonl -o vignettes/
-
-# With verbose output
-ai4c-scribe distill cases.jsonl -o vignettes/ -v
-
-# With repository exploration
-ai4c-scribe distill cases.jsonl -o vignettes/ -r /path/to/worktree
-```
-
-### Output
-
-Creates markdown files in output directory (one per review case):
-
-```
-vignettes/
-├── pr_8116.md
-├── pr_8117.md
-└── pr_8120.md
-```
-
-Summary:
-
-```
-✅ Distillation complete!
-📊 Vignettes saved to: vignettes/
-📈 Input cases: 75
-📝 Distilled cases: 75
-⭐ Average clarity: 3.80/5
-🎯 Average difficulty: 2.50/5
-⚠️  Cases with quality issues: 5
-```
-
-### Requirements
-
-Requires AI dependencies: `pip install "ai4c-scribe[ai]"`
-
----
-
-## cache
-
-Manage the local cache.
-
-### Synopsis
-
-```bash
-ai4c-scribe cache ACTION [OPTIONS]
-```
-
-### Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `ACTION` | Yes | Action: `stats` or `clear` |
-
-### Options
-
-| Option | Short | Default | Description |
-|--------|-------|---------|-------------|
-| `--repo` | `-r` | None | Target specific repository |
-
-### Examples
-
-```bash
-# Global cache stats
-ai4c-scribe cache stats
-
-# Repository-specific stats
-ai4c-scribe cache stats --repo monarch-initiative/mondo
-
-# Clear specific repository cache
-ai4c-scribe cache clear --repo monarch-initiative/mondo
-
-# Clear all caches (prompts for confirmation)
-ai4c-scribe cache clear
-```
-
-### Output
-
-Stats action:
-
-```
-📊 Cache statistics for monarch-initiative/mondo:
-  Files: 847
-  Size: 25.67 MB (26,914,816 bytes)
-  Average file size: 31.76 KB
-```
-
-Clear action:
-
-```
-🗑️  Clearing cache for monarch-initiative/mondo...
-✅ Cache cleared successfully!
+PR#    Issue#  Task Type    Difficulty  Scope        Review Outcome
+31158  31100   new_term     simple      single_term  changes_requested
+31200  31150   reclassify   moderate    few_terms    approved
+31305  31290   fix_logic    complex     multi_file   changes_requested
 ```
 
 ---
@@ -386,11 +235,10 @@ The `obo` config is optimized for OBO ontology diffs:
 | Variable | Description |
 |----------|-------------|
 | `GH_TOKEN` | GitHub API token (alternative to `gh auth login`) |
-| `CYBERIAN_TIMEOUT` | Timeout for AI agent operations |
 
 ## See also
 
-- [GitHub Workflows](github-workflows.md): GitHub Actions workflows
-- [Python API](python-api.md): Programmatic interface
-- [How-to guides](../how-to/index.md): Task-oriented guides
-- [Tutorials](../tutorials/index.md): Step-by-step learning
+- [Case study schema](case-study-schema.md) -- Schema for case study files
+- [Workflow reference](workflow.md) -- GitHub Actions workflow inputs
+- [Metadiff reference](metadiff.md) -- Diff comparison details
+- [Tutorial](../tutorial.md) -- End-to-end walkthrough

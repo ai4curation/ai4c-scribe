@@ -18,6 +18,7 @@ from ai4c_scribe.api import (
     FixIssueStatus,
 )
 from ai4c_scribe.cache import clear_cache, get_cache_stats
+from ai4c_scribe.case_studies import load_case_study, load_case_studies_dir
 from ai4c_scribe.metadiff.cli import app as metadiff_app
 from ai4c_scribe.workflows.cli import app as workflows_app
 
@@ -26,6 +27,52 @@ app = typer.Typer(help="ai4c-scribe: Learns best practice from your github repo"
 # Add subcommand groups
 app.add_typer(metadiff_app, name="metadiff")
 app.add_typer(workflows_app, name="workflows")
+
+cases_app = typer.Typer(help="Manage case study files.")
+app.add_typer(cases_app, name="cases")
+
+
+def _find_case_files(directory: Path) -> list[Path]:
+    """Find case study files in a directory (flat or nested layout)."""
+    metadata_files = sorted(directory.glob("*/METADATA.md"))
+    if metadata_files:
+        return metadata_files
+    return sorted(directory.glob("*.md"))
+
+
+@cases_app.command()
+def validate(directory: Path = typer.Argument(..., help="Directory of case study files")):
+    """Validate all case study files in a directory."""
+    errors = []
+    count = 0
+    for md_file in _find_case_files(directory):
+        count += 1
+        try:
+            load_case_study(md_file)
+        except Exception as e:
+            errors.append((md_file.name, str(e)))
+
+    if errors:
+        typer.echo(f"Found {len(errors)} invalid case studies:")
+        for name, err in errors:
+            typer.echo(f"  {name}: {err}")
+        raise typer.Exit(code=1)
+    else:
+        typer.echo(f"All {count} case studies valid.")
+
+
+@cases_app.command("list")
+def list_cases(directory: Path = typer.Argument(..., help="Directory of case study .md files")):
+    """List case studies with summary info."""
+    cases = load_case_studies_dir(directory)
+    for case in cases:
+        task_type = case.task_type.value if hasattr(case.task_type, 'value') else case.task_type
+        difficulty = case.difficulty.value if hasattr(case.difficulty, 'value') else case.difficulty
+        typer.echo(
+            f"#{case.issue_number} -> PR#{case.pr_number} "
+            f"[{task_type}] [{difficulty}] "
+            f"{case.issue_title}"
+        )
 
 
 @app.command()
@@ -390,7 +437,7 @@ def fix_issue_cmd(
         # Confirmation prompt for destructive git reset
         if not force and not dry_run:
             typer.echo("")
-            typer.echo(f"⚠️  WARNING: This will run 'git reset --hard' in:")
+            typer.echo("⚠️  WARNING: This will run 'git reset --hard' in:")
             typer.echo(f"   {work_dir.resolve()}")
             typer.echo("")
             typer.echo("   Any uncommitted changes will be LOST!")

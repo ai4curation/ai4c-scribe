@@ -62,39 +62,20 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Tutorials:
-    - tutorials/index.md
-    - Installation: tutorials/installation.md
-    - Your first extraction: tutorials/first-extraction.md
-    - Complete workflow: tutorials/full-workflow.md
-    - Shadow repo evaluation: tutorials/shadow-repo-eval.md
+  - Tutorial: tutorial.md
   - How-to guides:
     - how-to/index.md
-    - Extract PRs: how-to/extract-prs.md
-    - Create review cases: how-to/create-review-cases.md
-    - Distill vignettes: how-to/distill-vignettes.md
-    - Evaluate an agent: how-to/evaluate-agent.md
-    - Set up shadow repos: how-to/shadow-repos.md
-    - Manage the cache: how-to/manage-cache.md
-    - Filter PRs: how-to/filter-prs.md
+    - Add a new repo: how-to/add-new-repo.md
+    - Filter cases: how-to/filter-cases.md
   - Explanation:
     - explanation/index.md
-    - Why SCRIBE?: explanation/why-scribe.md
-    - PR categories: explanation/pr-categories.md
-    - Data model: explanation/data-model.md
-    - Review cases: explanation/review-cases.md
     - Shadow repos: explanation/shadow-repos.md
-    - Distillation: explanation/distillation.md
   - Reference:
     - reference/index.md
+    - Case study schema: reference/case-study-schema.md
     - CLI: reference/cli.md
-    - GitHub workflows: reference/github-workflows.md
-    - Data structures: reference/data-structures.md
-    - Output format: reference/output-format.md
-    - Python API: reference/python-api.md
-  - Examples:
-    - End-to-End Evaluation: examples/end_to_end_eval.ipynb
-    - Python API: examples/python_api_example.ipynb
+    - Workflow: reference/workflow.md
+    - Metadiff: reference/metadiff.md
 
 exclude_docs: |
   /templates-linkml/

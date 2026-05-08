@@ -14,31 +14,6 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Iterator, Optional
 
-
-@contextmanager
-def _working_directory(path: Optional[Path]) -> Iterator[None]:
-    """Context manager to temporarily change working directory.
-
-    Args:
-        path: Directory to change to. If None, no change is made.
-
-    Example:
-        >>> import os
-        >>> original = os.getcwd()
-        >>> with _working_directory(None):
-        ...     assert os.getcwd() == original
-    """
-    if path is None:
-        yield
-        return
-
-    original = os.getcwd()
-    os.chdir(path)
-    try:
-        yield
-    finally:
-        os.chdir(original)
-
 from ai4c_scribe.workflows.artifacts import download_run_artifacts
 from ai4c_scribe.workflows.config import (
     compute_config_hash,
@@ -69,6 +44,31 @@ from ai4c_scribe.workflows.models import (
     WorkflowRunStatus,
     WorkflowStatusResult,
 )
+
+
+@contextmanager
+def _working_directory(path: Optional[Path]) -> Iterator[None]:
+    """Context manager to temporarily change working directory.
+
+    Args:
+        path: Directory to change to. If None, no change is made.
+
+    Example:
+        >>> import os
+        >>> original = os.getcwd()
+        >>> with _working_directory(None):
+        ...     assert os.getcwd() == original
+    """
+    if path is None:
+        yield
+        return
+
+    original = os.getcwd()
+    os.chdir(path)
+    try:
+        yield
+    finally:
+        os.chdir(original)
 
 
 def run_workflows(
@@ -558,8 +558,6 @@ def _compare_run_diffs(output_dir: Path, verbose: bool = False, config_path: Opt
         None (saves results to files)
     """
     import json
-    from pathlib import Path
-    from glob import glob
 
     # Find diff files
     original_diffs = list(output_dir.glob("original-pr-*.diff"))
@@ -567,7 +565,7 @@ def _compare_run_diffs(output_dir: Path, verbose: bool = False, config_path: Opt
 
     if not original_diffs or not agent_diffs:
         if verbose:
-            print(f"  Skipping diff comparison: missing original or agent diff")
+            print("  Skipping diff comparison: missing original or agent diff")
         return
 
     original_diff_file = original_diffs[0]  # Use first if multiple

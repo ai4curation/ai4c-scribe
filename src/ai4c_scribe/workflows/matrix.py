@@ -20,7 +20,6 @@ Example:
 
 import itertools
 import uuid
-from typing import Union
 
 from ai4c_scribe.workflows.db import compute_params_hash
 from ai4c_scribe.workflows.models import (

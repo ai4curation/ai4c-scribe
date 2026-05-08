@@ -3,7 +3,6 @@
 import tempfile
 from pathlib import Path
 
-import pytest
 
 from ai4c_scribe.workflows.api import _compare_run_diffs
 

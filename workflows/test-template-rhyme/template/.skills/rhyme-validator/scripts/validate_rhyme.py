@@ -22,7 +22,7 @@ def check_rhyme(word1, word2):
 
 
 def validate_poem(text):
-    lines = [l.strip() for l in text.strip().split('\n') if l.strip()]
+    lines = [line.strip() for line in text.strip().split('\n') if line.strip()]
     if len(lines) < 4:
         print("FAILED: Poem too short for ABAB pattern (need 4+ lines)")
         return False

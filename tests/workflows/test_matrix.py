@@ -1,6 +1,5 @@
 """Tests for matrix expansion."""
 
-import pytest
 
 from ai4c_scribe.workflows.matrix import (
     expand_matrix,

@@ -15,7 +15,6 @@ import re
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import Optional
 
 from ai4c_scribe.metadiff.models import MetadiffConfig
 

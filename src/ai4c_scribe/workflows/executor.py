@@ -6,7 +6,6 @@ Handles:
 - Status polling and updates
 """
 
-import json
 import subprocess
 import time
 from datetime import datetime
@@ -319,7 +318,7 @@ def run_until_complete(
 
     while time.time() - start_time < timeout_seconds:
         # Update statuses first
-        updates = update_active_run_statuses(conn, verbose=verbose)
+        update_active_run_statuses(conn, verbose=verbose)
 
         # Get pending jobs
         pending = get_pending_jobs(conn)

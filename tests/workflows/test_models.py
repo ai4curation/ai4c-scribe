@@ -1,6 +1,5 @@
 """Tests for workflow Pydantic models."""
 
-import pytest
 from datetime import datetime
 
 from ai4c_scribe.workflows.models import (

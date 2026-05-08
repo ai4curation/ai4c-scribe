@@ -1,37 +1,55 @@
 """Tests for CLI commands."""
 
+import re
+
 import pytest
 from typer.testing import CliRunner
 
 from ai4c_scribe.cli import app
 
-# Use a wide terminal to avoid Rich/Typer truncating help text
-# This is necessary because CI environments may have narrow or undefined terminal width
+# Use a wide terminal to avoid Rich/Typer truncating help text.
 runner = CliRunner(env={"COLUMNS": "120"})
+
+# ANSI escape code pattern for stripping Rich color output.
+# When FORCE_COLOR=1 is set (e.g., in CI), Rich inserts ANSI codes within
+# option names, splitting "--output" into separately-colored dashes.
+_ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def _strip_ansi(text: str) -> str:
+    """Remove ANSI escape sequences from text.
+
+    >>> _strip_ansi("\\x1b[1;36m-\\x1b[0m\\x1b[1;36m-output\\x1b[0m")
+    '--output'
+    """
+    return _ANSI_RE.sub("", text)
 
 
 def test_extract_help():
     """Test that extract command help works."""
     result = runner.invoke(app, ["extract", "--help"])
+    output = _strip_ansi(result.stdout)
     assert result.exit_code == 0
-    assert "Extract PRs from a repository" in result.stdout
-    assert "--output" in result.stdout
-    assert "--limit" in result.stdout
+    assert "Extract PRs from a repository" in output
+    assert "--output" in output
+    assert "--limit" in output
 
 
 def test_review_help():
     """Test that review command help works."""
     result = runner.invoke(app, ["review", "--help"])
+    output = _strip_ansi(result.stdout)
     assert result.exit_code == 0
-    assert "Convert extracted PRs into markdown" in result.stdout
-    assert "--input" in result.stdout
+    assert "Convert extracted PRs into markdown" in output
+    assert "--input" in output
 
 
 def test_learn_help():
     """Test that learn command help works."""
     result = runner.invoke(app, ["learn", "--help"])
+    output = _strip_ansi(result.stdout)
     assert result.exit_code == 0
-    assert "End-to-end learning flow" in result.stdout
+    assert "End-to-end learning flow" in output
 
 
 def test_review_not_implemented():
@@ -58,10 +76,11 @@ def test_extract_missing_output():
 def test_create_review_cases_help():
     """Test that create-review-cases command help works."""
     result = runner.invoke(app, ["create-review-cases", "--help"])
+    output = _strip_ansi(result.stdout)
     assert result.exit_code == 0
-    assert "Create review cases from extracted PR mining records" in result.stdout
-    assert "--output" in result.stdout
-    assert "--skip-no-reviews" in result.stdout
+    assert "Create review cases from extracted PR mining records" in output
+    assert "--output" in output
+    assert "--skip-no-reviews" in output
 
 
 @pytest.mark.integration
@@ -158,7 +177,8 @@ def test_create_review_cases_markdown_format(tmp_path):
 def test_distill_help():
     """Test that distill command help works."""
     result = runner.invoke(app, ["distill", "--help"])
+    output = _strip_ansi(result.stdout)
     assert result.exit_code == 0
-    assert "Distill review cases into AI-refined vignettes" in result.stdout
-    assert "--output-dir" in result.stdout
-    assert "--working-dir" in result.stdout
+    assert "Distill review cases into AI-refined vignettes" in output
+    assert "--output-dir" in output
+    assert "--working-dir" in output
