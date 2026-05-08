@@ -1,5 +1,3 @@
-from __future__ import annotations 
-
 import re
 import sys
 from datetime import (
@@ -7,8 +5,8 @@ from datetime import (
     datetime,
     time
 )
-from decimal import Decimal 
-from enum import Enum 
+from decimal import Decimal
+from enum import Enum
 from typing import (
     Any,
     ClassVar,
@@ -151,6 +149,17 @@ class ScopingEnum(str, Enum):
 
 
 
+class FileChange(ConfiguredBaseModel):
+    """
+    A single file changed in the PR, with line counts.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/ai4c-scribe/case-study'})
+
+    path: str = Field(default=..., description="""File path relative to repo root""", json_schema_extra = { "linkml_meta": {'alias': 'path', 'domain_of': ['FileChange']} })
+    additions: int = Field(default=..., description="""Number of lines added""", json_schema_extra = { "linkml_meta": {'alias': 'additions', 'domain_of': ['FileChange']} })
+    deletions: int = Field(default=..., description="""Number of lines deleted""", json_schema_extra = { "linkml_meta": {'alias': 'deletions', 'domain_of': ['FileChange']} })
+
+
 class CaseStudy(ConfiguredBaseModel):
     """
     A single issue/PR evaluation case. Represented as YAML frontmatter in a markdown file, with the markdown body containing an agentic narrative summary of the issue and its resolution.
@@ -183,17 +192,6 @@ class CaseStudy(ConfiguredBaseModel):
     curated_by: str = Field(default=..., description="""Who or what created this case study (agent model, human username)""", json_schema_extra = { "linkml_meta": {'alias': 'curated_by', 'domain_of': ['CaseStudy']} })
     curated_at: date = Field(default=..., description="""When this case study was curated""", json_schema_extra = { "linkml_meta": {'alias': 'curated_at', 'domain_of': ['CaseStudy']} })
     rationale: str = Field(default=..., description="""One-liner explaining why this is a good test case""", json_schema_extra = { "linkml_meta": {'alias': 'rationale', 'domain_of': ['CaseStudy']} })
-
-
-class FileChange(ConfiguredBaseModel):
-    """
-    A single file changed in the PR, with line counts.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/ai4c-scribe/case-study'})
-
-    path: str = Field(default=..., description="""File path relative to repo root""", json_schema_extra = { "linkml_meta": {'alias': 'path', 'domain_of': ['FileChange']} })
-    additions: int = Field(default=..., description="""Number of lines added""", json_schema_extra = { "linkml_meta": {'alias': 'additions', 'domain_of': ['FileChange']} })
-    deletions: int = Field(default=..., description="""Number of lines deleted""", json_schema_extra = { "linkml_meta": {'alias': 'deletions', 'domain_of': ['FileChange']} })
 
 
 # Model rebuild
