@@ -13,9 +13,12 @@ runner = CliRunner(env={"COLUMNS": "120"})
 def test_extract_help():
     """Test that extract command help works."""
     result = runner.invoke(app, ["extract", "--help"])
-    assert result.exit_code == 0
-    assert "Extract PRs from a repository" in result.stdout
-    assert "--output" in result.stdout
+    if result.exception:
+        import traceback
+        traceback.print_exception(type(result.exception), result.exception, result.exception.__traceback__)
+    assert result.exit_code == 0, f"exit_code={result.exit_code}, stdout={result.stdout!r}"
+    assert "Extract PRs from a repository" in result.stdout, f"stdout={result.stdout!r}"
+    assert "--output" in result.stdout, f"stdout={result.stdout!r}"
     assert "--limit" in result.stdout
 
 
