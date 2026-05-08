@@ -17,7 +17,7 @@ files_changed:
 scoping: tightly_scoped
 scoping_notes: PR obsoletes a single term with appropriate replaced_by annotation.
 task_type: obsoletion
-difficulty: easy
+difficulty: simple
 scope: single_term
 review_outcome: approved_first_time
 domain_area: congenital-disease

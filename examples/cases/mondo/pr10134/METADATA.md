@@ -18,7 +18,7 @@ files_changed:
 scoping: tightly_scoped
 scoping_notes: Minimal change updating only the label of a single term.
 task_type: synonym_update
-difficulty: easy
+difficulty: simple
 scope: single_term
 review_outcome: approved_first_time
 domain_area: rare-disease

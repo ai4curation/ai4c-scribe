@@ -17,7 +17,7 @@ files_changed:
 scoping: tightly_scoped
 scoping_notes: PR adds a single new term with definition and classification.
 task_type: new_term
-difficulty: easy
+difficulty: simple
 scope: single_term
 review_outcome: approved_first_time
 domain_area: oncology

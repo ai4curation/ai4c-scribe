@@ -17,9 +17,9 @@ files_changed:
 scoping: tightly_scoped
 scoping_notes: Changes limited to relabeling one term and updating its synonyms.
 task_type: synonym_update
-difficulty: easy
+difficulty: simple
 scope: single_term
-review_outcome: approved_with_revisions
+review_outcome: changes_requested
 domain_area: oncology
 tags:
   - relabel

@@ -18,8 +18,8 @@ scoping: tightly_scoped
 scoping_notes: All changes are within the hypophysitis branch of the ontology, restructuring subtypes.
 task_type: reclassification
 difficulty: hard
-scope: multiple_terms
-review_outcome: approved_with_revisions
+scope: multi_term
+review_outcome: changes_requested
 domain_area: rare-disease
 tags:
   - hypophysitis

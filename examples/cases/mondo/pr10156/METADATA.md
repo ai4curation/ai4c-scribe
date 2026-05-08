@@ -17,7 +17,7 @@ scoping: tightly_scoped
 scoping_notes: PR adds a new parent term and reclassifies three existing children under it.
 task_type: new_term
 difficulty: medium
-scope: multiple_terms
+scope: multi_term
 review_outcome: approved_first_time
 domain_area: kidney-disease
 tags:
