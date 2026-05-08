@@ -6,7 +6,7 @@ from typer.testing import CliRunner
 
 from ai4c_scribe.cli import app
 
-runner = CliRunner(env={"NO_COLOR": "1"})
+runner = CliRunner(env={"NO_COLOR": "1", "FORCE_COLOR": None})
 FIXTURES_DIR = Path(__file__).parent.parent / "fixtures" / "cases"
 
 

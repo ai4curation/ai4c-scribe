@@ -8,7 +8,8 @@ from ai4c_scribe.cli import app
 # Use a wide terminal to avoid Rich/Typer truncating help text.
 # NO_COLOR disables Rich ANSI escape codes that break substring matching
 # (e.g., "--output" becomes "\x1b[1;36m-\x1b[0m\x1b[1;36m-output\x1b[0m" with FORCE_COLOR=1).
-runner = CliRunner(env={"COLUMNS": "120", "NO_COLOR": "1"})
+# FORCE_COLOR=None removes it from the environment (Click isolation deletes it).
+runner = CliRunner(env={"COLUMNS": "120", "NO_COLOR": "1", "FORCE_COLOR": None})
 
 
 def test_extract_help():
