@@ -5,20 +5,18 @@ from typer.testing import CliRunner
 
 from ai4c_scribe.cli import app
 
-# Use a wide terminal to avoid Rich/Typer truncating help text
-# This is necessary because CI environments may have narrow or undefined terminal width
-runner = CliRunner(env={"COLUMNS": "120"})
+# Use a wide terminal to avoid Rich/Typer truncating help text.
+# NO_COLOR disables Rich ANSI escape codes that break substring matching
+# (e.g., "--output" becomes "\x1b[1;36m-\x1b[0m\x1b[1;36m-output\x1b[0m" with FORCE_COLOR=1).
+runner = CliRunner(env={"COLUMNS": "120", "NO_COLOR": "1"})
 
 
 def test_extract_help():
     """Test that extract command help works."""
     result = runner.invoke(app, ["extract", "--help"])
-    if result.exception:
-        import traceback
-        traceback.print_exception(type(result.exception), result.exception, result.exception.__traceback__)
-    assert result.exit_code == 0, f"exit_code={result.exit_code}, stdout={result.stdout!r}"
-    assert "Extract PRs from a repository" in result.stdout, f"stdout={result.stdout!r}"
-    assert "--output" in result.stdout, f"stdout={result.stdout!r}"
+    assert result.exit_code == 0
+    assert "Extract PRs from a repository" in result.stdout
+    assert "--output" in result.stdout
     assert "--limit" in result.stdout
 
 
