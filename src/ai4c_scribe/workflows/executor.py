@@ -6,7 +6,6 @@ Handles:
 - Status polling and updates
 """
 
-import json
 import subprocess
 import time
 from datetime import datetime

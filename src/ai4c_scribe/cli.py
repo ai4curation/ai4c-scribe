@@ -437,7 +437,7 @@ def fix_issue_cmd(
         # Confirmation prompt for destructive git reset
         if not force and not dry_run:
             typer.echo("")
-            typer.echo(f"⚠️  WARNING: This will run 'git reset --hard' in:")
+            typer.echo("⚠️  WARNING: This will run 'git reset --hard' in:")
             typer.echo(f"   {work_dir.resolve()}")
             typer.echo("")
             typer.echo("   Any uncommitted changes will be LOST!")

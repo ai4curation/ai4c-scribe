@@ -1,6 +1,5 @@
 """Tests for metadiff core API."""
 
-import pytest
 
 from ai4c_scribe.metadiff.api import (
     apply_normalizers,

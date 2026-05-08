@@ -214,7 +214,7 @@ def artifacts_cmd(
             db_path=db_path, workdir=workdir,
         )
 
-        typer.echo(f"\n✅ Artifact download complete:")
+        typer.echo("\n✅ Artifact download complete:")
         typer.echo(f"  📦 Found: {result.artifacts_found}")
         typer.echo(f"  ⬇️  Downloaded: {result.artifacts_downloaded}")
         typer.echo(f"  💾 Total size: {result.total_bytes / 1024:.1f} KB")
@@ -322,7 +322,7 @@ def dump_cmd(
             metadiff_config=metadiff_config,
         )
 
-        typer.echo(f"\n✅ Artifact dump complete:")
+        typer.echo("\n✅ Artifact dump complete:")
         typer.echo(f"  📦 Runs processed: {result['runs_processed']}")
         typer.echo(f"  ⬇️  Artifacts downloaded: {result['artifacts_downloaded']}")
         typer.echo(f"  💾 Total size: {result['total_bytes'] / 1024:.1f} KB")

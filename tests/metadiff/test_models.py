@@ -1,6 +1,5 @@
 """Tests for metadiff Pydantic models."""
 
-import pytest
 
 from ai4c_scribe.metadiff.models import (
     CompareResult,
@@ -147,7 +146,6 @@ class TestCompareResult:
 
     def test_minimal(self):
         """Test minimal compare result."""
-        from pathlib import Path
 
         comparison = DiffComparisonResult(
             similarity=0.5,

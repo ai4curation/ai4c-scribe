@@ -558,8 +558,6 @@ def _compare_run_diffs(output_dir: Path, verbose: bool = False, config_path: Opt
         None (saves results to files)
     """
     import json
-    from pathlib import Path
-    from glob import glob
 
     # Find diff files
     original_diffs = list(output_dir.glob("original-pr-*.diff"))
@@ -567,7 +565,7 @@ def _compare_run_diffs(output_dir: Path, verbose: bool = False, config_path: Opt
 
     if not original_diffs or not agent_diffs:
         if verbose:
-            print(f"  Skipping diff comparison: missing original or agent diff")
+            print("  Skipping diff comparison: missing original or agent diff")
         return
 
     original_diff_file = original_diffs[0]  # Use first if multiple
