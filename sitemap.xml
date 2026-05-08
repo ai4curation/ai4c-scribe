@@ -2,122 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
+         <loc>https://ai4curation.github.io/ai4c-scribe/tutorial/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/examples/end_to_end_eval/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/examples/python_api_example/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/explanation/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/explanation/data-model/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/explanation/distillation/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/explanation/pr-categories/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/explanation/review-cases/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/explanation/shadow-repos/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/explanation/why-scribe/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/how-to/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/create-review-cases/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/add-new-repo/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/distill-vignettes/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/evaluate-agent/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/extract-prs/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/filter-prs/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/manage-cache/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/shadow-repos/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/plans/runner-module/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/how-to/filter-cases/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/reference/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
+    </url>
+    <url>
+         <loc>https://ai4curation.github.io/ai4c-scribe/reference/case-study-schema/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
          <loc>https://ai4curation.github.io/ai4c-scribe/reference/cli/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/reference/data-structures/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/reference/metadiff/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/reference/github-workflows/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/reference/workflow/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/reference/output-format/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/superpowers/plans/2026-05-03-case-study-schema/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
     <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/reference/python-api/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/tutorials/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/tutorials/first-extraction/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/tutorials/full-workflow/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/tutorials/installation/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://ai4curation.github.io/ai4c-scribe/tutorials/shadow-repo-eval/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <loc>https://ai4curation.github.io/ai4c-scribe/superpowers/specs/2026-05-03-case-study-schema-design/</loc>
+         <lastmod>2026-05-08</lastmod>
     </url>
 </urlset>

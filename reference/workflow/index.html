@@ -6,24 +6,25 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Social Coding Repository artificial Intelligence Benchmarking and Evaluation - Extract training data and run agentic evals on GitHub repositories" name="description"/>
-<link href="https://ai4curation.github.io/ai4c-scribe/" rel="canonical"/>
-<link href="tutorial/" rel="next"/>
-<link href="assets/images/favicon.png" rel="icon"/>
+<link href="https://ai4curation.github.io/ai4c-scribe/reference/workflow/" rel="canonical"/>
+<link href="../cli/" rel="prev"/>
+<link href="../metadiff/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
-<title>SCRIBE</title>
-<link href="assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<title>Workflow - SCRIBE</title>
+<link href="../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#scribe">
+<a class="md-skip" href="#workflow-reference-eval-agent-on-issueyml">
           Skip to content
         </a>
 </div>
@@ -31,7 +32,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="SCRIBE" class="md-header__button md-logo" data-md-component="logo" href="." title="SCRIBE">
+<a aria-label="SCRIBE" class="md-header__button md-logo" data-md-component="logo" href="../.." title="SCRIBE">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -47,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Home
+              Workflow
             
           </span>
 </div>
@@ -111,8 +112,8 @@
 <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
 <div class="md-grid">
 <ul class="md-tabs__list">
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href=".">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
         
   
   
@@ -123,7 +124,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="tutorial/">
+<a class="md-tabs__link" href="../../tutorial/">
         
   
   
@@ -134,7 +135,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="how-to/">
+<a class="md-tabs__link" href="../../how-to/">
           
   
   
@@ -143,7 +144,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="explanation/">
+<a class="md-tabs__link" href="../../explanation/">
           
   
   
@@ -151,8 +152,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="reference/">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
           
   
   
@@ -170,7 +171,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="SCRIBE" class="md-nav__button md-logo" data-md-component="logo" href="." title="SCRIBE">
+<a aria-label="SCRIBE" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="SCRIBE">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
     SCRIBE
@@ -186,20 +187,8 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href=".">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
 <span class="md-ellipsis">
     
   
@@ -209,71 +198,9 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-scribe-does">
-<span class="md-ellipsis">
-      
-        What SCRIBE does
-      
-    </span>
-</a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#quick-start">
-<span class="md-ellipsis">
-      
-        Quick start
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#the-pipeline-at-a-glance">
-<span class="md-ellipsis">
-      
-        The pipeline at a glance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#real-results-go-ontology-eval-codex-gpt-54">
-<span class="md-ellipsis">
-      
-        Real results: GO ontology eval (Codex gpt-5.4)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#documentation">
-<span class="md-ellipsis">
-      
-        Documentation
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#links">
-<span class="md-ellipsis">
-      
-        Links
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="tutorial/">
+<a class="md-nav__link" href="../../tutorial/">
 <span class="md-ellipsis">
     
   
@@ -308,7 +235,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-to/">
+<a class="md-nav__link" href="../../how-to/">
 <span class="md-ellipsis">
     
   
@@ -320,7 +247,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-to/add-new-repo/">
+<a class="md-nav__link" href="../../how-to/add-new-repo/">
 <span class="md-ellipsis">
     
   
@@ -332,7 +259,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-to/filter-cases/">
+<a class="md-nav__link" href="../../how-to/filter-cases/">
 <span class="md-ellipsis">
     
   
@@ -370,7 +297,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="explanation/">
+<a class="md-nav__link" href="../../explanation/">
 <span class="md-ellipsis">
     
   
@@ -382,7 +309,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="explanation/shadow-repos/">
+<a class="md-nav__link" href="../../explanation/shadow-repos/">
 <span class="md-ellipsis">
     
   
@@ -396,9 +323,9 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
 <span class="md-ellipsis">
     
   
@@ -409,7 +336,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             
@@ -420,7 +347,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/">
+<a class="md-nav__link" href="../">
 <span class="md-ellipsis">
     
   
@@ -432,7 +359,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/case-study-schema/">
+<a class="md-nav__link" href="../case-study-schema/">
 <span class="md-ellipsis">
     
   
@@ -444,7 +371,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/cli/">
+<a class="md-nav__link" href="../cli/">
 <span class="md-ellipsis">
     
   
@@ -455,8 +382,20 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="reference/workflow/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Workflow
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -466,9 +405,80 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inputs">
+<span class="md-ellipsis">
+      
+        Inputs
+      
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/metadiff/">
+<a class="md-nav__link" href="#supported-models">
+<span class="md-ellipsis">
+      
+        Supported models
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#required-secrets">
+<span class="md-ellipsis">
+      
+        Required secrets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#outputs-artifacts">
+<span class="md-ellipsis">
+      
+        Outputs / Artifacts
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#branch-naming-convention">
+<span class="md-ellipsis">
+      
+        Branch naming convention
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#execution-flow">
+<span class="md-ellipsis">
+      
+        Execution flow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#triggering-manually">
+<span class="md-ellipsis">
+      
+        Triggering manually
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../metadiff/">
 <span class="md-ellipsis">
     
   
@@ -497,55 +507,64 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#what-scribe-does">
+<a class="md-nav__link" href="#inputs">
 <span class="md-ellipsis">
       
-        What SCRIBE does
+        Inputs
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#quick-start">
+<a class="md-nav__link" href="#supported-models">
 <span class="md-ellipsis">
       
-        Quick start
+        Supported models
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#the-pipeline-at-a-glance">
+<a class="md-nav__link" href="#required-secrets">
 <span class="md-ellipsis">
       
-        The pipeline at a glance
+        Required secrets
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#real-results-go-ontology-eval-codex-gpt-54">
+<a class="md-nav__link" href="#outputs-artifacts">
 <span class="md-ellipsis">
       
-        Real results: GO ontology eval (Codex gpt-5.4)
+        Outputs / Artifacts
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#documentation">
+<a class="md-nav__link" href="#branch-naming-convention">
 <span class="md-ellipsis">
       
-        Documentation
+        Branch naming convention
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#links">
+<a class="md-nav__link" href="#execution-flow">
 <span class="md-ellipsis">
       
-        Links
+        Execution flow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#triggering-manually">
+<span class="md-ellipsis">
+      
+        Triggering manually
       
     </span>
 </a>
@@ -557,89 +576,211 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="scribe">SCRIBE<a class="headerlink" href="#scribe" title="Permanent link">¶</a></h1>
-<p><strong>Social Coding Repository artificial Intelligence Benchmarking and Evaluation</strong></p>
-<p>SCRIBE evaluates AI coding agents by replaying real GitHub issues against shadow repositories and comparing agent output to human solutions.</p>
-<h2 id="what-scribe-does">What SCRIBE does<a class="headerlink" href="#what-scribe-does" title="Permanent link">¶</a></h2>
-<ol>
-<li><strong>Curates case studies</strong> from real issue/PR pairs as markdown files with YAML frontmatter</li>
-<li><strong>Runs agents</strong> (Claude Code or Codex) against those cases via GitHub Actions</li>
-<li><strong>Scores results</strong> using metadiff (F1, precision, recall) against the human solution</li>
-</ol>
-<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Install</span>
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ai4c-scribe
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># Validate existing case studies</span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>ai4c-scribe<span class="w"> </span>cases<span class="w"> </span>validate<span class="w"> </span>examples/cases/go-ontology/
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c1"># Run an eval batch</span>
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>ai4c-scribe<span class="w"> </span>workflows<span class="w"> </span>run<span class="w"> </span>examples/configs/go-ontology-eval.yaml
-</code></pre></div>
-<p><strong>Requirements:</strong> Python 3.11+, <a href="https://cli.github.com/">GitHub CLI</a> authenticated, access to a shadow repo with the <code>eval-agent-on-issue.yml</code> workflow deployed.</p>
-<h2 id="the-pipeline-at-a-glance">The pipeline at a glance<a class="headerlink" href="#the-pipeline-at-a-glance" title="Permanent link">¶</a></h2>
-<div class="mermaid">graph LR
-    A[Curate cases] --&gt; B[Write eval config]
-    B --&gt; C[Run eval]
-    C --&gt; D[Analyze with metadiff]
-</div>
-<p>Each step is covered in the <a href="tutorial/">Tutorial</a>.</p>
-<h2 id="real-results-go-ontology-eval-codex-gpt-54">Real results: GO ontology eval (Codex gpt-5.4)<a class="headerlink" href="#real-results-go-ontology-eval-codex-gpt-54" title="Permanent link">¶</a></h2>
+<h1 id="workflow-reference-eval-agent-on-issueyml">Workflow reference: eval-agent-on-issue.yml<a class="headerlink" href="#workflow-reference-eval-agent-on-issueyml" title="Permanent link">¶</a></h1>
+<p>The <code>eval-agent-on-issue.yml</code> workflow is the core evaluation engine. Deploy it to your shadow repo and trigger it via the CLI or <code>gh workflow run</code>.</p>
+<h2 id="inputs">Inputs<a class="headerlink" href="#inputs" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th>Case</th>
-<th>Task</th>
-<th>Difficulty</th>
-<th>F1</th>
+<th>Input</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>#31961</td>
-<td>obsoletion</td>
-<td>simple</td>
-<td>1.000</td>
+<td><code>issue_repo</code></td>
+<td>No</td>
+<td>Current repo</td>
+<td>Repository containing the issue (<code>owner/repo</code>)</td>
 </tr>
 <tr>
-<td>#30894</td>
-<td>new term</td>
-<td>medium</td>
-<td>0.778</td>
+<td><code>issue_number</code></td>
+<td>Yes</td>
+<td>--</td>
+<td>Issue number to solve</td>
 </tr>
 <tr>
-<td>#31967</td>
-<td>CYP450 reparent</td>
-<td>medium</td>
-<td>0.800</td>
+<td><code>pr_number</code></td>
+<td>Yes</td>
+<td>--</td>
+<td>PR number (determines base commit for checkout)</td>
 </tr>
 <tr>
-<td>#31969</td>
-<td>oxidoreductase</td>
-<td>hard</td>
-<td>0.929</td>
+<td><code>agent_config_repo</code></td>
+<td>No</td>
+<td>Current repo</td>
+<td>Repository containing agent config</td>
 </tr>
 <tr>
-<td>#31670</td>
-<td>taxon constraints</td>
-<td>hard</td>
-<td>0.000</td>
+<td><code>agent_config_tag</code></td>
+<td>Yes</td>
+<td>--</td>
+<td>Tag/branch of agent config to use</td>
+</tr>
+<tr>
+<td><code>agent_config_directory</code></td>
+<td>No</td>
+<td><code>.</code></td>
+<td>Directory within config repo</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>Yes</td>
+<td>--</td>
+<td>Model identifier (see below)</td>
+</tr>
+<tr>
+<td><code>agent_runtime</code></td>
+<td>No</td>
+<td><code>claude</code></td>
+<td>Agent runtime: <code>claude</code> or <code>codex</code></td>
+</tr>
+<tr>
+<td><code>create_pr</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Create a PR from agent changes</td>
+</tr>
+<tr>
+<td><code>force_new_branch</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Force push if branch already exists</td>
+</tr>
+<tr>
+<td><code>iter_num</code></td>
+<td>No</td>
+<td><code>1</code></td>
+<td>Iteration number (for repeated runs)</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td>No</td>
+<td>--</td>
+<td>Docker container image (e.g., <code>obolibrary/odkfull:latest</code>)</td>
+</tr>
+<tr>
+<td><code>uv_tool_install</code></td>
+<td>No</td>
+<td>--</td>
+<td>Additional tools to install via <code>uv tool install</code></td>
+</tr>
+<tr>
+<td><code>validation_command</code></td>
+<td>No</td>
+<td>--</td>
+<td>Command to validate agent changes</td>
+</tr>
+<tr>
+<td><code>timeout_minutes</code></td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Job timeout</td>
+</tr>
+<tr>
+<td><code>artifact_retention_days</code></td>
+<td>No</td>
+<td><code>90</code></td>
+<td>Days to retain run artifacts</td>
 </tr>
 </tbody>
 </table>
-<p>Agents excel at mechanical tasks but struggle with multi-file changes requiring deep domain knowledge.</p>
-<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">¶</a></h2>
+<h2 id="supported-models">Supported models<a class="headerlink" href="#supported-models" title="Permanent link">¶</a></h2>
+<p><strong>Claude (agent_runtime: claude):</strong></p>
 <ul>
-<li><a href="tutorial/">Tutorial</a> -- End-to-end walkthrough using the GO ontology</li>
-<li><a href="how-to/">How-to guides</a> -- Task-focused recipes</li>
-<li><a href="explanation/">Explanation</a> -- Background concepts</li>
-<li><a href="reference/">Reference</a> -- CLI, workflow inputs, schema, metadiff</li>
+<li><code>claude-sonnet-4-5-20250929</code></li>
+<li><code>claude-opus-4-5-20251101</code></li>
+<li><code>claude-haiku-4-5-20251001</code></li>
 </ul>
-<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">¶</a></h2>
+<p><strong>OpenAI (agent_runtime: codex):</strong></p>
 <ul>
-<li><a href="https://github.com/ai4curation/ai4c-scribe">GitHub Repository</a></li>
-<li><a href="https://github.com/ai4curation">AI4Curation Organization</a></li>
+<li><code>gpt-5.4</code></li>
+<li><code>o3</code></li>
 </ul>
+<h2 id="required-secrets">Required secrets<a class="headerlink" href="#required-secrets" title="Permanent link">¶</a></h2>
+<p>Set these in the shadow repo's Settings &gt; Secrets:</p>
+<table>
+<thead>
+<tr>
+<th>Secret</th>
+<th>When needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>When using <code>agent_runtime: claude</code></td>
+</tr>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>When using <code>agent_runtime: codex</code></td>
+</tr>
+<tr>
+<td><code>GH_PAT</code></td>
+<td>When accessing private repos across organizations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="outputs-artifacts">Outputs / Artifacts<a class="headerlink" href="#outputs-artifacts" title="Permanent link">¶</a></h2>
+<p>Each run produces:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude-response-{run_id}</code></td>
+<td>Full agent execution trace</td>
+</tr>
+<tr>
+<td><code>issue-context-{run_id}</code></td>
+<td>Issue title, body, and comments as JSON</td>
+</tr>
+<tr>
+<td><code>run-metadata-{run_id}</code></td>
+<td>Configuration snapshot for reproducibility</td>
+</tr>
+</tbody>
+</table>
+<h2 id="branch-naming-convention">Branch naming convention<a class="headerlink" href="#branch-naming-convention" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>scribe-v1-{config_repo}-{tag}-{directory}-{model}-iter{N}-issue-{N}
+</code></pre></div>
+<p>Example:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>scribe-v1-cmungall-go-ontology-agent-config-v6-.-claude-sonnet-4-5-20250929-iter1-issue-31961
+</code></pre></div></p>
+<h2 id="execution-flow">Execution flow<a class="headerlink" href="#execution-flow" title="Permanent link">¶</a></h2>
+<div class="mermaid">sequenceDiagram
+    participant W as Workflow
+    participant IR as Issue Repo
+    participant SR as Shadow Repo
+    participant AR as Agent Config
+
+    W-&gt;&gt;IR: Get PR #N base commit SHA
+    W-&gt;&gt;SR: Checkout at base SHA
+    W-&gt;&gt;SR: Create eval-base-issue-{N} branch
+    W-&gt;&gt;AR: Clone config at tag
+    W-&gt;&gt;SR: Run `just install` (copies CLAUDE.md etc.)
+    W-&gt;&gt;IR: Fetch issue context (title, body, comments)
+    W-&gt;&gt;W: Run agent with issue context
+    W-&gt;&gt;SR: Push experiment branch
+    W-&gt;&gt;SR: Create PR (if create_pr=true)
+</div>
+<h2 id="triggering-manually">Triggering manually<a class="headerlink" href="#triggering-manually" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>gh<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>eval-agent-on-issue.yml<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span>--repo<span class="w"> </span>cmungall/go-ontology-eval-2026<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">issue_repo</span><span class="o">=</span>geneontology/go-ontology<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">issue_number</span><span class="o">=</span><span class="m">31961</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">pr_number</span><span class="o">=</span><span class="m">32015</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">agent_config_repo</span><span class="o">=</span>cmungall/go-ontology-agent-config<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">agent_config_tag</span><span class="o">=</span>v6<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">model</span><span class="o">=</span>claude-sonnet-4-5-20250929<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span>--field<span class="w"> </span><span class="nv">create_pr</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -652,13 +793,26 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Tutorial" class="md-footer__link md-footer__link--next" href="tutorial/">
+<a aria-label="Previous: CLI" class="md-footer__link md-footer__link--prev" href="../cli/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                CLI
+              </div>
+</div>
+</a>
+<a aria-label="Next: Metadiff" class="md-footer__link md-footer__link--next" href="../metadiff/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Tutorial
+                Metadiff
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -688,8 +842,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.tabs.link", "content.code.copy", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.copy", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>
