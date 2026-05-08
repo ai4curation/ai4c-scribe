@@ -7,7 +7,7 @@ from typer.testing import CliRunner
 
 from ai4c_scribe.metadiff.cli import app
 
-runner = CliRunner(env={"NO_COLOR": "1", "FORCE_COLOR": None})
+runner = CliRunner()
 
 
 class TestCompareCommand:
