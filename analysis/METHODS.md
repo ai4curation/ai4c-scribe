@@ -68,10 +68,26 @@ Evaluation runs in "shadow repositories" — standalone copies of the source ont
 
 Each ontology has a corresponding agent configuration repository containing:
 
-- **CLAUDE.md / AGENTS.md**: project-specific editing instructions, checklists, and conventions
-- **Skills**: reusable instruction bundles for specialized tasks (obsoletion procedures, chemical entity handling, taxon constraints, etc.)
+- **CLAUDE.md**: project-specific editing instructions, checklists, and conventions (source of truth)
+- **AGENTS.md**: symlink to CLAUDE.md (Codex reads AGENTS.md by default, not CLAUDE.md)
+- **Skills**: reusable instruction bundles in `.agents/skills/` for specialized tasks (obsoletion procedures, chemical entity handling, taxon constraints, etc.)
 
-The install recipe creates symlinks so both Claude Code (which reads `.claude/skills/` and `CLAUDE.md`) and Codex (which reads `.agents/skills/` and `AGENTS.md`) receive the same instructions. This follows the [Agent Skills](https://agentskills.io) open standard.
+Both harnesses follow the [Agent Skills](https://agentskills.io) open standard, which specifies a three-stage progressive disclosure model:
+
+1. **Discovery**: at startup, the harness scans skill directories and loads only each skill's `name` and `description` from SKILL.md frontmatter into the system prompt
+2. **Activation**: when a task matches a skill description, the harness loads the full SKILL.md body into context
+3. **Execution**: the model follows the skill instructions
+
+The canonical skill location is `.agents/skills/` (the Agent Skills standard path, read natively by Codex). A symlink at `.claude/skills/` → `../.agents/skills/` provides Claude Code compatibility. Earlier versions used the reverse arrangement (`.claude/skills/` canonical, symlinked to `.agents/skills/`), but Codex has known issues with symlinked skill directories ([openai/codex#11314](https://github.com/openai/codex/issues/11314)), so we switched to real files at the Codex path.
+
+Skill description budgets differ between harnesses: Claude Code allocates ~1% of the context window (each entry capped at 1,536 chars), while Codex allocates ~2% (~8,000 chars). Both truncate descriptions when many skills are present, making front-loaded keywords in `description` fields important for reliable activation.
+
+| Config repo | Ontology | Skills | Latest tag |
+|-------------|----------|--------|-----------|
+| ai4curation/go-ontology-agent-config | GO | 8 (term-obsoletion, reaction, research, design-pattern, etc.) | v9 |
+| ai4curation/cl-agent-config | CL | 0 (CLAUDE.md only) | v3 |
+| ai4curation/uberon-agent-config | Uberon | 6 (ontology-reasoner, design-pattern-advisor, etc.) | v3 |
+| ai4curation/mondo-agent-config | Mondo | 10 (analyse-issue, merge-terms, odk, etc.) | v3 |
 
 ### Execution workflow
 
@@ -132,13 +148,26 @@ A complementary evaluation using an LLM judge to assess both agent and human pro
 
 ## Agent configurations under test
 
-| Agent | Model | Runtime | Skills available |
-|-------|-------|---------|-----------------|
-| Claude Sonnet | claude-sonnet-4-5-20250929 | claude | Yes (via .claude/skills/) |
-| Claude Haiku | claude-haiku-4-5-20251001 | claude | Yes (via .claude/skills/) |
-| Codex GPT-5.4 | gpt-5.4 | codex | Yes (via .agents/skills/ symlink) |
+| Agent | Model | Runtime | Skills |
+|-------|-------|---------|--------|
+| Claude Opus | claude-opus-4-7-20250623 | claude | Yes |
+| Claude Sonnet | claude-sonnet-4-5-20250929 | claude | Yes |
+| Claude Haiku | claude-haiku-4-5-20251001 | claude | Yes |
+| Codex GPT-5.5 | gpt-5.5 | codex | Yes |
+| Codex GPT-5.4 | gpt-5.4 | codex | Yes |
+| Codex Mini | codex-mini-latest | codex | Yes |
 
-An open question is whether Codex actually reads and follows the skills. Trace analysis from early GO runs showed Codex ignoring `.claude/skills/` entirely (since it looks in `.agents/skills/`). The symlink fix has been deployed but not yet verified in traces.
+### Skill discovery behavior
+
+Trace analysis reveals that both harnesses consume skill content, but through different mechanisms. Claude Code's Skill tool provides a structured invocation path visible in traces as tool calls. Codex's native discovery injects skill descriptions into the system prompt at startup (invisible in traces), then the model loads full SKILL.md content via shell commands when it decides to activate a skill.
+
+Early runs used a symlinked `.agents/skills/` directory (pointing to `.claude/skills/`), which may have caused Codex's native discovery to fail silently ([openai/codex#11314](https://github.com/openai/codex/issues/11314)). In those runs, Codex found skill files through ad-hoc `rg --files` searches of the `.claude/` directory rather than through native discovery. Later runs (v9/v3 config tags) use `.agents/skills/` as the canonical location with real files, which should enable native discovery.
+
+### Skills ablation study design
+
+To measure the contribution of skills to agent performance, we created `-noskills` config variants that strip the `.agents/skills/` (and `.claude/skills/`) directories, leaving only the base CLAUDE.md/AGENTS.md instructions. Comparing with-skills vs without-skills scores isolates the effect of structured procedural knowledge on task performance.
+
+The ablation tests Claude Sonnet and Codex GPT-5.4 on GO (#31961, simple obsoletion) and Mondo (#9956, medium new term; #9892, simple synonym update).
 
 ## Reproducibility
 
