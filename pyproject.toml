@@ -34,6 +34,7 @@ dev = [
     "jupyter>=1.0.0",
     "mkdocs-jupyter>=0.24.0",
     "types-pyyaml>=6.0.12.20250915",
+    "pandas>=3.0.2",
 ]
 
 [project.scripts]

@@ -1,0 +1,188 @@
+id: https://w3id.org/ai4c-scribe/review
+name: review
+title: Agent Review Schema
+description: >-
+  Schema for structured reviews of agent evaluation runs.
+  Each review captures metadiff scores, rubric ratings,
+  and qualitative assessment of an agent's performance on
+  a case study.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ai4cs: https://w3id.org/ai4c-scribe/
+
+imports:
+  - linkml:types
+
+default_range: string
+
+
+classes:
+  AgentReview:
+    description: >-
+      Structured review of a single agent evaluation run, combining
+      quantitative metadiff scores with qualitative rubric ratings
+      and narrative assessment.
+    attributes:
+      # === Run identity ===
+      ontology:
+        description: Ontology under test
+        required: true
+
+      issue_number:
+        description: GitHub issue number
+        range: integer
+        required: true
+
+      pr_number:
+        description: Human PR number (ground truth)
+        range: integer
+        required: true
+
+      eval_repo_pr:
+        description: Agent PR number in the eval repo
+        range: integer
+
+      agent_config_tag:
+        description: Agent config version tag
+        required: true
+
+      model:
+        description: Model used
+        required: true
+
+      runtime:
+        description: Agent runtime (claude or codex)
+        range: RuntimeEnum
+        required: true
+
+      reasoning_effort:
+        description: Reasoning effort level if set
+
+      # === Metadiff scores (auto-populated) ===
+      f1:
+        description: F1 score from metadiff
+        range: float
+        required: true
+
+      precision:
+        description: Precision from metadiff
+        range: float
+
+      recall:
+        description: Recall from metadiff
+        range: float
+
+      jaccard:
+        description: Jaccard similarity from metadiff
+        range: float
+
+      # === Rubric scores (1-5 scale) ===
+      instruction_following:
+        description: Did the agent follow the issue instructions? (1=ignored, 5=exact)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      correctness:
+        description: Are the changes biologically/logically correct? (1=wrong, 5=perfect)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      completeness:
+        description: Did it address all parts of the issue? (1=nothing, 5=everything)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      scope_discipline:
+        description: Did it avoid unrelated changes? (1=massive scope creep, 5=laser focused)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      methodology:
+        description: Did it follow proper procedures? (1=no process, 5=full checklist)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      overall:
+        description: Overall quality rating (1=failure, 5=excellent)
+        range: integer
+        minimum_value: 1
+        maximum_value: 5
+
+      # === Classification ===
+      outcome:
+        description: High-level outcome classification
+        range: OutcomeEnum
+        required: true
+
+      failure_modes:
+        description: Failure modes observed (from taxonomy)
+        multivalued: true
+        range: FailureModeEnum
+
+      # === Reviewer metadata ===
+      reviewed_by:
+        description: Who reviewed (model name for LLM judge, username for human)
+        required: true
+
+      reviewed_at:
+        description: When the review was performed
+        range: date
+
+
+enums:
+  RuntimeEnum:
+    permissible_values:
+      claude:
+        description: Claude Code CLI
+      codex:
+        description: OpenAI Codex CLI
+
+  OutcomeEnum:
+    description: High-level outcome of the agent run
+    permissible_values:
+      success:
+        description: Agent produced correct, complete changes
+      partial_success:
+        description: Agent made some correct changes but missed parts or added extras
+      wrong_approach:
+        description: Agent attempted the task but used an incorrect method or edited wrong files
+      no_changes:
+        description: Agent produced no file modifications
+      error:
+        description: Agent hit a runtime error (permissions, timeout, etc.)
+
+  FailureModeEnum:
+    description: Specific failure modes observed
+    permissible_values:
+      over_editing:
+        description: Agent made more changes than necessary
+      under_editing:
+        description: Agent missed required changes
+      wrong_file:
+        description: Agent edited the wrong file
+      wrong_approach:
+        description: Agent took a fundamentally different approach than needed
+      scope_creep:
+        description: Agent made unrelated changes alongside correct ones
+      hallucinated_content:
+        description: Agent introduced incorrect terms, IDs, or references
+      format_error:
+        description: Agent produced syntactically invalid ontology edits
+      missing_metadata:
+        description: Agent omitted required metadata (tracker items, provenance)
+      missing_axioms:
+        description: Agent omitted required logical axioms or relationships
+      stale_references:
+        description: Agent left dangling references to modified/obsoleted terms
+      validation_skipped:
+        description: Agent did not run validation before committing
+      permission_blocked:
+        description: Agent was blocked by permission system
+      timeout:
+        description: Agent exceeded time limit
