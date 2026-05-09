@@ -88,7 +88,7 @@ on:
         required: false
         default: "."
       agent_runtime:
-        description: "Agent runtime to use (claude, codex, or opencode)"
+        description: "Agent runtime to use (claude, codex, opencode, or pi)"
         required: false
         default: "claude"
         type: choice
@@ -96,6 +96,7 @@ on:
           - claude
           - codex
           - opencode
+          - pi
       model:
         description: "Model to use (e.g. claude-sonnet-4-5-20250929, gpt-5.4)"
         required: true
@@ -512,6 +513,32 @@ jobs:
             --format json \
             2>&1 | tee /tmp/opencode-trace.json
 
+      - name: Install Pi
+        if: inputs.agent_runtime == 'pi'
+        run: npm install -g @earendil-works/pi-coding-agent
+
+      - name: Run Pi
+        if: inputs.agent_runtime == 'pi'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # Parse provider/model from inputs.model (e.g. "openai/gpt-5.4" -> provider=openai model=gpt-5.4)
+          FULL_MODEL="${{ inputs.model }}"
+          if echo "$FULL_MODEL" | grep -q "/"; then
+            PROVIDER=$(echo "$FULL_MODEL" | cut -d/ -f1)
+            MODEL=$(echo "$FULL_MODEL" | cut -d/ -f2-)
+          else
+            PROVIDER="openai"
+            MODEL="$FULL_MODEL"
+          fi
+          pi -p "$(cat __agent_prompt__.md)" \
+            --provider "$PROVIDER" \
+            --model "$MODEL" \
+            --mode json \
+            --no-session \
+            2>&1 | tee /tmp/pi-trace.json
+
       - name: Add signature blocks to comment files
         run: |
           # Metadata signature includes: model, agent config, iteration number, and link to workflow run
@@ -785,13 +812,14 @@ jobs:
           mkdir -p "$WORK/$TRACE_DIR"
 
           # Copy trace files
-          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json /tmp/opencode-trace.json; do
+          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json /tmp/opencode-trace.json /tmp/pi-trace.json; do
             if [ -f "$src" ]; then
               fname=$(basename "$src")
               # Rename runtime-specific traces to agent-trace.json
               [ "$fname" = "claude-trace.json" ] && fname="agent-trace.json"
               [ "$fname" = "codex-trace.json" ] && fname="agent-trace.json"
               [ "$fname" = "opencode-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "pi-trace.json" ] && fname="agent-trace.json"
               cp "$src" "$WORK/$TRACE_DIR/$fname"
               echo "  Added $fname ($(wc -c < "$src") bytes)"
             fi
