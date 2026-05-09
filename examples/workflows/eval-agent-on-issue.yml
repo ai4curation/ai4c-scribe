@@ -515,7 +515,19 @@ jobs:
 
       - name: Install Pi
         if: inputs.agent_runtime == 'pi'
-        run: npm install -g @earendil-works/pi-coding-agent
+        run: |
+          # Pi requires Node >= 20.6.0 (unicode regex 'v' flag)
+          # Install recent Node via nvm if container has older version
+          NODE_VER=$(node --version 2>/dev/null | sed 's/v//' | cut -d. -f1)
+          if [ -z "$NODE_VER" ] || [ "$NODE_VER" -lt 20 ]; then
+            curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm install 22
+            nvm use 22
+            echo "$NVM_DIR/versions/node/$(nvm current)/bin" >> $GITHUB_PATH
+          fi
+          npm install -g @earendil-works/pi-coding-agent
 
       - name: Run Pi
         if: inputs.agent_runtime == 'pi'
