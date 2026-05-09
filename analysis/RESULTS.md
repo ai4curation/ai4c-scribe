@@ -103,3 +103,25 @@ This finding has practical implications. For Claude Code, investing in well-craf
 - Codex gpt-5.4 with high reasoning effort
 - More cases per ontology for statistical power
 - LLM-as-judge evaluation (see ai4curation/ai4c-scribe#6)
+
+## Series 3: Canonical skill location (.agents/skills/)
+
+After switching from symlinked `.agents/skills/` (pointing to `.claude/skills/`) to canonical `.agents/skills/` (real files, with `.claude/skills/` symlinked back), we observed changes in Codex behavior.
+
+### Trace evidence
+
+| Config | Codex search pattern | Interpretation |
+|--------|---------------------|---------------|
+| v8 (symlinked) | `rg --files -g '.claude/**/SKILL.md'` | Ad-hoc model search; native discovery likely failed |
+| v9 (canonical) | Direct `sed .agents/skills/term-obsoletion/SKILL.md` | Model knew paths from harness-injected descriptions |
+
+With v9, Codex goes directly to `.agents/skills/{name}/SKILL.md` using absolute paths — no searching. This indicates native progressive disclosure is working: the harness discovered skills at startup, injected their descriptions into context, and the model loaded full content when it matched the task.
+
+### Scores
+
+| Case | Codex v8 (symlinked) | Codex v9 (canonical) |
+|------|---------------------|---------------------|
+| GO #31961 (simple) | 0.800 | 0.800 |
+| Mondo #9956 (medium) | 0.462 | 0.560 |
+
+The simple case shows no change (ceiling effect — the CLAUDE.md alone provides sufficient instructions). The medium case improved by 21%, consistent with better skill activation through native discovery providing structured procedural knowledge that the ad-hoc search may have missed or loaded incompletely.
