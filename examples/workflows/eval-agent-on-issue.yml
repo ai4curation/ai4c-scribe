@@ -88,13 +88,14 @@ on:
         required: false
         default: "."
       agent_runtime:
-        description: "Agent runtime to use (claude or codex)"
+        description: "Agent runtime to use (claude, codex, or opencode)"
         required: false
         default: "claude"
         type: choice
         options:
           - claude
           - codex
+          - opencode
       model:
         description: "Model to use (e.g. claude-sonnet-4-5-20250929, gpt-5.4)"
         required: true
@@ -483,6 +484,24 @@ jobs:
             $REASONING_FLAG \
             2>&1 | tee /tmp/codex-trace.json
 
+      - name: Install OpenCode
+        if: inputs.agent_runtime == 'opencode'
+        run: |
+          curl -fsSL https://opencode.ai/install | bash
+          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
+
+      - name: Run OpenCode
+        if: inputs.agent_runtime == 'opencode'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.CODEX_AUTH_JSON }}
+        run: |
+          export PATH="$HOME/.opencode/bin:$PATH"
+          opencode run "$(cat __agent_prompt__.md)" \
+            --model ${{ inputs.model }} \
+            --format json \
+            2>&1 | tee /tmp/opencode-trace.json
+
       - name: Add signature blocks to comment files
         run: |
           # Metadata signature includes: model, agent config, iteration number, and link to workflow run
@@ -756,12 +775,13 @@ jobs:
           mkdir -p "$WORK/$TRACE_DIR"
 
           # Copy trace files
-          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json; do
+          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json /tmp/opencode-trace.json; do
             if [ -f "$src" ]; then
               fname=$(basename "$src")
               # Rename runtime-specific traces to agent-trace.json
               [ "$fname" = "claude-trace.json" ] && fname="agent-trace.json"
               [ "$fname" = "codex-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "opencode-trace.json" ] && fname="agent-trace.json"
               cp "$src" "$WORK/$TRACE_DIR/$fname"
               echo "  Added $fname ($(wc -c < "$src") bytes)"
             fi
