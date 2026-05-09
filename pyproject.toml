@@ -35,6 +35,10 @@ dev = [
     "mkdocs-jupyter>=0.24.0",
     "types-pyyaml>=6.0.12.20250915",
     "pandas>=3.0.2",
+    "matplotlib>=3.10.9",
+    "seaborn>=0.13.2",
+    "nbconvert>=7.16.6",
+    "ipykernel>=6.31.0",
 ]
 
 [project.scripts]
