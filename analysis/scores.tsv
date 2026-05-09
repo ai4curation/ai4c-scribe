@@ -1,0 +1,24 @@
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard
+go-ontology	31961	32015	obsoletion	simple	v8	claude-sonnet-4-5-20250929	claude	31		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v8	claude-haiku-4-5-20251001	claude	33		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v8	gpt-5.4	codex	32		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v8	gpt-5.5	codex	38		0.762	0.889	0.667	0.615
+go-ontology	31961	32015	obsoletion	simple	v8-noskills	claude-sonnet-4-5-20250929	claude	36		0.000	0.000	0.000	0.000
+go-ontology	31961	32015	obsoletion	simple	v8-noskills	gpt-5.4	codex	37		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40		0.800	0.889	0.727	0.667
+cell-ontology	3519	3520	new_term	simple	v2	claude-sonnet-4-5-20250929	claude	3		0.625	0.714	0.556	0.455
+cell-ontology	3519	3520	new_term	simple	v2	claude-haiku-4-5-20251001	claude	5		0.000	0.000	0.000	0.000
+cell-ontology	3519	3520	new_term	simple	v2	gpt-5.4	codex	6		0.333	0.429	0.273	0.200
+cell-ontology	3454	3555	axiom_repair	medium	v2	claude-haiku-4-5-20251001	claude	7		0.750	0.750	0.750	0.600
+cell-ontology	3454	3555	axiom_repair	medium	v2	gpt-5.4	codex	4		0.667	0.750	0.600	0.500
+uberon	3682	3683	synonym_update	simple	v2	claude-sonnet-4-5-20250929	claude	1		0.400	0.261	0.857	0.250
+uberon	3682	3683	synonym_update	simple	v2	claude-haiku-4-5-20251001	claude	6		0.333	0.217	0.714	0.200
+uberon	3637	3638	new_term	medium	v2	claude-sonnet-4-5-20250929	claude	3		0.842	0.889	0.800	0.727
+uberon	3682	3683	synonym_update	simple	v2	gpt-5.5	codex	9		0.917	0.957	0.880	0.846
+mondo	9956	10214	new_term	medium	v2	claude-sonnet-4-5-20250929	claude	1		0.696	0.667	0.727	0.533
+mondo	9956	10214	new_term	medium	v2	gpt-5.4	codex	2		0.462	0.500	0.429	0.300
+mondo	9892	10206	synonym_update	simple	v2	claude-haiku-4-5-20251001	claude	3		0.400	0.267	0.800	0.250
+mondo	9892	10206	synonym_update	simple	v2	gpt-5.4	codex	5		0.400	0.267	0.800	0.250
+mondo	9956	10214	new_term	medium	v2	gpt-5.5	codex	11		0.609	0.583	0.636	0.438
+mondo	9956	10214	new_term	medium	v2-noskills	gpt-5.4	codex	15		0.462	0.500	0.429	0.300
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	16		0.560	0.583	0.538	0.389

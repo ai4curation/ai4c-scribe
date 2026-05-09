@@ -1,0 +1,5 @@
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard
+uberon	3682	3683	synonym_update	simple	v2	claude-sonnet-4-5-20250929	claude	1		0.400	0.261	0.857	0.250
+uberon	3682	3683	synonym_update	simple	v2	claude-haiku-4-5-20251001	claude	6		0.333	0.217	0.714	0.200
+uberon	3637	3638	new_term	medium	v2	claude-sonnet-4-5-20250929	claude	3		0.842	0.889	0.800	0.727
+uberon	3682	3683	synonym_update	simple	v2	gpt-5.5	codex	9		0.917	0.957	0.880	0.846
