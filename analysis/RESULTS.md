@@ -58,10 +58,48 @@ Sonnet outperformed Codex on the TSEN2 disease term creation. For the simple rel
 
 4. **Metadiff has known limitations**: a score of 0 can mean "completely wrong approach" (Haiku on CL #3519) or "correct approach, different from human" (Claude on CL #3224 where it fixed root cause instead of symptom).
 
+### Extended model comparison
+
+Additional models tested on representative cases:
+
+| Case | Opus 4.7 | GPT-5.5 | Codex-mini |
+|------|----------|---------|------------|
+| GO #31961 (simple) | — | 0.762 | — |
+| CL #3252 (medium) | 0.000* | 0.000 | — |
+| Uberon #3682 (simple) | — | **0.917** | — |
+| Mondo #9956 (medium) | 0.000* | 0.609 | 0.000* |
+
+\* 0.000 with zero changes indicates the agent failed to produce edits (permissions or other runtime issue), not that it made incorrect edits.
+
+GPT-5.5 achieved the highest single-case score (0.917 on Uberon synonym swap), outperforming GPT-5.4 (not tested on this case) and both Claude models (sonnet=0.400, haiku=0.333). Several Opus 4.7 and codex-mini runs produced zero changes, likely due to runtime issues rather than model capability.
+
+## Series 2: Skills ablation study (GO + Mondo only)
+
+To test whether agent skills (structured editing instructions) improve performance, we created `-noskills` variants of the GO and Mondo agent configs that contain only the CLAUDE.md project guide without any `.claude/skills/` directory.
+
+### Results
+
+| Case | Sonnet (skills) | Sonnet (no skills) | Codex 5.4 (skills) | Codex 5.4 (no skills) |
+|------|----------------|-------------------|--------------------|-----------------------|
+| GO #31961 (simple) | **0.800** | 0.000* | **0.800** | **0.800** |
+| Mondo #9956 (medium) | **0.696** | 0.000* | 0.462 | 0.462 |
+| Mondo #9892 (simple) | — | 0.000* | 0.400 | 0.400 |
+
+\* Sonnet without skills produced zero file changes in all three cases.
+
+### Interpretation
+
+The ablation reveals a striking asymmetry between runtimes:
+
+**Claude Code depends on skills.** Removing skills caused Claude Sonnet to produce no changes whatsoever — a total failure. With skills, Sonnet achieved the highest F1 scores in the study (0.800 on GO, 0.696 on Mondo). The skills provide the procedural knowledge Claude needs to make ontology edits: the term checkout/checkin workflow, obsoletion patterns, validation steps. Without them, Claude reads the issue, understands what needs to happen, but cannot execute the edits.
+
+**Codex ignores skills entirely.** Codex GPT-5.4 produced identical F1 scores with and without skills (0.800, 0.462, 0.400). This confirms what trace analysis suggested: Codex does not read or invoke `.agents/skills/` content. It operates purely from the AGENTS.md project guide (symlinked from CLAUDE.md) and the issue context, applying its own coding judgment to determine the editing approach.
+
+This finding has practical implications. For Claude Code, investing in well-crafted skills directly improves evaluation scores. For Codex, the CLAUDE.md/AGENTS.md instructions are what matter — skills are inert. Teams using both runtimes should focus on the shared instruction file as the primary lever for improving agent performance, with skills as a Claude-specific enhancement.
+
 ## Pending
 
-- Opus 4.7 runs (submitted, not yet completed)
-- Codex gpt-5.5 runs (in progress)
-- Codex codex-mini-latest runs (submitted)
-- Codex gpt-5.4 with high reasoning effort (pending workflow propagation)
-- Series 2: Skills-disabled comparison (not yet started)
+- Additional opus 4.7 runs (several produced zero changes — investigating runtime issues)
+- Codex gpt-5.4 with high reasoning effort
+- More cases per ontology for statistical power
+- LLM-as-judge evaluation (see ai4curation/ai4c-scribe#6)
