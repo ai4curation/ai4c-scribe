@@ -1,0 +1,346 @@
+diff --git a/src/ontology/imports/merged_import.owl b/src/ontology/imports/merged_import.owl
+index a578df3609..b60cdc2070 100644
+--- a/src/ontology/imports/merged_import.owl
++++ b/src/ontology/imports/merged_import.owl
+@@ -7,8 +7,8 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+ 
+ 
+ Ontology(<http://purl.obolibrary.org/obo/uberon/imports/merged_import.owl>
+-<http://purl.obolibrary.org/obo/uberon/releases/2024-12-17/imports/merged_import.owl>
+-Annotation(owl:versionInfo "2024-12-17")
++<http://purl.obolibrary.org/obo/uberon/releases/2024-12-23/imports/merged_import.owl>
++Annotation(owl:versionInfo "2024-12-23")
+ 
+ Declaration(Class(<http://purl.obolibrary.org/obo/BFO_0000001>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/BFO_0000002>))
+@@ -10138,6 +10138,9 @@ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6605>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6656>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6657>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6681>))
++Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6682>))
++Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6683>))
++Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6692>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6830>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6843>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_6960>))
+@@ -10149,6 +10152,7 @@ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7147>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_716545>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7203>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_72037>))
++Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_72041>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7214>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7215>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7227>))
+@@ -12515,7 +12519,6 @@ Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/title>))
+ Declaration(AnnotationProperty(<http://purl.org/dc/terms/contributor>))
+ Declaration(AnnotationProperty(<http://purl.org/dc/terms/date>))
+ Declaration(AnnotationProperty(<http://purl.org/dc/terms/license>))
+-Declaration(AnnotationProperty(<http://purl.org/dc/terms/title>))
+ Declaration(AnnotationProperty(<http://usefulinc.com/ns/doap#GitRepository>))
+ Declaration(AnnotationProperty(<http://usefulinc.com/ns/doap#bug-database>))
+ Declaration(AnnotationProperty(<http://www.geneontology.org/formats/oboInOwl#SubsetProperty>))
+@@ -147264,6 +147267,30 @@ AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_6681> "
+ SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_6681> <http://purl.obolibrary.org/obo/NCBITaxon_2172821>)
+ DisjointClasses(<http://purl.obolibrary.org/obo/NCBITaxon_6681> <http://purl.obolibrary.org/obo/NCBITaxon_72037>)
+ 
++# Class: <http://purl.obolibrary.org/obo/NCBITaxon_6682> (Eucarida)
++
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_6682> "GC_ID:1")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/NCBITaxon_6682> "ncbi_taxonomy")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#id> <http://purl.obolibrary.org/obo/NCBITaxon_6682> "NCBITaxon:6682")
++AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_6682> "Eucarida")
++SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_6682> <http://purl.obolibrary.org/obo/NCBITaxon_72041>)
++
++# Class: <http://purl.obolibrary.org/obo/NCBITaxon_6683> (Decapoda)
++
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_6683> "GC_ID:1")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/NCBITaxon_6683> "ncbi_taxonomy")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#id> <http://purl.obolibrary.org/obo/NCBITaxon_6683> "NCBITaxon:6683")
++AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_6683> "Decapoda")
++SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_6683> <http://purl.obolibrary.org/obo/NCBITaxon_6682>)
++
++# Class: <http://purl.obolibrary.org/obo/NCBITaxon_6692> (Pleocyemata)
++
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_6692> "GC_ID:1")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/NCBITaxon_6692> "ncbi_taxonomy")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#id> <http://purl.obolibrary.org/obo/NCBITaxon_6692> "NCBITaxon:6692")
++AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_6692> "Pleocyemata")
++SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_6692> <http://purl.obolibrary.org/obo/NCBITaxon_6683>)
++
+ # Class: <http://purl.obolibrary.org/obo/NCBITaxon_6830> (Copepoda)
+ 
+ AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_6830> "GC_ID:1")
+@@ -147369,6 +147396,14 @@ AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#id> <http://pu
+ AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_72037> "Hexanauplia")
+ SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_72037> <http://purl.obolibrary.org/obo/NCBITaxon_2172821>)
+ 
++# Class: <http://purl.obolibrary.org/obo/NCBITaxon_72041> (Eumalacostraca)
++
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_72041> "GC_ID:1")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/NCBITaxon_72041> "ncbi_taxonomy")
++AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#id> <http://purl.obolibrary.org/obo/NCBITaxon_72041> "NCBITaxon:72041")
++AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/NCBITaxon_72041> "Eumalacostraca")
++SubClassOf(<http://purl.obolibrary.org/obo/NCBITaxon_72041> <http://purl.obolibrary.org/obo/NCBITaxon_6681>)
++
+ # Class: <http://purl.obolibrary.org/obo/NCBITaxon_7214> (Drosophilidae)
+ 
+ AnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasDbXref> <http://purl.obolibrary.org/obo/NCBITaxon_7214> "GC_ID:1")
+@@ -157431,6 +157466,9 @@ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162>
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6657>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6657>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6681>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_72037>))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6681>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6681>)))
++DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6682>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6682>)))
++DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6683>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6683>)))
++DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6692>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6692>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6830>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6830>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6843>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6843>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_6960>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_6960>)))
+@@ -157444,6 +157482,7 @@ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162>
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_716545>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_716545>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7203>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_7203>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_72037>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_72037>)))
++DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_72041>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_72041>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7214>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_7214>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7215>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_7215>)))
+ DisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7227>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> ObjectComplementOf(<http://purl.obolibrary.org/obo/NCBITaxon_7227>)))
+diff --git a/src/ontology/imports/ncbitaxon_terms.txt b/src/ontology/imports/ncbitaxon_terms.txt
+index 6812f79f1c..d841574cc8 100644
+--- a/src/ontology/imports/ncbitaxon_terms.txt
++++ b/src/ontology/imports/ncbitaxon_terms.txt
+@@ -108,6 +108,7 @@ NCBITaxon:65997
+ NCBITaxon:6656
+ NCBITaxon:6657
+ NCBITaxon:6681
++NCBITaxon:6692
+ NCBITaxon:6830
+ NCBITaxon:6843
+ NCBITaxon:70846
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index b54fec4d5d..b145789506 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -63168,7 +63168,7 @@ intersection_of: UBERON:0004130 ! cerebellar layer
+ intersection_of: in_deep_part_of UBERON:0002129 ! cerebellar cortex
+ relationship: has_part CL:0000119 ! cerebellar Golgi cell
+ relationship: has_part CL:0001031 ! cerebellar granule cell
+-relationship: has_part CL:4023161
++relationship: has_part CL:4023161 ! unipolar brush cell
+ relationship: mutually_spatially_disjoint_with UBERON:0002979 {source="ABA"} ! Purkinje cell layer of cerebellar cortex
+ 
+ [Term]
+@@ -219789,9 +219789,9 @@ def: "A group of small, interconnected ganglia situated posterior to and between
+ synonym: "stomodaeal nervous system" RELATED [FlyBase:FBrf0111704]
+ synonym: "stomodeal nervous system" RELATED [FlyBase:FBrf0111704]
+ is_a: UBERON:0011216 ! organ system subdivision
++is_a: UBERON:8910000 ! stomatogastric nervous system
+ relationship: in_taxon NCBITaxon:6656 ! Arthropoda
+ relationship: part_of UBERON:0001017 ! central nervous system
+-is_a: UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:6005168
+@@ -224760,117 +224760,107 @@ property_value: dcterms-date "2024-06-12T13:51:05Z" xsd:string
+ [Term]
+ id: UBERON:8910000
+ name: stomatogastric nervous system
+-def: "The part of the nervous system that controls the stomach, such as in crabs, lobsters, and flies" [FlyBase:FBrf0089570, PMID:12966498, PMID:27450880, DOI:10.1016/B0-12-370878-8/00177-4]
++def: "The part of the nervous system that controls the stomach, such as in crabs, lobsters, and flies" [DOI:10.1016/B0-12-370878-8/00177-4, FlyBase:FBrf0089570, PMID:12966498, PMID:27450880]
+ is_a: UBERON:0011216 ! organ system subdivision
+-relationship: in_taxon NCBITaxon:6656 ! Arthropoda
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
++relationship: in_taxon NCBITaxon:6656 ! Arthropoda
+ 
+ [Term]
+ id: UBERON:8910001
+ name: stomatogastric ganglion
+-def: "The stomatogastric ganglion (STG) consists of about 30 neurons that form two central pattern generator circuits in crustaceans. STG neurons have large soma (~50-100 um) and have complex branches. The STG contains the motor neurons that innervate the striated muscles that move the gastric mill and pyloric regions of the stomach." [PMID: 17009928] 
+-synonym: "STG" EXACT [PMID: 17009928]
++def: "The stomatogastric ganglion (STG) consists of about 30 neurons that form two central pattern generator circuits in crustaceans. STG neurons have large soma (~50-100 um) and have complex branches. The STG contains the motor neurons that innervate the striated muscles that move the gastric mill and pyloric regions of the stomach." [PMID:17009928]
++synonym: "STG" RELATED OMO:0003000 [PMID:17009928]
+ is_a: UBERON:0011216 ! organ system subdivision
+-relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
++relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910010
+ name: stomatogastric nerve (sensu Cancer borealis)
+ def: "The stomatogastric nerve (SGN) is made up of four separate nerves that emerge from the paired commissural ganglia, the superior and inferior esophageal nerves (SONs and IONs)." [DOI:10.1016/B0-12-370878-8/00177-4]
+ synonym: "SGN (sensu Cancer borealis)" EXACT [DOI:10.1016/B0-12-370878-8/00177-4]
+-is_a: UBERON:0035014 ! functional part of brain 
++is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910011
+ name: dorsal gastric nerve (sensu Cancer borealis)
+-def: "Nerve carrying dorsal gastric (DG) neurons which control the medial tooth movements in crustaceans." [PMID: 17009928]
++def: "Nerve carrying dorsal gastric (DG) neurons which control the medial tooth movements in crustaceans." [PMID:17009928]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910000 ! stomatogastric nervous system
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: overlaps UBERON:8910001 ! stomatogastric ganglion
++relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910012
+ name: gastropyloric nerve (sensu Cancer borealis)
+-def: "Consists of gastropyloric receptor (GPR) neurons, which are stretch receptors that innervate stomach muscles in crustaceans." [PMID: 17009928, PMID: 26888106]
++def: "Consists of gastropyloric receptor (GPR) neurons, which are stretch receptors that innervate stomach muscles in crustaceans." [PMID:17009928, PMID:26888106]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910000 ! stomatogastric nervous system
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: overlaps UBERON:8910001 ! stomatogastric ganglion
++relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910013
+ name: lateral gastric nerve (sensu Cancer borealis)
+-def: "Consists of lateral gastric (LG) neurons. The alternation between the lateral gastric neurons/medial gastric neurons and the lateral posterior gastric neurons control the movements of the lateral teeth in crustaceans." [PMID: 17009928]
++def: "Consists of lateral gastric (LG) neurons. The alternation between the lateral gastric neurons/medial gastric neurons and the lateral posterior gastric neurons control the movements of the lateral teeth in crustaceans." [PMID:17009928]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910000 ! stomatogastric nervous system
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: overlaps UBERON:8910001 ! stomatogastric ganglion
++relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910014
+ name: lateral ventricular nerve (sensu Cancer borealis)
+-def: "The motor axons that project into the dorsal ventricular nerve bifurcate and then project into both lateral ventricular nerves." [PMID: 10561445]
++def: "The motor axons that project into the dorsal ventricular nerve bifurcate and then project into both lateral ventricular nerves." [PMID:10561445]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910015
+ name: pyloric nerve (sensu Cancer borealis)
+-def: "Innervates pyloric region of the stomach." [PMID: 2876096]
++def: "Innervates pyloric region of the stomach." [PMID:2876096]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910016
+ name: pyloric dilator nerve (sensu Cancer borealis)
+-def: "Innervates muscles that dilate valves of the pylorus motor neurons involved in filtering in crustaceans. Anterior burster neurons are intrinsic oscillators that are electrically coupled with pyloric dilator neurons, causing them to fire bursts of action potentials. Together these neurons inhibit lateral pyloric and pyloric neurons, forcing them to fire in alternation with the pyloric dilator neurons." [PMID: 2876096, PMID: 17009928]
++def: "Innervates muscles that dilate valves of the pylorus motor neurons involved in filtering in crustaceans. Anterior burster neurons are intrinsic oscillators that are electrically coupled with pyloric dilator neurons, causing them to fire bursts of action potentials. Together these neurons inhibit lateral pyloric and pyloric neurons, forcing them to fire in alternation with the pyloric dilator neurons." [PMID:17009928, PMID:2876096]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910017
+ name: inferior esophageal nerve (sensu Cancer borealis)
+-synonym: "ION (sensu Cancer borealis)" EXACT [DOI:10.1016/B0-12-370878-8/00177-4]
+ def: "The inferior esophageal nerve (ION) is one of the four nerves that make up the stomatogastric nerve (SGN)." [DOI:10.1016/B0-12-370878-8/00177-4]
++synonym: "ION (sensu Cancer borealis)" EXACT [DOI:10.1016/B0-12-370878-8/00177-4]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910010 ! stomatogastric nerve
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
++relationship: part_of UBERON:8910010 ! stomatogastric nerve (sensu Cancer borealis)
+ 
+ [Term]
+ id: UBERON:8910018
+ name: superior esophageal nerve (sensu Cancer borealis)
+-synonym: "SON (sensu Cancer borealis)" EXACT [DOI:10.1016/B0-12-370878-8/00177-4]
+ def: "The superior esophageal nerve (SON) is one of the four nerves that make up the stomatogastric nerve (SGN)." [DOI:10.1016/B0-12-370878-8/00177-4]
++synonym: "SON (sensu Cancer borealis)" EXACT [DOI:10.1016/B0-12-370878-8/00177-4]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910010 ! stomatogastric nerve
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
++relationship: part_of UBERON:8910010 ! stomatogastric nerve (sensu Cancer borealis)
+ 
+ [Term]
+ id: UBERON:8910019
+@@ -224878,9 +224868,8 @@ name: esophageal nerve (sensu Cancer borealis)
+ def: "innervates the foregut and midgut" [DOI:10.1016/B0-12-370878-8/00177-4]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
+-relationship: part_of UBERON:8910010 ! stomatogastric nerve
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
++relationship: part_of UBERON:8910010 ! stomatogastric nerve (sensu Cancer borealis)
+ 
+ [Term]
+ id: UBERON:8910020
+@@ -224888,19 +224877,17 @@ name: esophageal ganglion (sensu Cancer borealis)
+ def: "Neurons with cell bodies in the esophageal ganglion turn on the gastric mill rhythm and strongly affects the pyloric rhythm." [DOI:10.1016/B0-12-370878-8/00177-4]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910021
+ name: commissural ganglion (sensu Cancer borealis)
+-synonym: "CG (sensu Cancer borealis)" EXACT [DOI:10.1016/b978-0-12-809324-5.21166-8]
+ def: "Contains motor fibers that innervate the esophagus. Stimulating the pyloric suppressor neuron alters both pyloric and gastric rhythms but also elicits activity in a third oscillatory circuit located in the commissural ganglia called the esophageal rhythm." [DOI:10.1016/b978-0-12-809324-5.21166-8]
++synonym: "CG (sensu Cancer borealis)" EXACT [DOI:10.1016/b978-0-12-809324-5.21166-8]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+@@ -224909,19 +224896,17 @@ name: junction of superior esophageal nerve and stomatogastric nerve (sensu Canc
+ def: "The junction between the stomatogastric nerve (STN) and the superior esophageal nerve (SON) shows synaptic structures. Octopamine may be released at this site by projection neurons; its application at this junction induces action potentials in the axons of the modulatory commissural neuron 5 (MCN5) that project from the commissural ganglia to the stomatogastric ganglion (STG)." [PMID:15306640]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Term]
+ id: UBERON:8910023
+ name: median ventricular nerve (sensu Cancer borealis)
+-synonym: "MVN (sensu Cancer borealis)" EXACT [DOI:10.1016/0010-406X(70)90044-7]
+ def: "Most of the efferent fibers leaving the stomatogastric ganglion and leading to the gastric mill or pyloric stomach muscles run posteriorly in the dorsal median ventricular nerve. This nerve branches bilaterally into the right and left lateral ventricular nerves (LVN) which go to their respective sides of the stomach." [DOI:10.1016/0010-406X(70)90044-7]
++synonym: "MVN (sensu Cancer borealis)" EXACT [DOI:10.1016/0010-406X(70)90044-7]
+ is_a: UBERON:0035014 ! functional part of brain
+ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+-relationship: in_taxon NCBITaxon:6712 ! Astacidea
+-relationship: in_taxon NCBITaxon:6752 ! Brachyura
++relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
+ [Typedef]

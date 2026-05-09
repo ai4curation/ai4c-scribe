@@ -4,3 +4,5 @@ cell-ontology	3519	3520	new_term	simple	v2	claude-haiku-4-5-20251001	claude	5		0
 cell-ontology	3519	3520	new_term	simple	v2	gpt-5.4	codex	6		0.333	0.429	0.273	0.200
 cell-ontology	3454	3555	axiom_repair	medium	v2	claude-haiku-4-5-20251001	claude	7		0.750	0.750	0.750	0.600
 cell-ontology	3454	3555	axiom_repair	medium	v2	gpt-5.4	codex	4		0.667	0.750	0.600	0.500
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.4	codex	14		0.000	0.000	0.000	0.000
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.4	codex	13		0.200	0.188	0.214	0.111
