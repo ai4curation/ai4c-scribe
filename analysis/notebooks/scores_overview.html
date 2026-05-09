@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ontology Agent Evaluation — Scores Overview</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; max-width: 1100px; margin: 40px auto; padding: 0 20px; color: #1a1a2e; line-height: 1.6; }
+h1 { border-bottom: 2px solid #3178c6; padding-bottom: 8px; }
+h2 { color: #3178c6; margin-top: 2em; }
+h3 { color: #555; }
+table { border-collapse: collapse; margin: 16px 0; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: right; }
+th { background: #f5f5f5; font-weight: 600; text-align: left; }
+td:first-child, th:first-child { text-align: left; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #f0f7ff; }
+p { max-width: 800px; }
+</style>
+</head>
+<body>
+# Ontology Agent Evaluation — Scores Overview
+
+28 scored runs across 4 ontologies, 4 models, 2 runtimes
+
+5 qualitative reviews completed
+
+## F1 Scores by Model
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>gpt-5.5</th>
+      <td>0.763</td>
+      <td>0.154</td>
+      <td>3</td>
+      <td>0.609</td>
+      <td>0.917</td>
+    </tr>
+    <tr>
+      <th>claude-sonnet-4-5-20250929</th>
+      <td>0.560</td>
+      <td>0.316</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.842</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>0.473</td>
+      <td>0.254</td>
+      <td>14</td>
+      <td>0.000</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <th>claude-haiku-4-5-20251001</th>
+      <td>0.457</td>
+      <td>0.328</td>
+      <td>5</td>
+      <td>0.000</td>
+      <td>0.800</td>
+    </tr>
+  </tbody>
+</table>
+
+## F1 Scores by Runtime
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>runtime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>codex</th>
+      <td>0.524</td>
+      <td>0.261</td>
+      <td>17</td>
+      <td>0.0</td>
+      <td>0.917</td>
+    </tr>
+    <tr>
+      <th>claude</th>
+      <td>0.513</td>
+      <td>0.310</td>
+      <td>11</td>
+      <td>0.0</td>
+      <td>0.842</td>
+    </tr>
+  </tbody>
+</table>
+
+## Mean F1: Ontology x Model
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>claude-haiku-4-5-20251001</th>
+      <th>claude-sonnet-4-5-20250929</th>
+      <th>gpt-5.4</th>
+      <th>gpt-5.5</th>
+    </tr>
+    <tr>
+      <th>ontology</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>cell-ontology</th>
+      <td>0.375</td>
+      <td>0.625</td>
+      <td>0.300</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <th>go-ontology</th>
+      <td>0.800</td>
+      <td>0.400</td>
+      <td>0.800</td>
+      <td>0.762</td>
+    </tr>
+    <tr>
+      <th>mondo</th>
+      <td>0.400</td>
+      <td>0.696</td>
+      <td>0.489</td>
+      <td>0.609</td>
+    </tr>
+    <tr>
+      <th>uberon</th>
+      <td>0.333</td>
+      <td>0.621</td>
+      <td>0.286</td>
+      <td>0.917</td>
+    </tr>
+  </tbody>
+</table>
+
+## Mean F1: Difficulty x Model
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>claude-haiku-4-5-20251001</th>
+      <th>claude-sonnet-4-5-20250929</th>
+      <th>gpt-5.4</th>
+      <th>gpt-5.5</th>
+    </tr>
+    <tr>
+      <th>difficulty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>hard</th>
+      <td>—</td>
+      <td>—</td>
+      <td>0.473</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <th>medium</th>
+      <td>0.750</td>
+      <td>0.769</td>
+      <td>0.350</td>
+      <td>0.609</td>
+    </tr>
+    <tr>
+      <th>simple</th>
+      <td>0.383</td>
+      <td>0.456</td>
+      <td>0.616</td>
+      <td>0.840</td>
+    </tr>
+  </tbody>
+</table>
+
+## Mean F1: Task Type x Runtime
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>runtime</th>
+      <th>claude</th>
+      <th>codex</th>
+    </tr>
+    <tr>
+      <th>case_type</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>axiom_repair</th>
+      <td>0.750</td>
+      <td>0.413</td>
+    </tr>
+    <tr>
+      <th>new_term</th>
+      <td>0.541</td>
+      <td>0.375</td>
+    </tr>
+    <tr>
+      <th>obsoletion</th>
+      <td>0.533</td>
+      <td>0.745</td>
+    </tr>
+    <tr>
+      <th>synonym_update</th>
+      <td>0.378</td>
+      <td>0.659</td>
+    </tr>
+  </tbody>
+</table>
+
+## Skills Ablation (GO + Mondo)
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>runtime</th>
+      <th>claude</th>
+      <th>codex</th>
+    </tr>
+    <tr>
+      <th>agent_config_tag</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>v2</th>
+      <td>0.506</td>
+      <td>0.565</td>
+    </tr>
+    <tr>
+      <th>v2-noskills</th>
+      <td>—</td>
+      <td>0.462</td>
+    </tr>
+    <tr>
+      <th>v3</th>
+      <td>—</td>
+      <td>0.316</td>
+    </tr>
+    <tr>
+      <th>v8</th>
+      <td>0.800</td>
+      <td>0.781</td>
+    </tr>
+    <tr>
+      <th>v8-noskills</th>
+      <td>0.000</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <th>v9</th>
+      <td>—</td>
+      <td>0.800</td>
+    </tr>
+  </tbody>
+</table>
+
+## Non-zero Results Only (25/28 runs)
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>gpt-5.5</th>
+      <td>0.763</td>
+      <td>0.154</td>
+      <td>3</td>
+      <td>0.609</td>
+      <td>0.917</td>
+    </tr>
+    <tr>
+      <th>claude-sonnet-4-5-20250929</th>
+      <td>0.673</td>
+      <td>0.175</td>
+      <td>5</td>
+      <td>0.400</td>
+      <td>0.842</td>
+    </tr>
+    <tr>
+      <th>claude-haiku-4-5-20251001</th>
+      <td>0.571</td>
+      <td>0.238</td>
+      <td>4</td>
+      <td>0.333</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>0.509</td>
+      <td>0.223</td>
+      <td>13</td>
+      <td>0.100</td>
+      <td>0.800</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Scored Runs
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ontology</th>
+      <th>issue_number</th>
+      <th>case_type</th>
+      <th>difficulty</th>
+      <th>agent_config_tag</th>
+      <th>model</th>
+      <th>runtime</th>
+      <th>f1</th>
+      <th>precision</th>
+      <th>recall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3196</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.200</td>
+      <td>0.188</td>
+      <td>0.214</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3252</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3454</td>
+      <td>axiom_repair</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>claude-haiku-4-5-20251001</td>
+      <td>claude</td>
+      <td>0.750</td>
+      <td>0.750</td>
+      <td>0.750</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3454</td>
+      <td>axiom_repair</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.667</td>
+      <td>0.750</td>
+      <td>0.600</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3519</td>
+      <td>new_term</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>claude-haiku-4-5-20251001</td>
+      <td>claude</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3519</td>
+      <td>new_term</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.625</td>
+      <td>0.714</td>
+      <td>0.556</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3519</td>
+      <td>new_term</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.333</td>
+      <td>0.429</td>
+      <td>0.273</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8</td>
+      <td>claude-haiku-4-5-20251001</td>
+      <td>claude</td>
+      <td>0.800</td>
+      <td>0.889</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.800</td>
+      <td>0.889</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8-noskills</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.800</td>
+      <td>0.889</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8-noskills</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.800</td>
+      <td>0.889</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v9</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.800</td>
+      <td>0.889</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>go-ontology</td>
+      <td>31961</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v8</td>
+      <td>gpt-5.5</td>
+      <td>codex</td>
+      <td>0.762</td>
+      <td>0.889</td>
+      <td>0.667</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9771</td>
+      <td>obsoletion</td>
+      <td>simple</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.562</td>
+      <td>0.529</td>
+      <td>0.600</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9892</td>
+      <td>synonym_update</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>claude-haiku-4-5-20251001</td>
+      <td>claude</td>
+      <td>0.400</td>
+      <td>0.267</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9892</td>
+      <td>synonym_update</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.400</td>
+      <td>0.267</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9956</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.696</td>
+      <td>0.667</td>
+      <td>0.727</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9956</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.462</td>
+      <td>0.500</td>
+      <td>0.429</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9956</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v2-noskills</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.462</td>
+      <td>0.500</td>
+      <td>0.429</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9956</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.560</td>
+      <td>0.583</td>
+      <td>0.538</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
+      <td>9956</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>gpt-5.5</td>
+      <td>codex</td>
+      <td>0.609</td>
+      <td>0.583</td>
+      <td>0.636</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3454</td>
+      <td>axiom_repair</td>
+      <td>hard</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.473</td>
+      <td>0.329</td>
+      <td>0.839</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3475</td>
+      <td>axiom_repair</td>
+      <td>medium</td>
+      <td>v3</td>
+      <td>gpt-5.4</td>
+      <td>codex</td>
+      <td>0.100</td>
+      <td>1.000</td>
+      <td>0.053</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3637</td>
+      <td>new_term</td>
+      <td>medium</td>
+      <td>v2</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.842</td>
+      <td>0.889</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3682</td>
+      <td>synonym_update</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>claude-haiku-4-5-20251001</td>
+      <td>claude</td>
+      <td>0.333</td>
+      <td>0.217</td>
+      <td>0.714</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3682</td>
+      <td>synonym_update</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>claude-sonnet-4-5-20250929</td>
+      <td>claude</td>
+      <td>0.400</td>
+      <td>0.261</td>
+      <td>0.857</td>
+    </tr>
+    <tr>
+      <td>uberon</td>
+      <td>3682</td>
+      <td>synonym_update</td>
+      <td>simple</td>
+      <td>v2</td>
+      <td>gpt-5.5</td>
+      <td>codex</td>
+      <td>0.917</td>
+      <td>0.957</td>
+      <td>0.880</td>
+    </tr>
+  </tbody>
+</table>
+
+## Qualitative Reviews
+
+
+### Rubric Scores by Model
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>instruction_following</th>
+      <th>correctness</th>
+      <th>completeness</th>
+      <th>scope_discipline</th>
+      <th>methodology</th>
+      <th>overall</th>
+    </tr>
+    <tr>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>claude-sonnet-4-5-20250929</th>
+      <td>3.33</td>
+      <td>3.33</td>
+      <td>3.0</td>
+      <td>4.33</td>
+      <td>3.33</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>4.50</td>
+      <td>4.50</td>
+      <td>4.0</td>
+      <td>4.00</td>
+      <td>3.50</td>
+      <td>3.5</td>
+    </tr>
+  </tbody>
+</table>
+
+### Outcome Distribution
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>outcome</th>
+      <th>no_changes</th>
+      <th>partial_success</th>
+    </tr>
+    <tr>
+      <th>model</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>claude-sonnet-4-5-20250929</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+### Failure Modes
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>over_editing</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>under_editing</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>missing_metadata</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>permission_blocked</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
