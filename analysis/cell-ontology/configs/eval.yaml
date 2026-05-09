@@ -1,0 +1,24 @@
+workflow: eval-agent-on-issue.yml
+repo: ai4curation/eval-ont-agent-cl
+description: "Cell Ontology agent evaluation"
+tags: ["cell-ontology"]
+
+input_sets_dir: ../cases
+
+inputs:
+  issue_repo: obophenotype/cell-ontology
+  timeout_minutes: 90
+  agent_config_repo: ai4curation/cl-agent-config
+  agent_config_tag: v2
+  agent_config_directory: .
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+  agent_runtime: claude
+  model: claude-sonnet-4-5-20250929
+  container: obolibrary/odkfull:latest
+
+limits:
+  max_concurrent: 5
+  batch_size: 5
+  poll_interval_seconds: 30
