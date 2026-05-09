@@ -504,6 +504,7 @@ jobs:
         if: inputs.agent_runtime == 'opencode'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           export PATH="$HOME/.opencode/bin:$PATH"
           opencode run "$(cat __agent_prompt__.md)" \
