@@ -1,0 +1,33 @@
+# Experiment specification for GO ontology evaluation
+# This defines WHAT to run. The workflow (eval-agent-on-issue.yml) defines HOW.
+#
+# Usage:
+#   ai4c-scribe workflows run analysis/go-ontology/configs/experiment.yaml
+
+workflow: eval-agent-on-issue.yml
+repo: ai4curation/eval-ont-agent-go
+description: "GO ontology agent evaluation - harness comparison on gpt-5.5"
+tags: ["go-ontology", "harness-comparison"]
+
+input_sets_dir: ../cases
+
+inputs:
+  issue_repo: geneontology/go-ontology
+  timeout_minutes: 90
+  agent_config_repo: ai4curation/go-ontology-agent-config
+  agent_config_tag: v9
+  agent_config_directory: .
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+  container: obolibrary/odkfull:latest
+  reasoning_effort: high
+
+  # Matrix: expand over these
+  agent_runtime: [codex, opencode, pi]
+  model: [gpt-5.5]
+
+limits:
+  max_concurrent: 5
+  batch_size: 10
+  poll_interval_seconds: 30
