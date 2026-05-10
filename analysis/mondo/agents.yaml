@@ -1,62 +1,62 @@
-# Agent configurations tested for mondo evaluation
+# Agent definitions for mondo evaluation
 
 agents:
-  codex_g55_v3:
-    handle: codex_g55_v3
-    description: "Codex CLI with GPT-5.5, mondo skills v3, high reasoning"
+  std_codex_g55:
+    description: "Codex + GPT-5.5 (standard config)"
     runtime: codex
     model: gpt-5.5
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: high
     skills: true
+    category: standard
 
-  opencode_g55_v3:
-    handle: opencode_g55_v3
-    description: "OpenCode with GPT-5.5, mondo skills v3, high reasoning"
+  std_opencode_g55:
+    description: "OpenCode + GPT-5.5 (standard config)"
     runtime: opencode
     model: gpt-5.5
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: high
     skills: true
+    category: standard
 
-  pi_g55_v3:
-    handle: pi_g55_v3
-    description: "Pi with GPT-5.5, mondo skills v3, high reasoning"
+  std_pi_g55:
+    description: "Pi + GPT-5.5 (standard config)"
     runtime: pi
     model: gpt-5.5
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: high
     skills: true
+    category: standard
 
-  claude_son45_v3:
-    handle: claude_son45_v3
-    description: "Claude Code with Sonnet 4.5, mondo skills v3"
+  std_claude_son45:
+    description: "Claude Code + Sonnet 4.5 (standard config)"
     runtime: claude
     model: claude-sonnet-4.5
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: default
     skills: true
+    category: standard
 
-  claude_hai45_v3:
-    handle: claude_hai45_v3
-    description: "Claude Code with Haiku 4.5, mondo skills v3"
+  std_claude_hai45:
+    description: "Claude Code + Haiku 4.5 (standard config)"
     runtime: claude
     model: claude-haiku-4.5
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: default
     skills: true
+    category: standard
 
-  codex_g54_v3:
-    handle: codex_g54_v3
-    description: "Codex CLI with GPT-5.4, mondo skills v3"
+  std_codex_g54:
+    description: "Codex + GPT-5.4 (standard config)"
     runtime: codex
     model: gpt-5.4
     config_repo: ai4curation/mondo-agent-config
     config_tag: v3
     reasoning_effort: default
     skills: true
+    category: standard

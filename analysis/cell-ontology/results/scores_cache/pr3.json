@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3519,
+  "pr_number": 3520,
+  "case_type": "new_term",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 3,
+  "f1": 0.625,
+  "precision": 0.714,
+  "recall": 0.556,
+  "jaccard": 0.455
+}

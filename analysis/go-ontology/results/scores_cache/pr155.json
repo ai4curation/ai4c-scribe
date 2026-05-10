@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31965,
+  "pr_number": 31971,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v9",
+  "model": "gpt-5.5",
+  "runtime": "opencode",
+  "eval_repo_pr": 155,
+  "f1": 0.769,
+  "precision": 0.769,
+  "recall": 0.769,
+  "jaccard": 0.625
+}

@@ -1,63 +1,63 @@
-ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	71	0.0	0.0	0.0	0.0	ube#3457
-uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	opencode	70	0.857	1.0	0.75	0.75	ube#3572
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	69	0.875	0.913	0.84	0.778	ube#3682
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	68	0.333	0.333	0.333	0.2	ube#3490
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	67	0.544	0.519	0.571	0.373	ube#3495
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	66	0.5	0.5	0.5	0.333	ube#3531
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	65	0.286	0.286	0.286	0.167	ube#3522
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	64	0.476	0.556	0.417	0.312	ube#3446
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	63	0.4	0.5	0.333	0.25	ube#3509
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	62	0.0	0.0	0.0	0.0	ube#3448
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	61	1.0	1.0	1.0	1.0	ube#2911
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	60	0.092	0.115	0.077	0.048	ube#3414
-uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	59	0.167	0.105	0.4	0.091	ube#3473
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	58	0.429	0.429	0.429	0.273	ube#3354
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	57	0.308	0.25	0.4	0.182	ube#3478
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	56	0.154	1.0	0.083	0.083	ube#3475
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	55	0.0	0.0	0.0	0.0	ube#3471
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	54	0.0	0.0	0.0	0.0	ube#3457
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	53	0.468	0.329	0.812	0.306	ube#3454
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	52	0.875	0.913	0.84	0.778	ube#3682
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	51	0.333	0.333	0.333	0.2	ube#3490
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	50	0.544	0.519	0.571	0.373	ube#3495
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	48	0.5	0.5	0.5	0.333	ube#3531
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	47	0.286	0.286	0.286	0.167	ube#3522
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	46	1.0	1.0	1.0	1.0	ube#2911
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	44	0.4	0.5	0.333	0.25	ube#3509
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	43	0.476	0.556	0.417	0.312	ube#3446
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	42	0.0	0.0	0.0	0.0	ube#3448
-uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	41	0.167	0.105	0.4	0.091	ube#3473
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	40	0.092	0.115	0.077	0.048	ube#3414
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	39	0.429	0.429	0.429	0.273	ube#3354
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	38	0.308	0.25	0.4	0.182	ube#3478
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	37	0.154	1.0	0.083	0.083	ube#3475
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	36	0.0	0.0	0.0	0.0	ube#3471
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	35	0.468	0.329	0.812	0.306	ube#3454
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	codex	34	0.626	0.604	0.649	0.455	ube#3457
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	codex	33	0.2	0.333	0.143	0.111	ube#3490
-uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	codex	32	0.3	1.0	0.176	0.176	ube#3572
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	codex	31	0.235	0.222	0.25	0.133	ube#3495
-uberon	3447	3560	reclassification	medium	v3	gpt-5.5	codex	30	0.211	1.0	0.118	0.118	ube#3447
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	codex	29	0.4	0.5	0.333	0.25	ube#3531
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	codex	28	0.5	0.5	0.5	0.333	ube#3509
-uberon	3003	3511	axiom_repair	medium	v3	gpt-5.5	codex	27	0.4	0.5	0.333	0.25	ube#3003
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	codex	26	0.286	0.286	0.286	0.167	ube#3522
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	codex	25	0.5	0.667	0.4	0.333	ube#3446
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	codex	24	0.333	1.0	0.2	0.2	ube#2911
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	codex	23	0.0	0.0	0.0	0.0	ube#3448
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	codex	22	0.169	0.192	0.152	0.093	ube#3414
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	codex	21	0.231	0.429	0.158	0.13	ube#3354
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	codex	20	0.462	0.375	0.6	0.3	ube#3478
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	codex	19	0.182	1.0	0.1	0.1	ube#3475
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	codex	18	0.0	0.0	0.0	0.0	ube#3471
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	codex	17	0.473	0.329	0.839	0.31	ube#3454
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	15	0.875	0.913	0.84	0.778	ube#3682
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	14	0.917	0.957	0.88	0.846	ube#3682
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.4	codex	13	0.894	0.913	0.875	0.808	ube#3682
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.4	codex	12	0.473	0.329	0.839	0.31	ube#3454
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.4	codex	11	0.1	1.0	0.053	0.053	ube#3475
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	codex	9	0.917	0.957	0.88	0.846	ube#3682
-uberon	3682	3683	synonym_update	simple	v3	claude-haiku-4.5	claude	6	0.333	0.217	0.714	0.2	ube#3682
-uberon	3637	3638	new_term	medium	v3	claude-sonnet-4.5	claude	3	0.842	0.889	0.8	0.727	ube#3637
-uberon	3682	3683	synonym_update	simple	v3	claude-sonnet-4.5	claude	1	0.4	0.261	0.857	0.25	ube#3682
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	71	0.0	0.0	0.0	0.0	ube#3457	std_opencode_g55
+uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	opencode	70	0.857	1.0	0.75	0.75	ube#3572	std_opencode_g55
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	69	0.875	0.913	0.84	0.778	ube#3682	std_opencode_g55
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	68	0.333	0.333	0.333	0.2	ube#3490	std_opencode_g55
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	67	0.544	0.519	0.571	0.373	ube#3495	std_opencode_g55
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	66	0.5	0.5	0.5	0.333	ube#3531	std_opencode_g55
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	65	0.286	0.286	0.286	0.167	ube#3522	std_opencode_g55
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	64	0.476	0.556	0.417	0.312	ube#3446	std_opencode_g55
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	63	0.4	0.5	0.333	0.25	ube#3509	std_opencode_g55
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	62	0.0	0.0	0.0	0.0	ube#3448	std_opencode_g55
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	61	1.0	1.0	1.0	1.0	ube#2911	std_opencode_g55
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	60	0.092	0.115	0.077	0.048	ube#3414	std_opencode_g55
+uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	59	0.167	0.105	0.4	0.091	ube#3473	std_opencode_g55
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	58	0.429	0.429	0.429	0.273	ube#3354	std_opencode_g55
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	57	0.308	0.25	0.4	0.182	ube#3478	std_opencode_g55
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	56	0.154	1.0	0.083	0.083	ube#3475	std_opencode_g55
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	55	0.0	0.0	0.0	0.0	ube#3471	std_opencode_g55
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	54	0.0	0.0	0.0	0.0	ube#3457	std_opencode_g55
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	53	0.468	0.329	0.812	0.306	ube#3454	std_opencode_g55
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	52	0.875	0.913	0.84	0.778	ube#3682	std_opencode_g55
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	51	0.333	0.333	0.333	0.2	ube#3490	std_opencode_g55
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	50	0.544	0.519	0.571	0.373	ube#3495	std_opencode_g55
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	48	0.5	0.5	0.5	0.333	ube#3531	std_opencode_g55
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	47	0.286	0.286	0.286	0.167	ube#3522	std_opencode_g55
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	46	1.0	1.0	1.0	1.0	ube#2911	std_opencode_g55
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	44	0.4	0.5	0.333	0.25	ube#3509	std_opencode_g55
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	43	0.476	0.556	0.417	0.312	ube#3446	std_opencode_g55
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	42	0.0	0.0	0.0	0.0	ube#3448	std_opencode_g55
+uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	41	0.167	0.105	0.4	0.091	ube#3473	std_opencode_g55
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	40	0.092	0.115	0.077	0.048	ube#3414	std_opencode_g55
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	39	0.429	0.429	0.429	0.273	ube#3354	std_opencode_g55
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	38	0.308	0.25	0.4	0.182	ube#3478	std_opencode_g55
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	37	0.154	1.0	0.083	0.083	ube#3475	std_opencode_g55
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	36	0.0	0.0	0.0	0.0	ube#3471	std_opencode_g55
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	35	0.468	0.329	0.812	0.306	ube#3454	std_opencode_g55
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	codex	34	0.626	0.604	0.649	0.455	ube#3457	std_codex_g55
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	codex	33	0.2	0.333	0.143	0.111	ube#3490	std_codex_g55
+uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	codex	32	0.3	1.0	0.176	0.176	ube#3572	std_codex_g55
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	codex	31	0.235	0.222	0.25	0.133	ube#3495	std_codex_g55
+uberon	3447	3560	reclassification	medium	v3	gpt-5.5	codex	30	0.211	1.0	0.118	0.118	ube#3447	std_codex_g55
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	codex	29	0.4	0.5	0.333	0.25	ube#3531	std_codex_g55
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	codex	28	0.5	0.5	0.5	0.333	ube#3509	std_codex_g55
+uberon	3003	3511	axiom_repair	medium	v3	gpt-5.5	codex	27	0.4	0.5	0.333	0.25	ube#3003	std_codex_g55
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	codex	26	0.286	0.286	0.286	0.167	ube#3522	std_codex_g55
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	codex	25	0.5	0.667	0.4	0.333	ube#3446	std_codex_g55
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	codex	24	0.333	1.0	0.2	0.2	ube#2911	std_codex_g55
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	codex	23	0.0	0.0	0.0	0.0	ube#3448	std_codex_g55
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	codex	22	0.169	0.192	0.152	0.093	ube#3414	std_codex_g55
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	codex	21	0.231	0.429	0.158	0.13	ube#3354	std_codex_g55
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	codex	20	0.462	0.375	0.6	0.3	ube#3478	std_codex_g55
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	codex	19	0.182	1.0	0.1	0.1	ube#3475	std_codex_g55
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	codex	18	0.0	0.0	0.0	0.0	ube#3471	std_codex_g55
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	codex	17	0.473	0.329	0.839	0.31	ube#3454	std_codex_g55
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	15	0.875	0.913	0.84	0.778	ube#3682	std_opencode_g55
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	14	0.917	0.957	0.88	0.846	ube#3682	std_opencode_g55
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.4	codex	13	0.894	0.913	0.875	0.808	ube#3682	std_codex_g54
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.4	codex	12	0.473	0.329	0.839	0.31	ube#3454	std_codex_g54
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.4	codex	11	0.1	1.0	0.053	0.053	ube#3475	std_codex_g54
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	codex	9	0.917	0.957	0.88	0.846	ube#3682	std_codex_g55
+uberon	3682	3683	synonym_update	simple	v3	claude-haiku-4.5	claude	6	0.333	0.217	0.714	0.2	ube#3682	std_claude_hai45
+uberon	3637	3638	new_term	medium	v3	claude-sonnet-4.5	claude	3	0.842	0.889	0.8	0.727	ube#3637	std_claude_son45
+uberon	3682	3683	synonym_update	simple	v3	claude-sonnet-4.5	claude	1	0.4	0.261	0.857	0.25	ube#3682	std_claude_son45

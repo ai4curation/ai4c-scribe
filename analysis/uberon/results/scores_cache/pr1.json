@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3682,
+  "pr_number": 3683,
+  "case_type": "synonym_update",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 1,
+  "f1": 0.4,
+  "precision": 0.261,
+  "recall": 0.857,
+  "jaccard": 0.25
+}

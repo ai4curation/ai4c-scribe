@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9798,
+  "pr_number": 10106,
+  "case_type": "obsoletion",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.5",
+  "runtime": "opencode",
+  "eval_repo_pr": 135,
+  "f1": 0.772,
+  "precision": 0.629,
+  "recall": 1.0,
+  "jaccard": 0.629
+}
