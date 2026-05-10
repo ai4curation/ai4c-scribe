@@ -1,8 +1,55 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard
-go-ontology	31961	32015	obsoletion	simple	v8	claude-sonnet-4-5-20250929	claude	31		0.800	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v8	claude-haiku-4-5-20251001	claude	33		0.800	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v8	gpt-5.4	codex	32		0.800	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v8	gpt-5.5	codex	38		0.762	0.889	0.667	0.615
-go-ontology	31961	32015	obsoletion	simple	v8-noskills	claude-sonnet-4-5-20250929	claude	36		0.000	0.000	0.000	0.000
-go-ontology	31961	32015	obsoletion	simple	v8-noskills	gpt-5.4	codex	37		0.800	0.889	0.727	0.667
+go-ontology	31882	32036	obsoletion	simple	v9	openai/gpt-5.5	opencode	101		0.964	0.952	0.976	0.930
+go-ontology	31969	31988	reclassification	hard	v9	openai/gpt-5.5	opencode	100		0.938	0.914	0.964	0.883
+go-ontology	31984	31987	axiom_repair	hard	v9	carbon-monoxide oxygenase activity) and GO:0043885 (anaerobic carbon-monoxide dehydrogenase activity) (openai/gpt-5.5	opencode	99		0.947	0.900	1.000	0.900
+go-ontology	31967	31968	reclassification	medium	v9	CYP450 reclassification) (openai/gpt-5.5	opencode	98		1.000	1.000	1.000	1.000
+go-ontology	31981	31995	axiom_repair	simple	v9	openai/gpt-5.5	opencode	97		1.000	1.000	1.000	1.000
+go-ontology	31964	31982	axiom_repair	medium	v9	openai/gpt-5.5	opencode	96		1.000	1.000	1.000	1.000
+go-ontology	31935	31946	reclassification	medium	v9	plus term label and definition) (openai/gpt-5.5	opencode	95		0.857	0.900	0.818	0.750
+go-ontology	31636	31925	synonym_update	simple	v9	openai/gpt-5.5	opencode	94		0.667	0.714	0.625	0.500
+go-ontology	31295	32040	new_term	medium	v9	openai/gpt-5.5	opencode	93		0.696	0.667	0.727	0.533
+go-ontology	31670	31676	new_term	hard	v9	openai/gpt-5.5	opencode	92		0.005	0.400	0.002	0.002
+go-ontology	27593	31997	new_term	hard	v9	for non siderophore) (openai/gpt-5.5	opencode	91		0.857	0.857	0.857	0.750
+go-ontology	31902	32041	new_term	medium	v9	openai/gpt-5.5	opencode	88		0.842	0.800	0.889	0.727
+go-ontology	31295	32040	new_term	medium	v9	openai/gpt-5.5	opencode	87		0.696	0.667	0.727	0.533
+go-ontology	31882	32036	obsoletion	simple	v9	openai/gpt-5.5	opencode	86		0.964	0.952	0.976	0.930
+go-ontology	31945	32013	reclassification	medium	v9	openai/gpt-5.5	opencode	83		0.905	0.950	0.864	0.826
+go-ontology	31969	31988	reclassification	hard	v9	openai/gpt-5.5	opencode	82		0.938	0.914	0.964	0.883
+go-ontology	30894	32011	new_term	medium	v9	openai/gpt-5.5	opencode	81		1.000	1.000	1.000	1.000
+go-ontology	31981	31995	axiom_repair	simple	v9	openai/gpt-5.5	opencode	80		1.000	1.000	1.000	1.000
+go-ontology	31984	31987	axiom_repair	hard	v9	carbon-monoxide oxygenase activity) and GO:0043885 (anaerobic carbon-monoxide dehydrogenase activity) (openai/gpt-5.5	opencode	79		0.947	0.900	1.000	0.900
+go-ontology	31964	31982	axiom_repair	medium	v9	openai/gpt-5.5	opencode	78		1.000	1.000	1.000	1.000
+go-ontology	31967	31968	reclassification	medium	v9	CYP450 reclassification) (openai/gpt-5.5	opencode	77		1.000	1.000	1.000	1.000
+go-ontology	31636	31925	synonym_update	simple	v9	openai/gpt-5.5	opencode	76		0.667	0.714	0.625	0.500
+go-ontology	31935	31946	reclassification	medium	v9	plus term label and definition) (openai/gpt-5.5	opencode	75		0.857	0.900	0.818	0.750
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	74		0.636	0.583	0.700	0.467
+go-ontology	27593	31997	new_term	hard	v9	for non siderophore) (gpt-5.5	codex	73		1.000	1.000	1.000	1.000
+go-ontology	31923	31938	other	simple	v9	minor) (gpt-5.5	codex	72		0.667	0.667	0.667	0.500
+go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	codex	71		0.867	0.867	0.867	0.765
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	70		0.636	0.583	0.700	0.467
+go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	codex	69		0.842	0.800	0.889	0.727
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	codex	68		0.941	0.952	0.930	0.889
+go-ontology	31670	31676	new_term	hard	v9	openai/gpt-5.5	opencode	67		0.005	0.400	0.002	0.002
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	66		0.800	0.889	0.727	0.667
+go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	codex	65		0.965	0.965	0.965	0.932
+go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	codex	64		0.005	0.400	0.002	0.002
+go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	codex	63		0.956	0.931	0.982	0.915
+go-ontology	31984	31987	axiom_repair	hard	v9	carbon-monoxide oxygenase activity) and GO:0043885 (anaerobic carbon-monoxide dehydrogenase activity) (gpt-5.5	codex	62		0.857	0.900	0.818	0.750
+go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	codex	61		0.826	0.950	0.731	0.704
+go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	codex	60		0.857	0.857	0.857	0.750
+go-ontology	31935	31946	reclassification	medium	v9	plus term label and definition) (gpt-5.5	codex	59		0.800	0.800	0.800	0.667
+go-ontology	31967	31968	reclassification	medium	v9	CYP450 reclassification) (gpt-5.5	codex	58		0.800	0.667	1.000	0.667
+go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	codex	57		1.000	1.000	1.000	1.000
+go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	codex	56		0.857	0.750	1.000	0.750
+go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	codex	55		0.941	1.000	0.889	0.889
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	54		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	openai/gpt-5.4	opencode	51		0.762	0.889	0.667	0.615
+go-ontology	31961	32015	obsoletion	simple	v9	openai/gpt-5.4	opencode	50		0.762	0.889	0.667	0.615
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	46		0.800	0.889	0.727	0.667
+go-ontology	31935	31946	reclassification	medium	v9	plus term label and definition) (gpt-5.4	codex	45		0.720	0.900	0.600	0.562
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38		0.762	0.889	0.667	0.615
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	haiku-4.5	claude	33		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32		0.800	0.889	0.727	0.667
+go-ontology	31961	32015	obsoletion	simple	v9	sonnet-4.5	claude	31		0.800	0.889	0.727	0.667
