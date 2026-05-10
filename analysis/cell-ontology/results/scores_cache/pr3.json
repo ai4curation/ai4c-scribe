@@ -8,8 +8,8 @@
   "model": "claude-sonnet-4.5",
   "runtime": "claude",
   "eval_repo_pr": 3,
-  "f1": 0.625,
-  "precision": 0.714,
-  "recall": 0.556,
-  "jaccard": 0.455
+  "f1": 0.615,
+  "precision": 0.667,
+  "recall": 0.571,
+  "jaccard": 0.444
 }

@@ -1,0 +1,32 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 51d0f7774..c91bfd7df 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -35268,6 +35268,20 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9903259 (transitional principal-intercalated cell of kidney collecting duct)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33893305") Annotation(oboInOwl:hasDbXref "PMID:37468583") obo:IAO_0000115 obo:CL_9903259 "A kidney collecting duct epithelial cell that co-expresses markers of principal cells and intercalated cells and is enriched in chronic kidney disease.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9903259 <https://github.com/obophenotype/cell-ontology/issues/3259>)
++AnnotationAssertion(dc:creator obo:CL_9903259 "GitHub Copilot")
++AnnotationAssertion(terms:contributor obo:CL_9903259 <https://orcid.org/0000-0002-2999-0103>)
++AnnotationAssertion(terms:contributor obo:CL_9903259 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:date obo:CL_9903259 "2026-05-10T21:34:11Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33893305") oboInOwl:hasBroadSynonym obo:CL_9903259 "hybrid principal-intercalated cell")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37468583") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9903259 "tPC-IC cell")
++AnnotationAssertion(rdfs:label obo:CL_9903259 "transitional principal-intercalated cell of kidney collecting duct")
++SubClassOf(obo:CL_9903259 obo:CL_1000454)
++SubClassOf(obo:CL_9903259 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001232))
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)
+@@ -35347,4 +35361,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

@@ -1,0 +1,16 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 08af3bf04..3003cb945 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -222,9 +222,11 @@ subset: common_anatomy
+ subset: upper_level
+ xref: BFO:0000003
+ disjoint_from: UBERON:0001062 ! anatomical entity
++comment: This term is being aligned with COB (Common Upper Ontology of Biology).
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+ relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000002

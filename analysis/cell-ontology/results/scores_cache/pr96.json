@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3382,
+  "pr_number": 3440,
+  "case_type": "axiom_repair",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 96,
+  "f1": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "jaccard": 1.0
+}

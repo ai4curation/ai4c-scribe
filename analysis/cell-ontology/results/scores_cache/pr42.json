@@ -8,8 +8,8 @@
   "model": "gpt-5.5",
   "runtime": "opencode",
   "eval_repo_pr": 42,
-  "f1": 0.381,
-  "precision": 0.267,
+  "f1": 0.414,
+  "precision": 0.3,
   "recall": 0.667,
-  "jaccard": 0.235
+  "jaccard": 0.261
 }

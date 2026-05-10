@@ -1,0 +1,42 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index bdb0f1896..a9ca18de1 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -7522,9 +7522,10 @@ xref: Wikipedia:Simple_squamous_epithelium
+ xref: XAO:0004010
+ xref: ZFA:0001498
+ intersection_of: UBERON:0000490 ! unilaminar epithelium
+-intersection_of: has_part CL:0000076 ! squamous epithelial cell
++intersection_of: composed_primarily_of CL:0000076 ! squamous epithelial cell
+ property_value: depiction "https://upload.wikimedia.org/wikipedia/commons/8/8f/Illu_epithelium.jpg" xsd:anyURI
+ property_value: external_definition "Unilaminar epithelium that consists of a single layer of squamous cells.[CARO]" xsd:string {date_retrieved="2012-06-20", external_class="CARO:0000070", ontology="CARO", source="FMA:45565", source="http://orcid.org/0000-0001-9114-8737"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3473" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000488
+@@ -117348,8 +117349,9 @@ xref: SCTID:40118003
+ xref: UMLS:C0221909 {source="ncithesaurus:Squamous_Epithelium"}
+ xref: Wikipedia:Squamous_epithelium
+ intersection_of: UBERON:0000483 ! epithelium
+-intersection_of: has_part CL:0000076 ! squamous epithelial cell
++intersection_of: composed_primarily_of CL:0000076 ! squamous epithelial cell
+ property_value: external_ontology_notes "FBbt:00007028 (squamous epithelium) A type of epithelium that is made up of flattened cells which are arranged with their long axes in the plane of the epithelium" xsd:string {external_ontology="FBbt"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3473" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0006915
+@@ -117362,7 +117364,8 @@ xref: NCIT:C13180
+ xref: UMLS:C0836131 {source="ncithesaurus:Stratified_Squamous_Epithelium"}
+ xref: Wikipedia:Stratified_squamous_epithelium
+ intersection_of: UBERON:0000486 ! multilaminar epithelium
+-intersection_of: has_part CL:0000076 ! squamous epithelial cell
++intersection_of: composed_primarily_of CL:0000076 ! squamous epithelial cell
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3473" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0006916
+@@ -226039,4 +226042,3 @@ xref: RO:0020102
+ id: vessel_supplies_blood_to
+ name: vessel supplies blood to
+ xref: RO:0020101
+-

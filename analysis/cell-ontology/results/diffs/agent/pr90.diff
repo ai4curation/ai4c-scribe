@@ -1,0 +1,19 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index fd1ae3fd5..53b7fa958 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -34627,6 +34627,14 @@ AnnotationAssertion(rdfs:label obo:CL_4072102 "Purkinje layer interneuron")
+ EquivalentClasses(obo:CL_4072102 ObjectIntersectionOf(obo:CL_0000099 ObjectSomeValuesFrom(obo:RO_0002100 obo:UBERON_0002979)))
+ SubClassOf(obo:CL_4072102 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0061534))
+ 
++# Class: obo:CL_4072103 (quiescent fibroblast)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35701396") Annotation(oboInOwl:hasDbXref "doi:10.1038/s41427-020-0226-7") obo:IAO_0000115 obo:CL_4072103 "A fibroblast in a quiescent state, characterized by a smaller, spindle-shaped morphology with a relatively small cytoplasm, modest rough endoplasmic reticulum and condensed chromatin. Despite low proliferation and contractility, it maintains high metabolic activity for extracellular-matrix homeostasis through continuous matrix protein turnover and mechanosensitive signaling. This cell can rapidly differentiate into contractile myofibroblasts under injury or inflammatory cues to drive tissue repair.")
++AnnotationAssertion(terms:date obo:CL_4072103 "2026-05-10T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22529592") oboInOwl:hasExactSynonym obo:CL_4072103 "inactive fibroblast")
++AnnotationAssertion(rdfs:label obo:CL_4072103 "quiescent fibroblast")
++SubClassOf(obo:CL_4072103 obo:CL_0000057)
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

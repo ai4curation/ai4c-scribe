@@ -1,0 +1,63 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index a2952aa97..1714b1e92 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -5062,15 +5062,17 @@ AnnotationAssertion(rdfs:seeAlso obo:CL_0000134 "https://github.com/obophenotype
+ SubClassOf(obo:CL_0000134 obo:CL_0000048)
+ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0000134 obo:CL_0002320)
+ 
+-# Class: obo:CL_0000135 (fibrocyte)
++# Class: obo:CL_0000135 (circulating fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:dsd") Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "ISBN:0412046911") Annotation(oboInOwl:hasDbXref "ISBN:0517223651") Annotation(oboInOwl:hasDbXref "PMID:11641248") Annotation(oboInOwl:hasDbXref "PMID:15010326") Annotation(oboInOwl:hasDbXref "PMID:17607298") Annotation(oboInOwl:hasDbXref "PMID:18222966") Annotation(oboInOwl:hasDbXref "PMID:8790603") Annotation(oboInOwl:hasDbXref "PMID:9551999") Annotation(oboInOwl:hasDbXref "http://en.wikipedia.org/wiki/Fibrocyte") obo:IAO_0000115 obo:CL_0000135 "An inactive fibroblast; cytoplasm is sparse, endoplasmic reticulum is scanty with flattened nucleus. Term used by some histologists; when fibroblasts become relatively inactive in fiber formation. However, this cell has the potential for fibrogenesis in quiescent connective tissue of the adult, as well as during development, other histologists prefer to use the term fibroblast in all circumstances. These cells represent ~0.5% of peripheral blood leukocytes.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:9177213") Annotation(oboInOwl:hasDbXref "PMID:20303382") Annotation(oboInOwl:hasDbXref "PMID:20305780") Annotation(oboInOwl:hasDbXref "PMID:32084275") Annotation(oboInOwl:hasDbXref "doi:10.1186/1755-1536-5-S1-S6") obo:IAO_0000115 obo:CL_0000135 "A circulating mesenchymal progenitor cell that is bone marrow-derived and expresses hematopoietic markers, such as CD45 and CD34, together with stromal extracellular matrix markers, such as type I collagen. Circulating fibrocytes enter sites of tissue injury and participate in tissue repair and fibrosis through extracellular matrix deposition, antigen presentation, and promotion of angiogenesis.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0000135 <https://github.com/obophenotype/cell-ontology/issues/3243>)
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000135 "FMA:63879")
+-AnnotationAssertion(rdfs:comment obo:CL_0000135 "Cultured human fibrocytes are MHCI-positive, MHCII-positive, CD1a-negative, CD3-negative, CD4-negative, CD8-negative, CD10-negative, CD11b-positive, CD13-positive, CD14-negative, CD16-negative, CD18-positive, CD19-negative, CD25-negative, CD29-positive, CD32-positive, CD33-negative, CD34-positive, CD38-negative, CD40-positive, CD44-negative, CD45RO-positive, CD49a-positive, CD49b-positive, CD49c-negative, CD49d-negative, CD49e-positive, CD49f-negative, CD56-negative, CD58-positive, CD61-positive, CD64-positive, CD70-negative, CD71-positive, CD80-positive, CD83-negative, CD86-positive, CD103-negative, CD105-positive, CD181-positive, CD182-negative, CD183-positive, CD184-positive, CD185-negative, CD186-negative, CD191-positive, CD192-negative, CD193-positive, CD194-positive, CD195-positive, CD196-negative, CD197-positive, CD199-positive, desmin-negative, F4/80-positive, Gr1-positive, LSP-1-positive, MHCI-positive, MHCII-positive, alpha-SMA-negative, TCRab-negative, TCRgd-negative, and vimentin-positive. Fibrocytes are also capable of secreting angiogenin, bFGF, CCL2, CCL3, CCL4, CCL8, CXCL1, type I collagen, type III collagen, CTGF, fibronectin, GM-CSF, IL-1a, IL-6, IL-8, IL-10, M-CSF, MMP-9, PDGF-A, TGF-alpha, TGF-beta1, TNF-alpha, and VEGF-A.")
+-AnnotationAssertion(rdfs:label obo:CL_0000135 "fibrocyte")
+-EquivalentClasses(obo:CL_0000135 ObjectIntersectionOf(obo:CL_0000499 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0002495) ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0045766)))
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:20305780") Annotation(oboInOwl:hasDbXref "PMID:31473260") Annotation(oboInOwl:hasDbXref "PMID:32084275") rdfs:comment obo:CL_0000135 "Fibrocytes are heterogeneous and marker expression can vary with culture conditions, differentiation state, and tissue context. Co-expression of hematopoietic markers with collagen is commonly used to identify circulating fibrocytes, but marker combinations should be interpreted with functional and contextual evidence.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:20303382") oboInOwl:hasExactSynonym obo:CL_0000135 "fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:20305780") oboInOwl:hasNarrowSynonym obo:CL_0000135 "monocyte-derived fibrocyte")
++AnnotationAssertion(rdfs:label obo:CL_0000135 "circulating fibrocyte")
++EquivalentClasses(obo:CL_0000135 ObjectIntersectionOf(obo:CL_0000499 obo:CL_0011026 ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_1001610) ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0002495) ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0042060) ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0045766)))
+ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0000135 obo:CL_0000499)
+-SubClassOf(obo:CL_0000135 ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000057))
+ 
+ # Class: obo:CL_0000136 (adipocyte)
+ 
+@@ -7097,7 +7099,6 @@ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0000388 "muscle attachment c
+ AnnotationAssertion(oboInOwl:hasRelatedSynonym obo:CL_0000388 "tenocyte")
+ AnnotationAssertion(rdfs:label obo:CL_0000388 "tendon cell")
+ EquivalentClasses(obo:CL_0000388 ObjectIntersectionOf(obo:CL_0000057 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000043)))
+-SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0000388 obo:CL_0000135)
+ 
+ # Class: obo:CL_0000389 (socket cell (sensu Nematoda))
+ 
+@@ -25722,8 +25723,8 @@ SubClassOf(obo:CL_1000307 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_000252
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") obo:IAO_0000115 obo:CL_1000308 "A fibrocyte that is part of the adventitia of ureter.")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_1000308 "FMA:261289")
+ AnnotationAssertion(rdfs:label obo:CL_1000308 "fibrocyte of adventitia of ureter")
+-EquivalentClasses(obo:CL_1000308 ObjectIntersectionOf(obo:CL_0000135 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001252)))
+-SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_1000308 obo:CL_0000135)
++EquivalentClasses(obo:CL_1000308 ObjectIntersectionOf(obo:CL_0000057 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001252)))
++SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_1000308 obo:CL_0000057)
+ 
+ # Class: obo:CL_1000309 (epicardial adipocyte)
+ 
+@@ -27383,7 +27384,7 @@ EquivalentClasses(obo:CL_1000692 ObjectIntersectionOf(obo:CL_0000057 ObjectSomeV
+ 
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_1000693 "KUPO:0001103")
+ AnnotationAssertion(rdfs:label obo:CL_1000693 "kidney interstitial fibrocyte")
+-SubClassOf(obo:CL_1000693 obo:CL_0000135)
++SubClassOf(obo:CL_1000693 obo:CL_0000057)
+ SubClassOf(obo:CL_1000693 obo:CL_1000500)
+ 
+ # Class: obo:CL_1000695 (kidney interstitial alternatively activated macrophage)
+@@ -34702,4 +34703,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

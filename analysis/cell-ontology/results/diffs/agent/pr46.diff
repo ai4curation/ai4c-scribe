@@ -1,0 +1,35 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 51d0f7774..3623b1ab1 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3276,6 +3276,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -35268,6 +35269,22 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900001 (transitional principal-intercalated cell of kidney collecting duct)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33893305") Annotation(oboInOwl:hasDbXref "PMID:37468583") obo:IAO_0000115 obo:CL_9900001 "A kidney collecting duct epithelial cell that has a transitional identity and co-expresses markers of renal principal cells and renal intercalated cells.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3259>)
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0002-2999-0103>)
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(dc:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-10T02:06:52Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33893305") oboInOwl:hasBroadSynonym obo:CL_9900001 "hybrid principal-intercalated cell")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37468583") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900001 "tPC-IC cell")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37468583") oboInOwl:hasExactSynonym obo:CL_9900001 "transitional principal-intercalated cell")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37468583") rdfs:comment obo:CL_9900001 "This hybrid collecting duct cell type is reported to be enriched in chronic kidney disease.")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "transitional principal-intercalated cell of kidney collecting duct")
++SubClassOf(obo:CL_9900001 obo:CL_1000454)
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001232))
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

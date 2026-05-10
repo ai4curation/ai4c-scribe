@@ -1,0 +1,25 @@
+diff --git a/src/ontology/Makefile b/src/ontology/Makefile
+index 13c2f2e66..4e062e0a5 100644
+--- a/src/ontology/Makefile
++++ b/src/ontology/Makefile
+@@ -410,7 +410,7 @@ $(IMPORTSEED): $(PRESEED) $(TMPDIR)/all_pattern_terms.txt | $(TMPDIR)
+ 
+ T_IMPORTSEED = --term-file $(IMPORTSEED)
+ 
+-ANNOTATION_PROPERTIES=rdfs:label IAO:0000115 oboInOwl:is_metadata_tag OMO:0002000 
++ANNOTATION_PROPERTIES=rdfs:label IAO:0000115 oboInOwl:is_metadata_tag OMO:0002000 skos:prefLabel 
+ 
+ # ----------------------------------------
+ # Import modules
+diff --git a/src/ontology/cl-odk.yaml b/src/ontology/cl-odk.yaml
+index a9e7e315e..63ed3d526 100644
+--- a/src/ontology/cl-odk.yaml
++++ b/src/ontology/cl-odk.yaml
+@@ -64,6 +64,7 @@ import_group:
+     - IAO:0000115
+     - oboInOwl:is_metadata_tag
+     - OMO:0002000
++    - skos:prefLabel
+   exclude_iri_patterns:
+     - <http://www.informatics.jax.org/marker/MGI:*>
+     - <http://purl.obolibrary.org/obo/OBA_*>

@@ -1,0 +1,36 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e7bfdf082..dda1f7e44 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3292,6 +3292,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -35465,6 +35466,16 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900001 (oRGC2)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37066415") Annotation(oboInOwl:hasDbXref "PMID:31784286") obo:IAO_0000115 obo:CL_9900001 "A retinal ganglion cell orthotype that groups ON parasol retinal ganglion cells from primate foveal and peripheral retina with the molecularly homologous mouse alpha retinal ganglion cell ON-transient subtype, C41 (Hahn et al., 2023; Tran et al., 2019).")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3519>)
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0002-5507-2103>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-10T01:08:29Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:label obo:CL_9900001 "oRGC2")
++SubClassOf(obo:CL_9900001 obo:CL_0000740)
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)
+@@ -35544,4 +35555,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

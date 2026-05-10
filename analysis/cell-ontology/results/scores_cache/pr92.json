@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3267,
+  "pr_number": 3268,
+  "case_type": "documentation",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 92,
+  "f1": 0.467,
+  "precision": 0.933,
+  "recall": 0.311,
+  "jaccard": 0.304
+}

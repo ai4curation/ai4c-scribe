@@ -1,0 +1,13 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..5f370822b 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -60564,7 +60564,7 @@ xref: BIRNLEX:2600
+ xref: FMA:6006
+ xref: SCTID:278326009
+ xref: UMLS:C0457467 {source="BIRNLEX:2600"}
+-is_a: UBERON:0000961 ! thoracic ganglion
++is_a: UBERON:0000044 ! dorsal root ganglion
+ intersection_of: UBERON:0000044 ! dorsal root ganglion
+ intersection_of: extends_fibers_into UBERON:0009630 ! root of thoracic nerve
+ 

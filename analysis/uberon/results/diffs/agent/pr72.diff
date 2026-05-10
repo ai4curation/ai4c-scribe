@@ -1,0 +1,23 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index e32c8f848..b9e77e206 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -190303,6 +190303,18 @@ property_value: dcterms-date "2025-11-14T00:00:00Z" xsd:dateTime
+ property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3629" xsd:anyURI
+ created_by: dragon-ai-agent
+ 
++[Term]
++id: UBERON:1200003
++name: uterine fundus
++def: "The superior, dome-shaped portion of the uterus." [PMID:40653088, PMID:41204538]
++synonym: "fundus uteri" EXACT [PMID:39112955]
++intersection_of: UBERON:0000064 ! organ part
++intersection_of: part_of UBERON:0000995 ! uterus
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++property_value: dcterms-date "2026-05-10T21:35:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3637" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Term]
+ id: UBERON:1500000
+ name: scapular blade

@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 10030,
+  "pr_number": 10117,
+  "case_type": "bulk_edit",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 175,
+  "f1": 0.003,
+  "precision": 0.002,
+  "recall": 1.0,
+  "jaccard": 0.002
+}

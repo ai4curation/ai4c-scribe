@@ -8,8 +8,8 @@
   "model": "gpt-5.4",
   "runtime": "codex",
   "eval_repo_pr": 6,
-  "f1": 0.333,
-  "precision": 0.429,
-  "recall": 0.273,
-  "jaccard": 0.2
+  "f1": 0.267,
+  "precision": 0.333,
+  "recall": 0.222,
+  "jaccard": 0.154
 }

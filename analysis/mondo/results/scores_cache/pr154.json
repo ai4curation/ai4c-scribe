@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 10030,
+  "pr_number": 10117,
+  "case_type": "bulk_edit",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "codex",
+  "eval_repo_pr": 154,
+  "f1": 0.003,
+  "precision": 0.002,
+  "recall": 1.0,
+  "jaccard": 0.002
+}
