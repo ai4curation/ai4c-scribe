@@ -386,20 +386,43 @@ EVAL_REPOS = {
 }
 
 
+def load_cached_scores(ontology: str, analysis_dir: Path = Path("analysis")) -> list[ScoreRecord]:
+    """Load all cached score records for an ontology from disk."""
+    cache_dir = analysis_dir / ontology / "results" / "scores_cache"
+    records = []
+    if cache_dir.exists():
+        for f in cache_dir.glob("*.json"):
+            data = json.loads(f.read_text())
+            records.append(ScoreRecord(**data))
+    return records
+
+
 def score_all(analysis_dir: Path = Path("analysis"), use_cache: bool = True) -> list[ScoreRecord]:
     """Score all evaluation repos.
+
+    Combines freshly-scored runs (from API) with any previously-cached
+    scores that the API didn't return (handles flaky API responses).
 
     Returns combined list of ScoreRecords across all ontologies.
     """
     all_records = []
     for ontology, cfg in EVAL_REPOS.items():
-        records = score_eval_repo(
+        # Score what the API returns (uses cache for known PRs)
+        fresh = score_eval_repo(
             ontology=ontology,
             analysis_dir=analysis_dir,
             use_cache=use_cache,
             **cfg,
         )
-        all_records.extend(records)
+        fresh_prs = {r.eval_repo_pr for r in fresh}
+
+        # Also load any cached scores the API didn't return
+        cached = load_cached_scores(ontology, analysis_dir)
+        for r in cached:
+            if r.eval_repo_pr not in fresh_prs:
+                fresh.append(r)
+
+        all_records.extend(fresh)
     return all_records
 
 
