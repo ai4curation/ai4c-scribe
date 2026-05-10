@@ -25,10 +25,16 @@ MODEL_SHORT = {
     "claude-opus-4-6": "op46",
     "gpt-5.4": "g54",
     "gpt-5.5": "g55",
+    "openai/gpt-5.4": "g54",
+    "openai/gpt-5.5": "g55",
     "codex-mini-latest": "cxm",
+    # Short forms from PR titles
+    "sonnet-4.5": "son45",
+    "haiku-4.5": "hai45",
+    "opus-4.7": "op47",
 }
 
-RUNTIME_SHORT = {"claude": "CC", "codex": "CX"}
+RUNTIME_SHORT = {"claude": "CC", "codex": "CX", "opencode": "OC", "pi": "PI"}
 
 
 def agent_code(row) -> str:
