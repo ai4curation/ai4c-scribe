@@ -1,67 +1,67 @@
-ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard
-cell-ontology	3457	3467	new_term	medium	v3	openai/gpt-5.5	opencode	73		0.103	0.056	0.571	0.054
-cell-ontology	3447	3448	other	medium	v3	openai/gpt-5.5	opencode	72		0.444	0.353	0.600	0.286
-cell-ontology	3267	3268	documentation	simple	v3	openai/gpt-5.5	opencode	71		0.897	0.867	0.929	0.812
-cell-ontology	3454	3555	axiom_repair	medium	v3	openai/gpt-5.5	opencode	70		0.667	0.750	0.600	0.500
-cell-ontology	3408	3522	other	hard	v3	openai/gpt-5.5	opencode	69		0.614	0.558	0.683	0.443
-cell-ontology	3519	3520	new_term	simple	v3	openai/gpt-5.5	opencode	68		0.000	0.000	0.000	0.000
-cell-ontology	3460	3508	new_term	medium	v3	openai/gpt-5.5	opencode	67		0.526	0.625	0.455	0.357
-cell-ontology	3458	3505	new_term	medium	v3	openai/gpt-5.5	opencode	66		0.000	0.000	0.000	0.000
-cell-ontology	3259	3450	new_term	medium	v3	openai/gpt-5.5	opencode	65		0.643	0.692	0.600	0.474
-cell-ontology	3379	3444	reclassification	simple	v3	openai/gpt-5.5	opencode	64		0.800	1.000	0.667	0.667
-cell-ontology	3353	3354	new_term	medium	v3	openai/gpt-5.5	opencode	62		0.000	0.000	0.000	0.000
-cell-ontology	3382	3440	axiom_repair	simple	v3	openai/gpt-5.5	opencode	61		1.000	1.000	1.000	1.000
-cell-ontology	3332	3333	bulk_edit	medium	v3	openai/gpt-5.5	opencode	60		0.381	0.267	0.667	0.235
-cell-ontology	3243	3251	axiom_repair	medium	v3	openai/gpt-5.5	opencode	59		0.545	0.529	0.562	0.375
-cell-ontology	3196	3248	new_term	medium	v3	openai/gpt-5.5	opencode	58		0.000	0.000	0.000	0.000
-cell-ontology	3252	3253	new_term	medium	v3	openai/gpt-5.5	opencode	57		0.000	0.000	0.000	0.000
-cell-ontology	2967	3309	axiom_repair	simple	v3	openai/gpt-5.5	opencode	56		0.500	0.500	0.500	0.333
-cell-ontology	3239	3245	reclassification	medium	v3	openai/gpt-5.5	opencode	55		0.316	0.250	0.429	0.188
-cell-ontology	3457	3467	new_term	medium	v3	openai/gpt-5.5	opencode	54		0.103	0.056	0.571	0.054
-cell-ontology	3267	3268	documentation	simple	v3	openai/gpt-5.5	opencode	53		0.897	0.867	0.929	0.812
-cell-ontology	3447	3448	other	medium	v3	openai/gpt-5.5	opencode	52		0.444	0.353	0.600	0.286
-cell-ontology	3408	3522	other	hard	v3	openai/gpt-5.5	opencode	51		0.614	0.558	0.683	0.443
-cell-ontology	3454	3555	axiom_repair	medium	v3	openai/gpt-5.5	opencode	50		0.667	0.750	0.600	0.500
-cell-ontology	3519	3520	new_term	simple	v3	openai/gpt-5.5	opencode	49		0.000	0.000	0.000	0.000
-cell-ontology	3458	3505	new_term	medium	v3	openai/gpt-5.5	opencode	48		0.000	0.000	0.000	0.000
-cell-ontology	3460	3508	new_term	medium	v3	openai/gpt-5.5	opencode	47		0.526	0.625	0.455	0.357
-cell-ontology	3259	3450	new_term	medium	v3	openai/gpt-5.5	opencode	46		0.643	0.692	0.600	0.474
-cell-ontology	3379	3444	reclassification	simple	v3	openai/gpt-5.5	opencode	44		0.800	1.000	0.667	0.667
-cell-ontology	3353	3354	new_term	medium	v3	openai/gpt-5.5	opencode	43		0.000	0.000	0.000	0.000
-cell-ontology	3332	3333	bulk_edit	medium	v3	openai/gpt-5.5	opencode	42		0.381	0.267	0.667	0.235
-cell-ontology	3252	3253	new_term	medium	v3	openai/gpt-5.5	opencode	41		0.000	0.000	0.000	0.000
-cell-ontology	3243	3251	axiom_repair	medium	v3	openai/gpt-5.5	opencode	40		0.545	0.529	0.562	0.375
-cell-ontology	3196	3248	new_term	medium	v3	openai/gpt-5.5	opencode	39		0.000	0.000	0.000	0.000
-cell-ontology	2967	3309	axiom_repair	simple	v3	openai/gpt-5.5	opencode	38		0.500	0.500	0.500	0.333
-cell-ontology	3239	3245	reclassification	medium	v3	openai/gpt-5.5	opencode	37		0.316	0.250	0.429	0.188
-cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	codex	36		0.000	0.000	0.000	0.000
-cell-ontology	3447	3448	other	medium	v3	gpt-5.5	codex	35		0.444	0.353	0.600	0.286
-cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	codex	34		0.349	0.733	0.229	0.212
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	33		0.667	0.750	0.600	0.500
-cell-ontology	3408	3522	other	hard	v3	gpt-5.5	codex	32		0.559	0.494	0.644	0.388
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	codex	31		0.000	0.000	0.000	0.000
-cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	codex	30		0.000	0.000	0.000	0.000
-cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	codex	29		0.000	0.000	0.000	0.000
-cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	codex	28		0.400	0.471	0.348	0.250
-cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	codex	27		0.593	0.615	0.571	0.421
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	26		0.000	0.000	0.000	0.000
-cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	codex	24		0.667	1.000	0.500	0.500
-cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	codex	23		0.000	0.000	0.000	0.000
-cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	codex	22		0.333	0.500	0.250	0.200
-cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	codex	21		0.667	1.000	0.500	0.500
-cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	codex	20		0.214	0.133	0.545	0.120
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	19		0.667	0.750	0.600	0.500
-cell-ontology	3454	3555	axiom_repair	medium	v3	openai/gpt-5.5	opencode	18		0.600	0.750	0.500	0.429
-cell-ontology	3454	3555	axiom_repair	medium	v3	openai/gpt-5.5	opencode	17		0.750	0.750	0.750	0.600
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	16		0.600	0.750	0.500	0.429
-cell-ontology	3454	3555	axiom_repair	medium	v3	sonnet-4.5	claude	15		0.750	0.750	0.750	0.600
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.4	codex	14		0.000	0.000	0.000	0.000
-cell-ontology	3196	3248	new_term	medium	v3	gpt-5.4	codex	13		0.200	0.188	0.214	0.111
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	10		0.000	0.000	0.000	0.000
-cell-ontology	3454	3555	axiom_repair	medium	v3	haiku-4.5	claude	7		0.750	0.750	0.750	0.600
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.4	codex	6		0.333	0.429	0.273	0.200
-cell-ontology	3519	3520	new_term	simple	v3	haiku-4.5	claude	5		0.000	0.000	0.000	0.000
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.4	codex	4		0.667	0.750	0.600	0.500
-cell-ontology	3519	3520	new_term	simple	v3	sonnet-4.5	claude	3		0.625	0.714	0.556	0.455
-cell-ontology	3224	3225	obsoletion	medium	v3	gpt-5.4	codex	2		0.000	0.000	0.000	0.000
-cell-ontology	3224	3225	obsoletion	medium	v3	sonnet-4.5	claude	1		0.000	0.000	0.000	0.000
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	73	0.103	0.056	0.571	0.054	cel#3457
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	72	0.444	0.353	0.6	0.286	cel#3447
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	71	0.897	0.867	0.929	0.812	cel#3267
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	70	0.667	0.75	0.6	0.5	cel#3454
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	69	0.614	0.558	0.683	0.443	cel#3408
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	68	0.0	0.0	0.0	0.0	cel#3519
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	67	0.526	0.625	0.455	0.357	cel#3460
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	66	0.0	0.0	0.0	0.0	cel#3458
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	65	0.643	0.692	0.6	0.474	cel#3259
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	64	0.8	1.0	0.667	0.667	cel#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	62	0.0	0.0	0.0	0.0	cel#3353
+cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	opencode	61	1.0	1.0	1.0	1.0	cel#3382
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	60	0.381	0.267	0.667	0.235	cel#3332
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	59	0.545	0.529	0.562	0.375	cel#3243
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	58	0.0	0.0	0.0	0.0	cel#3196
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	57	0.0	0.0	0.0	0.0	cel#3252
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	56	0.5	0.5	0.5	0.333	cel#2967
+cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	55	0.316	0.25	0.429	0.188	cel#3239
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	54	0.103	0.056	0.571	0.054	cel#3457
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	53	0.897	0.867	0.929	0.812	cel#3267
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	52	0.444	0.353	0.6	0.286	cel#3447
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	51	0.614	0.558	0.683	0.443	cel#3408
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	50	0.667	0.75	0.6	0.5	cel#3454
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	49	0.0	0.0	0.0	0.0	cel#3519
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	48	0.0	0.0	0.0	0.0	cel#3458
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	47	0.526	0.625	0.455	0.357	cel#3460
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	46	0.643	0.692	0.6	0.474	cel#3259
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	44	0.8	1.0	0.667	0.667	cel#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	43	0.0	0.0	0.0	0.0	cel#3353
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	42	0.381	0.267	0.667	0.235	cel#3332
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	41	0.0	0.0	0.0	0.0	cel#3252
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	40	0.545	0.529	0.562	0.375	cel#3243
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	39	0.0	0.0	0.0	0.0	cel#3196
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	38	0.5	0.5	0.5	0.333	cel#2967
+cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	37	0.316	0.25	0.429	0.188	cel#3239
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	codex	36	0.0	0.0	0.0	0.0	cel#3457
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	codex	35	0.444	0.353	0.6	0.286	cel#3447
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	codex	34	0.349	0.733	0.229	0.212	cel#3267
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	33	0.667	0.75	0.6	0.5	cel#3454
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	codex	32	0.559	0.494	0.644	0.388	cel#3408
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	codex	31	0.0	0.0	0.0	0.0	cel#3519
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	codex	30	0.0	0.0	0.0	0.0	cel#3460
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	codex	29	0.0	0.0	0.0	0.0	cel#3458
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	codex	28	0.4	0.471	0.348	0.25	cel#3243
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	codex	27	0.593	0.615	0.571	0.421	cel#3259
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	26	0.0	0.0	0.0	0.0	cel#3252
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	codex	24	0.667	1.0	0.5	0.5	cel#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	codex	23	0.0	0.0	0.0	0.0	cel#3353
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	codex	22	0.333	0.5	0.25	0.2	cel#2967
+cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	codex	21	0.667	1.0	0.5	0.5	cel#3382
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	codex	20	0.214	0.133	0.545	0.12	cel#3332
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	19	0.667	0.75	0.6	0.5	cel#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	18	0.6	0.75	0.5	0.429	cel#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	17	0.75	0.75	0.75	0.6	cel#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	16	0.6	0.75	0.5	0.429	cel#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	claude-sonnet-4.5	claude	15	0.75	0.75	0.75	0.6	cel#3454
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.4	codex	14	0.0	0.0	0.0	0.0	cel#3252
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.4	codex	13	0.2	0.188	0.214	0.111	cel#3196
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	10	0.0	0.0	0.0	0.0	cel#3252
+cell-ontology	3454	3555	axiom_repair	medium	v3	claude-haiku-4.5	claude	7	0.75	0.75	0.75	0.6	cel#3454
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.4	codex	6	0.333	0.429	0.273	0.2	cel#3519
+cell-ontology	3519	3520	new_term	simple	v3	claude-haiku-4.5	claude	5	0.0	0.0	0.0	0.0	cel#3519
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.4	codex	4	0.667	0.75	0.6	0.5	cel#3454
+cell-ontology	3519	3520	new_term	simple	v3	claude-sonnet-4.5	claude	3	0.625	0.714	0.556	0.455	cel#3519
+cell-ontology	3224	3225	obsoletion	medium	v3	gpt-5.4	codex	2	0.0	0.0	0.0	0.0	cel#3224
+cell-ontology	3224	3225	obsoletion	medium	v3	claude-sonnet-4.5	claude	1	0.0	0.0	0.0	0.0	cel#3224

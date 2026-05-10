@@ -81,19 +81,37 @@ app.add_typer(score_app, name="score")
 
 @score_app.command("all")
 def score_all_cmd(
-    analysis_dir: Path = typer.Option("analysis", help="Analysis directory"),
-    no_cache: bool = typer.Option(False, help="Ignore cached scores"),
-    output: Optional[Path] = typer.Option(None, "-o", help="Output TSV file (default: analysis/scores.tsv)"),
+    analysis_dir: Path = typer.Argument(Path("analysis"), help="Analysis directory (contains {ont}/cases/ and {ont}/results/)"),
+    no_cache: bool = typer.Option(False, help="Ignore cached scores, re-fetch and re-score everything"),
+    output: Optional[Path] = typer.Option(None, "-o", help="Output TSV file (default: {analysis_dir}/scores.tsv)"),
 ):
-    """Score all evaluation runs across all ontologies."""
-    from ai4c_scribe.scoring import score_all, records_to_dataframe
+    """Score all evaluation runs across all ontologies.
+
+    Discovers ontologies from subdirectories of ANALYSIS_DIR that contain
+    a cases/ folder and a matching entry in the eval repos config.
+
+    Writes both an aggregate scores.tsv and per-ontology scores.tsv files.
+    """
+    from ai4c_scribe.scoring import score_all, records_to_dataframe, EVAL_REPOS
 
     records = score_all(analysis_dir=analysis_dir, use_cache=not no_cache)
     df = records_to_dataframe(records)
 
+    # Write aggregate
     out_path = output or (analysis_dir / "scores.tsv")
     df.to_csv(out_path, sep="\t", index=False)
+
+    # Write per-ontology
+    for ontology in df["ontology"].unique():
+        ont_df = df[df["ontology"] == ontology]
+        ont_path = analysis_dir / ontology / "results" / "scores.tsv"
+        ont_path.parent.mkdir(parents=True, exist_ok=True)
+        ont_df.to_csv(ont_path, sep="\t", index=False)
+
     typer.echo(f"Scored {len(df)} runs -> {out_path}")
+    for ont in sorted(df["ontology"].unique()):
+        n = len(df[df["ontology"] == ont])
+        typer.echo(f"  {ont}: {n} runs")
     typer.echo(f"  By runtime: {df['runtime'].value_counts().to_dict()}")
     typer.echo(f"  By model: {df['model'].value_counts().to_dict()}")
 
@@ -101,7 +119,7 @@ def score_all_cmd(
 @score_app.command("repo")
 def score_repo_cmd(
     ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
-    analysis_dir: Path = typer.Option("analysis", help="Analysis directory"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
     no_cache: bool = typer.Option(False, help="Ignore cached scores"),
 ):
     """Score evaluation runs for a single ontology."""
@@ -116,6 +134,7 @@ def score_repo_cmd(
     df = records_to_dataframe(records)
 
     out_path = analysis_dir / ontology / "results" / "scores.tsv"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_path, sep="\t", index=False)
     typer.echo(f"Scored {len(df)} runs -> {out_path}")
 
