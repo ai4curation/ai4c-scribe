@@ -39,6 +39,7 @@ dev = [
     "seaborn>=0.13.2",
     "nbconvert>=7.16.6",
     "ipykernel>=6.31.0",
+    "scipy>=1.17.1",
 ]
 
 [project.scripts]

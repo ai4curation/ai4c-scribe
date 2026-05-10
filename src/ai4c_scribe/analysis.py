@@ -260,3 +260,154 @@ def failure_mode_counts(reviews_df):
         if isinstance(fm_list, list):
             modes.extend(fm_list)
     return pd.Series(modes).value_counts()
+
+
+def paired_test(df, agent_a: str, agent_b: str, agent_col: str = "agent",
+                case_col: str = "case", score_col: str = "f1"):
+    """Perform paired statistical tests between two agents on shared cases.
+
+    Returns a dict with test statistics, p-values, effect sizes,
+    confidence intervals, and power analysis.
+
+    Args:
+        df: DataFrame with scores
+        agent_a: First agent code
+        agent_b: Second agent code
+        agent_col: Column identifying agents
+        case_col: Column identifying cases
+        score_col: Score column
+
+    Returns:
+        Dict with statistical results, or None if insufficient shared cases
+    """
+    import numpy as np
+    from scipy import stats
+
+    # Get shared cases
+    cases_a = set(df[df[agent_col] == agent_a][case_col])
+    cases_b = set(df[df[agent_col] == agent_b][case_col])
+    shared = sorted(cases_a & cases_b)
+
+    if len(shared) < 2:
+        return None
+
+    scores_a = []
+    scores_b = []
+    for case in shared:
+        sa = df[(df[agent_col] == agent_a) & (df[case_col] == case)][score_col].values
+        sb = df[(df[agent_col] == agent_b) & (df[case_col] == case)][score_col].values
+        if len(sa) > 0 and len(sb) > 0:
+            scores_a.append(sa[0])
+            scores_b.append(sb[0])
+
+    scores_a = np.array(scores_a)
+    scores_b = np.array(scores_b)
+    n = len(scores_a)
+
+    if n < 2:
+        return None
+
+    diff = scores_b - scores_a
+    mean_diff = diff.mean()
+    std_diff = diff.std(ddof=1) if n > 1 else 0
+
+    result = {
+        "agent_a": agent_a,
+        "agent_b": agent_b,
+        "n_shared": n,
+        "mean_a": scores_a.mean(),
+        "mean_b": scores_b.mean(),
+        "mean_diff": mean_diff,
+        "std_diff": std_diff,
+    }
+
+    # Paired t-test
+    if n >= 3:
+        t_stat, p_val = stats.ttest_rel(scores_b, scores_a)
+        result["t_statistic"] = t_stat
+        result["p_value_ttest"] = p_val
+    else:
+        result["t_statistic"] = None
+        result["p_value_ttest"] = None
+
+    # Wilcoxon (needs n >= 6 for reliability)
+    if n >= 6:
+        try:
+            w_stat, w_p = stats.wilcoxon(scores_b, scores_a)
+            result["p_value_wilcoxon"] = w_p
+        except ValueError:
+            result["p_value_wilcoxon"] = None
+    else:
+        result["p_value_wilcoxon"] = None
+
+    # Effect size (Cohen's d for paired)
+    if std_diff > 0:
+        result["cohens_d"] = mean_diff / std_diff
+    else:
+        result["cohens_d"] = 0.0
+
+    # Bootstrap 95% CI
+    rng = np.random.default_rng(42)
+    boot_diffs = []
+    for _ in range(10000):
+        idx = rng.integers(0, n, size=n)
+        boot_diffs.append(diff[idx].mean())
+    boot_diffs = np.array(boot_diffs)
+    result["ci_95_low"] = np.percentile(boot_diffs, 2.5)
+    result["ci_95_high"] = np.percentile(boot_diffs, 97.5)
+    result["significant"] = result["ci_95_low"] > 0 or result["ci_95_high"] < 0
+
+    # Power analysis (for the observed effect size)
+    if result["cohens_d"] != 0 and n >= 3:
+        d = abs(result["cohens_d"])
+        crit = stats.t.ppf(0.975, df=n - 1)
+        ncp = d * np.sqrt(n)
+        result["power"] = 1 - stats.t.cdf(crit, df=n - 1, loc=ncp)
+
+        # Minimum n for 80% power
+        for target_n in range(3, 100):
+            crit_t = stats.t.ppf(0.975, df=target_n - 1)
+            ncp_t = d * np.sqrt(target_n)
+            pwr = 1 - stats.t.cdf(crit_t, df=target_n - 1, loc=ncp_t)
+            if pwr >= 0.80:
+                result["n_for_80_power"] = target_n
+                break
+    else:
+        result["power"] = None
+        result["n_for_80_power"] = None
+
+    return result
+
+
+def significance_summary(df, agents: list = None, agent_col: str = "agent",
+                         case_col: str = "case", score_col: str = "f1",
+                         min_shared: int = 2):
+    """Run paired tests for all agent pairs with sufficient shared cases.
+
+    Args:
+        df: DataFrame with scores
+        agents: List of agent codes to compare (None = all)
+        agent_col: Column identifying agents
+        case_col: Column identifying cases
+        score_col: Score column
+        min_shared: Minimum shared cases
+
+    Returns:
+        DataFrame with one row per valid agent pair
+    """
+    import pandas as pd
+    from itertools import combinations
+
+    if agents is None:
+        agents = sorted(df[agent_col].unique())
+
+    results = []
+    for a, b in combinations(agents, 2):
+        r = paired_test(df, a, b, agent_col, case_col, score_col)
+        if r is not None:
+            results.append(r)
+
+    if not results:
+        return pd.DataFrame()
+
+    return pd.DataFrame(results).sort_values("p_value_ttest", na_position="last")
