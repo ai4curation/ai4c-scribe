@@ -426,15 +426,48 @@ def score_all(analysis_dir: Path = Path("analysis"), use_cache: bool = True) -> 
     return all_records
 
 
-def records_to_dataframe(records: list[ScoreRecord]):
-    """Convert ScoreRecords to a pandas DataFrame."""
+def load_agents_config(ontology: str, analysis_dir: Path = Path("analysis")) -> dict:
+    """Load agents.yaml for an ontology.
+
+    Returns dict mapping handle -> agent config dict.
+
+    >>> agents = load_agents_config("go-ontology", Path("analysis"))
+    >>> "codex_g55_v9" in agents  # doctest: +SKIP
+    True
+    """
+    agents_path = analysis_dir / ontology / "agents.yaml"
+    if not agents_path.exists():
+        return {}
+    data = yaml.safe_load(agents_path.read_text())
+    return data.get("agents", {})
+
+
+def resolve_agent_handle(record: ScoreRecord, analysis_dir: Path = Path("analysis")) -> str:
+    """Resolve a ScoreRecord to its agent handle from agents.yaml.
+
+    Matches on (runtime, model, config_tag). Returns handle or
+    a generated fallback like 'codex/gpt-5.5/v9'.
+    """
+    agents = load_agents_config(record.ontology, analysis_dir)
+    for handle, cfg in agents.items():
+        if (cfg.get("runtime") == record.runtime and
+            cfg.get("model") == record.model and
+            cfg.get("config_tag") == record.agent_config_tag):
+            return handle
+    # Fallback: generate from components
+    return f"{record.runtime}/{record.model}/{record.agent_config_tag}"
+
+
+def records_to_dataframe(records: list[ScoreRecord], analysis_dir: Path = Path("analysis")):
+    """Convert ScoreRecords to a pandas DataFrame with agent handles."""
     import pandas as pd
     if not records:
         return pd.DataFrame(columns=[
             "ontology", "issue_number", "pr_number", "case_type", "difficulty",
             "agent_config_tag", "model", "runtime", "eval_repo_pr",
-            "f1", "precision", "recall", "jaccard", "case",
+            "f1", "precision", "recall", "jaccard", "case", "agent",
         ])
     df = pd.DataFrame([r.to_dict() for r in records])
     df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"].astype(str)
+    df["agent"] = [resolve_agent_handle(r, analysis_dir) for r in records]
     return df

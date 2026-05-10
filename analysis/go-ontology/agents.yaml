@@ -1,0 +1,90 @@
+# Agent configurations tested for GO ontology evaluation
+# Each entry maps a short handle to the full agent config tuple
+
+agents:
+  codex_g55_v9:
+    handle: codex_g55_v9
+    description: "Codex CLI with GPT-5.5, GO skills v9, high reasoning"
+    runtime: codex
+    model: gpt-5.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: high
+    skills: true
+    notes: "Native .agents/skills/ discovery, danger-full-access sandbox"
+
+  opencode_g55_v9:
+    handle: opencode_g55_v9
+    description: "OpenCode with GPT-5.5, GO skills v9, high reasoning"
+    runtime: opencode
+    model: gpt-5.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: high
+    skills: true
+    notes: "Reads .agents/ and .claude/ skills, OPENAI_API_KEY auth"
+
+  pi_g55_v9:
+    handle: pi_g55_v9
+    description: "Pi with GPT-5.5, GO skills v9, high reasoning"
+    runtime: pi
+    model: gpt-5.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: high
+    skills: true
+    notes: "Native .agents/skills/ discovery, requires Node 22+"
+
+  claude_son45_v9:
+    handle: claude_son45_v9
+    description: "Claude Code with Sonnet 4.5, GO skills v9"
+    runtime: claude
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    notes: "Native .claude/skills/ via Skill tool, OAuth auth"
+
+  claude_hai45_v9:
+    handle: claude_hai45_v9
+    description: "Claude Code with Haiku 4.5, GO skills v9"
+    runtime: claude
+    model: claude-haiku-4.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    notes: "Fast/cheap tier"
+
+  codex_g54_v9:
+    handle: codex_g54_v9
+    description: "Codex CLI with GPT-5.4, GO skills v9"
+    runtime: codex
+    model: gpt-5.4
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+
+  codex_g55_v8_noskills:
+    handle: codex_g55_v8_noskills
+    description: "Codex CLI with GPT-5.5, GO config v8 WITHOUT skills (ablation)"
+    runtime: codex
+    model: gpt-5.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v8-noskills
+    reasoning_effort: default
+    skills: false
+    notes: "Skills ablation experiment"
+
+  claude_son45_v8_noskills:
+    handle: claude_son45_v8_noskills
+    description: "Claude Code with Sonnet 4.5, GO config v8 WITHOUT skills (ablation)"
+    runtime: claude
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v8-noskills
+    reasoning_effort: default
+    skills: false
+    notes: "Skills ablation — Claude fails completely without skills"

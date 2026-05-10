@@ -1,0 +1,62 @@
+# Agent configurations tested for uberon evaluation
+
+agents:
+  codex_g55_v3:
+    handle: codex_g55_v3
+    description: "Codex CLI with GPT-5.5, uberon skills v3, high reasoning"
+    runtime: codex
+    model: gpt-5.5
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: high
+    skills: true
+
+  opencode_g55_v3:
+    handle: opencode_g55_v3
+    description: "OpenCode with GPT-5.5, uberon skills v3, high reasoning"
+    runtime: opencode
+    model: gpt-5.5
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: high
+    skills: true
+
+  pi_g55_v3:
+    handle: pi_g55_v3
+    description: "Pi with GPT-5.5, uberon skills v3, high reasoning"
+    runtime: pi
+    model: gpt-5.5
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: high
+    skills: true
+
+  claude_son45_v3:
+    handle: claude_son45_v3
+    description: "Claude Code with Sonnet 4.5, uberon skills v3"
+    runtime: claude
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+
+  claude_hai45_v3:
+    handle: claude_hai45_v3
+    description: "Claude Code with Haiku 4.5, uberon skills v3"
+    runtime: claude
+    model: claude-haiku-4.5
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+
+  codex_g54_v3:
+    handle: codex_g54_v3
+    description: "Codex CLI with GPT-5.4, uberon skills v3"
+    runtime: codex
+    model: gpt-5.4
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
