@@ -1,0 +1,43 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 7687e24eb3..cd583f0168 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -275063,8 +275063,10 @@ xref: SCTID:720812002 {source="MONDO:equivalentTo"}
+ xref: UMLS:C1864186 {source="MONDO:equivalentTo", source="MEDGEN:351066", source="MONDO:MEDGEN"}
+ is_a: MONDO:0015338 {source="Orphanet:85199"} ! syndromic craniosynostosis
+ is_a: MONDO:0018230 {source="MONDO:0019709-obsoleted", source="https://github.com/monarch-initiative/mondo/pull/2571/"} ! skeletal dysplasia
++is_a: MONDO:1060223 {source="PMID:39802771", source="https://clinicalgenome.org/affiliation/40060/"} ! RNU12-related minor spliceopathy disorder
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/19380 {source="OMIM:603116"} ! RNU12
+ property_value: curated_content_resource "https://www.malacards.org/card/cdags_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9963" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0011288
+@@ -604571,7 +604573,10 @@ xref: MEDGEN:1824070 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620208 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5774297 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1824070"}
+ is_a: MONDO:0015244 {source="DOID:0070414", source="OMIM:620208"} ! autosomal recessive cerebellar ataxia
++is_a: MONDO:1060223 {source="PMID:39802771", source="https://clinicalgenome.org/affiliation/40060/"} ! RNU12-related minor spliceopathy disorder
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/19380 {source="PMID:39802771", source="https://clinicalgenome.org/affiliation/40060/"} ! RNU12
+ property_value: curated_content_resource "https://www.malacards.org/card/spinocerebellar_ataxia_autosomal_recessive_33" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9963" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0859361
+@@ -659102,6 +659107,16 @@ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9956" xsd:anyURI
+ 
++[Term]
++id: MONDO:1060223
++name: RNU12-related minor spliceopathy disorder
++def: "Any hereditary disease caused by a variation in the RNU12 gene, resulting in abnormal splicing of pre-mRNA via the minor spliceosome. The phenotypic spectrum includes craniosynostosis-anal anomalies-porokeratosis (CDAGS) syndrome and autosomal recessive spinocerebellar ataxia 33." [https://orcid.org/0000-0002-7638-4659, PMID:39802771]
++synonym: "RNU12-related minor spliceopathy disorder" EXACT [https://clinicalgenome.org/affiliation/40060/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++is_a: MONDO:0003847 {source="PMID:39802771", source="https://clinicalgenome.org/affiliation/40060/"} ! hereditary disease
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/19380 {source="PMID:39802771", source="https://clinicalgenome.org/affiliation/40060/"} ! RNU12
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9963" xsd:anyURI
++
+ [Term]
+ id: MONDO:7770001
+ name: equine juvenile spinocerebellar ataxia, FDXR-related, horse

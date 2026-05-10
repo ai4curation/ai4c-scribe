@@ -1,0 +1,55 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 3f4dea1042..54f9817370 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -115279,8 +115279,10 @@ xref: SCTID:197710000 {source="DOID:10976"}
+ xref: SCTID:77182004 {source="EFO:0004254", source="DOID:10976", source="MONDO:equivalentTo"}
+ xref: UMLS:C0017665 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:42231"}
+ is_a: MONDO:0002462 {source="DOID:10976", source="MESH:D015433", source="NCIT:C34645"} ! glomerulonephritis
++is_a: MONDO:0700328 {source="PMID:41381622"} ! podocytopathy
+ relationship: disease_has_location UBERON:0005777 ! glomerular basement membrane
+ property_value: curated_content_resource "https://www.malacards.org/card/membranous_nephropathy" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0005377
+@@ -149461,8 +149463,10 @@ xref: SCTID:197592009 {source="DOID:10966"}
+ xref: SCTID:44785005 {source="EFO:1001020", source="DOID:10966", source="MONDO:equivalentTo"}
+ xref: UMLS:C0027721 {source="MEDGEN:10307", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0002462 {source="DOID:10966", source="NCIT:C34844"} ! glomerulonephritis
++is_a: MONDO:0700328 {source="PMID:17699461", source="PMID:25684864", source="PMID:38804512", source="PMID:41381622"} ! podocytopathy
+ relationship: excluded_subClassOf MONDO:0005377 {source="DOID:10966", source="https://orcid.org/0000-0001-5208-3432"} ! nephrotic syndrome
+ property_value: curated_content_resource "https://www.malacards.org/card/lipoid_nephrosis" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0006836
+@@ -583383,8 +583387,10 @@ xref: SCTID:236403004 {source="EFO:0004236", source="MONDO:equivalentTo", source
+ xref: SCTID:25821008 {source="DOID:1312"}
+ xref: UMLS:C0017668 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:4904"}
+ is_a: MONDO:0000490 {source="DOID:1312"} ! glomerulosclerosis
++is_a: MONDO:0700328 {source="PMID:17699461", source="PMID:25684864", source="PMID:38804512", source="PMID:41381622"} ! podocytopathy
+ property_value: curated_content_resource "https://www.malacards.org/card/focal_segmental_glomerulosclerosis" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-5208-3432
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0100314
+@@ -593048,6 +593054,17 @@ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.o
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/6119 {source="PMID:29408330"} ! IRF4
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/8090" xsd:anyURI
+ 
++[Term]
++id: MONDO:0700328
++name: podocytopathy
++def: "A glomerular disorder caused by the structural or functional impairment of podocytes, which leads to proteinuria and often nephrotic syndrome." [https://orcid.org/0009-0009-0876-0331, PMID:17699461, PMID:25684864, PMID:32792490, PMID:38804512, PMID:41381622]
++xref: SCTID:1367669003 {source="MONDO:equivalentTo"}
++is_a: MONDO:0019722 {source="PMID:17699461", source="PMID:25684864", source="PMID:41381622"} ! glomerular disorder
++intersection_of: MONDO:0019722 ! glomerular disorder
++intersection_of: disease_has_location CL:0000653
++relationship: disease_has_location CL:0000653 {source="PMID:17699461", source="PMID:25684864", source="PMID:32792490", source="PMID:41381622"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
++
+ [Term]
+ id: MONDO:0700330
+ name: PTEN harmartoma tumor syndrome with immune disorder

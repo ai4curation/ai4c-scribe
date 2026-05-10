@@ -1,0 +1,19 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb40..8babe163bc 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665275,6 +665275,14 @@ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9864" xsd:anyURI
+ 
++[Term]
++id: MONDO:1060215
++name: preneoplastic lesion
++def: "A precancerous condition characterized by accumulation of some molecular alterations necessary for malignant transformation in a clonal proliferation of cells, representing an intermediate stage in carcinogenesis with increased risk of progression to invasive neoplasia." [https://orcid.org/0000-0002-2336-2552, PMID:37775701, PMID:39754221, PMID:40624726, PMID:40684183]
++is_a: MONDO:0021074 {source="PMID:37775701", source="PMID:40684183", source="https://orcid.org/0000-0002-2336-2552"} ! precancerous condition
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9781" xsd:anyURI
++
+ [Term]
+ id: MONDO:7770001
+ name: equine juvenile spinocerebellar ataxia, FDXR-related, horse

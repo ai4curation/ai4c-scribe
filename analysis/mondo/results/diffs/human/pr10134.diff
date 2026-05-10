@@ -1,0 +1,18 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 07692c19ee..0fb072a040 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -659964,11 +659964,11 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:1060194
+-name: FAS-related autoimmune lymphoproliferative syndrome
++name: FAS-related autoimmune lymphoproliferative immune disorder
+ def: "An autoimmune lymphoproliferative syndrome that results from defective lymphocyte homoestasis, and is caused by variants in the FAS gene. It is characterized by non-malignant lymphoproliferation, autoimmune disease, and lifelong increased risk for both Hodgkin and non-Hodgkin lymphoma." [https://clinicalgenome.org/affiliation/40157/]
+ subset: gard_rare {source="GARD:0028187", source="MONDO:GARD"}
+ subset: rare
+-synonym: "FAS-related autoimmune lymphoproliferative syndrome" EXACT [https://clinicalgenome.org/affiliation/40157/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "FAS-related autoimmune lymphoproliferative immune disorder" EXACT [https://clinicalgenome.org/affiliation/40157/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ xref: GARD:0028187 {source="MONDO:GARD"}
+ is_a: MONDO:0017979 {source="https://clinicalgenome.org/affiliation/40157/"} ! autoimmune lymphoproliferative syndrome
+ intersection_of: MONDO:0017979 ! autoimmune lymphoproliferative syndrome

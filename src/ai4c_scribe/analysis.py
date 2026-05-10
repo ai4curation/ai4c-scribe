@@ -18,20 +18,17 @@ import yaml
 
 
 MODEL_SHORT = {
-    "claude-sonnet-4-5-20250929": "son45",
-    "claude-sonnet-4-6": "son46",
-    "claude-haiku-4-5-20251001": "hai45",
-    "claude-opus-4-7-20250623": "op47",
-    "claude-opus-4-6": "op46",
+    # Canonical model names (after normalization in scores.tsv)
+    "claude-sonnet-4-5": "son45",
+    "claude-haiku-4-5": "hai45",
+    "claude-opus-4-7": "op47",
     "gpt-5.4": "g54",
     "gpt-5.5": "g55",
-    "openai/gpt-5.4": "g54",
-    "openai/gpt-5.5": "g55",
     "codex-mini-latest": "cxm",
-    # Short forms from PR titles
-    "sonnet-4.5": "son45",
-    "haiku-4.5": "hai45",
-    "opus-4.7": "op47",
+    # Full dated versions (from older runs)
+    "claude-sonnet-4-5-20250929": "son45",
+    "claude-haiku-4-5-20251001": "hai45",
+    "claude-opus-4-7-20250623": "op47",
 }
 
 RUNTIME_SHORT = {"claude": "CC", "codex": "CX", "opencode": "OC", "pi": "PI"}

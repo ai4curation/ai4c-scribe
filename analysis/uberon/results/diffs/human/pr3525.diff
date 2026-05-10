@@ -1,0 +1,35 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index d1d6c46d4a..61c8ce1465 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -114747,7 +114747,7 @@ intersection_of: bounding_layer_of UBERON:0000483 ! epithelium
+ [Term]
+ id: UBERON:0006678
+ name: foramen secundum
+-def: "A foramen in the septum secundum." [Wikipedia:Foramen_secundum]
++def: "The foramen secundum is an opening in the septum primum, a precursor to the interatrial septum of the human heart. It is formed at a later developmental stage than the foramen primum. Its location is also different relative to the site of the foramen primum in the septum primum." [Wikipedia:Foramen_secundum]
+ synonym: "foramen secundum" RELATED OMO:0003011 [Wikipedia:Foramen_secundum]
+ synonym: "ostium secundum" EXACT OMO:0003011 [VHOG:0001471]
+ xref: EHDAA2:0001828
+@@ -114758,8 +114758,8 @@ xref: SCTID:308854001
+ xref: UMLS:C1517293 {source="ncithesaurus:Foramen_Secundum"}
+ xref: VHOG:0001471
+ xref: Wikipedia:Foramen_secundum
+-intersection_of: UBERON:0004111 ! anatomical conduit
+-intersection_of: part_of UBERON:0004155 ! atrial septum secundum
++is_a: UBERON:0004111 ! anatomical conduit
++relationship: part_of UBERON:0004154 ! atrial septum primum
+ property_value: external_definition "Second of the two openings to perforate the septum primum between the two atria of the embryonic heart. [TFD][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0001471", ontology="VHOG", source="http://bgee.unil.ch/", source="http://medical-dictionary.thefreedictionary.com/foramen"}
+ property_value: homology_notes "The tetrapod clade develops a complete atrial septum and loses the fifth aortic arch altogether. [ISBN:978-0030223693 Liem KF, Bemis WE, Walker WF, Grande L, Functional Anatomy of the Vertebrates: An Evolutionary Perspective (2001) p.620]; [about heart development] In the various tetrapod classes ontogenetic events essentially recapitulate the phylogenetic stages.[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0001471", ontology="VHOG", source="ISBN:978-0721676678 p.433", source="http://bgee.unil.ch/"}
+ 
+@@ -130525,8 +130525,8 @@ xref: SCTID:308852002
+ xref: UMLS:C1517292 {source="ncithesaurus:Foramen_Primum"}
+ xref: VHOG:0001470
+ xref: Wikipedia:Primary_interatrial_foramen
+-intersection_of: UBERON:0004111 ! anatomical conduit
+-intersection_of: part_of UBERON:0004154 ! atrial septum primum
++is_a: UBERON:0004111 ! anatomical conduit
++relationship: part_of UBERON:0004154 ! atrial septum primum
+ property_value: external_definition "First of the two openings to perforate the septum primum between the two atria of the embryonic heart. [TFD][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0001470", ontology="VHOG", source="http://bgee.unil.ch/", source="http://medical-dictionary.thefreedictionary.com/foramen"}
+ property_value: homology_notes "The tetrapod clade develops a complete atrial septum and loses the fifth aortic arch altogether. [ISBN:978-0030223693 Liem KF, Bemis WE, Walker WF, Grande L, Functional Anatomy of the Vertebrates: An Evolutionary Perspective (2001) p.620]; [about heart development] In the various tetrapod classes ontogenetic events essentially recapitulate the phylogenetic stages.[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0001470", ontology="VHOG", source="ISBN:978-0721676678 p.433", source="http://bgee.unil.ch/"}
+ 

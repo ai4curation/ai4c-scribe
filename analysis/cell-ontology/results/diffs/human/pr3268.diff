@@ -1,0 +1,41 @@
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 42d6ee51a..f460173e0 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -55,13 +55,13 @@ This includes instructions for editing the cl ontology.
+ - always commit in a branch, e.g. issue-NNN
+ - if there is an existing PR which you started then checkout that branch and continue, rather than starting a new PR (unless you explicitly want to abandon the original PR, e.g. it was on completely the wrong tracks)
+ - always make clear detailed commit messages, saying what you did and why
+-- always sign your commits `@dragon-ai-agent`
++- always sign your commits `GitHub Copilot`
+ - create PRs using `gh pr create ...`
+ - File PRs with clear descriptions, and sign your PR
+ 
+ ## Handling GitHub issues and requests
+ - Use `gh` to read and write issues/PRs
+-- Sign all commits and PRs as `@dragon-ai-agent`
++- Sign all commits and PRs as `GitHub Copilot`
+ 
+ ## TROUBLESHOOTING
+ 
+@@ -99,7 +99,7 @@ terms to "skip" the obsoleted term.
+ 
+ - Link back to the issue you are dealing with using the `term_tracker_item`
+ - All terms should have definitions, with at least one definition xref, ideally a PMID
+-- You can sign terms as `created_by: dragon-ai-agent`
++- You can sign terms as `dc:creator "GitHub Copilot"` only when creating new terms. You should not add yourself as a creator if you are editing existing terms.
+ 
+ ## Relationships
+ 
+diff --git a/src/sparql/illegal-annotation-property-violation.sparql b/src/sparql/illegal-annotation-property-violation.sparql
+index 7cb6cb3c4..defdf044f 100644
+--- a/src/sparql/illegal-annotation-property-violation.sparql
++++ b/src/sparql/illegal-annotation-property-violation.sparql
+@@ -31,6 +31,7 @@ SELECT DISTINCT ?term ?annotation WHERE {
+     <http://purl.org/dc/terms/description>,
+     <http://purl.org/dc/terms/source>,
+     <http://purl.org/dc/terms/contributor>,
++    <http://purl.org/dc/creator>,
+     <http://purl.org/spar/cito/citesAsAuthority>,
+     <http://www.geneontology.org/formats/oboInOwl#consider>,
+     <http://www.geneontology.org/formats/oboInOwl#creation_date>,

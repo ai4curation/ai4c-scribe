@@ -1,0 +1,21 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 819fd34156..07692c19ee 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -631093,6 +631093,16 @@ intersection_of: MONDO:0005583 {source="https://orcid.org/0000-0002-5002-8648"}
+ intersection_of: MONDO:0700097 MONDO:0019127 {source="https://orcid.org/0000-0002-5002-8648"} ! cross-species analog polymyositis
+ relationship: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/general/qc-single-child.sparql
+ 
++[Term]
++id: MONDO:1010204
++name: GPR161-related medulloblastoma predisposition
++def: "A predisposition to medulloblastoma, a tumor that originates in the cerebellum and dorsal brainstem, has a peak incidence in childhood, and makes up a large proportion of embryonal brain tumors due to a variation in the GPR161 gene." [https://clinicalgenome.org/affiliation/40157/]
++synonym: "GPR161-related medulloblastoma predisposition" EXACT [https://clinicalgenome.org/affiliation/40157/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++is_a: MONDO:0015356 {source="https://clinicalgenome.org/affiliation/40157/"} ! hereditary neoplastic syndrome
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/23694 {source="https://clinicalgenome.org/affiliation/40157/"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-5002-8648
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9877" xsd:anyURI
++
+ [Term]
+ id: MONDO:1010208
+ name: myofibrillar myopathy, non-human animal

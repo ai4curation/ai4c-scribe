@@ -1,0 +1,14 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index ebc698f0d..8b109e477 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -97418,7 +97418,8 @@ property_value: curator_notes "this class refers to the external portion and its
+ [Term]
+ id: UBERON:0005162
+ name: multi cell part structure
+-def: "A structure consisting of multiple cell components but which is not itself a cell and does not have (complete) cells as a part." [CARO:0001000]
++def: "A structure consisting mainly of cell components, rather than complete cells." [CARO:0001000]
++comment: Such a structure may contain some complete cells in addition to partial cells (e.g., glia in nervous system regions).
+ subset: upper_level
+ synonym: "cell part cluster" RELATED [FMA:83115]
+ synonym: "multi-cell-component structure" EXACT [CARO:0001000]
