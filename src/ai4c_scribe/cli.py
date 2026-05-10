@@ -75,6 +75,51 @@ def list_cases(directory: Path = typer.Argument(..., help="Directory of case stu
         )
 
 
+score_app = typer.Typer(help="Score evaluation runs.")
+app.add_typer(score_app, name="score")
+
+
+@score_app.command("all")
+def score_all_cmd(
+    analysis_dir: Path = typer.Option("analysis", help="Analysis directory"),
+    no_cache: bool = typer.Option(False, help="Ignore cached scores"),
+    output: Optional[Path] = typer.Option(None, "-o", help="Output TSV file (default: analysis/scores.tsv)"),
+):
+    """Score all evaluation runs across all ontologies."""
+    from ai4c_scribe.scoring import score_all, records_to_dataframe
+
+    records = score_all(analysis_dir=analysis_dir, use_cache=not no_cache)
+    df = records_to_dataframe(records)
+
+    out_path = output or (analysis_dir / "scores.tsv")
+    df.to_csv(out_path, sep="\t", index=False)
+    typer.echo(f"Scored {len(df)} runs -> {out_path}")
+    typer.echo(f"  By runtime: {df['runtime'].value_counts().to_dict()}")
+    typer.echo(f"  By model: {df['model'].value_counts().to_dict()}")
+
+
+@score_app.command("repo")
+def score_repo_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
+    analysis_dir: Path = typer.Option("analysis", help="Analysis directory"),
+    no_cache: bool = typer.Option(False, help="Ignore cached scores"),
+):
+    """Score evaluation runs for a single ontology."""
+    from ai4c_scribe.scoring import score_eval_repo, records_to_dataframe, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    records = score_eval_repo(ontology=ontology, analysis_dir=analysis_dir, use_cache=not no_cache, **cfg)
+    df = records_to_dataframe(records)
+
+    out_path = analysis_dir / ontology / "results" / "scores.tsv"
+    df.to_csv(out_path, sep="\t", index=False)
+    typer.echo(f"Scored {len(df)} runs -> {out_path}")
+
+
 @app.command()
 def extract(
     repo: Annotated[str, typer.Argument(help="Repository in owner/name format")],
