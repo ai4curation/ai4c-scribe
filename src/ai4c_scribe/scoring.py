@@ -423,7 +423,7 @@ EVAL_REPOS = {
     "cell-ontology": {
         "eval_repo": "eval-ont-agent-cl",
         "source_repo": "obophenotype/cell-ontology",
-        "metadiff_config": "generic",
+        "metadiff_config": "owl",
         "config_tag": "v3",
     },
     "uberon": {
