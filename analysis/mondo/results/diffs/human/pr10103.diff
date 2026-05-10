@@ -1,0 +1,28 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e49..f1d2fdc824 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -618921,15 +618921,23 @@ property_value: curated_content_resource "https://www.malacards.org/card/fibromu
+ [Term]
+ id: MONDO:0859152
+ name: neurodevelopmental disorder with cerebellar atrophy and motor dysfunction
++def: "A neurodevelopmental disorder caused by variation in the GEMIN5 gene, characterized by global developmental delay with prominent motor abnormalities, mainly axial hypotonia, gait ataxia, and appendicular spasticity." [OMIM:619333, PMID:33963192, PMID:38773790]
++comment: Affected individuals have cognitive impairment and speech delay; brain imaging shows cerebellar atrophy. The severity is variable. Other symptoms described include early‐infantile developmental and epileptic encephalopathies.
+ subset: doid {source="DOID:0070443"}
+ subset: omim {source="OMIM:619333"}
++synonym: "GEMIN5 disorder" EXACT [https://orcid.org/0000-0001-9310-0163, PMID:38773790]
++synonym: "GEMIN5-related neurodevelopmental disorder" EXACT [https://orcid.org/0000-0001-9310-0163, PMID:33963192]
++synonym: "NEDCAM" EXACT ABBREVIATION [OMIM:619333]
+ xref: DOID:0070443 {source="MONDO:equivalentTo"}
+ xref: MEDGEN:1781936 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:619333 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5543427 {source="MONDO:equivalentTo", source="MEDGEN:1781936", source="MONDO:MEDGEN"}
+ is_a: MONDO:0700092 {source="OMIM:619333"} ! neurodevelopmental disorder
++intersection_of: MONDO:0700092 ! neurodevelopmental disorder
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20043 ! GEMIN5
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20043 {source="OMIM:619333"} ! GEMIN5
+ property_value: curated_content_resource "https://www.malacards.org/card/neurodevelopmental_disorder_with_cerebellar_atrophy_and_motor_dysfunction" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9862" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0859154

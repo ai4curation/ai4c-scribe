@@ -1,0 +1,33 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 961e08ab9..017033244 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -90265,20 +90265,14 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0009095
+-name: aromatic amino acid biosynthetic process, prephenate pathway
+-namespace: biological_process
+-def: "The chemical reactions and pathways resulting in the formation of phenylalanine and tyrosine from other compounds, including chorismate, via the intermediate prephenate." [GOC:mah, ISBN:0471331309, MetaCyc:PWY-3481]
+-synonym: "aromatic amino acid family anabolism, prephenate pathway" EXACT []
+-synonym: "aromatic amino acid family biosynthetic process via prephenate" EXACT [GOC:pr]
+-synonym: "aromatic amino acid family biosynthetic process via prephenate(2-)" EXACT [GOC:pr]
+-synonym: "aromatic amino acid family formation, prephenate pathway" EXACT []
+-synonym: "aromatic amino acid family synthesis, prephenate pathway" EXACT []
+-xref: MetaCyc:PWY-3481
+-is_a: GO:0009073 ! aromatic amino acid biosynthetic process
+-intersection_of: GO:0009058 ! biosynthetic process
+-intersection_of: has_intermediate CHEBI:57852 ! prephenate(2-)
+-intersection_of: has_primary_output CHEBI:33856 ! aromatic amino acid
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31091" xsd:anyURI
++name: obsolete aromatic amino acid biosynthetic process, prephenate pathway
++namespace: biological_process
++def: "OBSOLETE. The chemical reactions and pathways resulting in the formation of phenylalanine and tyrosine from other compounds, including chorismate, via the intermediate prephenate." [GOC:mah, ISBN:0471331309, MetaCyc:PWY-3481]
++comment: This term was obsoleted because it represents a pre-composed pathway combining L-phenylalanine and L-tyrosine biosynthesis. MetaCyc:PWY-3481 is the 'superpathway of L-phenylalanine and L-tyrosine biosynthesis' and is composed of two separate pathways (PWY-3462 L-phenylalanine biosynthesis II and PWY-3461 L-tyrosine biosynthesis II) which are already represented as narrowMatch xrefs on GO:0009094 (L-phenylalanine biosynthetic process) and GO:0006571 (L-tyrosine biosynthetic process), respectively. Annotations should be transferred to the appropriate consider term(s).
++consider: GO:0006571
++consider: GO:0009094
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32005" xsd:anyURI
++is_obsolete: true
+ 
+ [Term]
+ id: GO:0009097

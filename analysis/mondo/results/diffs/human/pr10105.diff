@@ -1,0 +1,23 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e49..d7a85ffe7b 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665193,6 +665193,18 @@ is_a: MONDO:0006949 {source="PMID:29859199", source="https://orcid.org/0000-0001
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9849" xsd:anyURI
+ 
++[Term]
++id: MONDO:1060214
++name: SYCE1-related gametogenic failure
++def: "An infertility disorder caused by variation in the SYCE1 gene. Affected males may present with non-obstructive azoospermia due to maturation arrest or meiotic failure, while affected females may present with primary ovarian insufficiency." [https://clinicalgenome.org/affiliation/40073/, PMID:32402064, PMID:35718780]
++synonym: "SYCE1-related gametogenic failure" EXACT [https://clinicalgenome.org/affiliation/40073/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++is_a: MONDO:0005047 {source="https://clinicalgenome.org/affiliation/40073/"} ! infertility disorder
++intersection_of: MONDO:0005047 ! infertility disorder
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 ! SYCE1
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 {source="PMID:32402064", source="PMID:35718780", source="https://clinicalgenome.org/affiliation/40073/"} ! SYCE1
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9864" xsd:anyURI
++
+ [Term]
+ id: MONDO:7770001
+ name: equine juvenile spinocerebellar ataxia, FDXR-related, horse

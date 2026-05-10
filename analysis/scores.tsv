@@ -1,276 +1,329 @@
-ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	111		0.636	0.583	0.7	0.467
-go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	opencode	110		0.786	0.786	0.786	0.647
-go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	opencode	109		0.765	0.867	0.684	0.619
-go-ontology	31923	31938	other	simple	v9	gpt-5.5	opencode	108		1.0	1.0	1.0	1.0
-go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	opencode	107		0.842	0.8	0.889	0.727
-go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	opencode	106		0.965	0.965	0.965	0.932
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	105		0.636	0.583	0.7	0.467
-go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	opencode	104		0.818	0.9	0.75	0.692
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	opencode	103		0.696	0.889	0.571	0.533
-go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	opencode	102		0.941	1.0	0.889	0.889
-go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	101		0.964	0.952	0.976	0.93
-go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	opencode	100		0.938	0.914	0.964	0.883
-go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	opencode	99		0.947	0.9	1.0	0.9
-go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	opencode	98		1.0	1.0	1.0	1.0
-go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	opencode	97		1.0	1.0	1.0	1.0
-go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	opencode	96		1.0	1.0	1.0	1.0
-go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	opencode	95		0.857	0.9	0.818	0.75
-go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	opencode	94		0.667	0.714	0.625	0.5
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	93		0.696	0.667	0.727	0.533
-go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	opencode	92		0.005	0.4	0.002	0.002
-go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	opencode	91		0.786	0.786	0.786	0.647
-go-ontology	31923	31938	other	simple	v9	gpt-5.5	opencode	90		1.0	1.0	1.0	1.0
-go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	opencode	89		0.765	0.867	0.684	0.619
-go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	opencode	88		0.842	0.8	0.889	0.727
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	87		0.696	0.667	0.727	0.533
-go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	86		0.964	0.952	0.976	0.93
-go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	opencode	85		0.965	0.965	0.965	0.932
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	opencode	84		0.696	0.889	0.571	0.533
-go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	opencode	83		0.818	0.9	0.75	0.692
-go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	opencode	82		0.938	0.914	0.964	0.883
-go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	opencode	81		0.941	1.0	0.889	0.889
-go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	opencode	80		1.0	1.0	1.0	1.0
-go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	opencode	79		0.947	0.9	1.0	0.9
-go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	opencode	78		1.0	1.0	1.0	1.0
-go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	opencode	77		1.0	1.0	1.0	1.0
-go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	opencode	76		0.667	0.714	0.625	0.5
-go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	opencode	75		0.857	0.9	0.818	0.75
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	74		0.636	0.583	0.7	0.467
-go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	codex	73		1.0	1.0	1.0	1.0
-go-ontology	31923	31938	other	simple	v9	gpt-5.5	codex	72		0.667	0.667	0.667	0.5
-go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	codex	71		0.867	0.867	0.867	0.765
-go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	70		0.636	0.583	0.7	0.467
-go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	codex	69		0.842	0.8	0.889	0.727
-go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	codex	68		0.941	0.952	0.93	0.889
-go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	opencode	67		0.005	0.4	0.002	0.002
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	66		0.8	0.889	0.727	0.667
-go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	codex	65		0.965	0.965	0.965	0.932
-go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	codex	64		0.005	0.4	0.002	0.002
-go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	codex	63		0.956	0.931	0.982	0.915
-go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	codex	62		0.857	0.9	0.818	0.75
-go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	codex	61		0.826	0.95	0.731	0.704
-go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	codex	60		0.857	0.857	0.857	0.75
-go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	codex	59		0.8	0.8	0.8	0.667
-go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	codex	58		0.8	0.667	1.0	0.667
-go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	codex	57		1.0	1.0	1.0	1.0
-go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	codex	56		0.857	0.75	1.0	0.75
-go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	codex	55		0.941	1.0	0.889	0.889
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	54		0.8	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	opencode	51		0.762	0.889	0.667	0.615
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	opencode	50		0.762	0.889	0.667	0.615
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	46		0.8	0.889	0.727	0.667
-go-ontology	31935	31946	reclassification	medium	v9	gpt-5.4	codex	45		0.72	0.9	0.6	0.562
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40		0.8	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38		0.762	0.889	0.667	0.615
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37		0.8	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v9	claude-haiku-4-5	claude	33		0.8	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32		0.8	0.889	0.727	0.667
-go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4-5	claude	31		0.8	0.889	0.727	0.667
-cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	73		0.103	0.056	0.571	0.054
-cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	72		0.444	0.353	0.6	0.286
-cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	71		0.897	0.867	0.929	0.812
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	70		0.667	0.75	0.6	0.5
-cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	69		0.614	0.558	0.683	0.443
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	68		0.0	0.0	0.0	0.0
-cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	67		0.526	0.625	0.455	0.357
-cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	66		0.0	0.0	0.0	0.0
-cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	65		0.643	0.692	0.6	0.474
-cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	64		0.8	1.0	0.667	0.667
-cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	62		0.0	0.0	0.0	0.0
-cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	opencode	61		1.0	1.0	1.0	1.0
-cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	60		0.381	0.267	0.667	0.235
-cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	59		0.545	0.529	0.562	0.375
-cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	58		0.0	0.0	0.0	0.0
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	57		0.0	0.0	0.0	0.0
-cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	56		0.5	0.5	0.5	0.333
-cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	55		0.316	0.25	0.429	0.188
-cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	54		0.103	0.056	0.571	0.054
-cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	53		0.897	0.867	0.929	0.812
-cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	52		0.444	0.353	0.6	0.286
-cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	51		0.614	0.558	0.683	0.443
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	50		0.667	0.75	0.6	0.5
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	49		0.0	0.0	0.0	0.0
-cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	48		0.0	0.0	0.0	0.0
-cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	47		0.526	0.625	0.455	0.357
-cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	46		0.643	0.692	0.6	0.474
-cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	44		0.8	1.0	0.667	0.667
-cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	43		0.0	0.0	0.0	0.0
-cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	42		0.381	0.267	0.667	0.235
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	41		0.0	0.0	0.0	0.0
-cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	40		0.545	0.529	0.562	0.375
-cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	39		0.0	0.0	0.0	0.0
-cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	38		0.5	0.5	0.5	0.333
-cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	37		0.316	0.25	0.429	0.188
-cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	codex	36		0.0	0.0	0.0	0.0
-cell-ontology	3447	3448	other	medium	v3	gpt-5.5	codex	35		0.444	0.353	0.6	0.286
-cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	codex	34		0.349	0.733	0.229	0.212
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	33		0.667	0.75	0.6	0.5
-cell-ontology	3408	3522	other	hard	v3	gpt-5.5	codex	32		0.559	0.494	0.644	0.388
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	codex	31		0.0	0.0	0.0	0.0
-cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	codex	30		0.0	0.0	0.0	0.0
-cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	codex	29		0.0	0.0	0.0	0.0
-cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	codex	28		0.4	0.471	0.348	0.25
-cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	codex	27		0.593	0.615	0.571	0.421
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	26		0.0	0.0	0.0	0.0
-cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	codex	24		0.667	1.0	0.5	0.5
-cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	codex	23		0.0	0.0	0.0	0.0
-cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	codex	22		0.333	0.5	0.25	0.2
-cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	codex	21		0.667	1.0	0.5	0.5
-cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	codex	20		0.214	0.133	0.545	0.12
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	19		0.667	0.75	0.6	0.5
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	18		0.6	0.75	0.5	0.429
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	17		0.75	0.75	0.75	0.6
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	16		0.6	0.75	0.5	0.429
-cell-ontology	3454	3555	axiom_repair	medium	v3	claude-sonnet-4-5	claude	15		0.75	0.75	0.75	0.6
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.4	codex	14		0.0	0.0	0.0	0.0
-cell-ontology	3196	3248	new_term	medium	v3	gpt-5.4	codex	13		0.2	0.188	0.214	0.111
-cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	10		0.0	0.0	0.0	0.0
-cell-ontology	3454	3555	axiom_repair	medium	v3	claude-haiku-4-5	claude	7		0.75	0.75	0.75	0.6
-cell-ontology	3519	3520	new_term	simple	v3	gpt-5.4	codex	6		0.333	0.429	0.273	0.2
-cell-ontology	3519	3520	new_term	simple	v3	claude-haiku-4-5	claude	5		0.0	0.0	0.0	0.0
-cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.4	codex	4		0.667	0.75	0.6	0.5
-cell-ontology	3519	3520	new_term	simple	v3	claude-sonnet-4-5	claude	3		0.625	0.714	0.556	0.455
-cell-ontology	3224	3225	obsoletion	medium	v3	gpt-5.4	codex	2		0.0	0.0	0.0	0.0
-cell-ontology	3224	3225	obsoletion	medium	v3	claude-sonnet-4-5	claude	1		0.0	0.0	0.0	0.0
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	71		0.0	0.0	0.0	0.0
-uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	opencode	70		0.857	1.0	0.75	0.75
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	69		0.875	0.913	0.84	0.778
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	68		0.333	0.333	0.333	0.2
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	67		0.544	0.519	0.571	0.373
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	66		0.5	0.5	0.5	0.333
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	65		0.286	0.286	0.286	0.167
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	64		0.476	0.556	0.417	0.312
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	63		0.4	0.5	0.333	0.25
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	62		0.0	0.0	0.0	0.0
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	61		1.0	1.0	1.0	1.0
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	60		0.092	0.115	0.077	0.048
-uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	59		0.167	0.105	0.4	0.091
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	58		0.429	0.429	0.429	0.273
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	57		0.308	0.25	0.4	0.182
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	56		0.154	1.0	0.083	0.083
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	55		0.0	0.0	0.0	0.0
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	54		0.0	0.0	0.0	0.0
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	53		0.468	0.329	0.812	0.306
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	52		0.875	0.913	0.84	0.778
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	51		0.333	0.333	0.333	0.2
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	50		0.544	0.519	0.571	0.373
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	48		0.5	0.5	0.5	0.333
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	47		0.286	0.286	0.286	0.167
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	46		1.0	1.0	1.0	1.0
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	44		0.4	0.5	0.333	0.25
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	43		0.476	0.556	0.417	0.312
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	42		0.0	0.0	0.0	0.0
-uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	41		0.167	0.105	0.4	0.091
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	40		0.092	0.115	0.077	0.048
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	39		0.429	0.429	0.429	0.273
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	38		0.308	0.25	0.4	0.182
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	37		0.154	1.0	0.083	0.083
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	36		0.0	0.0	0.0	0.0
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	35		0.468	0.329	0.812	0.306
-uberon	3457	3569	new_term	medium	v3	gpt-5.5	codex	34		0.626	0.604	0.649	0.455
-uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	codex	33		0.2	0.333	0.143	0.111
-uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	codex	32		0.3	1.0	0.176	0.176
-uberon	3495	3542	new_term	hard	v3	gpt-5.5	codex	31		0.235	0.222	0.25	0.133
-uberon	3447	3560	reclassification	medium	v3	gpt-5.5	codex	30		0.211	1.0	0.118	0.118
-uberon	3531	3532	documentation	simple	v3	gpt-5.5	codex	29		0.4	0.5	0.333	0.25
-uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	codex	28		0.5	0.5	0.5	0.333
-uberon	3003	3511	axiom_repair	medium	v3	gpt-5.5	codex	27		0.4	0.5	0.333	0.25
-uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	codex	26		0.286	0.286	0.286	0.167
-uberon	3446	3507	new_term	medium	v3	gpt-5.5	codex	25		0.5	0.667	0.4	0.333
-uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	codex	24		0.333	1.0	0.2	0.2
-uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	codex	23		0.0	0.0	0.0	0.0
-uberon	3414	3499	new_term	hard	v3	gpt-5.5	codex	22		0.169	0.192	0.152	0.093
-uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	codex	21		0.231	0.429	0.158	0.13
-uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	codex	20		0.462	0.375	0.6	0.3
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	codex	19		0.182	1.0	0.1	0.1
-uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	codex	18		0.0	0.0	0.0	0.0
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	codex	17		0.473	0.329	0.839	0.31
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	15		0.875	0.913	0.84	0.778
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	14		0.917	0.957	0.88	0.846
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.4	codex	13		0.894	0.913	0.875	0.808
-uberon	3454	3455	axiom_repair	hard	v3	gpt-5.4	codex	12		0.473	0.329	0.839	0.31
-uberon	3475	3477	axiom_repair	medium	v3	gpt-5.4	codex	11		0.1	1.0	0.053	0.053
-uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	codex	9		0.917	0.957	0.88	0.846
-uberon	3682	3683	synonym_update	simple	v3	claude-haiku-4-5	claude	6		0.333	0.217	0.714	0.2
-uberon	3637	3638	new_term	medium	v3	claude-sonnet-4-5	claude	3		0.842	0.889	0.8	0.727
-uberon	3682	3683	synonym_update	simple	v3	claude-sonnet-4-5	claude	1		0.4	0.261	0.857	0.25
-mondo	9703	9770	reclassification	hard	v3	gpt-5.5	opencode	91		0.268	0.347	0.218	0.155
-mondo	5726	10155	new_term	hard	v3	gpt-5.5	opencode	90		1.0	1.0	1.0	1.0
-mondo	9707	9745	new_term	hard	v3	gpt-5.5	opencode	89		0.311	0.292	0.333	0.184
-mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	opencode	88		0.003	0.002	0.8	0.002
-mondo	9493	9726	reclassification	simple	v3	gpt-5.5	opencode	87		0.5	0.5	0.5	0.333
-mondo	9963	10222	new_term	medium	v3	gpt-5.5	opencode	86		0.583	0.7	0.5	0.412
-mondo	9859	10219	reclassification	hard	v3	gpt-5.5	opencode	85		0.091	0.049	0.667	0.048
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	84		0.667	0.667	0.667	0.5
-mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	opencode	83		0.921	0.906	0.935	0.853
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	opencode	82		0.741	0.667	0.833	0.588
-mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	opencode	81		0.9	0.818	1.0	0.818
-mondo	9749	10134	synonym_update	simple	v3	gpt-5.5	opencode	80		1.0	1.0	1.0	1.0
-mondo	10149	10156	new_term	medium	v3	gpt-5.5	opencode	79		0.476	0.417	0.556	0.312
-mondo	9877	10123	new_term	medium	v3	gpt-5.5	opencode	78		0.545	0.667	0.462	0.375
-mondo	9873	10126	new_term	medium	v3	gpt-5.5	opencode	77		0.5	0.5	0.5	0.333
-mondo	9861	10113	other	medium	v3	gpt-5.5	opencode	76		0.378	0.368	0.389	0.233
-mondo	9937	10112	new_term	medium	v3	gpt-5.5	opencode	75		0.5	0.5	0.5	0.333
-mondo	9703	9770	reclassification	hard	v3	gpt-5.5	opencode	74		0.268	0.347	0.218	0.155
-mondo	9781	10111	new_term	simple	v3	gpt-5.5	opencode	73		0.571	0.571	0.571	0.4
-mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	opencode	72		0.414	0.854	0.273	0.261
-mondo	5726	10155	new_term	hard	v3	gpt-5.5	opencode	71		1.0	1.0	1.0	1.0
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	70		0.722	0.765	0.684	0.565
-mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	opencode	69		0.003	0.002	0.8	0.002
-mondo	9707	9745	new_term	hard	v3	gpt-5.5	opencode	68		0.311	0.292	0.333	0.184
-mondo	9963	10222	new_term	medium	v3	gpt-5.5	opencode	67		0.583	0.7	0.5	0.412
-mondo	9493	9726	reclassification	simple	v3	gpt-5.5	opencode	66		0.5	0.5	0.5	0.333
-mondo	9859	10219	reclassification	hard	v3	gpt-5.5	opencode	65		0.091	0.049	0.667	0.048
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	64		0.667	0.667	0.667	0.5
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	opencode	63		0.741	0.667	0.833	0.588
-mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	opencode	62		0.921	0.906	0.935	0.853
-mondo	10149	10156	new_term	medium	v3	gpt-5.5	opencode	61		0.476	0.417	0.556	0.312
-mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	opencode	60		0.9	0.818	1.0	0.818
-mondo	9877	10123	new_term	medium	v3	gpt-5.5	opencode	59		0.545	0.667	0.462	0.375
-mondo	9873	10126	new_term	medium	v3	gpt-5.5	opencode	58		0.5	0.5	0.5	0.333
-mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	opencode	57		0.414	0.854	0.273	0.261
-mondo	9937	10112	new_term	medium	v3	gpt-5.5	opencode	56		0.5	0.5	0.5	0.333
-mondo	9861	10113	other	medium	v3	gpt-5.5	opencode	55		0.378	0.368	0.389	0.233
-mondo	9781	10111	new_term	simple	v3	gpt-5.5	opencode	54		0.571	0.571	0.571	0.4
-mondo	9703	9770	reclassification	hard	v3	gpt-5.5	codex	53		0.252	0.286	0.226	0.144
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	52		0.583	0.583	0.583	0.412
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	51		0.722	0.765	0.684	0.565
-mondo	9963	10222	new_term	medium	v3	gpt-5.5	codex	50		0.294	0.5	0.208	0.172
-mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	codex	49		0.003	0.002	0.8	0.002
-mondo	9707	9745	new_term	hard	v3	gpt-5.5	codex	48		0.308	0.25	0.4	0.182
-mondo	9493	9726	reclassification	simple	v3	gpt-5.5	codex	46		0.5	0.5	0.5	0.333
-mondo	9859	10219	reclassification	hard	v3	gpt-5.5	codex	45		0.233	0.171	0.368	0.132
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	codex	44		0.741	0.667	0.833	0.588
-mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	codex	43		0.952	0.938	0.968	0.909
-mondo	10149	10156	new_term	medium	v3	gpt-5.5	codex	42		0.364	0.333	0.4	0.222
-mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	codex	41		0.927	0.864	1.0	0.864
-mondo	9873	10126	new_term	medium	v3	gpt-5.5	codex	40		0.4	0.417	0.385	0.25
-mondo	9877	10123	new_term	medium	v3	gpt-5.5	codex	39		0.455	0.556	0.385	0.294
-mondo	9861	10113	other	medium	v3	gpt-5.5	codex	38		0.312	0.263	0.385	0.185
-mondo	9749	10134	synonym_update	simple	v3	gpt-5.5	codex	37		1.0	1.0	1.0	1.0
-mondo	9937	10112	new_term	medium	v3	gpt-5.5	codex	36		0.5	0.5	0.5	0.333
-mondo	9781	10111	new_term	simple	v3	gpt-5.5	codex	35		0.571	0.571	0.571	0.4
-mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	codex	34		0.412	0.854	0.271	0.259
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	33		0.757	0.824	0.7	0.609
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	32		0.545	0.5	0.6	0.375
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	31		0.812	0.765	0.867	0.684
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	29		0.583	0.583	0.583	0.412
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	28		0.765	0.765	0.765	0.619
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	27		0.757	0.824	0.7	0.609
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	26		0.698	0.882	0.577	0.536
-mondo	9771	10102	obsoletion	simple	v3	claude-sonnet-4-5	claude	25		0.667	0.824	0.56	0.5
-mondo	9771	10102	obsoletion	simple	v3	claude-haiku-4-5	claude	24		0.579	0.647	0.524	0.407
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	21		0.538	0.583	0.5	0.368
-mondo	9937	10112	new_term	medium	v3	gpt-5.4	codex	20		0.5	0.583	0.438	0.333
-mondo	9771	10102	obsoletion	simple	v3	gpt-5.4	codex	19		0.562	0.529	0.6	0.391
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	16		0.538	0.583	0.5	0.368
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	15		0.462	0.5	0.429	0.3
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	14		0.4	0.267	0.8	0.25
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	11		0.609	0.583	0.636	0.438
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	8		0.006	1.0	0.003	0.003
-mondo	9956	10214	new_term	medium	v3	claude-sonnet-4-5	claude	6		0.006	1.0	0.003	0.003
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	5		0.4	0.267	0.8	0.25
-mondo	9892	10206	synonym_update	simple	v3	claude-haiku-4-5	claude	3		0.4	0.267	0.8	0.25
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	2		0.462	0.5	0.429	0.3
-mondo	9956	10214	new_term	medium	v3	claude-sonnet-4-5	claude	1		0.696	0.667	0.727	0.533
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	run_id	f1	precision	recall	jaccard	case
+go-ontology	32018	32021	obsoletion	simple	v9	gpt-5.5	opencode	171		0.0	0.0	0.0	0.0	go-ontology#32018
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	170		1.0	1.0	1.0	1.0	go-ontology#31882
+go-ontology	31601	32007	synonym_update	simple	v9	gpt-5.5	opencode	169		0.5	1.0	0.333	0.333	go-ontology#31601
+go-ontology	31877	31973	obsoletion	hard	v9	gpt-5.5	opencode	164		0.553	0.458	0.698	0.382	go-ontology#31877
+go-ontology	32005	32026	obsoletion	medium	v9	gpt-5.5	opencode	163		0.927	0.905	0.95	0.864	go-ontology#32005
+go-ontology	31966	32003	obsoletion	medium	v9	gpt-5.5	opencode	161		0.889	0.889	0.889	0.8	go-ontology#31966
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	158		1.0	1.0	1.0	1.0	go-ontology#31882
+go-ontology	31963	32006	synonym_update	simple	v9	gpt-5.5	opencode	157		0.0	0.0	0.0	0.0	go-ontology#31963
+go-ontology	31965	31971	reclassification	hard	v9	gpt-5.5	opencode	155		0.769	0.769	0.769	0.625	go-ontology#31965
+go-ontology	31962	31970	axiom_repair	medium	v9	gpt-5.5	opencode	154		0.818	0.9	0.75	0.692	go-ontology#31962
+go-ontology	32018	32021	obsoletion	simple	v9	gpt-5.5	opencode	153		0.0	0.0	0.0	0.0	go-ontology#32018
+go-ontology	31956	31960	obsoletion	simple	v9	gpt-5.5	opencode	151		0.9	0.9	0.9	0.818	go-ontology#31956
+go-ontology	31876	31953	obsoletion	simple	v9	gpt-5.5	opencode	150		1.0	1.0	1.0	1.0	go-ontology#31876
+go-ontology	31877	31973	obsoletion	hard	v9	gpt-5.5	opencode	146		0.553	0.458	0.698	0.382	go-ontology#31877
+go-ontology	32005	32026	obsoletion	medium	v9	gpt-5.5	opencode	145		0.927	0.905	0.95	0.864	go-ontology#32005
+go-ontology	31966	32003	obsoletion	medium	v9	gpt-5.5	opencode	141		0.889	0.889	0.889	0.8	go-ontology#31966
+go-ontology	31963	32006	synonym_update	simple	v9	gpt-5.5	opencode	140		0.0	0.0	0.0	0.0	go-ontology#31963
+go-ontology	31601	32007	synonym_update	simple	v9	gpt-5.5	opencode	139		0.5	1.0	0.333	0.333	go-ontology#31601
+go-ontology	32018	32021	obsoletion	simple	v9	gpt-5.5	codex	138		0.0	0.0	0.0	0.0	go-ontology#32018
+go-ontology	31965	31971	reclassification	hard	v9	gpt-5.5	opencode	136		0.769	0.769	0.769	0.625	go-ontology#31965
+go-ontology	31962	31970	axiom_repair	medium	v9	gpt-5.5	opencode	134		0.818	0.9	0.75	0.692	go-ontology#31962
+go-ontology	31956	31960	obsoletion	simple	v9	gpt-5.5	opencode	132		0.9	0.9	0.9	0.818	go-ontology#31956
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	codex	131		1.0	1.0	1.0	1.0	go-ontology#31882
+go-ontology	31877	31973	obsoletion	hard	v9	gpt-5.5	codex	130		0.552	0.457	0.697	0.381	go-ontology#31877
+go-ontology	31876	31953	obsoletion	simple	v9	gpt-5.5	opencode	129		1.0	1.0	1.0	1.0	go-ontology#31876
+go-ontology	32005	32026	obsoletion	medium	v9	gpt-5.5	codex	127		0.927	0.905	0.95	0.864	go-ontology#32005
+go-ontology	31962	31970	axiom_repair	medium	v9	gpt-5.5	codex	126		0.818	0.9	0.75	0.692	go-ontology#31962
+go-ontology	31966	32003	obsoletion	medium	v9	gpt-5.5	codex	125		0.889	0.889	0.889	0.8	go-ontology#31966
+go-ontology	31963	32006	synonym_update	simple	v9	gpt-5.5	codex	124		0.0	0.0	0.0	0.0	go-ontology#31963
+go-ontology	31965	31971	reclassification	hard	v9	gpt-5.5	codex	122		1.0	1.0	1.0	1.0	go-ontology#31965
+go-ontology	31601	32007	synonym_update	simple	v9	gpt-5.5	codex	119		0.667	1.0	0.5	0.5	go-ontology#31601
+go-ontology	31876	31953	obsoletion	simple	v9	gpt-5.5	codex	116		1.0	1.0	1.0	1.0	go-ontology#31876
+go-ontology	31956	31960	obsoletion	simple	v9	gpt-5.5	codex	115		0.9	0.9	0.9	0.818	go-ontology#31956
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	111		0.636	0.583	0.7	0.467	go-ontology#31295
+go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	opencode	110		0.786	0.786	0.786	0.647	go-ontology#27593
+go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	opencode	109		0.765	0.867	0.684	0.619	go-ontology#32046
+go-ontology	31923	31938	other	simple	v9	gpt-5.5	opencode	108		1.0	1.0	1.0	1.0	go-ontology#31923
+go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	opencode	107		0.842	0.8	0.889	0.727	go-ontology#31902
+go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	opencode	106		0.965	0.965	0.965	0.932	go-ontology#31916
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	105		0.636	0.583	0.7	0.467	go-ontology#31295
+go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	opencode	104		0.818	0.9	0.75	0.692	go-ontology#31945
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	opencode	103		0.696	0.889	0.571	0.533	go-ontology#31961
+go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	opencode	102		0.941	1.0	0.889	0.889	go-ontology#30894
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	101		1.0	1.0	1.0	1.0	go-ontology#31882
+go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	opencode	100		0.938	0.914	0.964	0.883	go-ontology#31969
+go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	opencode	99		0.947	0.9	1.0	0.9	go-ontology#31984
+go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	opencode	98		1.0	1.0	1.0	1.0	go-ontology#31967
+go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	opencode	97		1.0	1.0	1.0	1.0	go-ontology#31981
+go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	opencode	96		1.0	1.0	1.0	1.0	go-ontology#31964
+go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	opencode	95		0.857	0.9	0.818	0.75	go-ontology#31935
+go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	opencode	94		0.667	0.714	0.625	0.5	go-ontology#31636
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	93		0.696	0.667	0.727	0.533	go-ontology#31295
+go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	opencode	92		0.005	0.4	0.002	0.002	go-ontology#31670
+go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	opencode	91		0.786	0.786	0.786	0.647	go-ontology#27593
+go-ontology	31923	31938	other	simple	v9	gpt-5.5	opencode	90		1.0	1.0	1.0	1.0	go-ontology#31923
+go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	opencode	89		0.765	0.867	0.684	0.619	go-ontology#32046
+go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	opencode	88		0.842	0.8	0.889	0.727	go-ontology#31902
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	opencode	87		0.696	0.667	0.727	0.533	go-ontology#31295
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	opencode	86		0.964	0.952	0.976	0.93	go-ontology#31882
+go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	opencode	85		0.965	0.965	0.965	0.932	go-ontology#31916
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	opencode	84		0.696	0.889	0.571	0.533	go-ontology#31961
+go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	opencode	83		0.818	0.9	0.75	0.692	go-ontology#31945
+go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	opencode	82		0.938	0.914	0.964	0.883	go-ontology#31969
+go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	opencode	81		0.941	1.0	0.889	0.889	go-ontology#30894
+go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	opencode	80		1.0	1.0	1.0	1.0	go-ontology#31981
+go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	opencode	79		0.947	0.9	1.0	0.9	go-ontology#31984
+go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	opencode	78		1.0	1.0	1.0	1.0	go-ontology#31964
+go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	opencode	77		1.0	1.0	1.0	1.0	go-ontology#31967
+go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	opencode	76		0.667	0.714	0.625	0.5	go-ontology#31636
+go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	opencode	75		0.857	0.9	0.818	0.75	go-ontology#31935
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	74		0.636	0.583	0.7	0.467	go-ontology#31295
+go-ontology	27593	31997	new_term	hard	v9	gpt-5.5	codex	73		1.0	1.0	1.0	1.0	go-ontology#27593
+go-ontology	31923	31938	other	simple	v9	gpt-5.5	codex	72		0.667	0.667	0.667	0.5	go-ontology#31923
+go-ontology	32046	32047	new_term	medium	v9	gpt-5.5	codex	71		0.867	0.867	0.867	0.765	go-ontology#32046
+go-ontology	31295	32040	new_term	medium	v9	gpt-5.5	codex	70		0.636	0.583	0.7	0.467	go-ontology#31295
+go-ontology	31902	32041	new_term	medium	v9	gpt-5.5	codex	69		0.842	0.8	0.889	0.727	go-ontology#31902
+go-ontology	31882	32036	obsoletion	simple	v9	gpt-5.5	codex	68		1.0	1.0	1.0	1.0	go-ontology#31882
+go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	opencode	67		0.005	0.4	0.002	0.002	go-ontology#31670
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	66		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31916	32024	obsoletion	medium	v9	gpt-5.5	codex	65		0.965	0.965	0.965	0.932	go-ontology#31916
+go-ontology	31670	31676	new_term	hard	v9	gpt-5.5	codex	64		0.005	0.4	0.002	0.002	go-ontology#31670
+go-ontology	31969	31988	reclassification	hard	v9	gpt-5.5	codex	63		0.956	0.931	0.982	0.915	go-ontology#31969
+go-ontology	31984	31987	axiom_repair	hard	v9	gpt-5.5	codex	62		0.857	0.9	0.818	0.75	go-ontology#31984
+go-ontology	31945	32013	reclassification	medium	v9	gpt-5.5	codex	61		0.826	0.95	0.731	0.704	go-ontology#31945
+go-ontology	31636	31925	synonym_update	simple	v9	gpt-5.5	codex	60		0.857	0.857	0.857	0.75	go-ontology#31636
+go-ontology	31935	31946	reclassification	medium	v9	gpt-5.5	codex	59		0.8	0.8	0.8	0.667	go-ontology#31935
+go-ontology	31967	31968	reclassification	medium	v9	gpt-5.5	codex	58		0.8	0.667	1.0	0.667	go-ontology#31967
+go-ontology	31981	31995	axiom_repair	simple	v9	gpt-5.5	codex	57		1.0	1.0	1.0	1.0	go-ontology#31981
+go-ontology	31964	31982	axiom_repair	medium	v9	gpt-5.5	codex	56		0.857	0.75	1.0	0.75	go-ontology#31964
+go-ontology	30894	32011	new_term	medium	v9	gpt-5.5	codex	55		0.941	1.0	0.889	0.889	go-ontology#30894
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	54		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	opencode	51		0.762	0.889	0.667	0.615	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	opencode	50		0.762	0.889	0.667	0.615	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	46		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31935	31946	reclassification	medium	v9	gpt-5.4	codex	45		0.72	0.9	0.6	0.562	go-ontology#31935
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38		0.762	0.889	0.667	0.615	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	claude-haiku-4-5	claude	33		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32		0.8	0.889	0.727	0.667	go-ontology#31961
+go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4-5	claude	31		0.8	0.889	0.727	0.667	go-ontology#31961
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	73		0.103	0.056	0.571	0.054	cell-ontology#3457
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	72		0.444	0.353	0.6	0.286	cell-ontology#3447
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	71		0.897	0.867	0.929	0.812	cell-ontology#3267
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	70		0.667	0.75	0.6	0.5	cell-ontology#3454
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	69		0.614	0.558	0.683	0.443	cell-ontology#3408
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	68		0.0	0.0	0.0	0.0	cell-ontology#3519
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	67		0.526	0.625	0.455	0.357	cell-ontology#3460
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	66		0.0	0.0	0.0	0.0	cell-ontology#3458
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	65		0.643	0.692	0.6	0.474	cell-ontology#3259
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	64		0.8	1.0	0.667	0.667	cell-ontology#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	62		0.0	0.0	0.0	0.0	cell-ontology#3353
+cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	opencode	61		1.0	1.0	1.0	1.0	cell-ontology#3382
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	60		0.381	0.267	0.667	0.235	cell-ontology#3332
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	59		0.545	0.529	0.562	0.375	cell-ontology#3243
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	58		0.0	0.0	0.0	0.0	cell-ontology#3196
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	57		0.0	0.0	0.0	0.0	cell-ontology#3252
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	56		0.5	0.5	0.5	0.333	cell-ontology#2967
+cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	55		0.316	0.25	0.429	0.188	cell-ontology#3239
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	opencode	54		0.103	0.056	0.571	0.054	cell-ontology#3457
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	opencode	53		0.897	0.867	0.929	0.812	cell-ontology#3267
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	opencode	52		0.444	0.353	0.6	0.286	cell-ontology#3447
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	opencode	51		0.614	0.558	0.683	0.443	cell-ontology#3408
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	50		0.667	0.75	0.6	0.5	cell-ontology#3454
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	opencode	49		0.0	0.0	0.0	0.0	cell-ontology#3519
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	opencode	48		0.0	0.0	0.0	0.0	cell-ontology#3458
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	opencode	47		0.526	0.625	0.455	0.357	cell-ontology#3460
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	opencode	46		0.643	0.692	0.6	0.474	cell-ontology#3259
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	opencode	44		0.8	1.0	0.667	0.667	cell-ontology#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	opencode	43		0.0	0.0	0.0	0.0	cell-ontology#3353
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	opencode	42		0.381	0.267	0.667	0.235	cell-ontology#3332
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	opencode	41		0.0	0.0	0.0	0.0	cell-ontology#3252
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	opencode	40		0.545	0.529	0.562	0.375	cell-ontology#3243
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	opencode	39		0.0	0.0	0.0	0.0	cell-ontology#3196
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	opencode	38		0.5	0.5	0.5	0.333	cell-ontology#2967
+cell-ontology	3239	3245	reclassification	medium	v3	gpt-5.5	opencode	37		0.316	0.25	0.429	0.188	cell-ontology#3239
+cell-ontology	3457	3467	new_term	medium	v3	gpt-5.5	codex	36		0.0	0.0	0.0	0.0	cell-ontology#3457
+cell-ontology	3447	3448	other	medium	v3	gpt-5.5	codex	35		0.444	0.353	0.6	0.286	cell-ontology#3447
+cell-ontology	3267	3268	documentation	simple	v3	gpt-5.5	codex	34		0.349	0.733	0.229	0.212	cell-ontology#3267
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	33		0.667	0.75	0.6	0.5	cell-ontology#3454
+cell-ontology	3408	3522	other	hard	v3	gpt-5.5	codex	32		0.559	0.494	0.644	0.388	cell-ontology#3408
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.5	codex	31		0.0	0.0	0.0	0.0	cell-ontology#3519
+cell-ontology	3460	3508	new_term	medium	v3	gpt-5.5	codex	30		0.0	0.0	0.0	0.0	cell-ontology#3460
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.5	codex	29		0.0	0.0	0.0	0.0	cell-ontology#3458
+cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.5	codex	28		0.4	0.471	0.348	0.25	cell-ontology#3243
+cell-ontology	3259	3450	new_term	medium	v3	gpt-5.5	codex	27		0.593	0.615	0.571	0.421	cell-ontology#3259
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	26		0.0	0.0	0.0	0.0	cell-ontology#3252
+cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.5	codex	24		0.667	1.0	0.5	0.5	cell-ontology#3379
+cell-ontology	3353	3354	new_term	medium	v3	gpt-5.5	codex	23		0.0	0.0	0.0	0.0	cell-ontology#3353
+cell-ontology	2967	3309	axiom_repair	simple	v3	gpt-5.5	codex	22		0.333	0.5	0.25	0.2	cell-ontology#2967
+cell-ontology	3382	3440	axiom_repair	simple	v3	gpt-5.5	codex	21		0.667	1.0	0.5	0.5	cell-ontology#3382
+cell-ontology	3332	3333	bulk_edit	medium	v3	gpt-5.5	codex	20		0.214	0.133	0.545	0.12	cell-ontology#3332
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	19		0.667	0.75	0.6	0.5	cell-ontology#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	18		0.6	0.75	0.5	0.429	cell-ontology#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	opencode	17		0.75	0.75	0.75	0.6	cell-ontology#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.5	codex	16		0.6	0.75	0.5	0.429	cell-ontology#3454
+cell-ontology	3454	3555	axiom_repair	medium	v3	claude-sonnet-4-5	claude	15		0.75	0.75	0.75	0.6	cell-ontology#3454
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.4	codex	14		0.0	0.0	0.0	0.0	cell-ontology#3252
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.4	codex	13		0.2	0.188	0.214	0.111	cell-ontology#3196
+cell-ontology	3252	3253	new_term	medium	v3	gpt-5.5	codex	10		0.0	0.0	0.0	0.0	cell-ontology#3252
+cell-ontology	3454	3555	axiom_repair	medium	v3	claude-haiku-4-5	claude	7		0.75	0.75	0.75	0.6	cell-ontology#3454
+cell-ontology	3519	3520	new_term	simple	v3	gpt-5.4	codex	6		0.333	0.429	0.273	0.2	cell-ontology#3519
+cell-ontology	3519	3520	new_term	simple	v3	claude-haiku-4-5	claude	5		0.0	0.0	0.0	0.0	cell-ontology#3519
+cell-ontology	3454	3555	axiom_repair	medium	v3	gpt-5.4	codex	4		0.667	0.75	0.6	0.5	cell-ontology#3454
+cell-ontology	3519	3520	new_term	simple	v3	claude-sonnet-4-5	claude	3		0.625	0.714	0.556	0.455	cell-ontology#3519
+cell-ontology	3224	3225	obsoletion	medium	v3	gpt-5.4	codex	2		0.0	0.0	0.0	0.0	cell-ontology#3224
+cell-ontology	3224	3225	obsoletion	medium	v3	claude-sonnet-4-5	claude	1		0.0	0.0	0.0	0.0	cell-ontology#3224
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	71		0.0	0.0	0.0	0.0	uberon#3457
+uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	opencode	70		0.857	1.0	0.75	0.75	uberon#3572
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	69		0.875	0.913	0.84	0.778	uberon#3682
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	68		0.333	0.333	0.333	0.2	uberon#3490
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	67		0.544	0.519	0.571	0.373	uberon#3495
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	66		0.5	0.5	0.5	0.333	uberon#3531
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	65		0.286	0.286	0.286	0.167	uberon#3522
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	64		0.476	0.556	0.417	0.312	uberon#3446
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	63		0.4	0.5	0.333	0.25	uberon#3509
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	62		0.0	0.0	0.0	0.0	uberon#3448
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	61		1.0	1.0	1.0	1.0	uberon#2911
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	60		0.092	0.115	0.077	0.048	uberon#3414
+uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	59		0.167	0.105	0.4	0.091	uberon#3473
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	58		0.429	0.429	0.429	0.273	uberon#3354
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	57		0.308	0.25	0.4	0.182	uberon#3478
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	56		0.154	1.0	0.083	0.083	uberon#3475
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	55		0.0	0.0	0.0	0.0	uberon#3471
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	opencode	54		0.0	0.0	0.0	0.0	uberon#3457
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	53		0.468	0.329	0.812	0.306	uberon#3454
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	52		0.875	0.913	0.84	0.778	uberon#3682
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	opencode	51		0.333	0.333	0.333	0.2	uberon#3490
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	opencode	50		0.544	0.519	0.571	0.373	uberon#3495
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	opencode	48		0.5	0.5	0.5	0.333	uberon#3531
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	opencode	47		0.286	0.286	0.286	0.167	uberon#3522
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	opencode	46		1.0	1.0	1.0	1.0	uberon#2911
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	opencode	44		0.4	0.5	0.333	0.25	uberon#3509
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	opencode	43		0.476	0.556	0.417	0.312	uberon#3446
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	opencode	42		0.0	0.0	0.0	0.0	uberon#3448
+uberon	3473	3494	axiom_repair	hard	v3	gpt-5.5	opencode	41		0.167	0.105	0.4	0.091	uberon#3473
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	opencode	40		0.092	0.115	0.077	0.048	uberon#3414
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	opencode	39		0.429	0.429	0.429	0.273	uberon#3354
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	opencode	38		0.308	0.25	0.4	0.182	uberon#3478
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	opencode	37		0.154	1.0	0.083	0.083	uberon#3475
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	opencode	36		0.0	0.0	0.0	0.0	uberon#3471
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	opencode	35		0.468	0.329	0.812	0.306	uberon#3454
+uberon	3457	3569	new_term	medium	v3	gpt-5.5	codex	34		0.626	0.604	0.649	0.455	uberon#3457
+uberon	3490	3585	axiom_repair	hard	v3	gpt-5.5	codex	33		0.2	0.333	0.143	0.111	uberon#3490
+uberon	3572	3573	axiom_repair	medium	v3	gpt-5.5	codex	32		0.3	1.0	0.176	0.176	uberon#3572
+uberon	3495	3542	new_term	hard	v3	gpt-5.5	codex	31		0.235	0.222	0.25	0.133	uberon#3495
+uberon	3447	3560	reclassification	medium	v3	gpt-5.5	codex	30		0.211	1.0	0.118	0.118	uberon#3447
+uberon	3531	3532	documentation	simple	v3	gpt-5.5	codex	29		0.4	0.5	0.333	0.25	uberon#3531
+uberon	3509	3515	axiom_repair	simple	v3	gpt-5.5	codex	28		0.5	0.5	0.5	0.333	uberon#3509
+uberon	3003	3511	axiom_repair	medium	v3	gpt-5.5	codex	27		0.4	0.5	0.333	0.25	uberon#3003
+uberon	3522	3525	axiom_repair	medium	v3	gpt-5.5	codex	26		0.286	0.286	0.286	0.167	uberon#3522
+uberon	3446	3507	new_term	medium	v3	gpt-5.5	codex	25		0.5	0.667	0.4	0.333	uberon#3446
+uberon	2911	3508	axiom_repair	medium	v3	gpt-5.5	codex	24		0.333	1.0	0.2	0.2	uberon#2911
+uberon	3448	3506	axiom_repair	simple	v3	gpt-5.5	codex	23		0.0	0.0	0.0	0.0	uberon#3448
+uberon	3414	3499	new_term	hard	v3	gpt-5.5	codex	22		0.169	0.192	0.152	0.093	uberon#3414
+uberon	3354	3486	axiom_repair	hard	v3	gpt-5.5	codex	21		0.231	0.429	0.158	0.13	uberon#3354
+uberon	3478	3479	axiom_repair	hard	v3	gpt-5.5	codex	20		0.462	0.375	0.6	0.3	uberon#3478
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.5	codex	19		0.182	1.0	0.1	0.1	uberon#3475
+uberon	3471	3472	axiom_repair	simple	v3	gpt-5.5	codex	18		0.0	0.0	0.0	0.0	uberon#3471
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.5	codex	17		0.473	0.329	0.839	0.31	uberon#3454
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	15		0.875	0.913	0.84	0.778	uberon#3682
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	opencode	14		0.917	0.957	0.88	0.846	uberon#3682
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.4	codex	13		0.894	0.913	0.875	0.808	uberon#3682
+uberon	3454	3455	axiom_repair	hard	v3	gpt-5.4	codex	12		0.473	0.329	0.839	0.31	uberon#3454
+uberon	3475	3477	axiom_repair	medium	v3	gpt-5.4	codex	11		0.1	1.0	0.053	0.053	uberon#3475
+uberon	3682	3683	synonym_update	simple	v3	gpt-5.5	codex	9		0.917	0.957	0.88	0.846	uberon#3682
+uberon	3682	3683	synonym_update	simple	v3	claude-haiku-4-5	claude	6		0.333	0.217	0.714	0.2	uberon#3682
+uberon	3637	3638	new_term	medium	v3	claude-sonnet-4-5	claude	3		0.842	0.889	0.8	0.727	uberon#3637
+uberon	3682	3683	synonym_update	simple	v3	claude-sonnet-4-5	claude	1		0.4	0.261	0.857	0.25	uberon#3682
+mondo	9896	10207	synonym_update	simple	v3	gpt-5.5	opencode	148		0.235	0.5	0.154	0.133	mondo#9896
+mondo	9798	10106	obsoletion	medium	v3	gpt-5.5	opencode	135		0.772	0.629	1.0	0.629	mondo#9798
+mondo	9799	10114	other	simple	v3	gpt-5.5	opencode	134		0.483	0.538	0.438	0.318	mondo#9799
+mondo	9864	10105	new_term	medium	v3	gpt-5.5	opencode	133		0.545	0.545	0.545	0.375	mondo#9864
+mondo	9862	10103	synonym_update	simple	v3	gpt-5.5	opencode	132		0.182	0.125	0.333	0.1	mondo#9862
+mondo	9849	10084	new_term	medium	v3	gpt-5.5	opencode	130		0.348	0.333	0.364	0.211	mondo#9849
+mondo	9987	10094	axiom_repair	simple	v3	gpt-5.5	opencode	129		1.0	1.0	1.0	1.0	mondo#9987
+mondo	9896	10207	synonym_update	simple	v3	gpt-5.5	opencode	124		0.235	0.5	0.154	0.133	mondo#9896
+mondo	9864	10105	new_term	medium	v3	gpt-5.5	opencode	118		0.545	0.545	0.545	0.375	mondo#9864
+mondo	9798	10106	obsoletion	medium	v3	gpt-5.5	opencode	116		0.772	0.629	1.0	0.629	mondo#9798
+mondo	9799	10114	other	simple	v3	gpt-5.5	opencode	115		0.483	0.538	0.438	0.318	mondo#9799
+mondo	9862	10103	synonym_update	simple	v3	gpt-5.5	opencode	111		0.182	0.125	0.333	0.1	mondo#9862
+mondo	9849	10084	new_term	medium	v3	gpt-5.5	opencode	110		0.348	0.333	0.364	0.211	mondo#9849
+mondo	9987	10094	axiom_repair	simple	v3	gpt-5.5	opencode	109		1.0	1.0	1.0	1.0	mondo#9987
+mondo	9798	10106	obsoletion	medium	v3	gpt-5.5	codex	100		0.765	0.743	0.788	0.619	mondo#9798
+mondo	9864	10105	new_term	medium	v3	gpt-5.5	codex	98		0.455	0.455	0.455	0.294	mondo#9864
+mondo	9862	10103	synonym_update	simple	v3	gpt-5.5	codex	96		0.182	0.125	0.333	0.1	mondo#9862
+mondo	9799	10114	other	simple	v3	gpt-5.5	codex	95		0.462	0.462	0.462	0.3	mondo#9799
+mondo	9987	10094	axiom_repair	simple	v3	gpt-5.5	codex	93		0.353	1.0	0.214	0.214	mondo#9987
+mondo	9849	10084	new_term	medium	v3	gpt-5.5	codex	92		0.522	0.5	0.545	0.353	mondo#9849
+mondo	9703	9770	reclassification	hard	v3	gpt-5.5	opencode	91		0.268	0.347	0.218	0.155	mondo#9703
+mondo	5726	10155	new_term	hard	v3	gpt-5.5	opencode	90		1.0	1.0	1.0	1.0	mondo#5726
+mondo	9707	9745	new_term	hard	v3	gpt-5.5	opencode	89		0.311	0.292	0.333	0.184	mondo#9707
+mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	opencode	88		0.003	0.002	0.8	0.002	mondo#10030
+mondo	9493	9726	reclassification	simple	v3	gpt-5.5	opencode	87		0.5	0.5	0.5	0.333	mondo#9493
+mondo	9963	10222	new_term	medium	v3	gpt-5.5	opencode	86		0.583	0.7	0.5	0.412	mondo#9963
+mondo	9859	10219	reclassification	hard	v3	gpt-5.5	opencode	85		0.091	0.049	0.667	0.048	mondo#9859
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	84		0.667	0.667	0.667	0.5	mondo#9956
+mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	opencode	83		0.921	0.906	0.935	0.853	mondo#9842
+mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	opencode	82		0.741	0.667	0.833	0.588	mondo#9892
+mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	opencode	81		0.9	0.818	1.0	0.818	mondo#9826
+mondo	9749	10134	synonym_update	simple	v3	gpt-5.5	opencode	80		1.0	1.0	1.0	1.0	mondo#9749
+mondo	10149	10156	new_term	medium	v3	gpt-5.5	opencode	79		0.476	0.417	0.556	0.312	mondo#10149
+mondo	9877	10123	new_term	medium	v3	gpt-5.5	opencode	78		0.545	0.667	0.462	0.375	mondo#9877
+mondo	9873	10126	new_term	medium	v3	gpt-5.5	opencode	77		0.5	0.5	0.5	0.333	mondo#9873
+mondo	9861	10113	other	medium	v3	gpt-5.5	opencode	76		0.378	0.368	0.389	0.233	mondo#9861
+mondo	9937	10112	new_term	medium	v3	gpt-5.5	opencode	75		0.5	0.5	0.5	0.333	mondo#9937
+mondo	9703	9770	reclassification	hard	v3	gpt-5.5	opencode	74		0.268	0.347	0.218	0.155	mondo#9703
+mondo	9781	10111	new_term	simple	v3	gpt-5.5	opencode	73		0.571	0.571	0.571	0.4	mondo#9781
+mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	opencode	72		0.414	0.854	0.273	0.261	mondo#9795
+mondo	5726	10155	new_term	hard	v3	gpt-5.5	opencode	71		1.0	1.0	1.0	1.0	mondo#5726
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	70		0.722	0.765	0.684	0.565	mondo#9771
+mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	opencode	69		0.003	0.002	0.8	0.002	mondo#10030
+mondo	9707	9745	new_term	hard	v3	gpt-5.5	opencode	68		0.311	0.292	0.333	0.184	mondo#9707
+mondo	9963	10222	new_term	medium	v3	gpt-5.5	opencode	67		0.583	0.7	0.5	0.412	mondo#9963
+mondo	9493	9726	reclassification	simple	v3	gpt-5.5	opencode	66		0.5	0.5	0.5	0.333	mondo#9493
+mondo	9859	10219	reclassification	hard	v3	gpt-5.5	opencode	65		0.091	0.049	0.667	0.048	mondo#9859
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	64		0.667	0.667	0.667	0.5	mondo#9956
+mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	opencode	63		0.741	0.667	0.833	0.588	mondo#9892
+mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	opencode	62		0.921	0.906	0.935	0.853	mondo#9842
+mondo	10149	10156	new_term	medium	v3	gpt-5.5	opencode	61		0.476	0.417	0.556	0.312	mondo#10149
+mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	opencode	60		0.9	0.818	1.0	0.818	mondo#9826
+mondo	9877	10123	new_term	medium	v3	gpt-5.5	opencode	59		0.545	0.667	0.462	0.375	mondo#9877
+mondo	9873	10126	new_term	medium	v3	gpt-5.5	opencode	58		0.5	0.5	0.5	0.333	mondo#9873
+mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	opencode	57		0.414	0.854	0.273	0.261	mondo#9795
+mondo	9937	10112	new_term	medium	v3	gpt-5.5	opencode	56		0.5	0.5	0.5	0.333	mondo#9937
+mondo	9861	10113	other	medium	v3	gpt-5.5	opencode	55		0.378	0.368	0.389	0.233	mondo#9861
+mondo	9781	10111	new_term	simple	v3	gpt-5.5	opencode	54		0.571	0.571	0.571	0.4	mondo#9781
+mondo	9703	9770	reclassification	hard	v3	gpt-5.5	codex	53		0.252	0.286	0.226	0.144	mondo#9703
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	52		0.583	0.583	0.583	0.412	mondo#9956
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	51		0.722	0.765	0.684	0.565	mondo#9771
+mondo	9963	10222	new_term	medium	v3	gpt-5.5	codex	50		0.294	0.5	0.208	0.172	mondo#9963
+mondo	10030	10117	bulk_edit	hard	v3	gpt-5.5	codex	49		0.003	0.002	0.8	0.002	mondo#10030
+mondo	9707	9745	new_term	hard	v3	gpt-5.5	codex	48		0.308	0.25	0.4	0.182	mondo#9707
+mondo	9493	9726	reclassification	simple	v3	gpt-5.5	codex	46		0.5	0.5	0.5	0.333	mondo#9493
+mondo	9859	10219	reclassification	hard	v3	gpt-5.5	codex	45		0.233	0.171	0.368	0.132	mondo#9859
+mondo	9892	10206	synonym_update	simple	v3	gpt-5.5	codex	44		0.741	0.667	0.833	0.588	mondo#9892
+mondo	9842	10158	obsoletion	medium	v3	gpt-5.5	codex	43		0.952	0.938	0.968	0.909	mondo#9842
+mondo	10149	10156	new_term	medium	v3	gpt-5.5	codex	42		0.364	0.333	0.4	0.222	mondo#10149
+mondo	9826	10142	obsoletion	simple	v3	gpt-5.5	codex	41		0.927	0.864	1.0	0.864	mondo#9826
+mondo	9873	10126	new_term	medium	v3	gpt-5.5	codex	40		0.4	0.417	0.385	0.25	mondo#9873
+mondo	9877	10123	new_term	medium	v3	gpt-5.5	codex	39		0.455	0.556	0.385	0.294	mondo#9877
+mondo	9861	10113	other	medium	v3	gpt-5.5	codex	38		0.312	0.263	0.385	0.185	mondo#9861
+mondo	9749	10134	synonym_update	simple	v3	gpt-5.5	codex	37		1.0	1.0	1.0	1.0	mondo#9749
+mondo	9937	10112	new_term	medium	v3	gpt-5.5	codex	36		0.5	0.5	0.5	0.333	mondo#9937
+mondo	9781	10111	new_term	simple	v3	gpt-5.5	codex	35		0.571	0.571	0.571	0.4	mondo#9781
+mondo	9795	10110	obsoletion	medium	v3	gpt-5.5	codex	34		0.412	0.854	0.271	0.259	mondo#9795
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	33		0.757	0.824	0.7	0.609	mondo#9771
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	opencode	32		0.545	0.5	0.6	0.375	mondo#9956
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	31		0.812	0.765	0.867	0.684	mondo#9771
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	29		0.583	0.583	0.583	0.412	mondo#9956
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	opencode	28		0.765	0.765	0.765	0.619	mondo#9771
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	27		0.757	0.824	0.7	0.609	mondo#9771
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.5	codex	26		0.698	0.882	0.577	0.536	mondo#9771
+mondo	9771	10102	obsoletion	simple	v3	claude-sonnet-4-5	claude	25		0.667	0.824	0.56	0.5	mondo#9771
+mondo	9771	10102	obsoletion	simple	v3	claude-haiku-4-5	claude	24		0.579	0.647	0.524	0.407	mondo#9771
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	21		0.538	0.583	0.5	0.368	mondo#9956
+mondo	9937	10112	new_term	medium	v3	gpt-5.4	codex	20		0.5	0.583	0.438	0.333	mondo#9937
+mondo	9771	10102	obsoletion	simple	v3	gpt-5.4	codex	19		0.562	0.529	0.6	0.391	mondo#9771
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	16		0.538	0.583	0.5	0.368	mondo#9956
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	15		0.462	0.5	0.429	0.3	mondo#9956
+mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	14		0.4	0.267	0.8	0.25	mondo#9892
+mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	11		0.609	0.583	0.636	0.438	mondo#9956
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	8		0.006	1.0	0.003	0.003	mondo#9956
+mondo	9956	10214	new_term	medium	v3	claude-sonnet-4-5	claude	6		0.006	1.0	0.003	0.003	mondo#9956
+mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	5		0.4	0.267	0.8	0.25	mondo#9892
+mondo	9892	10206	synonym_update	simple	v3	claude-haiku-4-5	claude	3		0.4	0.267	0.8	0.25	mondo#9892
+mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	2		0.462	0.5	0.429	0.3	mondo#9956
+mondo	9956	10214	new_term	medium	v3	claude-sonnet-4-5	claude	1		0.696	0.667	0.727	0.533	mondo#9956
