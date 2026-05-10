@@ -177,15 +177,70 @@ def fetch_human_diff(ontology: str, pr_number: str, source_repo: str,
     return None
 
 
-def fetch_agent_diff(eval_repo: str, pr_number: int) -> Optional[str]:
-    """Fetch an agent PR diff (not cached - transient)."""
+def fetch_agent_diff(eval_repo: str, pr_number: int, ontology: str = "",
+                     analysis_dir: Path = Path("analysis")) -> Optional[str]:
+    """Fetch and cache an agent PR diff.
+
+    Cached to analysis/{ont}/results/diffs/agent/ for permanence.
+    """
+    # Check cache first
+    if ontology:
+        cache_path = analysis_dir / ontology / "results" / "diffs" / "agent" / f"pr{pr_number}.diff"
+        if cache_path.exists() and cache_path.stat().st_size > 0:
+            return cache_path.read_text()
+
     r = subprocess.run(
         ["gh", "pr", "diff", str(pr_number), "--repo", f"ai4curation/{eval_repo}"],
         capture_output=True, text=True,
     )
     if r.returncode == 0 and r.stdout:
+        # Cache it
+        if ontology:
+            cache_path = analysis_dir / ontology / "results" / "diffs" / "agent" / f"pr{pr_number}.diff"
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(r.stdout)
         return r.stdout
     return None
+
+
+def fetch_trace(eval_repo: str, run_id: str, ontology: str,
+                analysis_dir: Path = Path("analysis")) -> Optional[Path]:
+    """Fetch and cache the trace directory from the eval repo.
+
+    Downloads agent-trace.json, ISSUE_COMMENTS.md, PR_COMMENTS.md,
+    and run-metadata.json from traces/{run_id}/ on master.
+
+    Returns path to the local trace directory, or None if not found.
+    """
+    trace_dir = analysis_dir / ontology / "results" / "traces" / f"run{run_id}"
+    if trace_dir.exists() and any(trace_dir.iterdir()):
+        return trace_dir
+
+    trace_dir.mkdir(parents=True, exist_ok=True)
+
+    # Fetch file list from the eval repo's traces directory
+    r = subprocess.run(
+        ["gh", "api", f"repos/ai4curation/{eval_repo}/contents/traces/{run_id}",
+         "--jq", ".[].name"],
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0 or not r.stdout.strip():
+        return None
+
+    files = r.stdout.strip().split("\n")
+    for fname in files:
+        file_r = subprocess.run(
+            ["gh", "api",
+             f"repos/ai4curation/{eval_repo}/contents/traces/{run_id}/{fname}",
+             "--jq", ".content"],
+            capture_output=True, text=True,
+        )
+        if file_r.returncode == 0 and file_r.stdout.strip():
+            import base64
+            content = base64.b64decode(file_r.stdout.strip()).decode("utf-8", errors="replace")
+            (trace_dir / fname).write_text(content)
+
+    return trace_dir if any(trace_dir.iterdir()) else None
 
 
 # === Metadiff ===
@@ -324,7 +379,7 @@ def score_eval_repo(
             continue
 
         # Fetch agent diff
-        agent_diff = fetch_agent_diff(eval_repo, pr_num)
+        agent_diff = fetch_agent_diff(eval_repo, pr_num, ontology, analysis_dir)
         if not agent_diff:
             continue
 

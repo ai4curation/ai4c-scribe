@@ -116,6 +116,30 @@ def score_all_cmd(
     typer.echo(f"  By model: {df['model'].value_counts().to_dict()}")
 
 
+@score_app.command("fetch-traces")
+def fetch_traces_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
+):
+    """Fetch and cache all traces for scored runs of an ontology."""
+    from ai4c_scribe.scoring import fetch_trace, load_cached_scores, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    records = load_cached_scores(ontology, analysis_dir)
+    fetched = 0
+    for r in records:
+        # Try to fetch trace using eval_repo_pr as run_id hint
+        # The actual run_id is in the traces/ directory on master
+        result = fetch_trace(cfg["eval_repo"], str(r.eval_repo_pr), ontology, analysis_dir)
+        if result:
+            fetched += 1
+    typer.echo(f"Fetched {fetched}/{len(records)} traces for {ontology}")
+
+
 @score_app.command("repo")
 def score_repo_cmd(
     ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
