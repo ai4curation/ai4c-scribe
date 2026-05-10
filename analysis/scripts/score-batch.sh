@@ -1,5 +1,4 @@
 #!/bin/bash
-# Score one repo's PRs
 ONT=$1
 EVAL_REPO=$2
 SOURCE_REPO=$3
@@ -48,20 +47,23 @@ for item in data:
     
     pr_num = item['number']
     
-    # Parse issue and model from title
+    # Parse issue number
     m = re.search(r'eval #(\d+)', title)
     if not m:
         continue
     issue = m.group(1)
     
-    m2 = re.search(r'\(([^,]+),', title)
-    model_short = m2.group(1) if m2 else 'unknown'
+    # Parse model from the LAST parenthesized group: '(model, .)'
+    m2 = re.search(r'\(([^()]+),\s*\.\)\s*$', title)
+    if not m2:
+        continue
+    model_short = m2.group(1).strip()
     
-    # Determine runtime
+    # Determine runtime from model string
     runtime = 'codex'
-    if 'sonnet' in model_short or 'haiku' in model_short or 'opus' in model_short:
+    if model_short in ('sonnet-4.5', 'haiku-4.5', 'opus-4.7'):
         runtime = 'claude'
-    elif 'openai/' in model_short:
+    elif model_short.startswith('openai/'):
         runtime = 'opencode'
     
     if issue not in cases:
