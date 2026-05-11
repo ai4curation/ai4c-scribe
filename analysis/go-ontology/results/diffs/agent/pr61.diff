@@ -1,0 +1,134 @@
+diff --git a/docs/patterns/cc_assembly.md b/docs/patterns/cc_assembly.md
+index 41febde8a..2cb1ca36b 100644
+--- a/docs/patterns/cc_assembly.md
++++ b/docs/patterns/cc_assembly.md
+@@ -47,6 +47,5 @@ TODO
+ | [http://purl.obolibrary.org/obo/GO_0034463](http://purl.obolibrary.org/obo/GO_0034463) | 90S preribosome assembly | [http://purl.obolibrary.org/obo/GO_0030686](http://purl.obolibrary.org/obo/GO_0030686) | 90S preribosome |
+ | [http://purl.obolibrary.org/obo/GO_1904745](http://purl.obolibrary.org/obo/GO_1904745) | Atg1/ULK1 kinase complex assembly | [http://purl.obolibrary.org/obo/GO_1990316](http://purl.obolibrary.org/obo/GO_1990316) | Atg1/ULK1 kinase complex |
+ | [http://purl.obolibrary.org/obo/GO_0010387](http://purl.obolibrary.org/obo/GO_0010387) | COP9 signalosome assembly | [http://purl.obolibrary.org/obo/GO_0008180](http://purl.obolibrary.org/obo/GO_0008180) | COP9 signalosome |
+-| [http://purl.obolibrary.org/obo/GO_0048208](http://purl.obolibrary.org/obo/GO_0048208) | COPII vesicle coating | [http://purl.obolibrary.org/obo/GO_0030127](http://purl.obolibrary.org/obo/GO_0030127) | COPII vesicle coat |
++| [http://purl.obolibrary.org/obo/GO_0048208](http://purl.obolibrary.org/obo/GO_0048208) | COPII vesicle coat assembly | [http://purl.obolibrary.org/obo/GO_0030127](http://purl.obolibrary.org/obo/GO_0030127) | COPII vesicle coat |
+ | [http://purl.obolibrary.org/obo/GO_0160073](http://purl.obolibrary.org/obo/GO_0160073) | Casparian strip assembly | [http://purl.obolibrary.org/obo/GO_0048226](http://purl.obolibrary.org/obo/GO_0048226) | Casparian strip |
+-
+diff --git a/src/design_patterns/cc_assembly.tsv b/src/design_patterns/cc_assembly.tsv
+index 70144a914..cf0bcac99 100644
+--- a/src/design_patterns/cc_assembly.tsv
++++ b/src/design_patterns/cc_assembly.tsv
+@@ -2,7 +2,7 @@ defined_class	defined_class_label	target	target_label
+ http://purl.obolibrary.org/obo/GO_0034463	90S preribosome assembly	http://purl.obolibrary.org/obo/GO_0030686	90S preribosome
+ http://purl.obolibrary.org/obo/GO_1904745	Atg1/ULK1 kinase complex assembly	http://purl.obolibrary.org/obo/GO_1990316	Atg1/ULK1 kinase complex
+ http://purl.obolibrary.org/obo/GO_0010387	COP9 signalosome assembly	http://purl.obolibrary.org/obo/GO_0008180	COP9 signalosome
+-http://purl.obolibrary.org/obo/GO_0048208	COPII vesicle coating	http://purl.obolibrary.org/obo/GO_0030127	COPII vesicle coat
++http://purl.obolibrary.org/obo/GO_0048208	COPII vesicle coat assembly	http://purl.obolibrary.org/obo/GO_0030127	COPII vesicle coat
+ http://purl.obolibrary.org/obo/GO_0160073	Casparian strip assembly	http://purl.obolibrary.org/obo/GO_0048226	Casparian strip
+ http://purl.obolibrary.org/obo/GO_0071255	Cvt vesicle assembly	http://purl.obolibrary.org/obo/GO_0033107	Cvt vesicle
+ http://purl.obolibrary.org/obo/GO_0071770	DIM/DIP cell wall layer assembly	http://purl.obolibrary.org/obo/GO_0097735	DIM/DIP cell wall layer
+diff --git a/src/design_patterns/regulation.tsv b/src/design_patterns/regulation.tsv
+index 8f76aadff..abbf20d7a 100644
+--- a/src/design_patterns/regulation.tsv
++++ b/src/design_patterns/regulation.tsv
+@@ -60,7 +60,6 @@ http://purl.obolibrary.org/obo/GO_0043376	regulation of CD8-positive, alpha-beta
+ http://purl.obolibrary.org/obo/GO_2000449	regulation of CD8-positive, alpha-beta T cell extravasation	http://purl.obolibrary.org/obo/GO_0035697	CD8-positive, alpha-beta T cell extravasation
+ http://purl.obolibrary.org/obo/GO_2000564	regulation of CD8-positive, alpha-beta T cell proliferation	http://purl.obolibrary.org/obo/GO_0035740	CD8-positive, alpha-beta T cell proliferation
+ http://purl.obolibrary.org/obo/GO_2000452	regulation of CD8-positive, alpha-beta cytotoxic T cell extravasation	http://purl.obolibrary.org/obo/GO_0035698	CD8-positive, alpha-beta cytotoxic T cell extravasation
+-http://purl.obolibrary.org/obo/GO_0003400	regulation of COPII vesicle coating	http://purl.obolibrary.org/obo/GO_0048208	COPII vesicle coating
+ http://purl.obolibrary.org/obo/GO_0090111	regulation of COPII vesicle uncoating	http://purl.obolibrary.org/obo/GO_0090112	COPII vesicle uncoating
+ http://purl.obolibrary.org/obo/GO_0032489	regulation of Cdc42 protein signal transduction	http://purl.obolibrary.org/obo/GO_0032488	Cdc42 protein signal transduction
+ http://purl.obolibrary.org/obo/GO_0140215	regulation of D-aspartate import across plasma membrane	http://purl.obolibrary.org/obo/GO_0070779	D-aspartate import across plasma membrane
+diff --git a/src/design_patterns/regulation_by.tsv b/src/design_patterns/regulation_by.tsv
+index 282840608..bf1aeec10 100644
+--- a/src/design_patterns/regulation_by.tsv
++++ b/src/design_patterns/regulation_by.tsv
+@@ -62,7 +62,6 @@ http://purl.obolibrary.org/obo/GO_0043376	regulation of CD8-positive, alpha-beta
+ http://purl.obolibrary.org/obo/GO_2000449	regulation of CD8-positive, alpha-beta T cell extravasation	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0035697	CD8-positive, alpha-beta T cell extravasation
+ http://purl.obolibrary.org/obo/GO_2000564	regulation of CD8-positive, alpha-beta T cell proliferation	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0035740	CD8-positive, alpha-beta T cell proliferation
+ http://purl.obolibrary.org/obo/GO_2000452	regulation of CD8-positive, alpha-beta cytotoxic T cell extravasation	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0035698	CD8-positive, alpha-beta cytotoxic T cell extravasation
+-http://purl.obolibrary.org/obo/GO_0003400	regulation of COPII vesicle coating	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0048208	COPII vesicle coating
+ http://purl.obolibrary.org/obo/GO_0090111	regulation of COPII vesicle uncoating	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0090112	COPII vesicle uncoating
+ http://purl.obolibrary.org/obo/GO_0032489	regulation of Cdc42 protein signal transduction	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0032488	Cdc42 protein signal transduction
+ http://purl.obolibrary.org/obo/GO_0140215	regulation of D-aspartate import across plasma membrane	http://purl.obolibrary.org/obo/GO_0065007	biological regulation	http://purl.obolibrary.org/obo/GO_0070779	D-aspartate import across plasma membrane
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 6e6af3307..c9af378f9 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -29440,13 +29440,13 @@ creation_date: 2009-12-09T10:03:32Z
+ 
+ [Term]
+ id: GO:0003400
+-name: regulation of COPII vesicle coating
++name: obsolete regulation of COPII vesicle coating
+ namespace: biological_process
+-def: "Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+-intersection_of: GO:0065007 ! biological regulation
+-intersection_of: regulates GO:0048208 ! COPII vesicle coating
+-created_by: dph
+-creation_date: 2009-12-17T08:38:14Z
++def: "OBSOLETE. Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
++comment: The reason for obsoletion is that this term is equivalent to COPII vesicle coat assembly.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31945" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0048208
+ 
+ [Term]
+ id: GO:0003401
+@@ -69216,10 +69216,10 @@ creation_date: 2013-12-19T15:26:17Z
+ 
+ [Term]
+ id: GO:0006901
+-name: vesicle coating
++name: vesicle coat assembly
+ namespace: biological_process
+ def: "A protein coat is added to the vesicle to form the proper shape of the vesicle and to target the vesicle for transport to its destination." [GOC:jid]
+-synonym: "vesicle coat assembly" BROAD []
++synonym: "vesicle coating" EXACT []
+ is_a: GO:0016050 ! vesicle organization
+ relationship: has_participant GO:0031982 ! vesicle
+ relationship: part_of GO:0006900 ! vesicle budding from membrane
+@@ -123047,7 +123047,7 @@ name: synaptic vesicle coating
+ namespace: biological_process
+ def: "The formation of clathrin coated pits in the presynaptic membrane endocytic zone, triggered by the presence of high concentrations of synaptic vesicle components. This process leads to, but does not include budding of the membrane to form new vesicles." [GOC:curators, PMID:10099709, PMID:20448150]
+ subset: goslim_synapse
+-is_a: GO:0006901 ! vesicle coating
++is_a: GO:0006901 ! vesicle coat assembly
+ relationship: part_of GO:0016185 ! synaptic vesicle budding from presynaptic endocytic zone membrane
+ 
+ [Term]
+@@ -307906,7 +307906,7 @@ name: Golgi transport vesicle coating
+ namespace: biological_process
+ def: "The addition of specific coat proteins to Golgi membranes during the formation of transport vesicles." [GOC:jid, GOC:mah, ISBN:0716731363, PMID:10219233]
+ synonym: "dictyosome transport vesicle coating" NARROW []
+-is_a: GO:0006901 ! vesicle coating
++is_a: GO:0006901 ! vesicle coat assembly
+ relationship: part_of GO:0048194 ! Golgi vesicle budding
+ relationship: part_of GO:0048199 ! vesicle targeting, to, from or within Golgi
+ 
+@@ -307982,13 +307982,13 @@ relationship: part_of GO:0006888 ! endoplasmic reticulum to Golgi vesicle-mediat
+ 
+ [Term]
+ id: GO:0048208
+-name: COPII vesicle coating
++name: COPII vesicle coat assembly
+ namespace: biological_process
+ def: "The addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jid, GOC:mah, GOC:tb, ISBN:0716731363, PMID:10219233]
+ synonym: "COPII coating of ER-derived vesicle" EXACT [GOC:tb]
+-synonym: "COPII vesicle coat assembly" EXACT [GOC:ascb_2009, GOC:dph, GOC:tb]
++synonym: "COPII vesicle coating" EXACT [GOC:ascb_2009, GOC:dph, GOC:tb]
+ synonym: "COPII vesicle coat formation" EXACT [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+-is_a: GO:0006901 ! vesicle coating
++is_a: GO:0006901 ! vesicle coat assembly
+ intersection_of: GO:0022607 ! cellular component assembly
+ intersection_of: results_in_assembly_of GO:0030127 ! COPII vesicle coat
+ relationship: part_of GO:0048207 ! vesicle targeting, rough ER to cis-Golgi
+diff --git a/src/ontology/ld.txt b/src/ontology/ld.txt
+index ac75774ae..8e9b80a59 100644
+--- a/src/ontology/ld.txt
++++ b/src/ontology/ld.txt
+@@ -2591,8 +2591,6 @@ intersection_of: GO:0010001 ! glial cell differentiation
+ intersection_of: part_of GO:0003386 ! amphid sensory organ development
+ intersection_of: GO:0009653 ! anatomical structure morphogenesis
+ intersection_of: results_in_morphogenesis_of GO:0035230 ! cytoneme
+-intersection_of: GO:0065007 ! biological regulation
+-intersection_of: regulates GO:0048208 ! COPII vesicle coating
+ intersection_of: GO:0060071 ! Wnt signaling pathway, planar cell polarity pathway
+ intersection_of: part_of GO:0003401 ! axis elongation
+ intersection_of: GO:0048646 ! anatomical structure formation involved in morphogenesis

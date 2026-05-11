@@ -1,0 +1,31 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 23834996e..dd6593ace 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -46595,9 +46595,10 @@ synonym: "protein-L-lysine:oxygen 6-oxidoreductase (deaminating)" RELATED [EC:1.
+ xref: EC:1.4.3.13 {source="skos:exactMatch"}
+ xref: MetaCyc:PROTEIN-LYSINE-6-OXIDASE-RXN
+ xref: RHEA:24544 {source="skos:exactMatch"}
+-is_a: GO:0052597 ! diamine oxidase activity
++is_a: GO:0016641 ! oxidoreductase activity, acting on the CH-NH2 group of donors, oxygen as acceptor
+ is_a: GO:0140096 ! catalytic activity, acting on a protein
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31964" xsd:anyURI
+ 
+ [Term]
+ id: GO:0004721
+@@ -345365,13 +345366,13 @@ def: "Catalysis of the reaction: H2O + histamine + O2 = H2O2 + imidazole-4-aceta
+ synonym: "1H-Imidazole-4-ethanamine oxidase activity" EXACT [KEGG_REACTION:R02150]
+ synonym: "1H-Imidazole-4-ethanamine:oxygen oxidoreductase (deaminating) activity" EXACT [KEGG_REACTION:R02150]
+ synonym: "histamine:oxygen oxidoreductase (deaminating) activity" EXACT systematic_synonym [EC:1.4.3.22]
+-xref: EC:1.4.3.22 {source="skos:broadMatch"}
+ xref: KEGG_REACTION:R02150
+ xref: MetaCyc:RXN-9600
+ xref: RHEA:25625 {source="skos:exactMatch"}
+ is_a: GO:0052597 ! diamine oxidase activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28199" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31964" xsd:anyURI
+ 
+ [Term]
+ id: GO:0052599

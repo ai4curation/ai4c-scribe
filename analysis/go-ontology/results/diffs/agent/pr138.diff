@@ -1,0 +1,213 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index fe2f8414b..6ac11d267 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -268710,8 +268710,9 @@ xref: EC:1.14.99.50 {source="skos:exactMatch"}
+ xref: RHEA:42672 {source="skos:exactMatch"}
+ is_a: GO:0004497 ! monooxygenase activity
+ is_a: GO:0016705 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen
+-relationship: part_of GO:0052704 ! ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
++relationship: part_of GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: jl
+ creation_date: 2014-12-15T11:44:54Z
+@@ -346824,8 +346825,11 @@ synonym: "ergothioneine anabolism" EXACT []
+ synonym: "ergothioneine biosynthesis" EXACT []
+ synonym: "ergothioneine formation" EXACT []
+ synonym: "ergothioneine synthesis" EXACT []
++xref: MetaCyc:PWY-7255 {source="skos:narrowMatch"}
++xref: MetaCyc:PWY-7550 {source="skos:narrowMatch"}
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:134344 ! ergothioneine(1+)
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ created_by: ai
+ creation_date: 2011-08-01T03:56:19Z
+ 
+@@ -346909,13 +346913,14 @@ creation_date: 2011-08-01T03:49:39Z
+ 
+ [Term]
+ id: GO:0052704
+-name: ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
++name: obsolete ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
+ namespace: biological_process
+-def: "The pathway resulting in the formation of ergothioneine from histidine via a set of steps in which gamma-glutamyl-hercynylcysteine sulfoxide is formed as an intermediate." [PMID:4276459, PMID:5484456]
+-synonym: "ergothioneine biosynthesis from histidine via N-alpha,N-alpha,N-alpha-trimethyl-L-histidine" BROAD []
+-xref: Wikipedia:Ergothioneine
+-is_a: GO:0052699 ! ergothioneine biosynthetic process
++def: "OBSOLETE. The pathway resulting in the formation of ergothioneine from histidine via a set of steps in which gamma-glutamyl-hercynylcysteine sulfoxide is formed as an intermediate." [PMID:4276459, PMID:5484456]
++comment: The reason for obsoletion is that this term represents a pathway variant of ergothioneine biosynthetic process that is out of scope for GO.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0052699
+ creation_date: 2011-08-05T11:31:52Z
+ 
+ [Term]
+@@ -346963,15 +346968,16 @@ id: GO:0052707
+ name: obsolete N-alpha,N-alpha,N-alpha-trimethyl-L-histidine biosynthesis from histidine
+ namespace: biological_process
+ def: "OBSOLETE. The pathway resulting in the formation of N-alpha,N-alpha,N-alpha-trimethyl-L-histidine from histidine. Histidine undergoes three methylations by a histidine-alpha-N-methyltransferase (EC:2.1.1.44) to form N-alpha,N-alpha,N-alpha-trimethyl-L-histidine (also known as hercynine or histidine betaine)." [GOC:curators]
+-comment: This term was obsoleted because it represents a substep of ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide ; GO:0052704.
++comment: This term was obsoleted because it represents a substep of ergothioneine biosynthetic process.
+ synonym: "hercynine biosynthesis from histidine" EXACT []
+ synonym: "histidine betaine biosynthesis from histidine" EXACT []
+ synonym: "histidine catabolic process to hercynine" EXACT []
+ synonym: "histidine catabolism to hercynine" EXACT []
+ synonym: "histidine catabolism to N-alpha,N-alpha,N-alpha-trimethyl-L-histidine" EXACT []
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28375" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ is_obsolete: true
+-replaced_by: GO:0052704
++replaced_by: GO:0052699
+ created_by: ai
+ creation_date: 2011-08-05T02:07:24Z
+ 
+@@ -347043,14 +347049,16 @@ id: GO:0052711
+ name: obsolete ergothioneine biosynthesis from N-alpha,N-alpha,N-alpha-trimethyl-L-histidine
+ namespace: biological_process
+ def: "OBSOLETE. The pathway resulting in the formation of ergothioneine from N-alpha,N-alpha,N-alpha-trimethyl-L-histidine (also known as hercynine or histidine betaine)." [KEGG_REACTION:R04878]
+-comment: The reason for obsoletion is that this term does not provide a useful distinction from its parent, GO:0052704 (because that trimethyl-His yada is present in both pathways)
++comment: The reason for obsoletion is that this term does not provide a useful distinction from ergothioneine biosynthetic process.
+ synonym: "ergothioneine biosynthesis from hercynine" EXACT []
+ synonym: "ergothioneine biosynthesis from histidine betaine" EXACT []
+ synonym: "hercynine catabolism to ergothioneine" EXACT []
+ synonym: "histidine betaine catabolism to ergothioneine" EXACT []
+ synonym: "N-alpha,N-alpha,N-alpha-trimethyl-L-histidine catabolism to ergothioneine" EXACT []
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ is_obsolete: true
++replaced_by: GO:0052699
+ creation_date: 2011-08-05T04:06:16Z
+ 
+ [Term]
+@@ -369626,9 +369634,10 @@ synonym: "hercynylcysteine sulfoxide synthase" EXACT []
+ xref: EC:1.21.3.10 {source="skos:exactMatch"}
+ xref: RHEA:42704 {source="skos:exactMatch"}
+ is_a: GO:0046993 ! oxidoreductase activity, acting on X-H and Y-H to form an X-Y bond, with oxygen as acceptor
+-relationship: part_of GO:0140479 ! ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++relationship: part_of GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24051" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: dph
+ creation_date: 2015-03-06T15:08:51Z
+@@ -467256,10 +467265,13 @@ creation_date: 2020-06-23T15:54:56Z
+ 
+ [Term]
+ id: GO:0140479
+-name: ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++name: obsolete ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
+ namespace: biological_process
+-def: "A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
+-is_a: GO:0052699 ! ergothioneine biosynthetic process
++def: "OBSOLETE. A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
++comment: The reason for obsoletion is that this term represents a pathway variant of ergothioneine biosynthetic process that is out of scope for GO.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0052699
+ created_by: pg
+ creation_date: 2020-06-25T09:58:21Z
+ 
+diff --git a/src/ontology/imports/go_taxon_constraints.owl b/src/ontology/imports/go_taxon_constraints.owl
+index 21690045f..85b2840cc 100644
+--- a/src/ontology/imports/go_taxon_constraints.owl
++++ b/src/ontology/imports/go_taxon_constraints.owl
+@@ -28202,25 +28202,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0052704 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0052704">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+-                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0052907 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0052907">
+@@ -37900,25 +37881,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0140479 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0140479">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+-                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0140494 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0140494">
+diff --git a/src/taxon_constraints/only_in_taxon.ofn b/src/taxon_constraints/only_in_taxon.ofn
+index 15bc61a69..d4b4ccb0e 100644
+--- a/src/taxon_constraints/only_in_taxon.ofn
++++ b/src/taxon_constraints/only_in_taxon.ofn
+@@ -642,7 +642,6 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0051882>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0051960>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052324>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052325>))
+-Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052704>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052907>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0055044>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0055045>))
+@@ -863,7 +862,6 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140266>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140384>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140400>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140446>))
+-Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140479>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140494>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140495>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140525>))
+@@ -4188,11 +4186,6 @@ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052324> ObjectAllValuesFrom(<http
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052325> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052325> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ 
+-# Class: <http://purl.obolibrary.org/obo/GO_0052704> (<http://purl.obolibrary.org/obo/GO_0052704>)
+-
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0052704> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2>))
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0052704> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2>))
+-
+ # Class: <http://purl.obolibrary.org/obo/GO_0052907> (<http://purl.obolibrary.org/obo/GO_0052907>)
+ 
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052907> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_Union_0000004>))
+@@ -5293,11 +5286,6 @@ SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMI
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0140446> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0140446> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+ 
+-# Class: <http://purl.obolibrary.org/obo/GO_0140479> (<http://purl.obolibrary.org/obo/GO_0140479>)
+-
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0140479> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0140479> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+-
+ # Class: <http://purl.obolibrary.org/obo/GO_0140494> (<http://purl.obolibrary.org/obo/GO_0140494>)
+ 
+ SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "Eukaryota  PMID:40712579"^^xsd:string) Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:25342562"^^xsd:string) <http://purl.obolibrary.org/obo/GO_0140494> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_7742>))

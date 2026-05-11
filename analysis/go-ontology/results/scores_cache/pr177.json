@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31670,
+  "pr_number": 31676,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v9",
+  "model": "gpt-5.4",
+  "runtime": "codex",
+  "eval_repo_pr": 177,
+  "f1": 0.571,
+  "precision": 0.4,
+  "recall": 1.0,
+  "jaccard": 0.4
+}

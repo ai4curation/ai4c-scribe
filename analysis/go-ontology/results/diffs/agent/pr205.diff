@@ -1,0 +1,56 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 7aec1566d..7d7fccbd3 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -264338,8 +264338,10 @@ synonym: "envenomation resulting in positive regulation of mast cell degranulati
+ synonym: "envenomation resulting in positive regulation of mast cell degranulation in other organism" EXACT []
+ intersection_of: GO:0035738 ! venom-mediated perturbation of biological process
+ intersection_of: positively_regulates_in_another_organism GO:0043303 ! mast cell degranulation
++relationship: part_of GO:7770071 ! venom-mediated activation of inflammatory response
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/29375" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/29851" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31902" xsd:anyURI
+ created_by: jl
+ creation_date: 2012-01-19T02:54:37Z
+ 
+@@ -617485,6 +617487,40 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-05-06T17:36:35Z
+ 
++[Term]
++id: GO:7770071
++name: venom-mediated activation of inflammatory response
++namespace: biological_process
++def: "A process by which an organism causes inflammatory response in another organism via the action of a venom. Venom-mediated inflammation is related to edema, leukocyte infiltration and release of inflammatory mediators such as cytokines." [PMID:32024243, PMID:19000915]
++synonym: "venom-mediated inflammation" BROAD []
++is_a: GO:0035738 ! venom-mediated perturbation of biological process
++intersection_of: GO:0035738 ! venom-mediated perturbation of biological process
++intersection_of: positively_regulates_in_another_organism GO:0006954 ! inflammatory response
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31902" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T00:00:00Z
++
++[Term]
++id: GO:7770072
++name: venom-mediated leukocyte infiltration
++namespace: biological_process
++def: "A process by which an organism causes leukocyte infiltration in another organism via the action of a venom." [PMID:32024243, PMID:26072684, PMID:19000915]
++is_a: GO:7770071 ! venom-mediated activation of inflammatory response
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31902" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T00:00:00Z
++
++[Term]
++id: GO:7770073
++name: venom-mediated release of inflammatory mediator
++namespace: biological_process
++def: "A process by which an organism causes release of inflammatory mediators in another organism via the action of a venom. Inflammatory mediators include cytokines and interleukins." [PMID:32024243, PMID:26072684]
++synonym: "venom-mediated production of proinflammatory mediator" EXACT []
++is_a: GO:7770071 ! venom-mediated activation of inflammatory response
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31902" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T00:00:00Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of
