@@ -755,7 +755,8 @@ jobs:
             fi
           }
 
-          # Extract PR number from URL
+          # Extract PR number from URL (handle multi-line output from gh pr create)
+          PR_URL=$(echo "$PR_URL" | grep -o 'https://[^ ]*' | tail -1)
           CREATED_PR_NUMBER=$(echo "$PR_URL" | grep -oE '[0-9]+$')
           echo "created_pr_url=${PR_URL}" >> $GITHUB_OUTPUT
           echo "created_pr_number=${CREATED_PR_NUMBER}" >> $GITHUB_OUTPUT
