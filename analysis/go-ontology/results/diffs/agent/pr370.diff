@@ -1,0 +1,21 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index abffd332f..842f251d2 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -593152,11 +593152,14 @@ creation_date: 2014-03-17T14:11:35Z
+ 
+ [Term]
+ id: GO:1990334
+-name: Bfa1-Bub2 complex
++name: SIN/MEN two-component GAP complex
+ namespace: cellular_component
+-def: "A protein complex that acts as a two-component GTPase-activating protein for Tem1 GTPase, thus regulating a signal transduction cascade, called the mitotic exit network (MEN), which is required for mitotic exit and cytokinesis. Bub2/Bfa1 keeps Tem1 inactive until the spindle is properly oriented, thus inhibiting MEN activation." [GOC:bhm, PMID:16449187]
++def: "A protein complex that acts as a two-component GTPase-activating protein (GAP) for a GTPase regulating a signal transduction cascade required for mitotic exit and cytokinesis. The GAP keeps the GTPase inactive until the spindle is properly oriented, thus inhibiting network activation. In S. cerevisiae, this is the Bfa1-Bub2 complex that regulates Tem1 GTPase in the mitotic exit network (MEN). In S. pombe, this is the Byr4-Cdc16 complex that regulates Spg1 GTPase in the septation initiation network (SIN)." [GOC:bhm, PMID:16449187]
++synonym: "Bfa1-Bub2 complex" NARROW []
++synonym: "Byr4-Cdc16 GAP complex" NARROW []
+ is_a: GO:1902773 ! GTPase activator complex
+ relationship: part_of GO:0005816 ! spindle pole body
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31636" xsd:anyURI
+ created_by: bhm
+ creation_date: 2014-03-17T14:34:21Z
+ 

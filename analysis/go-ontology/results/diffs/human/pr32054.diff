@@ -1,0 +1,47 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index be4a4f262..b3261d154 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -123845,13 +123845,14 @@ consider: GO:0012501
+ 
+ [Term]
+ id: GO:0016266
+-name: protein O-linked glycosylation via N-acetyl-galactosamine
++name: protein O-linked glycosylation via N-acetylgalactosamine
+ namespace: biological_process
+ def: "A glycoprotein biosynthetic process starting with the covalent linkage of an N-acetyl-galactosamine via an alpha-glycosidic bond to the oxygen atom of a serine or threonine side chain in a protein, which can be further elongated with the sequential addition of sugar units resulting in the formation of a protein O-linked glycan." [PMID:10580130, PMID:35536936]
+ synonym: "core O-glycan biosynthetic process" EXACT []
+ synonym: "mucin-type O-glycan synthesis" NARROW []
+ synonym: "O-glycan processing" EXACT []
+ synonym: "protein O-linked GalNAcylation" RELATED []
++synonym: "protein O-linked glycosylation via N-acetyl-galactosamine" EXACT []
+ xref: MetaCyc:PWY-7433 {source="skos:narrowMatch"}
+ xref: MetaCyc:PWY-7435 {source="skos:narrowMatch"}
+ is_a: GO:0006493 ! protein O-linked glycosylation
+@@ -123860,6 +123861,7 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30362" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30366" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30592" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32044" xsd:anyURI
+ 
+ [Term]
+ id: GO:0016267
+@@ -617560,6 +617562,18 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-05-07T12:45:27Z
+ 
++[Term]
++id: GO:7770074
++name: protein O-linked glycosylation via N-acetylglucosamine
++namespace: biological_process
++def: "A glycoprotein biosynthetic process in which a single N-acetylglucosamine is covalently linked via a beta-glycosidic bond to the oxygen atom of a serine or threonine side chain in a protein, resulting in the formation of a protein O-linked glycan. The sugar is not elongated into a larger oligosaccharide chain." [PMID:35536957]
++synonym: "protein O-linked GlcNAcylation" EXACT []
++synonym: "protein O-linked N-acetylglucosaminylation" EXACT []
++is_a: GO:0006493 ! protein O-linked glycosylation
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32044" xsd:anyURI
++created_by: sjm
++creation_date: 2026-05-07T16:32:08Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

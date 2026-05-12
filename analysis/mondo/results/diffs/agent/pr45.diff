@@ -1,0 +1,55 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 027d104ca..bdcdba264 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -484703,27 +484703,25 @@ name: primary hypophysitis
+ def: "Immune-mediated inflammation of the pituitary gland often associated with other autoimmune diseases (e.g., hashimoto disease; graves disease; and addison disease)." [MESH:D000069281]
+ subset: disease_grouping
+ subset: gard_rare {source="GARD:0019281", source="MONDO:GARD"}
+-subset: ncit {source="NCIT:C132055"}
+ subset: ordo_group_of_disorders {source="Orphanet:95506"}
+ subset: orphanet {source="Orphanet:95506"}
+ subset: rare
+-synonym: "autoimmune hypophysitis" EXACT [NCIT:C132055, Orphanet:95506]
+-synonym: "lymphocytic hypophysitis" EXACT [NCIT:C132055]
++synonym: "autoimmune hypophysitis" NARROW [PMID:29547162]
++synonym: "lymphocytic hypophysitis" NARROW [PMID:29547162, PMID:32965926]
+ xref: GARD:0019281 {source="MONDO:GARD"}
+ xref: ICD10CM:E23.6 {source="Orphanet:95506"}
+ xref: ICD9:253.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+ xref: ICD9:279.49 {source="MONDO:relatedTo", source="MONDO:i2s"}
+ xref: MEDGEN:575013 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: MESH:D000069281 {source="MONDO:equivalentTo"}
+-xref: NCIT:C132055 {source="MONDO:equivalentTo"}
+ xref: Orphanet:95506 {source="MONDO:equivalentTo"}
+-xref: SCTID:237706000 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0342410 {source="MEDGEN:575013", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0000569 {source="MONDO:Entailed"} ! autoimmune disorder of endocrine system
+ is_a: MONDO:0019832 {source="Orphanet:95506"} ! acquired pituitary hormone deficiency
+ is_a: MONDO:0021156 {source="MESH:D000069281", source="MONDO:Redundant"} ! hypophysitis
+ relationship: disease_has_inflammation_site UBERON:0000007 ! pituitary gland
+ property_value: curated_content_resource "https://www.malacards.org/card/primary_hypophysitis" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9859" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0019836
+@@ -664326,6 +664324,19 @@ is_a: MONDO:1011302 {source="https://orcid.org/0000-0002-5002-8648"} ! branchial
+ relationship: in_taxon NCBITaxon:9986 {source="OMIA:000618-9986"} ! Oryctolagus cuniculus
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10159" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770747
++name: lymphocytic hypophysitis
++def: "A primary hypophysitis characterized by lymphocytic infiltration of the pituitary gland." [PMID:29547162, PMID:32965926]
++subset: ncit {source="NCIT:C132055"}
++subset: rare
++synonym: "autoimmune hypophysitis" EXACT [NCIT:C132055, PMID:29547162, SCTID:237706000]
++xref: NCIT:C132055 {source="MONDO:equivalentTo"}
++xref: SCTID:237706000 {source="MONDO:equivalentTo"}
++is_a: MONDO:0019835 {source="PMID:29547162", source="PMID:32965926"} ! primary hypophysitis
++relationship: disease_has_inflammation_site UBERON:0000007 {source="PMID:32965926"} ! pituitary gland
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9859" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

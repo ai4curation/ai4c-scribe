@@ -1,0 +1,26 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 7d228a566..a850f290d 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617470,6 +617470,21 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-04-29T15:27:39Z
+ 
++[Term]
++id: GO:7770070
++name: p24 cargo receptor complex
++namespace: cellular_component
++def: "A hetero-oligomeric cargo receptor complex that cycles between the endoplasmic reticulum (ER) and the Golgi apparatus, and that selects secretory cargo, especially GPI-anchored proteins, for packaging into COPII vesicles at ER exit sites. A functional p24 complex typically contains one member of each of the alpha, beta, gamma and delta p24 protein subfamilies." [PMID:19566487, PMID:26224213, PMID:27569046, PMID:32456004, PMID:34647572]
++synonym: "p24 complex" EXACT []
++synonym: "p24 protein complex" EXACT []
++synonym: "TMED complex" RELATED []
++synonym: "emp24/erv25 complex" RELATED []
++is_a: GO:0062137 ! cargo receptor complex
++relationship: capable_of_part_of GO:0006888 ! endoplasmic reticulum to Golgi vesicle-mediated transport
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31295" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-11T04:47:08Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

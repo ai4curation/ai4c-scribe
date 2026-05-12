@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 30894,
+  "pr_number": 32011,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 255,
+  "f1": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "jaccard": 1.0
+}

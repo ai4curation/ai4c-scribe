@@ -1,0 +1,20 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 7687e24eb3..e06b6de925 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -301219,6 +301219,7 @@ subset: orphanet_rare {source="Orphanet:98912"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "LDB3 myofibrillar myopathy (disease)" EXACT [MONDO:patterns/disease_series_by_gene]
++synonym: "LDB3-related myofibrillar myopathy" EXACT [https://clinicalgenome.org/affiliation/40151/, https://orcid.org/0000-0002-2078-7280] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ synonym: "MFM4" RELATED ABBREVIATION []
+ synonym: "myofibrillar myopathy (disease) caused by mutation in LDB3" EXACT []
+ synonym: "myofibrillar myopathy type 4" EXACT []
+@@ -301241,6 +301242,7 @@ intersection_of: MONDO:0018943 ! myofibrillar myopathy
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/15710 ! LDB3
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/15710 {source="OMIM:609452"} ! LDB3
+ property_value: curated_content_resource "https://www.malacards.org/card/myopathy_myofibrillar_4" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9938" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0012278

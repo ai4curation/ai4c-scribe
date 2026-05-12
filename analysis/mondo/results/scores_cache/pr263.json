@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 5726,
+  "pr_number": 10155,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 263,
+  "f1": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "jaccard": 1.0
+}

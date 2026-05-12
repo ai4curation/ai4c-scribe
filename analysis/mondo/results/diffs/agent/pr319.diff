@@ -1,0 +1,20 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..c7d8a4890 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -424978,7 +424978,6 @@ xref: ICD9:742.4 {source="MONDO:relatedTo", source="MONDO:i2s"}
+ xref: MedDRA:10050183 {source="Orphanet:2477", source="Orphanet:2477/e"}
+ xref: MEDGEN:65141 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: MESH:D058627 {source="MONDO:equivalentTo"}
+-xref: Orphanet:2477 {source="MONDO:equivalentTo"}
+ xref: SCTID:9740002 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0221355 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:65141"}
+ is_a: MONDO:0005560 {source="https://orcid.org/0000-0002-4142-7153"} ! brain disorder
+@@ -435662,6 +435661,7 @@ synonym: "isolated megalencephaly (disease)" EXACT []
+ synonym: "nonsyndromic megalencephaly (disease)" EXACT [MONDO:patterns/isolated]
+ xref: GARD:0020977 {source="MONDO:GARD"}
+ xref: MEDGEN:439426 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++xref: Orphanet:2477 {source="MONDO:equivalentTo"}
+ xref: Orphanet:268920 {source="MONDO:equivalentObsolete"}
+ xref: UMLS:C2720434 {source="MEDGEN:439426", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0016608 {source="MONDO:Redundant", source="Orphanet:268920"} ! megalencephaly

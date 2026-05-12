@@ -1,0 +1,12 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 410d961c6..07e5cd192 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -6815,6 +6815,7 @@ xref: VHOG:0001726
+ xref: XAO:0004001
+ xref: ZFA:0001487
+ is_a: UBERON:0000001 ! gross anatomical part
++disjoint_from: UBERON:0000468 ! multicellular organism
+ relationship: has_quality PATO:0002198 ! quality of a substance
+ relationship: part_of UBERON:0000468 {notes="this relationship may be too strong and may be weakened in future"} ! multicellular organism
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae

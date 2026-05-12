@@ -1,0 +1,33 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424f..ca564db144 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -275792,15 +275792,20 @@ subset: orphanet_rare {source="Orphanet:2250"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "arhinia choanal atresia microphthalmia" EXACT [GARD:0008755]
++synonym: "arhinia, choanal atresia, microphthalmia, and hypogonadotropic hypogonadism" EXACT [https://orcid.org/0000-0001-9310-0163, OMIM:603457]
+ synonym: "arrhinia-choanal atresia-microphthalmia syndrome" EXACT [MONDO:0015238]
++synonym: "BAM syndrome" EXACT [https://orcid.org/0000-0001-9310-0163, OMIM:603457]
+ synonym: "BAMS" EXACT ABBREVIATION [OMIM:603457]
+ synonym: "Bosma Arhinia Microphthalmia Syndrome" EXACT [NORD:1909, OMIM:603457]
+ synonym: "Bosma arhinia microphthalmia syndrome" EXACT [GARD:0008755, OMIM:603457]
+ synonym: "Bosma arhinia-microphthalmia syndrome" EXACT [Orphanet:2250]
+ synonym: "Bosma Henkin Christiansen syndrome" EXACT [GARD:0008755]
++synonym: "Bosma syndrome" EXACT [https://orcid.org/0000-0001-9310-0163, OMIM:603457]
+ synonym: "Bosma-Henkin-Christiansen syndrome" EXACT [Orphanet:2250]
+ synonym: "congenital absence of nose and anterior nasopharynx" RELATED [GARD:0008755]
++synonym: "Gifford-Bosma syndrome" EXACT [https://orcid.org/0000-0001-9310-0163]
+ synonym: "hyposmia-nasal and ocular hypoplasia-hypogonadotropic hypogonadism syndrome" EXACT [MONDO:0016393, Orphanet:2250]
++synonym: "Ruprecht Majewski syndrome" EXACT [https://orcid.org/0000-0001-9310-0163, OMIM:603457]
+ xref: GARD:0027263 {source="MONDO:GARD"}
+ xref: ICD10CM:Q87.0 {source="Orphanet:1135"}
+ xref: ICD10CM:Q87.8 {source="Orphanet:2250"}
+@@ -275818,6 +275823,7 @@ relationship: curated_content_resource https://search.clinicalgenome.org/kb/cond
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/29090 {source="OMIM:603457"} ! SMCHD1
+ property_value: curated_content_resource "https://www.malacards.org/card/bosma_arhinia_microphthalmia_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/7813" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9882" xsd:anyURI
+ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/8755/arhinia-choanal-atresia-microphthalmia" xsd:anyURI {source="GARD:0008755"}
+ 
+ [Term]

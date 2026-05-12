@@ -31,22 +31,33 @@ MODEL_CANONICAL = {
     # From workflow inputs with provider prefix
     "openai/gpt-5.4": "gpt-5.4",
     "openai/gpt-5.5": "gpt-5.5",
+    # Together AI open models
+    "togetherai/google/gemma-4-31B-it": "gemma-4-31b",
+    "togetherai/moonshotai/Kimi-K2.6": "kimi-k2.6",
+    "togetherai/moonshotai/kimi-k2.6-thinking": "kimi-k2.6",
+    "togetherai/deepseek-ai/DeepSeek-V4": "deepseek-v4",
     # Already canonical
     "gpt-5.4": "gpt-5.4",
     "gpt-5.5": "gpt-5.5",
     "claude-sonnet-4-5": "claude-sonnet-4.5",
     "claude-haiku-4-5": "claude-haiku-4.5",
     "claude-opus-4-7": "claude-opus-4.7",
+    "claude-opus-4-7-20250623": "claude-opus-4.7",
     "codex-mini-latest": "codex-mini",
+    # Gemini models
+    "gemini-2.5-pro": "gemini-2.5-pro",
+    "gemini-2.5-flash": "gemini-2.5-flash",
 }
 
-RUNTIME_VALUES = {"claude", "codex", "opencode", "pi"}
+RUNTIME_VALUES = {"claude", "codex", "opencode", "pi", "gemini", "copilot"}
 
 # Map runtime to how it appears in PR titles
 RUNTIME_FROM_MODEL = {
     "sonnet-4.5": "claude",
     "haiku-4.5": "claude",
     "opus-4.7": "claude",
+    "claude-opus-4-7-20250623": "claude",
+    "claude-opus-4-7": "claude",
 }
 
 
@@ -59,6 +70,8 @@ def normalize_model(raw: str) -> str:
     'claude-sonnet-4.5'
     >>> normalize_model("gpt-5.4")
     'gpt-5.4'
+    >>> normalize_model("togetherai/google/gemma-4-31B-it")
+    'gemma-4-31b'
     """
     return MODEL_CANONICAL.get(raw, raw)
 
@@ -72,11 +85,17 @@ def infer_runtime(model_raw: str) -> str:
     'codex'
     >>> infer_runtime("openai/gpt-5.5")
     'opencode'
+    >>> infer_runtime("togetherai/google/gemma-4-31B-it")
+    'opencode'
     """
     if model_raw in RUNTIME_FROM_MODEL:
         return RUNTIME_FROM_MODEL[model_raw]
     if model_raw.startswith("openai/"):
         return "opencode"
+    if model_raw.startswith("togetherai/"):
+        return "opencode"
+    if model_raw.startswith("gemini"):
+        return "gemini"
     return "codex"
 
 
@@ -282,6 +301,8 @@ def parse_pr_title(title: str) -> Optional[dict]:
     {'issue_number': '31961', 'model_raw': 'gpt-5.5'}
     >>> parse_pr_title("[DO NOT MERGE] eval #3454 i:1: some (parens) title (openai/gpt-5.5, .)")
     {'issue_number': '3454', 'model_raw': 'openai/gpt-5.5'}
+    >>> parse_pr_title("[DO NOT MERGE] eval #31961 i:1: title (copilot/sonnet-4.5, .)")
+    {'issue_number': '31961', 'runtime_hint': 'copilot', 'model_raw': 'sonnet-4.5'}
     >>> parse_pr_title("not a valid title")
     """
     if "DO NOT MERGE" not in title:
@@ -289,14 +310,23 @@ def parse_pr_title(title: str) -> Optional[dict]:
     m_issue = re.search(r"eval #(\d+)", title)
     if not m_issue:
         return None
-    # Model is always in the LAST parenthesized group: "(model, .)"
+    # Model is always in the LAST parenthesized group: "(model, .)" or "(runtime/model, .)"
     m_model = re.search(r"\(([^()]+),\s*\.\)\s*$", title)
     if not m_model:
         return None
-    return {
-        "issue_number": m_issue.group(1),
-        "model_raw": m_model.group(1).strip(),
-    }
+    raw = m_model.group(1).strip()
+    result = {"issue_number": m_issue.group(1)}
+    # Check for runtime/model format (e.g., "copilot/sonnet-4.5")
+    if "/" in raw:
+        parts = raw.split("/", 1)
+        if parts[0] in RUNTIME_VALUES:
+            result["runtime_hint"] = parts[0]
+            result["model_raw"] = parts[1]
+        else:
+            result["model_raw"] = raw
+    else:
+        result["model_raw"] = raw
+    return result
 
 
 # === Main scoring function ===
@@ -330,10 +360,12 @@ def score_eval_repo(
         return []
 
     # Get all PRs from the eval repo
+    # Note: requesting additions/deletions causes 502 on repos with 300+ PRs,
+    # so we fetch just number+title and check for empty diffs downstream.
     r = subprocess.run(
         ["gh", "pr", "list", "--repo", f"ai4curation/{eval_repo}",
          "--limit", "500", "--state", "all",
-         "--json", "number,title,additions,deletions"],
+         "--json", "number,title"],
         capture_output=True, text=True,
     )
     if r.returncode != 0 or not r.stdout.strip():
@@ -344,12 +376,6 @@ def score_eval_repo(
 
     for pr in prs:
         title = pr.get("title", "")
-        additions = pr.get("additions", 0)
-        deletions = pr.get("deletions", 0)
-
-        # Skip PRs with no changes
-        if additions == 0 and deletions == 0:
-            continue
 
         # Parse title
         parsed = parse_pr_title(title)
@@ -397,7 +423,7 @@ def score_eval_repo(
             difficulty=case["difficulty"],
             agent_config_tag=config_tag,
             model=normalize_model(model_raw),
-            runtime=infer_runtime(model_raw),
+            runtime=parsed.get("runtime_hint") or infer_runtime(model_raw),
             eval_repo_pr=pr_num,
             f1=scores["f1"],
             precision=scores["precision"],
@@ -526,3 +552,125 @@ def records_to_dataframe(records: list[ScoreRecord], analysis_dir: Path = Path("
     df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"].astype(str)
     df["agent"] = [resolve_agent_handle(r, analysis_dir) for r in records]
     return df
+
+
+def generate_review_stub(record: ScoreRecord, analysis_dir: Path = Path("analysis")) -> str:
+    """Generate a review stub markdown file for a scored eval run.
+
+    The stub contains pre-filled frontmatter and URLs for the reviewer.
+    The reviewer fills in the body (## Summary, ## Strengths, ## Issues).
+
+    >>> r = ScoreRecord(ontology="go-ontology", issue_number=31961, pr_number=32015,
+    ...     case_type="obsoletion", difficulty="simple", agent_config_tag="v9",
+    ...     model="gpt-5.4", runtime="codex", eval_repo_pr=40,
+    ...     f1=0.8, precision=0.889, recall=0.727, jaccard=0.667)
+    >>> stub = generate_review_stub(r)
+    >>> "issue_number: 31961" in stub
+    True
+    >>> "geneontology/go-ontology/issues/31961" in stub
+    True
+    """
+    cfg = EVAL_REPOS.get(record.ontology, {})
+    source_repo = cfg.get("source_repo", "")
+    eval_repo = cfg.get("eval_repo", "")
+
+    agent_handle = resolve_agent_handle(record, analysis_dir)
+
+    issue_url = f"https://github.com/{source_repo}/issues/{record.issue_number}"
+    human_pr_url = f"https://github.com/{source_repo}/pull/{record.pr_number}"
+    agent_pr_url = f"https://github.com/ai4curation/{eval_repo}/pull/{record.eval_repo_pr}"
+    # Map eval repo to config repo name
+    _CONFIG_REPOS = {
+        "eval-ont-agent-go": "go-ontology-agent-config",
+        "eval-ont-agent-cl": "cl-agent-config",
+        "eval-ont-agent-uberon": "uberon-agent-config",
+        "eval-ont-agent-mondo": "mondo-agent-config",
+    }
+    config_repo = _CONFIG_REPOS.get(eval_repo, eval_repo)
+
+    stub = f"""---
+ontology: {record.ontology}
+issue_number: {record.issue_number}
+pr_number: {record.pr_number}
+eval_repo_pr: {record.eval_repo_pr}
+agent: {agent_handle}
+model: {record.model}
+runtime: {record.runtime}
+agent_config_tag: {record.agent_config_tag}
+case_type: {record.case_type}
+difficulty: {record.difficulty}
+f1: {record.f1}
+precision: {record.precision}
+recall: {record.recall}
+jaccard: {record.jaccard}
+outcome:
+failure_modes: []
+reviewed_by:
+reviewed_at:
+---
+
+<!-- Review this eval run following analysis/instructions/review-agent-eval.md
+
+  Source issue: {issue_url}
+  Human PR (ground truth): {human_pr_url}
+  Agent PR (eval): {agent_pr_url}
+  Agent config: ai4curation/{config_repo}
+
+  Quick reference:
+    gh issue view {record.issue_number} --repo {source_repo}
+    gh pr diff {record.pr_number} --repo {source_repo}
+    gh pr diff {record.eval_repo_pr} --repo ai4curation/{eval_repo}
+-->
+
+## Summary
+
+
+
+## Strengths
+
+
+
+## Issues
+
+"""
+    return stub
+
+
+def generate_review_stubs(
+    ontology: str,
+    analysis_dir: Path = Path("analysis"),
+    reviewer: str = "codex",
+    overwrite: bool = False,
+) -> list[Path]:
+    """Generate review stub files for all scored runs of an ontology.
+
+    Args:
+        ontology: Ontology name
+        analysis_dir: Root analysis directory
+        reviewer: Reviewer identifier (e.g., "codex", "cc")
+        overwrite: If True, regenerate existing stubs
+
+    Returns:
+        List of paths to generated stub files
+    """
+    records = load_cached_scores(ontology, analysis_dir)
+    reviews_dir = analysis_dir / ontology / "results" / "reviews"
+    reviews_dir.mkdir(parents=True, exist_ok=True)
+
+    generated = []
+    for record in records:
+        stub_path = reviews_dir / f"pr{record.eval_repo_pr}-{reviewer}-stub.md"
+        complete_path = reviews_dir / f"pr{record.eval_repo_pr}-{reviewer}-complete.md"
+
+        # Skip if complete review exists
+        if complete_path.exists():
+            continue
+        # Skip if stub exists and not overwriting
+        if stub_path.exists() and not overwrite:
+            continue
+
+        stub = generate_review_stub(record, analysis_dir)
+        stub_path.write_text(stub)
+        generated.append(stub_path)
+
+    return generated

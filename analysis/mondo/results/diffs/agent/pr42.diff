@@ -1,0 +1,36 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 27fc3d562..4f40379b2 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -149500,6 +149500,7 @@ xref: SCTID:197592009 {source="DOID:10966"}
+ xref: SCTID:44785005 {source="EFO:1001020", source="DOID:10966", source="MONDO:equivalentTo"}
+ xref: UMLS:C0027721 {source="MEDGEN:10307", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0002462 {source="DOID:10966", source="NCIT:C34844"} ! glomerulonephritis
++is_a: MONDO:7770018 {source="PMID:25684864", source="PMID:38804512"} ! podocytopathy
+ relationship: excluded_subClassOf MONDO:0005377 {source="DOID:10966", source="https://orcid.org/0000-0001-5208-3432"} ! nephrotic syndrome
+ property_value: curated_content_resource "https://www.malacards.org/card/lipoid_nephrosis" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+@@ -583507,6 +583508,7 @@ xref: SCTID:236403004 {source="EFO:0004236", source="MONDO:equivalentTo", source
+ xref: SCTID:25821008 {source="DOID:1312"}
+ xref: UMLS:C0017668 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:4904"}
+ is_a: MONDO:0000490 {source="DOID:1312"} ! glomerulosclerosis
++is_a: MONDO:7770018 {source="PMID:25684864", source="PMID:32792490", source="PMID:38804512"} ! podocytopathy
+ property_value: curated_content_resource "https://www.malacards.org/card/focal_segmental_glomerulosclerosis" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-5208-3432
+ 
+@@ -649355,6 +649357,15 @@ intersection_of: MONDO:0005583 ! non-human animal disease
+ intersection_of: MONDO:0700097 MONDO:7770011 ! cross-species analog disease by molecular mechanism
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10127" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770018
++name: podocytopathy
++def: "A glomerular disorder caused by structural or functional impairment of podocytes that drives proteinuria or nephrotic syndrome." [PMID:25684864, PMID:32792490, PMID:38804512]
++synonym: "podocytopathies" EXACT [PMID:25684864, PMID:32792490]
++is_a: MONDO:0019722 {source="PMID:25684864", source="PMID:32792490"} ! glomerular disorder
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0009-0009-0876-0331
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

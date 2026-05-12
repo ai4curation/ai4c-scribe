@@ -1,0 +1,12 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 28406f6c4..0b009efe3 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -567427,6 +567427,7 @@ subset: gard_rare {source="GARD:0016272", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
+ subset: omim {source="OMIM:617941"}
+ subset: rare
++synonym: "EFL1-related Shwachman-Diamond syndrome" EXACT [] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ synonym: "SDS2" RELATED ABBREVIATION []
+ synonym: "Shwachman-Diamond syndrome 2" EXACT [OMIM:617941]
+ xref: GARD:0016272 {source="MONDO:GARD"}

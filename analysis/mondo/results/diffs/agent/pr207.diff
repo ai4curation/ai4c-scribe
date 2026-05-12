@@ -1,0 +1,14 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 7687e24eb..c0bec2609 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -301207,7 +301207,8 @@ property_value: curated_content_resource "https://www.malacards.org/card/paroxys
+ 
+ [Term]
+ id: MONDO:0012277
+-name: myofibrillar myopathy 4
++name: LDB3-related myofibrillar myopathy
++synonym: "myofibrillar myopathy 4" EXACT [https://github.com/monarch-initiative/mondo/issues/9938]
+ def: "Late-onset distal myopathy, Markesbery-Griggs type is a rare, genetic, non-dystrophic myofibrillar myopathy disorder characterized by late-adult onset of distal and/or proximal limb muscle weakness with initial involvement of posterior lower leg muscles, medial gastrocnemius and soleus. Patients present with ankle weakness followed by weakness of finger and wrist extensors and later on of proximal muscles. Ambulation is usually preserved. Late-onset associated cardiomyopathy and/or neuropathy has been reported in a minority of cases." [Orphanet:98912]
+ subset: doid {source="DOID:0080095"}
+ subset: gard_rare {source="GARD:0001886", source="MONDO:GARD"}

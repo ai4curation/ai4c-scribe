@@ -1,0 +1,42 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..a6f6bbfed 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -176659,7 +176659,7 @@ property_value: curated_content_resource "https://www.malacards.org/card/heart_h
+ id: MONDO:0007703
+ name: obsolete heart, malformation of
+ is_obsolete: true
+-replaced_by: MONDO:0009327
++consider: MONDO:0005267
+ 
+ [Term]
+ id: MONDO:0007704
+@@ -224697,23 +224697,19 @@ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6164/congeni
+ 
+ [Term]
+ id: MONDO:0009327
+-name: heart, malformation of
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical disease and there is currently no evidence that this term represents an actual existing disease. After obsoletion, this term will not have a replacement ID, but one could consider the following term: heart disorder-MONDO:0005267
+-subset: gard_rare {source="GARD:0024658", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: rare
++name: obsolete heart, malformation of
++comment: Reason of obsoletion: out of scope - MONDO:excludePhenotype. Term to consider: heart disorder-MONDO:0005267
+ synonym: "heart, malformation of" EXACT []
+ xref: GARD:0024658 {source="MONDO:GARD"}
+ xref: MEDGEN:6748 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:140500 {source="MONDO:equivalentObsolete"}
+ xref: OMIM:234750 {source="MONDO:equivalentObsolete"}
+ xref: UMLS:C0018798 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:6748"}
+-is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+-is_a: MONDO:0019512 ! congenital heart malformation
+ property_value: curated_content_resource "https://www.malacards.org/card/heart_malformation_of" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000231 OMO:0001000 {source="MONDO:excludePhenotype"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9771" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++consider: MONDO:0005267
+ 
+ [Term]
+ id: MONDO:0009328

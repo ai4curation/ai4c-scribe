@@ -53,6 +53,16 @@ agents:
     skills: true
     category: standard
 
+  std_claude_op47:
+    description: "Claude Code + Opus 4.7 (standard config)"
+    runtime: claude
+    model: claude-opus-4.7
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    category: standard
+
   std_codex_g54:
     description: "Codex + GPT-5.4 (standard config)"
     runtime: codex
@@ -62,6 +72,37 @@ agents:
     reasoning_effort: default
     skills: true
     category: standard
+
+  std_copilot_son45:
+    description: "Copilot CLI + Sonnet 4.5 (standard config)"
+    runtime: copilot
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    category: standard
+
+  # --- Open models (via Together AI) ---
+  std_opencode_gem4:
+    description: "OpenCode + Gemma 4 31B (Together AI)"
+    runtime: opencode
+    model: gemma-4-31b
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    category: open_model
+
+  std_opencode_kimi:
+    description: "OpenCode + Kimi K2.6 (Together AI)"
+    runtime: opencode
+    model: kimi-k2.6
+    config_repo: ai4curation/go-ontology-agent-config
+    config_tag: v9
+    reasoning_effort: default
+    skills: true
+    category: open_model
 
   # --- Ablation: no skills ---
   noskills_codex_g55:

@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9859,
+  "pr_number": 10219,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 190,
+  "f1": 0.048,
+  "precision": 0.024,
+  "recall": 1.0,
+  "jaccard": 0.024
+}

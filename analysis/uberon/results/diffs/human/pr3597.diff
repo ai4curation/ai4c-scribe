@@ -1,0 +1,22 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 0479f338d..989f151e1 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -143790,7 +143790,7 @@ xref: SCTID:181670005
+ xref: SCTID:368101007
+ xref: Wikipedia:Adductor_muscles_of_the_hip
+ intersection_of: UBERON:0011145 ! adductor muscle
+-intersection_of: part_of UBERON:0010709 ! pelvic complex
++intersection_of: part_of UBERON:0001464 ! hip
+ relationship: has_muscle_origin UBERON:0001272 ! innominate bone
+ relationship: innervated_by UBERON:0005465 {notes="a small part of adductor magnus is innervated by the tibial nerve", source="dbpedia"} ! obturator nerve
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/e/e2/Anterior_Hip_Muscles_2.PNG" xsd:anyURI
+@@ -179945,7 +179945,7 @@ def: "A cranial nerve fiber tract that innervates the parietal eye." [ISBN:04718
+ comment: This should be classified as an evaginated sensory afferents rather than cranial nerves, as they are part of the CNS[ISBN:0471888893]
+ synonym: "epiphyseal nerve" RELATED [ISBN:0471888893]
+ intersection_of: UBERON:0034713 ! cranial neuron projection bundle
+-intersection_of: innervates UBERON:0004869 ! parietal organ
++intersection_of: innervates UBERON:0015238 ! pineal complex
+ relationship: extends_fibers_into UBERON:0001899 ! epithalamus
+ relationship: part_of UBERON:0001017 ! central nervous system
+ 

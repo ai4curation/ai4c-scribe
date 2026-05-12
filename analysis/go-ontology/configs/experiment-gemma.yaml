@@ -1,0 +1,26 @@
+# Gemma 4 31B evaluation on GO ontology (via Together AI / OpenCode)
+workflow: eval-agent-on-issue.yml
+repo: ai4curation/eval-ont-agent-go
+description: "GO ontology - Gemma 4 31B open model evaluation"
+tags: ["go-ontology", "open-model", "gemma"]
+
+input_sets_dir: ../cases
+
+inputs:
+  issue_repo: geneontology/go-ontology
+  timeout_minutes: 90
+  agent_config_repo: ai4curation/go-ontology-agent-config
+  agent_config_tag: v9
+  agent_config_directory: .
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+  container: obolibrary/odkfull:latest
+
+  agent_runtime: [opencode]
+  model: [togetherai/google/gemma-4-31B-it]
+
+limits:
+  max_concurrent: 5
+  batch_size: 10
+  poll_interval_seconds: 30

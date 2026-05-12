@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9859,
+  "pr_number": 10219,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 280,
+  "f1": 0.235,
+  "precision": 0.146,
+  "recall": 0.6,
+  "jaccard": 0.133
+}

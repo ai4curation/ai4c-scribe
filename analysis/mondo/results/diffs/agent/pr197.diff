@@ -1,0 +1,29 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..8a11b73c9 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -607059,17 +607059,21 @@ property_value: curated_content_resource "https://www.malacards.org/card/seconda
+ 
+ [Term]
+ id: MONDO:0957382
+-name: multiple mitochondrial dysfunctions syndrome 7
++name: GCSH-related glycine encephalopathy
++def: "Any glycine encephalopathy in which the cause of the disease is a mutation in the GCSH gene." [https://orcid.org/0000-0002-7437-8060, OMIM:620423]
+ subset: gard_rare {source="GARD:0026818", source="MONDO:GARD"}
+ subset: omim {source="OMIM:620423"}
+ subset: rare
++synonym: "multiple mitochondrial dysfunctions syndrome 7" RELATED [OMIM:620423] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ xref: GARD:0026818 {source="MONDO:GARD"}
+ xref: MEDGEN:1841222 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620423 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5830586 {source="MEDGEN:1841222", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-is_a: MONDO:0017338 {source="OMIM:620423"} ! fatal multiple mitochondrial dysfunctions syndrome
++is_a: MONDO:0011612 {source="OMIM:620423", source="https://orcid.org/0000-0002-7437-8060"} ! glycine encephalopathy
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4208 {source="OMIM:620423"} ! GCSH
+-property_value: curated_content_resource "https://www.malacards.org/card/multiple_mitochondrial_dysfunctions_syndrome_7" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: curated_content_resource "https://www.malacards.org/card/gcsh_related_glycine_encephalopathy" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-7437-8060
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9896" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0957385

@@ -19,19 +19,24 @@ import yaml
 
 MODEL_SHORT = {
     # Canonical model names (after normalization in scores.tsv)
-    "claude-sonnet-4-5": "son45",
-    "claude-haiku-4-5": "hai45",
-    "claude-opus-4-7": "op47",
+    "claude-sonnet-4.5": "son45",
+    "claude-haiku-4.5": "hai45",
+    "claude-opus-4.7": "op47",
     "gpt-5.4": "g54",
     "gpt-5.5": "g55",
     "codex-mini-latest": "cxm",
+    "gemma-4-31b": "gem4",
+    "kimi-k2.6": "kimi",
+    "deepseek-v4": "ds4",
+    "gemini-2.5-pro": "g25p",
+    "gemini-2.5-flash": "g25f",
     # Full dated versions (from older runs)
     "claude-sonnet-4-5-20250929": "son45",
     "claude-haiku-4-5-20251001": "hai45",
     "claude-opus-4-7-20250623": "op47",
 }
 
-RUNTIME_SHORT = {"claude": "CC", "codex": "CX", "opencode": "OC", "pi": "PI"}
+RUNTIME_SHORT = {"claude": "CC", "codex": "CX", "opencode": "OC", "pi": "PI", "gemini": "GE", "copilot": "CP"}
 
 
 def agent_code(row) -> str:

@@ -1,0 +1,24 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 054fb3842..0837f612e 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3589,6 +3589,7 @@ Declaration(AnnotationProperty(obo:IAO_0000700))
+ Declaration(AnnotationProperty(obo:IAO_0100001))
+ Declaration(AnnotationProperty(obo:RO_0002161))
+ Declaration(AnnotationProperty(cl:BDS_subset))
++Declaration(AnnotationProperty(cl:added_by_HRA))
+ Declaration(AnnotationProperty(cl:added_for_HCA))
+ Declaration(AnnotationProperty(cl:blood_and_immune_upper_slim))
+ Declaration(AnnotationProperty(cl:eye_upper_slim))
+@@ -3639,6 +3640,11 @@ AnnotationAssertion(rdfs:label obo:IAO_0000028 "symbol")
+ 
+ SubAnnotationPropertyOf(cl:BDS_subset oboInOwl:SubsetProperty)
+ 
++# Annotation Property: cl:added_by_HRA (cl:added_by_HRA)
++
++AnnotationAssertion(rdfs:comment cl:added_by_HRA "Classes tagged with this subset property were added on request from HuBMAP to support the HuBMAP Human Reference Atlas (HRA).")
++SubAnnotationPropertyOf(cl:added_by_HRA oboInOwl:SubsetProperty)
++
+ # Annotation Property: cl:added_for_HCA (cl:added_for_HCA)
+ 
+ SubAnnotationPropertyOf(cl:added_for_HCA oboInOwl:SubsetProperty)

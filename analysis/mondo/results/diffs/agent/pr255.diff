@@ -1,0 +1,20 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..c66b765af 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -607063,6 +607063,7 @@ name: multiple mitochondrial dysfunctions syndrome 7
+ subset: gard_rare {source="GARD:0026818", source="MONDO:GARD"}
+ subset: omim {source="OMIM:620423"}
+ subset: rare
++synonym: "GCSH-related glycine encephalopathy" EXACT [] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ xref: GARD:0026818 {source="MONDO:GARD"}
+ xref: MEDGEN:1841222 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620423 {source="MONDO:equivalentTo"}
+@@ -607070,6 +607071,7 @@ xref: UMLS:C5830586 {source="MEDGEN:1841222", source="MONDO:equivalentTo", sourc
+ is_a: MONDO:0017338 {source="OMIM:620423"} ! fatal multiple mitochondrial dysfunctions syndrome
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4208 {source="OMIM:620423"} ! GCSH
+ property_value: curated_content_resource "https://www.malacards.org/card/multiple_mitochondrial_dysfunctions_syndrome_7" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9896" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0957385

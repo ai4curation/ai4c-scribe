@@ -1,0 +1,86 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index a84557c7c..0479f338d 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225288,6 +225288,81 @@ intersection_of: part_of UBERON:0001052 ! rectum
+ relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
+ property_value: dcterms-date "2025-05-27T17:07:22Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8600141
++name: distal surface of tooth
++def: "A tooth surface structure that is oriented away from the median plane of the dental arch or oral cavity." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600142
++name: incisal surface of tooth
++def: "A tooth surface structure that forms the cutting edge of an incisor or canine tooth. It functions to shear or incise food during biting." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600143
++name: labial surface of tooth
++def: "A tooth surface structure that faces the lips." [https://dentaleducationhub.com/surfaces-of-the-teeth/]
++comment: Tooth surfaces are typically abbreviated using their initial letters. To avoid confusion between 'L' for lingual and labial surfaces, the letter 'F' (for facial surface) is commonly used to refer to the labial surface. {xref="https://orcid.org/0000-0001-9625-1899"}
++synonym: "facial surface of tooth" BROAD []
++is_a: UBERON:8600147 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600144
++name: lingual surface of tooth
++def: "A tooth surface structure that faces the tongue or its anatomical equivalent." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600145
++name: mesial surface of tooth
++def: "A tooth surface structure that is oriented toward the median plane of the dental arch." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600146
++name: buccal surface of tooth
++def: "A tooth surface structure that is oriented toward the buccal mucosa (i.e., the inner lining of the cheek)." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:8600147 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600147
++name: facial surface of tooth
++def: "A tooth surface structure that is oriented toward the lips or cheeks." [https://dentaleducationhub.com/surfaces-of-the-teeth/]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2025-07-24T08:20:48Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600148
++name: tooth surface structure
++def: "A surface structure that is part of a calcareous tooth." [PMID:32491475]
++synonym: "tooth surface" EXACT [PMID:32071532]
++intersection_of: UBERON:0003102 ! surface structure
++intersection_of: part_of UBERON:0001091 ! calcareous tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++property_value: dcterms-date "2025-08-05T09:28:57Z" xsd:dateTime
++
+ [Term]
+ id: UBERON:8700000
+ name: aorta-gonad-mesonephros

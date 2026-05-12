@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31985,
+  "pr_number": 31986,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v9",
+  "model": "gemma-4-31b",
+  "runtime": "opencode",
+  "eval_repo_pr": 253,
+  "f1": 0.818,
+  "precision": 0.75,
+  "recall": 0.9,
+  "jaccard": 0.692
+}

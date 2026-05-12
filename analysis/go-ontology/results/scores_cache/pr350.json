@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31964,
+  "pr_number": 31982,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "claude-opus-4.7",
+  "runtime": "claude",
+  "eval_repo_pr": 350,
+  "f1": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "jaccard": 1.0
+}

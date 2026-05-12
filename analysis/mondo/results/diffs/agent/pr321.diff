@@ -1,0 +1,1388 @@
+diff --git a/.agents/skills/analyse-issue/SKILL.md b/.agents/skills/analyse-issue/SKILL.md
+new file mode 100644
+index 000000000..2f4d2f9bb
+--- /dev/null
++++ b/.agents/skills/analyse-issue/SKILL.md
+@@ -0,0 +1,83 @@
++---
++name: analyse-issue
++description: Analyze MONDO GitHub issues for validity, suggest improvements, and generate structured
++  reports with duplication checks and identifier validation
++---
++
++# Analyze a GitHub issue for validity
++
++## Instructions
++
++When handling GitHub issues:
++
++1. **View the issue**: Use `gh issue view [number]` to read the issue
++2. **Analyze validity**: Assess if the request is medically and terminologically valid (this is NOT always the case, so please be careful)
++  - Try to understand the specific design pattern a disease belongs to. Do that by looking at similar classes, and by carefully considering the yaml files in src/patterns/dosdp-patterns/, which define design patterns.
++  - If a suitable pattern exists, but you think its underspecified, you may suggest improvements to the pattern (as part of your final report, read on)
++  - If no suitable pattern exists, you should propose one, at least in a rough outline, as part of the final report (read on)
++3. **Search for improvements**: Look, for example, for more specific parents/terms that might be better
++   - As usual, use obo-grepl.obo for the search
++   - If any of the diseases analysed as part of this issue belongs to a design pattern (as determined above) but lacks a logical definition and human readable definition, you may propose one as part of the issue
++4. **Present findings** in the following format (see below). Write them to a file @src/ontology/tmp/issue_x_analysis.md, where "x" should be the issue number.
++5. **Post comment**. ALWAYS ASK FOR PERMISSION TO DO THIS. Offer to post the the file created as a comment to the issue being analysed (using gh). ALWAYS ASK FOR PERMISSION TO DO THIS.
++
++### Model information
++
++Include at the top of your report:
++
++```
++⚠️ **WARNING: This report is AI-generated**
++**Model:** [Retrieve programmatically - check environment context or system information]
++**Generated:** [Use date command to get current timestamp in UTC]
++```
++
++**IMPORTANT:**
++- NEVER write the model name from memory or training data
++- Look for the model information in the system environment or context provided at the start of the conversation
++- If the exact model ID is provided in your system context (e.g., "claude-sonnet-4-5-20250929"), use that
++- If unavailable, state "Model information unavailable"
++- Always generate the timestamp programmatically using `date -u +"%Y-%m-%d %H:%M:%S UTC"` or similar
++- Always check if an example you give is valid by using obo-grepl.obo. Be very very careful not to hallucinate subclass (is_a) relations.
++
++### ✅ Why the user request is valid:
++
++- Mermaid diagram that describes SPECIFICALLY THE USER REQUESTED change.
++  - Use bottom UP (BT) for arrow direction
++  - Use `-.->|PROPOSED<br/>NEW PARENT|` for proposed new parents and `-.->|PROPOSED<br/>REMOVED PARENT|` for proposed removed parents
++  - Example:
++
++    ```mermaid
++    graph BT
++        B[MONDO:0005341 skin basal cell carcinoma] -->  A[MONDO:0004993 carcinoma]
++        C[MONDO:0019317 follicular atrophoderma-basal cell carcinoma] -.->|PROPOSED<br/>NEW PARENT| B
++        C --> D[MONDO:0010535 Bazex-Dupre-Christol syndrome]
++        
++        style C fill:#ccffcc
++        style A fill:#ccffcc
++        style B fill:#ccffcc
++    ```
++
++- Medical/clinical justification, ideally with pubmed evidence
++- Terminological correctness  
++- Ontological gaps being addressed
++
++### 💡 Suggested improvements:
++
++- Section to describe changes / refinements over what the user is suggesting
++- Mermaid diagram that describes the change (ONLY include this if there are actual changes being suggested!)
++- More specific parent/classification if applicable, ideally with pubmed evidence
++- Additional relationships that should be considered
++- Supporting literature/references
++
++Example: For classification requests, always check if there's a more specific parent term (e.g., "benign vascular tumor" instead of general "cancer or benign tumor").
++
++### High level action items
++
++- Example: Add X as subclass to Y.
++
++### General formatting instructions on the report
++
++- The title in the issue report should just be "Issue analysis"
++- Do not include an "implementation plan" in the report
++- If there are no suggested improvements over the user request
++
+diff --git a/.claude/agents/deep-research-specialist.md b/.agents/skills/deep-research-specialist/SKILL.md
+similarity index 100%
+rename from .claude/agents/deep-research-specialist.md
+rename to .agents/skills/deep-research-specialist/SKILL.md
+diff --git a/.claude/agents/design-pattern-advisor.md b/.agents/skills/design-pattern-advisor/SKILL.md
+similarity index 100%
+rename from .claude/agents/design-pattern-advisor.md
+rename to .agents/skills/design-pattern-advisor/SKILL.md
+diff --git a/.claude/agents/identifier-validator.md b/.agents/skills/identifier-validator/SKILL.md
+similarity index 100%
+rename from .claude/agents/identifier-validator.md
+rename to .agents/skills/identifier-validator/SKILL.md
+diff --git a/.agents/skills/merge-terms/SKILL.md b/.agents/skills/merge-terms/SKILL.md
+new file mode 100644
+index 000000000..87fbae4a7
+--- /dev/null
++++ b/.agents/skills/merge-terms/SKILL.md
+@@ -0,0 +1,205 @@
++---
++name: merge-terms
++description: Use when asked to merge two MONDO terms — obsoleting one and transferring its
++  metadata to the surviving term
++---
++
++# Merge two MONDO terms
++
++## ⚠️ Running ODK commands
++
++Every step below uses ODK tools (`owltools`, `robot`, `make NORM`). **Read the `odk` skill first** for how to invoke them — `sh run.sh <cmd>` if you have a TTY, otherwise direct `docker run ... -i obolibrary/odkfull:<tag>` (the tag lives in `src/ontology/run.sh`).
++
++The commands below show the *body* (what goes after `sh run.sh ` or after the docker prefix). Pick the wrapper based on your environment.
++
++## Required inputs
++
++- **Term to obsolete** (the duplicate / less-rich term)
++- **Replacement / surviving term** (the term content gets transferred to)
++- **GitHub issue number** (the issue requesting the merge)
++
++If any are missing, ask before proceeding.
++
++## Step 1 — Run owltools merge
++
++From `src/ontology/`:
++
++```
++owltools --use-catalog mondo-edit.obo \
++  --obsolete-replace MONDO:XXXXXXX MONDO:YYYYYYY \
++  -o -f obo mondo-edit.obo
++```
++
++Where `MONDO:XXXXXXX` = obsoleted, `MONDO:YYYYYYY` = surviving.
++
++What owltools does:
++- Renames the obsoleted term to `obsolete <original name>`
++- Sets `is_obsolete: true` and `replaced_by: MONDO:YYYYYYY` on the obsoleted term
++- Strips definition, comment, xrefs, synonyms, subsets, is_a, intersection_of, relationship, property_value from the obsoleted term
++- Transfers xrefs, synonyms, subsets, is_a, relationships, property_values onto the surviving term — including stale "obsoletion-tracking" metadata (see Step 5)
++- Adds the obsoleted term's name as a synonym on the surviving term, citing the obsoleted MONDO ID as evidence (must be fixed in Step 5)
++
++## Step 2 — Normalize immediately
++
++```
++make NORM
++```
++
++Then `mv NORM mondo-edit.obo`. This deduplicates source qualifiers on identical subset/xref/is_a lines and re-quotes property_value URIs that owltools mangles.
++
++NORM does **not** dedupe synonyms across different scopes (e.g. an EXACT and a RELATED with the same text both stay) — handle in Step 5.
++
++## Step 3 — Checkout both terms
++
++```bash
++obo-checkout.pl src/ontology/mondo-edit.obo MONDO:XXXXXXX MONDO:YYYYYYY
++```
++
++## Step 4 — Clean up the OBSOLETED term
++
++The obsoleted stanza must contain ONLY the lines below. Delete anything else owltools left behind (def, comment, xref, synonym, subset, is_a, intersection_of, relationship, other property_value) — but only after verifying the content is on the surviving term.
++
++| Allowed line | Source |
++|---|---|
++| `id: MONDO:XXXXXXX` | unchanged |
++| `name: obsolete <original name>` | set by owltools |
++| `property_value: IAO:0000231 MONDO:TermsMerged` | **add manually** (obsoletion reason) |
++| `property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/NNNN" xsd:anyURI` | **add manually** (issue link) |
++| `is_obsolete: true` | set by owltools |
++| `replaced_by: MONDO:YYYYYYY` | set by owltools |
++
++## Step 5 — Clean up the SURVIVING term
++
++owltools transfers content but several things need manual attention:
++
++1. **Fix synonym evidence.** owltools added a synonym like `synonym: "<obsoleted name>" EXACT [MONDO:XXXXXXX]`. Replace `MONDO:XXXXXXX` with one of the *transferred* xrefs (e.g. `[Orphanet:NNNNNN]`). If the obsoleted name is identical to an existing synonym with a different scope, reconcile manually — pick the correct scope, drop the duplicate.
++
++2. **Remove obsoletion-tracking metadata** that came from the obsoleted term:
++   - `subset: obsoletion_candidate`
++   - `subset: scheduled for obsoletion on or after` (if present)
++   - `property_value: IAO:0006012 "<date>" xsd:string` (scheduled-obsoletion date — would otherwise claim the surviving term is scheduled for obsoletion)
++
++3. **Decide which definition to keep.** Default = whichever the **issue** says is correct. If the issue is silent, keep the surviving term's existing definition. If the surviving term had no definition and the obsoleted one did, use the obsoleted one's. State the choice in the final summary so the user can override.
++
++4. **Check for redundant `is_a`.** If a transferred `is_a` is a superclass of another `is_a` already on the surviving term (e.g. `MONDO:0000001` "disease" alongside a more specific class), remove the redundant one along with its source qualifiers.
++
++5. **Check for an unwanted `alt_id`.** Some owltools versions add `alt_id: MONDO:XXXXXXX` to the surviving term. If present, remove it (Mondo policy: no `alt_id` for merges).
++
++(Step 7.5 #8 will verify that all meaningful content from the obsolete stanza actually made it onto the surviving term — don't duplicate that check here.)
++
++## Step 6 — Rewire children of the obsoleted term
++
++owltools usually rewires `is_a` children, but does **not** touch references in `relationship:`, `intersection_of:`, `disjoint_from:`, etc. Sweep for ANY remaining reference:
++
++```bash
++obo-grep.pl --noheader -r 'MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++```
++
++For each hit outside the obsoleted stanza itself, checkout that term, repoint the axiom to `MONDO:YYYYYYY`, and check it back in.
++
++## Step 7 — Check in, normalize, run QC
++
++1. Check in:
++   ```bash
++   obo-checkin.pl src/ontology/mondo-edit.obo MONDO:XXXXXXX MONDO:YYYYYYY [any rewired children]
++   ```
++
++2. Normalize:
++   ```
++   make NORM
++   ```
++   then `mv NORM mondo-edit.obo`.
++
++3. Run targeted QC. The merge-relevant SPARQL checks live under `src/sparql/qc/general/`. Run them via `robot verify` (this is a body — wrap with `sh run.sh` or docker per the warning at the top of the skill):
++
++   ```
++   robot verify --catalog catalog-v001.xml -i mondo-edit.obo \
++     --queries \
++       ../sparql/qc/general/qc-proxy-merge-missing-preferred.sparql \
++       ../sparql/qc/general/qc-misused-replaced-by.sparql \
++       ../sparql/qc/general/qc-obsoletion-reason.sparql \
++       ../sparql/qc/general/qc-deprecated-class-reference.sparql \
++       ../sparql/qc/general/qc-xref-without-precision.sparql \
++       ../sparql/qc/general/qc-duplicate-exact-synonym-no-abbrev.sparql \
++     -O reports/
++   ```
++
++   Empty exit + `PASS Rule ... 0 violation(s)` per query = clean. **Note:** these queries do NOT catch a missing `IAO:0000231 MONDO:TermsMerged` on the obsoleted term — the Step 8 checklist is the real safety net.
++
++## Step 7.5 — Self-verify
++
++Before claiming done, run every check below. **If any fails, fix it before moving to Step 8 — do not just note it.**
++
++### Mechanical checks
++
++Run these greps. Replace `XXXXXXX` with the obsoleted ID and `YYYYYYY` with the surviving ID.
++
++```bash
++# 1. Obsolete stanza must contain ONLY: id, name, IAO:0000231, IAO:0000233, is_obsolete, replaced_by.
++#    Any other line (def, comment, subset, xref, synonym, is_a, relationship, other property_value) is a failure.
++obo-grep.pl --noheader -r 'id: MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++
++# 2. Surviving stanza must NOT contain obsoletion-tracking metadata.
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | grep -E 'subset: obsoletion_candidate|IAO:0006012|scheduled for obsoletion'
++# Expected: no output. Any hit = failure.
++
++# 3. No synonym on the surviving term should cite the obsoleted MONDO ID as evidence.
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | grep "\[MONDO:XXXXXXX\]"
++# Expected: no output.
++
++# 4. No alt_id anywhere referencing the obsoleted ID.
++grep "alt_id: MONDO:XXXXXXX" src/ontology/mondo-edit.obo
++# Expected: no output.
++
++# 5. No reference to the obsoleted ID outside its own stanza (catches missed children).
++obo-grep.pl --noheader -r 'MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++# Expected: only the line "id: MONDO:XXXXXXX" inside the obsolete stanza itself.
++# Anything else (a leftover synonym evidence on the surviving term, an unrewired
++# child term still pointing at the obsolete) = failure, fix it before continuing.
++
++# 6. Flag any duplicate synonym text on the surviving term (different scopes, same text).
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | awk '/^synonym:/ {match($0, /"[^"]*"/); print substr($0, RSTART, RLENGTH)}' \
++  | sort | uniq -d
++# Expected: no output. Any duplicate text = manual reconciliation needed (pick correct scope, drop the other).
++```
++
++### Source-rereads (cheap — you already have what you need)
++
++7. **Definition matches issue intent.** Re-read the GitHub issue body. If it specifies which definition to keep (or supplies a new one), confirm the surviving term reflects that. If the issue is silent, the surviving term's pre-merge definition should be unchanged.
++
++8. **All meaningful content transferred.** Compare the pre-merge obsolete stanza to the post-merge surviving stanza:
++
++   ```bash
++   git show HEAD:src/ontology/mondo-edit.obo | obo-grep.pl --noheader -r 'id: MONDO:XXXXXXX' -
++   obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo
++   ```
++
++   Walk through every `xref:`, `synonym:`, `is_a:`, `relationship:`, `intersection_of:`, and `property_value:` on the obsolete stanza. Each must have an equivalent on the surviving term unless it was explicitly dropped. Allowed drops:
++   - obsoletion-tracking metadata (see Step 5.2)
++   - a redundant superclass `is_a` (see Step 5.4)
++   - the owltools-injected `[MONDO:XXXXXXX]` synonym evidence
++   - any `MONDO:Lexical`-qualified xref — these are auto-generated string-match cross-refs and don't need to survive a merge
++
++   If you can't account for a line, fix it.
++
++## Step 8 — Show diff and summary checklist
++
++Show the user `git diff src/ontology/mondo-edit.obo` and the table below, filled in:
++
++| What | From obsoleted | Status |
++|------|---------------|--------|
++| Synonyms | "..." [evidence] | transferred / merged citations / already on surviving / scope reconciled |
++| Xrefs | PREFIX:ID | transferred / merged sources / skipped (duplicate) |
++| Subsets | subset_name | transferred / source merged / removed (obsoletion-tracking) |
++| `is_a` | MONDO:NNNNNNN ! parent | transferred / source merged / removed (redundant) |
++| `intersection_of` | ... | transferred / already on surviving |
++| Relationships | ... | transferred / source merged |
++| Property values | curated_content_resource, etc. | transferred / removed (`IAO:0006012` scheduled date) |
++| Definition | ... | kept surviving / replaced from obsoleted (per issue) |
++| Children rewired | MONDO:NNNNNNN | rewired / none |
++| New xrefs from issue | PREFIX:ID | added / n/a |
++| Obsoleted-stanza cleanup | — | reduced to id+name+TermsMerged+issue+is_obsolete+replaced_by |
++| `alt_id` | — | none / removed |
+diff --git a/.claude/agents/metadata-checker.md b/.agents/skills/metadata-checker/SKILL.md
+similarity index 100%
+rename from .claude/agents/metadata-checker.md
+rename to .agents/skills/metadata-checker/SKILL.md
+diff --git a/.agents/skills/odk/SKILL.md b/.agents/skills/odk/SKILL.md
+new file mode 100644
+index 000000000..aa7d9afc9
+--- /dev/null
++++ b/.agents/skills/odk/SKILL.md
+@@ -0,0 +1,70 @@
++---
++name: odk
++description: Use when running any ODK-backed command in this repo — owltools, robot, make NORM,
++  robot verify, or any other tool that lives inside the ODK docker image
++---
++
++# Running ODK commands in this repo
++
++## TL;DR
++
++`src/ontology/run.sh` is the official wrapper, but it ends in `docker run -ti` so it **fails silently in any non-TTY context** (Claude Code, CI, non-interactive shells) with `the input device is not a TTY` and exits without running the command.
++
++If you have a TTY, prefer `run.sh`. If you don't, call docker directly with `-i` only.
++
++## When you have a TTY (interactive terminal)
++
++```bash
++cd src/ontology && sh run.sh <command> <args...>
++```
++
++Examples:
++```bash
++sh run.sh make NORM
++sh run.sh owltools --use-catalog mondo-edit.obo --obsolete-replace MONDO:A MONDO:B -o -f obo mondo-edit.obo
++sh run.sh robot verify --catalog catalog-v001.xml -i mondo-edit.obo --queries ../sparql/qc/general/qc-foo.sparql -O reports/
++```
++
++## When you don't have a TTY (Claude Code, CI, scripts)
++
++Symptom: `sh run.sh <anything>` prints `the input device is not a TTY` and exits with no further output, no file changes.
++
++Workaround — invoke docker directly using the same image and mounts as `run.sh`, but with `-i` only:
++
++```bash
++docker run --memory=8g \
++  -v /ABSOLUTE/PATH/TO/REPO:/work \
++  -w /work/src/ontology \
++  -e ROBOT_JAVA_ARGS=-Xmx8G -e JAVA_OPTS=-Xmx8G \
++  --rm -i obolibrary/odkfull:<TAG-FROM-RUN.SH> \
++  <command> <args...>
++```
++
++Where:
++- `/ABSOLUTE/PATH/TO/REPO` = the repo root (the parent of `src/`).
++- `<TAG-FROM-RUN.SH>` = whatever tag is set in `IMAGE=` in `src/ontology/run.sh`. **Always read `run.sh` first to look up the current tag** — do not hardcode `v1.6` or any other version.
++
++## Reading the right image tag
++
++Don't memorize the version. The line in `run.sh` is the source of truth:
++
++```bash
++grep '^IMAGE=' src/ontology/run.sh
++# IMAGE=${IMAGE:-odkfull:v1.6}
++```
++
++## Common ODK commands you'll need
++
++| What | Command body (after `run.sh` or after the `docker run ... -i obolibrary/odkfull:<TAG>` prefix) |
++|---|---|
++| Normalize edit file | `make NORM` then `mv NORM mondo-edit.obo` (run from `src/ontology`) |
++| Convert / syntax check | `robot convert --catalog catalog-v001.xml -i mondo-edit.obo -f obo -o mondo-edit.TMP.obo` |
++| Run a QC query | `robot verify --catalog catalog-v001.xml -i mondo-edit.obo --queries ../sparql/qc/general/qc-X.sparql -O reports/` |
++| Merge / obsolete with replacement | `owltools --use-catalog mondo-edit.obo --obsolete-replace MONDO:A MONDO:B -o -f obo mondo-edit.obo` |
++
++## Notes
++
++- All ODK commands assume CWD is `src/ontology/`.
++- `make NORM` writes to a file called `NORM` in `src/ontology/`. You must `mv NORM mondo-edit.obo` afterward.
++- `robot verify` exits non-zero on QC failures and writes one TSV per failing query under `-O reports/`. Empty exit + `PASS Rule ... 0 violation(s)` = clean.
++- If `run.sh` reports `the input device is not a TTY`, do **not** retry the same command — it will keep failing. Switch to the docker-direct invocation.
+diff --git a/.claude/agents/ontology-reasoner.md b/.agents/skills/ontology-reasoner/SKILL.md
+similarity index 100%
+rename from .claude/agents/ontology-reasoner.md
+rename to .agents/skills/ontology-reasoner/SKILL.md
+diff --git a/.agents/skills/release-announcement/SKILL.md b/.agents/skills/release-announcement/SKILL.md
+new file mode 100644
+index 000000000..c527aebfb
+--- /dev/null
++++ b/.agents/skills/release-announcement/SKILL.md
+@@ -0,0 +1,102 @@
++---
++name: release-announcement
++description: Generate a formatted Mondo release announcement with statistics table from release diff reports
++---
++
++# Generate Mondo Release Announcement
++
++## Instructions
++
++Generate a formatted release announcement markdown file and statistics table for a Mondo ontology release.
++
++## Input Documents
++
++Read these source files to extract all data:
++
++1. **`src/ontology/reports/mondo_release_diff.md`** — The primary release diff report. Contains:
++   - Overview section with summary counts
++   - New terms table (with Mondo ID, Label, Definition columns)
++   - Changed labels table (renamed terms, with old and new labels)
++   - Changed definitions table
++   - Obsoleted terms section
++   - New obsoletion candidates table
++   - Terms no longer obsoletion candidates table
++
++2. **`src/ontology/reports/difference_release_base.md`** — The detailed base diff report. Contains:
++   - Classes added (for cross-referencing new terms)
++   - Text definitions changed
++   - Nodes renamed
++   - Relationships added/removed
++   - Mappings added/removed
++
++3. **`src/ontology/reports/mondo_obsoletioncandidates.tsv`** — Current total obsoletion candidates list (needed for the "total number of obsoletion candidates" statistic; count the rows excluding the header).
++
++## Reference Examples
++
++Look at the GitHub release notes for the `monarch-initiative/mondo` repository as formatting examples. To view the most recent release, use:
++```
++gh release view --repo monarch-initiative/mondo
++```
++Always use the most recent release as the formatting template.
++
++## Task 1: Statistics Table
++
++Include a **statistics summary table** at the top of the release announcement file (before the detailed sections). The table should be in this format:
++
++| Statistic | Count |
++|:---|---:|
++| New terms | N |
++| New terms with definitions | N |
++| ... | ... |
++
++### Statistics to compute:
++
++| Statistic | How to compute |
++|:---|:---|
++| New terms | Count rows in "New terms" table from `mondo_release_diff.md` |
++| New terms with definitions | Count rows in "New terms" table that have a non-empty Definition column |
++| Terms renamed (including obsolete renames) | Count ALL rows in "Changed labels"/"Nodes renamed" sections |
++| Terms renamed (excluding obsolete renames) | Count rows in "Changed labels" where the new label does NOT start with "obsolete" |
++| Text definitions added (new + existing terms) | Count new terms that have definitions PLUS definitions added to existing terms |
++| Text definitions added to existing terms only | Count entries in "Changed definitions" where the old definition is empty and the new definition is non-empty (excluding new terms) |
++| Text definitions changed (excluding obsolete) | Count entries in "Changed definitions" where BOTH old and new definitions are non-empty, AND the new definition does NOT start with "OBSOLETE." |
++| Text definitions removed | Count entries in "Changed definitions" where the old definition is non-empty and the new definition is empty |
++| Terms obsoleted without replacement | Count obsoleted terms that have NO `replaced_by` |
++| Terms obsoleted with replacement (merged) | Count obsoleted terms that HAVE a `replaced_by` |
++| New obsoletion candidates | Count rows in "New obsoletion candidates" table |
++| Terms no longer obsoletion candidates | Count rows in "previously candidates... not anymore" table |
++| Total obsoletion candidates (current) | Count data rows (excluding header) in `src/ontology/reports/mondo_obsoletioncandidates.tsv` |
++
++## Task 2: Release Notes Markdown
++
++Create the detailed sections using the **exact same format** as the most recent GitHub release (with `<details>/<summary>` collapsible sections and markdown tables).
++
++### Sections to include (in this order):
++
++1. **New terms** — Table with: Mondo ID, Label, Definition. Source: `mondo_release_diff.md` "New terms" section.
++
++2. **Terms renamed (excluding obsoleted terms)** — Table with: ID, Old Label, New Label. Source: `mondo_release_diff.md` "Changed labels" section. Exclude any terms that were renamed only because they were obsoleted (i.e., exclude renames where the new label starts with "obsolete").
++
++3. **Text definitions added to existing terms** — Table with: Mondo ID, Label, New Text Definition. These are terms that previously had NO definition and now have one (excluding new terms). Source: cross-reference `mondo_release_diff.md` "Changed definitions" section — entries where the old definition was empty or the term already existed.
++
++4. **Text definitions changed** — Table with: Mondo ID, Label, Old Text Definition, New Text Definition. Entries where BOTH old and new definitions are non-empty. Exclude obsoleted terms (where the new definition starts with "OBSOLETE."). Source: `mondo_release_diff.md` "Changed definitions" section.
++
++5. **Terms obsoleted with replacement** — Table with: Mondo ID, Label, Replacement. These are terms marked obsolete that have a `replaced_by` tag (i.e., merges). Source: `mondo_release_diff.md` "Obsolete terms" section, filtered for those with replacements.
++
++6. **Terms obsoleted without replacement** — Table with: Mondo ID, Label. Obsoleted terms that only have `consider` tags or no replacement at all. Source: `mondo_release_diff.md` "Obsolete terms" section, filtered for those without direct replacements.
++
++7. **New obsoletion candidates** — Table with: Mondo ID, Label. Source: `mondo_release_diff.md` "New obsoletion candidates" section.
++
++8. **Terms that were previously candidates for obsoletion and are now not anymore** — Table with: Mondo ID, Label. Source: `mondo_release_diff.md` corresponding section.
++
++### Output file
++
++Save the file as: `src/ontology/reports/release_announcement_YYMMDD.md` where YYMMDD is today's date.
++
++## Important Notes
++
++- The `mondo_release_diff.md` file begins with a log block between `---START LOG---` and `---END LOG---` markers. Do NOT include this log in the output.
++- Each `<details>/<summary>` section should include the count in the summary line, e.g., `<summary>New terms: 11</summary>`.
++- If a section has zero entries, still include it with an empty table and count of 0.
++- Use the same markdown table formatting style as the most recent GitHub release.
++- The output file title should be `# Mondo Release Statistics`.
+diff --git a/.claude/agents/task-coordinator.md b/.agents/skills/task-coordinator/SKILL.md
+similarity index 100%
+rename from .claude/agents/task-coordinator.md
+rename to .agents/skills/task-coordinator/SKILL.md
+diff --git a/.claude/skills/deep-research-specialist/SKILL.md b/.claude/skills/deep-research-specialist/SKILL.md
+new file mode 100644
+index 000000000..ea8a13c8a
+--- /dev/null
++++ b/.claude/skills/deep-research-specialist/SKILL.md
+@@ -0,0 +1,54 @@
++---
++name: deep-research-specialist
++description: Use this agent when you need comprehensive, scientifically-grounded research on a specific topic with detailed documentation and provenance tracking. This includes systematic literature reviews, evidence synthesis, academic research projects, grant proposal background research, or any task requiring thorough investigation with proper citation and source verification. Examples: <example>Context: User needs comprehensive research on a medical condition for an ontology term definition. user: 'I need to research MYCBP2-related developmental disorders for creating a new MONDO term' assistant: 'I'll use the deep-research-specialist agent to conduct comprehensive research on MYCBP2-related developmental disorders, including literature review, phenotype analysis, and proper citation gathering for the ontology term creation.'</example> <example>Context: User is writing a scientific paper and needs thorough background research. user: 'Can you help me research the current state of CRISPR gene editing applications in neurological disorders?' assistant: 'I'll deploy the deep-research-specialist agent to conduct a systematic review of CRISPR applications in neurological disorders, providing comprehensive analysis with proper academic documentation and source tracking.'</example>
++color: purple
++---
++
++You are a Deep Research Specialist, an expert in conducting comprehensive, scientifically-rigorous research with meticulous documentation and provenance tracking. Your expertise spans scientific literature analysis, systematic research methodologies, and detailed academic documentation.
++
++Your core responsibilities:
++
++**Research Methodology:**
++- Conduct systematic literature searches using multiple databases and sources
++- Apply rigorous inclusion/exclusion criteria for source evaluation
++- Synthesize findings from primary research, reviews, and authoritative sources
++- Identify knowledge gaps and conflicting evidence in the literature
++- Prioritize peer-reviewed sources while appropriately incorporating other credible materials
++
++**Documentation Standards:**
++- Provide complete citations for all sources (PMIDs, DOIs, URLs as appropriate)
++- Track provenance of all claims and statements
++- Use standardized citation formats appropriate to the domain
++- Maintain detailed methodology notes for reproducibility
++- Create comprehensive bibliographies with source quality assessments
++
++**Analysis and Synthesis:**
++- Critically evaluate source credibility and methodological rigor
++- Identify patterns, trends, and consensus across multiple sources
++- Highlight areas of scientific debate or uncertainty
++- Synthesize complex information into clear, structured summaries
++- Provide evidence-graded conclusions when possible
++
++**Quality Assurance:**
++- Cross-reference findings across multiple independent sources
++- Flag potential conflicts of interest or bias in sources
++- Verify factual claims through primary literature when possible
++- Maintain objectivity and acknowledge limitations in available evidence
++- Use appropriate hedging language to reflect certainty levels
++
++**Output Structure:**
++- Begin with executive summary of key findings
++- Organize information hierarchically with clear headings
++- Include methodology section describing search strategy
++- Provide detailed findings with full citations
++- Conclude with synthesis, limitations, and future research directions
++- Append complete bibliography with source annotations
++
++**Special Protocols:**
++- When encountering PMIDs, use available tools to access full-text articles
++- For ontology-related research, align with established classification systems
++- For medical topics, prioritize clinical guidelines and systematic reviews
++- Always verify gene symbols, protein names, and technical identifiers
++- Flag when information requires expert domain knowledge for interpretation
++
++You approach each research task with the rigor of a systematic review, ensuring that your findings are comprehensive, well-documented, and scientifically sound. You never make unsupported claims and always provide clear pathways back to your sources.
+diff --git a/.claude/skills/design-pattern-advisor/SKILL.md b/.claude/skills/design-pattern-advisor/SKILL.md
+new file mode 100644
+index 000000000..ffabef2e2
+--- /dev/null
++++ b/.claude/skills/design-pattern-advisor/SKILL.md
+@@ -0,0 +1,47 @@
++---
++name: design-pattern-advisor
++description: Use this agent when planning to create new ontology terms or modify existing ones to ensure proper design pattern compliance. This agent should be used proactively during issue planning to identify appropriate design patterns before term creation begins. Examples: <example>Context: User is planning to create a new gene-related disease term. user: 'I need to create a term for BRCA1-related breast cancer susceptibility' assistant: 'Let me use the design-pattern-advisor agent to identify the appropriate design pattern for this gene-related susceptibility term.' <commentary>Since this involves creating a new term that likely follows a specific design pattern, use the design-pattern-advisor to ensure proper pattern selection.</commentary></example> <example>Context: User is working on an issue that involves multiple new terms. user: 'I have an issue requesting 5 new neurological disorder terms caused by different gene mutations' assistant: 'Before we start creating these terms, let me use the design-pattern-advisor agent to analyze which design patterns should be applied to ensure consistency across all the new terms.' <commentary>Multiple related terms require pattern analysis to ensure consistency, so use the design-pattern-advisor proactively.</commentary></example>
++color: yellow
++---
++
++You are a MONDO ontology design pattern specialist with deep expertise in identifying and applying the correct design patterns for ontology term creation and modification. Your primary responsibility is to analyze term requests and determine which design patterns from the MONDO pattern library should be applied.
++
++When analyzing a request, you will:
++
++1. **Pattern Discovery**: Search the `src/patterns/dosdp-patterns/*.yaml` files to identify all potentially relevant design patterns. Pay special attention to:
++   - `disease_series_by_gene.yaml` for gene-related diseases
++   - `susceptibility_by_gene.yaml` for genetic susceptibility factors
++   - `childhood.yaml` for childhood-onset conditions
++   - Location-based patterns for anatomical specificity
++   - Inheritance patterns for hereditary conditions
++
++2. **Ontology Analysis**: Use obo-grep.pl to explore existing similar terms in `src/ontology/mondo-edit.obo` to understand how comparable terms are structured and which patterns they follow. Look for:
++   - Similar disease categories
++   - Comparable gene-disease relationships
++   - Existing logical definitions and intersection patterns
++   - Parent-child hierarchies
++
++3. **Pattern Matching**: For each term request, determine:
++   - The most appropriate primary design pattern
++   - Whether multiple patterns might apply
++   - How the pattern should be instantiated with specific values
++   - Required logical axioms (is_a, intersection_of, relationships)
++   - Proper naming conventions following MONDO standards
++
++4. **Comprehensive Guidance**: Provide specific recommendations including:
++   - Exact pattern file to follow
++   - Required parent terms and their justification
++   - Necessary relationships (e.g., has_material_basis_in_germline_mutation_in)
++   - Proper gene identifiers (HGNC format for human diseases or NCBI gene for non-human animal diseases)
++   - Definition templates following genus-differentia form
++   - Source attribution requirements
++
++5. **Quality Assurance**: Ensure recommendations align with:
++   - MONDO naming conventions (especially gene-related patterns)
++   - Logical consistency requirements
++   - Proper source attribution standards
++   - Existing ontology structure and hierarchy
++
++You must be thorough in your analysis - most terms should fit into at least one design pattern, and identifying the correct pattern is crucial for maintaining ontology consistency and enabling automated reasoning. When multiple patterns could apply, explain the trade-offs and recommend the most appropriate choice.
++
++Always provide concrete, actionable guidance that curators can directly implement, including specific file paths, term IDs, and exact syntax requirements.
+diff --git a/.claude/skills/identifier-validator/SKILL.md b/.claude/skills/identifier-validator/SKILL.md
+new file mode 100644
+index 000000000..6de3809ba
+--- /dev/null
++++ b/.claude/skills/identifier-validator/SKILL.md
+@@ -0,0 +1,69 @@
++---
++name: identifier-validator
++description: Use this agent practively whenever new identifiers (PMIDs, DOIs, database IDs, ontology term IDs) are introduced, to check they are valid and contextually appropriate, using PMID/DOI lookups via aurelian or web searches. This agent should be used proactively after any work involving citations or external references, and especially when working with ontology terms that include publication references or cross-references to external databases. Examples: <example>Context: User is working on ontology curation and has just added a new term with PMID references. user: "I've created a new MONDO term for MYCBP2-related developmental delay with references to PMID:36200388 and PMID:29535429" assistant: "Let me use the identifier-validator agent to verify these PMIDs are valid and contextually appropriate for this term." <commentary>Since the user has created content with external identifiers (PMIDs), use the identifier-validator agent to verify their validity and appropriateness.</commentary></example> <example>Context: User has been editing ontology terms and included cross-references to external databases. user: "I've updated the term with xrefs to OMIM:614009 and Orphanet:3220" assistant: "I'll use the identifier-validator agent to check that these database cross-references are accurate and properly formatted." <commentary>The user has added external database references that need validation for accuracy and format compliance.</commentary></example>
++color: red
++---
++
++Your primary responsibility is to verify the validity, accuracy, and contextual appropriateness of external identifiers used in scientific and ontological work. 
++
++Your core validation responsibilities include:
++
++**Publication Identifier Validation:**
++- Verify PMID format and existence using `aurelian fulltext PMID:NNNNNN` command
++- Use PMIDs over PMCIDs - but when converting, always verify
++- Check that publications are contextually relevant to the terms or concepts they're cited for, and they have not been hallucinated
++- Ensure publication dates and content align with the claims being made
++- Flag potential misattributions or inappropriate citations
++- If pubmed is down, use standard web searches
++
++**Database Cross-Reference Validation:**
++- Verify OMIM, HGNC, UBERON, Orphanet, MESH, UMLS, and other database identifier formats
++- You can use URLs like `https://bioregistry.io/CURIE`, e.g. `https://bioregistry.io/orphanet:85163`
++- Some sites like OMIM may be blocked, here just do a general web search
++- Check that cross-referenced terms actually exist in their respective databases
++- Validate that cross-references represent equivalent or closely related concepts and the IDs are not hallucinated
++- Ensure proper formatting according to database-specific conventions
++- Identify potential mapping errors or conceptual mismatches
++
++**Ontology Term ID Validation:**
++- Verify MONDO, HPO, UBERON, and other ontology term ID formats
++- Use appropriate search tools (like `obo-grep.pl` for MONDO terms) to confirm term existence
++- Check that referenced terms are current and not obsoleted
++- Validate that term relationships and hierarchies are logically consistent
++- Ensure gene identifiers use proper HGNC format for human diseases: `http://identifiers.org/hgnc/[HGNC_NUMERIC_ID]`
++- Ensure gene identifiers use proper NCBI gene format for non-human, animal diseases:
++`http://identifiers.org/ncbigene/[NCBI_GENE_ID]`
++
++**Validation Methodology:**
++1. **Format Verification**: Check that identifiers follow correct syntax patterns
++2. **Existence Confirmation**: Verify identifiers actually exist in their respective systems
++3. **Content Validation**: Ensure the referenced content is appropriate for the context and not hallucinated
++4. **Currency Check**: Confirm identifiers are current and not deprecated
++5. **Relationship Validation**: Verify that cross-references represent appropriate conceptual relationships
++
++**IMPORTANT**
++- if you detect a hallucination, THIS IS A SERIOUS ERROR and must be flagged. The parent process MUST stop or take corrective action.
++
++**Quality Assurance Process:**
++- Always use available command-line tools for verification (aurelian, obo-grep.pl, web searches)
++- Cross-check suspicious identifiers against multiple sources
++- Flag any identifiers that cannot be verified
++- Provide specific recommendations for corrections when issues are found
++- Document the validation process and any concerns discovered
++
++**Error Detection and Reporting:**
++- Identify malformed identifiers and suggest corrections
++- Flag potentially inappropriate or irrelevant citations
++- Detect obsoleted or deprecated terms
++- Report inconsistencies in cross-reference mappings
++- Highlight missing required identifiers or citations
++
++**Output Requirements:**
++Provide a comprehensive validation report that includes:
++- Status of each identifier (Valid/Invalid/Suspicious/Needs Review)
++- Specific issues found and recommended corrections
++- Contextual appropriateness assessment
++- Suggestions for additional or alternative identifiers when appropriate
++- Clear action items for resolving any identified problems
++
++You must never guess or assume identifier validity - always use available verification tools and authoritative sources. When in doubt, clearly state what could not be verified and recommend manual review. Your validation ensures the integrity and reliability of scientific references and ontological mappings.
+diff --git a/.claude/skills/merge-terms/SKILL.md b/.claude/skills/merge-terms/SKILL.md
+new file mode 100644
+index 000000000..87fbae4a7
+--- /dev/null
++++ b/.claude/skills/merge-terms/SKILL.md
+@@ -0,0 +1,205 @@
++---
++name: merge-terms
++description: Use when asked to merge two MONDO terms — obsoleting one and transferring its
++  metadata to the surviving term
++---
++
++# Merge two MONDO terms
++
++## ⚠️ Running ODK commands
++
++Every step below uses ODK tools (`owltools`, `robot`, `make NORM`). **Read the `odk` skill first** for how to invoke them — `sh run.sh <cmd>` if you have a TTY, otherwise direct `docker run ... -i obolibrary/odkfull:<tag>` (the tag lives in `src/ontology/run.sh`).
++
++The commands below show the *body* (what goes after `sh run.sh ` or after the docker prefix). Pick the wrapper based on your environment.
++
++## Required inputs
++
++- **Term to obsolete** (the duplicate / less-rich term)
++- **Replacement / surviving term** (the term content gets transferred to)
++- **GitHub issue number** (the issue requesting the merge)
++
++If any are missing, ask before proceeding.
++
++## Step 1 — Run owltools merge
++
++From `src/ontology/`:
++
++```
++owltools --use-catalog mondo-edit.obo \
++  --obsolete-replace MONDO:XXXXXXX MONDO:YYYYYYY \
++  -o -f obo mondo-edit.obo
++```
++
++Where `MONDO:XXXXXXX` = obsoleted, `MONDO:YYYYYYY` = surviving.
++
++What owltools does:
++- Renames the obsoleted term to `obsolete <original name>`
++- Sets `is_obsolete: true` and `replaced_by: MONDO:YYYYYYY` on the obsoleted term
++- Strips definition, comment, xrefs, synonyms, subsets, is_a, intersection_of, relationship, property_value from the obsoleted term
++- Transfers xrefs, synonyms, subsets, is_a, relationships, property_values onto the surviving term — including stale "obsoletion-tracking" metadata (see Step 5)
++- Adds the obsoleted term's name as a synonym on the surviving term, citing the obsoleted MONDO ID as evidence (must be fixed in Step 5)
++
++## Step 2 — Normalize immediately
++
++```
++make NORM
++```
++
++Then `mv NORM mondo-edit.obo`. This deduplicates source qualifiers on identical subset/xref/is_a lines and re-quotes property_value URIs that owltools mangles.
++
++NORM does **not** dedupe synonyms across different scopes (e.g. an EXACT and a RELATED with the same text both stay) — handle in Step 5.
++
++## Step 3 — Checkout both terms
++
++```bash
++obo-checkout.pl src/ontology/mondo-edit.obo MONDO:XXXXXXX MONDO:YYYYYYY
++```
++
++## Step 4 — Clean up the OBSOLETED term
++
++The obsoleted stanza must contain ONLY the lines below. Delete anything else owltools left behind (def, comment, xref, synonym, subset, is_a, intersection_of, relationship, other property_value) — but only after verifying the content is on the surviving term.
++
++| Allowed line | Source |
++|---|---|
++| `id: MONDO:XXXXXXX` | unchanged |
++| `name: obsolete <original name>` | set by owltools |
++| `property_value: IAO:0000231 MONDO:TermsMerged` | **add manually** (obsoletion reason) |
++| `property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/NNNN" xsd:anyURI` | **add manually** (issue link) |
++| `is_obsolete: true` | set by owltools |
++| `replaced_by: MONDO:YYYYYYY` | set by owltools |
++
++## Step 5 — Clean up the SURVIVING term
++
++owltools transfers content but several things need manual attention:
++
++1. **Fix synonym evidence.** owltools added a synonym like `synonym: "<obsoleted name>" EXACT [MONDO:XXXXXXX]`. Replace `MONDO:XXXXXXX` with one of the *transferred* xrefs (e.g. `[Orphanet:NNNNNN]`). If the obsoleted name is identical to an existing synonym with a different scope, reconcile manually — pick the correct scope, drop the duplicate.
++
++2. **Remove obsoletion-tracking metadata** that came from the obsoleted term:
++   - `subset: obsoletion_candidate`
++   - `subset: scheduled for obsoletion on or after` (if present)
++   - `property_value: IAO:0006012 "<date>" xsd:string` (scheduled-obsoletion date — would otherwise claim the surviving term is scheduled for obsoletion)
++
++3. **Decide which definition to keep.** Default = whichever the **issue** says is correct. If the issue is silent, keep the surviving term's existing definition. If the surviving term had no definition and the obsoleted one did, use the obsoleted one's. State the choice in the final summary so the user can override.
++
++4. **Check for redundant `is_a`.** If a transferred `is_a` is a superclass of another `is_a` already on the surviving term (e.g. `MONDO:0000001` "disease" alongside a more specific class), remove the redundant one along with its source qualifiers.
++
++5. **Check for an unwanted `alt_id`.** Some owltools versions add `alt_id: MONDO:XXXXXXX` to the surviving term. If present, remove it (Mondo policy: no `alt_id` for merges).
++
++(Step 7.5 #8 will verify that all meaningful content from the obsolete stanza actually made it onto the surviving term — don't duplicate that check here.)
++
++## Step 6 — Rewire children of the obsoleted term
++
++owltools usually rewires `is_a` children, but does **not** touch references in `relationship:`, `intersection_of:`, `disjoint_from:`, etc. Sweep for ANY remaining reference:
++
++```bash
++obo-grep.pl --noheader -r 'MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++```
++
++For each hit outside the obsoleted stanza itself, checkout that term, repoint the axiom to `MONDO:YYYYYYY`, and check it back in.
++
++## Step 7 — Check in, normalize, run QC
++
++1. Check in:
++   ```bash
++   obo-checkin.pl src/ontology/mondo-edit.obo MONDO:XXXXXXX MONDO:YYYYYYY [any rewired children]
++   ```
++
++2. Normalize:
++   ```
++   make NORM
++   ```
++   then `mv NORM mondo-edit.obo`.
++
++3. Run targeted QC. The merge-relevant SPARQL checks live under `src/sparql/qc/general/`. Run them via `robot verify` (this is a body — wrap with `sh run.sh` or docker per the warning at the top of the skill):
++
++   ```
++   robot verify --catalog catalog-v001.xml -i mondo-edit.obo \
++     --queries \
++       ../sparql/qc/general/qc-proxy-merge-missing-preferred.sparql \
++       ../sparql/qc/general/qc-misused-replaced-by.sparql \
++       ../sparql/qc/general/qc-obsoletion-reason.sparql \
++       ../sparql/qc/general/qc-deprecated-class-reference.sparql \
++       ../sparql/qc/general/qc-xref-without-precision.sparql \
++       ../sparql/qc/general/qc-duplicate-exact-synonym-no-abbrev.sparql \
++     -O reports/
++   ```
++
++   Empty exit + `PASS Rule ... 0 violation(s)` per query = clean. **Note:** these queries do NOT catch a missing `IAO:0000231 MONDO:TermsMerged` on the obsoleted term — the Step 8 checklist is the real safety net.
++
++## Step 7.5 — Self-verify
++
++Before claiming done, run every check below. **If any fails, fix it before moving to Step 8 — do not just note it.**
++
++### Mechanical checks
++
++Run these greps. Replace `XXXXXXX` with the obsoleted ID and `YYYYYYY` with the surviving ID.
++
++```bash
++# 1. Obsolete stanza must contain ONLY: id, name, IAO:0000231, IAO:0000233, is_obsolete, replaced_by.
++#    Any other line (def, comment, subset, xref, synonym, is_a, relationship, other property_value) is a failure.
++obo-grep.pl --noheader -r 'id: MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++
++# 2. Surviving stanza must NOT contain obsoletion-tracking metadata.
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | grep -E 'subset: obsoletion_candidate|IAO:0006012|scheduled for obsoletion'
++# Expected: no output. Any hit = failure.
++
++# 3. No synonym on the surviving term should cite the obsoleted MONDO ID as evidence.
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | grep "\[MONDO:XXXXXXX\]"
++# Expected: no output.
++
++# 4. No alt_id anywhere referencing the obsoleted ID.
++grep "alt_id: MONDO:XXXXXXX" src/ontology/mondo-edit.obo
++# Expected: no output.
++
++# 5. No reference to the obsoleted ID outside its own stanza (catches missed children).
++obo-grep.pl --noheader -r 'MONDO:XXXXXXX' src/ontology/mondo-edit.obo
++# Expected: only the line "id: MONDO:XXXXXXX" inside the obsolete stanza itself.
++# Anything else (a leftover synonym evidence on the surviving term, an unrewired
++# child term still pointing at the obsolete) = failure, fix it before continuing.
++
++# 6. Flag any duplicate synonym text on the surviving term (different scopes, same text).
++obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo \
++  | awk '/^synonym:/ {match($0, /"[^"]*"/); print substr($0, RSTART, RLENGTH)}' \
++  | sort | uniq -d
++# Expected: no output. Any duplicate text = manual reconciliation needed (pick correct scope, drop the other).
++```
++
++### Source-rereads (cheap — you already have what you need)
++
++7. **Definition matches issue intent.** Re-read the GitHub issue body. If it specifies which definition to keep (or supplies a new one), confirm the surviving term reflects that. If the issue is silent, the surviving term's pre-merge definition should be unchanged.
++
++8. **All meaningful content transferred.** Compare the pre-merge obsolete stanza to the post-merge surviving stanza:
++
++   ```bash
++   git show HEAD:src/ontology/mondo-edit.obo | obo-grep.pl --noheader -r 'id: MONDO:XXXXXXX' -
++   obo-grep.pl --noheader -r 'id: MONDO:YYYYYYY' src/ontology/mondo-edit.obo
++   ```
++
++   Walk through every `xref:`, `synonym:`, `is_a:`, `relationship:`, `intersection_of:`, and `property_value:` on the obsolete stanza. Each must have an equivalent on the surviving term unless it was explicitly dropped. Allowed drops:
++   - obsoletion-tracking metadata (see Step 5.2)
++   - a redundant superclass `is_a` (see Step 5.4)
++   - the owltools-injected `[MONDO:XXXXXXX]` synonym evidence
++   - any `MONDO:Lexical`-qualified xref — these are auto-generated string-match cross-refs and don't need to survive a merge
++
++   If you can't account for a line, fix it.
++
++## Step 8 — Show diff and summary checklist
++
++Show the user `git diff src/ontology/mondo-edit.obo` and the table below, filled in:
++
++| What | From obsoleted | Status |
++|------|---------------|--------|
++| Synonyms | "..." [evidence] | transferred / merged citations / already on surviving / scope reconciled |
++| Xrefs | PREFIX:ID | transferred / merged sources / skipped (duplicate) |
++| Subsets | subset_name | transferred / source merged / removed (obsoletion-tracking) |
++| `is_a` | MONDO:NNNNNNN ! parent | transferred / source merged / removed (redundant) |
++| `intersection_of` | ... | transferred / already on surviving |
++| Relationships | ... | transferred / source merged |
++| Property values | curated_content_resource, etc. | transferred / removed (`IAO:0006012` scheduled date) |
++| Definition | ... | kept surviving / replaced from obsoleted (per issue) |
++| Children rewired | MONDO:NNNNNNN | rewired / none |
++| New xrefs from issue | PREFIX:ID | added / n/a |
++| Obsoleted-stanza cleanup | — | reduced to id+name+TermsMerged+issue+is_obsolete+replaced_by |
++| `alt_id` | — | none / removed |
+diff --git a/.claude/skills/metadata-checker/SKILL.md b/.claude/skills/metadata-checker/SKILL.md
+new file mode 100644
+index 000000000..30588407d
+--- /dev/null
++++ b/.claude/skills/metadata-checker/SKILL.md
+@@ -0,0 +1,50 @@
++---
++name: metadata-checker
++description: Use this agent when validating metadata on newly added or modified MONDO ontology terms to ensure compliance with curation standards. This agent should be called after any term creation or modification to verify proper metadata attribution.\n\nExamples:\n- <example>\nContext: User has just created a new MONDO term for a genetic disorder.\nuser: "I've added a new term MONDO:1060123 for BRCA1-related breast cancer syndrome"\nassistant: "Let me use the mondo-metadata-checker agent to validate the metadata on this new term"\n<commentary>\nSince a new term was created, use the mondo-metadata-checker agent to ensure proper metadata including creator attribution.\n</commentary>\n</example>\n- <example>\nContext: User has modified an existing term and wants to ensure metadata compliance.\nuser: "I updated the definition and added synonyms to MONDO:0004567"\nassistant: "I'll use the mondo-metadata-checker agent to verify the metadata is properly formatted"\n<commentary>\nAfter term modifications, use the mondo-metadata-checker agent to validate metadata compliance.\n</commentary>\n</example>
++color: cyan
++---
++
++You are a MONDO ontology metadata validation specialist with deep expertise in OBO format standards and MONDO-specific curation requirements. Your primary responsibility is to ensure that all newly added or modified terms comply with MONDO's strict metadata standards.
++
++When checking metadata on terms, you will:
++
++1. **Verify Creator Attribution**: Ensure that ALL new terms include the property_value for creator attribution set to 'https://ai4curation.github.io/aidocs/reference/clients/claude-code/'. The exact format must be:
++   ```
++   property_value: http://purl.org/dc/terms/creator https://ai4curation.github.io/aidocs/reference/clients/claude-code/
++   ```
++   NEVER assume the identity of another curator
++
++2. **Check Required Metadata Elements**:
++   - Verify presence of id, name, and definition
++   - Ensure definition includes proper citations in square brackets
++   - Confirm at least one is_a relationship exists
++   - Validate that synonyms include proper source attribution (never empty brackets [])
++
++3. **Validate Source Attribution**:
++   - Check that all relationships include source attribution when based on literature
++   - Ensure that all source annotation are in PMID CURIE format. Only include DOI if no PMID can be found. In particular, ensure:
++     - PMID is in the format: `PMID:12345678` (PMID upper case prefix, followed by a colon and digits)
++     - The PMID is valid and corresponds to an actual publication found in PubMed
++   - Ensure gene identifiers use correct HGNC format: http://identifiers.org/hgnc/[HGNC_ID]
++
++4. **Check Term Tracker Links**:
++   - Verify presence of IAO:0000233 property linking to the relevant GitHub issue
++   - Ensure the URL format is correct
++   - Ensure the datatype on the URL is xsd:string
++
++5. **Validate Design Pattern Compliance**:
++   - For gene-related diseases, check for proper intersection_of statements
++   - Verify logical definitions match text definitions
++   - Ensure naming follows MONDO conventions (e.g., GENE-related disease format)
++
++6. **Quality Control**:
++   - Flag any missing required elements
++   - Identify improperly formatted citations or identifiers
++   - Check for consistency between logical and text definitions
++   - Verify subset assignments are appropriate
++
++7. **Check Creator Annotations**:
++   - Verify presence of http://purl.org/dc/terms/creator property linking to the relevant ORCID in URL format if available in the issue text. 
++   - If no ORCID is available, do not include any creator annotation
++
++You will provide a comprehensive report identifying any metadata issues and specific corrections needed. For each issue found, provide the exact corrected format. If metadata is compliant, confirm this clearly. Always prioritize the creator attribution requirement as this is critical for AI-curated content tracking.
+diff --git a/.claude/skills/odk/SKILL.md b/.claude/skills/odk/SKILL.md
+new file mode 100644
+index 000000000..aa7d9afc9
+--- /dev/null
++++ b/.claude/skills/odk/SKILL.md
+@@ -0,0 +1,70 @@
++---
++name: odk
++description: Use when running any ODK-backed command in this repo — owltools, robot, make NORM,
++  robot verify, or any other tool that lives inside the ODK docker image
++---
++
++# Running ODK commands in this repo
++
++## TL;DR
++
++`src/ontology/run.sh` is the official wrapper, but it ends in `docker run -ti` so it **fails silently in any non-TTY context** (Claude Code, CI, non-interactive shells) with `the input device is not a TTY` and exits without running the command.
++
++If you have a TTY, prefer `run.sh`. If you don't, call docker directly with `-i` only.
++
++## When you have a TTY (interactive terminal)
++
++```bash
++cd src/ontology && sh run.sh <command> <args...>
++```
++
++Examples:
++```bash
++sh run.sh make NORM
++sh run.sh owltools --use-catalog mondo-edit.obo --obsolete-replace MONDO:A MONDO:B -o -f obo mondo-edit.obo
++sh run.sh robot verify --catalog catalog-v001.xml -i mondo-edit.obo --queries ../sparql/qc/general/qc-foo.sparql -O reports/
++```
++
++## When you don't have a TTY (Claude Code, CI, scripts)
++
++Symptom: `sh run.sh <anything>` prints `the input device is not a TTY` and exits with no further output, no file changes.
++
++Workaround — invoke docker directly using the same image and mounts as `run.sh`, but with `-i` only:
++
++```bash
++docker run --memory=8g \
++  -v /ABSOLUTE/PATH/TO/REPO:/work \
++  -w /work/src/ontology \
++  -e ROBOT_JAVA_ARGS=-Xmx8G -e JAVA_OPTS=-Xmx8G \
++  --rm -i obolibrary/odkfull:<TAG-FROM-RUN.SH> \
++  <command> <args...>
++```
++
++Where:
++- `/ABSOLUTE/PATH/TO/REPO` = the repo root (the parent of `src/`).
++- `<TAG-FROM-RUN.SH>` = whatever tag is set in `IMAGE=` in `src/ontology/run.sh`. **Always read `run.sh` first to look up the current tag** — do not hardcode `v1.6` or any other version.
++
++## Reading the right image tag
++
++Don't memorize the version. The line in `run.sh` is the source of truth:
++
++```bash
++grep '^IMAGE=' src/ontology/run.sh
++# IMAGE=${IMAGE:-odkfull:v1.6}
++```
++
++## Common ODK commands you'll need
++
++| What | Command body (after `run.sh` or after the `docker run ... -i obolibrary/odkfull:<TAG>` prefix) |
++|---|---|
++| Normalize edit file | `make NORM` then `mv NORM mondo-edit.obo` (run from `src/ontology`) |
++| Convert / syntax check | `robot convert --catalog catalog-v001.xml -i mondo-edit.obo -f obo -o mondo-edit.TMP.obo` |
++| Run a QC query | `robot verify --catalog catalog-v001.xml -i mondo-edit.obo --queries ../sparql/qc/general/qc-X.sparql -O reports/` |
++| Merge / obsolete with replacement | `owltools --use-catalog mondo-edit.obo --obsolete-replace MONDO:A MONDO:B -o -f obo mondo-edit.obo` |
++
++## Notes
++
++- All ODK commands assume CWD is `src/ontology/`.
++- `make NORM` writes to a file called `NORM` in `src/ontology/`. You must `mv NORM mondo-edit.obo` afterward.
++- `robot verify` exits non-zero on QC failures and writes one TSV per failing query under `-O reports/`. Empty exit + `PASS Rule ... 0 violation(s)` = clean.
++- If `run.sh` reports `the input device is not a TTY`, do **not** retry the same command — it will keep failing. Switch to the docker-direct invocation.
+diff --git a/.claude/skills/ontology-reasoner/SKILL.md b/.claude/skills/ontology-reasoner/SKILL.md
+new file mode 100644
+index 000000000..9feb8d6f5
+--- /dev/null
++++ b/.claude/skills/ontology-reasoner/SKILL.md
+@@ -0,0 +1,48 @@
++---
++name: ontology-reasoner
++description: Use this agent when you need to validate the logical consistency of an ontology, check for reasoning errors, identify unsatisfiable classes, or resolve logical conflicts in OWL/OBO files. Examples: <example>Context: User has made changes to ontology terms and wants to ensure logical consistency before committing. user: 'I've added some new intersection_of axioms to several disease terms. Can you check if the ontology is still logically consistent?' assistant: 'I'll use the ontology-reasoner agent to validate the logical consistency of your changes and identify any reasoning errors.' <commentary>The user has made logical changes to the ontology and needs validation, so use the ontology-reasoner agent to check for consistency and reasoning errors.</commentary></example> <example>Context: User encounters reasoning errors during ontology development. user: 'The build is failing with unsatisfiable classes. Can you help me understand what's causing the logical conflicts?' assistant: 'Let me use the ontology-reasoner agent to identify the unsatisfiable classes and explain the logical conflicts.' <commentary>The user has reasoning errors and unsatisfiable classes, which requires the ontology-reasoner agent to diagnose and explain the issues.</commentary></example>
++color: green
++---
++
++You are an expert ontology reasoner and logical consistency validator specializing in OWL/OBO ontologies. Your primary responsibility is to ensure ontologies are logically sound and free from reasoning errors.
++
++Your core capabilities include:
++
++**Reasoning Validation:**
++- Execute `robot reason --input src/ontology/mondo-edit.obo --output reasoned.owl` to validate logical consistency
++- Identify unsatisfiable classes, inconsistent ontologies, and reasoning errors
++- Generate reasoned versions of ontologies for validation
++- Check for circular dependencies and logical conflicts in class hierarchies
++
++**Error Diagnosis:**
++- Use `robot explain --input src/ontology/mondo-edit.obo --reasoner ELK  -M unsatisfiability --unsatisfiable all explanations.md` to generate a report explaining unsat classes
++- Analyze intersection_of axioms, is_a relationships, and logical definitions for conflicts
++- Identify problematic axioms causing reasoning failures
++- Trace the logical chain leading to inconsistencies
++
++**Conflict Resolution:**
++- Recommend specific axiom modifications to resolve logical conflicts
++- Suggest restructuring of class hierarchies when needed
++- Propose alternative logical definitions that maintain intended semantics
++- Validate proposed fixes before implementation
++
++**Quality Assurance:**
++- Verify that all classes remain satisfiable after changes
++- Ensure logical definitions align with textual definitions
++- Check that intersection_of axioms follow proper genus-differentia patterns
++- Validate that relationship assertions are logically sound
++
++**Workflow Process:**
++1. Always run reasoning validation first to identify any issues
++2. If unsatisfiable classes are found, use explain command to diagnose root causes
++3. Analyze the logical structure and identify conflicting axioms
++4. Propose specific solutions with clear rationale
++5. Re-validate after any suggested changes
++
++**Error Reporting:**
++- Clearly identify which classes are unsatisfiable and why
++- Explain the logical chain causing conflicts in accessible terms
++- Prioritize errors by severity and impact on ontology integrity
++- Provide actionable recommendations for each identified issue
++
++You work primarily with MONDO ontology patterns but can handle any OWL/OBO ontology. Always use the robot toolkit for reasoning operations and provide clear explanations of logical issues in terms that ontology curators can understand and act upon.
+diff --git a/.claude/skills/release-announcement/SKILL.md b/.claude/skills/release-announcement/SKILL.md
+new file mode 100644
+index 000000000..c527aebfb
+--- /dev/null
++++ b/.claude/skills/release-announcement/SKILL.md
+@@ -0,0 +1,102 @@
++---
++name: release-announcement
++description: Generate a formatted Mondo release announcement with statistics table from release diff reports
++---
++
++# Generate Mondo Release Announcement
++
++## Instructions
++
++Generate a formatted release announcement markdown file and statistics table for a Mondo ontology release.
++
++## Input Documents
++
++Read these source files to extract all data:
++
++1. **`src/ontology/reports/mondo_release_diff.md`** — The primary release diff report. Contains:
++   - Overview section with summary counts
++   - New terms table (with Mondo ID, Label, Definition columns)
++   - Changed labels table (renamed terms, with old and new labels)
++   - Changed definitions table
++   - Obsoleted terms section
++   - New obsoletion candidates table
++   - Terms no longer obsoletion candidates table
++
++2. **`src/ontology/reports/difference_release_base.md`** — The detailed base diff report. Contains:
++   - Classes added (for cross-referencing new terms)
++   - Text definitions changed
++   - Nodes renamed
++   - Relationships added/removed
++   - Mappings added/removed
++
++3. **`src/ontology/reports/mondo_obsoletioncandidates.tsv`** — Current total obsoletion candidates list (needed for the "total number of obsoletion candidates" statistic; count the rows excluding the header).
++
++## Reference Examples
++
++Look at the GitHub release notes for the `monarch-initiative/mondo` repository as formatting examples. To view the most recent release, use:
++```
++gh release view --repo monarch-initiative/mondo
++```
++Always use the most recent release as the formatting template.
++
++## Task 1: Statistics Table
++
++Include a **statistics summary table** at the top of the release announcement file (before the detailed sections). The table should be in this format:
++
++| Statistic | Count |
++|:---|---:|
++| New terms | N |
++| New terms with definitions | N |
++| ... | ... |
++
++### Statistics to compute:
++
++| Statistic | How to compute |
++|:---|:---|
++| New terms | Count rows in "New terms" table from `mondo_release_diff.md` |
++| New terms with definitions | Count rows in "New terms" table that have a non-empty Definition column |
++| Terms renamed (including obsolete renames) | Count ALL rows in "Changed labels"/"Nodes renamed" sections |
++| Terms renamed (excluding obsolete renames) | Count rows in "Changed labels" where the new label does NOT start with "obsolete" |
++| Text definitions added (new + existing terms) | Count new terms that have definitions PLUS definitions added to existing terms |
++| Text definitions added to existing terms only | Count entries in "Changed definitions" where the old definition is empty and the new definition is non-empty (excluding new terms) |
++| Text definitions changed (excluding obsolete) | Count entries in "Changed definitions" where BOTH old and new definitions are non-empty, AND the new definition does NOT start with "OBSOLETE." |
++| Text definitions removed | Count entries in "Changed definitions" where the old definition is non-empty and the new definition is empty |
++| Terms obsoleted without replacement | Count obsoleted terms that have NO `replaced_by` |
++| Terms obsoleted with replacement (merged) | Count obsoleted terms that HAVE a `replaced_by` |
++| New obsoletion candidates | Count rows in "New obsoletion candidates" table |
++| Terms no longer obsoletion candidates | Count rows in "previously candidates... not anymore" table |
++| Total obsoletion candidates (current) | Count data rows (excluding header) in `src/ontology/reports/mondo_obsoletioncandidates.tsv` |
++
++## Task 2: Release Notes Markdown
++
++Create the detailed sections using the **exact same format** as the most recent GitHub release (with `<details>/<summary>` collapsible sections and markdown tables).
++
++### Sections to include (in this order):
++
++1. **New terms** — Table with: Mondo ID, Label, Definition. Source: `mondo_release_diff.md` "New terms" section.
++
++2. **Terms renamed (excluding obsoleted terms)** — Table with: ID, Old Label, New Label. Source: `mondo_release_diff.md` "Changed labels" section. Exclude any terms that were renamed only because they were obsoleted (i.e., exclude renames where the new label starts with "obsolete").
++
++3. **Text definitions added to existing terms** — Table with: Mondo ID, Label, New Text Definition. These are terms that previously had NO definition and now have one (excluding new terms). Source: cross-reference `mondo_release_diff.md` "Changed definitions" section — entries where the old definition was empty or the term already existed.
++
++4. **Text definitions changed** — Table with: Mondo ID, Label, Old Text Definition, New Text Definition. Entries where BOTH old and new definitions are non-empty. Exclude obsoleted terms (where the new definition starts with "OBSOLETE."). Source: `mondo_release_diff.md` "Changed definitions" section.
++
++5. **Terms obsoleted with replacement** — Table with: Mondo ID, Label, Replacement. These are terms marked obsolete that have a `replaced_by` tag (i.e., merges). Source: `mondo_release_diff.md` "Obsolete terms" section, filtered for those with replacements.
++
++6. **Terms obsoleted without replacement** — Table with: Mondo ID, Label. Obsoleted terms that only have `consider` tags or no replacement at all. Source: `mondo_release_diff.md` "Obsolete terms" section, filtered for those without direct replacements.
++
++7. **New obsoletion candidates** — Table with: Mondo ID, Label. Source: `mondo_release_diff.md` "New obsoletion candidates" section.
++
++8. **Terms that were previously candidates for obsoletion and are now not anymore** — Table with: Mondo ID, Label. Source: `mondo_release_diff.md` corresponding section.
++
++### Output file
++
++Save the file as: `src/ontology/reports/release_announcement_YYMMDD.md` where YYMMDD is today's date.
++
++## Important Notes
++
++- The `mondo_release_diff.md` file begins with a log block between `---START LOG---` and `---END LOG---` markers. Do NOT include this log in the output.
++- Each `<details>/<summary>` section should include the count in the summary line, e.g., `<summary>New terms: 11</summary>`.
++- If a section has zero entries, still include it with an empty table and count of 0.
++- Use the same markdown table formatting style as the most recent GitHub release.
++- The output file title should be `# Mondo Release Statistics`.
+diff --git a/.claude/skills/skills b/.claude/skills/skills
+new file mode 120000
+index 000000000..2b7a412b8
+--- /dev/null
++++ b/.claude/skills/skills
+@@ -0,0 +1 @@
++../.agents/skills
+\ No newline at end of file
+diff --git a/.claude/skills/task-coordinator/SKILL.md b/.claude/skills/task-coordinator/SKILL.md
+new file mode 100644
+index 000000000..394a2fbdf
+--- /dev/null
++++ b/.claude/skills/task-coordinator/SKILL.md
+@@ -0,0 +1,47 @@
++---
++name: task-coordinator
++description: Use this agent when starting ANY task in the MONDO ontology project. This agent MUST be used first and proactively for all ontology work to ensure proper planning, execution sequence, and validation. Examples: <example>Context: User wants to create a new term for a genetic disease. user: 'I need to create a new term for BRCA1-related breast cancer syndrome' assistant: 'I'll use the mondo-task-coordinator agent to plan this ontology task properly' <commentary>Since this involves ontology work, the coordinator must be used first to plan the sequence of agents and ensure proper validation.</commentary></example> <example>Context: User wants to obsolete a term and merge it with another. user: 'Please obsolete MONDO:0123456 and merge it with MONDO:0789012' assistant: 'Let me start by using the mondo-task-coordinator to plan this obsolescence and merging task' <commentary>Any ontology modification requires the coordinator to plan the proper sequence and validation steps.</commentary></example>
++color: orange
++---
++
++You are the MONDO Ontology Task Coordinator, a master planner responsible for orchestrating all ontology work in the MONDO project. You MUST be used first for ANY ontology task to ensure proper planning, execution, and validation.
++
++Your core responsibilities:
++
++1. **Task Analysis & Decomposition**: Break down complex ontology requests into logical, sequential steps. Consider all aspects: research needs, design patterns, validation requirements, and potential risks.
++
++2. **Agent Orchestration**: Plan the optimal sequence of specialized agents:
++   - Start with deep-research-specialist for literature review when PMIDs are mentioned
++   - Use design-pattern-advisor to ensure compliance with MONDO patterns
++   - Coordinate execution agents for the actual ontology work
++   - Always include identifier-validator to prevent hallucinated IDs
++   - End with obo-checkin for term integration
++   - Use ontology-reasoner when logical definitions are involved
++
++3. **Critical Validation Oversight**: You are the final safeguard against:
++   - Hallucinated MONDO IDs, PMIDs, or gene identifiers
++   - Missing required metadata (definitions, sources, proper citations)
++   - Violations of MONDO naming conventions
++   - Incomplete check-in processes
++
++4. **Quality Assurance Protocol**: Ensure every task includes:
++   - Proper literature research when references are provided
++   - Design pattern compliance checking
++   - Identifier validation (especially for genes using HGNC or NCBI gene)
++   - Complete source attribution
++   - Syntax validation before check-in
++   - Reasoner validation for logical definitions
++
++5. **Risk Management**: Flag high-risk scenarios:
++   - New term creation without proper research
++   - Obsolescence without replacement planning
++   - Missing or incorrect gene identifiers
++   - Inadequate source citations
++
++Your planning output should specify:
++- The exact sequence of agents to use
++- Key validation checkpoints
++- Specific risks to monitor
++- Required deliverables at each step
++
++NEVER allow any ontology work to proceed without proper planning, validation, and check-in procedures. You are responsible for maintaining the integrity and quality of the MONDO ontology through systematic coordination of all specialized agents.
+diff --git a/.github/copilot-instructions.md b/.github/copilot-instructions.md
+deleted file mode 120000
+index 949a29f15..000000000
+--- a/.github/copilot-instructions.md
++++ /dev/null
+@@ -1 +0,0 @@
+-../CLAUDE.md
+\ No newline at end of file
+diff --git a/.goosehints b/AGENTS.md
+similarity index 100%
+rename from .goosehints
+rename to AGENTS.md
+diff --git a/__agent_config__ b/__agent_config__
+new file mode 160000
+index 000000000..5a3f0559c
+--- /dev/null
++++ b/__agent_config__
+@@ -0,0 +1 @@
++Subproject commit 5a3f0559c5bcf9cd9ea920fc8255f2af82360af2
+diff --git a/__agent_prompt__.md b/__agent_prompt__.md
+new file mode 100644
+index 000000000..52f1235fc
+--- /dev/null
++++ b/__agent_prompt__.md
+@@ -0,0 +1,32 @@
++Your job is to address issue #9826.
++First, read the file __issue_context__.json in the current working directory to get the issue title, body, and comments.
++
++IMPORTANT: You are working in a local copy of ai4curation/eval-ont-agent-mondo.
++The issue context was imported from monarch-initiative/mondo for evaluation purposes.
++Do NOT attempt to clone, checkout, or interact with any remote repositories.
++Stay in the current working directory and make all changes here.
++
++On completion, commit your changes locally. Do NOT push - that will be handled automatically.
++Don't commit files you did not edit.
++
++After committing, create two files:
++
++1. ISSUE_COMMENTS.md: Updates on the issue regarding its status. This will be fed back to the originating issue.
++2. PR_COMMENTS.md: A description of your changes, and the rationale. This will be fed back to the originating PR.
++
++I will take care of feeding these back to the GitHub repo, you just need to create them. Don't commit them,
++and don't attempt to interact with the github repo.
++
++If the original issue is not clear, ask for clarification in ISSUE_COMMENTS.md, and do not
++commit any changes. The PR_COMMENTS.md can be empty in this case.
++
++Your PR_COMMENTS.md should be a human-readable description of your changes, and the rationale. Include any checklists
++you created for yourself and completed. If you performed validation, background research, etc, be sure to mention this.
++
++Your ISSUE_COMMENTS.md need not replicate what is in PR_COMMENTS.md, and in many cases can be terse but polite, e.g
++"changes committed in PR #<NN>" (note: use the literal `<NN>` in the output, I will replace it with the actual PR number).
++
++If the issue is a complex one, you can create a high level summary of the decisions you made. If things are not clear
++or if you want particular people in the thread to check particular aspects you can mention them.
++
++Follow any CODE_OF_CONDUCT.md or other relevant files in the repository.
+diff --git a/__issue_context__.json b/__issue_context__.json
+new file mode 100644
+index 000000000..57c2255fa
+--- /dev/null
++++ b/__issue_context__.json
+@@ -0,0 +1,6 @@
++{
++  "body": "**Mondo term (ID and Label)**\nMONDO:0008549 thoracic dysostosis, isolated\n\n**Reason for deprecation**\nOMIM merged:  187750 MOVED TO 621260\nhttps://www.omim.org/entry/187750 \n\n**Term to be merged with**\nMONDO:0979242 short-rib thoracic dysplasia 22 without polydactyly\n\n**Your nano-attribution (ORCID)**\nIf you don't have an ORCID, you can sign up for one [here](https://orcid.org/)\n",
++  "comments": [],
++  "title": "[Merge]short-rib thoracic dysplasia 22 without polydactyly &  thoracic dysostosis, isolated",
++  "url": "https://github.com/monarch-initiative/mondo/issues/9826"
++}
+diff --git a/__pr_result__ b/__pr_result__
+new file mode 160000
+index 000000000..20ed6e60a
+--- /dev/null
++++ b/__pr_result__
+@@ -0,0 +1 @@
++Subproject commit 20ed6e60a474b44c14691f227218ec3d433a1daf
+diff --git a/obo-scripts b/obo-scripts
+new file mode 160000
+index 000000000..cb38971ce
+--- /dev/null
++++ b/obo-scripts
+@@ -0,0 +1 @@
++Subproject commit cb38971ce39654bc9e4e96efcd22e950c3561f5d
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8f53dcf30..32a97899b 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -197648,16 +197648,12 @@ is_obsolete: true
+ 
+ [Term]
+ id: MONDO:0008549
+-name: thoracic dysostosis, isolated
+-comment: This term is scheduled to be merged with MONDO:0979242 short-rib thoracic dysplasia 22 without polydactyly, based on the fact that the concept of these 2 terms are the same. This ID will therefore be obsoleted and replaced with MONDO:0979242
+-subset: obsoletion_candidate
+-synonym: "thoracic dysostosis, isolated" EXACT []
+-xref: MESH:C566063 {source="MONDO:equivalentTo"}
+-xref: OMIM:187750 {source="MONDO:equivalentObsolete"}
+-is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+-property_value: curated_content_resource "https://www.malacards.org/card/thoracic_dysostosis_isolated" xsd:anyURI {source="MONDO:MalaCards"}
++name: obsolete thoracic dysostosis, isolated
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-5208-3432
++property_value: IAO:0000231 MONDO:TermsMerged
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9826" xsd:anyURI
+-property_value: IAO:0006012 "2026-03-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0979242
+ 
+ [Term]
+ id: MONDO:0008550
+@@ -627197,10 +627193,16 @@ name: short-rib thoracic dysplasia 22 without polydactyly
+ subset: gard_rare {source="GARD:0028115", source="MONDO:GARD"}
+ subset: omim {source="OMIM:621260"}
+ subset: rare
++synonym: "thoracic dysostosis, isolated" EXACT [OMIM:187750]
+ xref: GARD:0028115 {source="MONDO:GARD"}
++xref: MESH:C566063 {source="MONDO:equivalentTo"}
++xref: OMIM:187750 {source="MONDO:equivalentObsolete"}
+ xref: OMIM:621260 {source="MONDO:equivalentTo"}
++is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+ is_a: MONDO:0018770 {source="OMIM:621260", source="https://orcid.org/0000-0002-4142-7153"} ! Jeune syndrome
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/3682 {source="OMIM:621260"} ! FGF4
++property_value: curated_content_resource "https://www.malacards.org/card/thoracic_dysostosis_isolated" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9826" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0979243

@@ -1,0 +1,51 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..0167ac1cd 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -424961,10 +424961,6 @@ name: megalencephaly
+ def: "A congenital abnormality in which the occipitofrontal circumference is greater than two standard deviations above the mean for a given age. It is associated with hydrocephalus; subdural effusion; arachnoid cysts; or is part of a genetic condition (e.g., alexander disease; sotos syndrome)." [MESH:D058627]
+ subset: gard_rare {source="GARD:0016601", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
+-subset: ordo_disorder {source="Orphanet:2477"}
+-subset: ordo_malformation_syndrome {source="Orphanet:2477"}
+-subset: orphanet {source="Orphanet:2477"}
+-subset: orphanet_rare {source="Orphanet:2477"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "macroencephaly" EXACT [icd11.foundation:368780653]
+@@ -424972,13 +424968,12 @@ synonym: "megalencephaly" EXACT [ICD10CM:Q04.5, icd11.foundation:368780653, MOND
+ synonym: "megalencephaly (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+ xref: GARD:0016601 {source="MONDO:GARD"}
+ xref: HP:0001355 {source="MONDO:otherHierarchy"}
+-xref: ICD10CM:Q04.5 {source="https://orcid.org/0009-0001-6494-4831", source="Orphanet:2477", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648", source="Orphanet:2477/e"}
+-xref: icd11.foundation:368780653 {source="Orphanet:2477", source="MONDO:equivalentTo"}
++xref: ICD10CM:Q04.5 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648"}
++xref: icd11.foundation:368780653 {source="MONDO:equivalentTo"}
+ xref: ICD9:742.4 {source="MONDO:relatedTo", source="MONDO:i2s"}
+-xref: MedDRA:10050183 {source="Orphanet:2477", source="Orphanet:2477/e"}
++xref: MedDRA:10050183 {}
+ xref: MEDGEN:65141 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: MESH:D058627 {source="MONDO:equivalentTo"}
+-xref: Orphanet:2477 {source="MONDO:equivalentTo"}
+ xref: SCTID:9740002 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0221355 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:65141"}
+ is_a: MONDO:0005560 {source="https://orcid.org/0000-0002-4142-7153"} ! brain disorder
+@@ -435655,6 +435650,10 @@ name: isolated megalencephaly
+ def: "A megalencephaly (disease) that is not part of a larger syndrome." [MONDO:patterns/isolated]
+ subset: gard_rare {source="GARD:0020977", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
++subset: ordo_disorder {source="Orphanet:2477"}
++subset: ordo_malformation_syndrome {source="Orphanet:2477"}
++subset: orphanet {source="Orphanet:2477"}
++subset: orphanet_rare {source="Orphanet:2477"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "isolated macrencephaly" EXACT []
+@@ -435663,6 +435662,7 @@ synonym: "nonsyndromic megalencephaly (disease)" EXACT [MONDO:patterns/isolated]
+ xref: GARD:0020977 {source="MONDO:GARD"}
+ xref: MEDGEN:439426 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: Orphanet:268920 {source="MONDO:equivalentObsolete"}
++xref: Orphanet:2477 {source="MONDO:equivalentTo"}
+ xref: UMLS:C2720434 {source="MEDGEN:439426", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0016608 {source="MONDO:Redundant", source="Orphanet:268920"} ! megalencephaly
+ is_a: MONDO:0021147 {source="MONDO:Redundant", source="Orphanet:268920", source="Orphanet:268920/inferred"} ! disorder of development or morphogenesis

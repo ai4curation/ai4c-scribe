@@ -1,0 +1,38 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..d3e546130 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -385046,6 +385046,7 @@ xref: OMIM:616947 {source="MONDO:equivalentTo"}
+ xref: UMLS:C4310782 {source="MEDGEN:934749", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+ is_a: MONDO:0019852 {source="DC-OMIM:616947", source="OMIM:616947"} ! inherited primary ovarian failure
++is_a: MONDO:7770012 {source="OMIM:616947", source="https://www.clinicalgenome.org/affiliation/40073/"} ! SYCE1-related gametogenic failure
+ intersection_of: MONDO:0019852 ! inherited primary ovarian failure
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 ! SYCE1
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 {source="OMIM:616947"} ! SYCE1
+@@ -385127,6 +385128,7 @@ xref: MEDGEN:934746 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:616950 {source="MONDO:equivalentTo"}
+ xref: UMLS:C4310779 {source="MEDGEN:934746", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0004983 {source="DC-OMIM:616950", source="DOID:0070172", source="MONDO:Redundant", source="OMIM:616950"} ! spermatogenic failure
++is_a: MONDO:7770012 {source="OMIM:616950", source="https://www.clinicalgenome.org/affiliation/40073/"} ! SYCE1-related gametogenic failure
+ intersection_of: MONDO:0004983 ! spermatogenic failure
+ intersection_of: disease_has_basis_in_dysfunction_of http://identifiers.org/hgnc/28852 ! SYCE1
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 ! SYCE1
+@@ -665300,6 +665302,17 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: SYCE1-related gametogenic failure
++def: "Any infertility disorder in which the cause of the disease is a variation in the SYCE1 gene. In 46,XY individuals, this condition can present as non-obstructive azoospermia due to maturation arrest or meiotic failure; in 46,XX individuals, it can present as primary ovarian insufficiency." [https://www.clinicalgenome.org/affiliation/40073/, OMIM:616947, OMIM:616950]
++synonym: "SYCE1-related gametogenic failure" EXACT [https://www.clinicalgenome.org/affiliation/40073/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++is_a: MONDO:0005047 {source="OMIM:616947", source="OMIM:616950", source="https://www.clinicalgenome.org/affiliation/40073/"} ! infertility disorder
++intersection_of: MONDO:0005047 ! infertility disorder
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 ! SYCE1
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 {source="OMIM:616947", source="OMIM:616950", source="https://www.clinicalgenome.org/affiliation/40073/"} ! SYCE1
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9864" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

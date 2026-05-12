@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3003,
+  "pr_number": 3511,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "gemma-4-31b",
+  "runtime": "opencode",
+  "eval_repo_pr": 154,
+  "f1": 0.25,
+  "precision": 0.5,
+  "recall": 0.167,
+  "jaccard": 0.143
+}

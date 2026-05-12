@@ -163,6 +163,34 @@ def score_repo_cmd(
     typer.echo(f"Scored {len(df)} runs -> {out_path}")
 
 
+@score_app.command("review-stubs")
+def review_stubs_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
+    reviewer: str = typer.Option("claudecode", help="Reviewer agent/harness (e.g., claudecode, codex)"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
+    overwrite: bool = typer.Option(False, help="Overwrite existing stubs"),
+):
+    """Generate review stub files for all scored runs of an ontology.
+
+    Stubs contain pre-filled frontmatter (scores, URLs) for a reviewer agent.
+    The reviewer reads the issue + PRs and fills in the body sections.
+
+    Output: analysis/{ont}/results/reviews/prNN-{reviewer}-stub.md
+    """
+    from ai4c_scribe.scoring import generate_review_stubs, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    generated = generate_review_stubs(ontology, analysis_dir, reviewer, overwrite)
+    typer.echo(f"Generated {len(generated)} review stubs for {ontology} (reviewer: {reviewer})")
+    for p in generated[:5]:
+        typer.echo(f"  {p}")
+    if len(generated) > 5:
+        typer.echo(f"  ... and {len(generated) - 5} more")
+
+
 @app.command()
 def extract(
     repo: Annotated[str, typer.Argument(help="Repository in owner/name format")],

@@ -1,0 +1,37 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 5b4d6c89f..fc2dabe25 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -3208,10 +3208,11 @@ intersection_of: has_primary_input SO:0000587 ! group_I_intron
+ id: GO:0000293
+ name: ferric-chelate reductase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: 2 Fe3+-siderophore + electron donor = 2 Fe2+-siderophore + electron acceptor." [PMID:33559753]
++def: "Catalysis of the reaction: 2 Fe3+-chelate + electron donor = 2 Fe2+-chelate + electron acceptor." [PMID:33559753]
+ synonym: "ferric chelate reductase activity" EXACT []
+ synonym: "iron chelate reductase activity" EXACT []
+ is_a: GO:0016722 ! oxidoreductase activity, acting on metal ions
++is_a: GO:7770068 ! ferric iron reductase activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/21029" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/26726" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30815" xsd:anyURI
+@@ -617387,6 +617388,19 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-04-21T19:33:16Z
+ 
++[Term]
++id: GO:7770068
++name: ferric iron reductase activity
++namespace: molecular_function
++def: "Catalysis of the reaction: 2 Fe2+ + NADP+ + H+ = 2 Fe3+ + NADPH." [PMID:8321236, PMID:34614242, PMID:39940646, RHEA:71767]
++synonym: "ferric reductase activity" EXACT []
++synonym: "ferrireductase activity" EXACT []
++xref: RHEA:71767 {source="skos:exactMatch"}
++is_a: GO:0016723 ! oxidoreductase activity, acting on metal ions, NAD or NADP as acceptor
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/27593" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-11T02:38:39Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

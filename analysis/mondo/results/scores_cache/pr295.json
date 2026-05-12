@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9938,
+  "pr_number": 10221,
+  "case_type": "synonym_update",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "gemma-4-31b",
+  "runtime": "opencode",
+  "eval_repo_pr": 295,
+  "f1": 0.0,
+  "precision": 0.0,
+  "recall": 0.0,
+  "jaccard": 0.0
+}

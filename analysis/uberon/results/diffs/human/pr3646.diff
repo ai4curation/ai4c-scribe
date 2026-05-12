@@ -1,0 +1,14 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 0239d1945..878789bf4 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -185,7 +185,9 @@ property_value: doap-mailing-list "https://lists.sourceforge.net/lists/listinfo/
+ property_value: doap-SVNRepository "https://obo.svn.sourceforge.net/svnroot/obo/uberon/" xsd:anyURI
+ property_value: foaf-homepage "http://uberon.org" xsd:anyURI
+ property_value: has_ontology_root_term UBERON:0000104
++property_value: has_ontology_root_term UBERON:0000105
+ property_value: has_ontology_root_term UBERON:0001062
++property_value: has_ontology_root_term UBERON:0035943
+ treat-xrefs-as-has-subclass: EHDAA
+ treat-xrefs-as-has-subclass: EV
+ treat-xrefs-as-has-subclass: NCIT

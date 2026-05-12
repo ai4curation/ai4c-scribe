@@ -1,0 +1,47 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 6e6af3307..830593e80 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -29440,11 +29440,13 @@ creation_date: 2009-12-09T10:03:32Z
+ 
+ [Term]
+ id: GO:0003400
+-name: regulation of COPII vesicle coating
++name: obsolete regulation of COPII vesicle coating
+ namespace: biological_process
+-def: "Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+-intersection_of: GO:0065007 ! biological regulation
+-intersection_of: regulates GO:0048208 ! COPII vesicle coating
++def: "OBSOLETE. Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
++comment: The reason for obsoletion is that the data from the paper for which the term was requested can be accurately described using GO:0048208 COPII vesicle coating.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31945" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0048208
+ created_by: dph
+ creation_date: 2009-12-17T08:38:14Z
+ 
+@@ -69216,10 +69218,9 @@ creation_date: 2013-12-19T15:26:17Z
+ 
+ [Term]
+ id: GO:0006901
+-name: vesicle coating
++name: vesicle coat assembly
+ namespace: biological_process
+ def: "A protein coat is added to the vesicle to form the proper shape of the vesicle and to target the vesicle for transport to its destination." [GOC:jid]
+-synonym: "vesicle coat assembly" BROAD []
+ is_a: GO:0016050 ! vesicle organization
+ relationship: has_participant GO:0031982 ! vesicle
+ relationship: part_of GO:0006900 ! vesicle budding from membrane
+@@ -307982,11 +307983,10 @@ relationship: part_of GO:0006888 ! endoplasmic reticulum to Golgi vesicle-mediat
+ 
+ [Term]
+ id: GO:0048208
+-name: COPII vesicle coating
++name: COPII vesicle coat assembly
+ namespace: biological_process
+ def: "The addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jid, GOC:mah, GOC:tb, ISBN:0716731363, PMID:10219233]
+ synonym: "COPII coating of ER-derived vesicle" EXACT [GOC:tb]
+-synonym: "COPII vesicle coat assembly" EXACT [GOC:ascb_2009, GOC:dph, GOC:tb]
+ synonym: "COPII vesicle coat formation" EXACT [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+ is_a: GO:0006901 ! vesicle coating
+ intersection_of: GO:0022607 ! cellular component assembly

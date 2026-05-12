@@ -1,0 +1,123 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 218542b97..aa065cd50 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -72965,8 +72965,8 @@ id: UBERON:0003532
+ name: hindlimb skin
+ def: "A zone of skin that is part of a hindlimb [Automatically generated definition]." [OBOL:automatic]
+ synonym: "hind limb skin" EXACT [OBOL:automatic]
+-synonym: "lower limb skin" EXACT [https://orcid.org/0000-0002-0819-0473]
+ synonym: "lower limb skin" EXACT [FMA:23102]
++synonym: "lower limb skin" EXACT [https://orcid.org/0000-0002-0819-0473]
+ synonym: "skin of hind limb" EXACT [OBOL:automatic]
+ synonym: "skin of hindlimb" EXACT [OBOL:automatic]
+ synonym: "skin of lower extremity" EXACT [OBOL:automatic]
+@@ -224947,6 +224947,108 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++[Term]
++id: UBERON:9900001
++name: mesosalpinx epithelium
++def: "A region of fallopian tube epithelium that is on the mesosalpinx-facing side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++is_a: UBERON:0000483 ! epithelium
++intersection_of: UBERON:0000483 ! epithelium
++intersection_of: part_of UBERON:0003889 ! fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: antimesosalpinx epithelium
++def: "A region of fallopian tube epithelium that is on the antimesosalpinx-facing side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++is_a: UBERON:0000483 ! epithelium
++intersection_of: UBERON:0000483 ! epithelium
++intersection_of: part_of UBERON:0003889 ! fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: superior epithelium of fallopian tube
++def: "A region of fallopian tube epithelium that is on the superior side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "superior epithelium" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0000483 ! epithelium
++intersection_of: UBERON:0000483 ! epithelium
++intersection_of: part_of UBERON:0003889 ! fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: inferior epithelium of fallopian tube
++def: "A region of fallopian tube epithelium that is on the inferior side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "inferior epithelium" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0000483 ! epithelium
++intersection_of: UBERON:0000483 ! epithelium
++intersection_of: part_of UBERON:0003889 ! fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900005
++name: mesosalpinx muscularis
++def: "A region of the muscle layer of oviduct that is on the mesosalpinx-facing side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "mesosalpinx muscularus" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900006
++name: antimesosalpinx muscularis
++def: "A region of the muscle layer of oviduct that is on the antimesosalpinx-facing side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "antimesosalpinx muscularus" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900007
++name: superior muscularis of fallopian tube
++def: "A region of the muscle layer of oviduct that is on the superior side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "superior muscularus" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900008
++name: inferior muscularis of fallopian tube
++def: "A region of the muscle layer of oviduct that is on the inferior side of the fallopian tube." [https://github.com/obophenotype/uberon/issues/3414, PMID:25117646]
++synonym: "inferior muscularus" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2026-05-10T01:19:11Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to
