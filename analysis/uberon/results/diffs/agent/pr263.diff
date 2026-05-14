@@ -1,0 +1,72 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 0239d1945..b0f5f2cf0 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -186580,51 +186580,43 @@ relationship: part_of UBERON:0003129 ! skull
+ 
+ [Term]
+ id: UBERON:0035943
+-name: life cycle temporal boundary
++name: obsolete life cycle temporal boundary
+ def: "A temporal boundary connecting two life cycle stages that follow in immediate succession. A temporal boundary is an abstract, instantaneous entity." [https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
+-subset: upper_level
+-is_a: UBERON:0000000 ! processual entity
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++comment: This term and its subclasses (life-death temporal boundary, start of life cycle, start of neonate stage) were obsoleted as vestiges of over-formalization. They were never used within Uberon nor by taxon-specific developmental-stage ontologies. Concepts like conception, birth and death are better represented by the corresponding life cycle stages (e.g. zygote stage, neonate stage, death stage), treated analogously to 3D boundaries in Uberon as having some minimal extent rather than as abstract 0D instantaneous entities. See https://github.com/obophenotype/uberon/issues/3464
++is_obsolete: true
++consider: UBERON:0000104
+ 
+ [Term]
+ id: UBERON:0035944
+-name: life-death temporal boundary
++name: obsolete life-death temporal boundary
+ def: "A life cycle temporal boundary that marks the end of the life cycle of the organism." [https://github.com/obophenotype/uberon/issues/1172, https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
++comment: Obsoleted as a vestige of over-formalization. This abstract 0D instantaneous boundary was never used within Uberon nor by taxon-specific developmental-stage ontologies. The colloquial concept of 'death' is better represented by 'death stage' (UBERON:0000071), treated analogously to 3D boundaries in Uberon as having some minimal extent. See https://github.com/obophenotype/uberon/issues/3464
+ synonym: "death" RELATED INCONSISTENT []
+ synonym: "end of life" RELATED []
+ synonym: "end of life cycle" EXACT []
+ synonym: "moment of death" EXACT []
+ synonym: "time of death" EXACT []
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: ends UBERON:0000104 ! life cycle
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++is_obsolete: true
++consider: UBERON:0000071
+ 
+ [Term]
+ id: UBERON:0035945
+-name: start of life cycle
++name: obsolete start of life cycle
+ def: "A life cycle temporal boundary that marks the start of the life cycle of the organism." [https://github.com/obophenotype/uberon/issues/1172, https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: starts UBERON:0000104 ! life cycle
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++comment: Obsoleted as a vestige of over-formalization. This abstract 0D instantaneous boundary was never used within Uberon nor by taxon-specific developmental-stage ontologies. The colloquial concept of 'conception' or the start of the life cycle is better represented by the relevant initial life cycle stage (e.g. 'zygote stage', UBERON:0000106), treated analogously to 3D boundaries in Uberon as having some minimal extent. See https://github.com/obophenotype/uberon/issues/3464
++is_obsolete: true
++consider: UBERON:0000106
+ 
+ [Term]
+ id: UBERON:0035946
+-name: start of neonate stage
++name: obsolete start of neonate stage
+ def: "A life cycle temporal boundary that marks the start of the neonate stage of the organism." [https://github.com/obophenotype/uberon/issues/1204, https://orcid.org/0000-0002-6601-2165]
++comment: Obsoleted as a vestige of over-formalization. This abstract 0D instantaneous boundary was never used within Uberon nor by taxon-specific developmental-stage ontologies. The colloquial concept of 'birth' is better represented by 'neonate stage' (UBERON:0007221), treated analogously to 3D boundaries in Uberon as having some minimal extent. See https://github.com/obophenotype/uberon/issues/3464
+ synonym: "birth" RELATED INCONSISTENT []
+ synonym: "moment of birth" EXACT []
+ synonym: "time of birth" EXACT []
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: starts UBERON:0007221 ! neonate stage
++is_obsolete: true
++consider: UBERON:0007221
+ 
+ [Term]
+ id: UBERON:0035955

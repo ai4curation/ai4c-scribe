@@ -1,0 +1,32 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..4f7f0f1f3 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,27 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: oocyte/zygote/embryo maturation arrest 16
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. An autosomal recessive female infertility disorder characterized by early embryonic arrest." [PMID:27545678, PMID:29693651]
++subset: omim {source="OMIM:617234"}
++synonym: "early embryonic arrest" RELATED [PMID:27545678]
++synonym: "inherited oocyte maturation defect caused by mutation in PADI6" EXACT [MONDO:patterns/disease_series_by_gene]
++synonym: "OZEMA16" EXACT ABBREVIATION [MONDO:MEDGEN]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder" EXACT [https://clinicalgenome.org/affiliation/40106] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "preimplantation embryonic lethality 2" RELATED [OMIM:617234]
++synonym: "PREMBL2" RELATED ABBREVIATION [OMIM:617234]
++xref: MEDGEN:934626 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++xref: UMLS:C4310659 {source="MEDGEN:934626", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++is_a: MONDO:0014769 {source="OMIM:617234", source="PMID:27545678"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="OMIM:617234", source="PMID:27545678"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

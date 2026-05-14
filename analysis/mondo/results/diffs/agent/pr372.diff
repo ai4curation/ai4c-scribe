@@ -1,0 +1,40 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..fcd50574e 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -224697,23 +224697,20 @@ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6164/congeni
+ 
+ [Term]
+ id: MONDO:0009327
+-name: heart, malformation of
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical disease and there is currently no evidence that this term represents an actual existing disease. After obsoletion, this term will not have a replacement ID, but one could consider the following term: heart disorder-MONDO:0005267
+-subset: gard_rare {source="GARD:0024658", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: rare
++name: obsolete heart, malformation of
++comment: Reason of obsoletion: out of scope - MONDO:excludeHistoricalDisease. This term represented a historical placeholder for more specific diseases. The two OMIM IDs that were equivalent to this term (OMIM:140500 and OMIM:234750) have been moved to OMIM:306955 (MONDO:0800321 'congenital heart defects, multiple types, 1, X-linked') and OMIM:614980 (MONDO:0014000 'congenital heart defects, multiple types, 2') respectively. Term to consider: heart disorder-MONDO:0005267
+ synonym: "heart, malformation of" EXACT []
+-xref: GARD:0024658 {source="MONDO:GARD"}
+-xref: MEDGEN:6748 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: OMIM:140500 {source="MONDO:equivalentObsolete"}
+-xref: OMIM:234750 {source="MONDO:equivalentObsolete"}
+-xref: UMLS:C0018798 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:6748"}
+-is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+-is_a: MONDO:0019512 ! congenital heart malformation
+-property_value: curated_content_resource "https://www.malacards.org/card/heart_malformation_of" xsd:anyURI {source="MONDO:MalaCards"}
++xref: GARD:0024658 {source="MONDO:obsoleteEquivalent"}
++xref: MEDGEN:6748 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++xref: OMIM:140500 {source="MONDO:obsoleteEquivalentObsolete"}
++xref: OMIM:234750 {source="MONDO:obsoleteEquivalentObsolete"}
++xref: UMLS:C0018798 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN", source="MEDGEN:6748"}
++property_value: IAO:0000231 OMO:0001000 {source="MONDO:excludeHistoricalDisease"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9771" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++consider: MONDO:0005267
++consider: MONDO:0800321
++consider: MONDO:0014000
+ 
+ [Term]
+ id: MONDO:0009328

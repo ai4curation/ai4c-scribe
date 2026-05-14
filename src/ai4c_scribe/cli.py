@@ -163,6 +163,33 @@ def score_repo_cmd(
     typer.echo(f"Scored {len(df)} runs -> {out_path}")
 
 
+@score_app.command("retryable")
+def retryable_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name"),
+    limit: int = typer.Option(50, help="Number of recent traces to check"),
+):
+    """Find rate-limited runs that should be retried.
+
+    Scans traces in the eval repo for rate limit / quota errors.
+    These are runs where the agent was blocked before doing any work.
+    """
+    from ai4c_scribe.scoring import find_rate_limited_runs, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    runs = find_rate_limited_runs(cfg["eval_repo"], limit=limit)
+    if not runs:
+        typer.echo(f"No rate-limited runs found in last {limit} traces for {ontology}")
+        return
+
+    typer.echo(f"Found {len(runs)} rate-limited runs for {ontology}:")
+    for r in runs:
+        typer.echo(f"  issue #{r['issue_number']} ({r['runtime']}/{r['model']}) — run {r['run_id']}")
+
+
 @score_app.command("review-stubs")
 def review_stubs_cmd(
     ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),

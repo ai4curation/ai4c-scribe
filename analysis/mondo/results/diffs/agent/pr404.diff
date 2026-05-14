@@ -1,0 +1,24 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 28406f6c4..4b6615475 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -660456,6 +660456,19 @@ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/
+ relationship: in_taxon NCBITaxon:9685 {source="OMIA:003044-9685"} ! Felis catus
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10159" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770736
++name: TSEN2-related neurodevelopmental disorder with or without thrombotic microangiopathy
++def: "Any neurodevelopmental disorder in which the cause of the disease is a mutation in the TSEN2 gene. This condition is associated with intellectual disability, growth delay, hypotonia, motor delay, ataxia, vision issues, cardiac features (including left ventricular hypertrophy), and pulmonary complications (such as acute respiratory distress and edema). It is also linked to brain structural anomalies such as pontine and cerebellar hypoplasia, cortical atrophy, and dilated ventricles. Renal features include proteinuria, thrombotic microangiopathy, end-stage kidney disease, and high-severity hypertension." [PMID:18711368, PMID:20952379, PMID:23562994, PMID:32404165, PMID:38347586, PMID:38438125, PMID:38622473, https://clinicalgenome.org/affiliation/40069/]
++synonym: "neurodevelopmental disorder with or without thrombotic microangiopathy caused by mutation in TSEN2" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++synonym: "TSEN2 neurodevelopmental disorder with or without thrombotic microangiopathy" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++is_a: MONDO:0700092 {source="https://clinicalgenome.org/affiliation/40069/"} ! neurodevelopmental disorder
++intersection_of: MONDO:0700092 ! neurodevelopmental disorder
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28422 ! TSEN2
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28422 {source="https://clinicalgenome.org/affiliation/40069/", source="PMID:38347586", source="PMID:38438125", source="PMID:38622473"} ! TSEN2
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9956" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

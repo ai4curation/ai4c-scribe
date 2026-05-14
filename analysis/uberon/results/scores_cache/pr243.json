@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3003,
+  "pr_number": 3511,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "claude-opus-4.7",
+  "runtime": "claude",
+  "eval_repo_pr": 243,
+  "f1": 0.4,
+  "precision": 0.5,
+  "recall": 0.333,
+  "jaccard": 0.25
+}

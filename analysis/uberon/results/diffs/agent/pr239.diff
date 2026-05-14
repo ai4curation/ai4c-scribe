@@ -1,0 +1,81 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 218542b97..4a1c8ca2b 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -72965,8 +72965,8 @@ id: UBERON:0003532
+ name: hindlimb skin
+ def: "A zone of skin that is part of a hindlimb [Automatically generated definition]." [OBOL:automatic]
+ synonym: "hind limb skin" EXACT [OBOL:automatic]
+-synonym: "lower limb skin" EXACT [https://orcid.org/0000-0002-0819-0473]
+ synonym: "lower limb skin" EXACT [FMA:23102]
++synonym: "lower limb skin" EXACT [https://orcid.org/0000-0002-0819-0473]
+ synonym: "skin of hind limb" EXACT [OBOL:automatic]
+ synonym: "skin of hindlimb" EXACT [OBOL:automatic]
+ synonym: "skin of lower extremity" EXACT [OBOL:automatic]
+@@ -224744,6 +224744,66 @@ intersection_of: part_of UBERON:0001558 ! lower respiratory tract
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ property_value: dcterms-date "2025-02-24T14:15:29Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8600124
++name: mesosalpinx mucosa of fallopian tube
++def: "A region of the mucosa of the fallopian tube located in the part of the tubal wall that faces and is adjacent to the mesosalpinx. This region constitutes the mesosalpinx-side polarity of the fallopian tube mucosa; it is not part of the mesosalpinx itself." [https://github.com/obophenotype/uberon/issues/3414, https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "mesosalpinx epithelium" RELATED [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "mesosalpinx region of fallopian tube mucosa" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "mesosalpinx-side mucosa of fallopian tube" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0005048 ! mucosa of fallopian tube
++relationship: adjacent_to UBERON:0012331 ! mesosalpinx
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++property_value: dcterms-date "2026-05-14T00:44:08Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8600125
++name: antimesosalpinx mucosa of fallopian tube
++def: "A region of the mucosa of the fallopian tube located in the part of the tubal wall that faces and is adjacent to the antimesosalpinx (the side opposite the mesosalpinx). This region constitutes the antimesosalpinx-side polarity of the fallopian tube mucosa; it is not part of the antimesosalpinx itself." [https://github.com/obophenotype/uberon/issues/3414, https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "antimesosalpinx epithelium" RELATED [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "antimesosalpinx region of fallopian tube mucosa" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "antimesosalpinx-side mucosa of fallopian tube" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0005048 ! mucosa of fallopian tube
++relationship: adjacent_to UBERON:8600117 ! antimesosalpinx
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++property_value: dcterms-date "2026-05-14T00:44:08Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8600126
++name: mesosalpinx muscularis of fallopian tube
++def: "A region of the muscle layer of the fallopian tube located in the part of the tubal wall that faces and is adjacent to the mesosalpinx. This region constitutes the mesosalpinx-side polarity of the fallopian tube muscularis; it is not part of the mesosalpinx itself. The longitudinally arranged outer muscle fibers in this region are continuous with smooth muscle present in the mesosalpinx." [https://github.com/obophenotype/uberon/issues/3414, https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "mesosalpinx muscularus" RELATED [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "mesosalpinx region of fallopian tube muscularis" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "mesosalpinx-side muscle layer of fallopian tube" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: adjacent_to UBERON:0012331 ! mesosalpinx
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++property_value: dcterms-date "2026-05-14T00:44:08Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8600127
++name: antimesosalpinx muscularis of fallopian tube
++def: "A region of the muscle layer of the fallopian tube located in the part of the tubal wall that faces and is adjacent to the antimesosalpinx (the side opposite the mesosalpinx). This region constitutes the antimesosalpinx-side polarity of the fallopian tube muscularis; it is not part of the antimesosalpinx itself." [https://github.com/obophenotype/uberon/issues/3414, https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "antimesosalpinx muscularus" RELATED [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "antimesosalpinx region of fallopian tube muscularis" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++synonym: "antimesosalpinx-side muscle layer of fallopian tube" EXACT [https://github.com/obophenotype/uberon/issues/3414]
++is_a: UBERON:0006642 ! muscle layer of oviduct
++relationship: adjacent_to UBERON:8600117 ! antimesosalpinx
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++property_value: dcterms-date "2026-05-14T00:44:08Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Term]
+ id: UBERON:8700000
+ name: aorta-gonad-mesonephros

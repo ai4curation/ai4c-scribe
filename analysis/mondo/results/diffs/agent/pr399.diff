@@ -1,0 +1,22 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..a5af3cedc 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -438859,7 +438859,7 @@ subset: orphanet_rare {source="Orphanet:322"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "BEEC" NARROW ABBREVIATION []
+-synonym: "bladder exstrophy-epispadias-cloacal extrophy complex" NARROW []
++synonym: "bladder exstrophy-epispadias-cloacal exstrophy complex" NARROW []
+ synonym: "EEC" EXACT ABBREVIATION [Orphanet:322]
+ synonym: "OEIS complex" EXACT [https://github.com/monarch-initiative/mondo/issues/3650, NCIT:C99142, OMIM:258040]
+ synonym: "OEIS syndrome" EXACT [NCIT:C99142]
+@@ -589672,7 +589672,7 @@ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-414
+ 
+ [Term]
+ id: MONDO:0700039
+-name: bladder exstrophy-epispadias-cloacal extrophy complex
++name: bladder exstrophy-epispadias-cloacal exstrophy complex
+ def: "An anterior midline defect with variable expression involving the infraumbilical abdominal wall including the pelvis, urinary tract, and external genitalia." [OMIM:600057]
+ subset: gard_rare {source="GARD:0026333", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}

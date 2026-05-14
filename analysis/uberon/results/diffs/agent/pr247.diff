@@ -1,0 +1,104 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 76d60d4dd..b00612b82 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225075,6 +225075,99 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++[Term]
++id: UBERON:9900001
++name: ascending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the ascending colon." [ISBN:0123813611]
++synonym: "lamina propria of ascending colon" EXACT []
++synonym: "ascending colonic lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001156 ! ascending colon
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900002
++name: transverse colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the transverse colon." [ISBN:0123813611]
++synonym: "lamina propria of transverse colon" EXACT []
++synonym: "transverse colonic lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001157 ! transverse colon
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900003
++name: descending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the descending colon." [ISBN:0123813611]
++synonym: "lamina propria of descending colon" EXACT []
++synonym: "descending colonic lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001158 ! descending colon
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900004
++name: sigmoid colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the sigmoid colon." [ISBN:0123813611]
++synonym: "lamina propria of sigmoid colon" EXACT []
++synonym: "sigmoid colonic lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900005
++name: stomach lamina propria
++def: "The lamina propria that underlies the epithelial lining of the stomach." [ISBN:0123813611]
++synonym: "lamina propria of stomach" EXACT []
++synonym: "gastric lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0000945 ! stomach
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900006
++name: caecum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the caecum." [ISBN:0123813611]
++synonym: "lamina propria of caecum" EXACT []
++synonym: "lamina propria of cecum" EXACT []
++synonym: "cecum lamina propria" EXACT []
++synonym: "cecal lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001153 ! caecum
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
++[Term]
++id: UBERON:9900007
++name: rectum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the rectum." [ISBN:0123813611]
++synonym: "lamina propria of rectum" EXACT []
++synonym: "rectal lamina propria" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001052 ! rectum
++created_by: dragon-ai-agent
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-14T00:57:37Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

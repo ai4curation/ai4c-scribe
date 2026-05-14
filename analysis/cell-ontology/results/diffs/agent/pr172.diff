@@ -1,0 +1,35 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 46e47c7af..9836cc687 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3235,6 +3235,7 @@ Declaration(Class(obo:CL_4072017))
+ Declaration(Class(obo:CL_4072019))
+ Declaration(Class(obo:CL_4072021))
+ Declaration(Class(obo:CL_4072102))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -34609,6 +34610,22 @@ AnnotationAssertion(rdfs:label obo:CL_4072102 "Purkinje layer interneuron")
+ EquivalentClasses(obo:CL_4072102 ObjectIntersectionOf(obo:CL_0000099 ObjectSomeValuesFrom(obo:RO_0002100 obo:UBERON_0002979)))
+ SubClassOf(obo:CL_4072102 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0061534))
+ 
++# Class: obo:CL_9900001 (dual-feature fallopian tube progenitor cell)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:40475517") obo:IAO_0000115 obo:CL_9900001 "A bipotent progenitor cell within the human fallopian tube epithelium, characterized by the concurrent expression of epithelial (e.g., EpCAM/CD326) and endothelial (e.g., PECAM1/CD31) markers at both the cell surface and transcript levels. This cell has the capacity to differentiate into ciliated and secretory epithelial cells, as well as potentially endothelial/stromal lineages. Positioned at the apex of lineage bifurcation, the cell exhibits stem-like and endothelial features, representing an intermediate developmental state between undifferentiated progenitors and lineage-committed epithelial cells.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 "https://github.com/obophenotype/cell-ontology/issues/3196")
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0002-1482-1032>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-14T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:40475517") oboInOwl:hasExactSynonym obo:CL_9900001 "unclassified fallopian tube progenitor")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35320732") oboInOwl:hasRelatedSynonym obo:CL_9900001 "non-ciliated secretory epithelial cell 2-1")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35320732") oboInOwl:hasRelatedSynonym obo:CL_9900001 "non-ciliated secretory epithelial cell 2-2")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35320732") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900001 "NCSE2-1")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35320732") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900001 "NCSE2-2")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:40475517") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900001 "UCFP")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "dual-feature fallopian tube progenitor cell")
++EquivalentClasses(obo:CL_9900001 ObjectIntersectionOf(obo:CL_0011026 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0007589) ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606) ObjectSomeValuesFrom(obo:RO_0002203 obo:CL_4030006) ObjectSomeValuesFrom(obo:RO_0002203 obo:CL_4030007)))
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

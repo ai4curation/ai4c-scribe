@@ -1,0 +1,261 @@
+diff --git a/docs/relations_guide.md b/docs/relations_guide.md
+index 52cbb0f7b..4f63cf726 100644
+--- a/docs/relations_guide.md
++++ b/docs/relations_guide.md
+@@ -235,6 +235,42 @@ neuronal), e.g.
+ 
+ ‘Betz cell’ subClassOf ‘has characteristic’ some ‘standard pyramidal morphology’
+ 
++#### Epithelial cell shape (squamous, cuboidal, columnar)
++
++Epithelial cell types are commonly classified by the general shape of the
++individual cell. Use [**'has characteristic'**](http://purl.obolibrary.org/obo/RO_0000053)
++together with the appropriate PATO shape term to record this. The two main
++patterns currently in use are:
++
++- **Squamous** (flattened) cells use [**flattened**](http://purl.obolibrary.org/obo/PATO_0002254).
++
++  For example, ['squamous epithelial cell'](http://purl.obolibrary.org/obo/CL_0000076)
++  EquivalentTo: ['epithelial cell'](http://purl.obolibrary.org/obo/CL_0000066) *and*
++  [**'has characteristic'**](http://purl.obolibrary.org/obo/RO_0000053) *some*
++  [flattened](http://purl.obolibrary.org/obo/PATO_0002254).
++
++- **Cuboidal** cells use [**cuboid**](http://purl.obolibrary.org/obo/PATO_0001872)
++  (synonym: cuboidal).
++
++  For example, ['cuboidal epithelial cell'](http://purl.obolibrary.org/obo/CL_9900001)
++  EquivalentTo: ['epithelial cell'](http://purl.obolibrary.org/obo/CL_0000066) *and*
++  [**'has characteristic'**](http://purl.obolibrary.org/obo/RO_0000053) *some*
++  [cuboid](http://purl.obolibrary.org/obo/PATO_0001872).
++
++Any epithelial cell type whose name or definition states that it is squamous
++or cuboidal in shape should bear the corresponding `has characteristic` axiom
++(directly, or by being a subclass of `squamous epithelial cell` or
++`cuboidal epithelial cell`). Cell types whose shape is variable or
++context-dependent (e.g. cells described as "squamous to cuboidal" depending on
++state) should not be axiomatised in this way. Note also that
++['columnar/cuboidal epithelial cell'](http://purl.obolibrary.org/obo/CL_0000075)
++is an inclusive parent for cell types that may be either columnar or cuboidal
++and is not itself logically equivalent to `cuboidal epithelial cell`.
++
++DOSDP patterns for generating subtypes of squamous and cuboidal epithelial
++cells live in `src/patterns/dosdp-patterns/squamousEpithelialCell.yaml` and
++`src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml`.
++
+ ### Recording nuclear number 
+ 
+ To record the number of nuclei in a cell, use a PATO subclass
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 876a6ef11..7cbae2151 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3293,6 +3293,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -3357,6 +3358,7 @@ Declaration(Class(obo:PATO_0001870))
+ Declaration(Class(obo:PATO_0001872))
+ Declaration(Class(obo:PATO_0001979))
+ Declaration(Class(obo:PATO_0002064))
++Declaration(Class(obo:PATO_0002254))
+ Declaration(Class(obo:PATO_0010007))
+ Declaration(Class(obo:PATO_0070002))
+ Declaration(Class(obo:PATO_0070003))
+@@ -4524,9 +4526,11 @@ SubClassOf(obo:CL_0000075 obo:CL_0000066)
+ 
+ # Class: obo:CL_0000076 (squamous epithelial cell)
+ 
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://github.com/obophenotype/cell-ontology/issues/3536") obo:IAO_0000115 obo:CL_0000076 "An epithelial cell that has a flattened (squamous) morphology.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0000076 "https://github.com/obophenotype/cell-ontology/issues/3536")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000076 "CALOHA:TS-1249")
+ AnnotationAssertion(rdfs:label obo:CL_0000076 "squamous epithelial cell")
+-SubClassOf(obo:CL_0000076 obo:CL_0000066)
++EquivalentClasses(obo:CL_0000076 ObjectIntersectionOf(obo:CL_0000066 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0002254)))
+ 
+ # Class: obo:CL_0000077 (mesothelial cell)
+ 
+@@ -6103,6 +6107,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:30422572") Annotation(ob
+ AnnotationAssertion(rdfs:label obo:CL_0000241 "stratified cuboidal epithelial cell")
+ EquivalentClasses(obo:CL_0000241 ObjectIntersectionOf(obo:CL_0000079 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0010077)))
+ SubClassOf(obo:CL_0000241 obo:CL_0000075)
++SubClassOf(obo:CL_0000241 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0000242 (Merkel cell)
+ 
+@@ -9277,6 +9282,7 @@ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0000634 "cell of Claudius")
+ AnnotationAssertion(oboInOwl:hasRelatedSynonym obo:CL_0000634 "external supporting cell of Claudius")
+ AnnotationAssertion(rdfs:label obo:CL_0000634 "Claudius cell")
+ SubClassOf(obo:CL_0000634 obo:CL_0002315)
++SubClassOf(obo:CL_0000634 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0000635 (Deiter's cell)
+ 
+@@ -16414,6 +16420,7 @@ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002223 "2010-09-07T10:45:45Z"
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0002223 "FMA:63181")
+ AnnotationAssertion(rdfs:label obo:CL_0002223 "anterior lens cell")
+ SubClassOf(obo:CL_0002223 obo:CL_0002224)
++SubClassOf(obo:CL_0002223 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0002224 (lens epithelial cell)
+ 
+@@ -16425,6 +16432,7 @@ AnnotationAssertion(rdfs:label obo:CL_0002224 "lens epithelial cell")
+ EquivalentClasses(obo:CL_0002224 ObjectIntersectionOf(obo:CL_0000075 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001803)))
+ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0002224 obo:CL_0000075)
+ SubClassOf(obo:CL_0002224 obo:CL_0002222)
++SubClassOf(obo:CL_0002224 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0002225 (secondary lens fiber)
+ 
+@@ -20769,6 +20777,7 @@ AnnotationAssertion(terms:contributor obo:CL_0002653 <https://orcid.org/0000-000
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002653 "2011-07-08T03:31:25Z"^^xsd:dateTime)
+ AnnotationAssertion(rdfs:label obo:CL_0002653 "squamous endothelial cell")
+ SubClassOf(obo:CL_0002653 obo:CL_0000115)
++SubClassOf(obo:CL_0002653 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0002254))
+ 
+ # Class: obo:CL_0002654 (epithelial cell of stratum corneum of esophageal epithelium)
+ 
+@@ -20858,6 +20867,7 @@ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002662 "2011-07-11T01:44:48Z"
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0002662 "FMA:74504")
+ AnnotationAssertion(rdfs:label obo:CL_0002662 "luminal cell of lactiferous duct")
+ SubClassOf(obo:CL_0002662 obo:CL_0002326)
++SubClassOf(obo:CL_0002662 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0002663 (myocardial endocrine cell of atrium)
+ 
+@@ -22442,6 +22452,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "CL:CVS") obo:IAO_0000115 obo:
+ AnnotationAssertion(rdfs:label obo:CL_0005009 "renal principal cell")
+ SubClassOf(obo:CL_0005009 obo:CL_0000075)
+ SubClassOf(obo:CL_0005009 obo:CL_0002518)
++SubClassOf(obo:CL_0005009 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0005010 (renal intercalated cell)
+ 
+@@ -22454,6 +22465,7 @@ SubClassOf(obo:CL_0005010 obo:CL_0000075)
+ SubClassOf(obo:CL_0005010 obo:CL_0002078)
+ SubClassOf(obo:CL_0005010 obo:CL_0002518)
+ SubClassOf(obo:CL_0005010 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001285))
++SubClassOf(obo:CL_0005010 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_0005011 (renal alpha-intercalated cell)
+ 
+@@ -33099,6 +33111,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://orcid.org/0000-0001-6
+ AnnotationAssertion(rdfs:label obo:CL_4033083 "squamous granulosa cell")
+ SubClassOf(obo:CL_4033083 obo:CL_0000501)
+ SubClassOf(obo:CL_4033083 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0003981))
++SubClassOf(obo:CL_4033083 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0002254))
+ SubClassOf(obo:CL_4033083 ObjectSomeValuesFrom(obo:RO_0002207 obo:CL_4033066))
+ SubClassOf(obo:CL_4033083 ObjectSomeValuesFrom(obo:RO_0002210 obo:CL_4033084))
+ 
+@@ -33114,6 +33127,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33914868") Annotation(ob
+ AnnotationAssertion(rdfs:label obo:CL_4033084 "cuboidal granulosa cell")
+ SubClassOf(obo:CL_4033084 obo:CL_0000501)
+ SubClassOf(obo:CL_4033084 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001305))
++SubClassOf(obo:CL_4033084 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ SubClassOf(obo:CL_4033084 ObjectSomeValuesFrom(obo:RO_0002207 obo:CL_4033083))
+ 
+ # Class: obo:CL_4033085 (diffuse bipolar 5 cell)
+@@ -34652,6 +34666,7 @@ AnnotationAssertion(rdfs:label obo:CL_4052048 "intercalated cell of salivary gla
+ SubClassOf(obo:CL_4052048 obo:CL_1001596)
+ SubClassOf(obo:CL_4052048 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0014727))
+ SubClassOf(obo:CL_4052048 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0015766))
++SubClassOf(obo:CL_4052048 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872))
+ 
+ # Class: obo:CL_4052049 (striated cell of salivary gland)
+ 
+@@ -35520,6 +35535,16 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900001 (cuboidal epithelial cell)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://github.com/obophenotype/cell-ontology/issues/3536") obo:IAO_0000115 obo:CL_9900001 "An epithelial cell that has a cuboidal morphology, i.e. is approximately as tall as it is wide.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 "https://github.com/obophenotype/cell-ontology/issues/3536")
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-14T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:label obo:CL_9900001 "cuboidal epithelial cell")
++EquivalentClasses(obo:CL_9900001 ObjectIntersectionOf(obo:CL_0000066 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0001872)))
++SubClassOf(obo:CL_9900001 obo:CL_0000075)
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)
+diff --git a/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml b/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml
+new file mode 100644
+index 000000000..1f1f1ef3c
+--- /dev/null
++++ b/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml
+@@ -0,0 +1,32 @@
++pattern_name: cuboidalEpithelialCell
++pattern_iri: http://purl.obolibrary.org/obo/cl/cuboidalEpithelialCell
++
++description: "A cuboidal epithelial cell type. A cuboidal epithelial cell is defined as an epithelial cell with a cuboid (PATO:0001872) morphology, i.e. approximately as tall as it is wide. Use this pattern to describe sub-types of cuboidal epithelial cell (e.g. a cuboidal epithelial cell that is part of a specific anatomical structure)."
++
++contributors:
++  - https://orcid.org/0000-0001-5208-3432
++
++classes:
++  cuboidal epithelial cell: "CL:9900001"
++  anatomical entity: "UBERON:0001062"
++
++relations:
++  part of: "BFO:0000050"
++
++vars:
++  location: "'anatomical entity'"
++
++name:
++  text: "cuboidal epithelial cell of %s"
++  vars:
++    - location
++
++def:
++  text: "A cuboidal epithelial cell that is part of a %s."
++  vars:
++    - location
++
++equivalentTo:
++  text: "'cuboidal epithelial cell' and ('part of' some %s)"
++  vars:
++    - location
+diff --git a/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml b/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml
+new file mode 100644
+index 000000000..9d99aee29
+--- /dev/null
++++ b/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml
+@@ -0,0 +1,32 @@
++pattern_name: squamousEpithelialCell
++pattern_iri: http://purl.obolibrary.org/obo/cl/squamousEpithelialCell
++
++description: "A squamous epithelial cell type. A squamous epithelial cell is defined as an epithelial cell with a flattened (PATO:0002254) morphology. Use this pattern to describe sub-types of squamous epithelial cell (e.g. a squamous epithelial cell that is part of a specific anatomical structure)."
++
++contributors:
++  - https://orcid.org/0000-0001-5208-3432
++
++classes:
++  squamous epithelial cell: "CL:0000076"
++  anatomical entity: "UBERON:0001062"
++
++relations:
++  part of: "BFO:0000050"
++
++vars:
++  location: "'anatomical entity'"
++
++name:
++  text: "squamous epithelial cell of %s"
++  vars:
++    - location
++
++def:
++  text: "A squamous epithelial cell that is part of a %s."
++  vars:
++    - location
++
++equivalentTo:
++  text: "'squamous epithelial cell' and ('part of' some %s)"
++  vars:
++    - location

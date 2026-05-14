@@ -1,0 +1,22 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..4333d77c2 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665300,6 +665300,17 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: SYCE1-related gametogenic failure
++def: "Individuals with variants in SYCE1 may present with varying phenotypes. 46XY individuals can present with non-obstructive azoospermia due to maturation arrest/meiotic failure. 46XX individuals can present with primary ovarian insufficiency (POI)." [https://www.clinicalgenome.org/affiliation/40073/]
++subset: rare
++is_a: MONDO:0003847 ! hereditary disease
++is_a: MONDO:0004983 ! spermatogenic failure
++is_a: MONDO:0019852 ! inherited primary ovarian failure
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 {source="https://www.clinicalgenome.org/affiliation/40073/"} ! SYCE1
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9864" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

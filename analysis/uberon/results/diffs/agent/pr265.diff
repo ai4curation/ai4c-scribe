@@ -1,0 +1,83 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index f7788e570..9e4919142 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -189903,6 +189903,78 @@ property_value: dcterms-date "2025-12-03T00:00:00Z" xsd:dateTime
+ property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3637" xsd:anyURI
+ created_by: dragon-ai-agent
+ 
++[Term]
++id: UBERON:1200004
++name: salivary gland ducto-acinar unit
++def: "A lobule of a salivary gland consisting of secretory acini together with their contiguous ductal segments, including the intercalated duct and striated duct, together with associated myoepithelial cells, stromal tissue, and vasculature. This structural-functional unit is responsible for the production of primary saliva by the acinar cells and its ionic modification during transit through the ductal segments." [PMID:24862590, https://www.ncbi.nlm.nih.gov/books/NBK538325/]
++comment: Also known as the "salivon" in classical salivary physiology literature. The three major salivary glands (parotid, submandibular, sublingual) contain gland-specific variants of this unit that differ in acinar cell composition (serous vs. mucous vs. mixed).
++subset: added_by_HRA
++synonym: "salivary gland ducto-acinar" RELATED []
++synonym: "salivon" EXACT []
++is_a: UBERON:0009911 ! lobule
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: part_of UBERON:0001044 ! saliva-secreting gland
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:1200005
++name: parotid gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of the parotid gland, consisting of purely serous acini together with their contiguous intercalated and striated ductal segments, and associated myoepithelial cells, stromal tissue, and vasculature. This unit produces a watery, protein-rich serous saliva." [PMID:24862590, https://www.ncbi.nlm.nih.gov/books/NBK538325/]
++subset: added_by_HRA
++synonym: "parotid gland ducto-acinar" RELATED []
++xref: https://doi.org/10.48539/HBM632.GTVR.643
++is_a: UBERON:1200004 ! salivary gland ducto-acinar unit
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: part_of UBERON:0001831 ! parotid gland
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:1200006
++name: sublingual gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of the sublingual gland, consisting of predominantly mucous acini (with minor serous demilunes) together with their contiguous ductal segments, and associated myoepithelial cells, stromal tissue, and vasculature. This unit produces a viscous, mucin-rich saliva." [PMID:24862590, https://www.ncbi.nlm.nih.gov/books/NBK538325/]
++subset: added_by_HRA
++synonym: "sublingual gland ducto-acinar" RELATED []
++xref: https://doi.org/10.48539/HBM632.GTVR.643
++is_a: UBERON:1200004 ! salivary gland ducto-acinar unit
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: part_of UBERON:0001832 ! sublingual gland
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:1200007
++name: submandibular gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of the submandibular gland, consisting of a mixture of predominantly serous acini (approximately 90%) with a minority of mucous acini, together with their contiguous ductal segments, and associated myoepithelial cells, stromal tissue, and vasculature. This unit produces a mixed serous-mucous saliva." [PMID:24862590, https://www.ncbi.nlm.nih.gov/books/NBK538325/]
++subset: added_by_HRA
++synonym: "submandibular gland ducto-acinar" RELATED []
++xref: https://doi.org/10.48539/HBM632.GTVR.643
++is_a: UBERON:1200004 ! salivary gland ducto-acinar unit
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: part_of UBERON:0001736 ! submandibular gland
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:1200008
++name: dentogingival junction
++def: "A multi-tissue anatomical complex that constitutes the attachment zone between the gingival tissue and the tooth surface, comprising the junctional epithelium, the supracrestal connective tissue attachment fibers, and supporting stromal and vascular elements. This structure seals the periodontal space from the oral cavity and serves as the primary physical and biological interface anchoring the free and attached gingiva to the tooth." [ISBN:9780323096300, PMID:38876998]
++subset: added_by_HRA
++synonym: "dentogingival complex" RELATED []
++synonym: "gingival attachment" RELATED []
++synonym: "supracrestal tissue attachment" RELATED []
++is_a: UBERON:0000481 ! multi-tissue structure
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: part_of UBERON:0001828 ! gingiva
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Term]
+ id: UBERON:1500000
+ name: scapular blade

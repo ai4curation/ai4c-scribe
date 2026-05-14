@@ -1,0 +1,108 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..27aed99c8 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2889,7 +2889,7 @@ xref: BILS:0000110
+ xref: XAO:1000006
+ is_a: UBERON:0000105 ! life cycle stage
+ relationship: dubious_for_taxon NCBITaxon:7955 ! Danio rerio
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 ! Chordata
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by UBERON:0000109 ! gastrula stage
+ relationship: simultaneous_with GO:0001841 ! neural tube formation
+@@ -36855,7 +36855,7 @@ intersection_of: UBERON:0000483 ! epithelium
+ intersection_of: part_of UBERON:0002187 ! terminal bronchiole
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ relationship: has_part CL:0000158 {source="FMA"} ! club cell
+-relationship: has_part CL:1000271 ! lung ciliated cell
++relationship: has_part CL:1000271 ! lung multiciliated epithelial cell
+ property_value: taxon_notes "A pseudostratified epithelium, containing basal cells, stem cells of the airway, submucosal glands and cartilage rings, is limited to the trachea and large lobar airways in the mouse (Morrisey and Hogan, 2010). This more complex epithelium extends to terminal bronchioles in the human[DOI:10.1242/dev.115469]" xsd:string
+ 
+ [Term]
+@@ -39643,8 +39643,8 @@ intersection_of: part_of UBERON:0002186 ! bronchiole
+ relationship: contributes_to_morphology_of UBERON:0002186 ! bronchiole
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ relationship: has_part CL:0000158 ! club cell
+-relationship: has_part CL:0002145 {source="FMA"} ! ciliated columnar cell of tracheobronchial tree
+-relationship: has_part CL:1000271 ! lung ciliated cell
++relationship: has_part CL:0002145 {source="FMA"} ! multiciliated columnar cell of tracheobronchial tree
++relationship: has_part CL:1000271 ! lung multiciliated epithelial cell
+ relationship: part_of UBERON:0005039 ! mucosa of bronchiole
+ 
+ [Term]
+@@ -47867,7 +47867,7 @@ intersection_of: UBERON:0000483 ! epithelium
+ intersection_of: part_of UBERON:0002183 ! lobar bronchus
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ relationship: has_part CL:0002329 ! basal epithelial cell of tracheobronchial tree
+-relationship: has_part CL:0002332 ! ciliated cell of the bronchus
++relationship: has_part CL:0002332 ! multiciliated epithelial cell of the bronchus
+ relationship: has_part CL:0017000 ! pulmonary ionocyte
+ 
+ [Term]
+@@ -47924,10 +47924,10 @@ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-
+ relationship: has_part CL:0000158 ! club cell
+ relationship: has_part CL:0002208 ! brush cell of bronchus
+ relationship: has_part CL:0002329 ! basal epithelial cell of tracheobronchial tree
+-relationship: has_part CL:0002332 ! ciliated cell of the bronchus
++relationship: has_part CL:0002332 ! multiciliated epithelial cell of the bronchus
+ relationship: has_part CL:0017000 ! pulmonary ionocyte
+ relationship: has_part CL:1000143 ! lung goblet cell
+-relationship: has_part CL:1000223 ! lung neuroendocrine cell
++relationship: has_part CL:1000223 ! pulmonary neuroendocrine cell
+ relationship: part_of UBERON:0002184 ! segmental bronchus
+ 
+ [Term]
+@@ -90625,7 +90625,7 @@ xref: OGES:000006
+ xref: Wikipedia:Pharyngula
+ xref: ZFS:0000050
+ is_a: UBERON:0000105 ! life cycle stage
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 ! Chordata
+ relationship: part_of UBERON:0000111 ! organogenesis stage
+ relationship: preceded_by UBERON:0000110 ! neurula stage
+ property_value: taxon_notes "Corresponds to E7-E11 in Mouse (Galis et al, TREE, 2001)" xsd:string
+@@ -116142,7 +116142,7 @@ xref: NCIT:C45715
+ xref: UMLS:C0682578 {source="ncithesaurus:Glandular_Epithelium"}
+ xref: UMLS:C1708242 {source="ncithesaurus:Glandular_Epithelial_Tissue"}
+ intersection_of: UBERON:0000483 ! epithelium
+-intersection_of: composed_primarily_of CL:0000150 ! glandular epithelial cell
++intersection_of: composed_primarily_of CL:0000150 ! glandular secretory epithelial cell
+ disjoint_from: UBERON:0011952 ! non-glandular epithelium
+ property_value: editor_note "consider splitting epithelium from epithelial tissue" xsd:string
+ 
+@@ -117485,14 +117485,14 @@ xref: FMA:64800
+ xref: NCIT:C13182
+ xref: UMLS:C0225337 {source="ncithesaurus:Columnar_Epithelium"}
+ intersection_of: UBERON:0000485 ! simple columnar epithelium
+-intersection_of: composed_primarily_of CL:0000150 ! glandular epithelial cell
++intersection_of: composed_primarily_of CL:0000150 ! glandular secretory epithelial cell
+ 
+ [Term]
+ id: UBERON:0006930
+ name: glandular cuboidal epithelium
+ xref: FMA:66809
+ intersection_of: UBERON:0000484 ! simple cuboidal epithelium
+-intersection_of: composed_primarily_of CL:0000150 ! glandular epithelial cell
++intersection_of: composed_primarily_of CL:0000150 ! glandular secretory epithelial cell
+ 
+ [Term]
+ id: UBERON:0006931
+@@ -119536,7 +119536,7 @@ is_a: UBERON:0000105 ! life cycle stage
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by RnorDv:0000010 {gci_relation="part_of", gci_filler="NCBITaxon:10116"}
+ relationship: preceded_by UBERON:0000111 ! organogenesis stage
+-relationship: preceded_by UBERON:0004707 ! pharyngula stage
++relationship: preceded_by UBERON:0004707 {gci_relation="part_of", gci_filler="NCBITaxon:7711"} ! pharyngula stage
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/355" xsd:anyURI
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/565" xsd:anyURI
+ 
+@@ -134920,7 +134920,7 @@ synonym: "pulmonary neuroepithelial body" EXACT [MP:0010921]
+ xref: EMAPA:37943 {source="MA:th"}
+ is_a: UBERON:0000061 {source="MP"} ! anatomical structure
+ relationship: contributes_to_morphology_of UBERON:0000115 ! lung epithelium
+-relationship: has_part CL:1000223 ! lung neuroendocrine cell
++relationship: has_part CL:1000223 ! pulmonary neuroendocrine cell
+ relationship: part_of UBERON:0000115 ! lung epithelium
+ relationship: part_of UBERON:8600018 ! neuroendocrine system
+ 

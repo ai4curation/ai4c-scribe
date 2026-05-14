@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3495,
+  "pr_number": 3542,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-opus-4.7",
+  "runtime": "claude",
+  "eval_repo_pr": 247,
+  "f1": 0.695,
+  "precision": 0.611,
+  "recall": 0.805,
+  "jaccard": 0.532
+}

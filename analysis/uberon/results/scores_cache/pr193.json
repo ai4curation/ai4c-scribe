@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3475,
+  "pr_number": 3477,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "copilot",
+  "eval_repo_pr": 193,
+  "f1": 0.1,
+  "precision": 1.0,
+  "recall": 0.053,
+  "jaccard": 0.053
+}

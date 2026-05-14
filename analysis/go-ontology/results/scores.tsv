@@ -1,4 +1,16 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+go-ontology	31114	32028	axiom_repair	simple	v9	claude-sonnet-4.5	copilot	451	0.0	0.0	0.0	0.0	go-#31114	std_copilot_son45
+go-ontology	32005	32026	obsoletion	medium	v9	claude-sonnet-4.5	copilot	450	0.017	0.19	0.009	0.008	go-#32005	std_copilot_son45
+go-ontology	31601	32007	synonym_update	simple	v9	claude-sonnet-4.5	copilot	443	0.0	0.0	0.0	0.0	go-#31601	std_copilot_son45
+go-ontology	31963	32006	synonym_update	simple	v9	claude-sonnet-4.5	copilot	442	0.0	0.0	0.0	0.0	go-#31963	std_copilot_son45
+go-ontology	31114	32028	axiom_repair	simple	v9	claude-sonnet-4.5	copilot	441	0.0	0.0	0.0	0.0	go-#31114	std_copilot_son45
+go-ontology	31965	31971	reclassification	hard	v9	claude-sonnet-4.5	copilot	436	0.333	0.846	0.208	0.2	go-#31965	std_copilot_son45
+go-ontology	31963	32006	synonym_update	simple	v9	claude-sonnet-4.5	copilot	431	0.0	0.0	0.0	0.0	go-#31963	std_copilot_son45
+go-ontology	31965	31971	reclassification	hard	v9	claude-sonnet-4.5	copilot	421	0.333	0.846	0.208	0.2	go-#31965	std_copilot_son45
+go-ontology	31636	31925	synonym_update	simple	v9	claude-sonnet-4.5	copilot	416	0.857	0.857	0.857	0.75	go-#31636	std_copilot_son45
+go-ontology	31935	31946	reclassification	medium	v9	claude-sonnet-4.5	copilot	415	0.8	0.8	0.8	0.667	go-#31935	std_copilot_son45
+go-ontology	31923	31938	other	simple	v9	claude-sonnet-4.5	copilot	414	1.0	1.0	1.0	1.0	go-#31923	std_copilot_son45
+go-ontology	31670	31676	new_term	hard	v9	claude-sonnet-4.5	copilot	413	0.0	0.0	0.0	0.0	go-#31670	std_copilot_son45
 go-ontology	31873	32022	obsoletion	medium	v9	claude-haiku-4.5	claude	412	0.818	0.818	0.818	0.692	go-#31873	std_claude_hai45
 go-ontology	31114	32028	axiom_repair	simple	v9	claude-haiku-4.5	claude	411	0.0	0.0	0.0	0.0	go-#31114	std_claude_hai45
 go-ontology	31985	31986	reclassification	hard	v9	claude-haiku-4.5	claude	409	0.909	0.833	1.0	0.833	go-#31985	std_claude_hai45

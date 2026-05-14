@@ -539,6 +539,97 @@ def resolve_agent_handle(record: ScoreRecord, analysis_dir: Path = Path("analysi
     return f"{record.runtime}/{record.model}/{record.agent_config_tag}"
 
 
+RATE_LIMIT_PATTERNS = [
+    "rate limit", "rate_limit", "rate-limit",
+    "You've hit", "quota exceeded", "credit limit",
+    "exhausted your daily quota",
+]
+
+
+def check_trace_for_rate_limit(trace_text: str) -> bool:
+    """Check if a trace contains rate limit / quota error signals.
+
+    >>> check_trace_for_rate_limit("You've hit your rate limit.")
+    True
+    >>> check_trace_for_rate_limit("quota exceeded for metric")
+    True
+    >>> check_trace_for_rate_limit("normal agent output with no errors")
+    False
+    """
+    lower = trace_text.lower()
+    return any(pat.lower() in lower for pat in RATE_LIMIT_PATTERNS)
+
+
+def find_rate_limited_runs(
+    eval_repo: str,
+    limit: int = 100,
+) -> list[dict]:
+    """Find workflow runs that failed due to rate limiting.
+
+    Fetches recent traces from the eval repo and checks for rate limit signals.
+    Returns list of {run_id, issue_number, model, runtime} dicts for retryable runs.
+
+    >>> find_rate_limited_runs("nonexistent-repo", limit=1)
+    []
+    """
+    # List trace directories
+    r = subprocess.run(
+        ["gh", "api", f"repos/ai4curation/{eval_repo}/contents/traces",
+         "--jq", ".[].name"],
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        return []
+
+    run_ids = sorted(r.stdout.strip().split("\n"), reverse=True)[:limit]
+    retryable = []
+
+    for run_id in run_ids:
+        if not run_id.strip():
+            continue
+        # Fetch trace
+        r2 = subprocess.run(
+            ["gh", "api",
+             f"repos/ai4curation/{eval_repo}/contents/traces/{run_id}/agent-trace.json",
+             "--jq", ".content"],
+            capture_output=True, text=True,
+        )
+        if r2.returncode != 0:
+            continue
+
+        import base64
+        trace_text = base64.b64decode(r2.stdout.strip().replace("\n", "")).decode(
+            errors="replace"
+        )
+        if not check_trace_for_rate_limit(trace_text):
+            continue
+
+        # Extract run metadata
+        r3 = subprocess.run(
+            ["gh", "api",
+             f"repos/ai4curation/{eval_repo}/contents/traces/{run_id}/run-metadata.json",
+             "--jq", ".content"],
+            capture_output=True, text=True,
+        )
+        metadata = {}
+        if r3.returncode == 0:
+            meta_text = base64.b64decode(r3.stdout.strip().replace("\n", "")).decode(
+                errors="replace"
+            )
+            metadata = json.loads(meta_text)
+
+        inputs = metadata.get("inputs", {})
+        retryable.append({
+            "run_id": run_id,
+            "issue_number": inputs.get("issue_number", "?"),
+            "model": inputs.get("model", "?"),
+            "runtime": inputs.get("agent_runtime", "?"),
+            "reason": "rate_limited",
+        })
+
+    return retryable
+
+
 def records_to_dataframe(records: list[ScoreRecord], analysis_dir: Path = Path("analysis")):
     """Convert ScoreRecords to a pandas DataFrame with agent handles."""
     import pandas as pd
