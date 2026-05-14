@@ -1,0 +1,6 @@
+diff --git a/src/ontology/test.obo b/src/ontology/test.obo
+--- a/src/ontology/test.obo
++++ b/src/ontology/test.obo
+@@ -50,3 +50,3 @@
+-is_a: TEST:0010
++is_a: TEST:0030

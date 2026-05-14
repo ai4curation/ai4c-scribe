@@ -1,0 +1,4 @@
+ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+test-ont	90	100	new_term	simple	v3	claude-haiku-4.5	claude	10	0.8	0.667	1.0	0.667	test#90	std_claude_hai45
+test-ont	90	100	new_term	simple	v3	claude-opus-4.7	claude	11	0.95	0.9	1.0	0.9	test#90	claude/claude-opus-4.7/v3
+test-ont	190	200	reclassification	hard	v3	claude-haiku-4.5	claude	12	0.3	0.25	0.4	0.2	test#190	std_claude_hai45

@@ -1,0 +1,9 @@
+diff --git a/src/ontology/test.obo b/src/ontology/test.obo
+--- a/src/ontology/test.obo
++++ b/src/ontology/test.obo
+@@ -100,0 +101,5 @@
++[Term]
++id: TEST:0001
++name: foo bar
++def: "A foo bar." [PMID:12345]
++is_a: TEST:0000
