@@ -1,0 +1,19 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..9e9d2c916 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -658223,10 +658223,14 @@ name: GRIN-related complex neurodevelopmental disorder
+ def: "A group of neurological and neurodevelopmental disorders caused by pathogenic variants in genes encoding subunits of the N-methyl-D-aspartate (NMDA) receptor, including GRIN1, GRIN2A, GRIN2B, and GRIN2D. These disorders are associated with a spectrum of symptoms such as developmental delay, intellectual disability, epilepsy, movement disorders, speech and language impairment, and neuropsychiatric features. The clinical presentation and severity vary depending on the specific gene and mutation involved." [https://orcid.org/0000-0001-9310-0163, PMID:40374652]
+ subset: gard_rare {source="GARD:0028156", source="MONDO:GARD"}
+ subset: rare
++synonym: "GRIN-related encephalopathy" EXACT [PMID:33043365, PMID:34560056]
++synonym: "GRIN-related neurodevelopmental disorder" EXACT [PMID:34560056, PMID:38727899]
++synonym: "grinpathies" EXACT [PMID:34884460]
+ xref: GARD:0028156 {source="MONDO:GARD"}
+ is_a: MONDO:0003847 {source="PMID:40374652"} ! hereditary disease
+ is_a: MONDO:0100038 {source="https://orcid.org/0000-0002-4142-7153"} ! complex neurodevelopmental disorder
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9063" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9930" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:1060139

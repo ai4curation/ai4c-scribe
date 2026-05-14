@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31601,
+  "pr_number": 32007,
+  "case_type": "synonym_update",
+  "difficulty": "simple",
+  "agent_config_tag": "v9",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 486,
+  "f1": 0.5,
+  "precision": 1.0,
+  "recall": 0.333,
+  "jaccard": 0.333
+}

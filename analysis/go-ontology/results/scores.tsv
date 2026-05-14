@@ -1,4 +1,9 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+go-ontology	32005	32026	obsoletion	medium	v9	claude-sonnet-4.5	claude	491	0.072	0.857	0.038	0.037	go-#32005	std_claude_son45
+go-ontology	31601	32007	synonym_update	simple	v9	claude-sonnet-4.5	claude	490	0.5	1.0	0.333	0.333	go-#31601	std_claude_son45
+go-ontology	31945	32013	reclassification	medium	v9	claude-sonnet-4.5	claude	489	0.895	0.85	0.944	0.81	go-#31945	std_claude_son45
+go-ontology	32005	32026	obsoletion	medium	v9	claude-sonnet-4.5	claude	487	0.072	0.857	0.038	0.037	go-#32005	std_claude_son45
+go-ontology	31601	32007	synonym_update	simple	v9	claude-sonnet-4.5	claude	486	0.5	1.0	0.333	0.333	go-#31601	std_claude_son45
 go-ontology	32018	32021	obsoletion	simple	v9	claude-sonnet-4.5	claude	485	0.0	0.0	0.0	0.0	go-#32018	std_claude_son45
 go-ontology	31969	31988	reclassification	hard	v9	claude-sonnet-4.5	claude	484	0.929	0.897	0.963	0.867	go-#31969	std_claude_son45
 go-ontology	32046	32047	new_term	medium	v9	claude-sonnet-4.5	claude	483	0.867	0.867	0.867	0.765	go-#32046	std_claude_son45
@@ -19,6 +24,7 @@ go-ontology	31964	31982	axiom_repair	medium	v9	claude-sonnet-4.5	claude	469	1.0	
 go-ontology	31902	32041	new_term	medium	v9	claude-sonnet-4.5	claude	468	0.778	0.7	0.875	0.636	go-#31902	std_claude_son45
 go-ontology	30894	32011	new_term	medium	v9	claude-sonnet-4.5	claude	467	1.0	1.0	1.0	1.0	go-#30894	std_claude_son45
 go-ontology	31295	32040	new_term	medium	v9	claude-sonnet-4.5	claude	466	0.7	0.583	0.875	0.538	go-#31295	std_claude_son45
+go-ontology	31945	32013	reclassification	medium	v9	claude-sonnet-4.5	claude	465	0.895	0.85	0.944	0.81	go-#31945	std_claude_son45
 go-ontology	31916	32024	obsoletion	medium	v9	claude-sonnet-4.5	claude	464	0.879	0.895	0.864	0.785	go-#31916	std_claude_son45
 go-ontology	31882	32036	obsoletion	simple	v9	claude-sonnet-4.5	claude	463	0.964	0.952	0.976	0.93	go-#31882	std_claude_son45
 go-ontology	31948	31994	obsoletion	medium	v9	claude-sonnet-4.5	claude	462	0.9	0.9	0.9	0.818	go-#31948	std_claude_son45

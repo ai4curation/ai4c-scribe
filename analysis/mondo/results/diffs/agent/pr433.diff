@@ -1,0 +1,12 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..f063a1144 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -395274,6 +395274,7 @@ synonym: "giant platelet syndrome with thrombocytopenia" EXACT [OMIM:155100]
+ synonym: "macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss" EXACT [NCIT:C158788, OMIM:155100] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ synonym: "macrothrombocytopenia and progressive sensorineural deafness" EXACT [OMIM:155100]
+ synonym: "macrothrombocytopenia progressive deafness" RELATED [GARD:0000179]
++synonym: "MATINS" EXACT ABBREVIATION [OMIM:155100]
+ synonym: "May-Hegglin anomaly" EXACT [GARD:0000180, NCIT:C131646, OMIM:155100]
+ synonym: "MHA" RELATED ABBREVIATION []
+ synonym: "MYH9 related disorders" RELATED [GARD:0000180]

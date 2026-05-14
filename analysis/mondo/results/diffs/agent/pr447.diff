@@ -1,0 +1,41 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 70c79e85c..e79778b5c 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -280521,8 +280521,8 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0011236
+-name: hyperinsulinism due to glucokinase deficiency
+-def: "Hyperinsulism due to glucokinase deficiency (HIGCK) is a form of diazoxide-sensitive diffuse hyperinsulinism, caused by a lowered threshold for insulin release, characterized by an excessive/ uncontrolled insulin secretion (inappropriate for the level of glycemia) and recurrent episodes of profound hypoglycemia induced by fasting and protein rich meals, requiring rapid and intensive treatment to prevent neurological sequelae." [Orphanet:79299]
++name: GCK-related hyperinsulinism
++def: "Any familial hyperinsulinism in which the cause of the disease is a gain-of-function mutation in the GCK gene. This autosomal dominant form of congenital hyperinsulinism is caused by mutations in glucokinase (GCK) that lower the glucose threshold for insulin secretion, characterized by excessive/uncontrolled insulin secretion (inappropriate for the level of glycemia) and recurrent episodes of hypoglycemia induced by fasting and protein-rich meals." [https://clinicalgenome.org/affiliation/40016/, PMID:15277402, PMID:24890200, PMID:34680961]
+ subset: doid {source="DOID:0070216"}
+ subset: doid_rare {source="DOID:0070216"}
+ subset: gard_rare {source="GARD:0002818", source="MONDO:GARD"}
+@@ -280535,8 +280535,9 @@ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+ synonym: "HHF3" RELATED ABBREVIATION [GARD:0009930, MONDO:Lexical]
+ synonym: "hyperinsulinemic hypoglycemia familial 3" RELATED [GARD:0009930]
+-synonym: "hyperinsulinemic hypoglycemia, familial, 3" RELATED [MONDO:Lexical]
++synonym: "hyperinsulinemic hypoglycemia, familial, 3" EXACT [https://clinicalgenome.org/affiliation/40016/]
+ synonym: "hyperinsulinemic hypoglycemia, familial, type 3" EXACT [MONDO:RULE_1]
++synonym: "hyperinsulinism due to glucokinase deficiency" EXACT [Orphanet:79299]
+ xref: DOID:0070216 {source="MONDO:equivalentTo"}
+ xref: GARD:0002818 {source="MONDO:GARD"}
+ xref: ICD10CM:E16.1 {source="Orphanet:79299/attributed", source="Orphanet:79299/ntbt", source="Orphanet:79299"}
+@@ -280548,10 +280549,12 @@ xref: SCTID:717182006 {source="MONDO:equivalentTo"}
+ xref: UMLS:C1865290 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:355435"}
+ is_a: MONDO:0005803 {source="DC-OMIM:602485"} ! hyperinsulinemic hypoglycemia
+ is_a: MONDO:0015624 {source="Orphanet:79299"} ! diazoxide-sensitive diffuse hyperinsulinism
++is_a: MONDO:0017182 {source="PMID:15277402", source="PMID:24890200", source="PMID:34680961", source="https://clinicalgenome.org/affiliation/40016/"} ! familial hyperinsulinism
+ is_a: MONDO:0017688 {source="Orphanet:79299", source="PMID:33340416"} ! disorder of glycolysis
+-relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4195 {source="OMIM:602485"} ! GCK
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4195 {source="OMIM:602485", source="PMID:15277402", source="PMID:24890200", source="PMID:34680961", source="https://clinicalgenome.org/affiliation/40016/"} ! GCK
+ property_value: curated_content_resource "https://www.malacards.org/card/hyperinsulinemic_hypoglycemia_familial_3_2" xsd:anyURI {source="MONDO:MalaCards"}
+-property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4985" xsd:anyURI
++property_value: http://purl.org/dc/terms/creator https://clinicalgenome.org/affiliation/40016/
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9861" xsd:anyURI
+ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/9930/hyperinsulinemic-hypoglycemia-familial-3" xsd:anyURI {source="GARD:0009930"}
+ 
+ [Term]

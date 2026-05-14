@@ -1,0 +1,23 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index f1c7c0e8f..840b4ddbb 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -658378,6 +658378,18 @@ intersection_of: MONDO:0005583 ! non-human animal disease
+ intersection_of: MONDO:0700097 MONDO:7770011 ! cross-species analog disease by molecular mechanism
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10127" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770018
++name: Southern tick-associated rash illness
++def: "An infectious disease causing acute manifestations similar to those of Lyme disease. Its vector is the lone star tick, Amblyomma americanum." [PMID:19522220, PMID:36116832, PMID:40267428]
++synonym: "Masters disease" EXACT [PMID:19522220]
++synonym: "STARI" EXACT [PMID:19522220]
++xref: NCIT:C128427 {source="MONDO:equivalentTo"}
++xref: SCTID:444100007 {source="MONDO:equivalentTo"}
++is_a: MONDO:0025294 ! tick-borne infectious disease
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-5705-7831
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9873" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

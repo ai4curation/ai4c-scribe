@@ -1,0 +1,25 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 138990fd8..1627b38e8 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225583,6 +225583,20 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900000
++name: kidney interpolar region
++def: "The middle portion of the kidney situated between the upper pole and the lower pole, representing approximately the middle third of the kidney along its longitudinal axis." [NCIT:C186124]
++synonym: "central pole of kidney" EXACT []
++synonym: "interpolar region of kidney" EXACT []
++xref: NCIT:C186124
++is_a: UBERON:0000064 ! organ part
++relationship: part_of UBERON:0002113 ! kidney
++relationship: dc-contributor https://orcid.org/0000-0002-3302-4610 ! Deanne Taylor
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3604" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

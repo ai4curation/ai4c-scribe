@@ -1,0 +1,32 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index ed68a9183..d4efc2458 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3278,6 +3278,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900000))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -5149,6 +5150,19 @@ SubClassOf(obo:CL_0000138 obo:CL_0007001)
+ SubClassOf(obo:CL_0000138 ObjectSomeValuesFrom(obo:RO_0001025 obo:UBERON_0002418))
+ SubClassOf(obo:CL_0000138 ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000058))
+ 
++# Class: obo:CL_9900000 (fibrochondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:28939894") Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasDbXref "PMID:34608249") obo:IAO_0000115 obo:CL_9900000 "A chondrocyte found in fibrocartilage with hybrid fibroblastic-chondrogenic characteristics. Fibrochondrocytes are characterized by predominant expression of type I collagen (COL1A1) and fibril-associated collagens (COL3A1, COL6A1), while retaining type II collagen (COL2A1) expression and exhibiting lower SOX9 levels compared to hyaline chondrocytes.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900000 <https://github.com/obophenotype/cell-ontology/issues/3457>)
++AnnotationAssertion(terms:contributor obo:CL_9900000 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:creator obo:CL_9900000 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900000 "2026-05-14T18:29:02Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:34608249") oboInOwl:hasExactSynonym obo:CL_9900000 "fibrocartilage chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:28939894") oboInOwl:hasNarrowSynonym obo:CL_9900000 "meniscus fibrochondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900000 "FC")
++AnnotationAssertion(rdfs:label obo:CL_9900000 "fibrochondrocyte")
++EquivalentClasses(obo:CL_9900000 ObjectIntersectionOf(obo:CL_0000138 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001995) ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_000003264)))
++
+ # Class: obo:CL_0000139 (obo:CL_0000139)
+ 
+ AnnotationAssertion(obo:IAO_0000231 obo:CL_0000139 obo:IAO_0000227)

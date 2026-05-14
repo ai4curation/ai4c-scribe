@@ -1,0 +1,26 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 875d983a8..78dc86107 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225632,6 +225632,21 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900001
++name: carotid artery intima–media region
++def: "A region of the carotid artery wall composed of the tunica intima and tunica media." [PMID:39416432]
++synonym: "carotid intima–media" EXACT [PMID:39416432]
++is_a: UBERON:0000481 ! multi-tissue structure
++relationship: part_of UBERON:0005396 ! carotid artery segment
++relationship: has_part UBERON:0002523 ! tunica intima
++relationship: has_part UBERON:0002522 ! tunica media
++disjoint_from: UBERON:0005734 ! tunica adventitia of blood vessel
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3629" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

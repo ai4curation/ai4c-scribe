@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3588,
+  "pr_number": 3589,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 219,
+  "f1": 0.358,
+  "precision": 0.632,
+  "recall": 0.25,
+  "jaccard": 0.218
+}

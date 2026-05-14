@@ -1,0 +1,139 @@
+diff --git a/docs/relations_guide.md b/docs/relations_guide.md
+index 52cbb0f7b..ef01ecf66 100644
+--- a/docs/relations_guide.md
++++ b/docs/relations_guide.md
+@@ -235,6 +235,18 @@ neuronal), e.g.
+ 
+ ‘Betz cell’ subClassOf ‘has characteristic’ some ‘standard pyramidal morphology’
+ 
++#### Cell shape characteristics
++
++For epithelial cells and other cell types, PATO terms can be used to record cell shape characteristics:
++
++**Flattened/Squamous cells**: Use [flattened](http://purl.obolibrary.org/obo/PATO_0002254) (PATO:0002254) to describe cells with a squamous (flattened) morphology.
++
++For example, [squamous epithelial cell](http://purl.obolibrary.org/obo/CL_0000076) is defined as:
++
++EquivalentTo: [epithelial cell](http://purl.obolibrary.org/obo/CL_0000066) *and* [**’has characteristic’**](http://purl.obolibrary.org/obo/RO_0000053) *some* [flattened](http://purl.obolibrary.org/obo/PATO_0002254)
++
++**Note**: At the time of writing (May 2026), PATO does not yet have a term for "cuboidal" cell shape. When such a term becomes available, it should be used analogously to describe cuboidal epithelial cells.
++
+ ### Recording nuclear number 
+ 
+ To record the number of nuclei in a cell, use a PATO subclass
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 876a6ef11..c6ce70e04 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3357,6 +3357,7 @@ Declaration(Class(obo:PATO_0001870))
+ Declaration(Class(obo:PATO_0001872))
+ Declaration(Class(obo:PATO_0001979))
+ Declaration(Class(obo:PATO_0002064))
++Declaration(Class(obo:PATO_0002254))
+ Declaration(Class(obo:PATO_0010007))
+ Declaration(Class(obo:PATO_0070002))
+ Declaration(Class(obo:PATO_0070003))
+@@ -4524,8 +4525,11 @@ SubClassOf(obo:CL_0000075 obo:CL_0000066)
+ 
+ # Class: obo:CL_0000076 (squamous epithelial cell)
+ 
++AnnotationAssertion(obo:IAO_0000115 obo:CL_0000076 "An epithelial cell that has a flattened morphology.")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000076 "CALOHA:TS-1249")
+ AnnotationAssertion(rdfs:label obo:CL_0000076 "squamous epithelial cell")
++AnnotationAssertion(terms:date obo:CL_0000076 "2026-05-14T18:32:46Z"^^xsd:dateTime)
++EquivalentClasses(obo:CL_0000076 ObjectIntersectionOf(obo:CL_0000066 ObjectSomeValuesFrom(obo:RO_0000053 obo:PATO_0002254)))
+ SubClassOf(obo:CL_0000076 obo:CL_0000066)
+ 
+ # Class: obo:CL_0000077 (mesothelial cell)
+diff --git a/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml b/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml
+new file mode 100644
+index 000000000..c8b293ea2
+--- /dev/null
++++ b/src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml
+@@ -0,0 +1,42 @@
++pattern_name: cuboidalEpithelialCell
++pattern_iri: http://purl.obolibrary.org/obo/cl/cuboidalEpithelialCell
++
++description: An epithelial cell with a cuboidal (cube-shaped) morphology. This pattern is currently incomplete as PATO does not yet have a term for "cuboidal" shape. Once a suitable PATO term is added, this pattern should use has_characteristic (bearer of) relationship to define cuboidal cells.
++
++# NOTE: This pattern is a placeholder. PATO does not currently (as of May 2026) have a term for "cuboidal" shape.
++# When such a term is added to PATO, update this pattern with the appropriate PATO ID.
++
++contributors:
++  - https://github.com/anthropics/claude-code
++
++classes:
++  epithelial cell: "CL:0000066"
++  # cuboidal: "PATO:XXXXXXX"  # TO BE ADDED when PATO term is created
++
++relations:
++  bearer of: "RO:0000053"
++
++vars:
++  epithelial_cell_type: "'epithelial cell'"
++
++name:
++  text: "cuboidal %s"
++  vars:
++    - epithelial_cell_type
++
++def:
++  text: "An %s that has a cuboidal morphology."
++  vars:
++    - epithelial_cell_type
++
++# Uncomment when PATO term for cuboidal is available:
++# equivalentTo:
++#   text: "%s and ('bearer of' some 'cuboidal')"
++#   vars:
++#     - epithelial_cell_type
++
++annotations:
++  - annotationProperty: exact_synonym
++    text: "cube-shaped %s"
++    vars:
++      - epithelial_cell_type
+diff --git a/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml b/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml
+new file mode 100644
+index 000000000..b47d914b7
+--- /dev/null
++++ b/src/patterns/dosdp-patterns/squamousEpithelialCell.yaml
+@@ -0,0 +1,38 @@
++pattern_name: squamousEpithelialCell
++pattern_iri: http://purl.obolibrary.org/obo/cl/squamousEpithelialCell
++
++description: An epithelial cell with a flattened (squamous) morphology. This pattern uses has_characteristic (bearer of) relationship with PATO:0002254 (flattened) to define squamous cells.
++
++contributors:
++  - https://github.com/anthropics/claude-code
++
++classes:
++  epithelial cell: "CL:0000066"
++  flattened: "PATO:0002254"
++
++relations:
++  bearer of: "RO:0000053"
++
++vars:
++  epithelial_cell_type: "'epithelial cell'"
++
++name:
++  text: "squamous %s"
++  vars:
++    - epithelial_cell_type
++
++def:
++  text: "An %s that has a flattened morphology."
++  vars:
++    - epithelial_cell_type
++
++equivalentTo:
++  text: "%s and ('bearer of' some 'flattened')"
++  vars:
++    - epithelial_cell_type
++
++annotations:
++  - annotationProperty: exact_synonym
++    text: "flattened %s"
++    vars:
++      - epithelial_cell_type

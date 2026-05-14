@@ -1,0 +1,96 @@
+diff --git a/src/ontology/Makefile b/src/ontology/Makefile
+index 17270309f..22691b367 100644
+--- a/src/ontology/Makefile
++++ b/src/ontology/Makefile
+@@ -46,7 +46,7 @@ REPORT_FAIL_ON =            ERROR
+ REPORT_LABEL =              
+ REPORT_PROFILE_OPTS =       
+ OBO_FORMAT_OPTIONS =        --clean-obo 'simple merge-comments'
+-SPARQL_VALIDATION_CHECKS =  equivalent-classes owldef-self-reference nolabels pmid-not-dbxref obsolete-replaced_by obsolete-alt-id orcid-contributor illegal-annotation-property label-synonym-polysemy illegal-date def-not-only-xref id-format 
++SPARQL_VALIDATION_CHECKS =  equivalent-classes owldef-self-reference nolabels pmid-not-dbxref obsolete-replaced_by obsolete-alt-id orcid-contributor illegal-annotation-property label-synonym-polysemy illegal-date def-not-only-xref id-format imported-property-relabel 
+ SPARQL_EXPORTS =            cl_terms cl-edges cl-synonyms cl-xrefs cl-def-xrefs 
+ ODK_VERSION_MAKEFILE =      v1.6
+ RELAX_OPTIONS =             --include-subclass-of true
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index efa4c875d..66b33c1e2 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3683,42 +3683,6 @@ SubAnnotationPropertyOf(core:human_reference_atlas oboInOwl:SubsetProperty)
+ AnnotationAssertion(rdfs:comment ubprop:_upper_level "abstract upper-level terms not directly useful for analysis")
+ SubAnnotationPropertyOf(ubprop:_upper_level oboInOwl:SubsetProperty)
+ 
+-# Annotation Property: oboInOwl:SubsetProperty (subset_property)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:SubsetProperty "subset_property")
+-
+-# Annotation Property: oboInOwl:consider (consider)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:consider "consider")
+-
+-# Annotation Property: oboInOwl:hasBroadSynonym (has_broad_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasBroadSynonym "has_broad_synonym")
+-
+-# Annotation Property: oboInOwl:hasDbXref (database_cross_reference)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasDbXref "database_cross_reference")
+-
+-# Annotation Property: oboInOwl:hasExactSynonym (has exact synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasExactSynonym "has_exact_synonym")
+-
+-# Annotation Property: oboInOwl:hasNarrowSynonym (has narrow synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasNarrowSynonym "has_narrow_synonym")
+-
+-# Annotation Property: oboInOwl:hasRelatedSynonym (has_related_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasRelatedSynonym "has_related_synonym")
+-
+-# Annotation Property: oboInOwl:hasSynonymType (has_synonym_type)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasSynonymType "has_synonym_type")
+-
+-# Annotation Property: oboInOwl:inSubset (in_subset)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:inSubset "in_subset")
+-
+ # Annotation Property: rdfs:seeAlso (see also)
+ 
+ AnnotationAssertion(oboInOwl:hasDbXref rdfs:seeAlso "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+diff --git a/src/sparql/imported-property-relabel-violation.sparql b/src/sparql/imported-property-relabel-violation.sparql
+new file mode 100644
+index 000000000..b46d68236
+--- /dev/null
++++ b/src/sparql/imported-property-relabel-violation.sparql
+@@ -0,0 +1,30 @@
++PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
++PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
++
++# This check prevents relabeling of imported annotation properties.
++# These properties already have labels defined in the import module,
++# and relabeling them in cl-edit.owl causes spurious diffs.
++# See: https://github.com/obophenotype/cell-ontology/issues/3588
++
++SELECT DISTINCT ?property ?label WHERE {
++  ?property rdfs:label ?label .
++  FILTER (?property IN (
++    oboInOwl:SubsetProperty,
++    oboInOwl:SynonymTypeProperty,
++    oboInOwl:consider,
++    oboInOwl:hasBroadSynonym,
++    oboInOwl:hasDbXref,
++    oboInOwl:hasExactSynonym,
++    oboInOwl:hasNarrowSynonym,
++    oboInOwl:hasRelatedSynonym,
++    oboInOwl:hasSynonymType,
++    oboInOwl:inSubset,
++    oboInOwl:hasAlternativeId,
++    oboInOwl:hasOBONamespace,
++    oboInOwl:id,
++    oboInOwl:creation_date,
++    oboInOwl:is_inferred,
++    oboInOwl:shorthand
++  ))
++}
++ORDER BY ?property

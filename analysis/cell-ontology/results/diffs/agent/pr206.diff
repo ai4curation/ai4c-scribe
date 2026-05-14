@@ -1,0 +1,136 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e68bd38c5..e1a594683 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -10269,7 +10269,8 @@ SubClassOf(obo:CL_0000747 ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0005005))
+ 
+ # Class: obo:CL_0000748 (retinal bipolar neuron)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:14689473") obo:IAO_0000115 obo:CL_0000748 "A bipolar neuron found in the retina and having connections with photoreceptors cells and neurons in the inner plexiform layer.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:14689473") obo:IAO_0000115 obo:CL_0000748 "A bipolar neuron found in the retina and having connections with photoreceptors cells and neurons in the inner plexiform layer. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000748 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1038/s41598-020-66092-9") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_0000748 "BC")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1038/s41598-020-66092-9") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) Annotation(oboInOwl:hasSynonymType obo:OMO_0003004) oboInOwl:hasRelatedSynonym obo:CL_0000748 "BCs")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "geo:GSE137537") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) Annotation(oboInOwl:hasSynonymType obo:OMO_0003004) oboInOwl:hasRelatedSynonym obo:CL_0000748 "BPs")
+@@ -10293,9 +10294,10 @@ SubClassOf(obo:CL_0000750 obo:CL_0000748)
+ 
+ # Class: obo:CL_0000751 (rod bipolar cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:14689473") obo:IAO_0000115 obo:CL_0000751 "A bipolar neuron found in the retina that is synapsed by rod photoreceptor cells but not by cone photoreceptor cells.  These neurons depolarize in response to light.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:14689473") obo:IAO_0000115 obo:CL_0000751 "A bipolar neuron found in the retina that is synapsed by rod photoreceptor cells but not by cone photoreceptor cells.  These neurons depolarize in response to light. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:38627529") obo:RO_0002175 obo:CL_0000751 obo:NCBITaxon_32443)
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000751 "FMA:67750")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000751 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(rdfs:label obo:CL_0000751 "rod bipolar cell")
+ SubClassOf(obo:CL_0000751 obo:CL_0000749)
+ SubClassOf(obo:CL_0000751 ObjectSomeValuesFrom(obo:RO_0002102 obo:UBERON_0008925))
+@@ -32717,7 +32719,8 @@ SubClassOf(obo:CL_4033018 obo:CL_0000556)
+ 
+ # Class: obo:CL_4033019 (ON-blue cone bipolar cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") obo:IAO_0000115 obo:CL_4033019 "An ON bipolar cell type with dendrites selectively contacting S-cones.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") obo:IAO_0000115 obo:CL_4033019 "An ON bipolar cell type with dendrites selectively contacting S-cones. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033019 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033019 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033019 "2023-04-04T09:48:15Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033019 "BB cell")
+@@ -32795,7 +32798,8 @@ EquivalentClasses(obo:CL_4033026 ObjectIntersectionOf(obo:CL_4033025 ObjectSomeV
+ 
+ # Class: obo:CL_4033027 (diffuse bipolar 1 cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22006647") obo:IAO_0000115 obo:CL_4033027 "An OFF diffuse bipolar cell that makes synaptic contact with both L/M and S-cone photoreceptors and only minimal contact with rod photoreceptors.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22006647") obo:IAO_0000115 obo:CL_4033027 "An OFF diffuse bipolar cell that makes synaptic contact with both L/M and S-cone photoreceptors and only minimal contact with rod photoreceptors. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033027 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033027 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033027 "2023-04-04T10:48:29Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22006647") oboInOwl:hasExactSynonym obo:CL_4033027 "Diffuse Bipolar Cell Type DB1")
+@@ -32808,7 +32812,8 @@ SubClassOf(obo:CL_4033027 obo:CL_0000750)
+ 
+ # Class: obo:CL_4033028 (diffuse bipolar 2 cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:25309346") Annotation(oboInOwl:hasDbXref "PMID:26500507") Annotation(oboInOwl:hasDbXref "PMID:27833534") obo:IAO_0000115 obo:CL_4033028 "An OFF diffuse bipolar cell that predominantly connects to ON parasol cells and lateral amacrine cells. This cell contains a large number of synaptic ribbons and a small axon arbor area.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:25309346") Annotation(oboInOwl:hasDbXref "PMID:26500507") Annotation(oboInOwl:hasDbXref "PMID:27833534") obo:IAO_0000115 obo:CL_4033028 "An OFF diffuse bipolar cell that predominantly connects to ON parasol cells and lateral amacrine cells. This cell contains a large number of synaptic ribbons and a small axon arbor area. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033028 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033028 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033028 "2023-04-04T10:49:07Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033028 "DB2 cell")
+@@ -32818,7 +32823,8 @@ SubClassOf(obo:CL_4033028 obo:CL_0000750)
+ 
+ # Class: obo:CL_4033029 (diffuse bipolar 3a cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") Annotation(oboInOwl:hasDbXref "PMID:33009001") obo:IAO_0000115 obo:CL_4033029 "An OFF calbindin-positive bipolar cell that has a large dendritic field and stratifies narrowly close to the middle of the inner plexiform layer. Its axon terminal is characterized by regularly branching and varicose processes resembling beads on a string. Most of DB3a contacts with cones are triad-associated.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") Annotation(oboInOwl:hasDbXref "PMID:33009001") obo:IAO_0000115 obo:CL_4033029 "An OFF calbindin-positive bipolar cell that has a large dendritic field and stratifies narrowly close to the middle of the inner plexiform layer. Its axon terminal is characterized by regularly branching and varicose processes resembling beads on a string. Most of DB3a contacts with cones are triad-associated. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033029 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033029 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033029 "2023-04-04T10:53:33Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "DOI:10.3389/fnana.2015.00122") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033029 "DB3 cell")
+@@ -32829,7 +32835,8 @@ SubClassOf(obo:CL_4033029 obo:CL_0000750)
+ 
+ # Class: obo:CL_4033030 (diffuse bipolar 3b cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033030 "An OFF calbindin-negative bipolar cell that has a large dendritic field and stratifies narrowly close to the middle of the inner plexiform layer. Its axon terminal is characterized by regularly branching and varicose processes resembling beads on a string. Most of DB3b contacts with cones are non-triad-associated.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033030 "An OFF calbindin-negative bipolar cell that has a large dendritic field and stratifies narrowly close to the middle of the inner plexiform layer. Its axon terminal is characterized by regularly branching and varicose processes resembling beads on a string. Most of DB3b contacts with cones are non-triad-associated. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033030 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033030 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033030 "2023-04-04T10:53:42Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033030 "DB3b cell")
+@@ -32839,7 +32846,8 @@ SubClassOf(obo:CL_4033030 obo:CL_0000750)
+ 
+ # Class: obo:CL_4033031 (diffuse bipolar 4 cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:27833534") Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033031 "An ON diffuse bipolar cell that predominantly connects to ON parasol cells and lateral amacrine cells.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:27833534") Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033031 "An ON diffuse bipolar cell that predominantly connects to ON parasol cells and lateral amacrine cells. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033031 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033031 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033031 "2023-04-04T09:51:10Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033031 "DB4 cell")
+@@ -32848,7 +32856,8 @@ SubClassOf(obo:CL_4033031 obo:CL_0000749)
+ 
+ # Class: obo:CL_4033032 (diffuse bipolar 6 cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033032 "An ON diffuse bipolar cell that has a large dendritic field and large axon terminals, which show little or no overlap. This cell predominantly connects to narrow thorny ganglion cells.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033032 "An ON diffuse bipolar cell that has a large dendritic field and large axon terminals, which show little or no overlap. This cell predominantly connects to narrow thorny ganglion cells. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033032 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033032 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033032 "2023-04-04T09:51:22Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033032 "DB6 cell")
+@@ -32857,7 +32866,8 @@ SubClassOf(obo:CL_4033032 obo:CL_0000749)
+ 
+ # Class: obo:CL_4033033 (flat midget bipolar cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033033 "An OFF bipolar cell with a small dendritic tree that provides most of the triad-associated basal (flat) contacts at cone pedicles.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033033 "An OFF bipolar cell with a small dendritic tree that provides most of the triad-associated basal (flat) contacts at cone pedicles. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033033 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033033 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033033 "2023-04-04T10:54:00Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033033 "FMB cell")
+@@ -32866,7 +32876,8 @@ SubClassOf(obo:CL_4033033 obo:CL_0000750)
+ 
+ # Class: obo:CL_4033034 (invaginating midget bipolar cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033034 "An ON bipolar cell with a small dendritic tree that forms most of the central (invaginating) elements opposite the synaptic ribbon at the cone triad.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033034 "An ON bipolar cell with a small dendritic tree that forms most of the central (invaginating) elements opposite the synaptic ribbon at the cone triad. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033034 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033034 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033034 "2023-04-04T09:51:44Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033034 "IMB cell")
+@@ -32875,7 +32886,8 @@ SubClassOf(obo:CL_4033034 obo:CL_0000749)
+ 
+ # Class: obo:CL_4033035 (giant bipolar cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033035 "An ON bipolar cell that has large dendritic and axonal fields.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033035 "An ON bipolar cell that has large dendritic and axonal fields. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033035 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(terms:contributor obo:CL_4033035 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033035 "2023-04-04T09:54:15Z"^^xsd:dateTime)
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4033035 "GB cell")
+@@ -32885,7 +32897,8 @@ SubClassOf(obo:CL_4033035 obo:CL_0000749)
+ 
+ # Class: obo:CL_4033036 (OFFx cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:30712875") Annotation(oboInOwl:hasDbXref "PMID:31995762") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033036 "An OFF bipolar cell that is fovea-specific and expresses FEZF1, NXPH1 and NXPH2.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:30712875") Annotation(oboInOwl:hasDbXref "PMID:31995762") Annotation(oboInOwl:hasDbXref "PMID:32555229") obo:IAO_0000115 obo:CL_4033036 "An OFF bipolar cell that is fovea-specific and expresses FEZF1, NXPH1 and NXPH2. The standard transcriptomic reference data for this cell type can be found on the Cell Annotation Platform at https://celltype.info/project/544/dataset/1157.")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_4033036 "https://celltype.info/project/544/dataset/1157")
+ AnnotationAssertion(obo:RO_0002175 obo:CL_4033036 obo:NCBITaxon_9443)
+ AnnotationAssertion(terms:contributor obo:CL_4033036 <https://orcid.org/0000-0001-6677-8489>)
+ AnnotationAssertion(terms:date obo:CL_4033036 "2023-04-04T10:54:15Z"^^xsd:dateTime)
