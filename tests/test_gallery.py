@@ -2,10 +2,15 @@
 
 from pathlib import Path
 
+from typer.testing import CliRunner
+
+from ai4c_scribe.cli import app
 from ai4c_scribe.gallery import collect_gallery_data, generate_gallery
 
+runner = CliRunner()
 
-FIXTURE_DIR = Path("tests/fixtures/gallery")
+
+FIXTURE_DIR = Path(__file__).parent / "fixtures" / "gallery"
 
 
 def test_collect_discovers_ontologies():
@@ -95,6 +100,22 @@ def test_generate_gallery_embeds_diff_data(tmp_path):
     generate_gallery(FIXTURE_DIR, output)
     content = output.read_text()
     assert "+name: foo bar" in content
+
+
+def test_gallery_cli_generates_html(tmp_path):
+    """CLI gallery command generates an HTML file."""
+    output = tmp_path / "out.html"
+    result = runner.invoke(app, ["gallery", str(FIXTURE_DIR), "-o", str(output)])
+    assert result.exit_code == 0, result.output
+    assert output.exists()
+
+
+def test_gallery_cli_default_output(tmp_path, monkeypatch):
+    """CLI gallery command uses gallery.html as default output."""
+    monkeypatch.chdir(tmp_path)
+    result = runner.invoke(app, ["gallery", str(FIXTURE_DIR)])
+    assert result.exit_code == 0, result.output
+    assert (tmp_path / "gallery.html").exists()
 
 
 def test_collect_case_without_results():

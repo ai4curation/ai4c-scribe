@@ -18,6 +18,7 @@ from ai4c_scribe.api import (
     FixIssueStatus,
 )
 from ai4c_scribe.cache import clear_cache, get_cache_stats
+from ai4c_scribe.gallery import generate_gallery
 from ai4c_scribe.case_studies import load_case_study, load_case_studies_dir
 from ai4c_scribe.metadiff.cli import app as metadiff_app
 from ai4c_scribe.workflows.cli import app as workflows_app
@@ -404,6 +405,26 @@ def browse(
     except Exception as e:
         typer.echo(f"❌ Error generating browser: {e}", err=True)
         raise typer.Exit(code=1)
+
+
+@app.command()
+def gallery(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory (contains {ont}/cases/ and {ont}/results/)")],
+    output: Annotated[Path, typer.Option("--output", "-o", help="Output HTML file")] = Path("gallery.html"),
+):
+    """Generate a static HTML gallery browser for evaluation case studies.
+
+    Scans the analysis directory for case study METADATA.md files, human/agent
+    diffs, scores, and reviews. Produces a single self-contained HTML file with
+    a sidebar-list + detail-pane layout for browsing cases.
+
+    Example:
+        ai4c-scribe gallery analysis/ -o gallery.html
+        open gallery.html
+    """
+    typer.echo(f"Generating gallery from {analysis_dir}...")
+    result = generate_gallery(analysis_dir, output)
+    typer.echo(f"Gallery written to {result}")
 
 
 @app.command()
