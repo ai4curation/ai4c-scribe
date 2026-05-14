@@ -51,6 +51,16 @@ agents:
     skills: true
     category: standard
 
+  std_claude_op47:
+    description: "Claude Code + Opus 4.7 (standard config)"
+    runtime: claude
+    model: claude-opus-4.7
+    config_repo: ai4curation/uberon-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+    category: standard
+
   std_codex_g54:
     description: "Codex + GPT-5.4 (standard config)"
     runtime: codex

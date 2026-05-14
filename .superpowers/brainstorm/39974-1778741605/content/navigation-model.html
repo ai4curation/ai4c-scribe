@@ -1,0 +1,40 @@
+<h2>How should the gallery navigation work?</h2>
+<p class="subtitle">Think iPhoto/Lightroom — how do you want to move through cases?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Grid → Detail</h3>
+      <p>Landing page shows a card grid (all ontologies together or filterable). Click a card to see the full case detail with metadata, narrative, diffs, and scores. Arrow keys or prev/next to step through.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Quick visual scan of all 160 cases</li><li>Filters narrow the grid</li><li>Natural "gallery" feel</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Cards need enough info to be useful at a glance</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Sidebar List → Detail Pane</h3>
+      <p>Left sidebar lists cases (grouped by ontology). Click one to see its detail in the main pane. Sidebar stays visible for quick switching.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Always see where you are in the list</li><li>Fast switching between cases</li><li>Good for sequential review</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Less "gallery" feel, more "file browser"</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid: Grid overview + Sidebar detail</h3>
+      <p>Start with the grid for browsing/filtering. Clicking a card switches to sidebar+detail mode for sequential review. A "back to grid" button returns to the overview.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Best of both — browse and review</li><li>Most flexible</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More complex to build</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

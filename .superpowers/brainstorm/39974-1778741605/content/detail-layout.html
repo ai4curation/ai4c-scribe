@@ -1,0 +1,31 @@
+<h2>What should the detail pane show?</h2>
+<p class="subtitle">Each case has metadata, narrative, and (eventually) agent results</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Everything scrollable</h3>
+      <p>Metadata badges at the top, then full markdown narrative, then a collapsible "Agent Attempts" section at the bottom with sub-entries per agent run (diff viewer, review scores).</p>
+      <p style="color: var(--text-secondary); font-size: 0.85rem;">Simple, linear. You scroll to see more. Agent attempts are collapsible so they don't dominate.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Tabbed sections</h3>
+      <p>Top area always shows metadata badges. Below that, tabs: <strong>Overview</strong> (narrative), <strong>Human Diff</strong>, <strong>Agent Attempts</strong> (sub-tabs per model/run). Each tab fills the remaining space.</p>
+      <p style="color: var(--text-secondary); font-size: 0.85rem;">Organized, but more clicks to see everything. Good if diffs are long.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Split: metadata+narrative top, results bottom</h3>
+      <p>Top half: metadata badges + compact narrative. Bottom half: tabbed agent results (diff viewer, scores, reviews). Both halves scroll independently.</p>
+      <p style="color: var(--text-secondary); font-size: 0.85rem;">See the "gold standard" case and agent attempts simultaneously. Good for comparison.</p>
+    </div>
+  </div>
+</div>

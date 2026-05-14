@@ -1,0 +1,13 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 92902c0f4..b7797d099 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -40925,7 +40925,7 @@ property_value: external_ontology_notes "FMA also has terms for the apical zone"
+ [Term]
+ id: UBERON:0002099
+ name: cardiac septum
+-def: "The thin membranous structure between the two heart atria or the thick muscular structure between the two heart ventricles." [MESH:A07.541.459]
++def: "A membranous or muscular structure that divides or partitions different regions of the heart, including the atria, ventricles, and outflow tract." [MESH:A07.541.459]
+ subset: pheno_slim
+ subset: uberon_slim
+ synonym: "cardiac septa" EXACT OMO:0003004 []

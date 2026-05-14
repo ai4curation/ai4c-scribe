@@ -1,0 +1,46 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index a76eab953..de353ec25 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -85879,11 +85879,11 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0008805
+-name: carbon-monoxide oxygenase activity
++name: aerobic carbon monoxide dehydrogenase activity
+ namespace: molecular_function
+ alt_id: GO:0018999
+ alt_id: GO:0047767
+-def: "Catalysis of the reaction: CO + H2O + ferrocytochrome b-561 = CO2 + 2 H+ + 2 ferricytochrome b-561." [GOC:curators, RHEA:48880]
++def: "Catalysis of the reaction: CO + a quinone + H2O = a quinol + CO2." [GOC:curators, RHEA:48880]
+ synonym: "carbon monoxide oxidase activity" RELATED []
+ synonym: "carbon monoxide oxygenase (cytochrome b-561) activity" NARROW []
+ synonym: "carbon monoxide oxygenase activity" EXACT []
+@@ -85896,8 +85896,9 @@ xref: MetaCyc:RXN-21452
+ xref: RHEA:48880 {source="skos:exactMatch"}
+ xref: UM-BBD_reactionID:r0650
+ xref: Wikipedia:Carbon-monoxide_dehydrogenase_(cytochrome_b-561)
+-is_a: GO:0016622 ! oxidoreductase activity, acting on the aldehyde or oxo group of donors, cytochrome as acceptor
++is_a: GO:0052738 ! oxidoreductase activity, acting on the aldehyde or oxo group of donors, with a quinone or similar compound as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31984" xsd:anyURI
+ 
+ [Term]
+ id: GO:0008806
+@@ -257958,7 +257959,7 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ id: GO:0043885
+ name: anaerobic carbon-monoxide dehydrogenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: CO + H2O + oxidized ferredoxin = CO2 + reduced ferredoxin." [RHEA:21040]
++def: "Catalysis of the reaction: CO + 2 oxidized [2Fe-2S]-[ferredoxin] + H2O = 2 reduced [2Fe-2S]-[ferredoxin] + CO2 + 2 H+." [RHEA:21040]
+ synonym: "carbon monoxide dehydrogenase (ferredoxin) activity" EXACT []
+ synonym: "carbon monoxide dehydrogenase activity" BROAD []
+ synonym: "carbon-monoxide dehydrogenase (ferredoxin) activity" EXACT []
+@@ -257976,6 +257977,7 @@ xref: UM-BBD_reactionID:r0652
+ is_a: GO:0016625 ! oxidoreductase activity, acting on the aldehyde or oxo group of donors, iron-sulfur protein as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/25872" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31984" xsd:anyURI
+ 
+ [Term]
+ id: GO:0043886
