@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from ai4c_scribe.gallery import collect_gallery_data
+from ai4c_scribe.gallery import collect_gallery_data, generate_gallery
 
 
 FIXTURE_DIR = Path("tests/fixtures/gallery")
@@ -67,6 +67,34 @@ def test_collect_attaches_review_md():
     haiku = next(a for a in pr100["agent_attempts"] if a["model"] == "claude-haiku-4.5")
     assert haiku["review_md"] is not None
     assert "missed the definition" in haiku["review_md"]
+
+
+def test_generate_gallery_creates_html(tmp_path):
+    """generate_gallery() writes a valid HTML file."""
+    output = tmp_path / "gallery.html"
+    result = generate_gallery(FIXTURE_DIR, output)
+    assert result == output
+    assert output.exists()
+    content = output.read_text()
+    assert "<!DOCTYPE html>" in content
+    assert "gallery-data" in content
+
+
+def test_generate_gallery_embeds_case_data(tmp_path):
+    """Generated HTML contains embedded case data as JSON."""
+    output = tmp_path / "gallery.html"
+    generate_gallery(FIXTURE_DIR, output)
+    content = output.read_text()
+    assert "Add new term: foo bar" in content
+    assert "Reclassify baz widget" in content
+
+
+def test_generate_gallery_embeds_diff_data(tmp_path):
+    """Generated HTML contains embedded diff content."""
+    output = tmp_path / "gallery.html"
+    generate_gallery(FIXTURE_DIR, output)
+    content = output.read_text()
+    assert "+name: foo bar" in content
 
 
 def test_collect_case_without_results():

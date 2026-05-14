@@ -6,6 +6,7 @@ self-contained HTML file for browsing cases in a sidebar + detail layout.
 """
 
 import csv
+import json
 from pathlib import Path
 
 import yaml
@@ -151,3 +152,431 @@ def collect_gallery_data(analysis_dir: Path) -> dict:
         ontologies[ont_name] = {"cases": cases}
 
     return {"ontologies": ontologies}
+
+
+GALLERY_HTML_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4C Scribe Gallery</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; height: 100vh; display: flex; overflow: hidden; background: #f5f5f5; color: #222; }
+#sidebar { width: 300px; flex-shrink: 0; background: #1e1e2e; color: #cdd6f4; display: flex; flex-direction: column; overflow: hidden; }
+#filter-wrap { padding: 10px; border-bottom: 1px solid #313244; }
+#filter { width: 100%; padding: 6px 10px; border-radius: 6px; border: 1px solid #45475a; background: #313244; color: #cdd6f4; font-size: 13px; }
+#filter:focus { outline: 2px solid #89b4fa; }
+#sidebar-list { overflow-y: auto; flex: 1; }
+.ont-group {}
+.ont-header { cursor: pointer; padding: 8px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #a6adc8; display: flex; align-items: center; gap: 6px; user-select: none; }
+.ont-header:hover { background: #313244; }
+.ont-arrow { transition: transform 0.15s; display: inline-block; }
+.ont-header.collapsed .ont-arrow { transform: rotate(-90deg); }
+.ont-count { background: #45475a; border-radius: 10px; padding: 1px 7px; font-size: 11px; margin-left: auto; }
+.ont-cases { }
+.ont-header.collapsed + .ont-cases { display: none; }
+.case-item { padding: 8px 12px 8px 20px; cursor: pointer; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid #181825; }
+.case-item:hover { background: #313244; }
+.case-item.active { background: #45475a; }
+.diff-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.dot-simple { background: #a6e3a1; }
+.dot-medium { background: #f9e2af; }
+.dot-hard { background: #f38ba8; }
+.dot-unknown { background: #6c7086; }
+.case-info { min-width: 0; }
+.case-pr { font-size: 11px; font-family: monospace; color: #89b4fa; }
+.case-title { font-size: 12px; color: #cdd6f4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+#detail { flex: 1; overflow-y: auto; padding: 24px; }
+#detail-placeholder { color: #999; font-size: 15px; margin-top: 60px; text-align: center; }
+#detail-content { display: none; max-width: 900px; margin: 0 auto; }
+.detail-header { margin-bottom: 16px; }
+.detail-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
+.badge-task_type { background: #dbeafe; color: #1d4ed8; }
+.badge-difficulty-simple { background: #dcfce7; color: #15803d; }
+.badge-difficulty-medium { background: #fef9c3; color: #a16207; }
+.badge-difficulty-hard { background: #fee2e2; color: #b91c1c; }
+.badge-difficulty { background: #f0fdf4; color: #166534; }
+.badge-scoping { background: #ede9fe; color: #6d28d9; }
+.badge-review_outcome { background: #fce7f3; color: #be185d; }
+.badge-author { background: #f0f9ff; color: #0369a1; }
+.narrative { line-height: 1.7; font-size: 14px; margin-bottom: 24px; }
+.narrative h1, .narrative h2, .narrative h3 { margin: 12px 0 6px; }
+.narrative p { margin-bottom: 8px; }
+.narrative code { background: #f4f4f5; padding: 1px 4px; border-radius: 3px; font-family: monospace; }
+.narrative pre { background: #f4f4f5; padding: 10px; border-radius: 6px; overflow-x: auto; }
+.collapsible { border: 1px solid #e4e4e7; border-radius: 8px; margin-bottom: 16px; }
+.collapsible-header { padding: 10px 14px; cursor: pointer; font-weight: 600; font-size: 13px; display: flex; align-items: center; justify-content: space-between; user-select: none; background: #fafafa; border-radius: 8px; }
+.collapsible-header:hover { background: #f4f4f5; }
+.collapsible-header .arrow { transition: transform 0.15s; }
+.collapsible-header.open .arrow { transform: rotate(90deg); }
+.collapsible-body { display: none; padding: 12px; border-top: 1px solid #e4e4e7; }
+.collapsible-header.open + .collapsible-body { display: block; }
+.diff-view { font-family: monospace; font-size: 12px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+.diff-view .d-add { color: #15803d; background: #f0fdf4; display: block; }
+.diff-view .d-del { color: #b91c1c; background: #fff1f2; display: block; }
+.diff-view .d-hunk { color: #1d4ed8; display: block; }
+.diff-view .d-ctx { display: block; color: #555; }
+.attempt-card { border: 1px solid #e4e4e7; border-radius: 6px; margin-bottom: 12px; }
+.attempt-header { padding: 8px 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #fafafa; border-radius: 6px; }
+.attempt-model { font-weight: 600; font-size: 13px; }
+.attempt-runtime { font-size: 12px; color: #666; }
+.score-pill { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+.pill-green { background: #dcfce7; color: #15803d; }
+.pill-amber { background: #fef9c3; color: #a16207; }
+.pill-red { background: #fee2e2; color: #b91c1c; }
+.attempt-expander { font-size: 11px; color: #888; cursor: pointer; margin-left: auto; }
+.attempt-expander:hover { color: #333; }
+.attempt-body { display: none; padding: 10px 12px; border-top: 1px solid #e4e4e7; }
+.attempt-body.open { display: block; }
+.attempt-section-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; margin-top: 10px; }
+.attempt-section-title:first-child { margin-top: 0; }
+.review-md { font-size: 13px; line-height: 1.6; }
+.review-md p { margin-bottom: 6px; }
+.no-diff { font-size: 12px; color: #999; font-style: italic; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="filter-wrap">
+    <input id="filter" type="text" placeholder="Filter cases..." autocomplete="off">
+  </div>
+  <div id="sidebar-list"></div>
+</div>
+
+<div id="detail">
+  <div id="detail-placeholder">Select a case from the sidebar.</div>
+  <div id="detail-content">
+    <div class="detail-header">
+      <div class="detail-title" id="d-title"></div>
+      <div class="badges" id="d-badges"></div>
+    </div>
+    <div class="narrative" id="d-narrative"></div>
+    <div class="collapsible" id="d-human-diff-wrap">
+      <div class="collapsible-header" id="d-human-diff-toggle">
+        <span>Human Diff</span><span class="arrow">&#9654;</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="diff-view" id="d-human-diff"></div>
+      </div>
+    </div>
+    <div class="collapsible" id="d-attempts-wrap">
+      <div class="collapsible-header" id="d-attempts-toggle">
+        <span>Agent Attempts</span><span class="arrow">&#9654;</span>
+      </div>
+      <div class="collapsible-body" id="d-attempts-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="gallery-data" type="application/json">__GALLERY_DATA__</script>
+
+<script>
+(function() {
+  const raw = document.getElementById('gallery-data').textContent;
+  const galleryData = JSON.parse(raw);
+
+  // Build flat list of cases for navigation
+  const allCases = [];
+  const ontNames = Object.keys(galleryData.ontologies);
+  ontNames.forEach(function(ont) {
+    galleryData.ontologies[ont].cases.forEach(function(c) {
+      allCases.push({ont: ont, c: c});
+    });
+  });
+
+  let activeIdx = -1;
+
+  // --- Sidebar rendering ---
+  const sidebarList = document.getElementById('sidebar-list');
+
+  function difficultyClass(d) {
+    if (d === 'simple') return 'dot-simple';
+    if (d === 'medium') return 'dot-medium';
+    if (d === 'hard') return 'dot-hard';
+    return 'dot-unknown';
+  }
+
+  function truncate(s, n) {
+    if (!s) return '';
+    return s.length > n ? s.slice(0, n) + '\u2026' : s;
+  }
+
+  function renderSidebar(filter) {
+    sidebarList.innerHTML = '';
+    const q = (filter || '').toLowerCase();
+    ontNames.forEach(function(ont) {
+      const cases = galleryData.ontologies[ont].cases.filter(function(c) {
+        if (!q) return true;
+        const t = ((c.metadata.issue_title || '') + ' pr' + c.pr_number).toLowerCase();
+        return t.indexOf(q) !== -1;
+      });
+      if (cases.length === 0) return;
+
+      const group = document.createElement('div');
+      group.className = 'ont-group';
+
+      const header = document.createElement('div');
+      header.className = 'ont-header';
+      header.innerHTML = '<span class="ont-arrow">&#9660;</span><span>' + ont + '</span><span class="ont-count">' + cases.length + '</span>';
+      header.addEventListener('click', function() {
+        header.classList.toggle('collapsed');
+      });
+      group.appendChild(header);
+
+      const casesEl = document.createElement('div');
+      casesEl.className = 'ont-cases';
+      cases.forEach(function(c) {
+        const flatIdx = allCases.findIndex(function(x) { return x.ont === ont && x.c.pr_number === c.pr_number; });
+        const item = document.createElement('div');
+        item.className = 'case-item' + (flatIdx === activeIdx ? ' active' : '');
+        item.dataset.idx = flatIdx;
+        const dot = difficultyClass(c.metadata.difficulty);
+        item.innerHTML =
+          '<span class="diff-dot ' + dot + '"></span>' +
+          '<span class="case-info"><span class="case-pr">PR #' + c.pr_number + '</span><br>' +
+          '<span class="case-title">' + escHtml(truncate(c.metadata.issue_title || '', 40)) + '</span></span>';
+        item.addEventListener('click', function() {
+          selectCase(flatIdx);
+        });
+        casesEl.appendChild(item);
+      });
+      group.appendChild(casesEl);
+      sidebarList.appendChild(group);
+    });
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // --- Detail pane ---
+  function renderDiff(text) {
+    if (!text) return '<span class="no-diff">No diff available.</span>';
+    const lines = text.split('\n');
+    return lines.map(function(line) {
+      if (line.startsWith('+') && !line.startsWith('+++')) return '<span class="d-add">' + escHtml(line) + '</span>';
+      if (line.startsWith('-') && !line.startsWith('---')) return '<span class="d-del">' + escHtml(line) + '</span>';
+      if (line.startsWith('@@')) return '<span class="d-hunk">' + escHtml(line) + '</span>';
+      return '<span class="d-ctx">' + escHtml(line) + '</span>';
+    }).join('');
+  }
+
+  function renderMarkdown(md) {
+    if (typeof marked !== 'undefined') {
+      return marked.parse(md || '');
+    }
+    return (md || '').replace(/\n/g, '<br>');
+  }
+
+  function pillClass(score) {
+    if (score >= 0.7) return 'pill-green';
+    if (score >= 0.4) return 'pill-amber';
+    return 'pill-red';
+  }
+
+  function renderAttempts(attempts) {
+    const body = document.getElementById('d-attempts-body');
+    body.innerHTML = '';
+    if (!attempts || attempts.length === 0) {
+      body.innerHTML = '<span class="no-diff">No agent attempts.</span>';
+      return;
+    }
+    const sorted = attempts.slice().sort(function(a, b) { return b.f1 - a.f1; });
+    sorted.forEach(function(a) {
+      const card = document.createElement('div');
+      card.className = 'attempt-card';
+
+      const header = document.createElement('div');
+      header.className = 'attempt-header';
+
+      const modelSpan = document.createElement('span');
+      modelSpan.className = 'attempt-model';
+      modelSpan.textContent = a.model || '(unknown model)';
+      header.appendChild(modelSpan);
+
+      if (a.runtime) {
+        const rt = document.createElement('span');
+        rt.className = 'attempt-runtime';
+        rt.textContent = a.runtime;
+        header.appendChild(rt);
+      }
+
+      ['f1','precision','recall'].forEach(function(metric) {
+        const v = a[metric];
+        if (v === null || v === undefined) return;
+        const pill = document.createElement('span');
+        pill.className = 'score-pill ' + pillClass(v);
+        pill.textContent = metric.toUpperCase() + ' ' + v.toFixed(2);
+        header.appendChild(pill);
+      });
+
+      const expander = document.createElement('span');
+      expander.className = 'attempt-expander';
+      expander.textContent = 'show';
+      header.appendChild(expander);
+
+      card.appendChild(header);
+
+      const abody = document.createElement('div');
+      abody.className = 'attempt-body';
+
+      if (a.diff) {
+        const t = document.createElement('div');
+        t.className = 'attempt-section-title';
+        t.textContent = 'Agent Diff';
+        abody.appendChild(t);
+        const dv = document.createElement('div');
+        dv.className = 'diff-view';
+        dv.innerHTML = renderDiff(a.diff);
+        abody.appendChild(dv);
+      }
+
+      if (a.review_md) {
+        const t2 = document.createElement('div');
+        t2.className = 'attempt-section-title';
+        t2.textContent = 'Review';
+        abody.appendChild(t2);
+        const rv = document.createElement('div');
+        rv.className = 'review-md';
+        rv.innerHTML = renderMarkdown(a.review_md);
+        abody.appendChild(rv);
+      }
+
+      card.appendChild(abody);
+
+      expander.addEventListener('click', function() {
+        const open = abody.classList.toggle('open');
+        expander.textContent = open ? 'hide' : 'show';
+      });
+
+      body.appendChild(card);
+    });
+  }
+
+  function badgeHtml(label, value, extra) {
+    const cls = extra || ('badge-' + label);
+    return '<span class="badge ' + cls + '">' + escHtml(value) + '</span>';
+  }
+
+  function selectCase(idx) {
+    if (idx < 0 || idx >= allCases.length) return;
+    activeIdx = idx;
+    renderSidebar(document.getElementById('filter').value);
+
+    const entry = allCases[idx];
+    const c = entry.c;
+    const m = c.metadata;
+
+    document.getElementById('detail-placeholder').style.display = 'none';
+    document.getElementById('detail-content').style.display = 'block';
+
+    document.getElementById('d-title').textContent = 'PR #' + c.pr_number + ' — ' + (m.issue_title || '');
+
+    const badges = document.getElementById('d-badges');
+    badges.innerHTML = '';
+    if (m.task_type) badges.innerHTML += badgeHtml('task_type', m.task_type, 'badge badge-task_type');
+    if (m.difficulty) {
+      const dCls = 'badge badge-difficulty-' + m.difficulty;
+      badges.innerHTML += '<span class="badge ' + dCls + '">' + escHtml(m.difficulty) + '</span>';
+    }
+    if (m.scoping) badges.innerHTML += badgeHtml('scoping', m.scoping, 'badge badge-scoping');
+    if (m.review_outcome) badges.innerHTML += badgeHtml('review_outcome', m.review_outcome, 'badge badge-review_outcome');
+    if (m.pr_author) badges.innerHTML += badgeHtml('author', '@' + m.pr_author, 'badge badge-author');
+
+    document.getElementById('d-narrative').innerHTML = renderMarkdown(c.narrative_md);
+
+    // Human diff
+    const hdToggle = document.getElementById('d-human-diff-toggle');
+    const hdView = document.getElementById('d-human-diff');
+    if (c.human_diff) {
+      document.getElementById('d-human-diff-wrap').style.display = '';
+      hdView.innerHTML = renderDiff(c.human_diff);
+    } else {
+      document.getElementById('d-human-diff-wrap').style.display = 'none';
+    }
+
+    // Agent attempts
+    if (c.agent_attempts && c.agent_attempts.length > 0) {
+      document.getElementById('d-attempts-wrap').style.display = '';
+    } else {
+      document.getElementById('d-attempts-wrap').style.display = 'none';
+    }
+    renderAttempts(c.agent_attempts);
+  }
+
+  // Collapsible headers for detail pane
+  ['d-human-diff-toggle','d-attempts-toggle'].forEach(function(id) {
+    const el = document.getElementById(id);
+    el.addEventListener('click', function() {
+      el.classList.toggle('open');
+    });
+  });
+
+  // Filter
+  document.getElementById('filter').addEventListener('input', function(e) {
+    renderSidebar(e.target.value);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectCase(Math.min(activeIdx + 1, allCases.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectCase(Math.max(activeIdx - 1, 0));
+    }
+  });
+
+  // Initial render
+  renderSidebar('');
+  if (allCases.length > 0) selectCase(0);
+})();
+</script>
+</body>
+</html>
+"""
+
+
+def generate_gallery(analysis_dir: Path, output: Path) -> Path:
+    """Generate a self-contained HTML gallery from an analysis directory.
+
+    Args:
+        analysis_dir: Path containing ``{ont}/cases/`` subdirectories.
+        output: Path for the output HTML file.
+
+    Returns:
+        Path to the generated HTML file.
+
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> with tempfile.TemporaryDirectory() as tmp:
+    ...     case_dir = Path(tmp) / "ont" / "cases" / "pr1"
+    ...     case_dir.mkdir(parents=True)
+    ...     _ = (case_dir / "METADATA.md").write_text(
+    ...         "---\\nrepo: r\\nissue_number: 1\\npr_number: 1\\n"
+    ...         'issue_title: "T"\\nissue_created_at: "2026-01-01"\\n'
+    ...         "pr_author: a\\nscoping: s\\ntask_type: t\\n"
+    ...         "difficulty: simple\\nscope: s\\nreview_outcome: ro\\n"
+    ...         "curated_by: c\\ncurated_at: \\"2026-01-01\\"\\nrationale: r\\n---\\nBody.\\n"
+    ...     )
+    ...     out = Path(tmp) / "gallery.html"
+    ...     result = generate_gallery(Path(tmp), out)
+    ...     result == out
+    True
+    """
+    data = collect_gallery_data(analysis_dir)
+    json_blob = json.dumps(data, indent=None, ensure_ascii=False)
+    html = GALLERY_HTML_TEMPLATE.replace("__GALLERY_DATA__", json_blob)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(html)
+    return output
