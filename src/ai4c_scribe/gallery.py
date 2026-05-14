@@ -61,12 +61,36 @@ def _discover_ontologies(analysis_dir: Path) -> list[str]:
     )
 
 
-def collect_gallery_data(analysis_dir: Path) -> dict:
+from typing import Optional
+
+
+def _truncate_diff(text: Optional[str], max_lines: int) -> Optional[str]:
+    """Truncate a diff to *max_lines* lines, appending a notice if trimmed.
+
+    >>> _truncate_diff(None, 10) is None
+    True
+    >>> _truncate_diff("a\\nb\\nc", 2)
+    'a\\nb\\n... (1 more lines truncated)'
+    >>> _truncate_diff("a\\nb", 5)
+    'a\\nb'
+    """
+    if text is None or max_lines <= 0:
+        return text
+    lines = text.split("\n")
+    if len(lines) <= max_lines:
+        return text
+    truncated = "\n".join(lines[:max_lines])
+    remaining = len(lines) - max_lines
+    return f"{truncated}\n... ({remaining} more lines truncated)"
+
+
+def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> dict:
     """Walk the analysis directory and assemble gallery data.
 
     Args:
         analysis_dir: Path containing ``{ont}/cases/`` and optionally
             ``{ont}/results/`` subdirectories.
+        max_diff_lines: Maximum lines per diff to embed. 0 for unlimited.
 
     Returns:
         Dict with ``ontologies`` key mapping ontology names to their cases,
@@ -100,7 +124,10 @@ def collect_gallery_data(analysis_dir: Path) -> dict:
 
             # Human diff
             human_diff_path = results_dir / "diffs" / "human" / f"pr{pr_number}.diff"
-            human_diff = human_diff_path.read_text() if human_diff_path.exists() else None
+            human_diff = _truncate_diff(
+                human_diff_path.read_text() if human_diff_path.exists() else None,
+                max_diff_lines,
+            )
 
             # Agent attempts — joined via scores.tsv
             agent_attempts = []
@@ -109,7 +136,10 @@ def collect_gallery_data(analysis_dir: Path) -> dict:
 
                 # Agent diff
                 agent_diff_path = results_dir / "diffs" / "agent" / f"pr{eval_pr}.diff"
-                agent_diff = agent_diff_path.read_text() if agent_diff_path.exists() else None
+                agent_diff = _truncate_diff(
+                    agent_diff_path.read_text() if agent_diff_path.exists() else None,
+                    max_diff_lines,
+                )
 
                 # Review file(s) — match pr{eval_pr}-*.md
                 review_md = None
@@ -547,12 +577,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 """
 
 
-def generate_gallery(analysis_dir: Path, output: Path) -> Path:
+def generate_gallery(
+    analysis_dir: Path,
+    output: Path,
+    *,
+    max_diff_lines: int = 200,
+) -> Path:
     """Generate a self-contained HTML gallery from an analysis directory.
 
     Args:
         analysis_dir: Path containing ``{ont}/cases/`` subdirectories.
         output: Path for the output HTML file.
+        max_diff_lines: Maximum lines per diff to embed. 0 for unlimited.
 
     Returns:
         Path to the generated HTML file.
@@ -574,7 +610,7 @@ def generate_gallery(analysis_dir: Path, output: Path) -> Path:
     ...     result == out
     True
     """
-    data = collect_gallery_data(analysis_dir)
+    data = collect_gallery_data(analysis_dir, max_diff_lines=max_diff_lines)
     json_blob = json.dumps(data, indent=None, ensure_ascii=False)
     html = GALLERY_HTML_TEMPLATE.replace("__GALLERY_DATA__", json_blob)
     output.parent.mkdir(parents=True, exist_ok=True)

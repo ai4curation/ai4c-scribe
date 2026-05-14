@@ -411,6 +411,7 @@ def browse(
 def gallery(
     analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory (contains {ont}/cases/ and {ont}/results/)")],
     output: Annotated[Path, typer.Option("--output", "-o", help="Output HTML file")] = Path("gallery.html"),
+    max_diff_lines: Annotated[int, typer.Option("--max-diff-lines", help="Max lines per diff (0 for unlimited)")] = 200,
 ):
     """Generate a static HTML gallery browser for evaluation case studies.
 
@@ -418,12 +419,15 @@ def gallery(
     diffs, scores, and reviews. Produces a single self-contained HTML file with
     a sidebar-list + detail-pane layout for browsing cases.
 
+    Diffs are truncated to --max-diff-lines (default 200) to keep file size
+    manageable. Use --max-diff-lines 0 for full diffs.
+
     Example:
         ai4c-scribe gallery analysis/ -o gallery.html
         open gallery.html
     """
     typer.echo(f"Generating gallery from {analysis_dir}...")
-    result = generate_gallery(analysis_dir, output)
+    result = generate_gallery(analysis_dir, output, max_diff_lines=max_diff_lines)
     typer.echo(f"Gallery written to {result}")
 
 
