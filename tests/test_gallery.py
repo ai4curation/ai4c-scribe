@@ -82,7 +82,7 @@ def test_generate_gallery_creates_html(tmp_path):
     assert output.exists()
     content = output.read_text()
     assert "<!DOCTYPE html>" in content
-    assert "gallery-data" in content
+    assert "galleryData" in content
 
 
 def test_generate_gallery_embeds_case_data(tmp_path):

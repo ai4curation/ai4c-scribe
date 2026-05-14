@@ -306,12 +306,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   </div>
 </div>
 
-<script id="gallery-data" type="application/json">__GALLERY_DATA__</script>
-
 <script>
 (function() {
-  const raw = document.getElementById('gallery-data').textContent;
-  const galleryData = JSON.parse(raw);
+  var galleryData = __GALLERY_DATA__;
 
   // Build flat list of cases for navigation
   const allCases = [];
@@ -336,7 +333,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
   function truncate(s, n) {
     if (!s) return '';
-    return s.length > n ? s.slice(0, n) + '\u2026' : s;
+    return s.length > n ? s.slice(0, n) + '...' : s;
   }
 
   function renderSidebar(filter) {
@@ -390,7 +387,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   // --- Detail pane ---
   function renderDiff(text) {
     if (!text) return '<span class="no-diff">No diff available.</span>';
-    const lines = text.split('\n');
+    const lines = text.split('\\n');
     return lines.map(function(line) {
       if (line.startsWith('+') && !line.startsWith('+++')) return '<span class="d-add">' + escHtml(line) + '</span>';
       if (line.startsWith('-') && !line.startsWith('---')) return '<span class="d-del">' + escHtml(line) + '</span>';
@@ -403,7 +400,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     if (typeof marked !== 'undefined') {
       return marked.parse(md || '');
     }
-    return (md || '').replace(/\n/g, '<br>');
+    return (md || '').replace(/\\n/g, '<br>');
   }
 
   function pillClass(score) {
@@ -508,7 +505,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     document.getElementById('detail-placeholder').style.display = 'none';
     document.getElementById('detail-content').style.display = 'block';
 
-    document.getElementById('d-title').textContent = 'PR #' + c.pr_number + ' — ' + (m.issue_title || '');
+    document.getElementById('d-title').textContent = 'PR #' + c.pr_number + ' - ' + (m.issue_title || '');
 
     const badges = document.getElementById('d-badges');
     badges.innerHTML = '';
@@ -611,7 +608,12 @@ def generate_gallery(
     True
     """
     data = collect_gallery_data(analysis_dir, max_diff_lines=max_diff_lines)
-    json_blob = json.dumps(data, indent=None, ensure_ascii=False)
+    # ensure_ascii=True so all non-ASCII is \uXXXX-escaped (safe in JS source).
+    json_blob = json.dumps(data, indent=None, ensure_ascii=True)
+    # Escape </ sequences that would prematurely close the <script> tag.
+    json_blob = json_blob.replace("</", r"<\/")
+    # Escape backticks which are JS template literal delimiters.
+    json_blob = json_blob.replace("`", r"\u0060")
     html = GALLERY_HTML_TEMPLATE.replace("__GALLERY_DATA__", json_blob)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(html)
