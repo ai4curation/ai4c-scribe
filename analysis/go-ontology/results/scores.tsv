@@ -1,6 +1,10 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+go-ontology	31962	31970	axiom_repair	medium	v9	gemma-4-31b	opencode	535	0.842	0.8	0.889	0.727	go-#31962	std_opencode_gem4
+go-ontology	31967	31968	reclassification	medium	v9	gemma-4-31b	opencode	533	0.8	0.667	1.0	0.667	go-#31967	std_opencode_gem4
 go-ontology	32005	32026	obsoletion	medium	v9	gemma-4-31b	opencode	525	0.017	0.19	0.009	0.008	go-#32005	std_opencode_gem4
 go-ontology	31601	32007	synonym_update	simple	v9	gemma-4-31b	opencode	524	0.0	0.0	0.0	0.0	go-#31601	std_opencode_gem4
+go-ontology	31962	31970	axiom_repair	medium	v9	gemma-4-31b	opencode	518	0.842	0.8	0.889	0.727	go-#31962	std_opencode_gem4
+go-ontology	31967	31968	reclassification	medium	v9	gemma-4-31b	opencode	510	0.8	0.667	1.0	0.667	go-#31967	std_opencode_gem4
 go-ontology	31969	31988	reclassification	hard	v9	claude-sonnet-4.5	copilot	504	0.919	0.879	0.962	0.85	go-#31969	std_copilot_son45
 go-ontology	32046	32047	new_term	medium	v9	claude-sonnet-4.5	copilot	503	0.692	0.6	0.818	0.529	go-#32046	std_copilot_son45
 go-ontology	31966	32003	obsoletion	medium	v9	claude-sonnet-4.5	copilot	502	0.889	0.889	0.889	0.8	go-#31966	std_copilot_son45
@@ -342,6 +346,6 @@ go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40	0.8	0.889	0.727	0.
 go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	39	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38	0.762	0.889	0.667	0.615	go-#31961	std_codex_g55
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
+go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	31	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
 go-ontology	31961	32015	obsoletion	simple	v9	claude-haiku-4.5	claude	33	0.8	0.889	0.727	0.667	go-#31961	std_claude_hai45
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
-go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	31	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45

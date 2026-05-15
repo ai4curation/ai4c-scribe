@@ -1,0 +1,53 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index b2469c260..226dc1027 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -48957,7 +48957,7 @@ synonym: "xanthine oxidoreductase activity" BROAD [EC:1.17.3.2]
+ synonym: "xanthine:O2 oxidoreductase activity" RELATED [EC:1.17.3.2]
+ synonym: "xanthine:oxygen oxidoreductase activity" RELATED [EC:1.17.3.2]
+ synonym: "xanthine:xanthine oxidase activity" RELATED [EC:1.17.3.2]
+-xref: EC:1.17.3.2 {source="skos:exactMatch"}
++xref: EC:1.17.3.2 {source="skos:broadMatch"}
+ xref: MetaCyc:XANTHINE-OXIDASE-RXN
+ xref: RHEA:21132 {source="skos:exactMatch"}
+ is_a: GO:0016727 ! oxidoreductase activity, acting on CH or CH2 groups, oxygen as acceptor
+@@ -165190,12 +165190,13 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0030343
+-name: vitamin D3 25-hydroxylase activity
++name: vitamin D 25-hydroxylase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: calciol (vitamin D3) + reduced [NADPH--hemoprotein reductase] + O2 = calcidiol + oxidized [NADPH--hemoprotein reductase] + H2O + H+." [RHEA:32903]
+ synonym: "cholecalciferol 25-hydroxylase activity" EXACT []
+ xref: MetaCyc:RXN-9829
+ xref: RHEA:32903 {source="skos:exactMatch"}
++xref: EC:1.14.14.24
+ is_a: GO:0008395 ! steroid hydroxylase activity
+ relationship: part_of GO:0036378 ! calcitriol biosynthetic process from calciol
+ 
+@@ -231647,6 +231648,7 @@ namespace: molecular_function
+ def: "Catalysis of the reaction: (R)-pantolactone + NADP+ = 2-dehydropantolactone + NADPH + H+." [RHEA:18981]
+ xref: KEGG_REACTION:R03155
+ xref: RHEA:18981 {source="skos:exactMatch"}
++xref: EC:1.1.1.358 {source="skos:exactMatch"}
+ is_a: GO:0016616 ! oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+@@ -382391,13 +382393,15 @@ creation_date: 2009-05-29T01:02:13Z
+ id: GO:0070675
+ name: hypoxanthine oxidase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: hypoxanthine + H2O + O2 = xanthine + H2O2." [GOC:mah, GOC:pde]
++def: "Catalysis of the reaction: hypoxanthine + H2O + O2 = xanthine + H2O2." [RHEA:68012]
+ synonym: "hypoxanthine-xanthine oxidase activity" BROAD [EC:1.17.3.2]
+ synonym: "hypoxanthine:O2 oxidoreductase activity" RELATED [EC:1.17.3.2]
+ synonym: "hypoxanthine:oxygen oxidoreductase activity" RELATED [EC:1.17.3.2]
+ synonym: "schardinger enzyme" RELATED [EC:1.17.3.2]
+ synonym: "Schardinger enzyme activity" RELATED [EC:1.17.3.2]
+ synonym: "xanthine oxidoreductase activity" BROAD [EC:1.17.3.2]
++xref: EC:1.17.3.2 {source="skos:broadMatch"}
++xref: RHEA:68012 {source="skos:exactMatch"}
+ is_a: GO:0016727 ! oxidoreductase activity, acting on CH or CH2 groups, oxygen as acceptor
+ created_by: mah
+ creation_date: 2009-05-29T01:12:55Z

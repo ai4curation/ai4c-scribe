@@ -1,0 +1,445 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 6dd226998..c8cf8aed8 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -43251,7 +43251,7 @@ xref: EC:1.14.14.17 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R02874
+ xref: MetaCyc:SQUALENE-MONOOXYGENASE-RXN
+ xref: RHEA:25282 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -80692,7 +80692,7 @@ xref: RHEA:25286 {source="skos:narrowMatch"}
+ xref: RHEA:45960 {source="skos:narrowMatch"}
+ xref: RHEA:54028 {source="skos:exactMatch"}
+ xref: RHEA:75439 {source="skos:narrowMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ is_a: GO:0032451 ! demethylase activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/22523" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+@@ -102582,7 +102582,7 @@ xref: EC:1.14.14.137 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R07202
+ xref: MetaCyc:1.14.13.93-RXN
+ xref: RHEA:12897 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -127768,7 +127768,7 @@ synonym: "trans-cinnamic acid 4-hydroxylase activity" RELATED [EC:1.14.14.91]
+ xref: EC:1.14.14.91 {source="skos:exactMatch"}
+ xref: MetaCyc:TRANS-CINNAMATE-4-MONOOXYGENASE-RXN
+ xref: RHEA:10608 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -127788,7 +127788,7 @@ xref: RHEA:61096 {source="skos:narrowMatch"}
+ xref: RHEA:61112 {source="skos:narrowMatch"}
+ xref: RHEA:61124 {source="skos:narrowMatch"}
+ xref: RHEA:79895 {source="skos:narrowMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -139312,7 +139312,7 @@ xref: KEGG_REACTION:R01295
+ xref: MetaCyc:BENZOATE-4-MONOOXYGENASE-RXN
+ xref: RHEA:18033 {source="skos:exactMatch"}
+ xref: UM-BBD_reactionID:r0623
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -201756,7 +201756,7 @@ xref: RHEA:55448 {source="skos:exactMatch"}
+ xref: RHEA:61104 {source="skos:narrowMatch"}
+ xref: RHEA:61108 {source="skos:narrowMatch"}
+ xref: RHEA:61120 {source="skos:narrowMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28526" xsd:anyURI
+ 
+ [Term]
+@@ -201797,7 +201797,7 @@ xref: EC:1.14.14.136 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05828
+ xref: MetaCyc:1.14.13.91-RXN
+ xref: RHEA:14237 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -201828,7 +201828,7 @@ xref: EC:1.14.14.138 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R07203
+ xref: MetaCyc:1.14.13.94-RXN
+ xref: RHEA:18857 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -201886,7 +201886,7 @@ xref: EC:1.14.14.25 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R07207
+ xref: MetaCyc:1.14.13.98-RXN
+ xref: RHEA:22716 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -228574,7 +228574,7 @@ xref: EC:1.14.14.144 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R06351
+ xref: MetaCyc:RXN-8507
+ xref: RHEA:26217 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+ creation_date: 2012-04-19T10:57:05Z
+@@ -228735,7 +228735,7 @@ def: "Catalysis of the reaction: ent-isokaurene + O2 + NADPH + H+ = ent-2alpha-h
+ xref: EC:1.14.14.76 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R09861
+ xref: RHEA:56336 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+ creation_date: 2012-04-20T02:21:33Z
+@@ -228749,7 +228749,7 @@ synonym: "ent-cassadiene C11alpha-hydroxylase activity" RELATED [EC:1.14.14.112]
+ xref: EC:1.14.14.112 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R09866
+ xref: RHEA:31967 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+ creation_date: 2012-04-20T02:34:13Z
+@@ -228776,7 +228776,7 @@ xref: EC:1.14.14.145 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R06354
+ xref: MetaCyc:RXN-12799
+ xref: RHEA:26221 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+ creation_date: 2012-04-24T02:37:15Z
+@@ -228848,7 +228848,7 @@ xref: EC:1.14.14.111 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R09865
+ xref: MetaCyc:RXN-15437
+ xref: RHEA:31951 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/21412" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: bf
+@@ -291822,7 +291822,7 @@ xref: EC:1.14.14.93 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R03452
+ xref: MetaCyc:RXN-4505
+ xref: RHEA:15321 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -291836,7 +291836,7 @@ synonym: "trans-5-O-(4-coumaroyl)-D-quinate,NADPH:oxygen oxidoreductase (3'-hydr
+ xref: EC:1.14.14.96 {source="skos:exactMatch"}
+ xref: MetaCyc:1.14.13.36-RXN
+ xref: RHEA:16265 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -291851,7 +291851,7 @@ synonym: "methyltetrahydroprotoberberine 14-hydroxylase activity" EXACT []
+ xref: EC:1.14.14.97 {source="skos:exactMatch"}
+ xref: MetaCyc:1.14.13.37-RXN
+ xref: RHEA:23684 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -291894,7 +291894,7 @@ xref: EC:1.14.14.98 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R04699
+ xref: MetaCyc:1.14.13.55-RXN
+ xref: RHEA:22644 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -291908,7 +291908,7 @@ xref: EC:1.14.14.100 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R04702
+ xref: MetaCyc:1.14.13.56-RXN
+ xref: RHEA:10528 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -291922,7 +291922,7 @@ xref: EC:1.14.14.101 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R04708
+ xref: MetaCyc:1.14.13.57-RXN
+ xref: RHEA:10156 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -305597,7 +305597,7 @@ synonym: "isoflavone 2'-monooxygenase activity" BROAD [EC:1.14.14.89]
+ xref: EC:1.14.14.89 {source="skos:exactMatch"}
+ xref: MetaCyc:ISOFLAVONE-2-HYDROXYLASE-RXN
+ xref: RHEA:12388 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -306232,7 +306232,7 @@ synonym: "isoflavone 3'-monooxygenase activity" RELATED [EC:1.14.14.88]
+ xref: EC:1.14.14.88 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-3762
+ xref: RHEA:22960 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -323918,7 +323918,7 @@ xref: EC:1.14.14.55 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05727
+ xref: MetaCyc:1.14.13.67-RXN
+ xref: RHEA:20149 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -323937,7 +323937,7 @@ xref: EC:1.14.14.37 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05728
+ xref: MetaCyc:1.14.13.68-RXN
+ xref: RHEA:18401 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -323953,7 +323953,7 @@ xref: EC:1.14.14.102 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05732
+ xref: MetaCyc:1.14.13.71-RXN
+ xref: RHEA:16649 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -323966,7 +323966,7 @@ xref: EC:1.14.14.103 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05855
+ xref: MetaCyc:1.14.13.73-RXN
+ xref: RHEA:14133 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -323991,7 +323991,7 @@ xref: EC:1.14.14.104 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R05877
+ xref: MetaCyc:1.14.13.75-RXN
+ xref: RHEA:17257 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -324007,7 +324007,7 @@ xref: EC:1.14.14.105 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R06309
+ xref: MetaCyc:1.14.13.76-RXN
+ xref: RHEA:15241 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -324022,7 +324022,7 @@ xref: EC:1.14.14.106 {source="skos:exactMatch"}
+ xref: KEGG_REACTION:R06308
+ xref: MetaCyc:1.14.13.77-RXN
+ xref: RHEA:18949 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -439408,7 +439408,7 @@ def: "Catalysis of the reaction: L-isoleucine + 2 O2 + 2 NADPH(4-) + 2 H+ = (E)-
+ xref: EC:1.14.14.39 {source="skos:exactMatch"}
+ xref: MetaCyc:1.14.13.117-RXN
+ xref: RHEA:28602 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -439419,7 +439419,7 @@ def: "Catalysis of the reaction: L-valine + 2 O2 + 2 NADPH(4-) + 2 H+ = (E)-2-me
+ xref: EC:1.14.14.38 {source="skos:exactMatch"}
+ xref: MetaCyc:1.14.13.118-RXN
+ xref: RHEA:28606 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -439944,7 +439944,7 @@ def: "Catalysis of the reaction: (1E,4E,8E)-alpha-humulene + NADPH + O2 + H+ = 1
+ xref: EC:1.14.14.113 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-10628
+ xref: RHEA:32491 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -440864,7 +440864,7 @@ def: "Catalysis of the reaction: (+)-5-epi-aristolochene + 2 NADPH + 2 H+ + 2 O2
+ xref: EC:1.14.14.149 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-11908
+ xref: RHEA:28226 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -441927,7 +441927,7 @@ def: "Catalysis of the reaction: beta-amyrin + 2 O2 + 2 NADPH + 2 H+ = 11-oxo-be
+ xref: EC:1.14.14.152 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-12680 {source="skos:exactMatch"}
+ xref: RHEA:31711 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28070" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28526" xsd:anyURI
+ 
+@@ -442221,7 +442221,7 @@ def: "Catalysis of the reaction: 1,8-cineole + NADPH + H+ + O2 = 2-exo-hydroxy-1
+ xref: EC:1.14.14.56 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-4342
+ xref: RHEA:32895 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -442753,7 +442753,7 @@ def: "Catalysis of the reaction: 11-oxo-beta-amyrin + 3 NADPH + 3 O2 + 2 H+ = gl
+ xref: EC:1.14.14.115 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-13506
+ xref: RHEA:35499 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -444492,7 +444492,7 @@ def: "Catalysis of the reaction: dammarenediol-II + NADPH + H+ + O2 = (20S)-prot
+ xref: EC:1.14.14.120 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-14975
+ xref: RHEA:38579 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -444503,7 +444503,7 @@ def: "Catalysis of the reaction: (20S)-protopanaxadiol + O2 + reduced [NADPH--he
+ xref: EC:1.14.14.121 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-14978
+ xref: RHEA:22272 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -444831,7 +444831,7 @@ def: "Catalysis of the reaction: ent-sandaracopimara-8(14),15-diene + NADPH + H+
+ xref: EC:1.14.14.70 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-15379
+ xref: RHEA:41464 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -444842,7 +444842,7 @@ def: "Catalysis of the reaction: ent-sandaracopimaradien-3-beta-ol + NADPH + H+
+ xref: EC:1.14.14.122 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-15381
+ xref: RHEA:41468 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -444853,7 +444853,7 @@ def: "Catalysis of the reaction: ent-sandaracopimaradien-3-beta-ol + NADPH + H+
+ xref: EC:1.14.14.123 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-15382
+ xref: RHEA:41472 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -445643,7 +445643,7 @@ def: "Catalysis of the reaction: L-phenylalanine + 2 NADPH + 2 O2 + 2 H+ = (E)-p
+ xref: EC:1.14.14.40 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-4602
+ xref: RHEA:33263 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -446918,7 +446918,7 @@ def: "Catalysis of the reaction: geraniol + O2 + NADPH + H+ = (6E)-8-hydroxygera
+ xref: EC:1.14.14.83 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-8197
+ xref: RHEA:32495 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -447533,7 +447533,7 @@ def: "Catalysis of the reaction: (+)-marmesin + NADPH + H+ + O2 = psoralen + NAD
+ xref: EC:1.14.14.141 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-8386
+ xref: RHEA:19281 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -448112,7 +448112,7 @@ def: "Catalysis of the reaction: germacra-1(10),4,11(13)-trien-12-oate + O2 + NA
+ xref: EC:1.14.14.150 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-8971
+ xref: RHEA:28230 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -448705,7 +448705,7 @@ def: "Catalysis of the reaction: columbianetin + NADPH + O2 + H+ = angelicin + a
+ xref: EC:1.14.14.148 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-9689
+ xref: RHEA:27481 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+@@ -451176,7 +451176,7 @@ namespace: molecular_function
+ def: "Catalyzes the reaction fraxetin+ NAD(P)H + 02= sideretin + NAD(P)(+) + H20." [GOC:lr, PMID:29581584, RHEA:57844]
+ xref: EC:1.14.14.164 {source="skos:exactMatch"}
+ xref: RHEA:57844 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: hjd
+ creation_date: 2018-09-07T18:24:41Z
+@@ -451227,7 +451227,7 @@ namespace: molecular_function
+ def: "Catalysis of the reaction: indole-3-carbonyl nitrile + NADPH +O2=4-hydroxyindole-3- carbonyl nitrile + NADP+ + H20." [GOC:lr, PMID:26352477, RHEA:57864]
+ xref: EC:1.14.14.165 {source="skos:exactMatch"}
+ xref: RHEA:57864 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++is_a: GO:0016712 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: hjd
+ creation_date: 2018-09-10T19:44:15Z

@@ -1,0 +1,62 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8a4e3507c..36025e760 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -536780,19 +536780,31 @@ property_value: curated_content_resource "https://www.malacards.org/card/intelle
+ id: MONDO:0029144
+ name: extraoral halitosis due to methanethiol oxidase deficiency
+ subset: clingen {source="MONDO:CLINGEN"}
++subset: gard_rare {source="GARD:0017996", source="MONDO:GARD"}
++subset: nord_rare {source="MONDO:NORD"}
+ subset: omim {source="OMIM:618148"}
++subset: ordo_disorder {source="Orphanet:562538"}
++subset: orphanet {source="Orphanet:562538"}
++subset: orphanet_rare {source="Orphanet:562538"}
+ subset: otar {source="MONDO:OTAR"}
++subset: rare
++synonym: "autosomal recessive extra-oral halitosis" EXACT [Orphanet:562538]
+ synonym: "EHMTO" RELATED ABBREVIATION []
+ synonym: "extraoral halitosis due to MTO deficiency" EXACT []
++xref: GARD:0017996 {source="MONDO:GARD"}
+ xref: MEDGEN:1648340 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:618148 {source="MONDO:equivalentTo"}
++xref: Orphanet:562538 {source="MONDO:equivalentTo"}
+ xref: UMLS:C4748387 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1648340"}
+ is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
++is_a: MONDO:0019222 {source="Orphanet:562538"} ! inborn disorder of methionine cycle and sulfur amino acid metabolism
+ relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0029144 {source="MONDO:CLINGEN"}
+ relationship: disease_has_basis_in_disruption_of GO:0018549 ! methanethiol oxidase activity
++relationship: has_characteristic HP:0000007 {source="Orphanet:562538"} ! Autosomal recessive inheritance
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10719 {source="OMIM:618148"} ! SELENBP1
+ property_value: curated_content_resource "https://www.malacards.org/card/extraoral_halitosis_due_to_methanethiol_oxidase_deficiency" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9842" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0029145
+@@ -556192,21 +556204,11 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0034186
+-name: autosomal recessive extra-oral halitosis
+-comment: This term is scheduled to be merged with MONDO:0029144 Extraoral halitosis due to methanethiol oxidase deficiency, based on the fact that the concept of these 2 terms are the same. This ID will therefore be obsoleted and replaced with MONDO:0029144
+-subset: gard_rare {source="GARD:0017996", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: ordo_disorder {source="Orphanet:562538"}
+-subset: orphanet {source="Orphanet:562538"}
+-subset: orphanet_rare {source="Orphanet:562538"}
+-subset: rare
+-xref: GARD:0017996 {source="MONDO:GARD"}
+-xref: Orphanet:562538 {source="MONDO:equivalentTo"}
+-is_a: MONDO:0019222 {source="Orphanet:562538"} ! inborn disorder of methionine cycle and sulfur amino acid metabolism
+-relationship: has_characteristic HP:0000007 ! Autosomal recessive inheritance
++name: obsolete autosomal recessive extra-oral halitosis
++property_value: IAO:0000231 MONDO:TermsMerged
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9842" xsd:anyURI
+-property_value: IAO:0006012 "2026-03-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0029144
+ 
+ [Term]
+ id: MONDO:0034189

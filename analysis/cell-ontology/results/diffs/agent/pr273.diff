@@ -1,0 +1,31 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index fd1ae3fd5..a0bad0c10 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3236,6 +3236,7 @@ Declaration(Class(obo:CL_4072018))
+ Declaration(Class(obo:CL_4072019))
+ Declaration(Class(obo:CL_4072021))
+ Declaration(Class(obo:CL_4072102))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -34627,6 +34628,18 @@ AnnotationAssertion(rdfs:label obo:CL_4072102 "Purkinje layer interneuron")
+ EquivalentClasses(obo:CL_4072102 ObjectIntersectionOf(obo:CL_0000099 ObjectSomeValuesFrom(obo:RO_0002100 obo:UBERON_0002979)))
+ SubClassOf(obo:CL_4072102 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0061534))
+ 
++# Class: obo:CL_9900001 (quiescent fibroblast)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:21049082") Annotation(oboInOwl:hasDbXref "PMID:35701396") Annotation(oboInOwl:hasDbXref "doi:10.1038/s41427-020-0226-7") obo:IAO_0000115 obo:CL_9900001 "A fibroblast in a quiescent, non-proliferative state, characterized by a small, spindle-shaped morphology with a relatively small cytoplasm, modest rough endoplasmic reticulum and condensed chromatin. Despite low proliferation and contractility, it maintains high metabolic activity for extracellular-matrix homeostasis through continuous matrix protein turnover and mechanosensitive signaling. It can rapidly differentiate into contractile myofibroblasts under injury or inflammatory cues to drive tissue repair.")
++AnnotationAssertion(dc:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-15T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35701396") rdfs:comment obo:CL_9900001 "Historically, quiescent fibroblasts in uninjured tissues were often called 'fibrocytes', but over time this distinction faded and the term 'fibroblast' came to be used universally, regardless of activation state. 'Fibrocyte' has been repurposed to describe a distinct population of bone marrow-derived, circulating cells that home to sites of injury and contribute to tissue repair and fibrosis.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22529592") oboInOwl:hasRelatedSynonym obo:CL_9900001 "inactive fibroblast")
++AnnotationAssertion(oboInOwl:hasDbXref obo:CL_9900001 "Wikipedia:Fibroblast")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "quiescent fibroblast")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3252>)
++SubClassOf(obo:CL_9900001 obo:CL_0000057)
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)
