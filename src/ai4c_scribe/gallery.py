@@ -141,13 +141,22 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
                     max_diff_lines,
                 )
 
-                # Review file(s) — match pr{eval_pr}-*.md
-                review_md = None
+                # Review files — collect ALL matching pr{eval_pr}-*.md
+                reviews: list[dict] = []
                 reviews_dir = results_dir / "reviews"
                 if reviews_dir.exists():
-                    for review_path in reviews_dir.glob(f"pr{eval_pr}-*.md"):
-                        review_md = review_path.read_text()
-                        break  # take first match
+                    for review_path in sorted(reviews_dir.glob(f"pr{eval_pr}-*.md")):
+                        raw = review_path.read_text()
+                        rfm, rbody = _parse_frontmatter_and_body(raw)
+                        # Serialize dates in review frontmatter
+                        for k in list(rfm.keys()):
+                            if hasattr(rfm[k], "isoformat"):
+                                rfm[k] = rfm[k].isoformat()
+                        reviews.append({
+                            "filename": review_path.name,
+                            "frontmatter": rfm,
+                            "body_md": rbody,
+                        })
 
                 agent_attempts.append({
                     "eval_repo_pr": eval_pr,
@@ -160,7 +169,7 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
                     "recall": float(score_row.get("recall", 0)),
                     "jaccard": float(score_row.get("jaccard", 0)),
                     "diff": agent_diff,
-                    "review_md": review_md,
+                    "reviews": reviews,
                 })
 
             # Serialize dates to strings for JSON
@@ -181,7 +190,19 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
 
         ontologies[ont_name] = {"cases": cases}
 
-    return {"ontologies": ontologies}
+    # Include eval repo config for constructing GitHub links
+    eval_repos: dict[str, dict] = {}
+    try:
+        from ai4c_scribe.scoring import EVAL_REPOS
+        for ont, cfg in EVAL_REPOS.items():
+            eval_repos[ont] = {
+                "eval_repo": cfg.get("eval_repo", ""),
+                "source_repo": cfg.get("source_repo", ""),
+            }
+    except ImportError:
+        pass
+
+    return {"ontologies": ontologies, "eval_repos": eval_repos}
 
 
 GALLERY_HTML_TEMPLATE = """\
@@ -224,7 +245,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 #detail-placeholder { color: #999; font-size: 15px; margin-top: 60px; text-align: center; }
 #detail-content { display: none; max-width: 900px; margin: 0 auto; }
 .detail-header { margin-bottom: 16px; }
-.detail-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.detail-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.gh-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 12px; }
+.gh-links a { color: #0369a1; text-decoration: none; }
+.gh-links a:hover { text-decoration: underline; }
 .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
 .badge-task_type { background: #dbeafe; color: #1d4ed8; }
@@ -256,6 +280,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .attempt-header { padding: 8px 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #fafafa; border-radius: 6px; }
 .attempt-model { font-weight: 600; font-size: 13px; }
 .attempt-runtime { font-size: 12px; color: #666; }
+.attempt-eval-link { font-size: 11px; color: #0369a1; text-decoration: none; }
+.attempt-eval-link:hover { text-decoration: underline; }
 .score-pill { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
 .pill-green { background: #dcfce7; color: #15803d; }
 .pill-amber { background: #fef9c3; color: #a16207; }
@@ -266,6 +292,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .attempt-body.open { display: block; }
 .attempt-section-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; margin-top: 10px; }
 .attempt-section-title:first-child { margin-top: 0; }
+.review-block { margin-bottom: 16px; }
+.review-block + .review-block { border-top: 1px solid #e4e4e7; padding-top: 12px; }
+.review-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.review-meta-pill { font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 8px; background: #f4f4f5; color: #555; border: 1px solid #e4e4e7; }
+.review-meta-pill.outcome-success { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.review-meta-pill.outcome-partial { background: #fef9c3; color: #a16207; border-color: #fde68a; }
+.review-meta-pill.outcome-failure { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+.review-reviewer { font-size: 12px; font-weight: 600; color: #374151; margin-bottom: 4px; }
 .review-md { font-size: 13px; line-height: 1.6; }
 .review-md p { margin-bottom: 6px; }
 .no-diff { font-size: 12px; color: #999; font-style: italic; }
@@ -285,6 +319,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   <div id="detail-content">
     <div class="detail-header">
       <div class="detail-title" id="d-title"></div>
+      <div class="gh-links" id="d-gh-links"></div>
       <div class="badges" id="d-badges"></div>
     </div>
     <div class="narrative" id="d-narrative"></div>
@@ -409,7 +444,85 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     return 'pill-red';
   }
 
-  function renderAttempts(attempts) {
+  function outcomePillClass(outcome) {
+    if (!outcome) return '';
+    const o = outcome.toLowerCase();
+    if (o === 'success' || o === 'full_success') return 'outcome-success';
+    if (o === 'partial_success' || o === 'partial') return 'outcome-partial';
+    if (o === 'failure' || o === 'fail') return 'outcome-failure';
+    return '';
+  }
+
+  function reviewerFromFilename(filename) {
+    // e.g. pr10-claudecode-complete.md -> claudecode-complete
+    const m = filename.match(/^pr\\d+[-_](.+)\\.md$/);
+    return m ? m[1] : filename;
+  }
+
+  function renderReviews(reviews, abody) {
+    if (!reviews || reviews.length === 0) return;
+    const secTitle = document.createElement('div');
+    secTitle.className = 'attempt-section-title';
+    secTitle.textContent = reviews.length === 1 ? 'Review' : 'Reviews (' + reviews.length + ')';
+    abody.appendChild(secTitle);
+
+    reviews.forEach(function(review) {
+      const block = document.createElement('div');
+      block.className = 'review-block';
+
+      // Reviewer name
+      const fm = review.frontmatter || {};
+      const reviewerName = fm.reviewed_by || reviewerFromFilename(review.filename || '');
+      if (reviewerName) {
+        const rr = document.createElement('div');
+        rr.className = 'review-reviewer';
+        rr.textContent = 'Reviewer: ' + reviewerName;
+        block.appendChild(rr);
+      }
+
+      // Frontmatter pills
+      const metaRow = document.createElement('div');
+      metaRow.className = 'review-meta';
+
+      const pillFields = ['outcome', 'f1', 'precision', 'recall', 'jaccard', 'failure_modes'];
+      pillFields.forEach(function(field) {
+        const val = fm[field];
+        if (val === null || val === undefined || val === '') return;
+        const pill = document.createElement('span');
+        pill.className = 'review-meta-pill';
+        if (field === 'outcome') {
+          pill.classList.add(outcomePillClass(val));
+          pill.textContent = String(val);
+        } else if (typeof val === 'number') {
+          pill.className += ' ' + pillClass(val);
+          pill.textContent = field.toUpperCase() + ' ' + val.toFixed(2);
+        } else if (Array.isArray(val)) {
+          pill.textContent = field + ': ' + val.join(', ');
+        } else {
+          pill.textContent = field + ': ' + String(val);
+        }
+        metaRow.appendChild(pill);
+      });
+      block.appendChild(metaRow);
+
+      // Body markdown
+      if (review.body_md && review.body_md.trim()) {
+        const rv = document.createElement('div');
+        rv.className = 'review-md';
+        rv.innerHTML = renderMarkdown(review.body_md);
+        block.appendChild(rv);
+      }
+
+      abody.appendChild(block);
+    });
+  }
+
+  function getEvalRepo(ontology) {
+    const cfg = galleryData.eval_repos && galleryData.eval_repos[ontology];
+    return cfg ? cfg.eval_repo : null;
+  }
+
+  function renderAttempts(attempts, ontology) {
     const body = document.getElementById('d-attempts-body');
     body.innerHTML = '';
     if (!attempts || attempts.length === 0) {
@@ -417,6 +530,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
       return;
     }
     const sorted = attempts.slice().sort(function(a, b) { return b.f1 - a.f1; });
+    const evalRepo = getEvalRepo(ontology);
+
     sorted.forEach(function(a) {
       const card = document.createElement('div');
       card.className = 'attempt-card';
@@ -434,6 +549,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         rt.className = 'attempt-runtime';
         rt.textContent = a.runtime;
         header.appendChild(rt);
+      }
+
+      // Eval repo PR link
+      if (a.eval_repo_pr) {
+        if (evalRepo) {
+          const link = document.createElement('a');
+          link.className = 'attempt-eval-link';
+          link.href = 'https://github.com/ai4curation/' + evalRepo + '/pull/' + a.eval_repo_pr;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = 'Eval PR #' + a.eval_repo_pr;
+          header.appendChild(link);
+        } else {
+          const prSpan = document.createElement('span');
+          prSpan.className = 'attempt-runtime';
+          prSpan.textContent = 'Eval PR #' + a.eval_repo_pr;
+          header.appendChild(prSpan);
+        }
       }
 
       ['f1','precision','recall'].forEach(function(metric) {
@@ -466,15 +599,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         abody.appendChild(dv);
       }
 
-      if (a.review_md) {
-        const t2 = document.createElement('div');
-        t2.className = 'attempt-section-title';
-        t2.textContent = 'Review';
-        abody.appendChild(t2);
-        const rv = document.createElement('div');
-        rv.className = 'review-md';
-        rv.innerHTML = renderMarkdown(a.review_md);
-        abody.appendChild(rv);
+      if (a.reviews && a.reviews.length > 0) {
+        renderReviews(a.reviews, abody);
       }
 
       card.appendChild(abody);
@@ -501,11 +627,32 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     const entry = allCases[idx];
     const c = entry.c;
     const m = c.metadata;
+    const repo = m.repo || '';
 
     document.getElementById('detail-placeholder').style.display = 'none';
     document.getElementById('detail-content').style.display = 'block';
 
     document.getElementById('d-title').textContent = 'PR #' + c.pr_number + ' - ' + (m.issue_title || '');
+
+    // GitHub links row
+    const ghLinks = document.getElementById('d-gh-links');
+    ghLinks.innerHTML = '';
+    if (repo) {
+      if (m.issue_number) {
+        const issueLink = document.createElement('a');
+        issueLink.href = 'https://github.com/' + repo + '/issues/' + m.issue_number;
+        issueLink.target = '_blank';
+        issueLink.rel = 'noopener';
+        issueLink.textContent = 'Issue #' + m.issue_number;
+        ghLinks.appendChild(issueLink);
+      }
+      const prLink = document.createElement('a');
+      prLink.href = 'https://github.com/' + repo + '/pull/' + c.pr_number;
+      prLink.target = '_blank';
+      prLink.rel = 'noopener';
+      prLink.textContent = 'PR #' + c.pr_number;
+      ghLinks.appendChild(prLink);
+    }
 
     const badges = document.getElementById('d-badges');
     badges.innerHTML = '';
@@ -521,8 +668,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     document.getElementById('d-narrative').innerHTML = renderMarkdown(c.narrative_md);
 
     // Human diff
-    const hdToggle = document.getElementById('d-human-diff-toggle');
     const hdView = document.getElementById('d-human-diff');
+    // Reset collapsible state when switching cases
+    document.getElementById('d-human-diff-toggle').classList.remove('open');
+    document.getElementById('d-attempts-toggle').classList.remove('open');
+
     if (c.human_diff) {
       document.getElementById('d-human-diff-wrap').style.display = '';
       hdView.innerHTML = renderDiff(c.human_diff);
@@ -536,7 +686,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     } else {
       document.getElementById('d-attempts-wrap').style.display = 'none';
     }
-    renderAttempts(c.agent_attempts);
+    renderAttempts(c.agent_attempts, c.ontology);
   }
 
   // Collapsible headers for detail pane
@@ -555,12 +705,33 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
     if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       selectCase(Math.min(activeIdx + 1, allCases.length - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       selectCase(Math.max(activeIdx - 1, 0));
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      // Open first closed collapsible: Human Diff first, then Agent Attempts
+      const humanToggle = document.getElementById('d-human-diff-toggle');
+      const attemptsToggle = document.getElementById('d-attempts-toggle');
+      if (humanToggle && humanToggle.style.display !== 'none' && !humanToggle.classList.contains('open')) {
+        humanToggle.classList.add('open');
+      } else if (attemptsToggle && attemptsToggle.style.display !== 'none' && !attemptsToggle.classList.contains('open')) {
+        attemptsToggle.classList.add('open');
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      // Close last open collapsible: Agent Attempts first, then Human Diff
+      const humanToggle = document.getElementById('d-human-diff-toggle');
+      const attemptsToggle = document.getElementById('d-attempts-toggle');
+      if (attemptsToggle && attemptsToggle.classList.contains('open')) {
+        attemptsToggle.classList.remove('open');
+      } else if (humanToggle && humanToggle.classList.contains('open')) {
+        humanToggle.classList.remove('open');
+      }
     }
   });
 
