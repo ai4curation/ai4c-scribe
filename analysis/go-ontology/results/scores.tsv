@@ -103,7 +103,7 @@ go-ontology	31923	31938	other	simple	v9	claude-sonnet-4.5	copilot	373	1.0	1.0	1.
 go-ontology	31051	32037	synonym_update	simple	v9	claude-sonnet-4.5	copilot	371	0.9	0.818	1.0	0.818	go-#31051	std_copilot_son45
 go-ontology	31636	31925	synonym_update	simple	v9	claude-sonnet-4.5	copilot	370	0.857	0.857	0.857	0.75	go-#31636	std_copilot_son45
 go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	codex	369	0.8	0.889	0.727	0.667	go-#31961	codex/claude-sonnet-4.5/v9
-go-ontology	31961	32015	obsoletion	simple	v9	gemini-2.5-flash	gemini	362	0.308	0.222	0.5	0.182	go-#31961	gemini/gemini-2.5-flash/v9
+go-ontology	31961	32015	obsoletion	simple	v9	gemini-2.5-flash	gemini	362	0.308	0.222	0.5	0.182	go-#31961	std_gemini_flash
 go-ontology	32018	32021	obsoletion	simple	v9	claude-opus-4.7	claude	358	0.0	0.0	0.0	0.0	go-#32018	std_claude_op47
 go-ontology	32044	32054	new_term	medium	v9	claude-opus-4.7	claude	357	0.762	0.667	0.889	0.615	go-#32044	std_claude_op47
 go-ontology	31962	31970	axiom_repair	medium	v9	claude-opus-4.7	claude	356	1.0	1.0	1.0	1.0	go-#31962	std_claude_op47

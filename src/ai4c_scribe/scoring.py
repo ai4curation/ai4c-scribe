@@ -507,34 +507,52 @@ def score_all(analysis_dir: Path = Path("analysis"), use_cache: bool = True) -> 
     return all_records
 
 
-def load_agents_config(ontology: str, analysis_dir: Path = Path("analysis")) -> dict:
-    """Load agents.yaml for an ontology.
+def load_agents_config(ontology: str = "", analysis_dir: Path = Path("analysis")) -> dict:
+    """Load agents.yaml — global first, then per-ontology overlay.
 
     Returns dict mapping handle -> agent config dict.
+    The global file (analysis/agents.yaml) matches on (runtime, model).
+    Per-ontology files can add ontology-specific agents if needed.
 
     >>> agents = load_agents_config("go-ontology", Path("analysis"))
-    >>> "codex_g55_v9" in agents  # doctest: +SKIP
+    >>> "std_opencode_g55" in agents
     True
     """
-    agents_path = analysis_dir / ontology / "agents.yaml"
-    if not agents_path.exists():
-        return {}
-    data = yaml.safe_load(agents_path.read_text())
-    return data.get("agents", {})
+    agents = {}
+    # Global agents
+    global_path = analysis_dir / "agents.yaml"
+    if global_path.exists():
+        data = yaml.safe_load(global_path.read_text())
+        agents.update(data.get("agents", {}))
+    # Per-ontology overlay (if it exists)
+    if ontology:
+        ont_path = analysis_dir / ontology / "agents.yaml"
+        if ont_path.exists():
+            data = yaml.safe_load(ont_path.read_text())
+            agents.update(data.get("agents", {}))
+    return agents
 
 
 def resolve_agent_handle(record: ScoreRecord, analysis_dir: Path = Path("analysis")) -> str:
     """Resolve a ScoreRecord to its agent handle from agents.yaml.
 
-    Matches on (runtime, model, config_tag). Returns handle or
-    a generated fallback like 'codex/gpt-5.5/v9'.
+    Matches on (runtime, model). Config tag is ignored — the same
+    logical agent can use different config tags on different ontologies.
+    Returns handle or a generated fallback like 'codex/gpt-5.5/v9'.
     """
     agents = load_agents_config(record.ontology, analysis_dir)
+    # First pass: try exact match on (runtime, model, category/skills)
+    # to disambiguate standard vs ablation agents
     for handle, cfg in agents.items():
         if (cfg.get("runtime") == record.runtime and
-            cfg.get("model") == record.model and
-            cfg.get("config_tag") == record.agent_config_tag):
-            return handle
+            cfg.get("model") == record.model):
+            # If agent has skills=false, only match if config_tag contains "noskills"
+            if cfg.get("skills") is False:
+                if "noskills" in record.agent_config_tag:
+                    return handle
+            else:
+                if "noskills" not in record.agent_config_tag:
+                    return handle
     # Fallback: generate from components
     return f"{record.runtime}/{record.model}/{record.agent_config_tag}"
 

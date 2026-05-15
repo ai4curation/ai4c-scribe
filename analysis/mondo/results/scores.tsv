@@ -293,12 +293,3 @@ mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	21	0.538	0.583	0.5	0.368	mon#9
 mondo	9937	10112	new_term	medium	v3	gpt-5.4	codex	20	0.5	0.583	0.438	0.333	mon#9937	std_codex_g54
 mondo	9771	10102	obsoletion	simple	v3	gpt-5.4	codex	19	0.562	0.529	0.6	0.391	mon#9771	std_codex_g54
 mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	16	0.538	0.583	0.5	0.368	mon#9956	std_codex_g54
-mondo	9956	10214	new_term	medium	v3	claude-sonnet-4.5	claude	1	0.696	0.667	0.727	0.533	mon#9956	std_claude_son45
-mondo	9956	10214	new_term	medium	v3	gpt-5.5	codex	11	0.609	0.583	0.636	0.438	mon#9956	std_codex_g55
-mondo	9956	10214	new_term	medium	v3	claude-sonnet-4.5	claude	6	0.006	1.0	0.003	0.003	mon#9956	std_claude_son45
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	8	0.006	1.0	0.003	0.003	mon#9956	std_codex_g54
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	5	0.4	0.267	0.8	0.25	mon#9892	std_codex_g54
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	2	0.462	0.5	0.429	0.3	mon#9956	std_codex_g54
-mondo	9956	10214	new_term	medium	v3	gpt-5.4	codex	15	0.462	0.5	0.429	0.3	mon#9956	std_codex_g54
-mondo	9892	10206	synonym_update	simple	v3	gpt-5.4	codex	14	0.4	0.267	0.8	0.25	mon#9892	std_codex_g54
-mondo	9892	10206	synonym_update	simple	v3	claude-haiku-4.5	claude	3	0.4	0.267	0.8	0.25	mon#9892	std_claude_hai45
