@@ -1,10 +1,16 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+uberon	3473	3494	axiom_repair	hard	v3	claude-haiku-4.5	claude	375	0.174	0.105	0.5	0.095	ube#3473	std_claude_hai45
+uberon	3618	3620	new_term	medium	v3	claude-haiku-4.5	claude	374	0.842	0.889	0.8	0.727	ube#3618	std_claude_hai45
+uberon	3637	3638	new_term	medium	v3	claude-haiku-4.5	claude	371	0.6	0.667	0.545	0.429	ube#3637	std_claude_hai45
 uberon	3478	3479	axiom_repair	hard	v3	claude-haiku-4.5	claude	336	0.5	0.375	0.75	0.333	ube#3478	std_claude_hai45
 uberon	3627	3628	axiom_repair	medium	v3	claude-haiku-4.5	claude	335	1.0	1.0	1.0	1.0	ube#3627	std_claude_hai45
+uberon	3618	3620	new_term	medium	v3	claude-haiku-4.5	claude	334	0.842	0.889	0.8	0.727	ube#3618	std_claude_hai45
 uberon	3448	3506	axiom_repair	simple	v3	claude-haiku-4.5	claude	331	0.0	0.0	0.0	0.0	ube#3448	std_claude_hai45
 uberon	3522	3525	axiom_repair	medium	v3	claude-haiku-4.5	claude	329	0.364	0.286	0.5	0.222	ube#3522	std_claude_hai45
 uberon	3629	3630	new_term	medium	v3	claude-haiku-4.5	claude	328	0.583	0.636	0.538	0.412	ube#3629	std_claude_hai45
 uberon	3509	3515	axiom_repair	simple	v3	claude-haiku-4.5	claude	327	0.5	0.5	0.5	0.333	ube#3509	std_claude_hai45
+uberon	3473	3494	axiom_repair	hard	v3	claude-haiku-4.5	claude	325	0.174	0.105	0.5	0.095	ube#3473	std_claude_hai45
+uberon	3637	3638	new_term	medium	v3	claude-haiku-4.5	claude	324	0.6	0.667	0.545	0.429	ube#3637	std_claude_hai45
 uberon	3457	3569	new_term	medium	v3	claude-sonnet-4.5	claude	323	0.0	0.0	0.0	0.0	ube#3457	std_claude_son45
 uberon	3617	3619	axiom_repair	hard	v3	claude-sonnet-4.5	claude	322	1.0	1.0	1.0	1.0	ube#3617	std_claude_son45
 uberon	3478	3479	axiom_repair	hard	v3	claude-sonnet-4.5	claude	321	0.5	0.375	0.75	0.333	ube#3478	std_claude_son45
