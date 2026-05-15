@@ -1,0 +1,7 @@
+{
+  "pr_comment": "## Summary\n\nThis PR adds a new term for **fibrochondrocyte progenitor cell (FCP)** in response to issue #3458.",
+  "issue_comment": "Thank you for the detailed new term request! I've created the fibrochondrocyte progenitor cell (FCP) term as requested.",
+  "workflow_run": "25877893188",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-cl/tree/master/traces/25877893188",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-cl/pull/230"
+}

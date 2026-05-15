@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Changes Summary: Removal of Redundant Annotation Property Labels",
+  "issue_comment": "# Issue #3332: Re-labelling of imported annotation properties in the -edit file",
+  "workflow_run": "25640372095",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-cl/pull/93"
+}

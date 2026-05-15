@@ -1,0 +1,7 @@
+{
+  "pr_comment": "## Summary\n\nThis PR partially implements issue #3536 to fix design patterns for columnar/cuboidal and squamous epithelial cells. The squamous epithelial cell pattern has been fully implemented, but the cuboidal pattern is blocked due to a missing PATO term.",
+  "issue_comment": "I've partially implemented the requirements from this issue. Changes have been committed in PR #<NN>.",
+  "workflow_run": "25877805263",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-cl/tree/master/traces/25877805263",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-cl/pull/222"
+}

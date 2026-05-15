@@ -7,6 +7,8 @@ self-contained HTML file for browsing cases in a sidebar + detail layout.
 
 import csv
 import json
+import re
+import subprocess
 from pathlib import Path
 
 import yaml
@@ -84,6 +86,119 @@ def _truncate_diff(text: Optional[str], max_lines: int) -> Optional[str]:
     return f"{truncated}\n... ({remaining} more lines truncated)"
 
 
+def _parse_eval_pr_body(body: str) -> dict:
+    """Extract structured sections from an eval repo PR body.
+
+    >>> d = _parse_eval_pr_body("foo\\n## Agent Response - PR Comments\\nHello world\\n## Agent Response - Issue Comments\\nBye")
+    >>> d["pr_comment"]
+    'Hello world'
+    >>> d["issue_comment"]
+    'Bye'
+    """
+    result: dict = {"pr_comment": None, "issue_comment": None,
+                    "workflow_run": None, "trace_url": None}
+    # Extract agent PR comment section
+    m = re.search(
+        r"## Agent Response - PR Comments\n(.*?)(?=\n## |\Z)",
+        body, re.DOTALL,
+    )
+    if m:
+        result["pr_comment"] = m.group(1).strip()
+    # Extract agent issue comment section
+    m = re.search(
+        r"## Agent Response - Issue Comments\n(.*?)(?=\n## |\Z)",
+        body, re.DOTALL,
+    )
+    if m:
+        result["issue_comment"] = m.group(1).strip()
+    # Extract workflow run URL
+    runs = re.findall(r"actions/runs/(\d+)\)", body)
+    if runs:
+        result["workflow_run"] = runs[0]
+    return result
+
+
+def _parse_trace_from_comments(comments: list[dict]) -> Optional[str]:
+    """Extract trace URL from PR comments.
+
+    >>> _parse_trace_from_comments([{"body": "Traces: [traces/123](https://github.com/org/repo/tree/master/traces/123)"}])
+    'https://github.com/org/repo/tree/master/traces/123'
+    """
+    for c in comments:
+        m = re.search(r"\[traces/\d+\]\((https://[^)]+)\)", c.get("body", ""))
+        if m:
+            return m.group(1)
+    return None
+
+
+def fetch_eval_pr_data(
+    eval_repo: str,
+    eval_repo_pr: int,
+    cache_dir: Path,
+) -> Optional[dict]:
+    """Fetch eval PR body+comments via gh CLI and cache the parsed result.
+
+    Returns cached data if available. On fetch, parses the PR body into
+    structured sections (agent PR comment, issue comment, workflow run,
+    trace URL).
+    """
+    cache_path = cache_dir / f"pr{eval_repo_pr}.json"
+    if cache_path.exists():
+        return json.loads(cache_path.read_text())
+
+    full_repo = f"ai4curation/{eval_repo}"
+    result = subprocess.run(
+        ["gh", "pr", "view", str(eval_repo_pr), "--repo", full_repo,
+         "--json", "body,comments,url"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return None
+
+    raw = json.loads(result.stdout)
+    parsed = _parse_eval_pr_body(raw.get("body", ""))
+    parsed["eval_pr_url"] = raw.get("url", "")
+    trace_url = _parse_trace_from_comments(raw.get("comments", []))
+    if trace_url:
+        parsed["trace_url"] = trace_url
+
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(json.dumps(parsed, indent=2))
+    return parsed
+
+
+def fetch_all_eval_pr_data(analysis_dir: Path) -> int:
+    """Fetch and cache eval PR data for all scored runs.
+
+    Returns the number of PRs fetched (not cached).
+    """
+    eval_repos: dict[str, str] = {}
+    try:
+        from ai4c_scribe.scoring import EVAL_REPOS
+        for ont, cfg in EVAL_REPOS.items():
+            eval_repos[ont] = cfg["eval_repo"]
+    except ImportError:
+        return 0
+
+    fetched = 0
+    for ont_name in _discover_ontologies(analysis_dir):
+        if ont_name not in eval_repos:
+            continue
+        scores_path = analysis_dir / ont_name / "results" / "scores.tsv"
+        if not scores_path.exists():
+            continue
+        cache_dir = analysis_dir / ont_name / "results" / "pr_data"
+        for row in _load_scores(scores_path):
+            eval_pr = int(row["eval_repo_pr"])
+            cache_path = cache_dir / f"pr{eval_pr}.json"
+            if cache_path.exists():
+                continue
+            result = fetch_eval_pr_data(eval_repos[ont_name], eval_pr, cache_dir)
+            if result:
+                fetched += 1
+    return fetched
+
+
 def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> dict:
     """Walk the analysis directory and assemble gallery data.
 
@@ -158,6 +273,10 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
                             "body_md": rbody,
                         })
 
+                # Cached eval PR data (agent comments, trace, workflow run)
+                pr_data_path = results_dir / "pr_data" / f"pr{eval_pr}.json"
+                pr_data = json.loads(pr_data_path.read_text()) if pr_data_path.exists() else {}
+
                 agent_attempts.append({
                     "eval_repo_pr": eval_pr,
                     "model": score_row.get("model", ""),
@@ -170,6 +289,10 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
                     "jaccard": float(score_row.get("jaccard", 0)),
                     "diff": agent_diff,
                     "reviews": reviews,
+                    "pr_comment": pr_data.get("pr_comment"),
+                    "issue_comment": pr_data.get("issue_comment"),
+                    "trace_url": pr_data.get("trace_url"),
+                    "workflow_run": pr_data.get("workflow_run"),
                 })
 
             # Serialize dates to strings for JSON
@@ -303,6 +426,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .review-md { font-size: 13px; line-height: 1.6; }
 .review-md p { margin-bottom: 6px; }
 .no-diff { font-size: 12px; color: #999; font-style: italic; }
+.attempt-link { font-size: 11px; color: #89b4fa; text-decoration: none; margin-left: 4px; }
+.attempt-link:hover { text-decoration: underline; }
+.agent-comment { font-size: 13px; border-left: 3px solid #ddd; padding-left: 12px; margin-bottom: 12px; }
 </style>
 </head>
 <body>
@@ -578,6 +704,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         header.appendChild(pill);
       });
 
+      // Trace and workflow links
+      if (a.trace_url) {
+        var tl = document.createElement('a');
+        tl.href = a.trace_url;
+        tl.target = '_blank';
+        tl.className = 'attempt-link';
+        tl.textContent = 'trace';
+        header.appendChild(tl);
+      }
+      var evalRepo = getEvalRepo(ontology);
+      if (a.workflow_run && evalRepo) {
+        var wl = document.createElement('a');
+        wl.href = 'https://github.com/ai4curation/' + evalRepo + '/actions/runs/' + a.workflow_run;
+        wl.target = '_blank';
+        wl.className = 'attempt-link';
+        wl.textContent = 'run';
+        header.appendChild(wl);
+      }
+
       const expander = document.createElement('span');
       expander.className = 'attempt-expander';
       expander.textContent = 'show';
@@ -597,6 +742,28 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         dv.className = 'diff-view';
         dv.innerHTML = renderDiff(a.diff);
         abody.appendChild(dv);
+      }
+
+      if (a.pr_comment) {
+        var t2 = document.createElement('div');
+        t2.className = 'attempt-section-title';
+        t2.textContent = 'Agent PR Comment';
+        abody.appendChild(t2);
+        var pc = document.createElement('div');
+        pc.className = 'narrative agent-comment';
+        pc.innerHTML = renderMarkdown(a.pr_comment);
+        abody.appendChild(pc);
+      }
+
+      if (a.issue_comment) {
+        var t3 = document.createElement('div');
+        t3.className = 'attempt-section-title';
+        t3.textContent = 'Agent Issue Comment';
+        abody.appendChild(t3);
+        var ic = document.createElement('div');
+        ic.className = 'narrative agent-comment';
+        ic.innerHTML = renderMarkdown(a.issue_comment);
+        abody.appendChild(ic);
       }
 
       if (a.reviews && a.reviews.length > 0) {

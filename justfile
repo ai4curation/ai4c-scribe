@@ -56,6 +56,10 @@ mypy:
 format:
 	uv run ruff check .
 
+# Fetch eval PR data (agent comments, traces) for the gallery
+gallery-fetch:
+  uv run ai4c-scribe gallery-fetch analysis/
+
 # Regenerate the gallery HTML from analysis/ directory
 gallery:
   uv run ai4c-scribe gallery analysis/ -o analysis/gallery.html

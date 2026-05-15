@@ -18,7 +18,7 @@ from ai4c_scribe.api import (
     FixIssueStatus,
 )
 from ai4c_scribe.cache import clear_cache, get_cache_stats
-from ai4c_scribe.gallery import generate_gallery
+from ai4c_scribe.gallery import generate_gallery, fetch_all_eval_pr_data
 from ai4c_scribe.case_studies import load_case_study, load_case_studies_dir
 from ai4c_scribe.metadiff.cli import app as metadiff_app
 from ai4c_scribe.workflows.cli import app as workflows_app
@@ -429,6 +429,24 @@ def gallery(
     typer.echo(f"Generating gallery from {analysis_dir}...")
     result = generate_gallery(analysis_dir, output, max_diff_lines=max_diff_lines)
     typer.echo(f"Gallery written to {result}")
+
+
+@app.command(name="gallery-fetch")
+def gallery_fetch(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory")] = Path("analysis"),
+):
+    """Fetch and cache eval PR data (agent comments, traces) for the gallery.
+
+    Fetches PR body and comments from eval repos via gh CLI and caches
+    parsed results in {ont}/results/pr_data/. Only fetches uncached PRs.
+
+    Example:
+        ai4c-scribe gallery-fetch analysis/
+        ai4c-scribe gallery analysis/ -o gallery.html
+    """
+    typer.echo(f"Fetching eval PR data from {analysis_dir}...")
+    fetched = fetch_all_eval_pr_data(analysis_dir)
+    typer.echo(f"Fetched {fetched} new eval PRs")
 
 
 @app.command()
