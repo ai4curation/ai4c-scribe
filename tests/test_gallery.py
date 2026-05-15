@@ -62,16 +62,18 @@ def test_collect_joins_agent_attempts_via_scores():
     assert "+name: foo bar" in haiku["diff"]
 
 
-def test_collect_attaches_review_md():
-    """Review markdown is attached to matching agent attempt."""
+def test_collect_attaches_reviews():
+    """Review files are parsed into frontmatter + body and attached to attempts."""
     data = collect_gallery_data(FIXTURE_DIR)
     pr100 = next(
         c for c in data["ontologies"]["test-ont"]["cases"]
         if c["pr_number"] == 100
     )
     haiku = next(a for a in pr100["agent_attempts"] if a["model"] == "claude-haiku-4.5")
-    assert haiku["review_md"] is not None
-    assert "missed the definition" in haiku["review_md"]
+    assert len(haiku["reviews"]) == 1
+    review = haiku["reviews"][0]
+    assert review["frontmatter"]["outcome"] == "partial_success"
+    assert "missed the definition" in review["body_md"]
 
 
 def test_generate_gallery_creates_html(tmp_path):
