@@ -105,6 +105,17 @@ classes:
           Explanation of eval_suitability rating. Describe what makes the case
           flawed or unusable (e.g. wrong issue linked, contradictory instructions).
 
+      diff_noise:
+        description: >-
+          Whether the gold-standard diff contains noise unrelated to the
+          actual task (e.g. Protege serialization reordering, whitespace,
+          tool-generated comment changes). Affects scoring fairness.
+        range: DiffNoiseEnum
+
+      diff_noise_notes:
+        description: >-
+          Description of what noise is present in the diff.
+
       # === Custom Tagging ===
       task_type:
         description: Primary task type for this case
@@ -225,6 +236,16 @@ enums:
         description: Issue-to-PR mapping is imperfect (vague issue, PR does more/less than requested) but still somewhat evaluable
       unusable:
         description: Issue and PR are fundamentally disconnected; scoring against the gold PR is meaningless
+
+  DiffNoiseEnum:
+    description: Whether the gold-standard diff contains serialization noise
+    permissible_values:
+      clean:
+        description: Diff contains only intentional changes
+      minor_noise:
+        description: Some tool-generated noise (reordering, whitespace) but core changes are clear
+      noisy:
+        description: Significant serialization artifacts that make character-level diff comparison unreliable
 
   ScopingEnum:
     description: How well-scoped the PR is relative to its issue

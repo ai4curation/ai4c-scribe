@@ -13,6 +13,8 @@ files_changed:
     additions: 14
     deletions: 14
 scoping: tightly_scoped
+diff_noise: noisy
+diff_noise_notes: "Protege serialization artifacts: CL_4072017/CL_4072018 declaration and stanza reordering, oboInOwl:hasDbXref comment label change. Only 2 of 5 diff hunks are real changes."
 task_type: reclassification
 difficulty: medium
 scope: multi_term
