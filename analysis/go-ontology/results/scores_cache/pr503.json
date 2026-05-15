@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 32046,
+  "pr_number": 32047,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "claude-sonnet-4.5",
+  "runtime": "copilot",
+  "eval_repo_pr": 503,
+  "f1": 0.692,
+  "precision": 0.6,
+  "recall": 0.818,
+  "jaccard": 0.529
+}

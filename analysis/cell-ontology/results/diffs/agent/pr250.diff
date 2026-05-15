@@ -1,0 +1,26 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 054fb3842..c85b53a29 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3589,6 +3589,7 @@ Declaration(AnnotationProperty(obo:IAO_0000700))
+ Declaration(AnnotationProperty(obo:IAO_0100001))
+ Declaration(AnnotationProperty(obo:RO_0002161))
+ Declaration(AnnotationProperty(cl:BDS_subset))
++Declaration(AnnotationProperty(cl:added_by_HRA))
+ Declaration(AnnotationProperty(cl:added_for_HCA))
+ Declaration(AnnotationProperty(cl:blood_and_immune_upper_slim))
+ Declaration(AnnotationProperty(cl:eye_upper_slim))
+@@ -3643,6 +3644,13 @@ SubAnnotationPropertyOf(cl:BDS_subset oboInOwl:SubsetProperty)
+ 
+ SubAnnotationPropertyOf(cl:added_for_HCA oboInOwl:SubsetProperty)
+ 
++# Annotation Property: cl:added_by_HRA (cl:added_by_HRA)
++
++AnnotationAssertion(terms:date cl:added_by_HRA "2026-05-15T00:35:16Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:comment cl:added_by_HRA "A subset of terms added by the Human Reference Atlas (HRA) and HuBMAP team members.")
++AnnotationAssertion(rdfs:label cl:added_by_HRA "added_by_HRA")
++SubAnnotationPropertyOf(cl:added_by_HRA oboInOwl:SubsetProperty)
++
+ # Annotation Property: cl:blood_and_immune_upper_slim (blood_and_immune_upper_slim)
+ 
+ AnnotationAssertion(terms:date cl:blood_and_immune_upper_slim "2023-03-31T09:17:34Z"^^xsd:dateTime)

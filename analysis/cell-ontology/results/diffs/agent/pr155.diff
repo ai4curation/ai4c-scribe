@@ -1,0 +1,22 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 6f5e0fa5b..db1dbcadb 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -25743,6 +25743,17 @@ SubClassOf(obo:CL_0020027 obo:CL_0004117)
+ SubClassOf(obo:CL_0020027 obo:CL_4023032)
+ SubClassOf(obo:CL_0020027 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_10090))
+ 
++# Class: obo:CL_9900001 (hybrid osteochondral skeletal cell)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:30983567") obo:IAO_0000115 obo:CL_9900001 "A skeletal cell at the periosteal surface of the murine rib that exhibits hybrid osteochondral properties, emerging within large calluses that bridge segmental rib defects. These cells co-express cartilage and bone regulators (Sox9 and Runx2) and matrix genes (Col2a1 and Col1a1), displaying dual chondrocyte/osteoblast functional properties and facilitating large-scale skeletal regeneration.")
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-14T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:label obo:CL_9900001 "hybrid osteochondral skeletal cell")
++SubClassOf(obo:CL_9900001 obo:CL_0007001)
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001467))
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_10090))
++
+ # Class: obo:CL_0700009 (obsolete kidney collecting duct beta-intercalated cell)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:24051376") Annotation(oboInOwl:hasDbXref "PMID:31300091") Annotation(oboInOwl:hasDbXref "PMID:32016094") obo:IAO_0000115 obo:CL_0700009 "OBSOLETE. A renal beta-intercalated cell that is part of the cortical collecting duct. The medullary collecting duct does not contain the renal beta-intercalated cell type.")

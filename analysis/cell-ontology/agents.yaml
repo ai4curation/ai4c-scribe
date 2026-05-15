@@ -70,3 +70,13 @@ agents:
     reasoning_effort: default
     skills: true
     category: standard
+
+  std_copilot_son45:
+    description: "Copilot CLI + Sonnet 4.5 (standard config)"
+    runtime: copilot
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/cl-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+    category: standard

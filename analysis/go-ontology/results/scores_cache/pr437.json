@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31961,
+  "pr_number": 32015,
+  "case_type": "obsoletion",
+  "difficulty": "simple",
+  "agent_config_tag": "v9",
+  "model": "claude-sonnet-4.5",
+  "runtime": "copilot",
+  "eval_repo_pr": 437,
+  "f1": 0.8,
+  "precision": 0.889,
+  "recall": 0.727,
+  "jaccard": 0.667
+}

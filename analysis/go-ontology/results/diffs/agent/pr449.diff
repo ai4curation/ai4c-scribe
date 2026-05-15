@@ -1,0 +1,27 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index be4a4f262..9a38b80ac 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -616922,15 +616922,15 @@ creation_date: 2025-10-31T00:00:00Z
+ 
+ [Term]
+ id: GO:7770021
+-name: intestinal type G enteroendocrine cell differentiation
++name: protein O-linked glycosylation via N-acetylglucosamine
+ namespace: biological_process
+-def: "The process in which relatively unspecialized cells acquire specialized structural and/or functional features of an intestinal type G enteroendocrine cell. Intestinal type G enteroendocrine cells are found in the stomach and duodenum and are responsible for the secretion of gastrin and enkephalin." [PMID:37883554]
+-is_a: GO:0035883 ! enteroendocrine cell differentiation
+-intersection_of: GO:0030154 ! cell differentiation
+-intersection_of: results_in_acquisition_of_features_of CL:0000508
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30979" xsd:anyURI
++def: "A glycoprotein biosynthetic process in which a single N-acetylglucosamine is covalently linked via a beta-glycosidic bond to the oxygen atom of a serine or threonine side chain in a protein, resulting in the formation of a protein O-linked glycan. The sugar is not elongated into a larger oligosaccharide chain." [PMID:35536957]
++synonym: "protein O-linked GlcNAcylation" EXACT []
++synonym: "protein O-linked-N-acetylglucosaminylation" EXACT []
++is_a: GO:0006493 ! protein O-linked glycosylation
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32044" xsd:anyURI
+ created_by: dragon-ai-agent
+-creation_date: 2025-10-31T00:00:00Z
++creation_date: 2026-05-14T22:14:30Z
+ 
+ [Term]
+ id: GO:7770022

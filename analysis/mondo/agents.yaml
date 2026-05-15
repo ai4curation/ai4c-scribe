@@ -70,3 +70,23 @@ agents:
     reasoning_effort: default
     skills: true
     category: standard
+
+  std_copilot_son45:
+    description: "Copilot CLI + Sonnet 4.5 (standard config)"
+    runtime: copilot
+    model: claude-sonnet-4.5
+    config_repo: ai4curation/mondo-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+    category: standard
+
+  std_opencode_kimi:
+    description: "OpenCode + Kimi K2.6 (Together AI)"
+    runtime: opencode
+    model: kimi-k2.6
+    config_repo: ai4curation/mondo-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+    category: open_model
