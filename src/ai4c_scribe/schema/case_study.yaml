@@ -93,6 +93,18 @@ classes:
           Brief explanation of scoping assessment. Note any unrelated changes,
           scope creep, or reasons the PR is not cleanly scoped.
 
+      eval_suitability:
+        description: >-
+          Whether this case is suitable for fair agent evaluation. Orthogonal
+          to difficulty — a case can be simple but unusable if the issue-to-PR
+          mapping is misleading.
+        range: EvalSuitabilityEnum
+
+      eval_suitability_notes:
+        description: >-
+          Explanation of eval_suitability rating. Describe what makes the case
+          flawed or unusable (e.g. wrong issue linked, contradictory instructions).
+
       # === Custom Tagging ===
       task_type:
         description: Primary task type for this case
@@ -203,6 +215,16 @@ enums:
         description: One round of changes requested before merge
       multiple_rounds:
         description: Multiple rounds of review feedback before merge
+
+  EvalSuitabilityEnum:
+    description: Whether this case is suitable for fair agent evaluation
+    permissible_values:
+      good:
+        description: Issue clearly describes the task, PR directly addresses it, agent can reasonably produce comparable output
+      flawed:
+        description: Issue-to-PR mapping is imperfect (vague issue, PR does more/less than requested) but still somewhat evaluable
+      unusable:
+        description: Issue and PR are fundamentally disconnected; scoring against the gold PR is meaningless
 
   ScopingEnum:
     description: How well-scoped the PR is relative to its issue

@@ -104,6 +104,20 @@ class DifficultyEnum(str, Enum):
     hard = "hard"
 
 
+class EvalSuitabilityEnum(str, Enum):
+    """
+    Whether this case is suitable for fair agent evaluation.
+    Orthogonal to difficulty — a case can be simple but unusable
+    if the issue-to-PR mapping is misleading.
+    """
+    # Issue clearly describes the task, PR directly addresses it
+    good = "good"
+    # Issue-to-PR mapping is imperfect but still somewhat evaluable
+    flawed = "flawed"
+    # Issue and PR are fundamentally disconnected; scoring is meaningless
+    unusable = "unusable"
+
+
 class ScopeEnum(str, Enum):
     """
     Scope of the changes in the PR
@@ -175,6 +189,8 @@ class CaseStudy(ConfiguredBaseModel):
     files_changed: Optional[List[FileChange]] = Field(default=None, description="""Files modified in the PR with line change counts""", json_schema_extra = { "linkml_meta": {'alias': 'files_changed', 'domain_of': ['CaseStudy']} })
     scoping: ScopingEnum = Field(default=..., description="""Assessment of how well-scoped the PR is""", json_schema_extra = { "linkml_meta": {'alias': 'scoping', 'domain_of': ['CaseStudy']} })
     scoping_notes: Optional[str] = Field(default=None, description="""Brief explanation of scoping assessment. Note any unrelated changes, scope creep, or reasons the PR is not cleanly scoped.""", json_schema_extra = { "linkml_meta": {'alias': 'scoping_notes', 'domain_of': ['CaseStudy']} })
+    eval_suitability: Optional[EvalSuitabilityEnum] = Field(default=None, description="""Whether this case is suitable for fair agent evaluation. Orthogonal to difficulty.""", json_schema_extra = { "linkml_meta": {'alias': 'eval_suitability', 'domain_of': ['CaseStudy']} })
+    eval_suitability_notes: Optional[str] = Field(default=None, description="""Explanation of eval_suitability rating.""", json_schema_extra = { "linkml_meta": {'alias': 'eval_suitability_notes', 'domain_of': ['CaseStudy']} })
     task_type: TaskTypeEnum = Field(default=..., description="""Primary task type for this case""", json_schema_extra = { "linkml_meta": {'alias': 'task_type', 'domain_of': ['CaseStudy']} })
     difficulty: DifficultyEnum = Field(default=..., description="""Estimated difficulty level""", json_schema_extra = { "linkml_meta": {'alias': 'difficulty', 'domain_of': ['CaseStudy']} })
     scope: ScopeEnum = Field(default=..., description="""Scope of changes in the PR""", json_schema_extra = { "linkml_meta": {'alias': 'scope', 'domain_of': ['CaseStudy']} })
