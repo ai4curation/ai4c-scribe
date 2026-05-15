@@ -131,6 +131,20 @@ def _parse_trace_from_comments(comments: list[dict]) -> Optional[str]:
     return None
 
 
+def _fetch_trace_file(eval_repo: str, run_id: str, filename: str) -> Optional[str]:
+    """Fetch a file from the traces directory on master via gh API."""
+    result = subprocess.run(
+        ["gh", "api",
+         f"repos/ai4curation/{eval_repo}/contents/traces/{run_id}/{filename}",
+         "--jq", ".content"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        return None
+    import base64
+    return base64.b64decode(result.stdout.strip()).decode("utf-8", errors="replace")
+
+
 def fetch_eval_pr_data(
     eval_repo: str,
     eval_repo_pr: int,
@@ -140,7 +154,8 @@ def fetch_eval_pr_data(
 
     Returns cached data if available. On fetch, parses the PR body into
     structured sections (agent PR comment, issue comment, workflow run,
-    trace URL).
+    trace URL). Also fetches PR_COMMENTS.md and ISSUE_COMMENTS.md from
+    the traces directory when available.
     """
     cache_path = cache_dir / f"pr{eval_repo_pr}.json"
     if cache_path.exists():
@@ -162,15 +177,29 @@ def fetch_eval_pr_data(
     if trace_url:
         parsed["trace_url"] = trace_url
 
+    # Fetch trace files (PR_COMMENTS.md, ISSUE_COMMENTS.md) if we have a run ID
+    run_id = parsed.get("workflow_run")
+    if run_id:
+        pr_comments_md = _fetch_trace_file(eval_repo, run_id, "PR_COMMENTS.md")
+        if pr_comments_md:
+            parsed["pr_comment"] = pr_comments_md
+        issue_comments_md = _fetch_trace_file(eval_repo, run_id, "ISSUE_COMMENTS.md")
+        if issue_comments_md:
+            parsed["issue_comment"] = issue_comments_md
+
     cache_dir.mkdir(parents=True, exist_ok=True)
     cache_path.write_text(json.dumps(parsed, indent=2))
     return parsed
 
 
-def fetch_all_eval_pr_data(analysis_dir: Path) -> int:
+def fetch_all_eval_pr_data(analysis_dir: Path, *, force: bool = False) -> int:
     """Fetch and cache eval PR data for all scored runs.
 
-    Returns the number of PRs fetched (not cached).
+    Args:
+        analysis_dir: Analysis directory.
+        force: Re-fetch even if cached.
+
+    Returns the number of PRs fetched.
     """
     eval_repos: dict[str, str] = {}
     try:
@@ -191,8 +220,10 @@ def fetch_all_eval_pr_data(analysis_dir: Path) -> int:
         for row in _load_scores(scores_path):
             eval_pr = int(row["eval_repo_pr"])
             cache_path = cache_dir / f"pr{eval_pr}.json"
-            if cache_path.exists():
+            if cache_path.exists() and not force:
                 continue
+            if force and cache_path.exists():
+                cache_path.unlink()
             result = fetch_eval_pr_data(eval_repos[ont_name], eval_pr, cache_dir)
             if result:
                 fetched += 1

@@ -434,19 +434,23 @@ def gallery(
 @app.command(name="gallery-fetch")
 def gallery_fetch(
     analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory")] = Path("analysis"),
+    force: Annotated[bool, typer.Option("--force", help="Re-fetch all, ignoring cache")] = False,
 ):
     """Fetch and cache eval PR data (agent comments, traces) for the gallery.
 
-    Fetches PR body and comments from eval repos via gh CLI and caches
-    parsed results in {ont}/results/pr_data/. Only fetches uncached PRs.
+    Fetches PR body, comments, and trace files (PR_COMMENTS.md,
+    ISSUE_COMMENTS.md) from eval repos via gh CLI. Caches parsed results
+    in {ont}/results/pr_data/. Only fetches uncached PRs unless --force.
 
     Example:
         ai4c-scribe gallery-fetch analysis/
-        ai4c-scribe gallery analysis/ -o gallery.html
+        ai4c-scribe gallery-fetch analysis/ --force  # re-fetch all
     """
     typer.echo(f"Fetching eval PR data from {analysis_dir}...")
-    fetched = fetch_all_eval_pr_data(analysis_dir)
-    typer.echo(f"Fetched {fetched} new eval PRs")
+    if force:
+        typer.echo("  (--force: re-fetching all)")
+    fetched = fetch_all_eval_pr_data(analysis_dir, force=force)
+    typer.echo(f"Fetched {fetched} eval PRs")
 
 
 @app.command()
