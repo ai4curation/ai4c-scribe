@@ -764,17 +764,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
       const abody = document.createElement('div');
       abody.className = 'attempt-body';
 
-      if (a.diff) {
-        const t = document.createElement('div');
-        t.className = 'attempt-section-title';
-        t.textContent = 'Agent Diff';
-        abody.appendChild(t);
-        const dv = document.createElement('div');
-        dv.className = 'diff-view';
-        dv.innerHTML = renderDiff(a.diff);
-        abody.appendChild(dv);
-      }
-
       if (a.pr_comment) {
         var t2 = document.createElement('div');
         t2.className = 'attempt-section-title';
@@ -795,6 +784,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         ic.className = 'narrative agent-comment';
         ic.innerHTML = renderMarkdown(a.issue_comment);
         abody.appendChild(ic);
+      }
+
+      if (a.diff) {
+        const t = document.createElement('div');
+        t.className = 'attempt-section-title';
+        t.textContent = 'Agent Diff';
+        abody.appendChild(t);
+        const dv = document.createElement('div');
+        dv.className = 'diff-view';
+        dv.innerHTML = renderDiff(a.diff);
+        abody.appendChild(dv);
       }
 
       if (a.reviews && a.reviews.length > 0) {
