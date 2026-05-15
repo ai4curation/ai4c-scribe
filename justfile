@@ -56,6 +56,11 @@ mypy:
 format:
 	uv run ruff check .
 
+# Regenerate the gallery HTML from analysis/ directory
+gallery:
+  uv run ai4c-scribe gallery analysis/ -o analysis/gallery.html
+  @echo "Open: open analysis/gallery.html"
+
 # ============== Hidden internal recipes ==============
 
 _status:
