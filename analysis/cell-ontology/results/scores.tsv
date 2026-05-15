@@ -80,10 +80,10 @@ cell-ontology	3521	3583	other	simple	v3	claude-haiku-4.5	claude	141	0.0	0.0	0.0	
 cell-ontology	3523	3524	other	simple	v3	claude-haiku-4.5	claude	140	0.429	0.429	0.429	0.273	cel#3523	std_claude_hai45
 cell-ontology	3500	3570	other	simple	v3	claude-haiku-4.5	claude	139	1.0	1.0	1.0	1.0	cel#3500	std_claude_hai45
 cell-ontology	2844	3451	new_term	medium	v3	claude-haiku-4.5	claude	138	0.0	0.0	0.0	0.0	cel#2844	std_claude_hai45
-cell-ontology	3239	3245	reclassification	medium	v3	gemma-4-31b	opencode	131	0.333	0.227	0.625	0.2	cel#3239	opencode/gemma-4-31b/v3
-cell-ontology	3590	3591	other	simple	v3	gemma-4-31b	opencode	125	0.0	0.0	0.0	0.0	cel#3590	opencode/gemma-4-31b/v3
-cell-ontology	3523	3524	other	simple	v3	gemma-4-31b	opencode	120	0.571	0.571	0.571	0.4	cel#3523	opencode/gemma-4-31b/v3
-cell-ontology	2967	3309	axiom_repair	simple	v3	gemma-4-31b	opencode	105	0.5	0.5	0.5	0.333	cel#2967	opencode/gemma-4-31b/v3
+cell-ontology	3239	3245	reclassification	medium	v3	gemma-4-31b	opencode	131	0.333	0.227	0.625	0.2	cel#3239	std_opencode_gem4
+cell-ontology	3590	3591	other	simple	v3	gemma-4-31b	opencode	125	0.0	0.0	0.0	0.0	cel#3590	std_opencode_gem4
+cell-ontology	3523	3524	other	simple	v3	gemma-4-31b	opencode	120	0.571	0.571	0.571	0.4	cel#3523	std_opencode_gem4
+cell-ontology	2967	3309	axiom_repair	simple	v3	gemma-4-31b	opencode	105	0.5	0.5	0.5	0.333	cel#2967	std_opencode_gem4
 cell-ontology	3460	3508	new_term	medium	v3	claude-haiku-4.5	claude	101	0.0	0.0	0.0	0.0	cel#3460	std_claude_hai45
 cell-ontology	3458	3505	new_term	medium	v3	claude-haiku-4.5	claude	100	0.0	0.0	0.0	0.0	cel#3458	std_claude_hai45
 cell-ontology	3457	3467	new_term	medium	v3	claude-haiku-4.5	claude	99	0.0	0.0	0.0	0.0	cel#3457	std_claude_hai45

@@ -90,3 +90,13 @@ agents:
     reasoning_effort: default
     skills: true
     category: open_model
+
+  std_opencode_gem4:
+    description: "OpenCode + Gemma 4 31B (Together AI)"
+    runtime: opencode
+    model: gemma-4-31b
+    config_repo: ai4curation/mondo-agent-config
+    config_tag: v3
+    reasoning_effort: default
+    skills: true
+    category: open_model
