@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Obsoletion of GO:0003400 and Nomenclature Updates for Issue #31945",
+  "issue_comment": "Changes have been committed in PR #<NN>.",
+  "workflow_run": "25867614452",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25867614452",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/489"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Obsolete MONDO:0009327 'heart, malformation of'",
+  "issue_comment": "# Resolution of Issue #9771: Obsolete 'heart, malformation of' (MONDO:0009327)\n\nThe term MONDO:0009327 has been successfully obsoleted as requested. The changes have been committed to the ontology.",
+  "workflow_run": "25612741669",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25612741669",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-mondo/pull/24"
+}

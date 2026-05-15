@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# New Term: GO:7770069 ferritinophagy",
+  "issue_comment": "## Summary\n\nThe ferritinophagy term (GO:7770069) has been successfully created and committed in PR #<NN>.",
+  "workflow_run": "25752257067",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25752257067",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/383"
+}

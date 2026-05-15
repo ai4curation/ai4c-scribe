@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Obsolete GO:0043713 (R)-2-hydroxyisocaproate dehydrogenase activity\n\nThis PR obsoletes GO:0043713 and replaces it with GO:0140175 (2R)-2-hydroxyacid dehydrogenase (NAD+) activity, addressing issue #31966.",
+  "issue_comment": "GO:0043713 (R)-2-hydroxyisocaproate dehydrogenase activity has been successfully obsoleted and replaced with GO:0140175 (2R)-2-hydroxyacid dehydrogenase (NAD+) activity.",
+  "workflow_run": "25847321933",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25847321933",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/477"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Obsolete GO:1905353 and GO:0097711 ciliary terms",
+  "issue_comment": "# Obsoletion Complete: GO:1905353 and GO:0097711\n\nThe requested obsoletion has been completed successfully.",
+  "workflow_run": "25640382064",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/202"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Add protein O-linked glycosylation via N-acetylglucosamine (GO:7770021)",
+  "issue_comment": "## Term Created\n\nThe requested term has been created and committed in PR #<NN>.\n\n**New Term:**\n- **ID**: GO:7770021\n- **Name**: protein O-linked glycosylation via N-acetylglucosamine\n- **Synonyms**: \n  - protein O-linked GlcNAcylation (EXACT)\n  - protein O-linked-N-acetylglucosaminylation (EXACT)\n\nThis term can now be used to annotate Drosophila Ogt and Eogt genes (and their orthologs) at the same level of granularity as other O-linked glycosylation processes.\n\nThe definition correctly captures the key distinguishing feature of O-GlcNAcylation - that the single N-acetylglucosamine is not elongated into a larger oligosaccharide chain, unlike other O-linked glycosylations.",
+  "workflow_run": "25888549062",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25888549062",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/501"
+}

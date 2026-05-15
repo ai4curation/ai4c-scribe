@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Fix taxon restrictions for neurula and pharyngula stages",
+  "issue_comment": "# Issue #3478: 'late embryo' connected to effectively vertebrate-specific stages",
+  "workflow_run": "25888709081",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-uberon/tree/master/traces/25888709081",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-uberon/pull/336"
+}

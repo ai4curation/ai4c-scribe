@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Obsoletion of GO:0009095: aromatic amino acid biosynthetic process, prephenate pathway",
+  "issue_comment": "# Obsoletion of GO:0009095 Complete\n\nThe term **GO:0009095 \"aromatic amino acid biosynthetic process, prephenate pathway\"** has been successfully obsoleted.",
+  "workflow_run": "25640390658",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/224"
+}

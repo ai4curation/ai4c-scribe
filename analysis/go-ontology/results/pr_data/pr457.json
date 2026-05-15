@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Rename GO:1990334 to Species-Agnostic SIN/MEN Two-Component GAP Complex",
+  "issue_comment": "Changes committed in PR #<NN>.\n\nGO:1990334 has been renamed to \"SIN/MEN two-component GAP complex\" with the species-specific names preserved as narrow synonyms:\n- \"Bfa1-Bub2 complex\" (S. cerevisiae)\n- \"Byr4-Cdc16 GAP complex\" (S. pombe)\n\nThe definition has been updated to be species-agnostic, describing the conserved two-component GAP function in both the Mitotic Exit Network (MEN) of budding yeast and the Septation Initiation Network (SIN) of fission yeast. Both PMID:16449187 (S. cerevisiae) and PMID:9742395 (S. pombe) are included in the definition provenance.",
+  "workflow_run": "25847233143",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25847233143",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/457"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Update GO:0008805 and GO:0043885 Carbon Monoxide Dehydrogenase Terms",
+  "issue_comment": "# Issue #31984 - Updates to Carbon Monoxide Dehydrogenase Terms\n\nAll requested changes have been completed and committed.",
+  "workflow_run": "25640390190",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/217"
+}

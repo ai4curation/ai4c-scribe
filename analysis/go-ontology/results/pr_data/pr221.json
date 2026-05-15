@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR Description: Update GO:0140597 Definition",
+  "issue_comment": "# Issue Resolution\n\nChanges committed addressing the feedback in this issue.",
+  "workflow_run": "25640379277",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/221"
+}

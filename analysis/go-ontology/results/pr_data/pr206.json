@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR Description - Issue #31935 Resolution",
+  "issue_comment": "# Issue #31935 - Missing parent: GO:0061852\n\nChanges committed successfully to address this issue.",
+  "workflow_run": "25640383958",
+  "trace_url": null,
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/206"
+}

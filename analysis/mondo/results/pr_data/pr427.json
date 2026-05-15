@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR Summary: SCN5A-Related Cardiac Rhythm Disorder Terms",
+  "issue_comment": "# Issue #9707 Resolution\n\nThe requested ClinGen terms for SCN5A-related cardiac rhythm disorders have been successfully created and integrated into MONDO.",
+  "workflow_run": "25844234243",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25844234243",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-mondo/pull/427"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Add venom-mediated activation of inflammatory response (GO:7770071)",
+  "issue_comment": "## New term added\n\nI've successfully added the new term **venom-mediated activation of inflammatory response** (GO:7770071) as requested.\n\n**Term details:**\n- **ID:** GO:7770071 (temporary ID)\n- **Name:** venom-mediated activation of inflammatory response\n- **Synonym:** venom-mediated inflammation (BROAD)\n- **Definition:** \"A process by which an organism causes inflammatory response in another organism via the action of a venom.\"\n- **Parent term:** GO:0035738 (venom-mediated perturbation of biological process)\n- **References:** PMID:19000915, PMID:32024243\n\nBoth PMIDs were validated and support the biological accuracy of this term. The research confirms that snake venom metalloproteinases induce inflammatory responses characterized by edema, leukocyte infiltration, and release of inflammatory mediators such as TNF-\u03b1.\n\nThe term follows established design patterns for venom-mediated terms in GO, with a simple is_a relationship to the parent term (consistent with other venom-mediated terms like venom-mediated edema and venom-mediated hemorrhage).\n\nChanges committed in PR #<NN>.\n\n---",
+  "workflow_run": "25752331954",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25752331954",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/384"
+}

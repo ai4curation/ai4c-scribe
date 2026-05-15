@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# New Term: Ferritinophagy (GO:7770069)\n\nThis PR adds a new biological process term for ferritinophagy in response to issue #30894.",
+  "issue_comment": "The new term for ferritinophagy has been successfully added to the ontology.\n\n**Term created:**\n- **ID:** GO:7770069\n- **Name:** ferritinophagy\n- **Synonym:** ferritin-specific autophagy (EXACT)\n- **Definition:** \"The selective degradation of ferritin to release iron by macroautophagy.\"\n- **Parent:** GO:0016236 (macroautophagy)\n- **References:** PMID:25327288, PMID:26436293, PMID:38714719\n\nThe term follows the established design pattern for selective autophagy processes and is consistent with other Xphagy terms like mitophagy, lipophagy, and glycophagy. All three PMIDs have been validated and support the biological process described.\n\nChanges committed in PR #<NN>",
+  "workflow_run": "25847210350",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25847210350",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/467"
+}

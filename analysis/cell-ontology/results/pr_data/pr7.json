@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR Comments for Issue #3454",
+  "issue_comment": "# Issue #3454 Resolution\n\nChanges have been committed to address the removal of CD44-high and CD122-high markers from CD45RO-positive memory T cells.",
+  "workflow_run": "25589638055",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-cl/tree/master/traces/25589638055",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-cl/pull/7"
+}

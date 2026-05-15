@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Update carbon monoxide dehydrogenase terms to align with EC/RHEA definitions\n\nThis PR addresses issue #31984 by updating GO:0008805 and GO:0043885 to align with authoritative EC and RHEA nomenclature and reaction definitions.",
+  "issue_comment": "All requested changes have been completed and committed in PR #<NN>.",
+  "workflow_run": "25847339280",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25847339280",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/482"
+}

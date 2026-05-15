@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Obsolete GO:0008785 alkyl hydroperoxide reductase activity (Issue #31961)",
+  "issue_comment": "# Issue #31961: Obsolete GO:0008785 alkyl hydroperoxide reductase activity",
+  "workflow_run": "25589643364",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25589643364",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/33"
+}

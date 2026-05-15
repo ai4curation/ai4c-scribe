@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR Description: Fix Tracheal Mucosa Logical Definition",
+  "issue_comment": "# Issue #3617 Resolution\n\nThe parent-child relationship issue between UBERON:0000379 (tracheal mucosa) and UBERON:0001826 (nasal cavity mucosa) has been fixed.",
+  "workflow_run": "25762131336",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-uberon/tree/master/traces/25762131336",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-uberon/pull/191"
+}

@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Rename GO:1990334 to species-agnostic \"SIN/MEN two-component GAP complex\"",
+  "issue_comment": "Changes committed in PR #<NN>.\n\nI've successfully renamed GO:1990334 to be species-agnostic as requested. The term is now called \"SIN/MEN two-component GAP complex\" with the species-specific names preserved as narrow synonyms.",
+  "workflow_run": "25774206750",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25774206750",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/416"
+}

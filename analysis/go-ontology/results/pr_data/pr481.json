@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Add new term: protein O-linked glycosylation via N-acetylglucosamine (GO:7770074)\n\nThis PR addresses issue #32044 by creating a new biological process term for protein O-linked glycosylation via N-acetylglucosamine (O-GlcNAcylation).",
+  "issue_comment": "The requested term \"protein O-linked glycosylation via N-acetylglucosamine\" has been successfully created as **GO:7770074** and committed in PR #<NN>.",
+  "workflow_run": "25847357965",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25847357965",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/481"
+}

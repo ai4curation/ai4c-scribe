@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Update GO:0061852 - Add cargo receptor complex parent and refine definition",
+  "issue_comment": "Changes committed in PR #<NN>.",
+  "workflow_run": "25774212632",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25774212632",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-go/pull/415"
+}
