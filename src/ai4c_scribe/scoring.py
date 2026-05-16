@@ -359,12 +359,16 @@ def score_eval_repo(
     if not cases:
         return []
 
-    # Get all PRs from the eval repo
+    # Get all PRs from the eval repo.
     # Note: requesting additions/deletions causes 502 on repos with 300+ PRs,
     # so we fetch just number+title and check for empty diffs downstream.
+    # The limit must exceed the total PR count or the OLDEST runs are silently
+    # dropped as the repo grows (mondo already has 650+ eval PRs). number+title
+    # alone is cheap, so we can safely request a very high ceiling.
+    PR_LIST_LIMIT = 5000
     r = subprocess.run(
         ["gh", "pr", "list", "--repo", f"ai4curation/{eval_repo}",
-         "--limit", "500", "--state", "all",
+         "--limit", str(PR_LIST_LIMIT), "--state", "all",
          "--json", "number,title"],
         capture_output=True, text=True,
     )
@@ -372,6 +376,12 @@ def score_eval_repo(
         return []
 
     prs = json.loads(r.stdout)
+    if len(prs) >= PR_LIST_LIMIT:
+        raise RuntimeError(
+            f"{eval_repo}: gh pr list returned {len(prs)} PRs, hitting the "
+            f"{PR_LIST_LIMIT} ceiling — older runs may be silently dropped. "
+            f"Increase PR_LIST_LIMIT."
+        )
     records = []
 
     for pr in prs:
