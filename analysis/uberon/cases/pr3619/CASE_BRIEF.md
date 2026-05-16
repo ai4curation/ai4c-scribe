@@ -66,8 +66,8 @@ index 1554053e6..2c38526e9 100644
 
 ## Agent Attempts (3)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | [#322](https://github.com/ai4curation/eval-ont-agent-uberon/pull/322) | [attempt](attempts/pr322.md) |
-| 2 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | [#191](https://github.com/ai4curation/eval-ont-agent-uberon/pull/191) | [attempt](attempts/pr191.md) |
-| 3 | claude-opus-4.7 | claude | 0.750 | 0.750 | 0.750 | [#256](https://github.com/ai4curation/eval-ont-agent-uberon/pull/256) | [attempt](attempts/pr256.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#322](https://github.com/ai4curation/eval-ont-agent-uberon/pull/322) | [attempt](attempts/pr322.md) |
+| 2 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#191](https://github.com/ai4curation/eval-ont-agent-uberon/pull/191) | [attempt](attempts/pr191.md) |
+| 3 | claude-opus-4.7 | claude | 0.750 | 0.750 | 0.750 | `05c99b1` | [#256](https://github.com/ai4curation/eval-ont-agent-uberon/pull/256) | [attempt](attempts/pr256.md) |

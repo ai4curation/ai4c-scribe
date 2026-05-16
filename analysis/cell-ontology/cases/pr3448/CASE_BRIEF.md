@@ -108,11 +108,11 @@ index 10ac50c7c..8cf47ec60 100644
 
 ## Agent Attempts (6)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.522 | 0.375 | 0.857 | [#227](https://github.com/ai4curation/eval-ont-agent-cl/pull/227) | [attempt](attempts/pr227.md) |
-| 2 | claude-haiku-4.5 | claude | 0.500 | 0.375 | 0.750 | [#98](https://github.com/ai4curation/eval-ont-agent-cl/pull/98) | [attempt](attempts/pr98.md) |
-| 3 | gpt-5.5 | opencode | 0.462 | 0.375 | 0.600 | [#72](https://github.com/ai4curation/eval-ont-agent-cl/pull/72) | [attempt](attempts/pr72.md) |
-| 4 | gpt-5.5 | opencode | 0.462 | 0.375 | 0.600 | [#52](https://github.com/ai4curation/eval-ont-agent-cl/pull/52) | [attempt](attempts/pr52.md) |
-| 5 | gpt-5.5 | codex | 0.462 | 0.375 | 0.600 | [#35](https://github.com/ai4curation/eval-ont-agent-cl/pull/35) | [attempt](attempts/pr35.md) |
-| 6 | gpt-5.4 | codex | 0.429 | 0.375 | 0.500 | [#78](https://github.com/ai4curation/eval-ont-agent-cl/pull/78) | [attempt](attempts/pr78.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 0.522 | 0.375 | 0.857 | `30e40d6` | [#227](https://github.com/ai4curation/eval-ont-agent-cl/pull/227) | [attempt](attempts/pr227.md) |
+| 2 | claude-haiku-4.5 | claude | 0.500 | 0.375 | 0.750 | `3159b5d` | [#98](https://github.com/ai4curation/eval-ont-agent-cl/pull/98) | [attempt](attempts/pr98.md) |
+| 3 | gpt-5.5 | opencode | 0.462 | 0.375 | 0.600 | `26c8a14` | [#72](https://github.com/ai4curation/eval-ont-agent-cl/pull/72) | [attempt](attempts/pr72.md) |
+| 4 | gpt-5.5 | opencode | 0.462 | 0.375 | 0.600 | `26c8a14` | [#52](https://github.com/ai4curation/eval-ont-agent-cl/pull/52) | [attempt](attempts/pr52.md) |
+| 5 | gpt-5.5 | codex | 0.462 | 0.375 | 0.600 | `f2beb64` | [#35](https://github.com/ai4curation/eval-ont-agent-cl/pull/35) | [attempt](attempts/pr35.md) |
+| 6 | gpt-5.4 | codex | 0.429 | 0.375 | 0.500 | `f33cb1d` | [#78](https://github.com/ai4curation/eval-ont-agent-cl/pull/78) | [attempt](attempts/pr78.md) |

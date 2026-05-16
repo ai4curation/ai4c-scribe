@@ -113,15 +113,15 @@ index 1d63d0424f..29e09aaed4 100644
 
 ## Agent Attempts (10)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | [#520](https://github.com/ai4curation/eval-ont-agent-mondo/pull/520) | [attempt](attempts/pr520.md) |
-| 2 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | [#488](https://github.com/ai4curation/eval-ont-agent-mondo/pull/488) | [attempt](attempts/pr488.md) |
-| 3 | claude-opus-4.7 | claude | 0.769 | 0.667 | 0.909 | [#397](https://github.com/ai4curation/eval-ont-agent-mondo/pull/397) | [attempt](attempts/pr397.md) |
-| 4 | kimi-k2.6 | opencode | 0.769 | 0.667 | 0.909 | [#251](https://github.com/ai4curation/eval-ont-agent-mondo/pull/251) | [attempt](attempts/pr251.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.741 | 0.667 | 0.833 | [#435](https://github.com/ai4curation/eval-ont-agent-mondo/pull/435) | [attempt](attempts/pr435.md) |
-| 6 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | [#82](https://github.com/ai4curation/eval-ont-agent-mondo/pull/82) | [attempt](attempts/pr82.md) |
-| 7 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | [#63](https://github.com/ai4curation/eval-ont-agent-mondo/pull/63) | [attempt](attempts/pr63.md) |
-| 8 | gpt-5.5 | codex | 0.741 | 0.667 | 0.833 | [#44](https://github.com/ai4curation/eval-ont-agent-mondo/pull/44) | [attempt](attempts/pr44.md) |
-| 9 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | [#291](https://github.com/ai4curation/eval-ont-agent-mondo/pull/291) | [attempt](attempts/pr291.md) |
-| 10 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | [#206](https://github.com/ai4curation/eval-ont-agent-mondo/pull/206) | [attempt](attempts/pr206.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#520](https://github.com/ai4curation/eval-ont-agent-mondo/pull/520) | [attempt](attempts/pr520.md) |
+| 2 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#488](https://github.com/ai4curation/eval-ont-agent-mondo/pull/488) | [attempt](attempts/pr488.md) |
+| 3 | claude-opus-4.7 | claude | 0.769 | 0.667 | 0.909 | `4514441` | [#397](https://github.com/ai4curation/eval-ont-agent-mondo/pull/397) | [attempt](attempts/pr397.md) |
+| 4 | kimi-k2.6 | opencode | 0.769 | 0.667 | 0.909 | `c5db975` | [#251](https://github.com/ai4curation/eval-ont-agent-mondo/pull/251) | [attempt](attempts/pr251.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.741 | 0.667 | 0.833 | `65a5b11` | [#435](https://github.com/ai4curation/eval-ont-agent-mondo/pull/435) | [attempt](attempts/pr435.md) |
+| 6 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#82](https://github.com/ai4curation/eval-ont-agent-mondo/pull/82) | [attempt](attempts/pr82.md) |
+| 7 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#63](https://github.com/ai4curation/eval-ont-agent-mondo/pull/63) | [attempt](attempts/pr63.md) |
+| 8 | gpt-5.5 | codex | 0.741 | 0.667 | 0.833 | `fc7a3ab` | [#44](https://github.com/ai4curation/eval-ont-agent-mondo/pull/44) | [attempt](attempts/pr44.md) |
+| 9 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#291](https://github.com/ai4curation/eval-ont-agent-mondo/pull/291) | [attempt](attempts/pr291.md) |
+| 10 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#206](https://github.com/ai4curation/eval-ont-agent-mondo/pull/206) | [attempt](attempts/pr206.md) |

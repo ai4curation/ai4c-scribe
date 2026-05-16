@@ -130,7 +130,7 @@ index a84557c7c..0479f338d 100644
 
 ## Agent Attempts (2)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.379 | 0.440 | 0.333 | [#250](https://github.com/ai4curation/eval-ont-agent-uberon/pull/250) | [attempt](attempts/pr250.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.364 | 0.400 | 0.333 | [#318](https://github.com/ai4curation/eval-ont-agent-uberon/pull/318) | [attempt](attempts/pr318.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-opus-4.7 | claude | 0.379 | 0.440 | 0.333 | `65caaa1` | [#250](https://github.com/ai4curation/eval-ont-agent-uberon/pull/250) | [attempt](attempts/pr250.md) |
+| 2 | claude-sonnet-4.5 | claude | 0.364 | 0.400 | 0.333 | `a806812` | [#318](https://github.com/ai4curation/eval-ont-agent-uberon/pull/318) | [attempt](attempts/pr318.md) |

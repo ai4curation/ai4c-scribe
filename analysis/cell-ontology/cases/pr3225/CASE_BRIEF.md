@@ -29,6 +29,8 @@ domain_area: ontology-maintenance
 
 `obsoletion` `hard` `loosely_scoped` `approved_first_time` `unusable`
 
+> !!! **unusable eval case** — PR was auto-linked to issue #3224 (skos:prefLabel import bug) but actually addresses issue #3010 (obsolete structural cell). Agent given #3224 cannot produce the expected diff.
+
 ## Context
 
 Issue #3010 requested obsoleting CL:0000293 "structural cell" — a grouping term with only two subclasses that was deemed unsustainable. Note: the PR was automatically linked to issue #3224 (a `skos:prefLabel` import bug from MBAO) but the actual work is driven by #3010, as evidenced by the `IAO:0000233` tracking annotation in the diff.

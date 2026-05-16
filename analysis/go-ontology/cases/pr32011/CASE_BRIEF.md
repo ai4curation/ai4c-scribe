@@ -79,14 +79,14 @@ index 37f74ff37..f6a5e38a4 100644
 
 ## Agent Attempts (9)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | [#467](https://github.com/ai4curation/eval-ont-agent-go/pull/467) | [attempt](attempts/pr467.md) |
-| 2 | claude-sonnet-4.5 | copilot | 1.000 | 1.000 | 1.000 | [#383](https://github.com/ai4curation/eval-ont-agent-go/pull/383) | [attempt](attempts/pr383.md) |
-| 3 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | [#335](https://github.com/ai4curation/eval-ont-agent-go/pull/335) | [attempt](attempts/pr335.md) |
-| 4 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | [#255](https://github.com/ai4curation/eval-ont-agent-go/pull/255) | [attempt](attempts/pr255.md) |
-| 5 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | [#194](https://github.com/ai4curation/eval-ont-agent-go/pull/194) | [attempt](attempts/pr194.md) |
-| 6 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | [#176](https://github.com/ai4curation/eval-ont-agent-go/pull/176) | [attempt](attempts/pr176.md) |
-| 7 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | [#102](https://github.com/ai4curation/eval-ont-agent-go/pull/102) | [attempt](attempts/pr102.md) |
-| 8 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | [#81](https://github.com/ai4curation/eval-ont-agent-go/pull/81) | [attempt](attempts/pr81.md) |
-| 9 | gpt-5.5 | codex | 0.941 | 1.000 | 0.889 | [#55](https://github.com/ai4curation/eval-ont-agent-go/pull/55) | [attempt](attempts/pr55.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `91a7e00` | [#467](https://github.com/ai4curation/eval-ont-agent-go/pull/467) | [attempt](attempts/pr467.md) |
+| 2 | claude-sonnet-4.5 | copilot | 1.000 | 1.000 | 1.000 | `48014c9` | [#383](https://github.com/ai4curation/eval-ont-agent-go/pull/383) | [attempt](attempts/pr383.md) |
+| 3 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `c7b44c4` | [#335](https://github.com/ai4curation/eval-ont-agent-go/pull/335) | [attempt](attempts/pr335.md) |
+| 4 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | `e423c26` | [#255](https://github.com/ai4curation/eval-ont-agent-go/pull/255) | [attempt](attempts/pr255.md) |
+| 5 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `3014c59` | [#194](https://github.com/ai4curation/eval-ont-agent-go/pull/194) | [attempt](attempts/pr194.md) |
+| 6 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `8686f6f` | [#176](https://github.com/ai4curation/eval-ont-agent-go/pull/176) | [attempt](attempts/pr176.md) |
+| 7 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | `fc67f17` | [#102](https://github.com/ai4curation/eval-ont-agent-go/pull/102) | [attempt](attempts/pr102.md) |
+| 8 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | `fc67f17` | [#81](https://github.com/ai4curation/eval-ont-agent-go/pull/81) | [attempt](attempts/pr81.md) |
+| 9 | gpt-5.5 | codex | 0.941 | 1.000 | 0.889 | `02c093d` | [#55](https://github.com/ai4curation/eval-ont-agent-go/pull/55) | [attempt](attempts/pr55.md) |

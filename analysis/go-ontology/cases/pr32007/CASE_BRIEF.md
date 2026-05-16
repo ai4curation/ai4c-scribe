@@ -58,17 +58,17 @@ index ccb7aa216..8262d5a8a 100644
 
 ## Agent Attempts (12)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | copilot | 0.667 | 1.000 | 0.500 | [#403](https://github.com/ai4curation/eval-ont-agent-go/pull/403) | [attempt](attempts/pr403.md) |
-| 2 | claude-haiku-4.5 | claude | 0.667 | 1.000 | 0.500 | [#221](https://github.com/ai4curation/eval-ont-agent-go/pull/221) | [attempt](attempts/pr221.md) |
-| 3 | gpt-5.5 | codex | 0.667 | 1.000 | 0.500 | [#119](https://github.com/ai4curation/eval-ont-agent-go/pull/119) | [attempt](attempts/pr119.md) |
-| 4 | claude-sonnet-4.5 | claude | 0.500 | 1.000 | 0.333 | [#490](https://github.com/ai4curation/eval-ont-agent-go/pull/490) | [attempt](attempts/pr490.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.500 | 1.000 | 0.333 | [#486](https://github.com/ai4curation/eval-ont-agent-go/pull/486) | [attempt](attempts/pr486.md) |
-| 6 | gpt-5.4 | codex | 0.500 | 1.000 | 0.333 | [#182](https://github.com/ai4curation/eval-ont-agent-go/pull/182) | [attempt](attempts/pr182.md) |
-| 7 | gpt-5.5 | opencode | 0.500 | 1.000 | 0.333 | [#169](https://github.com/ai4curation/eval-ont-agent-go/pull/169) | [attempt](attempts/pr169.md) |
-| 8 | gpt-5.5 | opencode | 0.500 | 1.000 | 0.333 | [#139](https://github.com/ai4curation/eval-ont-agent-go/pull/139) | [attempt](attempts/pr139.md) |
-| 9 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | [#524](https://github.com/ai4curation/eval-ont-agent-go/pull/524) | [attempt](attempts/pr524.md) |
-| 10 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | [#443](https://github.com/ai4curation/eval-ont-agent-go/pull/443) | [attempt](attempts/pr443.md) |
-| 11 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | [#323](https://github.com/ai4curation/eval-ont-agent-go/pull/323) | [attempt](attempts/pr323.md) |
-| 12 | kimi-k2.6 | opencode | 0.000 | 0.000 | 0.000 | [#284](https://github.com/ai4curation/eval-ont-agent-go/pull/284) | [attempt](attempts/pr284.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | copilot | 0.667 | 1.000 | 0.500 | `8262d5a` | [#403](https://github.com/ai4curation/eval-ont-agent-go/pull/403) | [attempt](attempts/pr403.md) |
+| 2 | claude-haiku-4.5 | claude | 0.667 | 1.000 | 0.500 | `8262d5a` | [#221](https://github.com/ai4curation/eval-ont-agent-go/pull/221) | [attempt](attempts/pr221.md) |
+| 3 | gpt-5.5 | codex | 0.667 | 1.000 | 0.500 | `cf5bf65` | [#119](https://github.com/ai4curation/eval-ont-agent-go/pull/119) | [attempt](attempts/pr119.md) |
+| 4 | claude-sonnet-4.5 | claude | 0.500 | 1.000 | 0.333 | `ec98408` | [#490](https://github.com/ai4curation/eval-ont-agent-go/pull/490) | [attempt](attempts/pr490.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.500 | 1.000 | 0.333 | `ec98408` | [#486](https://github.com/ai4curation/eval-ont-agent-go/pull/486) | [attempt](attempts/pr486.md) |
+| 6 | gpt-5.4 | codex | 0.500 | 1.000 | 0.333 | `2631049` | [#182](https://github.com/ai4curation/eval-ont-agent-go/pull/182) | [attempt](attempts/pr182.md) |
+| 7 | gpt-5.5 | opencode | 0.500 | 1.000 | 0.333 | `59ca8d7` | [#169](https://github.com/ai4curation/eval-ont-agent-go/pull/169) | [attempt](attempts/pr169.md) |
+| 8 | gpt-5.5 | opencode | 0.500 | 1.000 | 0.333 | `59ca8d7` | [#139](https://github.com/ai4curation/eval-ont-agent-go/pull/139) | [attempt](attempts/pr139.md) |
+| 9 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | `ccb7aa2` | [#524](https://github.com/ai4curation/eval-ont-agent-go/pull/524) | [attempt](attempts/pr524.md) |
+| 10 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `ccb7aa2` | [#443](https://github.com/ai4curation/eval-ont-agent-go/pull/443) | [attempt](attempts/pr443.md) |
+| 11 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `ccb7aa2` | [#323](https://github.com/ai4curation/eval-ont-agent-go/pull/323) | [attempt](attempts/pr323.md) |
+| 12 | kimi-k2.6 | opencode | 0.000 | 0.000 | 0.000 | `ccb7aa2` | [#284](https://github.com/ai4curation/eval-ont-agent-go/pull/284) | [attempt](attempts/pr284.md) |

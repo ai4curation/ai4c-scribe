@@ -119,17 +119,17 @@ index a85b5cc9a..455454c0f 100644
 
 ## Agent Attempts (12)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | [#170](https://github.com/ai4curation/eval-ont-agent-go/pull/170) | [attempt](attempts/pr170.md) |
-| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | [#158](https://github.com/ai4curation/eval-ont-agent-go/pull/158) | [attempt](attempts/pr158.md) |
-| 3 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | [#131](https://github.com/ai4curation/eval-ont-agent-go/pull/131) | [attempt](attempts/pr131.md) |
-| 4 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | [#101](https://github.com/ai4curation/eval-ont-agent-go/pull/101) | [attempt](attempts/pr101.md) |
-| 5 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | [#68](https://github.com/ai4curation/eval-ont-agent-go/pull/68) | [attempt](attempts/pr68.md) |
-| 6 | claude-sonnet-4.5 | claude | 0.964 | 0.952 | 0.976 | [#463](https://github.com/ai4curation/eval-ont-agent-go/pull/463) | [attempt](attempts/pr463.md) |
-| 7 | kimi-k2.6 | opencode | 0.964 | 0.952 | 0.976 | [#265](https://github.com/ai4curation/eval-ont-agent-go/pull/265) | [attempt](attempts/pr265.md) |
-| 8 | gpt-5.5 | opencode | 0.964 | 0.952 | 0.976 | [#86](https://github.com/ai4curation/eval-ont-agent-go/pull/86) | [attempt](attempts/pr86.md) |
-| 9 | claude-sonnet-4.5 | copilot | 0.952 | 0.952 | 0.952 | [#382](https://github.com/ai4curation/eval-ont-agent-go/pull/382) | [attempt](attempts/pr382.md) |
-| 10 | claude-opus-4.7 | claude | 0.952 | 0.952 | 0.952 | [#334](https://github.com/ai4curation/eval-ont-agent-go/pull/334) | [attempt](attempts/pr334.md) |
-| 11 | claude-haiku-4.5 | claude | 0.952 | 0.952 | 0.952 | [#202](https://github.com/ai4curation/eval-ont-agent-go/pull/202) | [attempt](attempts/pr202.md) |
-| 12 | gpt-5.4 | codex | 0.952 | 0.952 | 0.952 | [#178](https://github.com/ai4curation/eval-ont-agent-go/pull/178) | [attempt](attempts/pr178.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `455454c` | [#170](https://github.com/ai4curation/eval-ont-agent-go/pull/170) | [attempt](attempts/pr170.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `455454c` | [#158](https://github.com/ai4curation/eval-ont-agent-go/pull/158) | [attempt](attempts/pr158.md) |
+| 3 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | `455454c` | [#131](https://github.com/ai4curation/eval-ont-agent-go/pull/131) | [attempt](attempts/pr131.md) |
+| 4 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `455454c` | [#101](https://github.com/ai4curation/eval-ont-agent-go/pull/101) | [attempt](attempts/pr101.md) |
+| 5 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | `455454c` | [#68](https://github.com/ai4curation/eval-ont-agent-go/pull/68) | [attempt](attempts/pr68.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.964 | 0.952 | 0.976 | `c56de82` | [#463](https://github.com/ai4curation/eval-ont-agent-go/pull/463) | [attempt](attempts/pr463.md) |
+| 7 | kimi-k2.6 | opencode | 0.964 | 0.952 | 0.976 | `75615e0` | [#265](https://github.com/ai4curation/eval-ont-agent-go/pull/265) | [attempt](attempts/pr265.md) |
+| 8 | gpt-5.5 | opencode | 0.964 | 0.952 | 0.976 | `6d5ded1` | [#86](https://github.com/ai4curation/eval-ont-agent-go/pull/86) | [attempt](attempts/pr86.md) |
+| 9 | claude-sonnet-4.5 | copilot | 0.952 | 0.952 | 0.952 | `8ff7469` | [#382](https://github.com/ai4curation/eval-ont-agent-go/pull/382) | [attempt](attempts/pr382.md) |
+| 10 | claude-opus-4.7 | claude | 0.952 | 0.952 | 0.952 | `12d7182` | [#334](https://github.com/ai4curation/eval-ont-agent-go/pull/334) | [attempt](attempts/pr334.md) |
+| 11 | claude-haiku-4.5 | claude | 0.952 | 0.952 | 0.952 | `a887d5e` | [#202](https://github.com/ai4curation/eval-ont-agent-go/pull/202) | [attempt](attempts/pr202.md) |
+| 12 | gpt-5.4 | codex | 0.952 | 0.952 | 0.952 | `d99825a` | [#178](https://github.com/ai4curation/eval-ont-agent-go/pull/178) | [attempt](attempts/pr178.md) |

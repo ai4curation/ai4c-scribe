@@ -28,6 +28,8 @@ best_model: claude-sonnet-4.5
 
 `reclassification` `medium` `tightly_scoped` `multiple_rounds` `noisy`
 
+> **noisy diff** — Protege serialization artifacts: CL_4072017/CL_4072018 declaration and stanza reordering, oboInOwl:hasDbXref comment label change. Only 2 of 5 diff hunks are real changes.
+
 ## Context
 
 Tendon cell and otic fibrocyte were incorrectly classified as children of fibrocyte in the CL hierarchy. Despite the name "otic fibrocyte," these cells are biologically distinct from true fibrocytes (which are quiescent fibroblast-derived cells). The otic fibrocytes of the spiral ligament and tendon cells needed to be moved to more appropriate parent classes.
@@ -129,13 +131,13 @@ index 0a185896b..620efebd0 100644
 
 ## Agent Attempts (8)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.412 | 0.318 | 0.583 | [#229](https://github.com/ai4curation/eval-ont-agent-cl/pull/229) | [attempt](attempts/pr229.md) |
-| 2 | claude-haiku-4.5 | claude | 0.353 | 0.273 | 0.500 | [#86](https://github.com/ai4curation/eval-ont-agent-cl/pull/86) | [attempt](attempts/pr86.md) |
-| 3 | gpt-5.4 | codex | 0.343 | 0.273 | 0.462 | [#77](https://github.com/ai4curation/eval-ont-agent-cl/pull/77) | [attempt](attempts/pr77.md) |
-| 4 | gemma-4-31b | opencode | 0.333 | 0.227 | 0.625 | [#131](https://github.com/ai4curation/eval-ont-agent-cl/pull/131) | [attempt](attempts/pr131.md) |
-| 5 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | [#55](https://github.com/ai4curation/eval-ont-agent-cl/pull/55) | [attempt](attempts/pr55.md) |
-| 6 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | [#37](https://github.com/ai4curation/eval-ont-agent-cl/pull/37) | [attempt](attempts/pr37.md) |
-| 7 | gpt-5.5 | codex | 0.316 | 0.273 | 0.375 | [#79](https://github.com/ai4curation/eval-ont-agent-cl/pull/79) | [attempt](attempts/pr79.md) |
-| 8 | claude-opus-4.7 | claude | 0.235 | 0.182 | 0.333 | [#171](https://github.com/ai4curation/eval-ont-agent-cl/pull/171) | [attempt](attempts/pr171.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 0.412 | 0.318 | 0.583 | `af197aa` | [#229](https://github.com/ai4curation/eval-ont-agent-cl/pull/229) | [attempt](attempts/pr229.md) |
+| 2 | claude-haiku-4.5 | claude | 0.353 | 0.273 | 0.500 | `312c71d` | [#86](https://github.com/ai4curation/eval-ont-agent-cl/pull/86) | [attempt](attempts/pr86.md) |
+| 3 | gpt-5.4 | codex | 0.343 | 0.273 | 0.462 | `5edd5c4` | [#77](https://github.com/ai4curation/eval-ont-agent-cl/pull/77) | [attempt](attempts/pr77.md) |
+| 4 | gemma-4-31b | opencode | 0.333 | 0.227 | 0.625 | `29d488e` | [#131](https://github.com/ai4curation/eval-ont-agent-cl/pull/131) | [attempt](attempts/pr131.md) |
+| 5 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#55](https://github.com/ai4curation/eval-ont-agent-cl/pull/55) | [attempt](attempts/pr55.md) |
+| 6 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#37](https://github.com/ai4curation/eval-ont-agent-cl/pull/37) | [attempt](attempts/pr37.md) |
+| 7 | gpt-5.5 | codex | 0.316 | 0.273 | 0.375 | `dd0dde9` | [#79](https://github.com/ai4curation/eval-ont-agent-cl/pull/79) | [attempt](attempts/pr79.md) |
+| 8 | claude-opus-4.7 | claude | 0.235 | 0.182 | 0.333 | `4163841` | [#171](https://github.com/ai4curation/eval-ont-agent-cl/pull/171) | [attempt](attempts/pr171.md) |

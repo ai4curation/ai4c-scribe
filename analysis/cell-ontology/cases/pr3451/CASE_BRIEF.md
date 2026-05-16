@@ -77,6 +77,6 @@ index f04c89078..65bca8e3f 100644
 
 ## Agent Attempts (1)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | [#138](https://github.com/ai4curation/eval-ont-agent-cl/pull/138) | [attempt](attempts/pr138.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `0000000` | [#138](https://github.com/ai4curation/eval-ont-agent-cl/pull/138) | [attempt](attempts/pr138.md) |

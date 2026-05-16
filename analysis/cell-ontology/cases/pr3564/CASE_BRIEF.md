@@ -72,7 +72,7 @@ index 0e1a96337..decb9fc0f 100644
 
 ## Agent Attempts (2)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | [#210](https://github.com/ai4curation/eval-ont-agent-cl/pull/210) | [attempt](attempts/pr210.md) |
-| 2 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | [#149](https://github.com/ai4curation/eval-ont-agent-cl/pull/149) | [attempt](attempts/pr149.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `6da6106` | [#210](https://github.com/ai4curation/eval-ont-agent-cl/pull/210) | [attempt](attempts/pr210.md) |
+| 2 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `86c7e41` | [#149](https://github.com/ai4curation/eval-ont-agent-cl/pull/149) | [attempt](attempts/pr149.md) |

@@ -71,8 +71,8 @@ index 0a225c81e..123d89816 100644
 
 ## Agent Attempts (3)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | gemma-4-31b | opencode | 0.571 | 0.571 | 0.571 | [#120](https://github.com/ai4curation/eval-ont-agent-cl/pull/120) | [attempt](attempts/pr120.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.429 | 0.429 | 0.429 | [#198](https://github.com/ai4curation/eval-ont-agent-cl/pull/198) | [attempt](attempts/pr198.md) |
-| 3 | claude-haiku-4.5 | claude | 0.429 | 0.429 | 0.429 | [#140](https://github.com/ai4curation/eval-ont-agent-cl/pull/140) | [attempt](attempts/pr140.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gemma-4-31b | opencode | 0.571 | 0.571 | 0.571 | `ebc9dfc` | [#120](https://github.com/ai4curation/eval-ont-agent-cl/pull/120) | [attempt](attempts/pr120.md) |
+| 2 | claude-sonnet-4.5 | claude | 0.429 | 0.429 | 0.429 | `47f4a71` | [#198](https://github.com/ai4curation/eval-ont-agent-cl/pull/198) | [attempt](attempts/pr198.md) |
+| 3 | claude-haiku-4.5 | claude | 0.429 | 0.429 | 0.429 | `ba136d0` | [#140](https://github.com/ai4curation/eval-ont-agent-cl/pull/140) | [attempt](attempts/pr140.md) |

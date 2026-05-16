@@ -244,13 +244,13 @@ index b54fec4d5d..b145789506 100644
 
 ## Agent Attempts (8)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | gpt-5.5 | codex | 0.473 | 0.329 | 0.839 | [#17](https://github.com/ai4curation/eval-ont-agent-uberon/pull/17) | [attempt](attempts/pr17.md) |
-| 2 | gpt-5.4 | codex | 0.473 | 0.329 | 0.839 | [#12](https://github.com/ai4curation/eval-ont-agent-uberon/pull/12) | [attempt](attempts/pr12.md) |
-| 3 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | [#53](https://github.com/ai4curation/eval-ont-agent-uberon/pull/53) | [attempt](attempts/pr53.md) |
-| 4 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | [#35](https://github.com/ai4curation/eval-ont-agent-uberon/pull/35) | [attempt](attempts/pr35.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.073 | 0.038 | 1.000 | [#309](https://github.com/ai4curation/eval-ont-agent-uberon/pull/309) | [attempt](attempts/pr309.md) |
-| 6 | claude-opus-4.7 | claude | 0.073 | 0.038 | 1.000 | [#233](https://github.com/ai4curation/eval-ont-agent-uberon/pull/233) | [attempt](attempts/pr233.md) |
-| 7 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | [#178](https://github.com/ai4curation/eval-ont-agent-uberon/pull/178) | [attempt](attempts/pr178.md) |
-| 8 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | [#92](https://github.com/ai4curation/eval-ont-agent-uberon/pull/92) | [attempt](attempts/pr92.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.5 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#17](https://github.com/ai4curation/eval-ont-agent-uberon/pull/17) | [attempt](attempts/pr17.md) |
+| 2 | gpt-5.4 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#12](https://github.com/ai4curation/eval-ont-agent-uberon/pull/12) | [attempt](attempts/pr12.md) |
+| 3 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#53](https://github.com/ai4curation/eval-ont-agent-uberon/pull/53) | [attempt](attempts/pr53.md) |
+| 4 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#35](https://github.com/ai4curation/eval-ont-agent-uberon/pull/35) | [attempt](attempts/pr35.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#309](https://github.com/ai4curation/eval-ont-agent-uberon/pull/309) | [attempt](attempts/pr309.md) |
+| 6 | claude-opus-4.7 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#233](https://github.com/ai4curation/eval-ont-agent-uberon/pull/233) | [attempt](attempts/pr233.md) |
+| 7 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#178](https://github.com/ai4curation/eval-ont-agent-uberon/pull/178) | [attempt](attempts/pr178.md) |
+| 8 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#92](https://github.com/ai4curation/eval-ont-agent-uberon/pull/92) | [attempt](attempts/pr92.md) |

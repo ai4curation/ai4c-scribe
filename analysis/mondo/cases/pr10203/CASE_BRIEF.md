@@ -77,10 +77,10 @@ index 1d63d0424f..ca564db144 100644
 
 ## Agent Attempts (5)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | kimi-k2.6 | opencode | 0.222 | 0.167 | 0.333 | [#278](https://github.com/ai4curation/eval-ont-agent-mondo/pull/278) | [attempt](attempts/pr278.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.154 | 0.167 | 0.143 | [#455](https://github.com/ai4curation/eval-ont-agent-mondo/pull/455) | [attempt](attempts/pr455.md) |
-| 3 | gpt-5.5 | codex | 0.143 | 0.167 | 0.125 | [#557](https://github.com/ai4curation/eval-ont-agent-mondo/pull/557) | [attempt](attempts/pr557.md) |
-| 4 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | [#398](https://github.com/ai4curation/eval-ont-agent-mondo/pull/398) | [attempt](attempts/pr398.md) |
-| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | [#316](https://github.com/ai4curation/eval-ont-agent-mondo/pull/316) | [attempt](attempts/pr316.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | kimi-k2.6 | opencode | 0.222 | 0.167 | 0.333 | `137bd53` | [#278](https://github.com/ai4curation/eval-ont-agent-mondo/pull/278) | [attempt](attempts/pr278.md) |
+| 2 | claude-sonnet-4.5 | claude | 0.154 | 0.167 | 0.143 | `7bc233a` | [#455](https://github.com/ai4curation/eval-ont-agent-mondo/pull/455) | [attempt](attempts/pr455.md) |
+| 3 | gpt-5.5 | codex | 0.143 | 0.167 | 0.125 | `cdd2df1` | [#557](https://github.com/ai4curation/eval-ont-agent-mondo/pull/557) | [attempt](attempts/pr557.md) |
+| 4 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `5287c2d` | [#398](https://github.com/ai4curation/eval-ont-agent-mondo/pull/398) | [attempt](attempts/pr398.md) |
+| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `c86ffa9` | [#316](https://github.com/ai4curation/eval-ont-agent-mondo/pull/316) | [attempt](attempts/pr316.md) |

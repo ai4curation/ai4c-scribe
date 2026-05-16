@@ -136,10 +136,10 @@ index d56b657c3b..9a9b9ba1d2 100644
 
 ## Agent Attempts (5)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | [#235](https://github.com/ai4curation/eval-ont-agent-uberon/pull/235) | [attempt](attempts/pr235.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | [#290](https://github.com/ai4curation/eval-ont-agent-uberon/pull/290) | [attempt](attempts/pr290.md) |
-| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | [#280](https://github.com/ai4curation/eval-ont-agent-uberon/pull/280) | [attempt](attempts/pr280.md) |
-| 4 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | [#194](https://github.com/ai4curation/eval-ont-agent-uberon/pull/194) | [attempt](attempts/pr194.md) |
-| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | [#161](https://github.com/ai4curation/eval-ont-agent-uberon/pull/161) | [attempt](attempts/pr161.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `13f47f3` | [#235](https://github.com/ai4curation/eval-ont-agent-uberon/pull/235) | [attempt](attempts/pr235.md) |
+| 2 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `995a97d` | [#290](https://github.com/ai4curation/eval-ont-agent-uberon/pull/290) | [attempt](attempts/pr290.md) |
+| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `2fc7700` | [#280](https://github.com/ai4curation/eval-ont-agent-uberon/pull/280) | [attempt](attempts/pr280.md) |
+| 4 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `d953654` | [#194](https://github.com/ai4curation/eval-ont-agent-uberon/pull/194) | [attempt](attempts/pr194.md) |
+| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `2fc7700` | [#161](https://github.com/ai4curation/eval-ont-agent-uberon/pull/161) | [attempt](attempts/pr161.md) |

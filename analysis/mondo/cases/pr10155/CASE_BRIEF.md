@@ -246,11 +246,11 @@ index 27fc3d5620..569314b337 100644
 
 ## Agent Attempts (6)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | [#263](https://github.com/ai4curation/eval-ont-agent-mondo/pull/263) | [attempt](attempts/pr263.md) |
-| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | [#90](https://github.com/ai4curation/eval-ont-agent-mondo/pull/90) | [attempt](attempts/pr90.md) |
-| 3 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | [#71](https://github.com/ai4curation/eval-ont-agent-mondo/pull/71) | [attempt](attempts/pr71.md) |
-| 4 | gpt-5.5 | codex | 0.002 | 0.001 | 1.000 | [#153](https://github.com/ai4curation/eval-ont-agent-mondo/pull/153) | [attempt](attempts/pr153.md) |
-| 5 | gpt-5.5 | codex | 0.002 | 0.001 | 1.000 | [#47](https://github.com/ai4curation/eval-ont-agent-mondo/pull/47) | [attempt](attempts/pr47.md) |
-| 6 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | [#158](https://github.com/ai4curation/eval-ont-agent-mondo/pull/158) | [attempt](attempts/pr158.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | `569314b` | [#263](https://github.com/ai4curation/eval-ont-agent-mondo/pull/263) | [attempt](attempts/pr263.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `569314b` | [#90](https://github.com/ai4curation/eval-ont-agent-mondo/pull/90) | [attempt](attempts/pr90.md) |
+| 3 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `569314b` | [#71](https://github.com/ai4curation/eval-ont-agent-mondo/pull/71) | [attempt](attempts/pr71.md) |
+| 4 | gpt-5.5 | codex | 0.002 | 0.001 | 1.000 | `d4575c6` | [#153](https://github.com/ai4curation/eval-ont-agent-mondo/pull/153) | [attempt](attempts/pr153.md) |
+| 5 | gpt-5.5 | codex | 0.002 | 0.001 | 1.000 | `d4575c6` | [#47](https://github.com/ai4curation/eval-ont-agent-mondo/pull/47) | [attempt](attempts/pr47.md) |
+| 6 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `a3d6cea` | [#158](https://github.com/ai4curation/eval-ont-agent-mondo/pull/158) | [attempt](attempts/pr158.md) |

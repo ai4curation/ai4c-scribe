@@ -73,12 +73,12 @@ index fe2f8414b..1ae42d961 100644
 
 ## Agent Attempts (7)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | gpt-5.5 | codex | 0.909 | 0.909 | 0.909 | [#540](https://github.com/ai4curation/eval-ont-agent-go/pull/540) | [attempt](attempts/pr540.md) |
-| 2 | claude-opus-4.7 | claude | 0.909 | 0.909 | 0.909 | [#330](https://github.com/ai4curation/eval-ont-agent-go/pull/330) | [attempt](attempts/pr330.md) |
-| 3 | kimi-k2.6 | opencode | 0.870 | 0.909 | 0.833 | [#257](https://github.com/ai4curation/eval-ont-agent-go/pull/257) | [attempt](attempts/pr257.md) |
-| 4 | claude-sonnet-4.5 | claude | 0.818 | 0.818 | 0.818 | [#461](https://github.com/ai4curation/eval-ont-agent-go/pull/461) | [attempt](attempts/pr461.md) |
-| 5 | claude-haiku-4.5 | claude | 0.818 | 0.818 | 0.818 | [#412](https://github.com/ai4curation/eval-ont-agent-go/pull/412) | [attempt](attempts/pr412.md) |
-| 6 | gemma-4-31b | opencode | 0.818 | 0.818 | 0.818 | [#238](https://github.com/ai4curation/eval-ont-agent-go/pull/238) | [attempt](attempts/pr238.md) |
-| 7 | claude-sonnet-4.5 | copilot | 0.783 | 0.818 | 0.750 | [#380](https://github.com/ai4curation/eval-ont-agent-go/pull/380) | [attempt](attempts/pr380.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.5 | codex | 0.909 | 0.909 | 0.909 | `ff74649` | [#540](https://github.com/ai4curation/eval-ont-agent-go/pull/540) | [attempt](attempts/pr540.md) |
+| 2 | claude-opus-4.7 | claude | 0.909 | 0.909 | 0.909 | `0e0e802` | [#330](https://github.com/ai4curation/eval-ont-agent-go/pull/330) | [attempt](attempts/pr330.md) |
+| 3 | kimi-k2.6 | opencode | 0.870 | 0.909 | 0.833 | `ecbd519` | [#257](https://github.com/ai4curation/eval-ont-agent-go/pull/257) | [attempt](attempts/pr257.md) |
+| 4 | claude-sonnet-4.5 | claude | 0.818 | 0.818 | 0.818 | `4d8147b` | [#461](https://github.com/ai4curation/eval-ont-agent-go/pull/461) | [attempt](attempts/pr461.md) |
+| 5 | claude-haiku-4.5 | claude | 0.818 | 0.818 | 0.818 | `42962db` | [#412](https://github.com/ai4curation/eval-ont-agent-go/pull/412) | [attempt](attempts/pr412.md) |
+| 6 | gemma-4-31b | opencode | 0.818 | 0.818 | 0.818 | `c0e3607` | [#238](https://github.com/ai4curation/eval-ont-agent-go/pull/238) | [attempt](attempts/pr238.md) |
+| 7 | claude-sonnet-4.5 | copilot | 0.783 | 0.818 | 0.750 | `4412df6` | [#380](https://github.com/ai4curation/eval-ont-agent-go/pull/380) | [attempt](attempts/pr380.md) |

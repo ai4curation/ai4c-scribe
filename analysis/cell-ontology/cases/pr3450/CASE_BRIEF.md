@@ -84,12 +84,12 @@ index 51d0f7774..601768459 100644
 
 ## Agent Attempts (7)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 0.706 | 0.545 | 1.000 | [#91](https://github.com/ai4curation/eval-ont-agent-cl/pull/91) | [attempt](attempts/pr91.md) |
-| 2 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | [#65](https://github.com/ai4curation/eval-ont-agent-cl/pull/65) | [attempt](attempts/pr65.md) |
-| 3 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | [#46](https://github.com/ai4curation/eval-ont-agent-cl/pull/46) | [attempt](attempts/pr46.md) |
-| 4 | gpt-5.5 | codex | 0.636 | 0.636 | 0.636 | [#27](https://github.com/ai4curation/eval-ont-agent-cl/pull/27) | [attempt](attempts/pr27.md) |
-| 5 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | [#272](https://github.com/ai4curation/eval-ont-agent-cl/pull/272) | [attempt](attempts/pr272.md) |
-| 6 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | [#200](https://github.com/ai4curation/eval-ont-agent-cl/pull/200) | [attempt](attempts/pr200.md) |
-| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | [#82](https://github.com/ai4curation/eval-ont-agent-cl/pull/82) | [attempt](attempts/pr82.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-haiku-4.5 | claude | 0.706 | 0.545 | 1.000 | `2f08c39` | [#91](https://github.com/ai4curation/eval-ont-agent-cl/pull/91) | [attempt](attempts/pr91.md) |
+| 2 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | `3623b1a` | [#65](https://github.com/ai4curation/eval-ont-agent-cl/pull/65) | [attempt](attempts/pr65.md) |
+| 3 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | `3623b1a` | [#46](https://github.com/ai4curation/eval-ont-agent-cl/pull/46) | [attempt](attempts/pr46.md) |
+| 4 | gpt-5.5 | codex | 0.636 | 0.636 | 0.636 | `85668d0` | [#27](https://github.com/ai4curation/eval-ont-agent-cl/pull/27) | [attempt](attempts/pr27.md) |
+| 5 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `10f66ad` | [#272](https://github.com/ai4curation/eval-ont-agent-cl/pull/272) | [attempt](attempts/pr272.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `cd6ae51` | [#200](https://github.com/ai4curation/eval-ont-agent-cl/pull/200) | [attempt](attempts/pr200.md) |
+| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `c91bfd7` | [#82](https://github.com/ai4curation/eval-ont-agent-cl/pull/82) | [attempt](attempts/pr82.md) |

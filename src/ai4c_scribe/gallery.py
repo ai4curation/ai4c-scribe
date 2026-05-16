@@ -360,6 +360,22 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
     return {"ontologies": ontologies, "eval_repos": eval_repos}
 
 
+def _extract_output_blob(diff: Optional[str]) -> str:
+    """Extract the output blob hash from a diff's index line.
+
+    >>> _extract_output_blob("diff --git a/f b/f\\nindex abc1234..def5678 100644\\n--- a/f")
+    'def5678'
+    >>> _extract_output_blob(None)
+    ''
+    >>> _extract_output_blob("no index line here")
+    ''
+    """
+    if not diff:
+        return ""
+    m = re.search(r"^index [0-9a-f]+\.\.([0-9a-f]+)", diff, re.MULTILINE)
+    return m.group(1) if m else ""
+
+
 def _brief_frontmatter(case: dict, eval_repos: dict) -> dict:
     """Build frontmatter dict for a case brief."""
     from datetime import date as date_type
@@ -442,6 +458,21 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
         lines.append(" ".join(badges))
         lines.append("")
 
+    # Eval suitability banner
+    eval_suit = m.get("eval_suitability")
+    if eval_suit and eval_suit != "good":
+        notes = m.get("eval_suitability_notes", "see METADATA.md")
+        icon = "!!!" if eval_suit == "unusable" else "!!"
+        lines.append(f"> {icon} **{eval_suit} eval case** — {notes}")
+        lines.append("")
+
+    # Diff noise banner
+    diff_noise = m.get("diff_noise")
+    if diff_noise and diff_noise != "clean":
+        notes = m.get("diff_noise_notes", "see METADATA.md")
+        lines.append(f"> **{diff_noise} diff** — {notes}")
+        lines.append("")
+
     # Narrative
     narrative = case.get("narrative_md", "").strip()
     if narrative:
@@ -464,16 +495,18 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
         sorted_attempts = sorted(attempts, key=lambda a: a.get("f1", 0), reverse=True)
         lines.append(f"## Agent Attempts ({len(attempts)})")
         lines.append("")
-        lines.append("| # | Model | Runtime | F1 | P | R | Eval PR | Detail |")
-        lines.append("|---|-------|---------|-----|-----|-----|---------|--------|")
+        lines.append("| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |")
+        lines.append("|---|-------|---------|-----|-----|-----|------|---------|--------|")
         for i, a in enumerate(sorted_attempts, 1):
             eval_pr = a.get("eval_repo_pr", "")
             pr_link = f"[#{eval_pr}](https://github.com/ai4curation/{eval_repo}/pull/{eval_pr})" if eval_repo else f"#{eval_pr}"
             detail_link = f"[attempt](attempts/pr{eval_pr}.md)"
+            blob = _extract_output_blob(a.get("diff"))
+            blob_short = blob[:7] if blob else ""
             lines.append(
                 f"| {i} | {a.get('model', '?')} | {a.get('runtime', '?')} | "
                 f"{a.get('f1', 0):.3f} | {a.get('precision', 0):.3f} | {a.get('recall', 0):.3f} | "
-                f"{pr_link} | {detail_link} |"
+                f"`{blob_short}` | {pr_link} | {detail_link} |"
             )
         lines.append("")
 

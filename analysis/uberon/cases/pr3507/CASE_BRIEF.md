@@ -66,10 +66,10 @@ index b727e1726e..08cef2747b 100644
 
 ## Agent Attempts (5)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | [#241](https://github.com/ai4curation/eval-ont-agent-uberon/pull/241) | [attempt](attempts/pr241.md) |
-| 2 | gpt-5.5 | codex | 0.500 | 0.667 | 0.400 | [#25](https://github.com/ai4curation/eval-ont-agent-uberon/pull/25) | [attempt](attempts/pr25.md) |
-| 3 | gpt-5.5 | opencode | 0.476 | 0.556 | 0.417 | [#64](https://github.com/ai4curation/eval-ont-agent-uberon/pull/64) | [attempt](attempts/pr64.md) |
-| 4 | gpt-5.5 | opencode | 0.476 | 0.556 | 0.417 | [#43](https://github.com/ai4curation/eval-ont-agent-uberon/pull/43) | [attempt](attempts/pr43.md) |
-| 5 | gpt-5.4 | codex | 0.400 | 0.556 | 0.312 | [#77](https://github.com/ai4curation/eval-ont-agent-uberon/pull/77) | [attempt](attempts/pr77.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | `97cb728` | [#241](https://github.com/ai4curation/eval-ont-agent-uberon/pull/241) | [attempt](attempts/pr241.md) |
+| 2 | gpt-5.5 | codex | 0.500 | 0.667 | 0.400 | `2122eb5` | [#25](https://github.com/ai4curation/eval-ont-agent-uberon/pull/25) | [attempt](attempts/pr25.md) |
+| 3 | gpt-5.5 | opencode | 0.476 | 0.556 | 0.417 | `76a602f` | [#64](https://github.com/ai4curation/eval-ont-agent-uberon/pull/64) | [attempt](attempts/pr64.md) |
+| 4 | gpt-5.5 | opencode | 0.476 | 0.556 | 0.417 | `76a602f` | [#43](https://github.com/ai4curation/eval-ont-agent-uberon/pull/43) | [attempt](attempts/pr43.md) |
+| 5 | gpt-5.4 | codex | 0.400 | 0.556 | 0.312 | `50f64a8` | [#77](https://github.com/ai4curation/eval-ont-agent-uberon/pull/77) | [attempt](attempts/pr77.md) |

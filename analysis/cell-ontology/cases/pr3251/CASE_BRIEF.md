@@ -87,11 +87,11 @@ index a2952aa97..4a6eb80e2 100644
 
 ## Agent Attempts (6)
 
-| # | Model | Runtime | F1 | P | R | Eval PR | Detail |
-|---|-------|---------|-----|-----|-----|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.600 | 0.529 | 0.692 | [#223](https://github.com/ai4curation/eval-ont-agent-cl/pull/223) | [attempt](attempts/pr223.md) |
-| 2 | gpt-5.5 | opencode | 0.545 | 0.529 | 0.562 | [#59](https://github.com/ai4curation/eval-ont-agent-cl/pull/59) | [attempt](attempts/pr59.md) |
-| 3 | gpt-5.5 | opencode | 0.545 | 0.529 | 0.562 | [#40](https://github.com/ai4curation/eval-ont-agent-cl/pull/40) | [attempt](attempts/pr40.md) |
-| 4 | claude-haiku-4.5 | claude | 0.480 | 0.353 | 0.750 | [#89](https://github.com/ai4curation/eval-ont-agent-cl/pull/89) | [attempt](attempts/pr89.md) |
-| 5 | gpt-5.5 | codex | 0.450 | 0.529 | 0.391 | [#28](https://github.com/ai4curation/eval-ont-agent-cl/pull/28) | [attempt](attempts/pr28.md) |
-| 6 | claude-opus-4.7 | claude | 0.357 | 0.294 | 0.455 | [#174](https://github.com/ai4curation/eval-ont-agent-cl/pull/174) | [attempt](attempts/pr174.md) |
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | claude-sonnet-4.5 | claude | 0.600 | 0.529 | 0.692 | `8cca09c` | [#223](https://github.com/ai4curation/eval-ont-agent-cl/pull/223) | [attempt](attempts/pr223.md) |
+| 2 | gpt-5.5 | opencode | 0.545 | 0.529 | 0.562 | `212aa91` | [#59](https://github.com/ai4curation/eval-ont-agent-cl/pull/59) | [attempt](attempts/pr59.md) |
+| 3 | gpt-5.5 | opencode | 0.545 | 0.529 | 0.562 | `212aa91` | [#40](https://github.com/ai4curation/eval-ont-agent-cl/pull/40) | [attempt](attempts/pr40.md) |
+| 4 | claude-haiku-4.5 | claude | 0.480 | 0.353 | 0.750 | `1c58f8b` | [#89](https://github.com/ai4curation/eval-ont-agent-cl/pull/89) | [attempt](attempts/pr89.md) |
+| 5 | gpt-5.5 | codex | 0.450 | 0.529 | 0.391 | `1714b1e` | [#28](https://github.com/ai4curation/eval-ont-agent-cl/pull/28) | [attempt](attempts/pr28.md) |
+| 6 | claude-opus-4.7 | claude | 0.357 | 0.294 | 0.455 | `9c4440a` | [#174](https://github.com/ai4curation/eval-ont-agent-cl/pull/174) | [attempt](attempts/pr174.md) |
