@@ -1,0 +1,278 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1cb7a9c08..175d21ff7 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -155570,7 +155570,7 @@ xref: SCTID:7425008 {source="MONDO:equivalentTo", source="DOID:13269"}
+ xref: UMLS:C0162531 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:57931"}
+ is_a: MONDO:0002520 {source="DOID:13269", source="MESH:D046349", source="Orphanet:79273"} ! hepatic porphyria
+ is_a: MONDO:0019142 {source="DOID:13269/inferred", source="MESH:D046349/inferred", source="MONDO:Redundant", source="NCIT:C84759", source="Orphanet:79273/inferred"} ! inherited porphyria
+-is_a: MONDO:0800180 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! CPOX-related hereditary coproporphyria
++is_a: MONDO:0800180 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! CPOX-related hepatic porphyria
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/2321 {source="OMIM:121300"} ! CPOX
+ property_value: curated_content_resource "https://www.malacards.org/card/coproporphyria_hereditary" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6619/hereditary-coproporphyria" xsd:anyURI {source="GARD:0006619"}
+@@ -179763,6 +179763,7 @@ xref: SCTID:90842001 {source="DOID:3890"}
+ xref: UMLS:C0162565 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:56452"}
+ is_a: MONDO:0002520 {source="DOID:3890", source="MESH:D017118", source="Orphanet:79276"} ! hepatic porphyria
+ is_a: MONDO:0019142 {source="DOID:3890/inferred", source="MESH:D017118/inferred", source="MONDO:Redundant", source="NCIT:C84536", source="Orphanet:79276/inferred"} ! inherited porphyria
++is_a: MONDO:7770003 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS-related hepatic porphyria
+ relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0008294 {source="MONDO:CLINGEN"}
+ relationship: has_characteristic PATO:0000389 ! acute
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 {source="OMIM:176000"} ! HMBS
+@@ -179880,6 +179881,7 @@ xref: SCTID:58275005 {source="DOID:4346", source="MONDO:equivalentTo"}
+ xref: UMLS:C0162532 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:58118"}
+ is_a: MONDO:0002520 {source="DOID:4346", source="MESH:D046350", source="Orphanet:79473"} ! hepatic porphyria
+ is_a: MONDO:0019142 {source="DOID:4346/inferred", source="MESH:D046350/inferred", source="MONDO:Redundant", source="NCIT:C85219", source="Orphanet:79473/inferred"} ! inherited porphyria
++is_a: MONDO:7770005 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! PPOX-related hepatic porphyria
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/9280 {source="OMIM:176200"} ! PPOX
+ property_value: curated_content_resource "https://www.malacards.org/card/variegate_porphyria" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+@@ -180472,8 +180474,8 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0008319
+-name: protoporphyria, erythropoietic, 1
+-def: "Erythropoietic protoporphyria caused by a compound heterozygous or homozygous mutation in the gene encoding ferrochelatase (FECH) on chromosome 18q21." [OMIM:177000]
++name: FECH-related erythropoietic protoporphyria
++def: "An erythropoietic protoporphyria caused by biallelic variants in FECH (an autosomal recessive inheritance pattern) and causing primarily accumulation of protoporphyrin IX. Symptoms include extremely painful photosensitivity in childhood, possible microcytic anemia, cholelithiasis, and ~5% of patients develop liver failure. The majority of individuals with FECH-related erythropoietic protoporphyria harbor a hypomorphic variant (NM_000140.5:c.315-48T>C), which reduces enzyme levels by ~35%, in trans to a second pathogenic variant. Clinically individuals with this form of porphyria cannot be distinguished from those with ALAS2-related erythropoietic protoporphyria." [https://github.com/monarch-initiative/mondo/issues/9703]
+ subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
+@@ -180482,10 +180484,11 @@ synonym: "EPP" RELATED ABBREVIATION [GARD:0004527, MONDO:Lexical]
+ synonym: "EPP1" EXACT ABBREVIATION [OMIM:177000]
+ synonym: "erythrohepatic protoporphyria" RELATED [GARD:0004527]
+ synonym: "erythropoietic protoporphyria" BROAD []
++synonym: "FECH-related erythropoietic protoporphyria" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
+ synonym: "ferrochelatase deficiency" EXACT [GARD:0004527, OMIM:177000]
+ synonym: "heme synthetase deficiency" EXACT [GARD:0004527, OMIM:177000]
+ synonym: "protoporphyria, erythropoietic" BROAD [MONDO:Lexical]
+-synonym: "protoporphyria, erythropoietic, 1" EXACT [OMIM:177000]
++synonym: "protoporphyria, erythropoietic, 1" EXACT [MONDO:Lexical, OMIM:177000]
+ xref: MEDGEN:1643471 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: NANDO:1200815 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+ xref: NANDO:2201266 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+@@ -225909,8 +225912,8 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0009902
+-name: cutaneous porphyria
+-def: "Congenital erythropoietic porphyria, or Günther disease, is a form of erythropoietic porphyria characterized by very severe and mutilating photodermatosis." [Orphanet:79277]
++name: UROS-related erythropoietic porphyria
++def: "An erythropoietic porphyria caused by biallelic variants in UROS (in an autosomal recessive inheritance pattern). Cases where biallelic variants reduce WT enzyme activity to <5% are characterized by photosensitivity, hemolytic anemia (often in utero), erythrodontia, splenomegaly, cutaneous blistering, scarring and disfigurement. Other cases where biallelic variants do not reduce enzyme activity as severely (5-12% of WT activity) have a later onset of photosensitivity and milder symptoms." [https://github.com/monarch-initiative/mondo/issues/9703]
+ subset: gard_rare {source="GARD:4446", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD", source="NORD:1599"}
+ subset: ordo_disorder {source="Orphanet:79277"}
+@@ -225922,7 +225925,7 @@ synonym: "Cep" RELATED []
+ synonym: "Congenital Erythropoietic Porphyria" EXACT [NORD:1599, Orphanet:79277] {OMO:0002001="https://w3id.org/information-resource-registry/nord"}
+ synonym: "congenital erythropoietic porphyria" RELATED []
+ synonym: "congenital porphyria" RELATED [GARD:0004446]
+-synonym: "cutaneous porphyria" EXACT [DOID:13271] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "cutaneous porphyria" EXACT [DOID:13271, MONDO:Lexical] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ synonym: "erythropoietic porphyria" EXACT [DOID:13271, NCIT:C84697]
+ synonym: "Gunther disease" RELATED []
+ synonym: "Günther disease" EXACT [Orphanet:79277]
+@@ -225930,6 +225933,7 @@ synonym: "porphyria, congenital erythropoietic" RELATED []
+ synonym: "uroporphyrinogen 3 synthase deficiency" RELATED []
+ synonym: "uroporphyrinogen III synthase, deficiency of" RELATED [GARD:0004446]
+ synonym: "Uros deficiency" RELATED []
++synonym: "UROS-related erythropoietic porphyria" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
+ xref: DOID:13271 {source="MONDO:equivalentTo"}
+ xref: GARD:4446 {source="MONDO:GARD"}
+ xref: ICD10CM:E80.0 {source="DOID:13271", source="Orphanet:79277/inclusion", source="Orphanet:79277/ntbt", source="Orphanet:79277"}
+@@ -241098,20 +241102,22 @@ replaced_by: MONDO:0020721
+ 
+ [Term]
+ id: MONDO:0010420
+-name: X-linked erythropoietic protoporphyria
+-def: "X-linked form of erythropoietic protoporphyria." [MONDO:patterns/x_linked]
++name: ALAS2-related erythropoietic protoporphyria
++def: "An erythropoietic protoporphyria in which the cause of the disease is a hemizygous, heterozygous, or homozygous (rare) gain-of-function (GOF) variant (X-linked inheritance pattern) in the terminal regulatory exon of ALAS2. GOF variants increase ALAS2 activity resulting in pathway upregulation and high levels of protoporphyrin IX (PPIX). Males with hemizygous variants frequently present in early childhood with severe cutaneous photosensitivity and laboratory markers of liver disease. Heterozygous females can present with symptoms ranging from as severe as affected males to asymptomatic due to random X-chromosome inactivation. This disease is clinically indistinguishable from FECH-related erythropoietic protoporphyria." [https://github.com/monarch-initiative/mondo/issues/9703]
+ subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="GARD:17755", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
+ subset: ordo_disorder {source="Orphanet:443197"}
+ subset: orphanet_rare {source="Orphanet:443197"}
+ subset: rare
++synonym: "ALAS2-related erythropoietic protoporphyria" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
+ synonym: "Erythrohepatic protoporphyria, X-linked" RELATED []
+ synonym: "erythropoietic protoporphyria, X-linked" EXACT [MONDO:patterns/x_linked]
+ synonym: "protoporphyria, erythropoietic, X-linked" RELATED [MONDO:Lexical]
+ synonym: "protoporphyria, erythropoietic, X-linked dominant" RELATED []
+ synonym: "X-linked dominant erythropoietic protoporphyria" EXACT [Orphanet:443197]
+ synonym: "X-linked dominant protoporphyria" EXACT [Orphanet:443197]
++synonym: "X-linked erythropoietic protoporphyria" EXACT [MONDO:Lexical]
+ synonym: "XLDPP" EXACT ABBREVIATION [Orphanet:443197]
+ synonym: "XLEPP" RELATED ABBREVIATION [MONDO:Lexical]
+ synonym: "XLP" RELATED ABBREVIATION []
+@@ -309738,8 +309744,8 @@ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/2578/guanidi
+ 
+ [Term]
+ id: MONDO:0013000
+-name: porphyria due to ALA dehydratase deficiency
+-def: "An extremely rare form of acute hepatic porphyria characterized by neuro-visceral attacks without cutaneous manifestations." [https://clinicalgenome.org/affiliation/40097/, https://orcid.org/0000-0002-0587-4693]
++name: ALAD-related hepatic porphyria
++def: "A hepatic porphyria caused by biallelic variants in ALAD (in an autosomal recessive inheritance pattern). This is an extremely rare form of hepatic porphyria characterized by neuro-visceral attacks, nausea, vomiting, diarrhea, neuropathy, and abdominal pain without cutaneous manifestations. Because the disease is so rare, inducible triggers are not well-documented." [https://github.com/monarch-initiative/mondo/issues/9703]
+ subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="GARD:16937", source="MONDO:GARD"}
+ subset: nord_rare {source="NORD:747", source="MONDO:NORD"}
+@@ -309760,6 +309766,7 @@ synonym: "Delta-aminolevulinate dehydratase deficiency" RELATED []
+ synonym: "Doss porphyria" RELATED []
+ synonym: "Lead poisoning, susceptibility to" RELATED []
+ synonym: "porphobilinogen synthase deficiency" RELATED []
++synonym: "porphyria due to ALA dehydratase deficiency" EXACT [MONDO:Lexical]
+ synonym: "porphyria due to ALAD deficiency" EXACT [Orphanet:100924]
+ synonym: "porphyria due to delta-aminolevulinate dehydratase deficiency" EXACT [Orphanet:100924]
+ synonym: "porphyria of Doss" EXACT [Orphanet:100924]
+@@ -364798,6 +364805,7 @@ xref: SCTID:61860000 {source="DOID:3132", source="MONDO:equivalentTo"}
+ xref: UMLS:C0162566 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:56453"}
+ is_a: MONDO:0002406 {source="DOID:3132", source="NCIT:C27725"} ! dermatitis
+ is_a: MONDO:0002520 {source="DOID:3132", source="MESH:D017119"} ! hepatic porphyria
++is_a: MONDO:0100498 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! UROD-related porphyria
+ relationship: excluded_subClassOf MONDO:0019142 {source="MESH:D017119/inferred", source="MONDO:Redundant", source="NCIT:C27725", source="Orphanet:101330/inferred", source="https://orcid.org/0000-0001-5208-3432"} ! inherited porphyria
+ relationship: excluded_subClassOf MONDO:0020266 {source="Orphanet:101330", source="https://orcid.org/0000-0001-5208-3432"} ! obsolete genodermatosis with ocular features
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
+@@ -467669,6 +467677,7 @@ xref: Orphanet:95159 {source="MONDO:equivalentTo"}
+ xref: SCTID:111386004 {source="MONDO:equivalentTo", source="DOID:5230"}
+ xref: UMLS:C0162569 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:57940"}
+ is_a: MONDO:0015104 {source="NCIT:C84754"} ! porphyria cutanea tarda
++is_a: MONDO:0100498 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! UROD-related porphyria
+ relationship: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/general/qc-single-child.sparql
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/12591 {source="Orphanet:95159"} ! UROD
+ property_value: curated_content_resource "https://www.malacards.org/card/hepatoerythropoietic_porphyria" xsd:anyURI {source="MONDO:MalaCards"}
+@@ -519863,7 +519872,7 @@ xref: OMIM:618892 {source="MONDO:equivalentTo"}
+ xref: Orphanet:659672 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0342859 {source="MEDGEN:137981", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0003847 {source="OMIM:618892"} ! hereditary disease
+-is_a: MONDO:0800180 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! CPOX-related hereditary coproporphyria
++is_a: MONDO:0800180 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! CPOX-related hepatic porphyria
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/2321 {source="OMIM:618892"} ! CPOX
+ relationship: RO:0004001 http://identifiers.org/hgnc/2321 {source="OMIM:618892"} ! has material basis in gain of function germline mutation in CPOX
+ property_value: curated_content_resource "https://www.malacards.org/card/harderoporphyria" xsd:anyURI {source="MONDO:MalaCards"}
+@@ -566369,12 +566378,14 @@ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-520
+ 
+ [Term]
+ id: MONDO:0100498
+-name: UROD-related inherited porphyria
+-def: "Any inherited porphyria in which the cause of the disease is monoallelic or biallelic variants in the UROD gene." [https://clinicalgenome.org/affiliation/40097/, MONDO:patterns/disease_series_by_gene]
++name: UROD-related porphyria
++def: "Porphyria caused by monoallelic and biallelic variants in UROD and presenting as a spectrum of disease (a semidominant inheritance pattern). Additionally, environmental factors almost always play a role in the disease. Monoallelic variants when exacerbated by environmental factors can result in episodic adult onset of photosensitivity. Biallelic variants that reduce WT enzyme activity <20% cause childhood onset of photosensitivity and sometimes liver damage." [https://github.com/monarch-initiative/mondo/issues/9703]
+ subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="MONDO:GARD"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
++synonym: "UROD-related inherited porphyria" EXACT [MONDO:Lexical]
++synonym: "UROD-related porphyria" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
+ is_a: MONDO:0019142 {source="https://clinicalgenome.org/affiliation/40097/"} ! inherited porphyria
+ intersection_of: MONDO:0019142 ! inherited porphyria
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/12591 ! UROD
+@@ -574355,13 +574366,16 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0800180
+-name: CPOX-related hereditary coproporphyria
+-def: "Any inherited porphyria in which the cause of the disease is monoallelic or biallelic variants in the CPOX gene." [https://clinicalgenome.org/affiliation/40097/, https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/]
++name: CPOX-related hepatic porphyria
++def: "A porphyria caused by monoallelic and biallelic variants in CPOX and presenting as a spectrum of disease (a semidominant inheritance pattern). Monoallelic variants typically cause acute/episodic neurovisceral attacks with adolescent or adult onset, characterized by severe abdominal pain as well as acute motor neuropathy and other neurological symptoms. Triggers precipitating acute attacks include estrogen/progesterone, oral contraceptives, alcohol, drugs, stress, or infections. Cases with biallelic variants have symptoms in infancy, including hemolytic anemia, enlarged liver and spleen (hepatosplenomegaly), and severe jaundice. Additional symptoms may include erythrodontia, red urine, fragile skin, and cutaneous photosensitivity leading to scarring of sun-exposed skin." [https://github.com/monarch-initiative/mondo/issues/9703]
+ comment: Per criteria outlined by the ClinGen Lumping and Splitting Working Group, the molecular mechanism (CPOX loss-of-function) was found to be consistent between the harderoporphyria cases and hereditary coproporphyria cases. In addition, the phenotypic differences between the biallelic and monoallelic cases appeared to represent a single spectrum of disease. Therefore, cases caused by inherited CPOX variants have been lumped into a single disease entity referred to as CPOX-related hereditary coproporphyria, with a semidominant mode of inheritance.
+ subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="MONDO:GARD"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
++synonym: "CPOX-related hepatic porphyria" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
++synonym: "CPOX-related hereditary coproporphyria" EXACT [MONDO:Lexical]
++is_a: MONDO:0002520 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! hepatic porphyria
+ is_a: MONDO:0019142 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! inherited porphyria
+ relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0800180 {source="MONDO:CLINGEN"}
+ relationship: RO:0004001 http://identifiers.org/hgnc/2321 {source="https://clinicalgenome.org/affiliation/40097/", source="https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism/"} ! has material basis in gain of function germline mutation in CPOX
+@@ -585101,6 +585115,7 @@ xref: OMIM:620483 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5882681 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1849794"}
+ is_a: MONDO:0003847 {source="OMIM:620483"} ! hereditary disease
+ is_a: MONDO:0008297 {source="OMIM:176200", source="OMIM:620483"} ! variegate porphyria
++is_a: MONDO:7770005 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! PPOX-related hepatic porphyria
+ relationship: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/general/qc-single-child.sparql
+ relationship: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/mondo/qc-omim-subsumption.sparql
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/9280 {source="OMIM:620483"} ! PPOX
+@@ -587000,6 +587015,7 @@ xref: MEDGEN:1859316 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620704 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5935574 {source="MONDO:equivalentTo", source="MEDGEN:1859316", source="MONDO:MEDGEN"}
+ is_a: MONDO:0100198 {source="https://orcid.org/0000-0002-4142-7153"} ! Mendelian encephalopathy
++is_a: MONDO:7770003 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS-related hepatic porphyria
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 {source="OMIM:620704"} ! HMBS
+ property_value: curated_content_resource "https://www.malacards.org/card/encephalopathy_porphyria_related" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+@@ -587012,6 +587028,7 @@ xref: MEDGEN:1862491 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620711 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5935575 {source="MEDGEN:1862491", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0019046 {source="https://orcid.org/0000-0002-4142-7153"} ! leukodystrophy
++is_a: MONDO:7770003 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS-related hepatic porphyria
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 {source="OMIM:620711"} ! HMBS
+ property_value: curated_content_resource "https://www.malacards.org/card/leukoencephalopathy_porphyria_related" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+@@ -592447,7 +592464,7 @@ def: "Protoporphyria that occurs in non-human animals." [MONDO:patterns/nonhuman
+ xref: OMIA:000836 {source="MONDO:equivalentTo"}
+ is_a: MONDO:0005583 {source="OMIA:000836"} ! non-human animal disease
+ intersection_of: MONDO:0005583 {source="OMIA:000836"} ! non-human animal disease
+-intersection_of: MONDO:0700097 MONDO:0008319 {source="OMIA:000836"} ! cross-species analog protoporphyria, erythropoietic, 1
++intersection_of: MONDO:0700097 MONDO:0008319 {source="OMIA:000836"} ! cross-species analog FECH-related erythropoietic protoporphyria
+ 
+ [Term]
+ id: MONDO:1010136
+@@ -598369,7 +598386,7 @@ xref: OMIA:000836-9031 {source="MONDO:equivalentTo"}
+ is_a: MONDO:1010135 {source="OMIA:000836", source="https://orcid.org/0000-0002-5002-8648"} ! protoporphyria, non-human animal
+ intersection_of: MONDO:0005583 ! non-human animal disease
+ intersection_of: in_taxon NCBITaxon:9031 ! Gallus gallus
+-intersection_of: MONDO:0700097 MONDO:0008319 ! cross-species analog protoporphyria, erythropoietic, 1
++intersection_of: MONDO:0700097 MONDO:0008319 ! cross-species analog FECH-related erythropoietic protoporphyria
+ relationship: in_taxon NCBITaxon:9031 {source="OMIA:000836-9031", source="https://orcid.org/0000-0002-5002-8648"} ! Gallus gallus
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/7075" xsd:anyURI
+ 
+@@ -598381,7 +598398,7 @@ xref: OMIA:000836-9913 {source="MONDO:equivalentTo"}
+ is_a: MONDO:1010135 {source="OMIA:000836", source="https://orcid.org/0000-0002-5002-8648"} ! protoporphyria, non-human animal
+ intersection_of: MONDO:0005583 ! non-human animal disease
+ intersection_of: in_taxon NCBITaxon:9913 ! Bos taurus
+-intersection_of: MONDO:0700097 MONDO:0008319 ! cross-species analog protoporphyria, erythropoietic, 1
++intersection_of: MONDO:0700097 MONDO:0008319 ! cross-species analog FECH-related erythropoietic protoporphyria
+ relationship: in_taxon NCBITaxon:9913 {source="OMIA:000836-9913", source="https://orcid.org/0000-0002-5002-8648"} ! Bos taurus
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/7075" xsd:anyURI
+ 
+@@ -621766,6 +621783,40 @@ is_a: MONDO:0005451 {source="PMID:38849953"} ! eating disorder
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0003-3311-7320
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9408" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770003
++name: HMBS-related hepatic porphyria
++def: "A hepatic porphyria caused by monoallelic and biallelic variants in HMBS and presenting as a spectrum of disease (a semidominant inheritance pattern). Monoallelic variants predispose to acute/episodic attacks in adulthood with abdominal pain, neuropathy, and neuropsychiatric symptoms (women are more often affected) without cutaneous manifestations. Triggers precipitating acute attacks include estrogen/progesterone, oral contraceptives, alcohol, drugs, stress, or infections. Biallelic variants cause severe disease in childhood presenting with neurological issues including developmental abnormalities, ataxia, dysarthria, leukoencephalopathy, cataracts and optic nerve hypoplasia." [https://github.com/monarch-initiative/mondo/issues/9703]
++is_a: MONDO:0002520 ! hepatic porphyria
++intersection_of: MONDO:0002520 ! hepatic porphyria
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 ! HMBS
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9703" xsd:anyURI
++
++[Term]
++id: MONDO:7770004
++name: acute intermittent porphyria nonerythroid variant
++def: "A subtype of porphyria caused by variants in HMBS exon 1, which is not expressed in erythrocytes, causing HMBS activity in erythrocytes to be at a normal level. The housekeeping promoter produces the HMBS transcript containing exons 1 and 3-15. In contrast, erythrocytes use an erythroid-specific promoter downstream of the housekeeping HMBS promoter to produce a transcript that contains only exons 2-15. Therefore deleterious variants occurring within exon 1 or affecting the splicing of exon 1 to exon 3 do not impact the erythrocyte isozyme, but do impact the more broadly expressed housekeeping isozyme." [https://github.com/monarch-initiative/mondo/issues/9703]
++subset: gard_rare {source="MONDO:GARD"}
++subset: rare
++synonym: "porphyria, acute intermittent, nonerythroid variant" EXACT [https://github.com/monarch-initiative/mondo/issues/9703]
++is_a: MONDO:7770003 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS-related hepatic porphyria
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4982 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! HMBS
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9703" xsd:anyURI
++
++[Term]
++id: MONDO:7770005
++name: PPOX-related hepatic porphyria
++def: "A hepatic porphyria (or variegate porphyria) caused by monoallelic and biallelic variants in PPOX, presenting as a spectrum of disease (a semidominant inheritance pattern). Cases caused by monoallelic variants may have onset during adolescence or adulthood and are episodic characterized by abdominal pain, constipation, vomiting, muscular paralysis, and psychosis. Other symptoms may include abnormal blistering of the skin, cutaneous photosensitivity, and neuropathy. Triggers precipitating acute attacks include estrogen/progesterone, oral contraceptives, alcohol, drugs, stress, or infections. Cases caused by biallelic variants, which reduce enzyme activity to <25% of normal, typically result in child or adolescent onset with greater severity. Symptoms for this extend to brachydactyly, clinodactyly, intellectual disability, nystagmus, myopia, growth retardation, and hyperpigmentation." [https://github.com/monarch-initiative/mondo/issues/9703]
++is_a: MONDO:0002520 ! hepatic porphyria
++intersection_of: MONDO:0002520 ! hepatic porphyria
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/9280 ! PPOX
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/9280 {source="https://github.com/monarch-initiative/mondo/issues/9703"} ! PPOX
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9703" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

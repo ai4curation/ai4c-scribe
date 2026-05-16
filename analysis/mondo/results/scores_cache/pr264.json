@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9826,
+  "pr_number": 10142,
+  "case_type": "obsoletion",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 264,
+  "f1": 0.872,
+  "precision": 0.773,
+  "recall": 1.0,
+  "jaccard": 0.773
+}

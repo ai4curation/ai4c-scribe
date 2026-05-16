@@ -1,0 +1,38 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 7bcf184f9..b9e2b80f7 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -2277,6 +2277,7 @@ Declaration(Class(obo:CL_0020017))
+ Declaration(Class(obo:CL_0020018))
+ Declaration(Class(obo:CL_0020019))
+ Declaration(Class(obo:CL_0020020))
++Declaration(Class(obo:CL_0020021))
+ Declaration(Class(obo:CL_0700009))
+ Declaration(Class(obo:CL_1000001))
+ Declaration(Class(obo:CL_1000022))
+@@ -25629,6 +25630,18 @@ SubClassOf(obo:CL_0020020 obo:CL_0000138)
+ SubClassOf(obo:CL_0020020 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0070278))
+ SubClassOf(obo:CL_0020020 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_1990079))
+ 
++# Class: obo:CL_0020021 (fibrochondrocyte progenitor cell)
++
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0020021 <https://github.com/obophenotype/cell-ontology/issues/3458>)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasDbXref "PMID:36338137") obo:IAO_0000115 obo:CL_0020021 "A mesenchymal progenitor cell located in fibrocartilage, along the fibrochondrocytic differentiation pathway that co-expresses both fibrochondrocyte markers COL1A1 and COL3A1 and mesenchymal stem cell markers MCAM/CD146 and MYLK in humans. This cell demonstrates colony-forming capacity and multi-lineage differentiation potential toward osteogenic and adipogenic lineages, and serves as a progenitor for mature fibrochondrocytes and other meniscal cell types.")
++AnnotationAssertion(terms:contributor obo:CL_0020021 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:creator obo:CL_0020021 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_0020021 "2026-05-16T04:10:29Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_0020021 "FCP")
++AnnotationAssertion(rdfs:label obo:CL_0020021 "fibrochondrocyte progenitor cell")
++EquivalentClasses(obo:CL_0020021 ObjectIntersectionOf(obo:CL_0008019 obo:CL_0011026 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001995)))
++SubClassOf(obo:CL_0020021 ObjectSomeValuesFrom(obo:RO_0002203 obo:CL_4072104))
++
+ # Class: obo:CL_0700009 (obsolete kidney collecting duct beta-intercalated cell)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:24051376") Annotation(oboInOwl:hasDbXref "PMID:31300091") Annotation(oboInOwl:hasDbXref "PMID:32016094") obo:IAO_0000115 obo:CL_0700009 "OBSOLETE. A renal beta-intercalated cell that is part of the cortical collecting duct. The medullary collecting duct does not contain the renal beta-intercalated cell type.")
+@@ -35464,4 +35477,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

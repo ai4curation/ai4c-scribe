@@ -1,0 +1,20 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 989f151e1..4f8e4760a 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225363,6 +225363,15 @@ intersection_of: part_of UBERON:0001091 ! calcareous tooth
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ property_value: dcterms-date "2025-08-05T09:28:57Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8600149
++name: occlusal surface of tooth
++def: "A tooth surface structure that forms the biting or grinding surface of a molar or premolar." [https://dentaleducationhub.com/surfaces-of-the-teeth/]
++synonym: "occlusal surface" EXACT []
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899 ! Wendy Duncan
++property_value: dcterms-date "2026-05-16T00:00:00Z" xsd:dateTime
++
+ [Term]
+ id: UBERON:8700000
+ name: aorta-gonad-mesonephros

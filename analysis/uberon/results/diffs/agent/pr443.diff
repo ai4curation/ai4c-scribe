@@ -1,0 +1,29 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 2b8d7d08a..610ffd97f 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -97417,17 +97417,23 @@ property_value: curator_notes "this class refers to the external portion and its
+ [Term]
+ id: UBERON:0005162
+ name: multi cell part structure
+-def: "A structure consisting of multiple cell components but which is not itself a cell and does not have (complete) cells as a part." [CARO:0001000]
++def: "A structure mainly consisting of cell components, rather than complete cells." [CARO:0001000, FBbt:00007060]
+ subset: upper_level
++comment: May contain complete cells in addition to partial ones.
+ synonym: "cell part cluster" RELATED [FMA:83115]
+ synonym: "multi-cell-component structure" EXACT [CARO:0001000]
+ synonym: "multi-cell-part structure" EXACT [CARO:0001000]
+ xref: AAO:0011000
+ xref: CARO:0001000
++xref: FBbt:00007060
+ xref: FMA:83115
+ is_a: UBERON:0000061 ! anatomical structure
+ relationship: composed_primarily_of GO:0005575 ! cellular_component
+ property_value: external_ontology_notes "we go with the FMA classification rather than the CARO one. FMA def: 'Anatomical cluster which has as direct parts cell parts from two or more cells.'" xsd:string {external_ontology="CARO", external_ontology="FMA"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3490" xsd:anyURI
++relationship: dc-contributor https://orcid.org/0000-0002-1373-1705 ! Clare Pilgrim
++property_value: dcterms-date "2026-05-16T00:00:00Z" xsd:dateTime
++created_by: dragon-ai-agent
+ 
+ [Term]
+ id: UBERON:0005164

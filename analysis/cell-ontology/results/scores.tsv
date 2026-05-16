@@ -1,10 +1,17 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+cell-ontology	3458	3505	new_term	medium	v3	gpt-5.4	codex	333	0.0	0.0	0.0	0.0	cel#3458	std_codex_g54
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.4	codex	329	0.182	0.25	0.143	0.1	cel#3479	std_codex_g54
+cell-ontology	3452	3554	new_term	medium	v3	gpt-5.4	codex	324	0.375	0.4	0.353	0.231	cel#3452	std_codex_g54
+cell-ontology	3333	3547	axiom_repair	simple	v3	gpt-5.4	codex	322	0.429	0.5	0.375	0.273	cel#3333	std_codex_g54
+cell-ontology	3523	3524	other	simple	v3	gpt-5.4	codex	321	0.353	0.429	0.3	0.214	cel#3523	std_codex_g54
+cell-ontology	3196	3248	new_term	medium	v3	gpt-5.5	codex	315	0.0	0.0	0.0	0.0	cel#3196	std_codex_g55
 cell-ontology	3453	3556	new_term	medium	v3	gpt-5.4	codex	301	0.125	0.125	0.125	0.067	cel#3453	std_codex_g54
 cell-ontology	3534	3535	new_term	medium	v3	gpt-5.4	codex	300	0.0	0.0	0.0	0.0	cel#3534	std_codex_g54
 cell-ontology	3497	3574	new_term	medium	v3	gpt-5.4	codex	299	0.091	0.05	0.5	0.048	cel#3497	std_codex_g54
 cell-ontology	3521	3583	other	simple	v3	gpt-5.4	codex	298	0.0	0.0	0.0	0.0	cel#3521	std_codex_g54
 cell-ontology	3597	3598	new_term	hard	v3	gpt-5.4	codex	297	0.0	0.0	0.0	0.0	cel#3597	std_codex_g54
 cell-ontology	3243	3251	axiom_repair	medium	v3	gpt-5.4	codex	296	0.471	0.471	0.471	0.308	cel#3243	std_codex_g54
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.4	codex	295	0.182	0.25	0.143	0.1	cel#3479	std_codex_g54
 cell-ontology	3460	3508	new_term	medium	v3	gpt-5.4	codex	294	0.0	0.0	0.0	0.0	cel#3460	std_codex_g54
 cell-ontology	3588	3589	axiom_repair	medium	v3	gpt-5.4	codex	293	0.462	0.632	0.364	0.3	cel#3588	std_codex_g54
 cell-ontology	3379	3444	reclassification	simple	v3	gpt-5.4	codex	292	0.5	1.0	0.333	0.333	cel#3379	std_codex_g54
