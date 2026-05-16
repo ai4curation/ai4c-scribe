@@ -335,6 +335,7 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
 
             cases.append({
                 "pr_number": pr_number,
+                "case_dir": case_dir.name,
                 "ontology": ont_name,
                 "metadata": metadata,
                 "narrative_md": body,
@@ -357,6 +358,161 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
         pass
 
     return {"ontologies": ontologies, "eval_repos": eval_repos}
+
+
+def format_case_brief(case: dict, eval_repos: dict) -> str:
+    """Format a single case dict as a markdown case brief.
+
+    The brief includes: case metadata, narrative, human diff, and all
+    agent attempts with their comments, diffs, scores, and reviews.
+
+    Args:
+        case: A case dict from ``collect_gallery_data()``.
+        eval_repos: The ``eval_repos`` dict from gallery data.
+
+    Returns:
+        Markdown string.
+    """
+    m = case["metadata"]
+    ont = case["ontology"]
+    repo = m.get("repo", "")
+    pr_num = case["pr_number"]
+    issue_num = m.get("issue_number", "")
+    eval_cfg = eval_repos.get(ont, {})
+
+    lines = []
+    lines.append(f"# PR #{pr_num} — {m.get('issue_title', '')}")
+    lines.append("")
+    lines.append(f"- **Ontology**: {ont}")
+    lines.append(f"- **Repo**: {repo}")
+    lines.append(f"- **Issue**: [#{issue_num}](https://github.com/{repo}/issues/{issue_num})")
+    lines.append(f"- **PR**: [#{pr_num}](https://github.com/{repo}/pull/{pr_num})")
+    lines.append(f"- **Author**: @{m.get('pr_author', '')}")
+    lines.append(f"- **Merged**: {m.get('pr_merged_at', '')}")
+    for field in ("task_type", "difficulty", "scoping", "scope",
+                   "review_outcome", "eval_suitability", "diff_noise"):
+        val = m.get(field)
+        if val:
+            lines.append(f"- **{field}**: {val}")
+    for notes_field in ("scoping_notes", "eval_suitability_notes", "diff_noise_notes"):
+        val = m.get(notes_field)
+        if val:
+            lines.append(f"- **{notes_field}**: {val}")
+    lines.append("")
+
+    # Narrative
+    narrative = case.get("narrative_md", "").strip()
+    if narrative:
+        lines.append(narrative)
+        lines.append("")
+
+    # Human diff
+    human_diff = case.get("human_diff")
+    if human_diff:
+        lines.append("## Human Diff")
+        lines.append("")
+        lines.append("```diff")
+        lines.append(human_diff)
+        lines.append("```")
+        lines.append("")
+
+    # Agent attempts
+    attempts = case.get("agent_attempts", [])
+    if attempts:
+        lines.append(f"## Agent Attempts ({len(attempts)})")
+        lines.append("")
+        sorted_attempts = sorted(attempts, key=lambda a: a.get("f1", 0), reverse=True)
+        for i, a in enumerate(sorted_attempts, 1):
+            eval_pr = a.get("eval_repo_pr", "")
+            eval_repo = eval_cfg.get("eval_repo", "")
+            eval_pr_url = f"https://github.com/ai4curation/{eval_repo}/pull/{eval_pr}" if eval_repo else ""
+
+            lines.append(f"### Attempt {i}: {a.get('model', '?')} / {a.get('runtime', '?')}")
+            lines.append("")
+            lines.append(f"- **Eval PR**: {f'[#{eval_pr}]({eval_pr_url})' if eval_pr_url else f'#{eval_pr}'}")
+            lines.append(f"- **F1**: {a.get('f1', 0):.3f}  **Precision**: {a.get('precision', 0):.3f}  **Recall**: {a.get('recall', 0):.3f}  **Jaccard**: {a.get('jaccard', 0):.3f}")
+            trace_url = a.get("trace_url")
+            if trace_url:
+                lines.append(f"- **Trace**: [{trace_url.split('/')[-1]}]({trace_url})")
+            workflow_run = a.get("workflow_run")
+            if workflow_run and eval_repo:
+                lines.append(f"- **Workflow run**: [{workflow_run}](https://github.com/ai4curation/{eval_repo}/actions/runs/{workflow_run})")
+            lines.append("")
+
+            # Agent PR comment
+            if a.get("pr_comment"):
+                lines.append("#### Agent PR Comment")
+                lines.append("")
+                lines.append(a["pr_comment"])
+                lines.append("")
+
+            # Agent issue comment
+            if a.get("issue_comment"):
+                lines.append("#### Agent Issue Comment")
+                lines.append("")
+                lines.append(a["issue_comment"])
+                lines.append("")
+
+            # Agent diff
+            if a.get("diff"):
+                lines.append("#### Agent Diff")
+                lines.append("")
+                lines.append("```diff")
+                lines.append(a["diff"])
+                lines.append("```")
+                lines.append("")
+
+            # Reviews
+            for review in a.get("reviews", []):
+                reviewer = review.get("frontmatter", {}).get("reviewed_by", "unknown")
+                lines.append(f"#### Review by {reviewer}")
+                lines.append("")
+                fm = review.get("frontmatter", {})
+                pills = []
+                for k in ("outcome", "f1", "precision", "recall", "overall",
+                           "instruction_following", "correctness", "completeness"):
+                    if k in fm:
+                        pills.append(f"**{k}**: {fm[k]}")
+                if pills:
+                    lines.append("  ".join(pills))
+                    lines.append("")
+                failure_modes = fm.get("failure_modes")
+                if failure_modes:
+                    lines.append(f"**Failure modes**: {', '.join(failure_modes) if isinstance(failure_modes, list) else failure_modes}")
+                    lines.append("")
+                body = review.get("body_md", "").strip()
+                if body:
+                    lines.append(body)
+                    lines.append("")
+
+    return "\n".join(lines)
+
+
+def generate_case_briefs(analysis_dir: Path, *, max_diff_lines: int = 200) -> list[Path]:
+    """Generate CASE_BRIEF.md files for all cases in the analysis directory.
+
+    Each brief is written to ``{ont}/cases/pr{N}/CASE_BRIEF.md``.
+
+    Args:
+        analysis_dir: Analysis directory.
+        max_diff_lines: Maximum diff lines to include.
+
+    Returns:
+        List of paths to generated files.
+    """
+    data = collect_gallery_data(analysis_dir, max_diff_lines=max_diff_lines)
+    eval_repos = data.get("eval_repos", {})
+    generated = []
+
+    for ont_name, ont_data in data["ontologies"].items():
+        for case in ont_data["cases"]:
+            case_dir_name = case.get("case_dir", f"pr{case['pr_number']}")
+            brief_path = analysis_dir / ont_name / "cases" / case_dir_name / "CASE_BRIEF.md"
+            brief_md = format_case_brief(case, eval_repos)
+            brief_path.write_text(brief_md, encoding="utf-8")
+            generated.append(brief_path)
+
+    return generated
 
 
 GALLERY_HTML_TEMPLATE = """\

@@ -18,7 +18,7 @@ from ai4c_scribe.api import (
     FixIssueStatus,
 )
 from ai4c_scribe.cache import clear_cache, get_cache_stats
-from ai4c_scribe.gallery import generate_gallery, fetch_all_eval_pr_data
+from ai4c_scribe.gallery import generate_gallery, fetch_all_eval_pr_data, generate_case_briefs
 from ai4c_scribe.case_studies import load_case_study, load_case_studies_dir
 from ai4c_scribe.metadiff.cli import app as metadiff_app
 from ai4c_scribe.workflows.cli import app as workflows_app
@@ -451,6 +451,27 @@ def gallery_fetch(
         typer.echo("  (--force: re-fetching all)")
     fetched = fetch_all_eval_pr_data(analysis_dir, force=force)
     typer.echo(f"Fetched {fetched} eval PRs")
+
+
+@app.command(name="case-briefs")
+def case_briefs_cmd(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory")] = Path("analysis"),
+    max_diff_lines: Annotated[int, typer.Option("--max-diff-lines", help="Max lines per diff")] = 200,
+):
+    """Generate CASE_BRIEF.md files for all cases.
+
+    Each brief assembles everything about one case into a single markdown
+    file: metadata, narrative, human diff, and all agent attempts with
+    their comments, diffs, scores, and reviews.
+
+    Written to {ont}/cases/pr{N}/CASE_BRIEF.md alongside METADATA.md.
+
+    Example:
+        ai4c-scribe case-briefs analysis/
+    """
+    typer.echo(f"Generating case briefs from {analysis_dir}...")
+    generated = generate_case_briefs(analysis_dir, max_diff_lines=max_diff_lines)
+    typer.echo(f"Generated {len(generated)} case briefs")
 
 
 @app.command()

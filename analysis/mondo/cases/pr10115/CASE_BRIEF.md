@@ -1,0 +1,416 @@
+# PR #10115 — Request for new term PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
+
+- **Ontology**: mondo
+- **Repo**: monarch-initiative/mondo
+- **Issue**: [#9855](https://github.com/monarch-initiative/mondo/issues/9855)
+- **PR**: [#10115](https://github.com/monarch-initiative/mondo/pull/10115)
+- **Author**: @katiermullen
+- **Merged**: 2026-04-02
+- **task_type**: new_term
+- **difficulty**: medium
+- **scoping**: tightly_scoped
+- **scope**: single_term
+- **review_outcome**: approved_first_time
+
+## Context
+
+Issue #9855 requested a new term for "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder". The curator discovered that this concept overlapped with the previously obsoleted MONDO:0014978, which had been deprecated but contained relevant metadata (synonyms, xrefs, definitions) that should be preserved in the new term.
+
+## Changes Made
+
+The PR created the new term while incorporating metadata from obsoleted MONDO:0014978. The 19 additions include the new term stanza with label, definition, synonyms (including "oocyte/zygote/embryo maturation arrest 16" and "PREIMPLANTATION EMBRYONIC LETHALITY 2"), parent classification, and cross-references. The 11 deletions likely reflect updating the obsoleted term's replaced_by annotation to point to the new term.
+
+## Resolution
+
+Moderate difficulty because it requires recognizing the relationship between a new term request and an existing obsoleted term. The curator noted this overlap in the PR description and merged information appropriately. An agent would need to search for related obsoleted terms when creating new terms and reconcile their metadata, which requires understanding of the obsoletion/replacement workflow.
+
+## Human Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb40..db0b71d65b 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -388643,19 +388643,11 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ [Term]
+ id: MONDO:0014978
+ name: obsolete preimplantation embryonic lethality 2
+-def: "OBSOLETE. Any preimplantation embryonic lethality in which the cause of the disease is a mutation in the PADI6 gene." [MONDO:patterns/disease_series_by_gene]
+-synonym: "PADI6 preimplantation embryonic lethality" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
+-synonym: "preimplantation embryonic lethality 2" EXACT []
+-synonym: "preimplantation embryonic lethality 2; PREMBL2" EXACT []
+-synonym: "preimplantation embryonic lethality caused by mutation in PADI6" EXACT [MONDO:design_pattern]
+-synonym: "preimplantation embryonic lethality type 2" EXACT [MONDO:RULE_1]
+-synonym: "PREMBL2" EXACT ABBREVIATION []
+-xref: OMIM:617234 {source="MONDO:obsoleteEquivalent"}
+-property_value: curated_content_resource "https://www.malacards.org/card/oocyte_zygote_embryo_maturation_arrest_16" xsd:anyURI {source="MONDO:MalaCards"}
+-property_value: IAO:0000231 OMO:0001000 {source="MONDO:excludePhenotype"}
++comment: Term replaced by MONDO:1010200 based on user request.
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5091" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
+ is_obsolete: true
+-consider: HP:0032479
++replaced_by: MONDO:1010200
+ 
+ [Term]
+ id: MONDO:0014979
+@@ -636159,6 +636151,22 @@ is_a: MONDO:0005583 {source="OMIA:001081"} ! non-human animal disease
+ intersection_of: MONDO:0005583 {source="OMIA:001081"} ! non-human animal disease
+ intersection_of: MONDO:0700097 MONDO:0010679 {source="OMIA:001081"} ! cross-species analog Duchenne muscular dystrophy
+ 
++[Term]
++id: MONDO:1010200
++name: oocyte/zygote/embryo maturation arrest 16
++def: "Any inherited oocyte maturation defect marked by early embryonic arrest and female infertility due to a varition in the PADI6 gene." [https://clinicalgenome.org/affiliation/40106, PMID:27545678, PMID:29693651]
++synonym: "PADI6 preimplantation embryonic lethality" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder" EXACT [https://clinicalgenome.org/affiliation/40106] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "preimplantation embryonic lethality type 2" EXACT [OMIM:617234]
++synonym: "PREMBL2" EXACT ABBREVIATION [OMIM:617234]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++property_value: curated_content_resource "https://www.malacards.org/card/oocyte_zygote_embryo_maturation_arrest_16" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-5002-8648
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:1010201
+ name: congenital pseudomyotonia, non-human animal
+
+```
+
+## Agent Attempts (5)
+
+### Attempt 1: claude-sonnet-4.5 / claude
+
+- **Eval PR**: [#467](https://github.com/ai4curation/eval-ont-agent-mondo/pull/467)
+- **F1**: 0.348  **Precision**: 0.286  **Recall**: 0.444  **Jaccard**: 0.211
+- **Trace**: [25878164280](https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25878164280)
+- **Workflow run**: [25878164280](https://github.com/ai4curation/eval-ont-agent-mondo/actions/runs/25878164280)
+
+#### Agent PR Comment
+
+# Add MONDO:7770012: PADI6-related oocyte/zygote/embryo maturation arrest 16
+
+#### Agent Issue Comment
+
+Thank you for the new term request! I've successfully created the PADI6-related oocyte/zygote/embryo maturation arrest 16 term as MONDO:7770012.
+
+The term has been added with:
+- Proper parent relationship to inherited oocyte maturation defect (MONDO:0014769)
+- Logical definition following the disease_series_by_gene pattern
+- All requested synonyms with proper citations
+- OMIM:617234 cross-reference
+- References to PMC5010645 and PMC6018785
+
+Changes have been committed in PR #<NN>.
+
+---
+🤖 **Generated by claude agent**
+- Runtime: `claude`
+- Model: `claude-sonnet-4-5-20250929`
+- Agent config: `ai4curation/mondo-agent-config@v3:.`
+- Iteration: `1`
+- Run: [View workflow run](https://github.com/ai4curation/eval-ont-agent-mondo/actions/runs/25878164280)
+
+#### Agent Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..769001c58 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,25 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is characterized by early embryonic arrest at the 2-5 cell stage, defective zygotic genome activation, and primary female infertility despite normal ovulation and fertilization." [PMC5010645, PMC6018785]
++subset: rare
++synonym: "early embryonic arrest" EXACT [PMC5010645]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "OZEMA16" EXACT ABBREVIATION [OMIM:617234]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "preimplantation embryonic lethality 2" EXACT [OMIM:617234]
++synonym: "PREMBL2" EXACT ABBREVIATION [OMIM:617234]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMC5010645", source="PMC6018785"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+
+```
+
+### Attempt 2: claude-sonnet-4.5 / claude
+
+- **Eval PR**: [#436](https://github.com/ai4curation/eval-ont-agent-mondo/pull/436)
+- **F1**: 0.348  **Precision**: 0.286  **Recall**: 0.444  **Jaccard**: 0.211
+- **Trace**: [25867717208](https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25867717208)
+
+#### Agent Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..769001c58 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,25 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is characterized by early embryonic arrest at the 2-5 cell stage, defective zygotic genome activation, and primary female infertility despite normal ovulation and fertilization." [PMC5010645, PMC6018785]
++subset: rare
++synonym: "early embryonic arrest" EXACT [PMC5010645]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "OZEMA16" EXACT ABBREVIATION [OMIM:617234]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "preimplantation embryonic lethality 2" EXACT [OMIM:617234]
++synonym: "PREMBL2" EXACT ABBREVIATION [OMIM:617234]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMC5010645", source="PMC6018785"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+
+```
+
+### Attempt 3: claude-opus-4.7 / claude
+
+- **Eval PR**: [#384](https://github.com/ai4curation/eval-ont-agent-mondo/pull/384)
+- **F1**: 0.333  **Precision**: 0.286  **Recall**: 0.400  **Jaccard**: 0.200
+- **Trace**: [25817239499](https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25817239499)
+- **Workflow run**: [25817239499](https://github.com/ai4curation/eval-ont-agent-mondo/actions/runs/25817239499)
+
+#### Agent PR Comment
+
+# New term: MONDO:7770012 oocyte/zygote/embryo maturation arrest 16
+
+Closes monarch-initiative/mondo#9855.
+
+## Summary
+
+Adds a new MONDO term for the PADI6-related female infertility / early embryonic arrest disorder (OMIM:617234). This OMIM entry was previously titled *preimplantation embryonic lethality 2* and was linked to the now-obsolete `MONDO:0014978`; OMIM has since renamed it to *oocyte/zygote/embryo maturation arrest 16*, putting it in the OZEMA series.
+
+## Term
+
+```
+[Term]
+id: MONDO:7770012
+name: oocyte/zygote/embryo maturation arrest 16
+def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. An autosomal recessive female infertility disorder characterized by early embryonic arrest." [PMID:27545678, PMID:29693651]
+subset: omim {source="OMIM:617234"}
+synonym: "early embryonic arrest" RELATED [PMID:27545678]
+synonym: "inherited oocyte maturation defect caused by mutation in PADI6" EXACT [MONDO:patterns/disease_series_by_gene]
+synonym: "OZEMA16" EXACT ABBREVIATION [MONDO:MEDGEN]
+synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder" EXACT [https://clinicalgenome.org/affiliation/40106] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+synonym: "preimplantation embryonic lethality 2" RELATED [OMIM:617234]
+synonym: "PREMBL2" RELATED ABBREVIATION [OMIM:617234]
+xref: MEDGEN:934626 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: OMIM:617234 {source="MONDO:equivalentTo"}
+xref: UMLS:C4310659 {source="MEDGEN:934626", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0014769 {source="OMIM:617234", source="PMID:27545678"} ! inherited oocyte maturation defect
+intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
+intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="OMIM:617234", source="PMID:27545678"} ! PADI6
+property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
+```
+
+## Rationale & decisions
+
+- **Primary label.** The issue requested `PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder` (ClinGen preferred label). MONDO sibling terms (OZEMA 17–25, e.g. `MONDO:0957220`, `MONDO:0957230`, …, `MONDO:0980964`) all use the short OMIM-aligned name, so I used `oocyte/zygote/embryo maturation arrest 16` as the primary label and recorded the ClinGen-preferred long form as an `EXACT` synonym with the `OMO:0002001` (preferred label by community) qualifier pointing to ClinGen, per the CLAUDE.md guidance.
+- **Parent.** As requested: `MONDO:0014769` (inherited oocyte maturation defect), the OMIM Phenotypic Series parent (OMIMPS:615774).
+- **Design pattern.** Modelled with `disease_series_by_gene` — both the explicit `relationship: has_material_basis_in_germline_mutation_in` (with sources) and the equivalent `intersection_of` axioms, matching the pattern documented in `src/patterns/dosdp-patterns/disease_series_by_gene.yaml` and CLAUDE.md.
+- **Gene identifier.** PADI6 → `http://identifiers.org/hgnc/20449`, verified via the HGNC REST API (`rest.genenames.org/fetch/symbol/PADI6`).
+- **xrefs.** `OMIM:617234`, `MEDGEN:934626`, `UMLS:C4310659`, all confirmed via NCBI MedGen lookup for OMIM:617234. These were not present on the obsoleted predecessor `MONDO:0014978` except as `MONDO:obsoleteEquivalent` for OMIM; reattaching them as `MONDO:equivalentTo` here is appropriate since the OMIM record now matches the new MONDO concept.
+- **Synonyms.**
+  - `OZEMA16` EXACT ABBREVIATION (from MedGen, current OMIM abbreviation).
+  - Legacy OMIM name `preimplantation embryonic lethality 2` and its abbreviation `PREMBL2` retained as RELATED (they describe the same OMIM entry pre-rename but the wording is no longer current OMIM nomenclature).
+  - `early embryonic arrest` retained as RELATED (descriptive, not a clinical name).
+  - Pattern synonym `inherited oocyte maturation defect caused by mutation in PADI6` added per design pattern.
+- **References.**
+  - PMID:27545678 — Xu et al., *Mutations in PADI6 Cause Female Infertility Characterized by Early Embryonic Arrest* (PMC5010645). Original gene-disease description.
+  - PMID:29693651 — Qian et al., *Biallelic PADI6 variants linking infertility, miscarriages, and hydatidiform moles* (PMC6018785). Expanded phenotype.
+- **Predecessor handling.** `MONDO:0014978` remains obsolete (not modified) with `xref: OMIM:617234 {source="MONDO:obsoleteEquivalent"}`; that qualifier signals the historical mapping and does not conflict with the new term's `MONDO:equivalentTo` claim.
+
+## Checklist
+
+- [x] Parent term `MONDO:0014769` exists and is appropriate
+- [x] No existing live term covers OMIM:617234 (only the obsolete `MONDO:0014978` does, via `obsoleteEquivalent`)
+- [x] New ID `MONDO:7770012` does not clash (`MONDO:7770011` was the prior highest 777-range ID)
+- [x] HGNC ID for PADI6 verified (HGNC:20449)
+- [x] OMIM / MedGen / UMLS IDs verified for OMIM:617234 (MEDGEN:934626, UMLS:C4310659)
+- [x] PMIDs verified by fetching PMC5010645 and PMC6018785
+- [x] Term parses cleanly (loaded the whole edit file through owltools, round-tripped to OBO, no errors)
+- [x] Logical definition mirrors text definition (genus = inherited oocyte maturation defect; differentia = PADI6 mutation)
+- [x] Issue link recorded in `IAO:0000233`
+- [x] Creator signed (`doi:10.1186/s13326-024-00320-3`)
+
+## Notes / caveats
+
+- I was unable to run `make NORM` because Docker is not available in this environment; ODK normalization should be applied as part of the standard release pipeline. The stanza is hand-written to match existing formatting conventions and round-trips cleanly through owltools.
+- `robot convert` is not installed locally either; syntactic validation was done by loading `src/ontology/mondo-edit.obo` (with the new term) through owltools and re-serialising it to OBO without errors.
+
+---
+🤖 **Generated by claude agent**
+- Runtime: `claude`
+- Model: `claude-opus-4-7`
+- Agent config: `ai4curation/mondo-agent-config@v3:.`
+- Iteration: `1`
+- Run: [View workflow run](https://github.com/ai4curation/eval-ont-agent-mondo/actions/runs/25817239499)
+
+
+#### Agent Issue Comment
+
+Thanks for the request. A new term `MONDO:7770012` **oocyte/zygote/embryo maturation arrest 16** has been added in PR #<NN>, with `PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder` recorded as the ClinGen preferred-label synonym. It will appear in the next Mondo release.
+
+A couple of decisions worth noting for review:
+
+- The primary label follows the existing OMIM-aligned naming pattern used by sibling terms (`oocyte/zygote/embryo maturation arrest 17`–`25`). The ClinGen-preferred label you provided is preserved as an EXACT synonym with the `OMO:0002001` (preferred label by community) qualifier pointing at ClinGen.
+- OMIM:617234 was previously linked to the now-obsolete `MONDO:0014978` (preimplantation embryonic lethality 2). OMIM has since renamed this entry and the equivalent xref is now attached to the new term.
+- References used: PMID:27545678 (PMC5010645) and PMID:29693651 (PMC6018785).
+
+---
+🤖 **Generated by claude agent**
+- Runtime: `claude`
+- Model: `claude-opus-4-7`
+- Agent config: `ai4curation/mondo-agent-config@v3:.`
+- Iteration: `1`
+- Run: [View workflow run](https://github.com/ai4curation/eval-ont-agent-mondo/actions/runs/25817239499)
+
+
+#### Agent Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..4f7f0f1f3 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,27 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: oocyte/zygote/embryo maturation arrest 16
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. An autosomal recessive female infertility disorder characterized by early embryonic arrest." [PMID:27545678, PMID:29693651]
++subset: omim {source="OMIM:617234"}
++synonym: "early embryonic arrest" RELATED [PMID:27545678]
++synonym: "inherited oocyte maturation defect caused by mutation in PADI6" EXACT [MONDO:patterns/disease_series_by_gene]
++synonym: "OZEMA16" EXACT ABBREVIATION [MONDO:MEDGEN]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder" EXACT [https://clinicalgenome.org/affiliation/40106] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "preimplantation embryonic lethality 2" RELATED [OMIM:617234]
++synonym: "PREMBL2" RELATED ABBREVIATION [OMIM:617234]
++xref: MEDGEN:934626 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++xref: UMLS:C4310659 {source="MEDGEN:934626", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++is_a: MONDO:0014769 {source="OMIM:617234", source="PMID:27545678"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="OMIM:617234", source="PMID:27545678"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+
+```
+
+### Attempt 4: claude-sonnet-4.5 / copilot
+
+- **Eval PR**: [#533](https://github.com/ai4curation/eval-ont-agent-mondo/pull/533)
+- **F1**: 0.267  **Precision**: 0.214  **Recall**: 0.353  **Jaccard**: 0.154
+
+#### Agent Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..562167e28 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,24 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is an autosomal recessive female infertility disorder marked by early embryonic arrest and female infertility." [https://clinicalgenome.org/affiliation/40106, PMID:27929740]
++subset: omim {source="OMIM:617234"}
++synonym: "early embryonic arrest" RELATED [https://clinicalgenome.org/affiliation/40106]
++synonym: "inherited oocyte maturation defect caused by mutation in PADI6" EXACT [MONDO:design_pattern]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [https://clinicalgenome.org/affiliation/40106]
++synonym: "PADI6 inherited oocyte maturation defect" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++synonym: "PREIMPLANTATION EMBRYONIC LETHALITY 2" EXACT [https://clinicalgenome.org/affiliation/40106]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="OMIM:617234", source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="OMIM:617234", source="https://clinicalgenome.org/affiliation/40106"} ! PADI6
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+
+```
+
+### Attempt 5: claude-sonnet-4.5 / copilot
+
+- **Eval PR**: [#493](https://github.com/ai4curation/eval-ont-agent-mondo/pull/493)
+- **F1**: 0.267  **Precision**: 0.214  **Recall**: 0.353  **Jaccard**: 0.154
+
+#### Agent Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..562167e28 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,24 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is an autosomal recessive female infertility disorder marked by early embryonic arrest and female infertility." [https://clinicalgenome.org/affiliation/40106, PMID:27929740]
++subset: omim {source="OMIM:617234"}
++synonym: "early embryonic arrest" RELATED [https://clinicalgenome.org/affiliation/40106]
++synonym: "inherited oocyte maturation defect caused by mutation in PADI6" EXACT [MONDO:design_pattern]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [https://clinicalgenome.org/affiliation/40106]
++synonym: "PADI6 inherited oocyte maturation defect" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++synonym: "PREIMPLANTATION EMBRYONIC LETHALITY 2" EXACT [https://clinicalgenome.org/affiliation/40106]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="OMIM:617234", source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="OMIM:617234", source="https://clinicalgenome.org/affiliation/40106"} ! PADI6
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+
+```
