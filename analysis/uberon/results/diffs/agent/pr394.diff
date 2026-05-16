@@ -1,0 +1,103 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index a84557c7c..d9694a970 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225499,6 +225499,98 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900001
++name: surface of tooth
++def: "An anatomical surface region that bounds a tooth." [PMID:11059346]
++synonym: "tooth surface" EXACT []
++intersection_of: UBERON:0036215 ! anatomical surface region
++intersection_of: bounding_layer_of UBERON:0001091 ! calcareous tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: facial surface of tooth
++def: "A tooth surface that faces the lips or cheek." [PMID:11059346]
++synonym: "facial tooth surface" EXACT []
++is_a: UBERON:9900001 ! surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: labial surface of tooth
++def: "A facial surface of an incisor tooth or canine tooth that faces the lips." [PMID:11059346]
++comment: Usually used for anterior teeth adjacent to the lips.
++synonym: "facial surface of anterior tooth" EXACT []
++synonym: "labial tooth surface" EXACT []
++is_a: UBERON:9900002 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: buccal surface of tooth
++def: "A facial surface of a premolar tooth or molar tooth that faces the cheek." [PMID:11059346]
++synonym: "buccal tooth surface" EXACT []
++synonym: "facial surface of posterior tooth" EXACT []
++is_a: UBERON:9900002 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900005
++name: lingual surface of tooth
++def: "A tooth surface that faces the tongue or oral cavity." [PMID:11059346]
++synonym: "lingual tooth surface" EXACT []
++is_a: UBERON:9900001 ! surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900006
++name: mesial surface of tooth
++def: "A tooth surface that is oriented toward the median plane of the dental arch." [PMID:11059346]
++synonym: "mesial tooth surface" EXACT []
++is_a: UBERON:9900001 ! surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900007
++name: distal surface of tooth
++def: "A tooth surface that is oriented away from the median plane of the dental arch." [PMID:11059346]
++synonym: "distal tooth surface" EXACT []
++is_a: UBERON:9900001 ! surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900008
++name: incisal surface of tooth
++def: "A tooth surface that forms the cutting edge of an incisor tooth or canine tooth." [PMID:11199612]
++synonym: "incisal tooth surface" EXACT []
++is_a: UBERON:9900001 ! surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbe
++property_value: dcterms-date "2026-05-16T01:37:49Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

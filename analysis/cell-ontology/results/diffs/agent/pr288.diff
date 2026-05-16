@@ -1,0 +1,79 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 945615c52..843f02f6b 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -2294,6 +2294,10 @@ Declaration(Class(obo:CL_0020034))
+ Declaration(Class(obo:CL_0020035))
+ Declaration(Class(obo:CL_0020036))
+ Declaration(Class(obo:CL_0700009))
++Declaration(Class(obo:CL_9900001))
++Declaration(Class(obo:CL_9900002))
++Declaration(Class(obo:CL_9900003))
++Declaration(Class(obo:CL_9900004))
+ Declaration(Class(obo:CL_1000001))
+ Declaration(Class(obo:CL_1000022))
+ Declaration(Class(obo:CL_1000036))
+@@ -25899,6 +25903,56 @@ AnnotationAssertion(rdfs:comment obo:CL_0700009 "Created with IRI in incorrect I
+ AnnotationAssertion(rdfs:label obo:CL_0700009 "obsolete kidney collecting duct beta-intercalated cell")
+ AnnotationAssertion(owl:deprecated obo:CL_0700009 "true"^^xsd:boolean)
+ 
++# Class: obo:CL_9900001 (superficial zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") Annotation(oboInOwl:hasDbXref "PMID:35501926") obo:IAO_0000115 obo:CL_9900001 "An articular chondrocyte located in the superficial (tangential) zone of articular cartilage, where chondrocytes are flattened and aligned parallel to the joint surface and contribute to cartilage lubrication through PRG4/lubricin production.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3533>)
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-16T01:22:39Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:35501926") oboInOwl:hasExactSynonym obo:CL_9900001 "superficial zone chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasExactSynonym obo:CL_9900001 "tangential zone articular chondrocyte")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "superficial zone articular chondrocyte")
++SubClassOf(obo:CL_9900001 obo:CL_1001607)
++
++# Class: obo:CL_9900002 (middle zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") Annotation(oboInOwl:hasDbXref "doi:10.3390/ijms262110300") obo:IAO_0000115 obo:CL_9900002 "An articular chondrocyte located in the middle (transitional) zone of articular cartilage, where chondrocytes are typically round and more randomly arranged within a matrix adapted for compressive load distribution.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900002 <https://github.com/obophenotype/cell-ontology/issues/3533>)
++AnnotationAssertion(terms:contributor obo:CL_9900002 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:creator obo:CL_9900002 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900002 "2026-05-16T01:22:39Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasExactSynonym obo:CL_9900002 "transitional zone articular chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:23124445") oboInOwl:hasRelatedSynonym obo:CL_9900002 "middle zone chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasRelatedSynonym obo:CL_9900002 "transitional zone chondrocyte")
++AnnotationAssertion(rdfs:label obo:CL_9900002 "middle zone articular chondrocyte")
++SubClassOf(obo:CL_9900002 obo:CL_1001607)
++
++# Class: obo:CL_9900003 (deep zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") Annotation(oboInOwl:hasDbXref "doi:10.3390/ijms262110300") obo:IAO_0000115 obo:CL_9900003 "An articular chondrocyte located in the deep (radial) zone of articular cartilage, where chondrocytes are commonly arranged in columns perpendicular to the joint surface within a proteoglycan-rich matrix that anchors to the calcified cartilage.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900003 <https://github.com/obophenotype/cell-ontology/issues/3533>)
++AnnotationAssertion(terms:contributor obo:CL_9900003 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:creator obo:CL_9900003 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900003 "2026-05-16T01:22:39Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasExactSynonym obo:CL_9900003 "radial zone articular chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:23124445") oboInOwl:hasRelatedSynonym obo:CL_9900003 "deep zone chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasRelatedSynonym obo:CL_9900003 "radial zone chondrocyte")
++AnnotationAssertion(rdfs:label obo:CL_9900003 "deep zone articular chondrocyte")
++SubClassOf(obo:CL_9900003 obo:CL_1001607)
++
++# Class: obo:CL_9900004 (calcified zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:22811609") Annotation(oboInOwl:hasDbXref "doi:10.3390/ijms262110300") obo:IAO_0000115 obo:CL_9900004 "An articular chondrocyte located in the calcified zone of articular cartilage at the interface with subchondral bone, where chondrocytes display a hypertrophic-like phenotype within calcified extracellular matrix that provides mechanical integration between cartilage and bone.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900004 <https://github.com/obophenotype/cell-ontology/issues/3533>)
++AnnotationAssertion(terms:contributor obo:CL_9900004 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:creator obo:CL_9900004 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900004 "2026-05-16T01:22:39Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:22811609") oboInOwl:hasExactSynonym obo:CL_9900004 "calcified zone chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:18455690") oboInOwl:hasRelatedSynonym obo:CL_9900004 "calcified cartilage zone articular chondrocyte")
++AnnotationAssertion(rdfs:label obo:CL_9900004 "calcified zone articular chondrocyte")
++SubClassOf(obo:CL_9900004 obo:CL_1001607)
++
+ # Class: obo:CL_1000001 (retrotrapezoid nucleus neuron)
+ 
+ AnnotationAssertion(rdfs:label obo:CL_1000001 "retrotrapezoid nucleus neuron")
+@@ -35732,4 +35786,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)
