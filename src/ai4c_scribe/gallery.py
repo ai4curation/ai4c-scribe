@@ -360,34 +360,20 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
     return {"ontologies": ontologies, "eval_repos": eval_repos}
 
 
-def format_case_brief(case: dict, eval_repos: dict) -> str:
-    """Format a single case dict as a markdown case brief.
-
-    The brief includes YAML frontmatter with all metadata, followed by
-    a human-readable markdown body with narrative, diffs, and attempts.
-
-    Args:
-        case: A case dict from ``collect_gallery_data()``.
-        eval_repos: The ``eval_repos`` dict from gallery data.
-
-    Returns:
-        Markdown string with YAML frontmatter.
-    """
+def _brief_frontmatter(case: dict, eval_repos: dict) -> dict:
+    """Build frontmatter dict for a case brief."""
     from datetime import date as date_type
 
     m = case["metadata"]
     ont = case["ontology"]
-    repo = m.get("repo", "")
-    pr_num = case["pr_number"]
-    issue_num = m.get("issue_number", "")
     eval_cfg = eval_repos.get(ont, {})
+    attempts = case.get("agent_attempts", [])
 
-    # Build frontmatter
     fm: dict = {
         "ontology": ont,
-        "repo": repo,
-        "issue_number": issue_num,
-        "pr_number": pr_num,
+        "repo": m.get("repo", ""),
+        "issue_number": m.get("issue_number", ""),
+        "pr_number": case["pr_number"],
         "issue_title": m.get("issue_title", ""),
         "pr_author": m.get("pr_author", ""),
         "pr_merged_at": m.get("pr_merged_at"),
@@ -396,23 +382,45 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
         "scoping": m.get("scoping"),
         "scope": m.get("scope"),
         "review_outcome": m.get("review_outcome"),
-        "num_agent_attempts": len(case.get("agent_attempts", [])),
+        "num_agent_attempts": len(attempts),
         "generated_at": date_type.today().isoformat(),
     }
-    # Optional fields
     for field in ("eval_suitability", "eval_suitability_notes",
                    "diff_noise", "diff_noise_notes",
                    "scoping_notes", "domain_area"):
         val = m.get(field)
         if val:
             fm[field] = val
-    # Agent summary
-    attempts = case.get("agent_attempts", [])
     if attempts:
         best = max(attempts, key=lambda a: a.get("f1", 0))
         fm["best_f1"] = round(best["f1"], 3)
         fm["best_model"] = best.get("model", "")
+    return fm
 
+
+def format_case_brief(case: dict, eval_repos: dict) -> str:
+    """Format a case as a compact markdown brief with YAML frontmatter.
+
+    The brief contains shared context (metadata, narrative, human diff)
+    and a summary table of all attempts. Full attempt details (diffs,
+    comments) are written to separate files by ``generate_case_briefs``.
+
+    Args:
+        case: A case dict from ``collect_gallery_data()``.
+        eval_repos: The ``eval_repos`` dict from gallery data.
+
+    Returns:
+        Markdown string with YAML frontmatter.
+    """
+    m = case["metadata"]
+    ont = case["ontology"]
+    repo = m.get("repo", "")
+    pr_num = case["pr_number"]
+    issue_num = m.get("issue_number", "")
+    eval_cfg = eval_repos.get(ont, {})
+    eval_repo = eval_cfg.get("eval_repo", "")
+
+    fm = _brief_frontmatter(case, eval_repos)
     fm_yaml = yaml.dump(fm, default_flow_style=False, sort_keys=False, allow_unicode=True).strip()
 
     lines = []
@@ -440,7 +448,7 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
         lines.append(narrative)
         lines.append("")
 
-    # Human diff
+    # Human diff (kept in brief — it's the shared gold standard)
     human_diff = case.get("human_diff")
     if human_diff:
         lines.append("## Human Diff")
@@ -450,89 +458,89 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
         lines.append("```")
         lines.append("")
 
-    # Agent attempts
+    # Attempt summary table
     attempts = case.get("agent_attempts", [])
     if attempts:
+        sorted_attempts = sorted(attempts, key=lambda a: a.get("f1", 0), reverse=True)
         lines.append(f"## Agent Attempts ({len(attempts)})")
         lines.append("")
-        sorted_attempts = sorted(attempts, key=lambda a: a.get("f1", 0), reverse=True)
+        lines.append("| # | Model | Runtime | F1 | P | R | Eval PR | Detail |")
+        lines.append("|---|-------|---------|-----|-----|-----|---------|--------|")
         for i, a in enumerate(sorted_attempts, 1):
             eval_pr = a.get("eval_repo_pr", "")
-            eval_repo = eval_cfg.get("eval_repo", "")
-            eval_pr_url = f"https://github.com/ai4curation/{eval_repo}/pull/{eval_pr}" if eval_repo else ""
+            pr_link = f"[#{eval_pr}](https://github.com/ai4curation/{eval_repo}/pull/{eval_pr})" if eval_repo else f"#{eval_pr}"
+            detail_link = f"[attempt](attempts/pr{eval_pr}.md)"
+            lines.append(
+                f"| {i} | {a.get('model', '?')} | {a.get('runtime', '?')} | "
+                f"{a.get('f1', 0):.3f} | {a.get('precision', 0):.3f} | {a.get('recall', 0):.3f} | "
+                f"{pr_link} | {detail_link} |"
+            )
+        lines.append("")
 
-            lines.append(f"### Attempt {i}: {a.get('model', '?')} / {a.get('runtime', '?')}")
-            lines.append("")
-            lines.append(f"- **Eval PR**: {f'[#{eval_pr}]({eval_pr_url})' if eval_pr_url else f'#{eval_pr}'}")
-            lines.append(f"- **F1**: {a.get('f1', 0):.3f}  **Precision**: {a.get('precision', 0):.3f}  **Recall**: {a.get('recall', 0):.3f}  **Jaccard**: {a.get('jaccard', 0):.3f}")
-            trace_url = a.get("trace_url")
-            if trace_url:
-                lines.append(f"- **Trace**: [{trace_url.split('/')[-1]}]({trace_url})")
-            workflow_run = a.get("workflow_run")
-            if workflow_run and eval_repo:
-                lines.append(f"- **Workflow run**: [{workflow_run}](https://github.com/ai4curation/{eval_repo}/actions/runs/{workflow_run})")
-            lines.append("")
+    return "\n".join(lines)
 
-            # Agent PR comment
-            if a.get("pr_comment"):
-                lines.append("#### Agent PR Comment")
-                lines.append("")
-                lines.append(a["pr_comment"])
-                lines.append("")
 
-            # Agent issue comment
-            if a.get("issue_comment"):
-                lines.append("#### Agent Issue Comment")
-                lines.append("")
-                lines.append(a["issue_comment"])
-                lines.append("")
+def _format_attempt_detail(attempt: dict, eval_repos: dict, ontology: str) -> str:
+    """Format a single agent attempt as a standalone markdown file."""
+    eval_cfg = eval_repos.get(ontology, {})
+    eval_repo = eval_cfg.get("eval_repo", "")
+    eval_pr = attempt.get("eval_repo_pr", "")
+    eval_pr_url = f"https://github.com/ai4curation/{eval_repo}/pull/{eval_pr}" if eval_repo else ""
 
-            # Agent diff
-            if a.get("diff"):
-                lines.append("#### Agent Diff")
-                lines.append("")
-                lines.append("```diff")
-                lines.append(a["diff"])
-                lines.append("```")
-                lines.append("")
+    lines = []
+    lines.append(f"# Attempt: {attempt.get('model', '?')} / {attempt.get('runtime', '?')}")
+    lines.append("")
+    lines.append(f"- **Eval PR**: {f'[#{eval_pr}]({eval_pr_url})' if eval_pr_url else f'#{eval_pr}'}")
+    lines.append(f"- **F1**: {attempt.get('f1', 0):.3f}  **Precision**: {attempt.get('precision', 0):.3f}  "
+                 f"**Recall**: {attempt.get('recall', 0):.3f}  **Jaccard**: {attempt.get('jaccard', 0):.3f}")
+    trace_url = attempt.get("trace_url")
+    if trace_url:
+        lines.append(f"- **Trace**: [{trace_url.split('/')[-1]}]({trace_url})")
+    workflow_run = attempt.get("workflow_run")
+    if workflow_run and eval_repo:
+        lines.append(f"- **Run**: [{workflow_run}](https://github.com/ai4curation/{eval_repo}/actions/runs/{workflow_run})")
+    lines.append("")
 
-            # Reviews
-            for review in a.get("reviews", []):
-                reviewer = review.get("frontmatter", {}).get("reviewed_by", "unknown")
-                lines.append(f"#### Review by {reviewer}")
-                lines.append("")
-                fm = review.get("frontmatter", {})
-                pills = []
-                for k in ("outcome", "f1", "precision", "recall", "overall",
-                           "instruction_following", "correctness", "completeness"):
-                    if k in fm:
-                        pills.append(f"**{k}**: {fm[k]}")
-                if pills:
-                    lines.append("  ".join(pills))
-                    lines.append("")
-                failure_modes = fm.get("failure_modes")
-                if failure_modes:
-                    lines.append(f"**Failure modes**: {', '.join(failure_modes) if isinstance(failure_modes, list) else failure_modes}")
-                    lines.append("")
-                body = review.get("body_md", "").strip()
-                if body:
-                    lines.append(body)
-                    lines.append("")
+    if attempt.get("pr_comment"):
+        lines.append("## Agent PR Comment")
+        lines.append("")
+        lines.append(attempt["pr_comment"])
+        lines.append("")
+
+    if attempt.get("issue_comment"):
+        lines.append("## Agent Issue Comment")
+        lines.append("")
+        lines.append(attempt["issue_comment"])
+        lines.append("")
+
+    if attempt.get("diff"):
+        lines.append("## Agent Diff")
+        lines.append("")
+        lines.append("```diff")
+        lines.append(attempt["diff"])
+        lines.append("```")
+        lines.append("")
 
     return "\n".join(lines)
 
 
 def generate_case_briefs(analysis_dir: Path, *, max_diff_lines: int = 200) -> list[Path]:
-    """Generate CASE_BRIEF.md files for all cases in the analysis directory.
+    """Generate CASE_BRIEF.md and per-attempt detail files.
 
-    Each brief is written to ``{ont}/cases/pr{N}/CASE_BRIEF.md``.
+    Structure per case::
+
+        {ont}/cases/pr{N}/
+            METADATA.md          # curated (untouched)
+            CASE_BRIEF.md        # compact brief with summary table
+            attempts/
+                pr{eval_pr}.md   # full detail per attempt
 
     Args:
         analysis_dir: Analysis directory.
         max_diff_lines: Maximum diff lines to include.
 
     Returns:
-        List of paths to generated files.
+        List of paths to generated CASE_BRIEF.md files.
     """
     data = collect_gallery_data(analysis_dir, max_diff_lines=max_diff_lines)
     eval_repos = data.get("eval_repos", {})
@@ -541,10 +549,24 @@ def generate_case_briefs(analysis_dir: Path, *, max_diff_lines: int = 200) -> li
     for ont_name, ont_data in data["ontologies"].items():
         for case in ont_data["cases"]:
             case_dir_name = case.get("case_dir", f"pr{case['pr_number']}")
-            brief_path = analysis_dir / ont_name / "cases" / case_dir_name / "CASE_BRIEF.md"
+            case_dir = analysis_dir / ont_name / "cases" / case_dir_name
+
+            # Write compact brief
+            brief_path = case_dir / "CASE_BRIEF.md"
             brief_md = format_case_brief(case, eval_repos)
             brief_path.write_text(brief_md, encoding="utf-8")
             generated.append(brief_path)
+
+            # Write per-attempt detail files
+            attempts = case.get("agent_attempts", [])
+            if attempts:
+                attempts_dir = case_dir / "attempts"
+                attempts_dir.mkdir(exist_ok=True)
+                for attempt in attempts:
+                    eval_pr = attempt.get("eval_repo_pr", "")
+                    attempt_path = attempts_dir / f"pr{eval_pr}.md"
+                    attempt_md = _format_attempt_detail(attempt, eval_repos, ont_name)
+                    attempt_path.write_text(attempt_md, encoding="utf-8")
 
     return generated
 
