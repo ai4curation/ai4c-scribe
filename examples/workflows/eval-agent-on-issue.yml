@@ -517,15 +517,98 @@ jobs:
         if: inputs.agent_runtime == 'opencode'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           export PATH="$HOME/.opencode/bin:$PATH"
-          opencode run "$(cat __agent_prompt__.md)" \
-            --model ${{ inputs.model }} \
+          MODEL="${{ inputs.model }}"
+          OC_MODEL="$MODEL"
+
+          # OpenAI gpt-5.x: OpenCode's built-in `openai` provider needs an
+          # OPENAI_API_KEY, which we deliberately do NOT carry (subscription /
+          # OAuth only). Instead run a local OpenAI-compatible proxy backed by
+          # the ChatGPT/Codex subscription OAuth token already written to
+          # ~/.codex/auth.json, and point a custom opencode provider at it.
+          case "$MODEL" in
+            openai/gpt-*|gpt-5.*)
+              # openai-oauth requires Node >= 20
+              if ! command -v node >/dev/null 2>&1 || [ "$(node -v 2>/dev/null | sed 's/v//;s/\..*//')" -lt 20 ]; then
+                curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+                export NVM_DIR="$HOME/.nvm"
+                . "$NVM_DIR/nvm.sh"
+                nvm install 22
+                nvm use 22
+                hash -r 2>/dev/null || true
+              fi
+              echo "node (post-setup): $(command -v node) $(node -v 2>/dev/null)"
+              echo "node: $(command -v node) $(node -v 2>/dev/null)"
+              nohup npx -y openai-oauth \
+                --oauth-file "$HOME/.codex/auth.json" \
+                --host 127.0.0.1 --port 10531 \
+                > /tmp/oauth-proxy.log 2>&1 &
+              PROXY_PID=$!
+              # wait up to ~4 min for the proxy (npx may download the pkg first)
+              PROXY_UP=0
+              for i in $(seq 1 80); do
+                if curl -sf http://127.0.0.1:10531/v1/models >/dev/null 2>&1; then
+                  PROXY_UP=1; break
+                fi
+                kill -0 "$PROXY_PID" 2>/dev/null || { echo "proxy process died"; break; }
+                sleep 3
+              done
+              echo "===== /tmp/oauth-proxy.log ====="
+              cat /tmp/oauth-proxy.log 2>/dev/null || true
+              echo "===== /v1/models ====="
+              curl -s -m 15 http://127.0.0.1:10531/v1/models || true
+              echo
+              if [ "$PROXY_UP" != "1" ]; then
+                echo "ERROR: Codex-OAuth proxy did not become ready" >&2
+                exit 1
+              fi
+              echo "===== proxy smoke test (chat/completions) ====="
+              curl -s -m 60 http://127.0.0.1:10531/v1/chat/completions \
+                -H 'Content-Type: application/json' \
+                -d '{"model":"gpt-5.5","messages":[{"role":"user","content":"say hi"}],"max_tokens":5}' \
+                | head -c 800 || true
+              echo
+              # global config (not repo-local, so it never pollutes the diff)
+              mkdir -p "$HOME/.config/opencode"
+              cat > "$HOME/.config/opencode/opencode.json" <<'OCJSON'
+          {
+            "$schema": "https://opencode.ai/config.json",
+            "provider": {
+              "codexoauth": {
+                "npm": "@ai-sdk/openai-compatible",
+                "name": "Codex OAuth",
+                "options": {
+                  "baseURL": "http://127.0.0.1:10531/v1",
+                  "apiKey": "codex-oauth"
+                },
+                "models": {
+                  "gpt-5.5": {},
+                  "gpt-5.5-pro": {},
+                  "gpt-5.4": {},
+                  "gpt-5.4-pro": {}
+                }
+              }
+            }
+          }
+          OCJSON
+              OC_MODEL="codexoauth/${MODEL#openai/}"
+              echo "Using Codex-OAuth proxy; opencode model: $OC_MODEL"
+              ;;
+          esac
+
+          timeout 1500 opencode run "$(cat __agent_prompt__.md)" \
+            --model "$OC_MODEL" \
             --format json \
             2>&1 | tee /tmp/opencode-trace.json
+          OC_RC=${PIPESTATUS:-$?}
+          if [ -f /tmp/oauth-proxy.log ]; then
+            echo "===== /tmp/oauth-proxy.log (final) ====="
+            tail -c 4000 /tmp/oauth-proxy.log || true
+          fi
+          exit "$OC_RC"
 
       - name: Install Pi
         if: inputs.agent_runtime == 'pi'
