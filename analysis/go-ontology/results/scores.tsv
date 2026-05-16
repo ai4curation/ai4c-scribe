@@ -1,4 +1,11 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+go-ontology	25870	32008	obsoletion	medium	v9	gpt-5.5	codex	545	0.881	0.963	0.812	0.788	go-#25870	std_codex_g55
+go-ontology	31985	31986	reclassification	hard	v9	gpt-5.5	codex	544	0.87	0.833	0.909	0.769	go-#31985	std_codex_g55
+go-ontology	31114	32028	axiom_repair	simple	v9	gpt-5.5	codex	543	0.0	0.0	0.0	0.0	go-#31114	std_codex_g55
+go-ontology	31948	31994	obsoletion	medium	v9	gpt-5.5	codex	542	0.842	0.8	0.889	0.727	go-#31948	std_codex_g55
+go-ontology	31051	32037	synonym_update	simple	v9	gpt-5.5	codex	541	0.688	1.0	0.524	0.524	go-#31051	std_codex_g55
+go-ontology	31873	32022	obsoletion	medium	v9	gpt-5.5	codex	540	0.909	0.909	0.909	0.833	go-#31873	std_codex_g55
+go-ontology	32044	32054	new_term	medium	v9	gpt-5.5	codex	539	0.636	0.583	0.7	0.467	go-#32044	std_codex_g55
 go-ontology	31962	31970	axiom_repair	medium	v9	gemma-4-31b	opencode	535	0.842	0.8	0.889	0.727	go-#31962	std_opencode_gem4
 go-ontology	31967	31968	reclassification	medium	v9	gemma-4-31b	opencode	533	0.8	0.667	1.0	0.667	go-#31967	std_opencode_gem4
 go-ontology	32005	32026	obsoletion	medium	v9	gemma-4-31b	opencode	525	0.017	0.19	0.009	0.008	go-#32005	std_opencode_gem4
@@ -343,9 +350,9 @@ go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	opencode	50	0.762	0.889	0.6
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	46	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
 go-ontology	31935	31946	reclassification	medium	v9	gpt-5.4	codex	45	0.72	0.9	0.6	0.562	go-#31935	std_codex_g54
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	40	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
-go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	39	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
-go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38	0.762	0.889	0.667	0.615	go-#31961	std_codex_g55
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
 go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	31	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
 go-ontology	31961	32015	obsoletion	simple	v9	claude-haiku-4.5	claude	33	0.8	0.889	0.727	0.667	go-#31961	std_claude_hai45
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
+go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	39	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
+go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.5	codex	38	0.762	0.889	0.667	0.615	go-#31961	std_codex_g55

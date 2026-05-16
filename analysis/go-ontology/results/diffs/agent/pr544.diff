@@ -1,0 +1,25 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index dd6593ace..3c3c9c5f5 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -440991,14 +440991,15 @@ replaced_by: GO:0000253
+ 
+ [Term]
+ id: GO:0102177
+-name: 24-methylenelophenol methyl oxidase activity
++name: 4alpha-monomethylsterol monooxygenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: 24-methylenelophenol + O2 + NADH + H+ = 4alpha-hydroxymethyl-ergosta-7,24(241)-dien-3beta-ol + NAD + H2O." [GOC:pz, PMID:11707264, RHEA:58872]
++def: "Catalysis of the reaction: 24-methylidenelophenol + 6 Fe(II)-[cytochrome b5] + 3 O2 + 5 H+ = 4alpha-carboxy-ergosta-7,24(24(1))-dien-3beta-ol + 6 Fe(III)-[cytochrome b5] + 4 H2O." [PMID:11707264, RHEA:58868]
+ xref: EC:1.14.18.11 {source="skos:exactMatch"}
+-xref: MetaCyc:RXN-11930
+-xref: RHEA:58872 {source="skos:exactMatch"}
+-is_a: GO:0016709 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen
++xref: MetaCyc:RXN-19724 {source="skos:exactMatch"}
++xref: RHEA:58868 {source="skos:exactMatch"}
++is_a: GO:0016716 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, another compound as one donor, and incorporation of one atom of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31985" xsd:anyURI
+ 
+ [Term]
+ id: GO:0102178

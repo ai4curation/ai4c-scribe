@@ -1,0 +1,111 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 8262d5a8a..866a8ce0d 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -138332,16 +138332,14 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0018581
+-name: hydroxyquinol 1,2-dioxygenase activity
++name: obsolete hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
+-xref: EC:1.13.11.37 {source="skos:broadMatch"}
+-xref: MetaCyc:RXN-17556
+-xref: RHEA:19441 {source="skos:exactMatch"}
+-xref: UM-BBD_reactionID:r0232
+-is_a: GO:0016702 ! oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen
++def: "OBSOLETE. Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
++comment: The reason for obsoletion is that this term represents a sub-reaction of hydroxyquinol 1,2-dioxygenase activity.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/25870" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0047074
+ 
+ [Term]
+ id: GO:0018582
+@@ -291741,11 +291739,12 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0047074
+-name: 4-hydroxycatechol 1,2-dioxygenase activity
++name: hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = maleylacetate + 2 H+." [RHEA:35595]
++synonym: "4-hydroxycatechol 1,2-dioxygenase activity" EXACT []
+ xref: EC:1.13.11.37 {source="skos:exactMatch"}
+-xref: MetaCyc:RXN-10137
++xref: MetaCyc:RXN-10137 {source="skos:narrowMatch"}
+ xref: RHEA:35595 {source="skos:exactMatch"}
+ is_a: GO:0016702 ! oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/25870" xsd:anyURI
+diff --git a/src/ontology/imports/go-catalytic-activities-participants.obo b/src/ontology/imports/go-catalytic-activities-participants.obo
+index 07fed63b4..ff0d9d917 100644
+--- a/src/ontology/imports/go-catalytic-activities-participants.obo
++++ b/src/ontology/imports/go-catalytic-activities-participants.obo
+@@ -9467,13 +9467,6 @@ relationship: RO:0000057 CHEBI:15379
+ relationship: RO:0000057 CHEBI:36241
+ relationship: RO:0000057 CHEBI:58358
+ 
+-[Term]
+-id: GO:0018581
+-relationship: RO:0000057 CHEBI:15378
+-relationship: RO:0000057 CHEBI:15379
+-relationship: RO:0000057 CHEBI:16971
+-relationship: RO:0000057 CHEBI:58139
+-
+ [Term]
+ id: GO:0018582
+ relationship: RO:0000057 CHEBI:15378
+@@ -34849,4 +34842,3 @@ relationship: RO:0000057 CHEBI:57856
+ relationship: RO:0000057 CHEBI:59789
+ relationship: RO:0000057 CHEBI:74411
+ relationship: RO:0000057 CHEBI:74449
+-
+diff --git a/src/ontology/imports/go-catalytic-activities-participants.owl b/src/ontology/imports/go-catalytic-activities-participants.owl
+index fb8b76d32..c815be9a8 100644
+--- a/src/ontology/imports/go-catalytic-activities-participants.owl
++++ b/src/ontology/imports/go-catalytic-activities-participants.owl
+@@ -69756,37 +69756,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0018581 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018581">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15378"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15379"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_16971"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_58139"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0018582 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018582">
+@@ -186361,4 +186330,3 @@
+ 
+ 
+ <!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+-

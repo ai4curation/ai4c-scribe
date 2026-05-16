@@ -1,3 +1,8 @@
+---
+name: review-agent-pr
+description: Review a shadow PR created by an AI agent against the human gold standard
+---
+
 # Review Guidelines: Agent Evaluation Runs
 
 You are reviewing the PR that was created in response to GitHub issue
@@ -6,18 +11,65 @@ agent's work by comparing it to a gold-standard solution. However,
 note that in some cases the gold standard may have imperfections, and
 the proposed PR may actually improve on it.
 
-## Context
+## Case briefs
 
-Each review stub (`prNN-{reviewer}-stub.md`) has YAML frontmatter with:
+This repo works by making "attempt" PRs in a shadow repo that
+are blinded replications of "source" PRs in the original repo.
 
-- **issue_number**: The GitHub issue the agent was asked to solve
-- **pr_number**: The human PR that solved it (ground truth)
-- **eval_repo_pr**: The agent's PR in the evaluation repo
-- **agent**: Logical agent handle (e.g., `std_codex_g55`)
-- **model / runtime**: The LLM and harness used
-- **f1 / precision / recall**: Metadiff scores comparing agent diff to human diff
+Let's take GO as an example. You should work from the case brief that is already prepared for you; for example:
 
-The HTML comment block contains URLs for the source issue, human PR, and agent PR.
+* analysis/go-ontology/cases/pr31676/CASE_BRIEF.md
+
+This describes the source PR (31676 in the source repo), an overview, how the human
+handled it, and how all the agents handled it.
+
+the front matter might have:
+
+```yaml
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31670
+pr_number: 31676
+issue_title: 'Taxon constraint: please add for GO:0070478 and similar terms'
+pr_author: pgaudet
+pr_merged_at: '2026-04-20'
+task_type: new_term
+difficulty: hard
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: multiple_rounds
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+scoping_notes: Primary goal was adding taxon constraints for specific terms. Also
+  fixed a formatting error in the migrasome entry (extra NCBITaxon column) which was
+  incidental cleanup.
+domain_area: biological_process
+best_f1: 0.571
+best_model: kimi-k2.6
+```
+
+You are encouraged to read the full source issue and the original PR in the source repo, as
+well as the summary in the brief.
+
+Note you are also free to suggest changes to some parts of the metadata (task_type, difficuly, scope, ...)
+
+Your job is to evaluate the agent attempts. Each attempt has a metadata section at the start:
+
+E.g. ` grep -A5 '^### Attempt' analysis/go-ontology/cases/pr31676/CASE_BRIEF.md`"
+
+
+```markdown
+### Attempt 1: kimi-k2.6 / opencode
+
+- **Eval PR**: [#263](https://github.com/ai4curation/eval-ont-agent-go/pull/263)
+- **F1**: 0.571  **Precision**: 0.400  **Recall**: 1.000  **Jaccard**: 0.400
+- **Trace**: [25646686906](https://github.com/ai4curation/eval-ont-agent-go/tree/master/traces/25646686906)
+- **Workflow run**: [25646686906](https://github.com/ai4curation/eval-ont-agent-go/actions/runs/25646686906)
+```
+
+The review for this attempt would go in `analysis/go-ontology/results/reviews/pr263-{YOU}-complete.md
+
+Where YOU is whatever agent type you are (codex, claude)
 
 ## Step 1: Understand the task
 
@@ -79,6 +131,27 @@ gh pr diff {pr_number} --repo {source_repo}
 Note what the human changed, how they changed it, and any reviewer feedback.
 The human solution is the reference but not necessarily perfect — sometimes
 the agent's approach is equally valid or even better.
+
+### Step 3a: Check whether the gold PR is the *whole* human resolution
+
+A single issue is often resolved by the human across **multiple PRs** (e.g.,
+a taxon-constraint cleanup in one PR, the actual obsoletion in another). The
+case brief and metadiff score compare the agent against **only one** of those
+PRs — the one selected as `pr_number`. If that PR is just a sub-step, the
+metadiff F1 will be near zero for *every* attempt even when agents fully and
+correctly resolve the issue.
+
+Always sanity-check this:
+
+```bash
+gh search prs --repo {source_repo} "{issue_number}" --json number,title,state,url --limit 20
+gh search prs --repo {source_repo} "{key term from issue title}" --json number,title,url --limit 10
+```
+
+If the issue was resolved by several PRs, reconstruct the **union** of the
+human changes and judge the agent against that union and against the issue's
+explicit asks — not against the single selected gold PR. When this happens,
+the case is a **poor evaluation case** and must be flagged (see Step 7a).
 
 ## Step 4: Read the agent's PR
 
@@ -186,6 +259,33 @@ Update these fields in the YAML frontmatter:
 - **reviewed_by**: Your model identifier (e.g., `gpt-5.5`, `claude-opus-4.7`)
 - **reviewed_at**: Today's date in YYYY-MM-DD format
 
+## Step 7a: Flag poor evaluation cases (curated metadata only)
+
+If you determined in Step 3a that the gold PR is only a sub-step of a
+multi-PR human resolution (or the case is otherwise a poor reference — e.g.
+the gold PR is wrong, or the issue was substantively renegotiated in
+comments), record this in the case's **`METADATA.md`**, NOT the
+`CASE_BRIEF.md`.
+
+- `CASE_BRIEF.md` is **auto-generated and derived** — never edit it; any
+  change will be overwritten on regeneration.
+- `METADATA.md` (same directory) is **hand-curated** and is the correct place
+  for durable curator findings.
+
+In `METADATA.md`, add to the frontmatter:
+
+```yaml
+case_quality: poor          # poor | ok | good
+case_quality_reason: gold_pr_is_partial   # short slug
+companion_prs: [32023, 32069]   # other human PRs that resolved the issue
+scoring_caveat: "metadiff vs #32021 only covers the taxon-constraint sub-step; judge attempts against the issue and the union of #32021+#32023+#32069"
+```
+
+and add a `## Curation Note (data quality)` section to the body explaining
+the finding so downstream scoring/aggregation can exclude or down-weight the
+case. Then review the attempts **in light of the issue's actual instructions**
+rather than the misleading metadiff.
+
 ## Step 8: Rename the file
 
 Rename the file from `-stub.md` to `-complete.md` to mark it as reviewed.
@@ -201,3 +301,8 @@ Rename the file from `-stub.md` to `-complete.md` to mark it as reviewed.
   reasonable judgment calls.
 - If you cannot access the issue or PR (404, permissions), note this in the
   review rather than guessing.
+- `CASE_BRIEF.md` is derived/auto-generated — **never edit it**. Durable
+  curator findings (poor-case flags, metadata corrections) go in the
+  hand-curated `METADATA.md` in the same case directory.
+- A case where every attempt scores ~0 F1 is a strong signal to apply
+  Step 3a before concluding the agents failed — the gold PR may be partial.
