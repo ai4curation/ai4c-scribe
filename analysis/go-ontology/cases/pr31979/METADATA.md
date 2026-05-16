@@ -25,7 +25,34 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Follow-up rename implementing reviewer feedback on naming conventions, demonstrating the iterative review process for enzyme terms
+agent_coverage: none
+agent_coverage_note: "no eval attempts generated as of 2026-05-15"
+case_quality: poor
+case_quality_reason: gold_pr_is_partial
+companion_prs: [31971]
+scoring_caveat: "metadiff vs #31979 only covers the 'X as acceptor' rename follow-up; the six explicit issue #31965 checkboxes (EC/RHEA xref + def refactor) were done in #31971. Scope the prompt to the review-comment rename and judge against the union of #31971+#31979."
+quality_flagged_by: claude-opus-4.7
+quality_flagged_at: 2026-05-15
 ---
+
+## Curation Note (data quality)
+
+Issue #31965 was resolved across **two PRs**. PR #31971 ("Refactor
+protoporphyrinogen oxidase activity terms (fixes #31965)") implemented the
+issue body's six explicit checkboxes (remove `EC:1.3.3.4` from GO:0070819;
+add `EC:1.3.5.3` + `RHEA:65032`; relabel GO:0070819 to "quinone-dependent
+protoporphyrinogen oxidase activity"; def rewrites for GO:0070819 and
+GO:0070818; add `RHEA:62000`/`RHEA:65032` xrefs). The selected gold PR #31979
+implements **only** the secondary "X as acceptor" rename that @pgaudet
+requested in a review comment (GO:0004729 and GO:0070819).
+
+Implication for scoring: an agent prompted with the full issue #31965 body
+would correctly implement the six-checkbox refactor and score ≈ F1 0 against
+#31979. The case is usable only if the agent prompt is scoped to the
+review-comment rename follow-up; attempts should be judged against the issue's
+actual ask and the union of #31971 + #31979, not #31979 alone. Down-weight or
+re-scope in aggregation. Case-level review:
+`analysis/go-ontology/results/reviews/pr31979-claude-case-review.md`.
 
 ## Context
 

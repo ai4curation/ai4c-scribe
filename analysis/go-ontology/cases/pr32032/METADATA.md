@@ -24,7 +24,36 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Simple metadata correction that required understanding GO conventions for the created_by field format
+agent_coverage: none
+agent_coverage_note: "no eval attempts generated as of 2026-05-15"
+case_quality: poor
+case_quality_reason: gold_edits_metadiff_ignored_field
+companion_prs: [31612, 31617, 32014, 32028]
+scoring_caveat: "gold PR #32032 changes ONLY created_by values (GOC:vw -> vw on 3 terms) — OBO metadiff normalizes provenance fields away, so every attempt scores F1=0 by construction even if byte-identical. It is also only the 3rd corrective sub-step of the multi-PR issue #31114 NTR resolution (terms created in #31612/#31617; rename in open #32014; first created_by fix in #32028). Exclude from metadiff scoring or re-pair to a substantive PR in the lineage."
+quality_flagged_by: claude-opus-4.7
+quality_flagged_at: 2026-05-15
 ---
+
+## Curation Note (data quality)
+
+**Two independent poor-case signatures (skill Step 3a + 3b).**
+
+1. *Gold edits only a metadiff-ignored field.* PR #32032 changes only
+   `created_by: GOC:vw` → `created_by: vw` on GO:0180067, GO:0180068,
+   GO:0180069. OBO metadiff normalizes provenance fields, so any future
+   attempt scores F1 = 0 by construction, even a byte-identical reproduction.
+
+2. *Gold PR is a tiny corrective sub-step of a long multi-PR resolution.*
+   Issue #31114 (the actual NTR) was resolved across many PRs: terms created
+   in #31612 / #31617; label rename in the still-open #32014; first
+   `created_by` fix in #32028 (PomBase:vw → GOC:vw); #32032 is the *third*
+   corrective pass, undoing #32028's mistake. #32032 does not resolve the NTR.
+
+Also note `task_type: axiom_repair` is a mislabel — there is no axiom change,
+only `created_by` provenance correction. Recommend excluding from
+metadiff-scored eval or re-pairing the case to a substantive PR in the #31114
+lineage. Case-level review:
+`analysis/go-ontology/results/reviews/pr32032-claude-case-review.md`.
 
 ## Context
 

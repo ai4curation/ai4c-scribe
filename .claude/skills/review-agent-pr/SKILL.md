@@ -153,6 +153,30 @@ human changes and judge the agent against that union and against the issue's
 explicit asks — not against the single selected gold PR. When this happens,
 the case is a **poor evaluation case** and must be flagged (see Step 7a).
 
+### Step 3b: Other poor-case signatures
+
+A near-zero or compressed F1 across *all* attempts can also mean (observed
+across the GO set, 2026-05-15):
+
+- **Eval base-state contamination** — a foreign, unrelated edit block appears
+  byte-identical in all (or most) attempts because it leaked into the eval
+  base branch. Whole-file metadiff then craters recall and masks correct work.
+  Tell: the same large hunk touching terms unrelated to the issue in every
+  attempt, including no-op runs. Judge only the issue-relevant hunk.
+- **Gold edits only a metadiff-ignored field** — e.g. gold changes only
+  `created_by`, which OBO metadiff normalizes away, so every attempt scores
+  F1=0 by construction even when byte-identical to gold.
+- **Gold curator-repudiated** — the merged gold was reverted or objected to by
+  curators shortly after; reproducing it faithfully is not the quality target.
+- **Gold has an out-of-scope extra edit** the issue never asked for, capping
+  well-scoped agents below 1.0.
+
+All of these are `case_quality: poor` and flagged in `METADATA.md` (Step 7a)
+with an appropriate `case_quality_reason`. Conversely, do **not** flag a case
+poor merely because F1 is uniformly < 1.0 due to `term_tracker_item`,
+provenance, or free-text comment-wording convention differences — that is
+normal metadiff under-representation; judge substance and say so in the review.
+
 ## Step 4: Read the agent's PR
 
 ```bash
