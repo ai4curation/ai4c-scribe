@@ -1,16 +1,26 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3163
+pr_number: 3545
+issue_title: Add CD14 lacks to human dendritic cell terms
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-05'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+domain_area: immunology
+---
+
 # PR #3545 — Add CD14 lacks to human dendritic cell terms
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3163](https://github.com/obophenotype/cell-ontology/issues/3163)
-- **PR**: [#3545](https://github.com/obophenotype/cell-ontology/pull/3545)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-05
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3163](https://github.com/obophenotype/cell-ontology/issues/3163) | [PR #3545](https://github.com/obophenotype/cell-ontology/pull/3545) | @app/copilot-swe-agent | merged 2026-02-05
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

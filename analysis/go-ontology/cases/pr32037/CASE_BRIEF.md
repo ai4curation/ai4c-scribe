@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31051
+pr_number: 32037
+issue_title: 'Taxon constraint: GO:0046544 development of secondary male sexual characteristics'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-06'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: biological_process
+best_f1: 0.917
+best_model: claude-haiku-4.5
+---
+
 # PR #32037 — Taxon constraint: GO:0046544 development of secondary male sexual characteristics
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31051](https://github.com/geneontology/go-ontology/issues/31051)
-- **PR**: [#32037](https://github.com/geneontology/go-ontology/pull/32037)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-06
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31051](https://github.com/geneontology/go-ontology/issues/31051) | [PR #32037](https://github.com/geneontology/go-ontology/pull/32037) | @dragon-ai-agent | merged 2026-05-06
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

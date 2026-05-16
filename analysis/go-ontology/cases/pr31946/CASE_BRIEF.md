@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31935
+pr_number: 31946
+issue_title: 'Missing parent: GO:0061852 retrograde transporter complex, Golgi to
+  ER (plus term label and definition)'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-22'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 0.952
+best_model: claude-sonnet-4.5
+---
+
 # PR #31946 — Missing parent: GO:0061852 retrograde transporter complex, Golgi to ER (plus term label and definition)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31935](https://github.com/geneontology/go-ontology/issues/31935)
-- **PR**: [#31946](https://github.com/geneontology/go-ontology/pull/31946)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-22
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31935](https://github.com/geneontology/go-ontology/issues/31935) | [PR #31946](https://github.com/geneontology/go-ontology/pull/31946) | @dragon-ai-agent | merged 2026-04-22
+
+`reclassification` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

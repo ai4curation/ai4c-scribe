@@ -1,17 +1,32 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31877
+pr_number: 31973
+issue_title: 'Obsoletion request: GO:0010381 peroxisome-chloroplast membrane tethering
+  and NEW TERM peroxisome-chloroplast membrane tether activity'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-27'
+task_type: obsoletion
+difficulty: hard
+scoping: mostly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+scoping_notes: Primary change was obsoletion of GO:0010381 but the PR also touched
+  taxon constraint files due to cascading effects of the obsoletion on constraint
+  imports.
+domain_area: biological_process
+best_f1: 0.553
+best_model: gpt-5.5
+---
+
 # PR #31973 — Obsoletion request: GO:0010381 peroxisome-chloroplast membrane tethering and NEW TERM peroxisome-chloroplast membrane tether activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31877](https://github.com/geneontology/go-ontology/issues/31877)
-- **PR**: [#31973](https://github.com/geneontology/go-ontology/pull/31973)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-27
-- **task_type**: obsoletion
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primary change was obsoletion of GO:0010381 but the PR also touched taxon constraint files due to cascading effects of the obsoletion on constraint imports.
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31877](https://github.com/geneontology/go-ontology/issues/31877) | [PR #31973](https://github.com/geneontology/go-ontology/pull/31973) | @dragon-ai-agent | merged 2026-04-27
+
+`obsoletion` `hard` `mostly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3523
+pr_number: 3524
+issue_title: Revise textual definition of Retinal Ganglion Cell A into Alpha retinal
+  ganglion cell
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-17'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.571
+best_model: gemma-4-31b
+---
+
 # PR #3524 — Revise textual definition of Retinal Ganglion Cell A into Alpha retinal ganglion cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3523](https://github.com/obophenotype/cell-ontology/issues/3523)
-- **PR**: [#3524](https://github.com/obophenotype/cell-ontology/pull/3524)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-17
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3523](https://github.com/obophenotype/cell-ontology/issues/3523) | [PR #3524](https://github.com/obophenotype/cell-ontology/pull/3524) | @app/copilot-swe-agent | merged 2026-02-17
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3460
+pr_number: 3508
+issue_title: NTR - Prehypertrophic chondrocyte (preHTCs)
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2025-12-15'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: skeletal
+best_f1: 0.625
+best_model: claude-opus-4.7
+---
+
 # PR #3508 — NTR - Prehypertrophic chondrocyte (preHTCs)
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3460](https://github.com/obophenotype/cell-ontology/issues/3460)
-- **PR**: [#3508](https://github.com/obophenotype/cell-ontology/pull/3508)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2025-12-15
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3460](https://github.com/obophenotype/cell-ontology/issues/3460) | [PR #3508](https://github.com/obophenotype/cell-ontology/pull/3508) | @app/copilot-swe-agent | merged 2025-12-15
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3627
+pr_number: 3628
+issue_title: Fix issue with inferred equivalences for uberon terms for BG
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-12'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 1.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3628 — Fix issue with inferred equivalences for uberon terms for BG
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3627](https://github.com/obophenotype/uberon/issues/3627)
-- **PR**: [#3628](https://github.com/obophenotype/uberon/pull/3628)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-12
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3627](https://github.com/obophenotype/uberon/issues/3627) | [PR #3628](https://github.com/obophenotype/uberon/pull/3628) | @dragon-ai-agent | merged 2025-11-12
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

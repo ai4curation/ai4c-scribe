@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3583
+pr_number: 3588
+issue_title: New terms for tooth surfaces
+pr_author: aleixpuigb
+pr_merged_at: '2025-08-05'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 2
+generated_at: '2026-05-15'
+domain_area: dental-anatomy
+best_f1: 0.379
+best_model: claude-opus-4.7
+---
+
 # PR #3588 — New terms for tooth surfaces
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3583](https://github.com/obophenotype/uberon/issues/3583)
-- **PR**: [#3588](https://github.com/obophenotype/uberon/pull/3588)
-- **Author**: @aleixpuigb
-- **Merged**: 2025-08-05
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3583](https://github.com/obophenotype/uberon/issues/3583) | [PR #3588](https://github.com/obophenotype/uberon/pull/3588) | @aleixpuigb | merged 2025-08-05
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

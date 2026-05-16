@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9877
+pr_number: 10123
+issue_title: GPR161-related medulloblastoma predisposition
+pr_author: katiermullen
+pr_merged_at: '2026-04-06'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+scoping_notes: PR adds exactly one new disease term with no unrelated changes.
+domain_area: cancer-predisposition
+best_f1: 0.545
+best_model: gpt-5.5
+---
+
 # PR #10123 — GPR161-related medulloblastoma predisposition
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9877](https://github.com/monarch-initiative/mondo/issues/9877)
-- **PR**: [#10123](https://github.com/monarch-initiative/mondo/pull/10123)
-- **Author**: @katiermullen
-- **Merged**: 2026-04-06
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR adds exactly one new disease term with no unrelated changes.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9877](https://github.com/monarch-initiative/mondo/issues/9877) | [PR #10123](https://github.com/monarch-initiative/mondo/pull/10123) | @katiermullen | merged 2026-04-06
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

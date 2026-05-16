@@ -1,16 +1,29 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 32005
+pr_number: 32026
+issue_title: 'Obsoletion request: GO:0009095 aromatic amino acid biosynthetic process,
+  prephenate pathway'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-04'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+domain_area: biological_process
+best_f1: 0.927
+best_model: gpt-5.5
+---
+
 # PR #32026 — Obsoletion request: GO:0009095 aromatic amino acid biosynthetic process, prephenate pathway
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#32005](https://github.com/geneontology/go-ontology/issues/32005)
-- **PR**: [#32026](https://github.com/geneontology/go-ontology/pull/32026)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-04
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #32005](https://github.com/geneontology/go-ontology/issues/32005) | [PR #32026](https://github.com/geneontology/go-ontology/pull/32026) | @dragon-ai-agent | merged 2026-05-04
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

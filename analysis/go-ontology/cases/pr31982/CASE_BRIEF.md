@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31964
+pr_number: 31982
+issue_title: GO:0052597 diamine oxidase activity terms
+pr_author: sjm41
+pr_merged_at: '2026-04-27'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #31982 — GO:0052597 diamine oxidase activity terms
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31964](https://github.com/geneontology/go-ontology/issues/31964)
-- **PR**: [#31982](https://github.com/geneontology/go-ontology/pull/31982)
-- **Author**: @sjm41
-- **Merged**: 2026-04-27
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31964](https://github.com/geneontology/go-ontology/issues/31964) | [PR #31982](https://github.com/geneontology/go-ontology/pull/31982) | @sjm41 | merged 2026-04-27
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

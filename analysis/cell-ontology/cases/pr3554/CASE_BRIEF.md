@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3452
+pr_number: 3554
+issue_title: '[NTR] Add new terms for stem cell memory T cells (TSCM): CD4+ and CD8+
+  subsets'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-18'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.828
+best_model: claude-sonnet-4.5
+---
+
 # PR #3554 — [NTR] Add new terms for stem cell memory T cells (TSCM): CD4+ and CD8+ subsets
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3452](https://github.com/obophenotype/cell-ontology/issues/3452)
-- **PR**: [#3554](https://github.com/obophenotype/cell-ontology/pull/3554)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-18
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3452](https://github.com/obophenotype/cell-ontology/issues/3452) | [PR #3554](https://github.com/obophenotype/cell-ontology/pull/3554) | @app/copilot-swe-agent | merged 2026-02-18
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

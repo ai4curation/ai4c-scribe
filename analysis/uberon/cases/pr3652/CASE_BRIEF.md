@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3651
+pr_number: 3652
+issue_title: Newly introduced disjointness axioms cause OBO serialisation issue
+pr_author: aleixpuigb
+pr_merged_at: '2026-01-21'
+task_type: other
+difficulty: hard
+scoping: tightly_scoped
+scope: structural_refactor
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: ontology-infrastructure
+best_f1: 0.001
+best_model: claude-sonnet-4.5
+---
+
 # PR #3652 — Newly introduced disjointness axioms cause OBO serialisation issue
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3651](https://github.com/obophenotype/uberon/issues/3651)
-- **PR**: [#3652](https://github.com/obophenotype/uberon/pull/3652)
-- **Author**: @aleixpuigb
-- **Merged**: 2026-01-21
-- **task_type**: other
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: structural_refactor
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3651](https://github.com/obophenotype/uberon/issues/3651) | [PR #3652](https://github.com/obophenotype/uberon/pull/3652) | @aleixpuigb | merged 2026-01-21
+
+`other` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3617
+pr_number: 3619
+issue_title: Parent-child relationship between tracheal mucosa and nasal cavity mucosa
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-03'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: single_term
+review_outcome: multiple_rounds
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: respiratory-anatomy
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3619 — Parent-child relationship between tracheal mucosa and nasal cavity mucosa
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3617](https://github.com/obophenotype/uberon/issues/3617)
-- **PR**: [#3619](https://github.com/obophenotype/uberon/pull/3619)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-03
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: multiple_rounds
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3617](https://github.com/obophenotype/uberon/issues/3617) | [PR #3619](https://github.com/obophenotype/uberon/pull/3619) | @dragon-ai-agent | merged 2025-11-03
+
+`axiom_repair` `hard` `tightly_scoped` `multiple_rounds`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3346
+pr_number: 3549
+issue_title: Revise intraepithelial lymphocyte and subclasses
+pr_author: copilot-swe-agent
+pr_merged_at: '2026-02-18'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 2
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.615
+best_model: claude-sonnet-4.5
+---
+
 # PR #3549 — Revise intraepithelial lymphocyte and subclasses
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3346](https://github.com/obophenotype/cell-ontology/issues/3346)
-- **PR**: [#3549](https://github.com/obophenotype/cell-ontology/pull/3549)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2026-02-18
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3346](https://github.com/obophenotype/cell-ontology/issues/3346) | [PR #3549](https://github.com/obophenotype/cell-ontology/pull/3549) | @copilot-swe-agent | merged 2026-02-18
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

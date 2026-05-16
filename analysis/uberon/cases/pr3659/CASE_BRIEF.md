@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 2421
+pr_number: 3659
+issue_title: multicellular organism and organism substance should be disjoint
+pr_author: matentzn
+pr_merged_at: '2026-02-11'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: upper-ontology
+best_f1: 0.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3659 — multicellular organism and organism substance should be disjoint
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#2421](https://github.com/obophenotype/uberon/issues/2421)
-- **PR**: [#3659](https://github.com/obophenotype/uberon/pull/3659)
-- **Author**: @matentzn
-- **Merged**: 2026-02-11
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #2421](https://github.com/obophenotype/uberon/issues/2421) | [PR #3659](https://github.com/obophenotype/uberon/pull/3659) | @matentzn | merged 2026-02-11
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

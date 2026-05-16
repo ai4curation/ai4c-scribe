@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3447
+pr_number: 3448
+issue_title: improve definition of Islands of Calleja granule cell
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2025-11-20'
+task_type: other
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.522
+best_model: claude-sonnet-4.5
+---
+
 # PR #3448 — improve definition of Islands of Calleja granule cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3447](https://github.com/obophenotype/cell-ontology/issues/3447)
-- **PR**: [#3448](https://github.com/obophenotype/cell-ontology/pull/3448)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2025-11-20
-- **task_type**: other
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3447](https://github.com/obophenotype/cell-ontology/issues/3447) | [PR #3448](https://github.com/obophenotype/cell-ontology/pull/3448) | @app/copilot-swe-agent | merged 2025-11-20
+
+`other` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

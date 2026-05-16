@@ -1,16 +1,25 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9795
+pr_number: 10107
+issue_title: '[Obsolete] OMIM merges'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+---
+
 # PR #10107 — [Obsolete] OMIM merges
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9795](https://github.com/monarch-initiative/mondo/issues/9795)
-- **PR**: [#10107](https://github.com/monarch-initiative/mondo/pull/10107)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9795](https://github.com/monarch-initiative/mondo/issues/9795) | [PR #10107](https://github.com/monarch-initiative/mondo/pull/10107) | @MeeSiing | merged 2026-04-02
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

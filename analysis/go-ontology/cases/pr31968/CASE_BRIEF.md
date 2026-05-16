@@ -1,17 +1,31 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31967
+pr_number: 31968
+issue_title: Reparent 49 EC:1.14.14.x terms from GO:0016709 to GO:0016712 (CYP450
+  reclassification)
+pr_author: sjm41
+pr_merged_at: '2026-04-24'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: structural_refactor
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: Every change is a reparent of an EC:1.14.14.x term from GO:0016709
+  to GO:0016712, plus term_tracker_item provenance additions. No unrelated edits.
+domain_area: molecular_function
+best_f1: 1.0
+best_model: gpt-5.5
+---
+
 # PR #31968 — Reparent 49 EC:1.14.14.x terms from GO:0016709 to GO:0016712 (CYP450 reclassification)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31967](https://github.com/geneontology/go-ontology/issues/31967)
-- **PR**: [#31968](https://github.com/geneontology/go-ontology/pull/31968)
-- **Author**: @sjm41
-- **Merged**: 2026-04-24
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: structural_refactor
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Every change is a reparent of an EC:1.14.14.x term from GO:0016709 to GO:0016712, plus term_tracker_item provenance additions. No unrelated edits.
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31967](https://github.com/geneontology/go-ontology/issues/31967) | [PR #31968](https://github.com/geneontology/go-ontology/pull/31968) | @sjm41 | merged 2026-04-24
+
+`reclassification` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

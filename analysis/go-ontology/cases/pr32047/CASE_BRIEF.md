@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 32046
+pr_number: 32047
+issue_title: 'NTR: [double-stranded RNA immune receptor activity]'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-07'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.933
+best_model: claude-opus-4.7
+---
+
 # PR #32047 — NTR: [double-stranded RNA immune receptor activity]
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#32046](https://github.com/geneontology/go-ontology/issues/32046)
-- **PR**: [#32047](https://github.com/geneontology/go-ontology/pull/32047)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-07
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #32046](https://github.com/geneontology/go-ontology/issues/32046) | [PR #32047](https://github.com/geneontology/go-ontology/pull/32047) | @dragon-ai-agent | merged 2026-05-07
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

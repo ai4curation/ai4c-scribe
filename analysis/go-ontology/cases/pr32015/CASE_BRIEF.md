@@ -1,17 +1,29 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31961
+pr_number: 32015
+issue_title: obsolete GO:0008785 alkyl hydroperoxide reductase activity
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-29'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 23
+generated_at: '2026-05-15'
+scoping_notes: All changes directly address the obsoletion of the single term GO:0008785.
+domain_area: molecular_function
+best_f1: 0.8
+best_model: claude-sonnet-4.5
+---
+
 # PR #32015 — obsolete GO:0008785 alkyl hydroperoxide reductase activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31961](https://github.com/geneontology/go-ontology/issues/31961)
-- **PR**: [#32015](https://github.com/geneontology/go-ontology/pull/32015)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-29
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: All changes directly address the obsoletion of the single term GO:0008785.
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31961](https://github.com/geneontology/go-ontology/issues/31961) | [PR #32015](https://github.com/geneontology/go-ontology/pull/32015) | @dragon-ai-agent | merged 2026-04-29
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

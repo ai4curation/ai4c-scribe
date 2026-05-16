@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3550
+pr_number: 3563
+issue_title: Move Lugaro (species neutral) under PLI, in line with WMB classification
+pr_author: copilot-swe-agent
+pr_merged_at: '2026-02-19'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.267
+best_model: claude-sonnet-4.5
+---
+
 # PR #3563 — Move Lugaro (species neutral) under PLI, in line with WMB classification
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3550](https://github.com/obophenotype/cell-ontology/issues/3550)
-- **PR**: [#3563](https://github.com/obophenotype/cell-ontology/pull/3563)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2026-02-19
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3550](https://github.com/obophenotype/cell-ontology/issues/3550) | [PR #3563](https://github.com/obophenotype/cell-ontology/pull/3563) | @copilot-swe-agent | merged 2026-02-19
+
+`reclassification` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

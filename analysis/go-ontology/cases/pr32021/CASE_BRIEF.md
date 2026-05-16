@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 32018
+pr_number: 32021
+issue_title: 'Obsoletion request: ergothioneine biosynthetic process terms'
+pr_author: edwong57
+pr_merged_at: '2026-05-04'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: biological_process
+best_f1: 0.148
+best_model: gpt-5.4
+---
+
 # PR #32021 — Obsoletion request: ergothioneine biosynthetic process terms
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#32018](https://github.com/geneontology/go-ontology/issues/32018)
-- **PR**: [#32021](https://github.com/geneontology/go-ontology/pull/32021)
-- **Author**: @edwong57
-- **Merged**: 2026-05-04
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #32018](https://github.com/geneontology/go-ontology/issues/32018) | [PR #32021](https://github.com/geneontology/go-ontology/pull/32021) | @edwong57 | merged 2026-05-04
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

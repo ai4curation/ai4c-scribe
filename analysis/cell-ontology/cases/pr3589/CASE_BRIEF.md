@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3588
+pr_number: 3589
+issue_title: Prevent contributors from relabelling imported annotation properties
+pr_author: gouttegd
+pr_merged_at: '2026-03-17'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: build-infrastructure
+best_f1: 0.462
+best_model: claude-opus-4.7
+---
+
 # PR #3589 — Prevent contributors from relabelling imported annotation properties
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3588](https://github.com/obophenotype/cell-ontology/issues/3588)
-- **PR**: [#3589](https://github.com/obophenotype/cell-ontology/pull/3589)
-- **Author**: @gouttegd
-- **Merged**: 2026-03-17
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3588](https://github.com/obophenotype/cell-ontology/issues/3588) | [PR #3589](https://github.com/obophenotype/cell-ontology/pull/3589) | @gouttegd | merged 2026-03-17
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

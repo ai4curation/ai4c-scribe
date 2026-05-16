@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9842
+pr_number: 10158
+issue_title: '[Merge]Extraoral halitosis due to methanethiol oxidase deficiency &
+  Autosomal recessive extra-oral halitosis'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-17'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+scoping_notes: Changes are limited to merging two related term stanzas into one.
+domain_area: rare-disease
+best_f1: 0.968
+best_model: claude-haiku-4.5
+---
+
 # PR #10158 — [Merge]Extraoral halitosis due to methanethiol oxidase deficiency & Autosomal recessive extra-oral halitosis
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9842](https://github.com/monarch-initiative/mondo/issues/9842)
-- **PR**: [#10158](https://github.com/monarch-initiative/mondo/pull/10158)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-17
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Changes are limited to merging two related term stanzas into one.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9842](https://github.com/monarch-initiative/mondo/issues/9842) | [PR #10158](https://github.com/monarch-initiative/mondo/pull/10158) | @MeeSiing | merged 2026-04-17
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

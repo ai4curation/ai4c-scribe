@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3629
+pr_number: 3630
+issue_title: '[NTR] carotid artery intima-media region'
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-25'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: cardiovascular-anatomy
+best_f1: 0.727
+best_model: claude-sonnet-4.5
+---
+
 # PR #3630 — [NTR] carotid artery intima-media region
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3629](https://github.com/obophenotype/uberon/issues/3629)
-- **PR**: [#3630](https://github.com/obophenotype/uberon/pull/3630)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-25
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3629](https://github.com/obophenotype/uberon/issues/3629) | [PR #3630](https://github.com/obophenotype/uberon/pull/3630) | @dragon-ai-agent | merged 2025-11-25
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

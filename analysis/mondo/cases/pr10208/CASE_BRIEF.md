@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9909
+pr_number: 10208
+issue_title: macrothrombocytopenia and granulocyte inclusions with or without nephritis
+  or sensorineural hearing loss nomenclature and synonyms
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+best_f1: 0.2
+best_model: claude-opus-4.7
+---
+
 # PR #10208 — macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss nomenclature and synonyms
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9909](https://github.com/monarch-initiative/mondo/issues/9909)
-- **PR**: [#10208](https://github.com/monarch-initiative/mondo/pull/10208)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9909](https://github.com/monarch-initiative/mondo/issues/9909) | [PR #10208](https://github.com/monarch-initiative/mondo/pull/10208) | @MeeSiing | merged 2026-05-01
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

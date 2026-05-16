@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3252
+pr_number: 3253
+issue_title: '[NTR] quiescent fibroblast'
+pr_author: Caroline-99
+pr_merged_at: '2025-09-04'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: connective-tissue
+best_f1: 0.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3253 — [NTR] quiescent fibroblast
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3252](https://github.com/obophenotype/cell-ontology/issues/3252)
-- **PR**: [#3253](https://github.com/obophenotype/cell-ontology/pull/3253)
-- **Author**: @Caroline-99
-- **Merged**: 2025-09-04
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3252](https://github.com/obophenotype/cell-ontology/issues/3252) | [PR #3253](https://github.com/obophenotype/cell-ontology/pull/3253) | @Caroline-99 | merged 2025-09-04
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

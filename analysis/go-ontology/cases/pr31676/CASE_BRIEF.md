@@ -1,17 +1,31 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31670
+pr_number: 31676
+issue_title: 'Taxon constraint: please add for GO:0070478 and similar terms'
+pr_author: pgaudet
+pr_merged_at: '2026-04-20'
+task_type: new_term
+difficulty: hard
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: multiple_rounds
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+scoping_notes: Primary goal was adding taxon constraints for specific terms. Also
+  fixed a formatting error in the migrasome entry (extra NCBITaxon column) which was
+  incidental cleanup.
+domain_area: biological_process
+best_f1: 0.571
+best_model: kimi-k2.6
+---
+
 # PR #31676 — Taxon constraint: please add for GO:0070478 and similar terms
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31670](https://github.com/geneontology/go-ontology/issues/31670)
-- **PR**: [#31676](https://github.com/geneontology/go-ontology/pull/31676)
-- **Author**: @pgaudet
-- **Merged**: 2026-04-20
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: multi_term
-- **review_outcome**: multiple_rounds
-- **scoping_notes**: Primary goal was adding taxon constraints for specific terms. Also fixed a formatting error in the migrasome entry (extra NCBITaxon column) which was incidental cleanup.
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31670](https://github.com/geneontology/go-ontology/issues/31670) | [PR #31676](https://github.com/geneontology/go-ontology/pull/31676) | @pgaudet | merged 2026-04-20
+
+`new_term` `hard` `mostly_scoped` `multiple_rounds`
 
 ## Context
 

@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9795
+pr_number: 10110
+issue_title: '[Obsolete] OMIM merges'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 16
+generated_at: '2026-05-15'
+scoping_notes: PR merges one obsolete term into a surviving term, transferring annotations.
+domain_area: rare-disease
+best_f1: 0.464
+best_model: gpt-5.4
+---
+
 # PR #10110 — [Obsolete] OMIM merges
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9795](https://github.com/monarch-initiative/mondo/issues/9795)
-- **PR**: [#10110](https://github.com/monarch-initiative/mondo/pull/10110)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR merges one obsolete term into a surviving term, transferring annotations.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9795](https://github.com/monarch-initiative/mondo/issues/9795) | [PR #10110](https://github.com/monarch-initiative/mondo/pull/10110) | @MeeSiing | merged 2026-04-02
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

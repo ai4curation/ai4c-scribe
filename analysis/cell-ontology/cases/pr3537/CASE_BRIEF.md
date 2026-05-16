@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3536
+pr_number: 3537
+issue_title: Fix design patterns for columnar cuboidal and squamous epithelial cells
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-12'
+task_type: axiom_repair
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: epithelial
+best_f1: 0.32
+best_model: claude-opus-4.7
+---
+
 # PR #3537 — Fix design patterns for columnar cuboidal and squamous epithelial cells
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3536](https://github.com/obophenotype/cell-ontology/issues/3536)
-- **PR**: [#3537](https://github.com/obophenotype/cell-ontology/pull/3537)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-12
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3536](https://github.com/obophenotype/cell-ontology/issues/3536) | [PR #3537](https://github.com/obophenotype/cell-ontology/pull/3537) | @app/copilot-swe-agent | merged 2026-02-12
+
+`axiom_repair` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9855
+pr_number: 10115
+issue_title: Request for new term PADI6-related oocyte/zygote/embryo maturation arrest
+  16 and maternal-effect disorder
+pr_author: katiermullen
+pr_merged_at: '2026-04-02'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+best_f1: 0.348
+best_model: claude-sonnet-4.5
+---
+
 # PR #10115 — Request for new term PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9855](https://github.com/monarch-initiative/mondo/issues/9855)
-- **PR**: [#10115](https://github.com/monarch-initiative/mondo/pull/10115)
-- **Author**: @katiermullen
-- **Merged**: 2026-04-02
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9855](https://github.com/monarch-initiative/mondo/issues/9855) | [PR #10115](https://github.com/monarch-initiative/mondo/pull/10115) | @katiermullen | merged 2026-04-02
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

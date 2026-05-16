@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9493
+pr_number: 9726
+issue_title: Add parent term to MONDO:0005709 common cold
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-12-01'
+task_type: reclassification
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 13
+generated_at: '2026-05-15'
+scoping_notes: Adds a single is_a parent axiom to an existing term.
+domain_area: infectious-disease
+best_f1: 0.5
+best_model: claude-haiku-4.5
+---
+
 # PR #9726 — Add parent term to MONDO:0005709 common cold
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9493](https://github.com/monarch-initiative/mondo/issues/9493)
-- **PR**: [#9726](https://github.com/monarch-initiative/mondo/pull/9726)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-12-01
-- **task_type**: reclassification
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
-- **scoping_notes**: Adds a single is_a parent axiom to an existing term.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9493](https://github.com/monarch-initiative/mondo/issues/9493) | [PR #9726](https://github.com/monarch-initiative/mondo/pull/9726) | @dragon-ai-agent | merged 2025-12-01
+
+`reclassification` `simple` `tightly_scoped` `changes_requested`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31882
+pr_number: 32036
+issue_title: 'Obsolete: GO:0097711 ciliary basal body-plasma membrane docking Biological
+  Process'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-05'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: gpt-5.5
+---
+
 # PR #32036 — Obsolete: GO:0097711 ciliary basal body-plasma membrane docking Biological Process
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31882](https://github.com/geneontology/go-ontology/issues/31882)
-- **PR**: [#32036](https://github.com/geneontology/go-ontology/pull/32036)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-05
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31882](https://github.com/geneontology/go-ontology/issues/31882) | [PR #32036](https://github.com/geneontology/go-ontology/pull/32036) | @dragon-ai-agent | merged 2026-05-05
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

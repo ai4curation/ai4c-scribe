@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9749
+pr_number: 10134
+issue_title: FAS-related autoimmune lymphoproliferative syndrome
+pr_author: MeeSiing
+pr_merged_at: '2026-04-08'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: Minimal change updating only the label of a single term.
+domain_area: rare-disease
+best_f1: 1.0
+best_model: claude-opus-4.7
+---
+
 # PR #10134 — FAS-related autoimmune lymphoproliferative syndrome
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9749](https://github.com/monarch-initiative/mondo/issues/9749)
-- **PR**: [#10134](https://github.com/monarch-initiative/mondo/pull/10134)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-08
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Minimal change updating only the label of a single term.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9749](https://github.com/monarch-initiative/mondo/issues/9749) | [PR #10134](https://github.com/monarch-initiative/mondo/pull/10134) | @MeeSiing | merged 2026-04-08
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

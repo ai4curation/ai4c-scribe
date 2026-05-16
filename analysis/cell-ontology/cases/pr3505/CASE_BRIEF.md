@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3458
+pr_number: 3505
+issue_title: NTR Fibrochondrocyte progenitor cell (FCP)
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2025-12-11'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: skeletal
+best_f1: 0.696
+best_model: claude-sonnet-4.5
+---
+
 # PR #3505 — NTR Fibrochondrocyte progenitor cell (FCP)
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3458](https://github.com/obophenotype/cell-ontology/issues/3458)
-- **PR**: [#3505](https://github.com/obophenotype/cell-ontology/pull/3505)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2025-12-11
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3458](https://github.com/obophenotype/cell-ontology/issues/3458) | [PR #3505](https://github.com/obophenotype/cell-ontology/pull/3505) | @app/copilot-swe-agent | merged 2025-12-11
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

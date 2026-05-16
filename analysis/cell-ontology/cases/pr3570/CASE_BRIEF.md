@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3500
+pr_number: 3570
+issue_title: Add taxon constraints to DN2a and DN2b thymocytes
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-20'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3570 — Add taxon constraints to DN2a and DN2b thymocytes
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3500](https://github.com/obophenotype/cell-ontology/issues/3500)
-- **PR**: [#3570](https://github.com/obophenotype/cell-ontology/pull/3570)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-20
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3500](https://github.com/obophenotype/cell-ontology/issues/3500) | [PR #3570](https://github.com/obophenotype/cell-ontology/pull/3570) | @app/copilot-swe-agent | merged 2026-02-20
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9956
+pr_number: 10214
+issue_title: New Term Request/TSEN2-related neurodevelopmental disorder with or without
+  thrombotic microangiopathy
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 14
+generated_at: '2026-05-15'
+scoping_notes: PR adds exactly one new disease term stanza with no unrelated modifications.
+domain_area: rare-disease
+best_f1: 0.667
+best_model: gpt-5.5
+---
+
 # PR #10214 — New Term Request/TSEN2-related neurodevelopmental disorder with or without thrombotic microangiopathy
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9956](https://github.com/monarch-initiative/mondo/issues/9956)
-- **PR**: [#10214](https://github.com/monarch-initiative/mondo/pull/10214)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR adds exactly one new disease term stanza with no unrelated modifications.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9956](https://github.com/monarch-initiative/mondo/issues/9956) | [PR #10214](https://github.com/monarch-initiative/mondo/pull/10214) | @MeeSiing | merged 2026-05-01
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

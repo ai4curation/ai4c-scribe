@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 5726
+pr_number: 10155
+issue_title: Add non-human animal diseases from VeNom
+pr_author: katiermullen
+pr_merged_at: '2026-04-16'
+task_type: new_term
+difficulty: hard
+scoping: loosely_scoped
+scope: structural_refactor
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+scoping_notes: Bulk addition of hundreds of non-human animal disease terms from the
+  VeNom coding system.
+domain_area: veterinary-disease
+best_f1: 1.0
+best_model: kimi-k2.6
+---
+
 # PR #10155 — Add non-human animal diseases from VeNom
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#5726](https://github.com/monarch-initiative/mondo/issues/5726)
-- **PR**: [#10155](https://github.com/monarch-initiative/mondo/pull/10155)
-- **Author**: @katiermullen
-- **Merged**: 2026-04-16
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: structural_refactor
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Bulk addition of hundreds of non-human animal disease terms from the VeNom coding system.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #5726](https://github.com/monarch-initiative/mondo/issues/5726) | [PR #10155](https://github.com/monarch-initiative/mondo/pull/10155) | @katiermullen | merged 2026-04-16
+
+`new_term` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,17 +1,30 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3332
+pr_number: 3333
+issue_title: Re-labelling of imported annotation properties in the -edit file
+pr_author: gouttegd
+pr_merged_at: '2025-09-17'
+task_type: bulk_edit
+difficulty: medium
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+scoping_notes: Primarily removes redundant labels but also adds SPARQL-based annotations
+  to prevent future regressions, which goes slightly beyond the original issue scope.
+domain_area: ontology-maintenance
+best_f1: 0.425
+best_model: claude-sonnet-4.5
+---
+
 # PR #3333 — Re-labelling of imported annotation properties in the -edit file
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3332](https://github.com/obophenotype/cell-ontology/issues/3332)
-- **PR**: [#3333](https://github.com/obophenotype/cell-ontology/pull/3333)
-- **Author**: @gouttegd
-- **Merged**: 2025-09-17
-- **task_type**: bulk_edit
-- **difficulty**: medium
-- **scoping**: mostly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primarily removes redundant labels but also adds SPARQL-based annotations to prevent future regressions, which goes slightly beyond the original issue scope.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3332](https://github.com/obophenotype/cell-ontology/issues/3332) | [PR #3333](https://github.com/obophenotype/cell-ontology/pull/3333) | @gouttegd | merged 2025-09-17
+
+`bulk_edit` `medium` `mostly_scoped` `approved_first_time`
 
 ## Context
 

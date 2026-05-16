@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3448
+pr_number: 3506
+issue_title: two new defs for undefined terms
+pr_author: cmungall
+pr_merged_at: '2025-04-23'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3506 — two new defs for undefined terms
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3448](https://github.com/obophenotype/uberon/issues/3448)
-- **PR**: [#3506](https://github.com/obophenotype/uberon/pull/3506)
-- **Author**: @cmungall
-- **Merged**: 2025-04-23
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3448](https://github.com/obophenotype/uberon/issues/3448) | [PR #3506](https://github.com/obophenotype/uberon/pull/3506) | @cmungall | merged 2025-04-23
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,29 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3414
+pr_number: 3499
+issue_title: 'NTR: broad ligament regions supporting fallopian tube & tissue layer
+  addition'
+pr_author: aleixpuigb
+pr_merged_at: '2025-04-04'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+domain_area: reproductive-anatomy
+best_f1: 0.169
+best_model: gpt-5.5
+---
+
 # PR #3499 — NTR: broad ligament regions supporting fallopian tube & tissue layer addition
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3414](https://github.com/obophenotype/uberon/issues/3414)
-- **PR**: [#3499](https://github.com/obophenotype/uberon/pull/3499)
-- **Author**: @aleixpuigb
-- **Merged**: 2025-04-04
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3414](https://github.com/obophenotype/uberon/issues/3414) | [PR #3499](https://github.com/obophenotype/uberon/pull/3499) | @aleixpuigb | merged 2025-04-04
+
+`new_term` `hard` `tightly_scoped` `changes_requested`
 
 ## Context
 

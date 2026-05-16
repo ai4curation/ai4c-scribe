@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3490
+pr_number: 3585
+issue_title: consider allowing some whole cells in a 'multi cell part structure'
+pr_author: gouttegd
+pr_merged_at: '2025-07-14'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.4
+best_model: claude-haiku-4.5
+---
+
 # PR #3585 — consider allowing some whole cells in a 'multi cell part structure'
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3490](https://github.com/obophenotype/uberon/issues/3490)
-- **PR**: [#3585](https://github.com/obophenotype/uberon/pull/3585)
-- **Author**: @gouttegd
-- **Merged**: 2025-07-14
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3490](https://github.com/obophenotype/uberon/issues/3490) | [PR #3585](https://github.com/obophenotype/uberon/pull/3585) | @gouttegd | merged 2025-07-14
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

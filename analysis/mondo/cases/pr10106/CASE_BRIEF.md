@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9798
+pr_number: 10106
+issue_title: '[Obsolete] glass-chapman-hockley syndrome'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.772
+best_model: gpt-5.5
+---
+
 # PR #10106 — [Obsolete] glass-chapman-hockley syndrome
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9798](https://github.com/monarch-initiative/mondo/issues/9798)
-- **PR**: [#10106](https://github.com/monarch-initiative/mondo/pull/10106)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9798](https://github.com/monarch-initiative/mondo/issues/9798) | [PR #10106](https://github.com/monarch-initiative/mondo/pull/10106) | @MeeSiing | merged 2026-04-02
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

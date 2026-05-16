@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31923
+pr_number: 31938
+issue_title: 'Textual definition update: GO:0045022 early endosome to late endosome
+  transport (minor)'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-21'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #31938 — Textual definition update: GO:0045022 early endosome to late endosome transport (minor)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31923](https://github.com/geneontology/go-ontology/issues/31923)
-- **PR**: [#31938](https://github.com/geneontology/go-ontology/pull/31938)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-21
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31923](https://github.com/geneontology/go-ontology/issues/31923) | [PR #31938](https://github.com/geneontology/go-ontology/pull/31938) | @dragon-ai-agent | merged 2026-04-21
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

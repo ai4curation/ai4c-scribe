@@ -1,17 +1,31 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3353
+pr_number: 3354
+issue_title: '[Text def] Create human specific term for chandelier Pvalb GABAergic
+  neuron'
+pr_author: RiveraAndrea83
+pr_merged_at: '2025-10-01'
+task_type: new_term
+difficulty: medium
+scoping: mostly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+scoping_notes: Primary change is the new human-specific term, but also includes cleanup
+  of the clm-cl.owl component file.
+domain_area: neuroscience
+best_f1: 0.034
+best_model: gpt-5.4
+---
+
 # PR #3354 — [Text def] Create human specific term for chandelier Pvalb GABAergic neuron
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3353](https://github.com/obophenotype/cell-ontology/issues/3353)
-- **PR**: [#3354](https://github.com/obophenotype/cell-ontology/pull/3354)
-- **Author**: @RiveraAndrea83
-- **Merged**: 2025-10-01
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: mostly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primary change is the new human-specific term, but also includes cleanup of the clm-cl.owl component file.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3353](https://github.com/obophenotype/cell-ontology/issues/3353) | [PR #3354](https://github.com/obophenotype/cell-ontology/pull/3354) | @RiveraAndrea83 | merged 2025-10-01
+
+`new_term` `medium` `mostly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,17 +1,31 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3495
+pr_number: 3542
+issue_title: epithelium and lamina propria for GI tract
+pr_author: cmungall
+pr_merged_at: '2025-05-27'
+task_type: new_term
+difficulty: hard
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+scoping_notes: The issue requested both epithelium and lamina propria terms for GI
+  tract segments. This PR addresses the lamina propria portion; epithelium terms were
+  in a separate PR.
+domain_area: gastrointestinal-anatomy
+best_f1: 0.695
+best_model: claude-opus-4.7
+---
+
 # PR #3542 — epithelium and lamina propria for GI tract
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3495](https://github.com/obophenotype/uberon/issues/3495)
-- **PR**: [#3542](https://github.com/obophenotype/uberon/pull/3542)
-- **Author**: @cmungall
-- **Merged**: 2025-05-27
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: The issue requested both epithelium and lamina propria terms for GI tract segments. This PR addresses the lamina propria portion; epithelium terms were in a separate PR.
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3495](https://github.com/obophenotype/uberon/issues/3495) | [PR #3542](https://github.com/obophenotype/uberon/pull/3542) | @cmungall | merged 2025-05-27
+
+`new_term` `hard` `mostly_scoped` `approved_first_time`
 
 ## Context
 

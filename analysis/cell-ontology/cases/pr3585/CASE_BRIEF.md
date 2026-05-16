@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3584
+pr_number: 3585
+issue_title: Add myenteric neurons for HubMap
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-03-17'
+task_type: new_term
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.711
+best_model: claude-haiku-4.5
+---
+
 # PR #3585 — Add myenteric neurons for HubMap
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3584](https://github.com/obophenotype/cell-ontology/issues/3584)
-- **PR**: [#3585](https://github.com/obophenotype/cell-ontology/pull/3585)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-03-17
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3584](https://github.com/obophenotype/cell-ontology/issues/3584) | [PR #3585](https://github.com/obophenotype/cell-ontology/pull/3585) | @app/copilot-swe-agent | merged 2026-03-17
+
+`new_term` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

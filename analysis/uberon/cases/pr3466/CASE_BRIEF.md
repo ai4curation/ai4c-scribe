@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3409
+pr_number: 3466
+issue_title: What relation should link a life stage term to its taxon-specific counterpart?
+pr_author: gouttegd
+pr_merged_at: '2025-01-30'
+task_type: other
+difficulty: hard
+scoping: mostly_scoped
+scope: structural_refactor
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+domain_area: cross-species-bridging
+best_f1: 1.0
+best_model: claude-opus-4.7
+---
+
 # PR #3466 — What relation should link a life stage term to its taxon-specific counterpart?
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3409](https://github.com/obophenotype/uberon/issues/3409)
-- **PR**: [#3466](https://github.com/obophenotype/uberon/pull/3466)
-- **Author**: @gouttegd
-- **Merged**: 2025-01-30
-- **task_type**: other
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: structural_refactor
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3409](https://github.com/obophenotype/uberon/issues/3409) | [PR #3466](https://github.com/obophenotype/uberon/pull/3466) | @gouttegd | merged 2025-01-30
+
+`other` `hard` `mostly_scoped` `approved_first_time`
 
 ## Context
 

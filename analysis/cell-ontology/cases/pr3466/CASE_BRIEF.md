@@ -1,17 +1,30 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3457
+pr_number: 3467
+issue_title: Add fibrochondrocyte (CL_4072104) term
+pr_author: copilot-swe-agent
+pr_merged_at: '2025-11-27'
+task_type: new_term
+difficulty: medium
+scoping: mostly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+scoping_notes: Primary change is the new fibrochondrocyte term in cl-edit.owl, but
+  component files were also regenerated as part of the build process.
+domain_area: musculoskeletal
+best_f1: 0.093
+best_model: gpt-5.5
+---
+
 # PR #3467 — Add fibrochondrocyte (CL_4072104) term
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3457](https://github.com/obophenotype/cell-ontology/issues/3457)
-- **PR**: [#3467](https://github.com/obophenotype/cell-ontology/pull/3467)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2025-11-27
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: mostly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primary change is the new fibrochondrocyte term in cl-edit.owl, but component files were also regenerated as part of the build process.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3457](https://github.com/obophenotype/cell-ontology/issues/3457) | [PR #3467](https://github.com/obophenotype/cell-ontology/pull/3467) | @copilot-swe-agent | merged 2025-11-27
+
+`new_term` `medium` `mostly_scoped` `approved_first_time`
 
 ## Context
 

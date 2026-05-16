@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31876
+pr_number: 31953
+issue_title: 'Obsoletion request: GO:0140057 vacuole-mitochondria membrane tethering'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-23'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: biological_process
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #31953 — Obsoletion request: GO:0140057 vacuole-mitochondria membrane tethering
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31876](https://github.com/geneontology/go-ontology/issues/31876)
-- **PR**: [#31953](https://github.com/geneontology/go-ontology/pull/31953)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-23
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31876](https://github.com/geneontology/go-ontology/issues/31876) | [PR #31953](https://github.com/geneontology/go-ontology/pull/31953) | @dragon-ai-agent | merged 2026-04-23
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

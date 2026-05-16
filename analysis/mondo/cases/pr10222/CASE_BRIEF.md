@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9963
+pr_number: 10222
+issue_title: RNU12 - related minor spliceopathy disorder
+pr_author: MeeSiing
+pr_merged_at: '2026-05-04'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: PR adds exactly one new disease term stanza with no unrelated modifications.
+domain_area: rare-disease
+best_f1: 0.583
+best_model: gpt-5.5
+---
+
 # PR #10222 — RNU12 - related minor spliceopathy disorder
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9963](https://github.com/monarch-initiative/mondo/issues/9963)
-- **PR**: [#10222](https://github.com/monarch-initiative/mondo/pull/10222)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-04
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR adds exactly one new disease term stanza with no unrelated modifications.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9963](https://github.com/monarch-initiative/mondo/issues/9963) | [PR #10222](https://github.com/monarch-initiative/mondo/pull/10222) | @MeeSiing | merged 2026-05-04
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

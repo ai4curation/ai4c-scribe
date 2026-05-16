@@ -1,17 +1,31 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9703
+pr_number: 9770
+issue_title: Updates to Gene-Disease Classifications and Inheritance Patterns for
+  Porphyria Disease Entities - ClinGen EIM group
+pr_author: sabrinatoro
+pr_merged_at: '2025-11-20'
+task_type: reclassification
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+scoping_notes: Changes focused on porphyria disease branch with minor supporting infrastructure
+  changes.
+domain_area: rare-disease
+best_f1: 0.441
+best_model: claude-opus-4.7
+---
+
 # PR #9770 — Updates to Gene-Disease Classifications and Inheritance Patterns for Porphyria Disease Entities - ClinGen EIM group
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9703](https://github.com/monarch-initiative/mondo/issues/9703)
-- **PR**: [#9770](https://github.com/monarch-initiative/mondo/pull/9770)
-- **Author**: @sabrinatoro
-- **Merged**: 2025-11-20
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
-- **scoping_notes**: Changes focused on porphyria disease branch with minor supporting infrastructure changes.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9703](https://github.com/monarch-initiative/mondo/issues/9703) | [PR #9770](https://github.com/monarch-initiative/mondo/pull/9770) | @sabrinatoro | merged 2025-11-20
+
+`reclassification` `hard` `tightly_scoped` `changes_requested`
 
 ## Context
 

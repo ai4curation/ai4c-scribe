@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3533
+pr_number: 3571
+issue_title: Add articular cartilage zonal chondrocyte cell types
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-19'
+task_type: new_term
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: skeletal
+best_f1: 0.005
+best_model: claude-sonnet-4.5
+---
+
 # PR #3571 — Add articular cartilage zonal chondrocyte cell types
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3533](https://github.com/obophenotype/cell-ontology/issues/3533)
-- **PR**: [#3571](https://github.com/obophenotype/cell-ontology/pull/3571)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-19
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3533](https://github.com/obophenotype/cell-ontology/issues/3533) | [PR #3571](https://github.com/obophenotype/cell-ontology/pull/3571) | @app/copilot-swe-agent | merged 2026-02-19
+
+`new_term` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

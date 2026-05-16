@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3519
+pr_number: 3520
+issue_title: '[NTR] Create term for oRGC2'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-16'
+task_type: new_term
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.769
+best_model: claude-opus-4.7
+---
+
 # PR #3520 — [NTR] Create term for oRGC2
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3519](https://github.com/obophenotype/cell-ontology/issues/3519)
-- **PR**: [#3520](https://github.com/obophenotype/cell-ontology/pull/3520)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-16
-- **task_type**: new_term
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3519](https://github.com/obophenotype/cell-ontology/issues/3519) | [PR #3520](https://github.com/obophenotype/cell-ontology/pull/3520) | @app/copilot-swe-agent | merged 2026-02-16
+
+`new_term` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31948
+pr_number: 31994
+issue_title: 'Obsoletion request: glycoprotein cargo receptor activity'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 0.9
+best_model: claude-sonnet-4.5
+---
+
 # PR #31994 — Obsoletion request: glycoprotein cargo receptor activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31948](https://github.com/geneontology/go-ontology/issues/31948)
-- **PR**: [#31994](https://github.com/geneontology/go-ontology/pull/31994)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31948](https://github.com/geneontology/go-ontology/issues/31948) | [PR #31994](https://github.com/geneontology/go-ontology/pull/31994) | @dragon-ai-agent | merged 2026-04-28
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

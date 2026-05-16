@@ -1,17 +1,31 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31969
+pr_number: 31988
+issue_title: Parentage issues within 'oxidoreductase activity' branch
+pr_author: sjm41
+pr_merged_at: '2026-04-27'
+task_type: reclassification
+difficulty: hard
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: Primary changes are reparenting oxidoreductase terms per the issue,
+  but also includes definition updates to align with RHEA reaction descriptions where
+  the old definitions were inaccurate (e.g. GO:0008762, GO:0018525).
+domain_area: molecular_function
+best_f1: 0.956
+best_model: gpt-5.5
+---
+
 # PR #31988 — Parentage issues within 'oxidoreductase activity' branch
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31969](https://github.com/geneontology/go-ontology/issues/31969)
-- **PR**: [#31988](https://github.com/geneontology/go-ontology/pull/31988)
-- **Author**: @sjm41
-- **Merged**: 2026-04-27
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primary changes are reparenting oxidoreductase terms per the issue, but also includes definition updates to align with RHEA reaction descriptions where the old definitions were inaccurate (e.g. GO:0008762, GO:0018525).
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31969](https://github.com/geneontology/go-ontology/issues/31969) | [PR #31988](https://github.com/geneontology/go-ontology/pull/31988) | @sjm41 | merged 2026-04-27
+
+`reclassification` `hard` `mostly_scoped` `approved_first_time`
 
 ## Context
 

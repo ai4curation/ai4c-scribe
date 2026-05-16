@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3475
+pr_number: 3477
+issue_title: Remove Thoracic dorsal root ganglion as a part of thoracic ganglion
+pr_author: tgbugs
+pr_merged_at: '2025-04-24'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.667
+best_model: claude-haiku-4.5
+---
+
 # PR #3477 — Remove Thoracic dorsal root ganglion as a part of thoracic ganglion
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3475](https://github.com/obophenotype/uberon/issues/3475)
-- **PR**: [#3477](https://github.com/obophenotype/uberon/pull/3477)
-- **Author**: @tgbugs
-- **Merged**: 2025-04-24
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3475](https://github.com/obophenotype/uberon/issues/3475) | [PR #3477](https://github.com/obophenotype/uberon/pull/3477) | @tgbugs | merged 2025-04-24
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

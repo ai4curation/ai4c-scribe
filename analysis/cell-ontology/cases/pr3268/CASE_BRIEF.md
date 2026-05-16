@@ -1,17 +1,30 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3267
+pr_number: 3268
+issue_title: Update claude.md instructions for GitHub Copilot
+pr_author: Caroline-99
+pr_merged_at: '2025-10-29'
+task_type: documentation
+difficulty: simple
+scoping: mostly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+scoping_notes: Primary change is CLAUDE.md update, with a minor incidental SPARQL
+  file addition.
+domain_area: infrastructure
+best_f1: 0.897
+best_model: gpt-5.4
+---
+
 # PR #3268 — Update claude.md instructions for GitHub Copilot
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3267](https://github.com/obophenotype/cell-ontology/issues/3267)
-- **PR**: [#3268](https://github.com/obophenotype/cell-ontology/pull/3268)
-- **Author**: @Caroline-99
-- **Merged**: 2025-10-29
-- **task_type**: documentation
-- **difficulty**: simple
-- **scoping**: mostly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Primary change is CLAUDE.md update, with a minor incidental SPARQL file addition.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3267](https://github.com/obophenotype/cell-ontology/issues/3267) | [PR #3268](https://github.com/obophenotype/cell-ontology/pull/3268) | @Caroline-99 | merged 2025-10-29
+
+`documentation` `simple` `mostly_scoped` `approved_first_time`
 
 ## Context
 

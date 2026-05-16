@@ -1,16 +1,29 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31601
+pr_number: 32007
+issue_title: 'Textual definition update: protein carrier activity and unfolded protein
+  holdase activity'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 0.667
+best_model: claude-sonnet-4.5
+---
+
 # PR #32007 — Textual definition update: protein carrier activity and unfolded protein holdase activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31601](https://github.com/geneontology/go-ontology/issues/31601)
-- **PR**: [#32007](https://github.com/geneontology/go-ontology/pull/32007)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31601](https://github.com/geneontology/go-ontology/issues/31601) | [PR #32007](https://github.com/geneontology/go-ontology/pull/32007) | @dragon-ai-agent | merged 2026-04-28
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

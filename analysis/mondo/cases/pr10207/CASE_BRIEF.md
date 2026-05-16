@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9896
+pr_number: 10207
+issue_title: GCSH-related glycine encephalopathy
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.333
+best_model: kimi-k2.6
+---
+
 # PR #10207 — GCSH-related glycine encephalopathy
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9896](https://github.com/monarch-initiative/mondo/issues/9896)
-- **PR**: [#10207](https://github.com/monarch-initiative/mondo/pull/10207)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9896](https://github.com/monarch-initiative/mondo/issues/9896) | [PR #10207](https://github.com/monarch-initiative/mondo/pull/10207) | @MeeSiing | merged 2026-05-01
+
+`synonym_update` `simple` `tightly_scoped` `changes_requested`
 
 ## Context
 

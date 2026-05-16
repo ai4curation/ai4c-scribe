@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9861
+pr_number: 10113
+issue_title: '[NTR/gene] Hyperinsulinemic hypoglycemia, familial 3'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: other
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+scoping_notes: PR relabels an existing term and updates its classification and synonyms
+  based on user request.
+domain_area: metabolic-disease
+best_f1: 0.421
+best_model: kimi-k2.6
+---
+
 # PR #10113 — [NTR/gene] Hyperinsulinemic hypoglycemia, familial 3
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9861](https://github.com/monarch-initiative/mondo/issues/9861)
-- **PR**: [#10113](https://github.com/monarch-initiative/mondo/pull/10113)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: other
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
-- **scoping_notes**: PR relabels an existing term and updates its classification and synonyms based on user request.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9861](https://github.com/monarch-initiative/mondo/issues/9861) | [PR #10113](https://github.com/monarch-initiative/mondo/pull/10113) | @MeeSiing | merged 2026-04-02
+
+`other` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

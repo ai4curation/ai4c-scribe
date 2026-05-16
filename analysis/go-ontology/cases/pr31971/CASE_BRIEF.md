@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31965
+pr_number: 31971
+issue_title: protoporphyrinogen oxidase activity terms
+pr_author: sjm41
+pr_merged_at: '2026-04-24'
+task_type: reclassification
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 1.0
+best_model: gpt-5.5
+---
+
 # PR #31971 — protoporphyrinogen oxidase activity terms
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31965](https://github.com/geneontology/go-ontology/issues/31965)
-- **PR**: [#31971](https://github.com/geneontology/go-ontology/pull/31971)
-- **Author**: @sjm41
-- **Merged**: 2026-04-24
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31965](https://github.com/geneontology/go-ontology/issues/31965) | [PR #31971](https://github.com/geneontology/go-ontology/pull/31971) | @sjm41 | merged 2026-04-24
+
+`reclassification` `hard` `tightly_scoped` `changes_requested`
 
 ## Context
 

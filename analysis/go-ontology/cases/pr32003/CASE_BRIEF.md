@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31966
+pr_number: 32003
+issue_title: Obsolete GO:0043713 (R)-2-hydroxyisocaproate dehydrogenase activity
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 1.0
+best_model: gpt-5.4
+---
+
 # PR #32003 — Obsolete GO:0043713 (R)-2-hydroxyisocaproate dehydrogenase activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31966](https://github.com/geneontology/go-ontology/issues/31966)
-- **PR**: [#32003](https://github.com/geneontology/go-ontology/pull/32003)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31966](https://github.com/geneontology/go-ontology/issues/31966) | [PR #32003](https://github.com/geneontology/go-ontology/pull/32003) | @dragon-ai-agent | merged 2026-04-28
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,26 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31863
+pr_number: 32012
+issue_title: 'NTR: MF vesicle membrane tethering activity'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-29'
+task_type: obsoletion
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+domain_area: biological_process
+---
+
 # PR #32012 — NTR: MF vesicle membrane tethering activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31863](https://github.com/geneontology/go-ontology/issues/31863)
-- **PR**: [#32012](https://github.com/geneontology/go-ontology/pull/32012)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-29
-- **task_type**: obsoletion
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31863](https://github.com/geneontology/go-ontology/issues/31863) | [PR #32012](https://github.com/geneontology/go-ontology/pull/32012) | @dragon-ai-agent | merged 2026-04-29
+
+`obsoletion` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

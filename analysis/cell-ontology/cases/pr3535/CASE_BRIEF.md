@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3534
+pr_number: 3535
+issue_title: '[NTR] hybrid osteochondral skeletal cell'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-04'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: skeletal
+best_f1: 0.824
+best_model: claude-sonnet-4.5
+---
+
 # PR #3535 — [NTR] hybrid osteochondral skeletal cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3534](https://github.com/obophenotype/cell-ontology/issues/3534)
-- **PR**: [#3535](https://github.com/obophenotype/cell-ontology/pull/3535)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-04
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3534](https://github.com/obophenotype/cell-ontology/issues/3534) | [PR #3535](https://github.com/obophenotype/cell-ontology/pull/3535) | @app/copilot-swe-agent | merged 2026-02-04
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

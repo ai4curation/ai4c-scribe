@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31984
+pr_number: 31987
+issue_title: GO:0008805 (carbon-monoxide oxygenase activity) and GO:0043885 (anaerobic
+  carbon-monoxide dehydrogenase activity)
+pr_author: sjm41
+pr_merged_at: '2026-04-27'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.947
+best_model: claude-opus-4.7
+---
+
 # PR #31987 — GO:0008805 (carbon-monoxide oxygenase activity) and GO:0043885 (anaerobic carbon-monoxide dehydrogenase activity)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31984](https://github.com/geneontology/go-ontology/issues/31984)
-- **PR**: [#31987](https://github.com/geneontology/go-ontology/pull/31987)
-- **Author**: @sjm41
-- **Merged**: 2026-04-27
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31984](https://github.com/geneontology/go-ontology/issues/31984) | [PR #31987](https://github.com/geneontology/go-ontology/pull/31987) | @sjm41 | merged 2026-04-27
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

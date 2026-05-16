@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3597
+pr_number: 3598
+issue_title: '[NTR] Add mouth terms for HubMap'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-03-26'
+task_type: new_term
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: oral
+best_f1: 0.697
+best_model: claude-haiku-4.5
+---
+
 # PR #3598 — [NTR] Add mouth terms for HubMap
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3597](https://github.com/obophenotype/cell-ontology/issues/3597)
-- **PR**: [#3598](https://github.com/obophenotype/cell-ontology/pull/3598)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-03-26
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3597](https://github.com/obophenotype/cell-ontology/issues/3597) | [PR #3598](https://github.com/obophenotype/cell-ontology/pull/3598) | @app/copilot-swe-agent | merged 2026-03-26
+
+`new_term` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

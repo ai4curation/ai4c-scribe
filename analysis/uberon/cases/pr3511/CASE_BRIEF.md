@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3003
+pr_number: 3511
+issue_title: review definition of cardiac septum and its child terms
+pr_author: cmungall
+pr_merged_at: '2025-04-24'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: cardiac-anatomy
+best_f1: 0.5
+best_model: claude-haiku-4.5
+---
+
 # PR #3511 — review definition of cardiac septum and its child terms
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3003](https://github.com/obophenotype/uberon/issues/3003)
-- **PR**: [#3511](https://github.com/obophenotype/uberon/pull/3511)
-- **Author**: @cmungall
-- **Merged**: 2025-04-24
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3003](https://github.com/obophenotype/uberon/issues/3003) | [PR #3511](https://github.com/obophenotype/uberon/pull/3511) | @cmungall | merged 2025-04-24
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3382
+pr_number: 3440
+issue_title: '[Class hierarchy] Change CXCR3 property in CD8+ CXCR3+ alpha-beta regulatory
+  T cell'
+pr_author: copilot-swe-agent
+pr_merged_at: '2025-11-13'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 1.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3440 — [Class hierarchy] Change CXCR3 property in CD8+ CXCR3+ alpha-beta regulatory T cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3382](https://github.com/obophenotype/cell-ontology/issues/3382)
-- **PR**: [#3440](https://github.com/obophenotype/cell-ontology/pull/3440)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2025-11-13
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3382](https://github.com/obophenotype/cell-ontology/issues/3382) | [PR #3440](https://github.com/obophenotype/cell-ontology/pull/3440) | @copilot-swe-agent | merged 2025-11-13
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

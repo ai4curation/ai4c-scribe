@@ -1,19 +1,33 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3010
+pr_number: 3225
+issue_title: '[Obsolete] structural cell'
+pr_author: Caroline-99
+pr_merged_at: '2025-08-07'
+task_type: obsoletion
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+eval_suitability: unusable
+eval_suitability_notes: 'PR was auto-linked to issue #3224 (skos:prefLabel import
+  bug) but actually addresses issue #3010 (obsolete structural cell). Agent given
+  #3224 cannot produce the expected diff.'
+scoping_notes: PR obsoletes CL:0000293 and also rewires two dependent classes (scleral
+  cell, choroidal cell) to point to CL:0000000 instead. Multiple conceptual operations
+  in one PR.
+domain_area: ontology-maintenance
+---
+
 # PR #3225 — [Obsolete] structural cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3010](https://github.com/obophenotype/cell-ontology/issues/3010)
-- **PR**: [#3225](https://github.com/obophenotype/cell-ontology/pull/3225)
-- **Author**: @Caroline-99
-- **Merged**: 2025-08-07
-- **task_type**: obsoletion
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **eval_suitability**: unusable
-- **scoping_notes**: PR obsoletes CL:0000293 and also rewires two dependent classes (scleral cell, choroidal cell) to point to CL:0000000 instead. Multiple conceptual operations in one PR.
-- **eval_suitability_notes**: PR was auto-linked to issue #3224 (skos:prefLabel import bug) but actually addresses issue #3010 (obsolete structural cell). Agent given #3224 cannot produce the expected diff.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3010](https://github.com/obophenotype/cell-ontology/issues/3010) | [PR #3225](https://github.com/obophenotype/cell-ontology/pull/3225) | @Caroline-99 | merged 2025-08-07
+
+`obsoletion` `hard` `loosely_scoped` `approved_first_time` `unusable`
 
 ## Context
 

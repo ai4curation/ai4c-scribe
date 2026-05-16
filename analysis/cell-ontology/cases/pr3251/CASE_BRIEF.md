@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3243
+pr_number: 3251
+issue_title: '[Text and logical def] fibrocyte'
+pr_author: Caroline-99
+pr_merged_at: '2025-08-29'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: connective-tissue
+best_f1: 0.6
+best_model: claude-sonnet-4.5
+---
+
 # PR #3251 — [Text and logical def] fibrocyte
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3243](https://github.com/obophenotype/cell-ontology/issues/3243)
-- **PR**: [#3251](https://github.com/obophenotype/cell-ontology/pull/3251)
-- **Author**: @Caroline-99
-- **Merged**: 2025-08-29
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3243](https://github.com/obophenotype/cell-ontology/issues/3243) | [PR #3251](https://github.com/obophenotype/cell-ontology/pull/3251) | @Caroline-99 | merged 2025-08-29
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

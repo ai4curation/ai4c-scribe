@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31636
+pr_number: 31925
+issue_title: rename GO:1990334 Bfa1-Bub2 complex to make it species agnostic
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-20'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+best_f1: 0.857
+best_model: claude-sonnet-4.5
+---
+
 # PR #31925 — rename GO:1990334 Bfa1-Bub2 complex to make it species agnostic
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31636](https://github.com/geneontology/go-ontology/issues/31636)
-- **PR**: [#31925](https://github.com/geneontology/go-ontology/pull/31925)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-20
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31636](https://github.com/geneontology/go-ontology/issues/31636) | [PR #31925](https://github.com/geneontology/go-ontology/pull/31925) | @dragon-ai-agent | merged 2026-04-20
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

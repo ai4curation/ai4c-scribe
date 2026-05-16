@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31295
+pr_number: 32040
+issue_title: 'NTR: p24 cargo receptor complex'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-06'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+best_f1: 0.75
+best_model: claude-opus-4.7
+---
+
 # PR #32040 — NTR: p24 cargo receptor complex
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31295](https://github.com/geneontology/go-ontology/issues/31295)
-- **PR**: [#32040](https://github.com/geneontology/go-ontology/pull/32040)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-06
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31295](https://github.com/geneontology/go-ontology/issues/31295) | [PR #32040](https://github.com/geneontology/go-ontology/pull/32040) | @dragon-ai-agent | merged 2026-05-06
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,26 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31114
+pr_number: 32032
+issue_title: 'NTR: Terreic acid biosynthetic process'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-05'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+domain_area: biological_process
+---
+
 # PR #32032 — NTR: Terreic acid biosynthetic process
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31114](https://github.com/geneontology/go-ontology/issues/31114)
-- **PR**: [#32032](https://github.com/geneontology/go-ontology/pull/32032)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-05
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31114](https://github.com/geneontology/go-ontology/issues/31114) | [PR #32032](https://github.com/geneontology/go-ontology/pull/32032) | @dragon-ai-agent | merged 2026-05-05
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

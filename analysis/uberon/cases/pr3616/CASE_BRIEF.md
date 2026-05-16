@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3613
+pr_number: 3616
+issue_title: Typos in labels of UBERON:0009548 and UBERON:0009549
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-03'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+domain_area: hepatic-anatomy
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3616 — Typos in labels of UBERON:0009548 and UBERON:0009549
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3613](https://github.com/obophenotype/uberon/issues/3613)
-- **PR**: [#3616](https://github.com/obophenotype/uberon/pull/3616)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-03
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3613](https://github.com/obophenotype/uberon/issues/3613) | [PR #3616](https://github.com/obophenotype/uberon/pull/3616) | @dragon-ai-agent | merged 2025-11-03
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

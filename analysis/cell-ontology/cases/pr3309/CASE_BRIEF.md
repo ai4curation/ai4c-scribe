@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 2967
+pr_number: 3309
+issue_title: T follicular helper cell logical definition using obsolete term
+pr_author: gouttegd
+pr_merged_at: '2025-09-09'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.5
+best_model: claude-sonnet-4.5
+---
+
 # PR #3309 — T follicular helper cell logical definition using obsolete term
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#2967](https://github.com/obophenotype/cell-ontology/issues/2967)
-- **PR**: [#3309](https://github.com/obophenotype/cell-ontology/pull/3309)
-- **Author**: @gouttegd
-- **Merged**: 2025-09-09
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #2967](https://github.com/obophenotype/cell-ontology/issues/2967) | [PR #3309](https://github.com/obophenotype/cell-ontology/pull/3309) | @gouttegd | merged 2025-09-09
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

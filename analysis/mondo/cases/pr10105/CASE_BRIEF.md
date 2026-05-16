@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9864
+pr_number: 10105
+issue_title: Request for new term SYCE1-related gametogenic failure
+pr_author: MeeSiing
+pr_merged_at: '2026-03-31'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+best_f1: 0.56
+best_model: claude-sonnet-4.5
+---
+
 # PR #10105 — Request for new term SYCE1-related gametogenic failure
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9864](https://github.com/monarch-initiative/mondo/issues/9864)
-- **PR**: [#10105](https://github.com/monarch-initiative/mondo/pull/10105)
-- **Author**: @MeeSiing
-- **Merged**: 2026-03-31
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9864](https://github.com/monarch-initiative/mondo/issues/9864) | [PR #10105](https://github.com/monarch-initiative/mondo/pull/10105) | @MeeSiing | merged 2026-03-31
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

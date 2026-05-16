@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9930
+pr_number: 10209
+issue_title: 'Request to add synonyms to: GRIN-related complex neurodevelopmental
+  disorder (MONDO:1060138)'
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+best_f1: 0.25
+best_model: claude-sonnet-4.5
+---
+
 # PR #10209 — Request to add synonyms to: GRIN-related complex neurodevelopmental disorder (MONDO:1060138)
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9930](https://github.com/monarch-initiative/mondo/issues/9930)
-- **PR**: [#10209](https://github.com/monarch-initiative/mondo/pull/10209)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9930](https://github.com/monarch-initiative/mondo/issues/9930) | [PR #10209](https://github.com/monarch-initiative/mondo/pull/10209) | @MeeSiing | merged 2026-05-01
+
+`synonym_update` `simple` `tightly_scoped` `changes_requested`
 
 ## Context
 

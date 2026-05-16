@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9771
+pr_number: 10102
+issue_title: '[Obsolete] ''heart, malformation of'' (MONDO:0009327)'
+pr_author: sabrinatoro
+pr_merged_at: '2026-03-31'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 14
+generated_at: '2026-05-15'
+scoping_notes: PR obsoletes a single term with appropriate replaced_by annotation.
+domain_area: congenital-disease
+best_f1: 0.812
+best_model: gpt-5.5
+---
+
 # PR #10102 — [Obsolete] 'heart, malformation of' (MONDO:0009327)
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9771](https://github.com/monarch-initiative/mondo/issues/9771)
-- **PR**: [#10102](https://github.com/monarch-initiative/mondo/pull/10102)
-- **Author**: @sabrinatoro
-- **Merged**: 2026-03-31
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR obsoletes a single term with appropriate replaced_by annotation.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9771](https://github.com/monarch-initiative/mondo/issues/9771) | [PR #10102](https://github.com/monarch-initiative/mondo/pull/10102) | @sabrinatoro | merged 2026-03-31
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

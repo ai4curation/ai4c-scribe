@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 2911
+pr_number: 3508
+issue_title: 'relation error: conus arteriosus has_part *uterine tube'
+pr_author: cmungall
+pr_merged_at: '2025-04-23'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: cardiac-anatomy
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3508 — relation error: conus arteriosus has_part *uterine tube
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#2911](https://github.com/obophenotype/uberon/issues/2911)
-- **PR**: [#3508](https://github.com/obophenotype/uberon/pull/3508)
-- **Author**: @cmungall
-- **Merged**: 2025-04-23
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #2911](https://github.com/obophenotype/uberon/issues/2911) | [PR #3508](https://github.com/obophenotype/uberon/pull/3508) | @cmungall | merged 2025-04-23
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

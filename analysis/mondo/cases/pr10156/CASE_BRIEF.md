@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 10149
+pr_number: 10156
+issue_title: Request for new term [podocytopathy]
+pr_author: sabrinatoro
+pr_merged_at: '2026-04-15'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: PR adds a new parent term and reclassifies three existing children
+  under it.
+domain_area: kidney-disease
+best_f1: 0.476
+best_model: gpt-5.5
+---
+
 # PR #10156 — Request for new term [podocytopathy]
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#10149](https://github.com/monarch-initiative/mondo/issues/10149)
-- **PR**: [#10156](https://github.com/monarch-initiative/mondo/pull/10156)
-- **Author**: @sabrinatoro
-- **Merged**: 2026-04-15
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR adds a new parent term and reclassifies three existing children under it.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #10149](https://github.com/monarch-initiative/mondo/issues/10149) | [PR #10156](https://github.com/monarch-initiative/mondo/pull/10156) | @sabrinatoro | merged 2026-04-15
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

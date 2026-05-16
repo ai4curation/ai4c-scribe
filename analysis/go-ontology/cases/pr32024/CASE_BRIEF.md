@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31916
+pr_number: 32024
+issue_title: Review of Entner-Doudoroff pathways
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-04'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 0.965
+best_model: gpt-5.4
+---
+
 # PR #32024 — Review of Entner-Doudoroff pathways
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31916](https://github.com/geneontology/go-ontology/issues/31916)
-- **PR**: [#32024](https://github.com/geneontology/go-ontology/pull/32024)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-04
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31916](https://github.com/geneontology/go-ontology/issues/31916) | [PR #32024](https://github.com/geneontology/go-ontology/pull/32024) | @dragon-ai-agent | merged 2026-05-04
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

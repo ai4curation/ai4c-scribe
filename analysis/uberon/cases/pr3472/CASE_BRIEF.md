@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3471
+pr_number: 3472
+issue_title: '[Text Def] UBERON:0022232 secondary visual cortex has no textual definition'
+pr_author: shawntanzk
+pr_merged_at: '2025-02-04'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.667
+best_model: gemma-4-31b
+---
+
 # PR #3472 — [Text Def] UBERON:0022232 secondary visual cortex has no textual definition
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3471](https://github.com/obophenotype/uberon/issues/3471)
-- **PR**: [#3472](https://github.com/obophenotype/uberon/pull/3472)
-- **Author**: @shawntanzk
-- **Merged**: 2025-02-04
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3471](https://github.com/obophenotype/uberon/issues/3471) | [PR #3472](https://github.com/obophenotype/uberon/pull/3472) | @shawntanzk | merged 2025-02-04
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

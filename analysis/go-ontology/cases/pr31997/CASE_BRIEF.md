@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 27593
+pr_number: 31997
+issue_title: NTR ferric iron reductase (for non siderophore)
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: gpt-5.5
+---
+
 # PR #31997 — NTR ferric iron reductase (for non siderophore)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#27593](https://github.com/geneontology/go-ontology/issues/27593)
-- **PR**: [#31997](https://github.com/geneontology/go-ontology/pull/31997)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #27593](https://github.com/geneontology/go-ontology/issues/27593) | [PR #31997](https://github.com/geneontology/go-ontology/pull/31997) | @dragon-ai-agent | merged 2026-04-28
+
+`new_term` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

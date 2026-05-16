@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9871
+pr_number: 10201
+issue_title: MONDO:0009106 diastematomyelia
+pr_author: MeeSiing
+pr_merged_at: '2026-05-04'
+task_type: other
+difficulty: medium
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+best_f1: 0.45
+best_model: kimi-k2.6
+---
+
 # PR #10201 — MONDO:0009106 diastematomyelia
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9871](https://github.com/monarch-initiative/mondo/issues/9871)
-- **PR**: [#10201](https://github.com/monarch-initiative/mondo/pull/10201)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-04
-- **task_type**: other
-- **difficulty**: medium
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9871](https://github.com/monarch-initiative/mondo/issues/9871) | [PR #10201](https://github.com/monarch-initiative/mondo/pull/10201) | @MeeSiing | merged 2026-05-04
+
+`other` `medium` `loosely_scoped` `changes_requested`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9875
+pr_number: 10202
+issue_title: Typo for MONDO:0700039 bladder exstrophy-epispadias-cloacal extrophy
+  complex
+pr_author: MeeSiing
+pr_merged_at: '2026-04-30'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+best_f1: 0.8
+best_model: claude-sonnet-4.5
+---
+
 # PR #10202 — Typo for MONDO:0700039 bladder exstrophy-epispadias-cloacal extrophy complex
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9875](https://github.com/monarch-initiative/mondo/issues/9875)
-- **PR**: [#10202](https://github.com/monarch-initiative/mondo/pull/10202)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-30
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9875](https://github.com/monarch-initiative/mondo/issues/9875) | [PR #10202](https://github.com/monarch-initiative/mondo/pull/10202) | @MeeSiing | merged 2026-04-30
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3354
+pr_number: 3486
+issue_title: 'ZFA/Uberon issues: simple errors in Uberon'
+pr_author: gouttegd
+pr_merged_at: '2025-03-06'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: cross-species-anatomy
+best_f1: 0.727
+best_model: claude-sonnet-4.5
+---
+
 # PR #3486 — ZFA/Uberon issues: simple errors in Uberon
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3354](https://github.com/obophenotype/uberon/issues/3354)
-- **PR**: [#3486](https://github.com/obophenotype/uberon/pull/3486)
-- **Author**: @gouttegd
-- **Merged**: 2025-03-06
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3354](https://github.com/obophenotype/uberon/issues/3354) | [PR #3486](https://github.com/obophenotype/uberon/pull/3486) | @gouttegd | merged 2025-03-06
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

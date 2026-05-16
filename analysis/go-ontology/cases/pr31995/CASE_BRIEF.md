@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31981
+pr_number: 31995
+issue_title: 'Missing parent: GO:0072318 clathrin coat disassembly'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #31995 — Missing parent: GO:0072318 clathrin coat disassembly
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31981](https://github.com/geneontology/go-ontology/issues/31981)
-- **PR**: [#31995](https://github.com/geneontology/go-ontology/pull/31995)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31981](https://github.com/geneontology/go-ontology/issues/31981) | [PR #31995](https://github.com/geneontology/go-ontology/pull/31995) | @dragon-ai-agent | merged 2026-04-28
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

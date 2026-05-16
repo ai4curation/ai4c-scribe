@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3682
+pr_number: 3683
+issue_title: UBERON:0002346 "neurectoderm" vs "neuroectoderm"
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-23'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: developmental-anatomy
+best_f1: 0.917
+best_model: claude-opus-4.7
+---
+
 # PR #3683 — UBERON:0002346 "neurectoderm" vs "neuroectoderm"
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3682](https://github.com/obophenotype/uberon/issues/3682)
-- **PR**: [#3683](https://github.com/obophenotype/uberon/pull/3683)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-23
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3682](https://github.com/obophenotype/uberon/issues/3682) | [PR #3683](https://github.com/obophenotype/uberon/pull/3683) | @dragon-ai-agent | merged 2026-04-23
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

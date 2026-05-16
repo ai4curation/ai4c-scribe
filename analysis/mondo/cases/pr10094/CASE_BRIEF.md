@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9987
+pr_number: 10094
+issue_title: 'Copy-paste error in inborn_metabolic_disrupts.yaml: definition says
+  ''acquired'' instead of ''inherited'''
+pr_author: sabrinatoro
+pr_merged_at: '2026-03-31'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #10094 — Copy-paste error in inborn_metabolic_disrupts.yaml: definition says 'acquired' instead of 'inherited'
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9987](https://github.com/monarch-initiative/mondo/issues/9987)
-- **PR**: [#10094](https://github.com/monarch-initiative/mondo/pull/10094)
-- **Author**: @sabrinatoro
-- **Merged**: 2026-03-31
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9987](https://github.com/monarch-initiative/mondo/issues/9987) | [PR #10094](https://github.com/monarch-initiative/mondo/pull/10094) | @sabrinatoro | merged 2026-03-31
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

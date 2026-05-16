@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3457
+pr_number: 3569
+issue_title: Track the addition of VCCF vasculature terms here
+pr_author: ar-ibrahim
+pr_merged_at: '2025-07-03'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+domain_area: vascular-anatomy
+best_f1: 0.626
+best_model: gpt-5.5
+---
+
 # PR #3569 — Track the addition of VCCF vasculature terms here
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3457](https://github.com/obophenotype/uberon/issues/3457)
-- **PR**: [#3569](https://github.com/obophenotype/uberon/pull/3569)
-- **Author**: @ar-ibrahim
-- **Merged**: 2025-07-03
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3457](https://github.com/obophenotype/uberon/issues/3457) | [PR #3569](https://github.com/obophenotype/uberon/pull/3569) | @ar-ibrahim | merged 2025-07-03
+
+`new_term` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

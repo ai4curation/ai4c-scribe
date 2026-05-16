@@ -1,16 +1,26 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3591
+pr_number: 3595
+issue_title: '"carotid body" should not be part of the cardiovascular system'
+pr_author: cmungall
+pr_merged_at: '2025-09-15'
+task_type: reclassification
+difficulty: hard
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+---
+
 # PR #3595 — "carotid body" should not be part of the cardiovascular system
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3591](https://github.com/obophenotype/uberon/issues/3591)
-- **PR**: [#3595](https://github.com/obophenotype/uberon/pull/3595)
-- **Author**: @cmungall
-- **Merged**: 2025-09-15
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3591](https://github.com/obophenotype/uberon/issues/3591) | [PR #3595](https://github.com/obophenotype/uberon/pull/3595) | @cmungall | merged 2025-09-15
+
+`reclassification` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

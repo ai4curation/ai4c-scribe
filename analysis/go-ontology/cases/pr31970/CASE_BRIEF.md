@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31962
+pr_number: 31970
+issue_title: Missing EC/RHEA xrefs to add to oxidoreductase activity GO terms
+pr_author: sjm41
+pr_merged_at: '2026-04-24'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 1.0
+best_model: claude-opus-4.7
+---
+
 # PR #31970 — Missing EC/RHEA xrefs to add to oxidoreductase activity GO terms
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31962](https://github.com/geneontology/go-ontology/issues/31962)
-- **PR**: [#31970](https://github.com/geneontology/go-ontology/pull/31970)
-- **Author**: @sjm41
-- **Merged**: 2026-04-24
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31962](https://github.com/geneontology/go-ontology/issues/31962) | [PR #31970](https://github.com/geneontology/go-ontology/pull/31970) | @sjm41 | merged 2026-04-24
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

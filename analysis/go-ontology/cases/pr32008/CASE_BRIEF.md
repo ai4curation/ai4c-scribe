@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 25870
+pr_number: 32008
+issue_title: GO terms with EC:1.13.11.37 xref
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 0.667
+best_model: claude-sonnet-4.5
+---
+
 # PR #32008 — GO terms with EC:1.13.11.37 xref
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#25870](https://github.com/geneontology/go-ontology/issues/25870)
-- **PR**: [#32008](https://github.com/geneontology/go-ontology/pull/32008)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #25870](https://github.com/geneontology/go-ontology/issues/25870) | [PR #32008](https://github.com/geneontology/go-ontology/pull/32008) | @dragon-ai-agent | merged 2026-04-28
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3446
+pr_number: 3507
+issue_title: 'NTR: medial prefrontal cortex'
+pr_author: cmungall
+pr_merged_at: '2025-04-24'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.571
+best_model: claude-opus-4.7
+---
+
 # PR #3507 — NTR: medial prefrontal cortex
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3446](https://github.com/obophenotype/uberon/issues/3446)
-- **PR**: [#3507](https://github.com/obophenotype/uberon/pull/3507)
-- **Author**: @cmungall
-- **Merged**: 2025-04-24
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3446](https://github.com/obophenotype/uberon/issues/3446) | [PR #3507](https://github.com/obophenotype/uberon/pull/3507) | @cmungall | merged 2025-04-24
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

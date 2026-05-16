@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3454
+pr_number: 3455
+issue_title: Newly introduced crab and lobster terms violate taxon constraints
+pr_author: gouttegd
+pr_merged_at: '2024-12-24'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: invertebrate-anatomy
+best_f1: 0.473
+best_model: gpt-5.5
+---
+
 # PR #3455 — Newly introduced crab and lobster terms violate taxon constraints
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3454](https://github.com/obophenotype/uberon/issues/3454)
-- **PR**: [#3455](https://github.com/obophenotype/uberon/pull/3455)
-- **Author**: @gouttegd
-- **Merged**: 2024-12-24
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3454](https://github.com/obophenotype/uberon/issues/3454) | [PR #3455](https://github.com/obophenotype/uberon/pull/3455) | @gouttegd | merged 2024-12-24
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,17 +1,31 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3604
+pr_number: 3607
+issue_title: dGTEx terms needed in Uberon
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-09-11'
+task_type: new_term
+difficulty: medium
+scoping: mostly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+scoping_notes: The issue requested multiple dGTEx terms but this PR only addresses
+  the kidney interpolar region. Other terms from the same issue were handled in separate
+  PRs.
+domain_area: renal-anatomy
+best_f1: 0.889
+best_model: claude-haiku-4.5
+---
+
 # PR #3607 — dGTEx terms needed in Uberon
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3604](https://github.com/obophenotype/uberon/issues/3604)
-- **PR**: [#3607](https://github.com/obophenotype/uberon/pull/3607)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-09-11
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: mostly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: The issue requested multiple dGTEx terms but this PR only addresses the kidney interpolar region. Other terms from the same issue were handled in separate PRs.
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3604](https://github.com/obophenotype/uberon/issues/3604) | [PR #3607](https://github.com/obophenotype/uberon/pull/3607) | @dragon-ai-agent | merged 2025-09-11
+
+`new_term` `medium` `mostly_scoped` `approved_first_time`
 
 ## Context
 

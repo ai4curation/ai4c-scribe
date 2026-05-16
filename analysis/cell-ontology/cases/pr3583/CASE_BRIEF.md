@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3521
+pr_number: 3583
+issue_title: Add reference dataset and NS-Forest marker for human bipolar neuron types
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-03-16'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3583 — Add reference dataset and NS-Forest marker for human bipolar neuron types
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3521](https://github.com/obophenotype/cell-ontology/issues/3521)
-- **PR**: [#3583](https://github.com/obophenotype/cell-ontology/pull/3583)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-03-16
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3521](https://github.com/obophenotype/cell-ontology/issues/3521) | [PR #3583](https://github.com/obophenotype/cell-ontology/pull/3583) | @app/copilot-swe-agent | merged 2026-03-16
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

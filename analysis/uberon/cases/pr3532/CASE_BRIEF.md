@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3531
+pr_number: 3532
+issue_title: Add COB alignment comment and see_also link to UBERON:0000000
+pr_author: cmungall
+pr_merged_at: '2025-05-20'
+task_type: documentation
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: upper-ontology
+best_f1: 0.5
+best_model: claude-sonnet-4.5
+---
+
 # PR #3532 — Add COB alignment comment and see_also link to UBERON:0000000
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3531](https://github.com/obophenotype/uberon/issues/3531)
-- **PR**: [#3532](https://github.com/obophenotype/uberon/pull/3532)
-- **Author**: @cmungall
-- **Merged**: 2025-05-20
-- **task_type**: documentation
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3531](https://github.com/obophenotype/uberon/issues/3531) | [PR #3532](https://github.com/obophenotype/uberon/pull/3532) | @cmungall | merged 2025-05-20
+
+`documentation` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

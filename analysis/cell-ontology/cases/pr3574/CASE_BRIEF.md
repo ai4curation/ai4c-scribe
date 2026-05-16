@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3497
+pr_number: 3574
+issue_title: '[NTR] Fasciacyte'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-03-13'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: connective-tissue
+best_f1: 0.113
+best_model: claude-haiku-4.5
+---
+
 # PR #3574 — [NTR] Fasciacyte
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3497](https://github.com/obophenotype/cell-ontology/issues/3497)
-- **PR**: [#3574](https://github.com/obophenotype/cell-ontology/pull/3574)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-03-13
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3497](https://github.com/obophenotype/cell-ontology/issues/3497) | [PR #3574](https://github.com/obophenotype/cell-ontology/pull/3574) | @app/copilot-swe-agent | merged 2026-03-13
+
+`new_term` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

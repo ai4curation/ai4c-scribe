@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31945
+pr_number: 32013
+issue_title: 'Obsoletion request: GO:0003400 regulation of COPII vesicle coating'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-29'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+best_f1: 0.9
+best_model: claude-opus-4.7
+---
+
 # PR #32013 — Obsoletion request: GO:0003400 regulation of COPII vesicle coating
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31945](https://github.com/geneontology/go-ontology/issues/31945)
-- **PR**: [#32013](https://github.com/geneontology/go-ontology/pull/32013)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-29
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31945](https://github.com/geneontology/go-ontology/issues/31945) | [PR #32013](https://github.com/geneontology/go-ontology/pull/32013) | @dragon-ai-agent | merged 2026-04-29
+
+`reclassification` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

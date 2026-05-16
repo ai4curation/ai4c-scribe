@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3618
+pr_number: 3620
+issue_title: sixth lumbar dorsal root ganglion
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-03'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 0.947
+best_model: claude-opus-4.7
+---
+
 # PR #3620 — sixth lumbar dorsal root ganglion
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3618](https://github.com/obophenotype/uberon/issues/3618)
-- **PR**: [#3620](https://github.com/obophenotype/uberon/pull/3620)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-03
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3618](https://github.com/obophenotype/uberon/issues/3618) | [PR #3620](https://github.com/obophenotype/uberon/pull/3620) | @dragon-ai-agent | merged 2025-11-03
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

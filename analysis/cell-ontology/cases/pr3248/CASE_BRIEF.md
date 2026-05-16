@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3196
+pr_number: 3248
+issue_title: '[NTR] Unclassified Fallopian Tube Progenitor (UCFP)'
+pr_author: Caroline-99
+pr_merged_at: '2025-08-13'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: reproductive-biology
+best_f1: 0.231
+best_model: gpt-5.4
+---
+
 # PR #3248 — [NTR] Unclassified Fallopian Tube Progenitor (UCFP)
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3196](https://github.com/obophenotype/cell-ontology/issues/3196)
-- **PR**: [#3248](https://github.com/obophenotype/cell-ontology/pull/3248)
-- **Author**: @Caroline-99
-- **Merged**: 2025-08-13
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3196](https://github.com/obophenotype/cell-ontology/issues/3196) | [PR #3248](https://github.com/obophenotype/cell-ontology/pull/3248) | @Caroline-99 | merged 2025-08-13
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

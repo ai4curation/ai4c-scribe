@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9849
+pr_number: 10084
+issue_title: Request for new term 'reticular pseudodrusen'
+pr_author: MeeSiing
+pr_merged_at: '2026-03-30'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.522
+best_model: gpt-5.5
+---
+
 # PR #10084 — Request for new term 'reticular pseudodrusen'
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9849](https://github.com/monarch-initiative/mondo/issues/9849)
-- **PR**: [#10084](https://github.com/monarch-initiative/mondo/pull/10084)
-- **Author**: @MeeSiing
-- **Merged**: 2026-03-30
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9849](https://github.com/monarch-initiative/mondo/issues/9849) | [PR #10084](https://github.com/monarch-initiative/mondo/pull/10084) | @MeeSiing | merged 2026-03-30
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

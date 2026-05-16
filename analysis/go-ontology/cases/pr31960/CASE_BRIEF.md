@@ -1,16 +1,29 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31956
+pr_number: 31960
+issue_title: 'Obsoletion request: GO:0005870 actin capping protein of dynactin complex
+  (unused, direct replacement)'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-23'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+domain_area: cellular_component
+best_f1: 0.9
+best_model: claude-sonnet-4.5
+---
+
 # PR #31960 — Obsoletion request: GO:0005870 actin capping protein of dynactin complex (unused, direct replacement)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31956](https://github.com/geneontology/go-ontology/issues/31956)
-- **PR**: [#31960](https://github.com/geneontology/go-ontology/pull/31960)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-23
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31956](https://github.com/geneontology/go-ontology/issues/31956) | [PR #31960](https://github.com/geneontology/go-ontology/pull/31960) | @dragon-ai-agent | merged 2026-04-23
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

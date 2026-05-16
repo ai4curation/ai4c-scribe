@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3672
+pr_number: 3673
+issue_title: add 'addedByHRA' subset tag
+pr_author: nicolevasilevsky
+pr_merged_at: '2026-03-19'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: metadata
+best_f1: 1.0
+best_model: gemma-4-31b
+---
+
 # PR #3673 — add 'addedByHRA' subset tag
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3672](https://github.com/obophenotype/uberon/issues/3672)
-- **PR**: [#3673](https://github.com/obophenotype/uberon/pull/3673)
-- **Author**: @nicolevasilevsky
-- **Merged**: 2026-03-19
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3672](https://github.com/obophenotype/uberon/issues/3672) | [PR #3673](https://github.com/obophenotype/uberon/pull/3673) | @nicolevasilevsky | merged 2026-03-19
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

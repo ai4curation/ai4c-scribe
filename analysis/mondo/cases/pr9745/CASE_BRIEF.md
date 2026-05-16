@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9707
+pr_number: 9745
+issue_title: Mondo request for SCN5A disease entity for ClinGen
+pr_author: katiermullen
+pr_merged_at: '2025-11-12'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+scoping_notes: Adds two new terms and reclassifies a related existing term.
+domain_area: cardiac-disease
+best_f1: 0.615
+best_model: kimi-k2.6
+---
+
 # PR #9745 — Mondo request for SCN5A disease entity for ClinGen
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9707](https://github.com/monarch-initiative/mondo/issues/9707)
-- **PR**: [#9745](https://github.com/monarch-initiative/mondo/pull/9745)
-- **Author**: @katiermullen
-- **Merged**: 2025-11-12
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Adds two new terms and reclassifies a related existing term.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9707](https://github.com/monarch-initiative/mondo/issues/9707) | [PR #9745](https://github.com/monarch-initiative/mondo/pull/9745) | @katiermullen | merged 2025-11-12
+
+`new_term` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

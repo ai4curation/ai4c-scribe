@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3625
+pr_number: 3626
+issue_title: Edit vestibular nerve ABA xrefs
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-10'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3626 — Edit vestibular nerve ABA xrefs
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3625](https://github.com/obophenotype/uberon/issues/3625)
-- **PR**: [#3626](https://github.com/obophenotype/uberon/pull/3626)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-10
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3625](https://github.com/obophenotype/uberon/issues/3625) | [PR #3626](https://github.com/obophenotype/uberon/pull/3626) | @dragon-ai-agent | merged 2025-11-10
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

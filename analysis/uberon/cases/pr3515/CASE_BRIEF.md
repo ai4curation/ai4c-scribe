@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3509
+pr_number: 3515
+issue_title: Definition of common hepatic artery is truncated
+pr_author: ar-ibrahim
+pr_merged_at: '2025-05-08'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: vascular-anatomy
+best_f1: 0.5
+best_model: claude-haiku-4.5
+---
+
 # PR #3515 — Definition of common hepatic artery is truncated
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3509](https://github.com/obophenotype/uberon/issues/3509)
-- **PR**: [#3515](https://github.com/obophenotype/uberon/pull/3515)
-- **Author**: @ar-ibrahim
-- **Merged**: 2025-05-08
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3509](https://github.com/obophenotype/uberon/issues/3509) | [PR #3515](https://github.com/obophenotype/uberon/pull/3515) | @ar-ibrahim | merged 2025-05-08
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

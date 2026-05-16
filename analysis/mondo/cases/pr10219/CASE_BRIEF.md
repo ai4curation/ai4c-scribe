@@ -1,17 +1,30 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9859
+pr_number: 10219
+issue_title: primary hypophysitis synonyms
+pr_author: MeeSiing
+pr_merged_at: '2026-05-04'
+task_type: reclassification
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: changes_requested
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+scoping_notes: All changes are within the hypophysitis branch of the ontology, restructuring
+  subtypes.
+domain_area: rare-disease
+best_f1: 0.259
+best_model: claude-sonnet-4.5
+---
+
 # PR #10219 — primary hypophysitis synonyms
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9859](https://github.com/monarch-initiative/mondo/issues/9859)
-- **PR**: [#10219](https://github.com/monarch-initiative/mondo/pull/10219)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-04
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: changes_requested
-- **scoping_notes**: All changes are within the hypophysitis branch of the ontology, restructuring subtypes.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9859](https://github.com/monarch-initiative/mondo/issues/9859) | [PR #10219](https://github.com/monarch-initiative/mondo/pull/10219) | @MeeSiing | merged 2026-05-04
+
+`reclassification` `hard` `tightly_scoped` `changes_requested`
 
 ## Context
 

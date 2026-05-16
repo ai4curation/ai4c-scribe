@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3590
+pr_number: 3591
+issue_title: add subset tag 'add_by_HRA'
+pr_author: nicolevasilevsky
+pr_merged_at: '2026-03-20'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+domain_area: metadata
+best_f1: 0.667
+best_model: claude-sonnet-4.5
+---
+
 # PR #3591 — add subset tag 'add_by_HRA'
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3590](https://github.com/obophenotype/cell-ontology/issues/3590)
-- **PR**: [#3591](https://github.com/obophenotype/cell-ontology/pull/3591)
-- **Author**: @nicolevasilevsky
-- **Merged**: 2026-03-20
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3590](https://github.com/obophenotype/cell-ontology/issues/3590) | [PR #3591](https://github.com/obophenotype/cell-ontology/pull/3591) | @nicolevasilevsky | merged 2026-03-20
+
+`other` `simple` `tightly_scoped` `changes_requested`
 
 ## Context
 

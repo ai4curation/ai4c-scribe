@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3454
+pr_number: 3555
+issue_title: '[Class hierarchy] Remove CD44-high and CD122-high from CD45RO-positive
+  memory T cells'
+pr_author: copilot-swe-agent
+pr_merged_at: '2026-02-16'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 11
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.75
+best_model: gpt-5.5
+---
+
 # PR #3555 — [Class hierarchy] Remove CD44-high and CD122-high from CD45RO-positive memory T cells
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3454](https://github.com/obophenotype/cell-ontology/issues/3454)
-- **PR**: [#3555](https://github.com/obophenotype/cell-ontology/pull/3555)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2026-02-16
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3454](https://github.com/obophenotype/cell-ontology/issues/3454) | [PR #3555](https://github.com/obophenotype/cell-ontology/pull/3555) | @copilot-swe-agent | merged 2026-02-16
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

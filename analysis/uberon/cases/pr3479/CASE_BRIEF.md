@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3478
+pr_number: 3479
+issue_title: '''late embryo'' connected to effectively vertebrate-specific stages'
+pr_author: gouttegd
+pr_merged_at: '2025-02-13'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+domain_area: developmental-anatomy
+best_f1: 0.5
+best_model: claude-haiku-4.5
+---
+
 # PR #3479 — 'late embryo' connected to effectively vertebrate-specific stages
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3478](https://github.com/obophenotype/uberon/issues/3478)
-- **PR**: [#3479](https://github.com/obophenotype/uberon/pull/3479)
-- **Author**: @gouttegd
-- **Merged**: 2025-02-13
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3478](https://github.com/obophenotype/uberon/issues/3478) | [PR #3479](https://github.com/obophenotype/uberon/pull/3479) | @gouttegd | merged 2025-02-13
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

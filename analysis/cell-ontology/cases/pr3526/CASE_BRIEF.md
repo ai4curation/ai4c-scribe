@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3479
+pr_number: 3526
+issue_title: '[Text def] Revise textual definition and medial ganglionic eminence
+  derived interneuron and add markers'
+pr_author: RiveraAndrea83
+pr_merged_at: '2026-02-05'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 1.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3526 — [Text def] Revise textual definition and medial ganglionic eminence derived interneuron and add markers
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3479](https://github.com/obophenotype/cell-ontology/issues/3479)
-- **PR**: [#3526](https://github.com/obophenotype/cell-ontology/pull/3526)
-- **Author**: @RiveraAndrea83
-- **Merged**: 2026-02-05
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3479](https://github.com/obophenotype/cell-ontology/issues/3479) | [PR #3526](https://github.com/obophenotype/cell-ontology/pull/3526) | @RiveraAndrea83 | merged 2026-02-05
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,26 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31963
+pr_number: 32009
+issue_title: Obsolete GO:0045550 geranylgeranyl reductase activity
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-28'
+task_type: obsoletion
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+domain_area: molecular_function
+---
+
 # PR #32009 — Obsolete GO:0045550 geranylgeranyl reductase activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31963](https://github.com/geneontology/go-ontology/issues/31963)
-- **PR**: [#32009](https://github.com/geneontology/go-ontology/pull/32009)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-28
-- **task_type**: obsoletion
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31963](https://github.com/geneontology/go-ontology/issues/31963) | [PR #32009](https://github.com/geneontology/go-ontology/pull/32009) | @dragon-ai-agent | merged 2026-04-28
+
+`obsoletion` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

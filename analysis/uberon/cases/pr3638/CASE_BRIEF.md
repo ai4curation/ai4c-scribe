@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3637
+pr_number: 3638
+issue_title: '[NTR] ''uterine fundus'''
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-12-03'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+domain_area: reproductive-anatomy
+best_f1: 0.842
+best_model: claude-sonnet-4.5
+---
+
 # PR #3638 — [NTR] 'uterine fundus'
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3637](https://github.com/obophenotype/uberon/issues/3637)
-- **PR**: [#3638](https://github.com/obophenotype/uberon/pull/3638)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-12-03
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3637](https://github.com/obophenotype/uberon/issues/3637) | [PR #3638](https://github.com/obophenotype/uberon/pull/3638) | @dragon-ai-agent | merged 2025-12-03
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3657
+pr_number: 3671
+issue_title: New term requests by HRA/HuBMAP
+pr_author: nicolevasilevsky
+pr_merged_at: '2026-03-23'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: oral-anatomy
+best_f1: 0.781
+best_model: claude-opus-4.7
+---
+
 # PR #3671 — New term requests by HRA/HuBMAP
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3657](https://github.com/obophenotype/uberon/issues/3657)
-- **PR**: [#3671](https://github.com/obophenotype/uberon/pull/3671)
-- **Author**: @nicolevasilevsky
-- **Merged**: 2026-03-23
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3657](https://github.com/obophenotype/uberon/issues/3657) | [PR #3671](https://github.com/obophenotype/uberon/pull/3671) | @nicolevasilevsky | merged 2026-03-23
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

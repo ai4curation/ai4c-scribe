@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3333
+pr_number: 3547
+issue_title: Dont relabel imported annotation properties
+pr_author: gouttegd
+pr_merged_at: '2025-12-22'
+task_type: axiom_repair
+difficulty: simple
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+domain_area: ontology-maintenance
+best_f1: 1.0
+best_model: claude-sonnet-4.5
+---
+
 # PR #3547 — Dont relabel imported annotation properties
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3333](https://github.com/obophenotype/cell-ontology/issues/3333)
-- **PR**: [#3547](https://github.com/obophenotype/cell-ontology/pull/3547)
-- **Author**: @gouttegd
-- **Merged**: 2025-12-22
-- **task_type**: axiom_repair
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3333](https://github.com/obophenotype/cell-ontology/issues/3333) | [PR #3547](https://github.com/obophenotype/cell-ontology/pull/3547) | @gouttegd | merged 2025-12-22
+
+`axiom_repair` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

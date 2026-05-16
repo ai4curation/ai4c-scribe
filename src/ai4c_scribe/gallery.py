@@ -363,16 +363,18 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
 def format_case_brief(case: dict, eval_repos: dict) -> str:
     """Format a single case dict as a markdown case brief.
 
-    The brief includes: case metadata, narrative, human diff, and all
-    agent attempts with their comments, diffs, scores, and reviews.
+    The brief includes YAML frontmatter with all metadata, followed by
+    a human-readable markdown body with narrative, diffs, and attempts.
 
     Args:
         case: A case dict from ``collect_gallery_data()``.
         eval_repos: The ``eval_repos`` dict from gallery data.
 
     Returns:
-        Markdown string.
+        Markdown string with YAML frontmatter.
     """
+    from datetime import date as date_type
+
     m = case["metadata"]
     ont = case["ontology"]
     repo = m.get("repo", "")
@@ -380,25 +382,57 @@ def format_case_brief(case: dict, eval_repos: dict) -> str:
     issue_num = m.get("issue_number", "")
     eval_cfg = eval_repos.get(ont, {})
 
-    lines = []
-    lines.append(f"# PR #{pr_num} — {m.get('issue_title', '')}")
-    lines.append("")
-    lines.append(f"- **Ontology**: {ont}")
-    lines.append(f"- **Repo**: {repo}")
-    lines.append(f"- **Issue**: [#{issue_num}](https://github.com/{repo}/issues/{issue_num})")
-    lines.append(f"- **PR**: [#{pr_num}](https://github.com/{repo}/pull/{pr_num})")
-    lines.append(f"- **Author**: @{m.get('pr_author', '')}")
-    lines.append(f"- **Merged**: {m.get('pr_merged_at', '')}")
-    for field in ("task_type", "difficulty", "scoping", "scope",
-                   "review_outcome", "eval_suitability", "diff_noise"):
+    # Build frontmatter
+    fm: dict = {
+        "ontology": ont,
+        "repo": repo,
+        "issue_number": issue_num,
+        "pr_number": pr_num,
+        "issue_title": m.get("issue_title", ""),
+        "pr_author": m.get("pr_author", ""),
+        "pr_merged_at": m.get("pr_merged_at"),
+        "task_type": m.get("task_type"),
+        "difficulty": m.get("difficulty"),
+        "scoping": m.get("scoping"),
+        "scope": m.get("scope"),
+        "review_outcome": m.get("review_outcome"),
+        "num_agent_attempts": len(case.get("agent_attempts", [])),
+        "generated_at": date_type.today().isoformat(),
+    }
+    # Optional fields
+    for field in ("eval_suitability", "eval_suitability_notes",
+                   "diff_noise", "diff_noise_notes",
+                   "scoping_notes", "domain_area"):
         val = m.get(field)
         if val:
-            lines.append(f"- **{field}**: {val}")
-    for notes_field in ("scoping_notes", "eval_suitability_notes", "diff_noise_notes"):
-        val = m.get(notes_field)
-        if val:
-            lines.append(f"- **{notes_field}**: {val}")
+            fm[field] = val
+    # Agent summary
+    attempts = case.get("agent_attempts", [])
+    if attempts:
+        best = max(attempts, key=lambda a: a.get("f1", 0))
+        fm["best_f1"] = round(best["f1"], 3)
+        fm["best_model"] = best.get("model", "")
+
+    fm_yaml = yaml.dump(fm, default_flow_style=False, sort_keys=False, allow_unicode=True).strip()
+
+    lines = []
+    lines.append("---")
+    lines.append(fm_yaml)
+    lines.append("---")
     lines.append("")
+    lines.append(f"# PR #{pr_num} — {m.get('issue_title', '')}")
+    lines.append("")
+    lines.append(f"**{ont}** | [{repo}](https://github.com/{repo}) | "
+                 f"[Issue #{issue_num}](https://github.com/{repo}/issues/{issue_num}) | "
+                 f"[PR #{pr_num}](https://github.com/{repo}/pull/{pr_num}) | "
+                 f"@{m.get('pr_author', '')} | merged {m.get('pr_merged_at', '?')}")
+    lines.append("")
+    badge_fields = ["task_type", "difficulty", "scoping", "review_outcome",
+                    "eval_suitability", "diff_noise"]
+    badges = [f"`{m[f]}`" for f in badge_fields if m.get(f)]
+    if badges:
+        lines.append(" ".join(badges))
+        lines.append("")
 
     # Narrative
     narrative = case.get("narrative_md", "").strip()

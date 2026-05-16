@@ -1,16 +1,27 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 32044
+pr_number: 32054
+issue_title: 'NTR: protein O-linked glycosylation via N-acetylglucosamine'
+pr_author: sjm41
+pr_merged_at: '2026-05-07'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+best_f1: 0.8
+best_model: gemma-4-31b
+---
+
 # PR #32054 — NTR: protein O-linked glycosylation via N-acetylglucosamine
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#32044](https://github.com/geneontology/go-ontology/issues/32044)
-- **PR**: [#32054](https://github.com/geneontology/go-ontology/pull/32054)
-- **Author**: @sjm41
-- **Merged**: 2026-05-07
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #32044](https://github.com/geneontology/go-ontology/issues/32044) | [PR #32054](https://github.com/geneontology/go-ontology/pull/32054) | @sjm41 | merged 2026-05-07
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

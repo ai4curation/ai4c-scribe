@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3379
+pr_number: 3444
+issue_title: '[Class hierarchy] CD4+ CD11b+ dendritic cell [CL_0000999]: Change parent
+  to CD11b+ DC'
+pr_author: copilot-swe-agent
+pr_merged_at: '2025-11-18'
+task_type: reclassification
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.8
+best_model: claude-opus-4.7
+---
+
 # PR #3444 — [Class hierarchy] CD4+ CD11b+ dendritic cell [CL_0000999]: Change parent to CD11b+ DC
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3379](https://github.com/obophenotype/cell-ontology/issues/3379)
-- **PR**: [#3444](https://github.com/obophenotype/cell-ontology/pull/3444)
-- **Author**: @copilot-swe-agent
-- **Merged**: 2025-11-18
-- **task_type**: reclassification
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3379](https://github.com/obophenotype/cell-ontology/issues/3379) | [PR #3444](https://github.com/obophenotype/cell-ontology/pull/3444) | @copilot-swe-agent | merged 2025-11-18
+
+`reclassification` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

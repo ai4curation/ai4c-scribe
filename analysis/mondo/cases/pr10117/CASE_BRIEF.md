@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 10030
+pr_number: 10117
+issue_title: Incorrect synonyms for MONDO_0001628
+pr_author: matentzn
+pr_merged_at: '2026-04-02'
+task_type: bulk_edit
+difficulty: hard
+scoping: loosely_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+scoping_notes: Bulk removal of synonyms across many terms in the ontology.
+domain_area: quality-control
+best_f1: 0.003
+best_model: claude-sonnet-4.5
+---
+
 # PR #10117 — Incorrect synonyms for MONDO_0001628
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#10030](https://github.com/monarch-initiative/mondo/issues/10030)
-- **PR**: [#10117](https://github.com/monarch-initiative/mondo/pull/10117)
-- **Author**: @matentzn
-- **Merged**: 2026-04-02
-- **task_type**: bulk_edit
-- **difficulty**: hard
-- **scoping**: loosely_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: Bulk removal of synonyms across many terms in the ontology.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #10030](https://github.com/monarch-initiative/mondo/issues/10030) | [PR #10117](https://github.com/monarch-initiative/mondo/pull/10117) | @matentzn | merged 2026-04-02
+
+`bulk_edit` `hard` `loosely_scoped` `approved_first_time`
 
 ## Context
 

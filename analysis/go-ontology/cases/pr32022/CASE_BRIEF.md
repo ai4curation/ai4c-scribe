@@ -1,16 +1,29 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31873
+pr_number: 32022
+issue_title: 'Obsoletion request: GO:0061817 endoplasmic reticulum-plasma membrane
+  tethering'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-04'
+task_type: obsoletion
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: biological_process
+best_f1: 0.909
+best_model: claude-opus-4.7
+---
+
 # PR #32022 — Obsoletion request: GO:0061817 endoplasmic reticulum-plasma membrane tethering
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31873](https://github.com/geneontology/go-ontology/issues/31873)
-- **PR**: [#32022](https://github.com/geneontology/go-ontology/pull/32022)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-04
-- **task_type**: obsoletion
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31873](https://github.com/geneontology/go-ontology/issues/31873) | [PR #32022](https://github.com/geneontology/go-ontology/pull/32022) | @dragon-ai-agent | merged 2026-05-04
+
+`obsoletion` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

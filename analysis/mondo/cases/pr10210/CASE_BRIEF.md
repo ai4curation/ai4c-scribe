@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9933
+pr_number: 10210
+issue_title: GINS3 Meier-Gorlin syndrome
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 5
+generated_at: '2026-05-15'
+best_f1: 0.526
+best_model: kimi-k2.6
+---
+
 # PR #10210 — GINS3 Meier-Gorlin syndrome
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9933](https://github.com/monarch-initiative/mondo/issues/9933)
-- **PR**: [#10210](https://github.com/monarch-initiative/mondo/pull/10210)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9933](https://github.com/monarch-initiative/mondo/issues/9933) | [PR #10210](https://github.com/monarch-initiative/mondo/pull/10210) | @MeeSiing | merged 2026-05-01
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

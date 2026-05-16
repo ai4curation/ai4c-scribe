@@ -1,16 +1,29 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3453
+pr_number: 3556
+issue_title: '[NTR] CD4-positive exhausted alpha-beta T cell / CD8-positive exhausted
+  alpha-beta T cell'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-16'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: immunology
+best_f1: 0.75
+best_model: claude-opus-4.7
+---
+
 # PR #3556 — [NTR] CD4-positive exhausted alpha-beta T cell / CD8-positive exhausted alpha-beta T cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3453](https://github.com/obophenotype/cell-ontology/issues/3453)
-- **PR**: [#3556](https://github.com/obophenotype/cell-ontology/pull/3556)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-16
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3453](https://github.com/obophenotype/cell-ontology/issues/3453) | [PR #3556](https://github.com/obophenotype/cell-ontology/pull/3556) | @app/copilot-swe-agent | merged 2026-02-16
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

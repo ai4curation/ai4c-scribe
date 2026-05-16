@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9882
+pr_number: 10203
+issue_title: 'Request for new synonyms to: arhinia, choanal atresia, and microphthalmia
+  MONDO:0011323'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-30'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 4
+generated_at: '2026-05-15'
+best_f1: 0.222
+best_model: kimi-k2.6
+---
+
 # PR #10203 — Request for new synonyms to: arhinia, choanal atresia, and microphthalmia MONDO:0011323
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9882](https://github.com/monarch-initiative/mondo/issues/9882)
-- **PR**: [#10203](https://github.com/monarch-initiative/mondo/pull/10203)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-30
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9882](https://github.com/monarch-initiative/mondo/issues/9882) | [PR #10203](https://github.com/monarch-initiative/mondo/pull/10203) | @MeeSiing | merged 2026-04-30
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

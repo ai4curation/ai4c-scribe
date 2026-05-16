@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3631
+pr_number: 3633
+issue_title: 'NTR: occlusal surface of tooth'
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-11-24'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: dental-anatomy
+best_f1: 0.5
+best_model: gemma-4-31b
+---
+
 # PR #3633 — NTR: occlusal surface of tooth
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3631](https://github.com/obophenotype/uberon/issues/3631)
-- **PR**: [#3633](https://github.com/obophenotype/uberon/pull/3633)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-11-24
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3631](https://github.com/obophenotype/uberon/issues/3631) | [PR #3633](https://github.com/obophenotype/uberon/pull/3633) | @dragon-ai-agent | merged 2025-11-24
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

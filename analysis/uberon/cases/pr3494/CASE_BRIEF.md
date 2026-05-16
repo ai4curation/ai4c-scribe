@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3473
+pr_number: 3494
+issue_title: Not all epithelia with squamous cells are squamous epithelium
+pr_author: dosumis
+pr_merged_at: '2025-03-19'
+task_type: axiom_repair
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+domain_area: epithelial-tissue
+best_f1: 0.19
+best_model: claude-opus-4.7
+---
+
 # PR #3494 — Not all epithelia with squamous cells are squamous epithelium
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3473](https://github.com/obophenotype/uberon/issues/3473)
-- **PR**: [#3494](https://github.com/obophenotype/uberon/pull/3494)
-- **Author**: @dosumis
-- **Merged**: 2025-03-19
-- **task_type**: axiom_repair
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3473](https://github.com/obophenotype/uberon/issues/3473) | [PR #3494](https://github.com/obophenotype/uberon/pull/3494) | @dosumis | merged 2025-03-19
+
+`axiom_repair` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

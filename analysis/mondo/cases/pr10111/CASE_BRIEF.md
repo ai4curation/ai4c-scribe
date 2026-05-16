@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9781
+pr_number: 10111
+issue_title: Request for new term [preneoplastic lesion]
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: new_term
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 12
+generated_at: '2026-05-15'
+scoping_notes: PR adds a single new term with definition and classification.
+domain_area: oncology
+best_f1: 0.571
+best_model: claude-opus-4.7
+---
+
 # PR #10111 — Request for new term [preneoplastic lesion]
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9781](https://github.com/monarch-initiative/mondo/issues/9781)
-- **PR**: [#10111](https://github.com/monarch-initiative/mondo/pull/10111)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: new_term
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
-- **scoping_notes**: PR adds a single new term with definition and classification.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9781](https://github.com/monarch-initiative/mondo/issues/9781) | [PR #10111](https://github.com/monarch-initiative/mondo/pull/10111) | @MeeSiing | merged 2026-04-02
+
+`new_term` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

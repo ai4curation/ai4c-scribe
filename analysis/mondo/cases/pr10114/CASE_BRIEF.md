@@ -1,16 +1,28 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9799
+pr_number: 10114
+issue_title: '[Obsolete]MONDO:0023124 familial pulmonary arterial hypertension leucopenia
+  and atrial septal defect'
+pr_author: MeeSiing
+pr_merged_at: '2026-04-02'
+task_type: other
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 10
+generated_at: '2026-05-15'
+best_f1: 0.727
+best_model: kimi-k2.6
+---
+
 # PR #10114 — [Obsolete]MONDO:0023124 familial pulmonary arterial hypertension leucopenia and atrial septal defect
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9799](https://github.com/monarch-initiative/mondo/issues/9799)
-- **PR**: [#10114](https://github.com/monarch-initiative/mondo/pull/10114)
-- **Author**: @MeeSiing
-- **Merged**: 2026-04-02
-- **task_type**: other
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9799](https://github.com/monarch-initiative/mondo/issues/9799) | [PR #10114](https://github.com/monarch-initiative/mondo/pull/10114) | @MeeSiing | merged 2026-04-02
+
+`other` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

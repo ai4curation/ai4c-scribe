@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3447
+pr_number: 3560
+issue_title: question on parentage of 'dorsolateral prefrontal cortex'
+pr_author: dragon-ai-agent
+pr_merged_at: '2025-06-16'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: neuroanatomy
+best_f1: 1.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3560 — question on parentage of 'dorsolateral prefrontal cortex'
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3447](https://github.com/obophenotype/uberon/issues/3447)
-- **PR**: [#3560](https://github.com/obophenotype/uberon/pull/3560)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2025-06-16
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3447](https://github.com/obophenotype/uberon/issues/3447) | [PR #3560](https://github.com/obophenotype/uberon/pull/3560) | @dragon-ai-agent | merged 2025-06-16
+
+`reclassification` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

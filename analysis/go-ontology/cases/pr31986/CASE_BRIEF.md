@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31985
+pr_number: 31986
+issue_title: GO:0102177 24-methylenelophenol methyl oxidase activity
+pr_author: sjm41
+pr_merged_at: '2026-04-27'
+task_type: reclassification
+difficulty: hard
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+domain_area: molecular_function
+best_f1: 0.96
+best_model: claude-opus-4.7
+---
+
 # PR #31986 — GO:0102177 24-methylenelophenol methyl oxidase activity
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31985](https://github.com/geneontology/go-ontology/issues/31985)
-- **PR**: [#31986](https://github.com/geneontology/go-ontology/pull/31986)
-- **Author**: @sjm41
-- **Merged**: 2026-04-27
-- **task_type**: reclassification
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31985](https://github.com/geneontology/go-ontology/issues/31985) | [PR #31986](https://github.com/geneontology/go-ontology/pull/31986) | @sjm41 | merged 2026-04-27
+
+`reclassification` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

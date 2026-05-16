@@ -1,17 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9873
+pr_number: 10126
+issue_title: Request for new term Southern tick-associated rash illness
+pr_author: katiermullen
+pr_merged_at: '2026-04-17'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+scoping_notes: PR adds a single new disease term with definition, synonyms, and cross-references.
+domain_area: infectious-disease
+best_f1: 0.64
+best_model: gpt-5.4
+---
+
 # PR #10126 — Request for new term Southern tick-associated rash illness
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9873](https://github.com/monarch-initiative/mondo/issues/9873)
-- **PR**: [#10126](https://github.com/monarch-initiative/mondo/pull/10126)
-- **Author**: @katiermullen
-- **Merged**: 2026-04-17
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
-- **scoping_notes**: PR adds a single new disease term with definition, synonyms, and cross-references.
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9873](https://github.com/monarch-initiative/mondo/issues/9873) | [PR #10126](https://github.com/monarch-initiative/mondo/pull/10126) | @katiermullen | merged 2026-04-17
+
+`new_term` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9940
+pr_number: 10213
+issue_title: EFL1-related Shwachman-Diamond syndrome
+pr_author: MeeSiing
+pr_merged_at: '2026-05-01'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+best_f1: 0.25
+best_model: claude-sonnet-4.5
+---
+
 # PR #10213 — EFL1-related Shwachman-Diamond syndrome
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9940](https://github.com/monarch-initiative/mondo/issues/9940)
-- **PR**: [#10213](https://github.com/monarch-initiative/mondo/pull/10213)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-01
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9940](https://github.com/monarch-initiative/mondo/issues/9940) | [PR #10213](https://github.com/monarch-initiative/mondo/pull/10213) | @MeeSiing | merged 2026-05-01
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

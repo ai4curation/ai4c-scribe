@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3522
+pr_number: 3525
+issue_title: relationship is reversed between Uberon and NCIT for foramen secundum
+pr_author: rays22
+pr_merged_at: '2025-05-27'
+task_type: axiom_repair
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+domain_area: cardiac-anatomy
+best_f1: 0.364
+best_model: claude-haiku-4.5
+---
+
 # PR #3525 — relationship is reversed between Uberon and NCIT for foramen secundum
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3522](https://github.com/obophenotype/uberon/issues/3522)
-- **PR**: [#3525](https://github.com/obophenotype/uberon/pull/3525)
-- **Author**: @rays22
-- **Merged**: 2025-05-27
-- **task_type**: axiom_repair
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3522](https://github.com/obophenotype/uberon/issues/3522) | [PR #3525](https://github.com/obophenotype/uberon/pull/3525) | @rays22 | merged 2025-05-27
+
+`axiom_repair` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

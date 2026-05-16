@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3259
+pr_number: 3450
+issue_title: '[NTR] tPC-IC cell'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2025-11-21'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: changes_requested
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+domain_area: renal
+best_f1: 0.706
+best_model: claude-haiku-4.5
+---
+
 # PR #3450 — [NTR] tPC-IC cell
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3259](https://github.com/obophenotype/cell-ontology/issues/3259)
-- **PR**: [#3450](https://github.com/obophenotype/cell-ontology/pull/3450)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2025-11-21
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: changes_requested
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3259](https://github.com/obophenotype/cell-ontology/issues/3259) | [PR #3450](https://github.com/obophenotype/cell-ontology/pull/3450) | @app/copilot-swe-agent | merged 2025-11-21
+
+`new_term` `medium` `tightly_scoped` `changes_requested`
 
 ## Context
 

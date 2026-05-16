@@ -1,16 +1,26 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 19185
+pr_number: 31911
+issue_title: NTR actin-filament cross-linking activity (replace actin crosslink formation
+  MF in BP ontology)
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-04-17'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 0
+generated_at: '2026-05-15'
+---
+
 # PR #31911 — NTR actin-filament cross-linking activity (replace actin crosslink formation MF in BP ontology)
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#19185](https://github.com/geneontology/go-ontology/issues/19185)
-- **PR**: [#31911](https://github.com/geneontology/go-ontology/pull/31911)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-04-17
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #19185](https://github.com/geneontology/go-ontology/issues/19185) | [PR #31911](https://github.com/geneontology/go-ontology/pull/31911) | @dragon-ai-agent | merged 2026-04-17
+
+`new_term` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

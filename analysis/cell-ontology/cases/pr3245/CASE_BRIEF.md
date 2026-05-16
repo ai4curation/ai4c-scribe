@@ -1,18 +1,32 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3239
+pr_number: 3245
+issue_title: remove tendon cell and otic fibrocyte from under fibrocyte
+pr_author: Caroline-99
+pr_merged_at: '2025-08-19'
+task_type: reclassification
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: multiple_rounds
+num_agent_attempts: 8
+generated_at: '2026-05-15'
+diff_noise: noisy
+diff_noise_notes: 'Protege serialization artifacts: CL_4072017/CL_4072018 declaration
+  and stanza reordering, oboInOwl:hasDbXref comment label change. Only 2 of 5 diff
+  hunks are real changes.'
+domain_area: connective-tissue
+best_f1: 0.412
+best_model: claude-sonnet-4.5
+---
+
 # PR #3245 — remove tendon cell and otic fibrocyte from under fibrocyte
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3239](https://github.com/obophenotype/cell-ontology/issues/3239)
-- **PR**: [#3245](https://github.com/obophenotype/cell-ontology/pull/3245)
-- **Author**: @Caroline-99
-- **Merged**: 2025-08-19
-- **task_type**: reclassification
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: multiple_rounds
-- **diff_noise**: noisy
-- **diff_noise_notes**: Protege serialization artifacts: CL_4072017/CL_4072018 declaration and stanza reordering, oboInOwl:hasDbXref comment label change. Only 2 of 5 diff hunks are real changes.
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3239](https://github.com/obophenotype/cell-ontology/issues/3239) | [PR #3245](https://github.com/obophenotype/cell-ontology/pull/3245) | @Caroline-99 | merged 2025-08-19
+
+`reclassification` `medium` `tightly_scoped` `multiple_rounds` `noisy`
 
 ## Context
 

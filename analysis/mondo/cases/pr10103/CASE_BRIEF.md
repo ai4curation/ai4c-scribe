@@ -1,16 +1,29 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9862
+pr_number: 10103
+issue_title: Request for new synonym [Add GEMIN5-related neurodevelopmental disorders
+  and GEMIN5 disorders as new synonym for Neurodevelopmental disorder with cerebellar
+  atrophy and motor dysfunction]
+pr_author: MeeSiing
+pr_merged_at: '2026-03-31'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 0.182
+best_model: claude-opus-4.7
+---
+
 # PR #10103 — Request for new synonym [Add GEMIN5-related neurodevelopmental disorders and GEMIN5 disorders as new synonym for Neurodevelopmental disorder with cerebellar atrophy and motor dysfunction]
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9862](https://github.com/monarch-initiative/mondo/issues/9862)
-- **PR**: [#10103](https://github.com/monarch-initiative/mondo/pull/10103)
-- **Author**: @MeeSiing
-- **Merged**: 2026-03-31
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9862](https://github.com/monarch-initiative/mondo/issues/9862) | [PR #10103](https://github.com/monarch-initiative/mondo/pull/10103) | @MeeSiing | merged 2026-03-31
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 

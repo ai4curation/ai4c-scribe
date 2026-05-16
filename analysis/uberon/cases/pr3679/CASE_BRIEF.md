@@ -1,16 +1,28 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3678
+pr_number: 3679
+issue_title: Add bone part terms from HubMap - HRA
+pr_author: dosumis
+pr_merged_at: '2026-03-25'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 3
+generated_at: '2026-05-15'
+domain_area: skeletal-anatomy
+best_f1: 0.926
+best_model: claude-sonnet-4.5
+---
+
 # PR #3679 — Add bone part terms from HubMap - HRA
 
-- **Ontology**: uberon
-- **Repo**: obophenotype/uberon
-- **Issue**: [#3678](https://github.com/obophenotype/uberon/issues/3678)
-- **PR**: [#3679](https://github.com/obophenotype/uberon/pull/3679)
-- **Author**: @dosumis
-- **Merged**: 2026-03-25
-- **task_type**: new_term
-- **difficulty**: hard
-- **scoping**: tightly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3678](https://github.com/obophenotype/uberon/issues/3678) | [PR #3679](https://github.com/obophenotype/uberon/pull/3679) | @dosumis | merged 2026-03-25
+
+`new_term` `hard` `tightly_scoped` `approved_first_time`
 
 ## Context
 

@@ -1,16 +1,28 @@
+---
+ontology: go-ontology
+repo: geneontology/go-ontology
+issue_number: 31902
+pr_number: 32041
+issue_title: 'NTR: [venom-mediated inflammatory response+... leukocyte infiltration+...
+  release of inflammatory mediator]'
+pr_author: dragon-ai-agent
+pr_merged_at: '2026-05-07'
+task_type: new_term
+difficulty: medium
+scoping: loosely_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 9
+generated_at: '2026-05-15'
+best_f1: 0.9
+best_model: claude-opus-4.7
+---
+
 # PR #32041 — NTR: [venom-mediated inflammatory response+... leukocyte infiltration+... release of inflammatory mediator]
 
-- **Ontology**: go-ontology
-- **Repo**: geneontology/go-ontology
-- **Issue**: [#31902](https://github.com/geneontology/go-ontology/issues/31902)
-- **PR**: [#32041](https://github.com/geneontology/go-ontology/pull/32041)
-- **Author**: @dragon-ai-agent
-- **Merged**: 2026-05-07
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: loosely_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31902](https://github.com/geneontology/go-ontology/issues/31902) | [PR #32041](https://github.com/geneontology/go-ontology/pull/32041) | @dragon-ai-agent | merged 2026-05-07
+
+`new_term` `medium` `loosely_scoped` `approved_first_time`
 
 ## Context
 

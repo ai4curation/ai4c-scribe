@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 3408
+pr_number: 3522
+issue_title: Update type I-IV otic fibrocytes
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2026-02-04'
+task_type: other
+difficulty: hard
+scoping: mostly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 6
+generated_at: '2026-05-15'
+domain_area: auditory
+best_f1: 0.631
+best_model: claude-opus-4.7
+---
+
 # PR #3522 — Update type I-IV otic fibrocytes
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#3408](https://github.com/obophenotype/cell-ontology/issues/3408)
-- **PR**: [#3522](https://github.com/obophenotype/cell-ontology/pull/3522)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2026-02-04
-- **task_type**: other
-- **difficulty**: hard
-- **scoping**: mostly_scoped
-- **scope**: multi_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #3408](https://github.com/obophenotype/cell-ontology/issues/3408) | [PR #3522](https://github.com/obophenotype/cell-ontology/pull/3522) | @app/copilot-swe-agent | merged 2026-02-04
+
+`other` `hard` `mostly_scoped` `approved_first_time`
 
 ## Context
 

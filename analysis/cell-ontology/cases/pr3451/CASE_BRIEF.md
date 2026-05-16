@@ -1,16 +1,28 @@
+---
+ontology: cell-ontology
+repo: obophenotype/cell-ontology
+issue_number: 2844
+pr_number: 3451
+issue_title: '[EPIC] Retinal Ganglion Cells refactoring'
+pr_author: app/copilot-swe-agent
+pr_merged_at: '2025-11-20'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 1
+generated_at: '2026-05-15'
+domain_area: neuroscience
+best_f1: 0.0
+best_model: claude-haiku-4.5
+---
+
 # PR #3451 — [EPIC] Retinal Ganglion Cells refactoring
 
-- **Ontology**: cell-ontology
-- **Repo**: obophenotype/cell-ontology
-- **Issue**: [#2844](https://github.com/obophenotype/cell-ontology/issues/2844)
-- **PR**: [#3451](https://github.com/obophenotype/cell-ontology/pull/3451)
-- **Author**: @app/copilot-swe-agent
-- **Merged**: 2025-11-20
-- **task_type**: new_term
-- **difficulty**: medium
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**cell-ontology** | [obophenotype/cell-ontology](https://github.com/obophenotype/cell-ontology) | [Issue #2844](https://github.com/obophenotype/cell-ontology/issues/2844) | [PR #3451](https://github.com/obophenotype/cell-ontology/pull/3451) | @app/copilot-swe-agent | merged 2025-11-20
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
 
 ## Context
 

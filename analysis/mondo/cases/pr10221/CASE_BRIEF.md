@@ -1,16 +1,27 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 9938
+pr_number: 10221
+issue_title: request to relabel MONDO:0012277
+pr_author: MeeSiing
+pr_merged_at: '2026-05-04'
+task_type: synonym_update
+difficulty: simple
+scoping: tightly_scoped
+scope: single_term
+review_outcome: approved_first_time
+num_agent_attempts: 7
+generated_at: '2026-05-15'
+best_f1: 0.333
+best_model: claude-sonnet-4.5
+---
+
 # PR #10221 — request to relabel MONDO:0012277
 
-- **Ontology**: mondo
-- **Repo**: monarch-initiative/mondo
-- **Issue**: [#9938](https://github.com/monarch-initiative/mondo/issues/9938)
-- **PR**: [#10221](https://github.com/monarch-initiative/mondo/pull/10221)
-- **Author**: @MeeSiing
-- **Merged**: 2026-05-04
-- **task_type**: synonym_update
-- **difficulty**: simple
-- **scoping**: tightly_scoped
-- **scope**: single_term
-- **review_outcome**: approved_first_time
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #9938](https://github.com/monarch-initiative/mondo/issues/9938) | [PR #10221](https://github.com/monarch-initiative/mondo/pull/10221) | @MeeSiing | merged 2026-05-04
+
+`synonym_update` `simple` `tightly_scoped` `approved_first_time`
 
 ## Context
 
