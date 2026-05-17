@@ -10,10 +10,13 @@ from pathlib import Path
 
 import pytest
 
+import pandas as pd
+
 from ai4c_scribe.analysis import (
     attach_case_quality,
     load_case_quality,
     load_scores,
+    reviewer_score,
 )
 
 # gallery/ is the analysis-dir root; test-ont/ is the single ontology
@@ -78,6 +81,37 @@ def test_attach_case_quality_preserves_row_count():
     scores = load_scores(SCORES)
     out = attach_case_quality(scores, ANALYSIS)
     assert len(out) == len(scores)
+
+
+def test_reviewer_score_maps_outcomes():
+    """success=1, partial_success=0.5, failure/no_*=0; grouped per key."""
+    reviews = pd.DataFrame(
+        [
+            {"agent": "A", "outcome": "success"},
+            {"agent": "A", "outcome": "partial_success"},
+            {"agent": "A", "outcome": "failure"},
+            {"agent": "B", "outcome": "success"},
+            {"agent": "B", "outcome": "no_output"},
+            {"agent": "B", "outcome": None},  # ignored (no verdict)
+        ]
+    )
+    out = reviewer_score(reviews, by="agent")
+
+    a = out.loc["A"]
+    assert a["n"] == 3
+    # (1 + 0.5 + 0) / 3
+    assert round(a["mean_score"], 3) == 0.5
+    assert round(a["success_rate"], 3) == round(1 / 3, 3)
+
+    b = out.loc["B"]
+    assert b["n"] == 2  # the None row is excluded
+    assert round(b["mean_score"], 3) == 0.5  # (1 + 0) / 2
+    assert round(b["failure_rate"], 3) == 0.5  # no_output counts as a miss
+
+
+def test_reviewer_score_empty_is_safe():
+    """No outcome column / empty frame returns an empty result, not a crash."""
+    assert len(reviewer_score(pd.DataFrame({"agent": ["A"]}), by="agent")) == 0
 
 
 def test_attach_case_quality_is_idempotent():

@@ -1,8 +1,10 @@
 # Ontology Agent Evaluation — Scores Overview
 
-<p>1660 scored runs across 4 ontologies, 8 models, 5 runtimes. <b>867 runs on valid cases</b> (793 runs on case_quality=poor cases excluded from all headline statistics). 2399 qualitative reviews loaded.</p>
+## 0. Case Suitability (read this first)
 
-## Case Quality (exclusion basis)
+<p>Of <b>149</b> curated issue/PR cases, <b>71</b> (48%) were found <b>unsuitable for automatic scoring</b> and are flagged <code>case_quality: poor</code>. They are excluded from every comparison below. Only the <b>78 clear cases</b> are used. This is a substantive methodological result: metadiff F1 against a single gold PR is only meaningful when that PR is the correct, complete, leak-free resolution of the issue — often it is not (the issue is split across companion PRs, the gold leaked into the eval base, or the linked PR does not resolve the stated issue).</p>
+
+### Case quality by ontology
 
 <table border="1" class="dataframe">
   <thead>
@@ -53,7 +55,254 @@
   </tbody>
 </table>
 
-<p><b>Why this matters:</b> poor cases include mis-paired gold (agent doing the right thing scores ~0), gold leakage (bot commits byte-identical to gold while the agent commit is empty), and eval-base contamination. Counting them corrupts every aggregate, so they are excluded below.</p>
+### Why cases were ruled unsuitable (poor-case reasons)
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cases</th>
+    </tr>
+    <tr>
+      <th>case_quality_reason</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>gold_pr_is_partial</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>gold_renegotiated_in_pr_comments</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>gold_has_out_of_scope_extra_edits</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>gold_pr_has_out_of_scope_extra_edit</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_is_partial_and_incomplete</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>eval_base_state_contamination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_edits_metadiff_ignored_field</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_is_partial_and_eval_base_already_contains_gold</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>base_contamination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_wrong_issue</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_curator_repudiated</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_self_contradicting_generated_artifact_noise</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_renegotiated_plus_placeholder_vs_canonical_cl_id_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>odk_regenerated_file_domination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>odk_build_regenerated_file_domination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_internally_inconsistent_and_out_of_scope</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_build_regenerated_noise</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_incomplete_vs_issue_caps_metadiff</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_dominated_by_odk_serialization_artifact_and_unrequested_style</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_artifact_and_inverted_gold_relation</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_label_renegotiated_in_pr_comments</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>scoring_artifact_placeholder_id_and_build_regenerated_files</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_vs_canonical_id_artifact_plus_gold_out_of_scope_serialization_edit</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_has_out_of_scope_extras_and_provenance</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_out_of_scope_reserialization_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>metadiff_conjunct_reorder_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_vs_canonical_id_artifact_zeroes_all_attempts</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_vs_canonical_id_and_gold_deviates_from_issue_spec</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_incomplete_plus_serialization_noise</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>scoring_artifact_placeholder_id_and_xref_placement_plus_gold_term_tracker_misattribution</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_and_provenance_metadiff_artifact_plus_unstated_gold_side_edits</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_artifact_leakage</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_renegotiated_in_review</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>owl_serialization_placement_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>robot_convert_reserialization_churn</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>workflow_and_id_scheme_mismatch_plus_base_contamination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_artifact_plus_reserialization_churn</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>issue_underspecified_gold_diverges_from_ask</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_verbatim_issue_text</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_renegotiated_outside_issue</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>metadiff_line_atomic_def_xref</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_reserialization_and_odk_import_domination</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_vs_canonical_mondo_id</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_has_out_of_scope_edits_and_brief_diff_inaccurate</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_vs_canonical_id_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_has_reviewer_added_pmid_xref</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>new_term_canonical_id_artifact</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>issue_renegotiated_in_comments</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_and_strategy_artifact_deflates_f1</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_uses_curator_orcid_source_and_expansive_reinterpretation</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_scope_expanded_off_issue</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>placeholder_id_artifact_plus_gold_out_of_scope</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_id_range_unmatchable</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_diverges_from_prescribed_design_pattern</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_pr_is_out_of_scope_mega_edit</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_incomplete_dangling_replaced_by</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gold_leakage_base_contamination</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Excluded poor cases & scoring caveats
 
@@ -496,7 +745,7 @@
   </tbody>
 </table>
 
-## Coverage of standard agents over valid cases
+## 1. Coverage over clear cases
 
 <table border="1" class="dataframe">
   <thead>
@@ -561,7 +810,10 @@
   </tbody>
 </table>
 
-## F1 by Model (valid cases)
+## 2. Performance on clear cases
+
+
+### 2a. Metadiff F1 by model (clear cases)
 
 <table border="1" class="dataframe">
   <thead>
@@ -650,7 +902,7 @@
   </tbody>
 </table>
 
-## F1 by Runtime (valid cases)
+### Metadiff F1 by runtime (clear cases)
 
 <table border="1" class="dataframe">
   <thead>
@@ -715,7 +967,7 @@
   </tbody>
 </table>
 
-<p><i>Sensitivity — same table over ALL cases incl. poor:</i></p>
+<p><i>Sensitivity — F1 by model over ALL cases incl. poor (do not use for conclusions; shown to demonstrate the distortion):</i></p>
 
 <table border="1" class="dataframe">
   <thead>
@@ -804,7 +1056,200 @@
   </tbody>
 </table>
 
-## Mean F1: Ontology x Model (valid cases)
+### 2b. Reviewer outcome score (clear cases)
+<p>Reviewer verdict mapped success=1.0, partial_success=0.5, failure/no_output=0.0. Robust where F1 is not (a reviewer can credit an agent that correctly resolved a flawed-gold issue). The free-text <code>agent</code> field in review files is unreliable (reviewers wrote 62 variant labels), so the canonical agent is recovered by joining each review to the scored run on (ontology, eval_repo_pr).</p>
+
+
+#### By agent (canonical, joined from scores)
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>success_rate</th>
+      <th>partial_rate</th>
+      <th>failure_rate</th>
+      <th>mean_score</th>
+    </tr>
+    <tr>
+      <th>canonical_agent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>std_claude_op47</th>
+      <td>226</td>
+      <td>0.553</td>
+      <td>0.363</td>
+      <td>0.084</td>
+      <td>0.735</td>
+    </tr>
+    <tr>
+      <th>std_opencode_g55</th>
+      <td>314</td>
+      <td>0.506</td>
+      <td>0.443</td>
+      <td>0.051</td>
+      <td>0.728</td>
+    </tr>
+    <tr>
+      <th>std_codex_g55</th>
+      <td>203</td>
+      <td>0.438</td>
+      <td>0.507</td>
+      <td>0.054</td>
+      <td>0.692</td>
+    </tr>
+    <tr>
+      <th>std_codex_g54</th>
+      <td>167</td>
+      <td>0.437</td>
+      <td>0.503</td>
+      <td>0.060</td>
+      <td>0.689</td>
+    </tr>
+    <tr>
+      <th>std_claude_son45</th>
+      <td>238</td>
+      <td>0.403</td>
+      <td>0.529</td>
+      <td>0.067</td>
+      <td>0.668</td>
+    </tr>
+    <tr>
+      <th>std_opencode_kimi</th>
+      <td>144</td>
+      <td>0.375</td>
+      <td>0.542</td>
+      <td>0.083</td>
+      <td>0.646</td>
+    </tr>
+    <tr>
+      <th>std_copilot_son45</th>
+      <td>218</td>
+      <td>0.303</td>
+      <td>0.532</td>
+      <td>0.165</td>
+      <td>0.569</td>
+    </tr>
+    <tr>
+      <th>std_opencode_gem4</th>
+      <td>114</td>
+      <td>0.298</td>
+      <td>0.535</td>
+      <td>0.167</td>
+      <td>0.566</td>
+    </tr>
+    <tr>
+      <th>std_claude_hai45</th>
+      <td>273</td>
+      <td>0.289</td>
+      <td>0.549</td>
+      <td>0.161</td>
+      <td>0.564</td>
+    </tr>
+    <tr>
+      <th>codex/claude-sonnet-4.5/v9</th>
+      <td>2</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>0.500</td>
+    </tr>
+    <tr>
+      <th>std_opencode_g54</th>
+      <td>4</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>0.500</td>
+    </tr>
+    <tr>
+      <th>std_gemini_flash</th>
+      <td>2</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+
+#### By runtime
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>success_rate</th>
+      <th>partial_rate</th>
+      <th>failure_rate</th>
+      <th>mean_score</th>
+    </tr>
+    <tr>
+      <th>runtime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>codex</th>
+      <td>372</td>
+      <td>0.435</td>
+      <td>0.508</td>
+      <td>0.056</td>
+      <td>0.690</td>
+    </tr>
+    <tr>
+      <th>opencode</th>
+      <td>576</td>
+      <td>0.429</td>
+      <td>0.490</td>
+      <td>0.082</td>
+      <td>0.674</td>
+    </tr>
+    <tr>
+      <th>claude</th>
+      <td>738</td>
+      <td>0.407</td>
+      <td>0.485</td>
+      <td>0.108</td>
+      <td>0.649</td>
+    </tr>
+    <tr>
+      <th>copilot</th>
+      <td>218</td>
+      <td>0.303</td>
+      <td>0.532</td>
+      <td>0.165</td>
+      <td>0.569</td>
+    </tr>
+    <tr>
+      <th>gemini</th>
+      <td>2</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+
+## 3. Slices (clear cases)
+
+
+### Mean F1: Ontology x Model
 
 <table border="1" class="dataframe">
   <thead>
@@ -879,7 +1324,7 @@
   </tbody>
 </table>
 
-## Mean F1: Difficulty x Model (valid cases)
+### Mean F1: Difficulty x Model
 
 <table border="1" class="dataframe">
   <thead>
@@ -943,7 +1388,7 @@
   </tbody>
 </table>
 
-## Mean F1: Task Type x Runtime (valid cases)
+### Mean F1: Task Type x Runtime
 
 <table border="1" class="dataframe">
   <thead>
@@ -1024,7 +1469,7 @@
   </tbody>
 </table>
 
-## Skills Ablation (valid cases)
+### Skills Ablation
 
 <table border="1" class="dataframe">
   <thead>
@@ -1065,17 +1510,73 @@
   </tbody>
 </table>
 
-## Non-zero Results Only (799/867 valid runs)
+## 4. Qualitative Reviews (clear cases)
+
+<p>2399 review files on clear cases (2387 with an outcome verdict).</p>
+
+
+### Reviews by ontology and reviewer
 
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
+      <th>reviewer</th>
+      <th>?</th>
+      <th>claude</th>
+      <th>claudecode</th>
+      <th>codex</th>
+    </tr>
+    <tr>
+      <th>ontology</th>
       <th></th>
-      <th>mean</th>
-      <th>std</th>
-      <th>count</th>
-      <th>min</th>
-      <th>max</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>cell-ontology</th>
+      <td>3</td>
+      <td>186</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>go-ontology</th>
+      <td>5</td>
+      <td>357</td>
+      <td>3</td>
+      <td>376</td>
+    </tr>
+    <tr>
+      <th>mondo</th>
+      <td>23</td>
+      <td>345</td>
+      <td>2</td>
+      <td>373</td>
+    </tr>
+    <tr>
+      <th>uberon</th>
+      <td>1</td>
+      <td>229</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+### Outcome distribution by model
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>outcome</th>
+      <th>failure</th>
+      <th>no_changes</th>
+      <th>no_output</th>
+      <th>partial_success</th>
+      <th>success</th>
     </tr>
     <tr>
       <th>model</th>
@@ -1088,112 +1589,202 @@
   </thead>
   <tbody>
     <tr>
-      <th>gemma-4-31b</th>
-      <td>0.759</td>
-      <td>0.226</td>
-      <td>42</td>
-      <td>0.001</td>
-      <td>1.000</td>
+      <th>claude-haiku-4-5</th>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>claude-sonnet-4.5</th>
-      <td>0.715</td>
-      <td>0.247</td>
-      <td>136</td>
-      <td>0.091</td>
-      <td>1.000</td>
-    </tr>
-    <tr>
-      <th>gpt-5.5</th>
-      <td>0.701</td>
-      <td>0.274</td>
-      <td>199</td>
-      <td>0.062</td>
-      <td>1.000</td>
-    </tr>
-    <tr>
-      <th>kimi-k2.6</th>
-      <td>0.701</td>
-      <td>0.272</td>
-      <td>52</td>
-      <td>0.120</td>
-      <td>1.000</td>
-    </tr>
-    <tr>
-      <th>gpt-5.4</th>
-      <td>0.688</td>
-      <td>0.262</td>
-      <td>212</td>
-      <td>0.062</td>
-      <td>1.000</td>
-    </tr>
-    <tr>
-      <th>claude-opus-4.7</th>
-      <td>0.687</td>
-      <td>0.275</td>
-      <td>71</td>
-      <td>0.086</td>
-      <td>1.000</td>
+      <th>claude-haiku-4-5-20251001</th>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>23</td>
+      <td>33</td>
     </tr>
     <tr>
       <th>claude-haiku-4.5</th>
-      <td>0.667</td>
-      <td>0.278</td>
-      <td>86</td>
-      <td>0.062</td>
-      <td>1.000</td>
+      <td>35</td>
+      <td>0</td>
+      <td>0</td>
+      <td>118</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>claude-opus-4-7</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>claude-opus-4.7</th>
+      <td>17</td>
+      <td>0</td>
+      <td>1</td>
+      <td>69</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>claude-sonnet-4-5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>claude-sonnet-4-5-20250929</th>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>19</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>claude-sonnet-4.5</th>
+      <td>48</td>
+      <td>0</td>
+      <td>2</td>
+      <td>213</td>
+      <td>122</td>
     </tr>
     <tr>
       <th>gemini-2.5-flash</th>
-      <td>0.308</td>
-      <td>NaN</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>gemma-4-31b</th>
+      <td>17</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.308</td>
-      <td>0.308</td>
+      <td>56</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>88</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>gpt-5.5</th>
+      <td>25</td>
+      <td>0</td>
+      <td>2</td>
+      <td>229</td>
+      <td>218</td>
+    </tr>
+    <tr>
+      <th>kimi-k2.6</th>
+      <td>11</td>
+      <td>0</td>
+      <td>1</td>
+      <td>78</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>openai/gpt-5.5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>togetherai/google/gemma-4-31B-it</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>togetherai/moonshotai/Kimi-K2.6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 
-## Qualitative Reviews
-
-
-<p>2399 reviews loaded across all ontologies.</p>
-
-
-### Reviews by ontology
+### Failure modes (frequency across clear-case reviews)
 
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>reviews</th>
-    </tr>
-    <tr>
-      <th>ontology</th>
-      <th></th>
+      <th>count</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>mondo</th>
-      <td>752</td>
+      <th>missed_requirement</th>
+      <td>817</td>
     </tr>
     <tr>
-      <th>go-ontology</th>
-      <td>741</td>
+      <th>over_editing</th>
+      <td>732</td>
     </tr>
     <tr>
-      <th>uberon</th>
-      <td>508</td>
+      <th>under_editing</th>
+      <td>671</td>
     </tr>
     <tr>
-      <th>cell-ontology</th>
-      <td>398</td>
+      <th>wrong_pattern</th>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>scope_creep</th>
+      <td>258</td>
+    </tr>
+    <tr>
+      <th>wrong_term</th>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>syntax_error</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>instruction_violation</th>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>no_changes</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>missing_metadata</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>permission_blocked</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>style</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>missed_synonym</th>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 
-### Rubric Scores by Model
+### 1-5 rubric (only a few reviews carry this)
 
 <table border="1" class="dataframe">
   <thead>
@@ -1364,225 +1955,7 @@
   </tbody>
 </table>
 
-### Outcome Distribution
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>outcome</th>
-      <th>failure</th>
-      <th>no_changes</th>
-      <th>no_output</th>
-      <th>partial_success</th>
-      <th>success</th>
-    </tr>
-    <tr>
-      <th>model</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>claude-haiku-4-5</th>
-      <td>5</td>
-      <td>0</td>
-      <td>0</td>
-      <td>9</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>claude-haiku-4-5-20251001</th>
-      <td>4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>23</td>
-      <td>33</td>
-    </tr>
-    <tr>
-      <th>claude-haiku-4.5</th>
-      <td>35</td>
-      <td>0</td>
-      <td>0</td>
-      <td>118</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <th>claude-opus-4-7</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>13</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>claude-opus-4.7</th>
-      <td>17</td>
-      <td>0</td>
-      <td>1</td>
-      <td>69</td>
-      <td>82</td>
-    </tr>
-    <tr>
-      <th>claude-sonnet-4-5</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>12</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>claude-sonnet-4-5-20250929</th>
-      <td>2</td>
-      <td>1</td>
-      <td>0</td>
-      <td>19</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>claude-sonnet-4.5</th>
-      <td>48</td>
-      <td>0</td>
-      <td>2</td>
-      <td>213</td>
-      <td>122</td>
-    </tr>
-    <tr>
-      <th>gemini-2.5-flash</th>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>gemma-4-31b</th>
-      <td>17</td>
-      <td>0</td>
-      <td>1</td>
-      <td>56</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>gpt-5.4</th>
-      <td>10</td>
-      <td>0</td>
-      <td>0</td>
-      <td>88</td>
-      <td>73</td>
-    </tr>
-    <tr>
-      <th>gpt-5.5</th>
-      <td>25</td>
-      <td>0</td>
-      <td>2</td>
-      <td>229</td>
-      <td>218</td>
-    </tr>
-    <tr>
-      <th>kimi-k2.6</th>
-      <td>11</td>
-      <td>0</td>
-      <td>1</td>
-      <td>78</td>
-      <td>53</td>
-    </tr>
-    <tr>
-      <th>openai/gpt-5.5</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>13</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>togetherai/google/gemma-4-31B-it</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>5</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>togetherai/moonshotai/Kimi-K2.6</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-
-### Failure Modes
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>missed_requirement</th>
-      <td>817</td>
-    </tr>
-    <tr>
-      <th>over_editing</th>
-      <td>732</td>
-    </tr>
-    <tr>
-      <th>under_editing</th>
-      <td>671</td>
-    </tr>
-    <tr>
-      <th>wrong_pattern</th>
-      <td>461</td>
-    </tr>
-    <tr>
-      <th>scope_creep</th>
-      <td>258</td>
-    </tr>
-    <tr>
-      <th>wrong_term</th>
-      <td>95</td>
-    </tr>
-    <tr>
-      <th>syntax_error</th>
-      <td>73</td>
-    </tr>
-    <tr>
-      <th>instruction_violation</th>
-      <td>62</td>
-    </tr>
-    <tr>
-      <th>no_changes</th>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>missing_metadata</th>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>permission_blocked</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>style</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>missed_synonym</th>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-
-## All Valid Scored Runs
+## 5. All clear-case scored runs
 
 <table border="1" class="dataframe">
   <thead>

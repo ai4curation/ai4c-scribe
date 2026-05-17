@@ -410,6 +410,63 @@ def outcome_distribution(reviews_df):
     return pd.crosstab(reviews_df["model"], reviews_df["outcome"])
 
 
+# Reviewer verdict -> numeric score. The 1-5 rubric is populated on only
+# a handful of files; ``outcome`` is the broadly-available reviewer signal
+# and is robust where metadiff F1 is not (mis-paired / leaked gold).
+_OUTCOME_SCORE = {
+    "success": 1.0,
+    "partial_success": 0.5,
+    "failure": 0.0,
+    "no_output": 0.0,
+    "no_changes": 0.0,
+}
+
+
+def reviewer_score(reviews_df, by: str = "agent"):
+    """Aggregate the reviewer ``outcome`` verdict into a numeric score.
+
+    success=1.0, partial_success=0.5, failure/no_output/no_changes=0.0.
+    Rows without a recognised outcome are excluded (no verdict).
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews`
+        by: grouping column (``agent``, ``model``, ``runtime``, ...)
+
+    Returns:
+        DataFrame indexed by ``by`` with columns ``n``, ``success_rate``,
+        ``partial_rate``, ``failure_rate``, ``mean_score``. Empty if there
+        are no scored reviews.
+    """
+    import pandas as pd
+
+    empty = pd.DataFrame(
+        columns=["n", "success_rate", "partial_rate", "failure_rate", "mean_score"]
+    )
+    if "outcome" not in reviews_df.columns or by not in reviews_df.columns:
+        return empty
+
+    r = reviews_df[reviews_df["outcome"].isin(_OUTCOME_SCORE)].copy()
+    if r.empty:
+        return empty
+    r["_score"] = r["outcome"].map(_OUTCOME_SCORE)
+
+    def _agg(g):
+        n = len(g)
+        return pd.Series(
+            {
+                "n": n,
+                "success_rate": (g["outcome"] == "success").sum() / n,
+                "partial_rate": (g["outcome"] == "partial_success").sum() / n,
+                "failure_rate": (g["_score"] == 0.0).sum() / n,
+                "mean_score": g["_score"].mean(),
+            }
+        )
+
+    out = r.groupby(by, group_keys=False).apply(_agg).round(3)
+    out["n"] = out["n"].astype(int)
+    return out
+
+
 def failure_mode_counts(reviews_df):
     """Count failure modes across all reviews.
 
