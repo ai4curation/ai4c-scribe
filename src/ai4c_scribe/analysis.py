@@ -84,6 +84,109 @@ def load_scores(scores_path: Path = Path("analysis/scores.tsv")):
     return df
 
 
+_QUALITY_COLS = [
+    "case_quality",
+    "case_quality_reason",
+    "scoring_caveat",
+    "companion_prs",
+    "eval_suitability",
+    "quality_flagged_by",
+    "quality_flagged_at",
+]
+
+
+def load_case_quality(analysis_dir: Path = Path("analysis")):
+    """Load per-case quality flags from ``cases/*/METADATA.md`` frontmatter.
+
+    ~Half the eval cases are flagged ``case_quality: poor`` (mis-paired
+    gold, gold leakage, eval-base contamination). Aggregates must be able
+    to exclude them. Cases with no flag default to ``'unflagged'`` (never
+    NaN) so callers can simply filter ``df.case_quality != 'poor'``.
+
+    Args:
+        analysis_dir: Root analysis directory (contains ``{ont}/cases/``)
+
+    Returns:
+        pandas DataFrame, one row per case, with ``ontology``,
+        ``issue_number`` (str), ``case`` join key, and the quality columns.
+
+    >>> q = load_case_quality(Path("tests/fixtures/gallery"))
+    >>> q.set_index("issue_number").loc["190", "case_quality"]
+    'poor'
+    >>> q.set_index("issue_number").loc["90", "case_quality"]
+    'unflagged'
+    """
+    import pandas as pd
+
+    rows = []
+    for ont_dir in sorted(p for p in analysis_dir.iterdir() if p.is_dir()):
+        cases_dir = ont_dir / "cases"
+        if not cases_dir.exists():
+            continue
+        for meta in sorted(cases_dir.glob("*/METADATA.md")):
+            text = meta.read_text()
+            if not text.startswith("---"):
+                continue
+            fm = yaml.safe_load(text[3 : text.index("---", 3)]) or {}
+            companion = fm.get("companion_prs")
+            if isinstance(companion, list):
+                companion = ",".join(str(x) for x in companion)
+            rows.append(
+                {
+                    "ontology": ont_dir.name,
+                    "issue_number": str(fm.get("issue_number", "")),
+                    "case_quality": fm.get("case_quality") or "unflagged",
+                    "case_quality_reason": fm.get("case_quality_reason"),
+                    "scoring_caveat": fm.get("scoring_caveat"),
+                    "companion_prs": companion,
+                    "eval_suitability": fm.get("eval_suitability"),
+                    "quality_flagged_by": fm.get("quality_flagged_by"),
+                    "quality_flagged_at": fm.get("quality_flagged_at"),
+                }
+            )
+
+    df = pd.DataFrame(rows, columns=["ontology", "issue_number", *_QUALITY_COLS])
+    if not df.empty:
+        df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"]
+    return df
+
+
+def attach_case_quality(scores_df, analysis_dir: Path = Path("analysis")):
+    """Left-join case-quality flags onto a scores DataFrame.
+
+    Idempotent: pre-existing quality columns are dropped before the
+    re-join. Score rows whose case has no METADATA flag get
+    ``case_quality='unflagged'``.
+
+    Args:
+        scores_df: DataFrame from :func:`load_scores`
+        analysis_dir: Root analysis directory
+
+    Returns:
+        Copy of ``scores_df`` with the quality columns added.
+    """
+    import pandas as pd
+
+    df = scores_df.drop(
+        columns=[c for c in _QUALITY_COLS if c in scores_df.columns],
+        errors="ignore",
+    ).copy()
+    q = load_case_quality(analysis_dir)
+    if q.empty:
+        df["case_quality"] = "unflagged"
+        return df
+
+    df["_iss"] = df["issue_number"].astype(str)
+    q = q.rename(columns={"issue_number": "_iss"})
+    merged = df.merge(
+        q[["ontology", "_iss", *_QUALITY_COLS]],
+        on=["ontology", "_iss"],
+        how="left",
+    ).drop(columns="_iss")
+    merged["case_quality"] = merged["case_quality"].fillna("unflagged")
+    return merged
+
+
 def load_reviews(analysis_dir: Path = Path("analysis")):
     """Load all review markdown files into a pandas DataFrame.
 

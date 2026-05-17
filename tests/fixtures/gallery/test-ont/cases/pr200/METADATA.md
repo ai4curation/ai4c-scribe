@@ -19,6 +19,12 @@ review_outcome: changes_requested
 curated_by: claude-opus-4
 curated_at: "2026-05-01"
 rationale: Complex reclassification requiring domain knowledge
+case_quality: poor
+case_quality_reason: gold_leakage_base_contamination
+companion_prs: [201, 202]
+scoring_caveat: "Gold leaked into eval base; exclude from aggregates."
+quality_flagged_by: claude-opus-4.7
+quality_flagged_at: "2026-05-15"
 ---
 
 ## Context
