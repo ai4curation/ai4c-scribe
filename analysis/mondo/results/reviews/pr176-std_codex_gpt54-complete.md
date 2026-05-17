@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9987
 pr_number: 10094
 eval_repo_pr: 176
-agent: std_codex_gpt54
+agent: std_codex_g54
 agent_config_tag: v3
 model: gpt-5.4
 runtime: codex

@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31961
 pr_number: 32015
 eval_repo_pr: 51
-agent: opencode/gpt-5.4/v9
+agent: std_opencode_g54
 model: gpt-5.4
 runtime: opencode
 agent_config_tag: v9

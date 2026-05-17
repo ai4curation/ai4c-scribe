@@ -3,7 +3,7 @@ ontology: uberon
 issue_number: 3473
 pr_number: 3494
 eval_repo_pr: 59
-agent: std_opencode_gpt-5.5
+agent: std_opencode_g55
 model: openai/gpt-5.5
 runtime: opencode
 agent_config_tag: ai4curation/uberon-agent-config@v3

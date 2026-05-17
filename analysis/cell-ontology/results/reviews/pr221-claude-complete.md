@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3497
 pr_number: 3574
 eval_repo_pr: 221
-agent: std_claude_sonnet45
+agent: std_claude_son45
 model: claude-sonnet-4.5
 runtime: claude
 agent_config_tag: v3

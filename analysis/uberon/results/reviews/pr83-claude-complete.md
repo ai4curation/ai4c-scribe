@@ -3,7 +3,7 @@ ontology: uberon
 issue_number: 3530
 pr_number: 3532
 eval_repo_pr: 83
-agent: std_codex_gpt54
+agent: std_codex_g54
 model: gpt-5.4
 runtime: codex
 agent_config_tag: ai4curation/uberon-agent-config@v3

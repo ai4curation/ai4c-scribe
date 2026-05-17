@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3533
 pr_number: 3571
 eval_repo_pr: 193
-agent: std_claude_opus47
+agent: std_claude_op47
 model: claude-opus-4-7
 runtime: claude
 agent_config_tag: ai4curation/cl-agent-config@v3

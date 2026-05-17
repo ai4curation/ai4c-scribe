@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9987
 pr_number: 10094
 eval_repo_pr: 212
-agent: std_opencode_gemma431b
+agent: std_opencode_gem4
 agent_config_tag: v3
 model: togetherai/google/gemma-4-31B-it
 runtime: opencode

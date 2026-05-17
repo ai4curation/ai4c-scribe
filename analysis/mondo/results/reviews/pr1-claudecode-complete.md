@@ -6,6 +6,7 @@ eval_repo_pr: 1
 agent_config_tag: v2
 model: claude-sonnet-4-5-20250929
 runtime: claude
+agent: std_claude_son45
 f1: 0.696
 precision: 0.667
 recall: 0.727

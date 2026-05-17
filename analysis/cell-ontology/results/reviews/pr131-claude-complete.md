@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3239
 pr_number: 3245
 eval_repo_pr: 131
-agent: std_opencode_gemma431b
+agent: std_opencode_gem4
 model: togetherai/google/gemma-4-31B-it
 runtime: opencode
 agent_config_tag: ai4curation/cl-agent-config@v3

@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31945
 pr_number: 32013
 eval_repo_pr: 247
-agent: std_opencode_gemma431
+agent: std_opencode_gem4
 model: gemma-4-31b
 runtime: opencode
 agent_config_tag: v9

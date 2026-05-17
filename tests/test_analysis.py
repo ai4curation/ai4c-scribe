@@ -83,6 +83,22 @@ def test_attach_case_quality_preserves_row_count():
     assert len(out) == len(scores)
 
 
+def test_attach_case_quality_handles_float_issue_numbers():
+    """Frames with NaNs make issue_number float (190.0); the join must
+    still match the string key '190' (regression: reviews were all
+    wrongly 'unflagged')."""
+    frame = pd.DataFrame(
+        [
+            {"ontology": "test-ont", "issue_number": 190.0, "f1": 0.3},
+            {"ontology": "test-ont", "issue_number": float("nan"), "f1": 0.1},
+        ]
+    )
+    out = attach_case_quality(frame, ANALYSIS)
+    assert out.loc[out["issue_number"] == 190.0, "case_quality"].iloc[0] == "poor"
+    # the NaN-issue row must not crash and stays unflagged
+    assert out["case_quality"].notna().all()
+
+
 def test_reviewer_score_maps_outcomes():
     """success=1, partial_success=0.5, failure/no_*=0; grouped per key."""
     reviews = pd.DataFrame(

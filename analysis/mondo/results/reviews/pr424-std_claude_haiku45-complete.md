@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9798
 pr_number: 10106
 eval_repo_pr: 424
-agent: std_claude_haiku45
+agent: std_claude_hai45
 model: claude-haiku-4.5
 runtime: claude
 agent_config_tag: v3

@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3239
 pr_number: 3245
 eval_repo_pr: 55
-agent: std_opencode_gpt55
+agent: std_opencode_g55
 model: openai/gpt-5.5
 runtime: opencode
 agent_config_tag: ai4curation/cl-agent-config@v3

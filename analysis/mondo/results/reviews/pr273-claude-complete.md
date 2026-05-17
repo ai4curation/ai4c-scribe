@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 10030
 pr_number: 10117
 eval_repo_pr: 273
-agent: std_opencode_kimi26
+agent: std_opencode_kimi
 model: kimi-k2.6
 runtime: opencode
 agent_config_tag: v3

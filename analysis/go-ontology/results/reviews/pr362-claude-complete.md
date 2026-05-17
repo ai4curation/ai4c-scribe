@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31961
 pr_number: 32015
 eval_repo_pr: 362
-agent: std_gemini_g25f
+agent: std_gemini_flash
 model: gemini-2.5-flash
 runtime: gemini
 agent_config_tag: v9

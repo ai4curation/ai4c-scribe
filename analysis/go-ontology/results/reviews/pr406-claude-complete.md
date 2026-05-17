@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 25870
 pr_number: 32008
 eval_repo_pr: 406
-agent: std_claude_haiku45
+agent: std_claude_hai45
 model: claude-haiku-4.5
 runtime: claude
 agent_config_tag: v9

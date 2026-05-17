@@ -3,7 +3,7 @@ ontology: uberon
 issue_number: 3473
 pr_number: 3494
 eval_repo_pr: 110
-agent: std_opencode_gemma4-31b
+agent: std_opencode_gem4
 model: togetherai/google/gemma-4-31B-it
 runtime: opencode
 agent_config_tag: ai4curation/uberon-agent-config@v3

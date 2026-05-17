@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9798
 pr_number: 10106
 eval_repo_pr: 375
-agent: std_claude_opus47
+agent: std_claude_op47
 model: claude-opus-4-7
 runtime: claude
 agent_config_tag: v3

@@ -195,7 +195,17 @@ def attach_case_quality(scores_df, analysis_dir: Path = Path("analysis")):
         df["case_quality"] = "unflagged"
         return df
 
-    df["_iss"] = df["issue_number"].astype(str)
+    # issue_number may be float (e.g. 190.0) when the frame has NaNs;
+    # normalise to a clean integer string so it matches the metadata key.
+    def _norm_issue(v):
+        import pandas as pd
+
+        if pd.isna(v):
+            return None
+        s = str(v)
+        return s[:-2] if s.endswith(".0") else s
+
+    df["_iss"] = df["issue_number"].map(_norm_issue)
     q = q.rename(columns={"issue_number": "_iss"})
     merged = df.merge(
         q[["ontology", "_iss", *_QUALITY_COLS]],

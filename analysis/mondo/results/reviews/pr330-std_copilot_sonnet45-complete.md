@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9987
 pr_number: 10094
 eval_repo_pr: 330
-agent: std_copilot_sonnet45
+agent: std_copilot_son45
 agent_config_tag: v3
 model: claude-sonnet-4.5
 runtime: copilot

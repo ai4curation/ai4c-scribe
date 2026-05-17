@@ -3,7 +3,7 @@ ontology: mondo
 issue_number: 9864
 pr_number: 10105
 eval_repo_pr: 118
-agent: std_opencode_gpt55
+agent: std_opencode_g55
 model: gpt-5.5
 runtime: opencode
 agent_config_tag: ai4curation/mondo-agent-config@v3

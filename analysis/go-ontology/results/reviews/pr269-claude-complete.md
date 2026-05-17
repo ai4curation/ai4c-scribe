@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 27593
 pr_number: 31997
 eval_repo_pr: 269
-agent: std_opencode_k26
+agent: std_opencode_kimi
 model: kimi-k2.6
 runtime: opencode
 agent_config_tag: v9

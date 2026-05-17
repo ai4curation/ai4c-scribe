@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31873
 pr_number: 32022
 eval_repo_pr: 380
-agent: std_copilot_s45
+agent: std_copilot_son45
 model: claude-sonnet-4-5
 runtime: copilot
 agent_config_tag: v9

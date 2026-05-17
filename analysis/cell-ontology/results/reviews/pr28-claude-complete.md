@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3243
 pr_number: 3251
 eval_repo_pr: 28
-agent: std_codex_gpt55
+agent: std_codex_g55
 model: gpt-5.5
 runtime: codex
 agent_config_tag: ai4curation/cl-agent-config@v3

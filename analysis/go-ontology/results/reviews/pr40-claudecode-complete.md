@@ -6,6 +6,7 @@ eval_repo_pr: 40
 agent_config_tag: v9
 model: gpt-5.4
 runtime: codex
+agent: std_codex_g54
 f1: 0.800
 precision: 0.889
 recall: 0.727

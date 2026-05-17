@@ -3,7 +3,7 @@ ontology: uberon
 issue_number: 3596
 pr_number: 3597
 eval_repo_pr: 297
-agent: claude_claude-sonnet-4.5
+agent: std_claude_son45
 model: claude-sonnet-4-5
 runtime: claude
 agent_config_tag: ai4curation/uberon-agent-config@v3

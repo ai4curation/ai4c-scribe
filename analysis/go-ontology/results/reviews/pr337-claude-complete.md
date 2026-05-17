@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31916
 pr_number: 32024
 eval_repo_pr: 337
-agent: std_claude_opus47
+agent: std_claude_op47
 model: claude-opus-4.7
 runtime: claude
 agent_config_tag: v9

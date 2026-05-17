@@ -3,7 +3,7 @@ ontology: go-ontology
 issue_number: 31985
 pr_number: 31986
 eval_repo_pr: 544
-agent: std_codex_gpt55
+agent: std_codex_g55
 model: gpt-5.5
 runtime: codex
 agent_config_tag: ai4curation/go-ontology-agent-config@v9

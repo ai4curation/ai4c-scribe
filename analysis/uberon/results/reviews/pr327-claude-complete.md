@@ -3,7 +3,7 @@ ontology: uberon
 issue_number: 3509
 pr_number: 3515
 eval_repo_pr: 327
-agent: std_claude_haiku4.5
+agent: std_claude_hai45
 model: claude-haiku-4-5
 runtime: claude
 agent_config_tag: ai4curation/uberon-agent-config@v3

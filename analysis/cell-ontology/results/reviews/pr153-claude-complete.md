@@ -3,7 +3,7 @@ ontology: cell-ontology
 issue_number: 3497
 pr_number: 3574
 eval_repo_pr: 153
-agent: std_claude_haiku45
+agent: std_claude_hai45
 model: claude-haiku-4.5
 runtime: claude
 agent_config_tag: v3
