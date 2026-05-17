@@ -1,0 +1,22 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index b727e1726..a4814a98e 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225031,6 +225031,17 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++[Term]
++id: UBERON:9900000
++name: medial prefrontal cortex
++def: "The medial prefrontal cortex (mPFC) is a subdivision of the prefrontal cortex composed of BA12, BA25, and anterior cingulate cortex: BA32, BA33, BA24. Within this region is the dorsal nexus, which interconnects multiple brain networks and plays a role in maintenance and manipulation of information (working memory), as well as supporting the control of cognitive functions such as emotion processing and regulation, memory, decision making, and conflict resolution." [Wikipedia:Prefrontal_cortex]
++is_a: UBERON:0002616 ! regional part of brain
++relationship: part_of UBERON:0000451 ! prefrontal cortex
++property_value: dc-contributor https://orcid.org/0000-0001-7628-5565 ! Michelle Giglio
++property_value: dc-contributor https://orcid.org/0000-0002-4964-5083 ! Dana Gabuzda
++property_value: dcterms-date "2026-05-16T00:00:00Z" xsd:dateTime
++term_tracker_item: https://github.com/obophenotype/uberon/issues/3446
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

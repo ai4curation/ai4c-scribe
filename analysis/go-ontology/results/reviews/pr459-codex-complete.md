@@ -14,9 +14,11 @@ precision: 0.8
 recall: 0.8
 jaccard: 0.667
 outcome: partial_success
-failure_modes: [under_editing, over_editing]
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-16
+failure_modes:
+  - under_editing
+  - over_editing
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

@@ -32,6 +32,12 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-03"
 rationale: Clean new disease term requiring gene-disease logical axioms, ClinGen provenance, and multi-parent classification
+case_quality: poor
+case_quality_reason: new_term_canonical_id_artifact
+companion_prs: []
+scoring_caveat: "Single-PR resolution (no companion PRs; Step 3a clean, no gold leakage). However metadiff F1 is structurally capped for ALL 14 attempts (max 0.667) because this is a new_term case: agents cannot know the merge-time canonical ID MONDO:1060216 and correctly use placeholder MONDO:777xxxx NTR-range IDs, the stanza insertion location differs from gold, and the gold creator ORCID (0000-0002-7638-4659, the human curator) is unreproducible. Judge attempts on substance (gene grounding HGNC:28422, logical definition intersection_of MONDO:0700092 + has_material_basis_in_germline_mutation_in, definition fidelity, ClinGen-qualified synonym) not on metadiff. The gold curator's second parent is_a MONDO:0002254 (syndromic disease) was added beyond the issue's explicit single-parent request and beyond the approving reviewer's only comment (suggesting a logical definition); its omission by agents is a defensible scoping decision, not a failure."
+quality_flagged_by: claude-opus-4.7
+quality_flagged_at: "2026-05-15"
 ---
 
 ## Context
@@ -65,3 +71,17 @@ Medium difficulty because it requires:
 4. **Definition writing**: Comprehensive clinical description synthesizing findings from 8 publications
 
 An agent would need to understand Mondo's patterns for gene-disease terms: the specific use of `has_material_basis_in_germline_mutation_in`, the intersection_of pattern for logical definitions, and how to correctly attribute sources to individual axioms.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (reason: `new_term_canonical_id_artifact`) on 2026-05-15 by claude-opus-4.7 after reviewing all 14 attempts.
+
+**Not a Step 3a problem.** Issue #9956 was resolved by exactly one PR (#10214); `gh search prs` for both `9956` and `TSEN2` returns only #10214. No companion PRs, no gold leakage, no F1=1.0 fakes, no curator repudiation (the only review, by sabrinatoro, approved and merely suggested adding a logical definition — which agents did).
+
+**The problem is the standard new_term metadiff artifact.** F1 is structurally capped for *every* attempt (best 0.667, gpt-5.5/opencode #84/#64; worst 0.435, sonnet/copilot #521/#482) because:
+
+1. **Placeholder-vs-canonical ID**: gold's `MONDO:1060216` is assigned only at merge. Agents correctly use placeholder `MONDO:777xxxx` NTR-range IDs per Mondo convention (the right behavior). The `id:` line and stanza insertion location therefore never match gold. Attempt #254 (kimi) is the lone exception that used `MONDO:1060216` and gold's insertion location — verified as genuine agent work (definition wording, expanded per-axiom source lists, and creator value all diverge from gold; not a copied stanza), and it scored highest recall as a result.
+2. **Creator ORCID**: gold uses the human curator's ORCID `0000-0002-7638-4659`; agents cannot reproduce this.
+3. **Gold's second parent** `is_a: MONDO:0002254` (syndromic disease) was added by the curator beyond the issue's explicit single-parent request (`Parent term: MONDO:0700092`). Almost no agent added it; this is a defensible scoping decision (claude-opus #404 explicitly flagged the dual-parent question for reviewer attention — exemplary behavior), not a failure.
+
+**Net**: metadiff substantially **under-represents** quality for the strong attempts (gpt-5.5 opencode/codex, kimi, claude-opus all produced substantively correct, mergeable terms with correct `HGNC:28422` grounding and correct `intersection_of MONDO:0700092 + has_material_basis_in_germline_mutation_in` logical definitions). Genuine quality differentiators that metadiff does *not* capture well: pr521/pr482 (copilot) truncated the term name (real `wrong_term`); pr199/pr23 (haiku) split the label into bogus "with/without TMA" EXACT synonyms and mis-cited TRACK syndrome; pr551 (sonnet) likely fabricated a TRACK-expansion synonym; pr32 (opencode) omitted the synonym entirely. Downstream aggregation should down-weight raw F1 for this case and rely on the substantive review narratives.

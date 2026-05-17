@@ -18,8 +18,8 @@ failure_modes:
   - over_editing
   - under_editing
   - scope_creep
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-11
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

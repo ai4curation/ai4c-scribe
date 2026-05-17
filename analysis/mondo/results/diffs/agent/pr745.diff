@@ -1,0 +1,55 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..ad38d78c3 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -388643,19 +388643,10 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ [Term]
+ id: MONDO:0014978
+ name: obsolete preimplantation embryonic lethality 2
+-def: "OBSOLETE. Any preimplantation embryonic lethality in which the cause of the disease is a mutation in the PADI6 gene." [MONDO:patterns/disease_series_by_gene]
+-synonym: "PADI6 preimplantation embryonic lethality" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
+-synonym: "preimplantation embryonic lethality 2" EXACT []
+-synonym: "preimplantation embryonic lethality 2; PREMBL2" EXACT []
+-synonym: "preimplantation embryonic lethality caused by mutation in PADI6" EXACT [MONDO:design_pattern]
+-synonym: "preimplantation embryonic lethality type 2" EXACT [MONDO:RULE_1]
+-synonym: "PREMBL2" EXACT ABBREVIATION []
+-xref: OMIM:617234 {source="MONDO:obsoleteEquivalent"}
+-property_value: curated_content_resource "https://www.malacards.org/card/oocyte_zygote_embryo_maturation_arrest_16" xsd:anyURI {source="MONDO:MalaCards"}
+-property_value: IAO:0000231 OMO:0001000 {source="MONDO:excludePhenotype"}
+-property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5091" xsd:anyURI
++property_value: IAO:0000231 MONDO:TermsMerged
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
+ is_obsolete: true
+-consider: HP:0032479
++replaced_by: MONDO:7770012
+ 
+ [Term]
+ id: MONDO:0014979
+@@ -665382,6 +665373,22 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect marked by early embryonic arrest and female infertility in which the cause of the disease is a variation in the PADI6 gene." [PMID:27545678, PMID:29693651]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "PREIMPLANTATION EMBRYONIC LETHALITY 2" EXACT [OMIM:617234]
++synonym: "PREMBL2" EXACT ABBREVIATION [OMIM:617234]
++synonym: "early embryonic arrest" RELATED [PMID:27545678]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="OMIM:617234", source="PMID:27545678", source="PMID:29693651"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMID:27545678", source="PMID:29693651"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis
+@@ -666081,4 +666088,3 @@ is_metadata_tag: true
+ id: transmitted_by
+ name: transmitted by
+ xref: RO:0002451
+-

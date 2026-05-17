@@ -18,8 +18,8 @@ failure_modes:
   - wrong_pattern
   - missed_requirement
   - over_editing
-reviewed_by: gpt-5-codex
-reviewed_at: 2026-05-11
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

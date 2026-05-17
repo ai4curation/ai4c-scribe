@@ -1,0 +1,12 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index f6a5e38a4..f7eb695b3 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -463558,6 +463558,7 @@ namespace: molecular_function
+ def: "The binding activity of a molecule that brings together two membranes, either via membrane lipid binding or by interacting with a membrane protein, to establish or maintain the localization of the protein, protein complex, vesicle or organelle." [GOC:curators]
+ is_a: GO:0060090 ! molecular adaptor activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24964" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31863" xsd:anyURI
+ created_by: pg
+ creation_date: 2025-06-04T08:36:30Z
+ 

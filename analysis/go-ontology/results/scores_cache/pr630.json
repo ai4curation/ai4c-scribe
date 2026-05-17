@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 32005,
+  "pr_number": 32026,
+  "case_type": "obsoletion",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "gpt-5.4",
+  "runtime": "opencode",
+  "eval_repo_pr": 630,
+  "f1": 0.017,
+  "precision": 0.19,
+  "recall": 0.009,
+  "jaccard": 0.008
+}

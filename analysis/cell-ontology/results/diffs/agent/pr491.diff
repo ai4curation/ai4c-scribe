@@ -1,0 +1,49 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 0e1a96337..01f8370b0 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -10140,11 +10140,13 @@ DisjointClasses(obo:CL_0000737 obo:CL_0008000)
+ # Class: obo:CL_0000738 (leukocyte)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:add") Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "ISBN:978-0-323-05290-0") obo:IAO_0000115 obo:CL_0000738 "An achromatic cell of the myeloid or lymphoid lineages capable of ameboid movement, found in blood or other tissue.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0000738 <https://github.com/obophenotype/cell-ontology/issues/3559>)
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000738 "BTO:0000751")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000738 "CALOHA:TS-0549")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000738 "FMA:62852")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000738 "MESH:D007962")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0000738 "NCIT:C12529")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://github.com/obophenotype/cell-ontology/issues/3559") oboInOwl:hasExactSynonym obo:CL_0000738 "WBC")
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0000738 "leucocyte")
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0000738 "white blood cell")
+ AnnotationAssertion(oboInOwl:hasRelatedSynonym obo:CL_0000738 "immune cell")
+@@ -20129,10 +20131,12 @@ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0002585 obo:CL_0000071
+ # Class: obo:CL_0002586 (retinal pigment epithelial cell)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") obo:IAO_0000115 obo:CL_0002586 "An epithelial cell of the retinal pigmented epithelium.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002586 <https://github.com/obophenotype/cell-ontology/issues/3559>)
+ AnnotationAssertion(terms:contributor obo:CL_0002586 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002586 "2011-03-06T03:37:09Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0002586 "BTO:0004910")
+ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_0002586 "FMA:75802")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://github.com/obophenotype/cell-ontology/issues/3559") oboInOwl:hasExactSynonym obo:CL_0002586 "RPE")
+ AnnotationAssertion(rdfs:label obo:CL_0002586 "retinal pigment epithelial cell")
+ EquivalentClasses(obo:CL_0002586 ObjectIntersectionOf(obo:CL_0000066 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001782)))
+ SubClassOf(obo:CL_0002586 obo:CL_0000149)
+@@ -29103,8 +29107,10 @@ EquivalentClasses(obo:CL_2000000 ObjectIntersectionOf(obo:CL_0000148 ObjectSomeV
+ # Class: obo:CL_2000001 (peripheral blood mononuclear cell)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:TermGenie") obo:IAO_0000115 obo:CL_2000001 "A leukocyte with a single non-segmented nucleus in the mature form found in the circulatory pool of blood.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_2000001 <https://github.com/obophenotype/cell-ontology/issues/3559>)
+ AnnotationAssertion(terms:contributor obo:CL_2000001 <http://www.wikidata.org/entity/Q35563349>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_2000001 "2014-02-11T17:29:04Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "https://github.com/obophenotype/cell-ontology/issues/3559") oboInOwl:hasExactSynonym obo:CL_2000001 "PBMC")
+ AnnotationAssertion(oboInOwl:id obo:CL_2000001 "CL:2000001")
+ AnnotationAssertion(rdfs:label obo:CL_2000001 "peripheral blood mononuclear cell")
+ EquivalentClasses(obo:CL_2000001 ObjectIntersectionOf(obo:CL_0000842 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000178)))
+@@ -35594,4 +35600,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

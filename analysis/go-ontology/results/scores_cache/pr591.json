@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31114,
+  "pr_number": 32028,
+  "case_type": "axiom_repair",
+  "difficulty": "simple",
+  "agent_config_tag": "v9",
+  "model": "gpt-5.5",
+  "runtime": "opencode",
+  "eval_repo_pr": 591,
+  "f1": 0.0,
+  "precision": 0.0,
+  "recall": 0.0,
+  "jaccard": 0.0
+}

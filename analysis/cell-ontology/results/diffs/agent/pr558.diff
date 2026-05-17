@@ -1,0 +1,30 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 054fb3842..64f048bdc 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3588,6 +3588,7 @@ Declaration(AnnotationProperty(obo:IAO_0000424))
+ Declaration(AnnotationProperty(obo:IAO_0000700))
+ Declaration(AnnotationProperty(obo:IAO_0100001))
+ Declaration(AnnotationProperty(obo:RO_0002161))
++Declaration(AnnotationProperty(cl:add_by_HRA))
+ Declaration(AnnotationProperty(cl:BDS_subset))
+ Declaration(AnnotationProperty(cl:added_for_HCA))
+ Declaration(AnnotationProperty(cl:blood_and_immune_upper_slim))
+@@ -3635,6 +3636,10 @@ Declaration(AnnotationProperty(owl:deprecated))
+ 
+ AnnotationAssertion(rdfs:label obo:IAO_0000028 "symbol")
+ 
++# Annotation Property: cl:add_by_HRA (cl:add_by_HRA)
++
++SubAnnotationPropertyOf(cl:add_by_HRA oboInOwl:SubsetProperty)
++
+ # Annotation Property: cl:BDS_subset (cl:BDS_subset)
+ 
+ SubAnnotationPropertyOf(cl:BDS_subset oboInOwl:SubsetProperty)
+@@ -36002,4 +36007,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

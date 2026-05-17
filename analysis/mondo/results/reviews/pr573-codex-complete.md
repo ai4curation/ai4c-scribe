@@ -14,9 +14,13 @@ precision: 0.167
 recall: 0.167
 jaccard: 0.091
 outcome: failure
-failure_modes: [under_editing, missed_requirement, over_editing, wrong_pattern, missed_synonym]
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-16
+failure_modes:
+  - under_editing
+  - missed_requirement
+  - over_editing
+  - wrong_pattern
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following .claude/skills/review-agent-pr/SKILL.md

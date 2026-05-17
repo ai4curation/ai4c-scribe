@@ -8,7 +8,6 @@ per-case METADATA.md frontmatter.
 
 from pathlib import Path
 
-import pandas as pd
 import pytest
 
 from ai4c_scribe.analysis import (
@@ -66,6 +65,19 @@ def test_attach_case_quality_joins_onto_scores():
     valid = df[df["case_quality"] != "poor"]
     assert len(valid) == 2  # the two issue-90 rows
     assert set(valid["issue_number"].astype(str)) == {"90"}
+
+
+def test_load_case_quality_one_row_per_issue(quality_df):
+    """An issue with multiple companion case dirs collapses to one row."""
+    dup = quality_df.duplicated(["ontology", "issue_number"]).sum()
+    assert dup == 0
+
+
+def test_attach_case_quality_preserves_row_count():
+    """Left-join must be 1:1 — never inflate the scores frame."""
+    scores = load_scores(SCORES)
+    out = attach_case_quality(scores, ANALYSIS)
+    assert len(out) == len(scores)
 
 
 def test_attach_case_quality_is_idempotent():

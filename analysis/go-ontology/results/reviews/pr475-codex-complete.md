@@ -17,8 +17,8 @@ outcome: partial_success
 failure_modes:
 - wrong_pattern
 - missed_requirement
-reviewed_by: gpt-5.5
-reviewed_at: '2026-05-16'
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

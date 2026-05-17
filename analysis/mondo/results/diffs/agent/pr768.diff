@@ -1,0 +1,26 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..484317654 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -607060,15 +607060,21 @@ property_value: curated_content_resource "https://www.malacards.org/card/seconda
+ [Term]
+ id: MONDO:0957382
+ name: multiple mitochondrial dysfunctions syndrome 7
++def: "A fatal multiple mitochondrial dysfunctions syndrome that is also a glycine encephalopathy and is caused by mutation in the GCSH gene. It is characterized by findings of variant nonketotic hyperglycinemia with lipoate deficiency." [PMID:33890291, PMID:36190515]
++subset: clingen {source="MONDO:CLINGEN"}
+ subset: gard_rare {source="GARD:0026818", source="MONDO:GARD"}
+ subset: omim {source="OMIM:620423"}
+ subset: rare
++synonym: "GCSH-related glycine encephalopathy" EXACT [https://clinicalgenome.org/affiliation/40011/, PMID:33890291, PMID:36190515] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ xref: GARD:0026818 {source="MONDO:GARD"}
+ xref: MEDGEN:1841222 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:620423 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5830586 {source="MEDGEN:1841222", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++is_a: MONDO:0011612 {source="PMID:33890291", source="PMID:36190515", source="https://clinicalgenome.org/affiliation/40011/"} ! glycine encephalopathy
+ is_a: MONDO:0017338 {source="OMIM:620423"} ! fatal multiple mitochondrial dysfunctions syndrome
++relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0957382 {source="MONDO:CLINGEN"}
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4208 {source="OMIM:620423"} ! GCSH
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9896" xsd:anyURI
+ property_value: curated_content_resource "https://www.malacards.org/card/multiple_mitochondrial_dysfunctions_syndrome_7" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+ [Term]

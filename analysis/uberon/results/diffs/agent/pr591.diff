@@ -1,0 +1,34 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..567d5d166 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -9020,12 +9020,12 @@ consider: WBbt:0005441
+ 
+ [Term]
+ id: UBERON:0000961
+-name: thoracic ganglion
+-def: "The thoracic ganglia are paravertebral ganglia. The thoracic portion of the sympathetic trunk typically has 12 thoracic ganglia. Emerging from the ganglia are thoracic splancic nerves (the cardiopulmonary, the greater, lesser, and least splanchic nerves) that help provide sympathetic innervation to abdominal structures. Also, the ganglia of the thoracic sympathetic trunk have both white and gray rami communicantes. The white rami carry sympathetic fibers arising in the spinal cord into the sympathetic trunk. [WP,unvetted]." [Wikipedia:Thoracic_ganglion]
++name: thoracic paravertebral ganglion
++def: "A paravertebral ganglion that is part of the thoracic sympathetic nerve trunk. The thoracic portion of the sympathetic trunk typically has 12 thoracic ganglia. Emerging from these ganglia are thoracic splanchnic nerves that help provide sympathetic innervation to abdominal structures." [Wikipedia:Thoracic_ganglion]
+ subset: uberon_slim
+ synonym: "ganglion of thorax" EXACT [OBOL:automatic]
+ synonym: "ganglion thoracicum splanchnicum" EXACT OMO:0003011 [FMA:6471, FMA:TA]
+-synonym: "thoracic paravertebral ganglion" EXACT [MA:0001159]
++synonym: "thoracic ganglion" RELATED [Wikipedia:Thoracic_ganglion]
+ synonym: "thoracic splanchnic ganglion" EXACT []
+ synonym: "thoracic sympathetic ganglion" EXACT []
+ synonym: "thorax ganglion" EXACT [OBOL:automatic]
+@@ -60564,7 +60564,7 @@ xref: BIRNLEX:2600
+ xref: FMA:6006
+ xref: SCTID:278326009
+ xref: UMLS:C0457467 {source="BIRNLEX:2600"}
+-is_a: UBERON:0000961 ! thoracic ganglion
++is_a: UBERON:0000044 ! dorsal root ganglion
+ intersection_of: UBERON:0000044 ! dorsal root ganglion
+ intersection_of: extends_fibers_into UBERON:0009630 ! root of thoracic nerve
+ 
+@@ -226040,4 +226040,3 @@ xref: RO:0020102
+ id: vessel_supplies_blood_to
+ name: vessel supplies blood to
+ xref: RO:0020101
+-

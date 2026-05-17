@@ -1,0 +1,19 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..51ded9be0 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,14 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: preneoplastic lesion
++def: "A precancerous condition characterized by a clonal proliferation of cells that have accumulated some, but not all, of the molecular alterations necessary for malignant transformation, representing an intermediate stage in carcinogenesis with increased risk of progression to invasive neoplasia." [PMID:37775701, PMID:40684183]
++is_a: MONDO:0021074 ! precancerous condition
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9781" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

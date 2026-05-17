@@ -1,0 +1,97 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 8262d5a8a..7070a10e2 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -138332,16 +138332,14 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0018581
+-name: hydroxyquinol 1,2-dioxygenase activity
++name: obsolete hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
+-xref: EC:1.13.11.37 {source="skos:broadMatch"}
+-xref: MetaCyc:RXN-17556
+-xref: RHEA:19441 {source="skos:exactMatch"}
+-xref: UM-BBD_reactionID:r0232
+-is_a: GO:0016702 ! oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen
++def: "OBSOLETE. Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
++comment: The reason for obsoletion is that this term described a sub-reaction of the complete two-step reaction represented by GO:0047074. The second step (non-enzymatic conversion of 3-hydroxy-cis,cis-muconate to maleylacetate) is not catalyzed separately, so this term is equivalent to GO:0047074 hydroxyquinol 1,2-dioxygenase activity.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/25870" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0047074
+ 
+ [Term]
+ id: GO:0018582
+@@ -273453,10 +273451,13 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0045550
+-name: geranylgeranyl reductase activity
++name: obsolete geranylgeranyl reductase activity
+ namespace: molecular_function
+-def: "Catalysis of the formation of phytyl group from the stepwise reduction of a geranylgeranyl group." [PMID:9492312]
+-is_a: GO:0016491 ! oxidoreductase activity
++def: "OBSOLETE. Catalysis of the formation of phytyl group from the stepwise reduction of a geranylgeranyl group." [PMID:9492312]
++comment: The reason for obsoletion is that this term is equivalent to geranylgeranyl diphosphate reductase activity.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31963" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0102067
+ 
+ [Term]
+ id: GO:0045551
+@@ -291741,9 +291742,10 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0047074
+-name: 4-hydroxycatechol 1,2-dioxygenase activity
++name: hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = maleylacetate + 2 H+." [RHEA:35595]
++synonym: "4-hydroxycatechol 1,2-dioxygenase activity" EXACT []
+ xref: EC:1.13.11.37 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-10137
+ xref: RHEA:35595 {source="skos:exactMatch"}
+diff --git a/src/ontology/imports/go-catalytic-activities-participants.owl b/src/ontology/imports/go-catalytic-activities-participants.owl
+index fb8b76d32..f80973982 100644
+--- a/src/ontology/imports/go-catalytic-activities-participants.owl
++++ b/src/ontology/imports/go-catalytic-activities-participants.owl
+@@ -69756,37 +69756,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0018581 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018581">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15378"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15379"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_16971"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_58139"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0018582 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018582">

@@ -23,7 +23,8 @@ def test_collect_loads_cases():
     """Loads case metadata and narrative from METADATA.md."""
     data = collect_gallery_data(FIXTURE_DIR)
     cases = data["ontologies"]["test-ont"]["cases"]
-    assert len(cases) == 2
+    # pr100, pr200, and pr201 (a companion of pr200 sharing issue #190)
+    assert len(cases) == 3
 
     pr100 = next(c for c in cases if c["pr_number"] == 100)
     assert pr100["metadata"]["issue_title"] == "Add new term: foo bar"

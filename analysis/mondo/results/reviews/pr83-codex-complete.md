@@ -15,8 +15,8 @@ recall: 0.935
 jaccard: 0.853
 outcome: success
 failure_modes: []
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-16
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following .claude/skills/review-agent-pr/SKILL.md

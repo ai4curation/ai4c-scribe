@@ -1,0 +1,12 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index f6a5e38a4..49ebe8c51 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617319,6 +617319,7 @@ name: vesicle membrane tethering activity
+ namespace: molecular_function
+ def: "A membrane-membrane adaptor activity that provides the first point of contact and physically bridges the vesicle membrane and its target membrane prior to vesicle docking and fusion." [PMID:19575650, PMID:19887069]
+ synonym: "vesicle membrane tether activity" EXACT []
++synonym: "vesicle membrane adaptor activity" EXACT []
+ synonym: "vesicle tethering activity" EXACT []
+ is_a: GO:0140177 ! membrane-membrane adaptor activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31863" xsd:anyURI

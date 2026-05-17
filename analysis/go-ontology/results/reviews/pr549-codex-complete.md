@@ -14,12 +14,15 @@ precision: 0.0
 recall: 0.0
 jaccard: 0.0
 outcome: partial_success
-failure_modes: [under_editing, wrong_pattern, over_editing]
+failure_modes:
+  - under_editing
+  - wrong_pattern
+  - over_editing
 case_quality: poor
 case_quality_reason: gold_pr_used_interim_wrong_created_by_convention
 companion_prs: [32014, 32032]
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-16
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

@@ -20,8 +20,8 @@ case_quality: poor
 case_quality_reason: gold_pr_is_partial_and_eval_base_already_contains_gold
 companion_prs:
 - 32009
-reviewed_by: gpt-5.5
-reviewed_at: 2026-05-16
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

@@ -36,7 +36,14 @@ MODEL_SHORT = {
     "claude-opus-4-7-20250623": "op47",
 }
 
-RUNTIME_SHORT = {"claude": "CC", "codex": "CX", "opencode": "OC", "pi": "PI", "gemini": "GE", "copilot": "CP"}
+RUNTIME_SHORT = {
+    "claude": "CC",
+    "codex": "CX",
+    "opencode": "OC",
+    "pi": "PI",
+    "gemini": "GE",
+    "copilot": "CP",
+}
 
 
 def agent_code(row) -> str:
@@ -146,8 +153,22 @@ def load_case_quality(analysis_dir: Path = Path("analysis")):
             )
 
     df = pd.DataFrame(rows, columns=["ontology", "issue_number", *_QUALITY_COLS])
-    if not df.empty:
-        df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"]
+    if df.empty:
+        return df
+
+    # An issue resolved by several companion PRs has one case dir each,
+    # sometimes flagged differently. Scores are keyed by issue, so collapse
+    # to one row per (ontology, issue_number) — conservatively: if ANY
+    # companion is poor the issue is poor (keeping that row's reason/caveat).
+    rank = {"poor": 0, "ok": 1, "good": 2, "unflagged": 3}
+    df["_rank"] = df["case_quality"].map(lambda v: rank.get(v, 3))
+    df = (
+        df.sort_values("_rank")
+        .drop_duplicates(["ontology", "issue_number"], keep="first")
+        .drop(columns="_rank")
+        .reset_index(drop=True)
+    )
+    df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"]
     return df
 
 
@@ -165,8 +186,6 @@ def attach_case_quality(scores_df, analysis_dir: Path = Path("analysis")):
     Returns:
         Copy of ``scores_df`` with the quality columns added.
     """
-    import pandas as pd
-
     df = scores_df.drop(
         columns=[c for c in _QUALITY_COLS if c in scores_df.columns],
         errors="ignore",
@@ -202,6 +221,7 @@ def load_reviews(analysis_dir: Path = Path("analysis")):
     import pandas as pd
 
     rows = []
+    skipped: list[str] = []
     for ont_dir in analysis_dir.iterdir():
         if not ont_dir.is_dir():
             continue
@@ -210,18 +230,37 @@ def load_reviews(analysis_dir: Path = Path("analysis")):
             continue
         for review_file in reviews_dir.glob("*.md"):
             text = review_file.read_text()
-            if not text.startswith("---"):
+            if not text.startswith("---") or "---" not in text[3:]:
                 continue
             end_idx = text.index("---", 3)
-            frontmatter = yaml.safe_load(text[3:end_idx])
+            # Review files are bulk agent-generated; a single malformed
+            # frontmatter must not sink the whole analysis. Skip + record.
+            try:
+                frontmatter = yaml.safe_load(text[3:end_idx])
+            except yaml.YAMLError:
+                skipped.append(str(review_file))
+                continue
+            if not isinstance(frontmatter, dict):
+                skipped.append(str(review_file))
+                continue
             frontmatter["_file"] = str(review_file)
             rows.append(frontmatter)
 
+    if skipped:
+        print(
+            f"load_reviews: skipped {len(skipped)} review file(s) with "
+            f"unparseable frontmatter (e.g. {skipped[0]})"
+        )
     return pd.DataFrame(rows)
 
 
-def balanced_comparison(df, agent_col: str = "agent", case_col: str = "case",
-                        score_col: str = "f1", min_shared: int = 2):
+def balanced_comparison(
+    df,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+    min_shared: int = 2,
+):
     """Find agent pairs that share enough cases for fair comparison.
 
     Only compares agents that ran on the same set of cases (at least
@@ -250,11 +289,16 @@ def balanced_comparison(df, agent_col: str = "agent", case_col: str = "case",
             s1 = df[(df[agent_col] == a1) & (df[case_col] == case)][score_col].values
             s2 = df[(df[agent_col] == a2) & (df[case_col] == case)][score_col].values
             if len(s1) > 0 and len(s2) > 0:
-                rows.append({
-                    "agent_a": a1, "agent_b": a2, "case": case,
-                    "score_a": s1[0], "score_b": s2[0],
-                    "n_shared": len(shared),
-                })
+                rows.append(
+                    {
+                        "agent_a": a1,
+                        "agent_b": a2,
+                        "case": case,
+                        "score_a": s1[0],
+                        "score_b": s2[0],
+                        "n_shared": len(shared),
+                    }
+                )
     return pd.DataFrame(rows)
 
 
@@ -268,9 +312,12 @@ def summary_by_agent(df, score_col: str = "f1"):
     Returns:
         DataFrame with mean, std, count, min, max per agent
     """
-    return df.groupby("agent")[score_col].agg(
-        ["mean", "std", "count", "min", "max"]
-    ).round(3).sort_values("mean", ascending=False)
+    return (
+        df.groupby("agent")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
 
 
 def summary_by_model(df, score_col: str = "f1"):
@@ -287,16 +334,22 @@ def summary_by_model(df, score_col: str = "f1"):
     Returns:
         DataFrame with mean, std, count, min, max per model
     """
-    return df.groupby("model")[score_col].agg(
-        ["mean", "std", "count", "min", "max"]
-    ).round(3).sort_values("mean", ascending=False)
+    return (
+        df.groupby("model")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
 
 
 def summary_by_runtime(df, score_col: str = "f1"):
     """Compute summary statistics grouped by runtime."""
-    return df.groupby("runtime")[score_col].agg(
-        ["mean", "std", "count", "min", "max"]
-    ).round(3).sort_values("mean", ascending=False)
+    return (
+        df.groupby("runtime")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
 
 
 def pivot_scores(df, rows: str = "ontology", cols: str = "model", values: str = "f1"):
@@ -328,8 +381,12 @@ def rubric_summary(reviews_df):
         DataFrame with mean rubric scores per model
     """
     rubric_cols = [
-        "instruction_following", "correctness", "completeness",
-        "scope_discipline", "methodology", "overall",
+        "instruction_following",
+        "correctness",
+        "completeness",
+        "scope_discipline",
+        "methodology",
+        "overall",
     ]
     cols_present = [c for c in rubric_cols if c in reviews_df.columns]
     if not cols_present:
@@ -373,8 +430,14 @@ def failure_mode_counts(reviews_df):
     return pd.Series(modes).value_counts()
 
 
-def paired_test(df, agent_a: str, agent_b: str, agent_col: str = "agent",
-                case_col: str = "case", score_col: str = "f1"):
+def paired_test(
+    df,
+    agent_a: str,
+    agent_b: str,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+):
     """Perform paired statistical tests between two agents on shared cases.
 
     Returns a dict with test statistics, p-values, effect sizes,
@@ -490,9 +553,14 @@ def paired_test(df, agent_a: str, agent_b: str, agent_col: str = "agent",
     return result
 
 
-def significance_summary(df, agents: list = None, agent_col: str = "agent",
-                         case_col: str = "case", score_col: str = "f1",
-                         min_shared: int = 2):
+def significance_summary(
+    df,
+    agents: list = None,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+    min_shared: int = 2,
+):
     """Run paired tests for all agent pairs with sufficient shared cases.
 
     Args:

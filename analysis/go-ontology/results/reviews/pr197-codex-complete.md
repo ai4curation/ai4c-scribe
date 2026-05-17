@@ -15,8 +15,8 @@ recall: 1.0
 jaccard: 1.0
 outcome: success
 failure_modes: []
-reviewed_by: gpt-5-codex
-reviewed_at: 2026-05-11
+reviewed_by: codex
+reviewed_at: "2026-05-16"
 ---
 
 <!-- Review this eval run following analysis/instructions/review-agent-eval.md

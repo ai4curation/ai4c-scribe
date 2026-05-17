@@ -1,0 +1,22 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 0239d1945..bcb5fd4d7 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2757,7 +2757,7 @@ synonym: "lifespan" EXACT []
+ xref: FBdv:00000000
+ xref: ncithesaurus:Life
+ xref: OGES:000011
+-is_a: UBERON:0000000 ! processual entity
++is_a: BFO:0000015 ! process
+ relationship: ends_with UBERON:0000071 ! death stage
+ relationship: has_part UBERON:0000105 ! life cycle stage
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+@@ -2786,7 +2786,7 @@ xref: WBls:0000002
+ xref: XAO:1000000
+ xref: ZFS:0000000
+ xref: ZFS:0100000
+-is_a: UBERON:0000000 ! processual entity
++is_a: BFO:0000015 ! process
+ relationship: part_of UBERON:0000104 ! life cycle
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa

@@ -1,0 +1,100 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e7bfdf082..2b77ae5cf 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -20863,53 +20863,73 @@ SubClassOf(obo:CL_0002665 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_000184
+ 
+ # Class: obo:CL_0002666 (type 2 otic fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") obo:IAO_0000115 obo:CL_0002666 "An otic fibrocyte that underlies the spiral prominence and is part of a mesenchymal gap junction network that regulates ionic homeostasis of the endolymph.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") Annotation(oboInOwl:hasDbXref "PMID:19080786") Annotation(oboInOwl:hasDbXref "PMID:33193034") obo:IAO_0000115 obo:CL_0002666 "A spiral ligament fibrocyte that is located near the spiral prominence between the basilar crest and the stria and plays an important role in potassium recycling by actively pumping K+ from the extracellular space and facilitating transcellular K+ transport through gap junctions toward type I fibrocytes. In mice, this cell expresses connexin 26 (Gjb2) and connexin 30 (Gjb6) as part of the mesenchymal gap junction system, as well as the Na-K-2Cl cotransporter NKCC1.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002666 <https://github.com/obophenotype/cell-ontology/issues/3408>)
+ AnnotationAssertion(terms:contributor obo:CL_0002666 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002666 "2011-07-11T03:40:40Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002666 "type II otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasBroadSynonym obo:CL_0002666 "type 2 otic fibrocyte")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "MP:0004488") oboInOwl:hasExactSynonym obo:CL_0002666 "type II spiral ligament fibrocyte")
+-AnnotationAssertion(rdfs:label obo:CL_0002666 "type 2 otic fibrocyte")
+-SubClassOf(obo:CL_0002666 obo:CL_0002665)
++AnnotationAssertion(rdfs:label obo:CL_0002666 "type II spiral ligament fibrocyte")
++SubClassOf(obo:CL_0002666 obo:CL_0020005)
++SubClassOf(obo:CL_0002666 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0006725))
++SubClassOf(obo:CL_0002666 ObjectSomeValuesFrom(obo:RO_0002220 obo:UBERON_0028194))
+ 
+ # Class: obo:CL_0002667 (type 5 otic fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") obo:IAO_0000115 obo:CL_0002667 "An otic fibrocyte that resides above the stria vasularis and is part of a mesenchymal gap junction network that regulates ionic homeostasis of the endolymph.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") Annotation(oboInOwl:hasDbXref "PMID:21673815") Annotation(oboInOwl:hasDbXref "PMID:33193034") obo:IAO_0000115 obo:CL_0002667 "A spiral ligament fibrocyte located in the suprastrial region above the stria vascularis, distinguished from other fibrocytes by expression of COX-1 and end-foot structures that directly contact capillaries. This fibro-vascular coupling enables the cell to regulate cochlear blood flow by translating Ca2+ signals into capillary vasodilation via COX-1-derived prostaglandins. In mice, it also participates in K+ recycling through high Na,K-ATPase expression.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002667 <https://github.com/obophenotype/cell-ontology/issues/3408>)
+ AnnotationAssertion(terms:contributor obo:CL_0002667 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002667 "2011-07-11T03:40:42Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002667 "type V otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasBroadSynonym obo:CL_0002667 "type 5 otic fibrocyte")
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002667 "type V spiral ligament fibrocyte")
+-AnnotationAssertion(rdfs:label obo:CL_0002667 "type 5 otic fibrocyte")
+-SubClassOf(obo:CL_0002667 obo:CL_0002665)
++AnnotationAssertion(rdfs:label obo:CL_0002667 "type V spiral ligament fibrocyte")
++SubClassOf(obo:CL_0002667 obo:CL_0020005)
++SubClassOf(obo:CL_0002667 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0006725))
++SubClassOf(obo:CL_0002667 ObjectSomeValuesFrom(obo:RO_0002220 obo:UBERON_0002282))
+ 
+ # Class: obo:CL_0002668 (type 4 otic fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") obo:IAO_0000115 obo:CL_0002668 "An otic fibrocyte that is lateral to the basilar membrane and anchoris it to the lateral wall.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") Annotation(oboInOwl:hasDbXref "PMID:19277783") Annotation(oboInOwl:hasDbXref "PMID:33193034") obo:IAO_0000115 obo:CL_0002668 "A spiral ligament fibrocyte that is located in the triangular space inferior to the crista basilaris. This spindle-shaped cell expresses NKCC1 but minimal to no Na,K-ATPase (ATP1A1, ATP1B1) in mice and humans, and lacks connexin 26 and connexin 30 in mice, indicating that it does not participate in K+ recycling like type II fibrocytes. In mice, this cell is characterized by strong expression of connective tissue growth factor (CTGF), suggesting roles in tissue remodeling and paracrine signaling to other cochlear cells.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002668 <https://github.com/obophenotype/cell-ontology/issues/3408>)
+ AnnotationAssertion(terms:contributor obo:CL_0002668 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002668 "2011-07-11T03:40:46Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002668 "type IV otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasBroadSynonym obo:CL_0002668 "type 4 otic fibrocyte")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "MP:0004490") oboInOwl:hasExactSynonym obo:CL_0002668 "type IV spiral ligament fibrocyte")
+-AnnotationAssertion(rdfs:label obo:CL_0002668 "type 4 otic fibrocyte")
+-SubClassOf(obo:CL_0002668 obo:CL_0002665)
++AnnotationAssertion(rdfs:label obo:CL_0002668 "type IV spiral ligament fibrocyte")
++SubClassOf(obo:CL_0002668 obo:CL_0020005)
++SubClassOf(obo:CL_0002668 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0006725))
+ 
+ # Class: obo:CL_0002669 (type 3 otic fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") obo:IAO_0000115 obo:CL_0002669 "An otic fibrocyte that lines the otic capsule.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") Annotation(oboInOwl:hasDbXref "PMID:22043022") Annotation(oboInOwl:hasDbXref "PMID:22476723") Annotation(oboInOwl:hasDbXref "PMID:33193034") obo:IAO_0000115 obo:CL_0002669 "A spiral ligament fibrocyte that is located in the deepest part of the inferior spiral ligament, directly lining the bony otic capsule. Distinguished from ion-transporting type I and II fibrocytes, this cell uses actin-myosin stress fibers and anchoring interactions to regulate basilar membrane tension. It has an elongated morphology, is most numerous in the basal high-frequency cochlea, and in mice expresses contractile and cytoskeletal proteins including alpha-smooth muscle actin, non-muscle myosin II, caldesmon, and aquaporin-1.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002669 <https://github.com/obophenotype/cell-ontology/issues/3408>)
+ AnnotationAssertion(terms:contributor obo:CL_0002669 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002669 "2011-07-11T03:40:50Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002669 "type III otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasBroadSynonym obo:CL_0002669 "type 3 otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasExactSynonym obo:CL_0002669 "tension fibroblast")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "MP:0004489") oboInOwl:hasExactSynonym obo:CL_0002669 "type III spiral ligament fibrocyte")
+-AnnotationAssertion(rdfs:label obo:CL_0002669 "type 3 otic fibrocyte")
+-SubClassOf(obo:CL_0002669 obo:CL_0002665)
++AnnotationAssertion(rdfs:label obo:CL_0002669 "type III spiral ligament fibrocyte")
++SubClassOf(obo:CL_0002669 obo:CL_0020005)
++SubClassOf(obo:CL_0002669 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0006725))
++SubClassOf(obo:CL_0002669 ObjectSomeValuesFrom(obo:RO_0002220 obo:UBERON_0004637))
+ 
+ # Class: obo:CL_0002670 (type 1 otic fibrocyte)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") obo:IAO_0000115 obo:CL_0002670 "An otic fibrocyte that underlies the stria vascularis and is part of a mesenchymal gap junction network that regulates ionic homeostasis of the endolymph.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "GOC:tfm") Annotation(oboInOwl:hasDbXref "PMID:18353863") Annotation(oboInOwl:hasDbXref "PMID:18581144") Annotation(oboInOwl:hasDbXref "PMID:33193034") obo:IAO_0000115 obo:CL_0002670 "A spiral ligament fibrocyte that underlies the stria vascularis and is part of a mesenchymal gap junction network that regulates ionic homeostasis of the endolymph. In mice, expression of connexin 26 (Gjb2) and connexin 30 (Gjb6) serves as a distinguishing molecular signature.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0002670 <https://github.com/obophenotype/cell-ontology/issues/3408>)
+ AnnotationAssertion(terms:contributor obo:CL_0002670 <https://orcid.org/0000-0003-1980-3228>)
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002670 "2011-07-11T03:39:27Z"^^xsd:dateTime)
+ AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_0002670 "type I otic fibrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:33193034") oboInOwl:hasBroadSynonym obo:CL_0002670 "type 1 otic fibrocyte")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "MP:0004487") oboInOwl:hasExactSynonym obo:CL_0002670 "type I spiral ligament fibrocyte")
+-AnnotationAssertion(rdfs:label obo:CL_0002670 "type 1 otic fibrocyte")
+-SubClassOf(obo:CL_0002670 obo:CL_0002665)
++AnnotationAssertion(rdfs:label obo:CL_0002670 "type I spiral ligament fibrocyte")
++SubClassOf(obo:CL_0002670 obo:CL_0020005)
++SubClassOf(obo:CL_0002670 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0006725))
++SubClassOf(obo:CL_0002670 ObjectSomeValuesFrom(obo:RO_0002220 obo:UBERON_0002282))
+ 
+ # Class: obo:CL_0002671 (endothelial stalk cell)
+ 
+@@ -35544,4 +35564,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

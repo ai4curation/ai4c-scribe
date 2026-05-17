@@ -1,0 +1,34 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 054fb3842..d74021b07 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3589,6 +3589,7 @@ Declaration(AnnotationProperty(obo:IAO_0000700))
+ Declaration(AnnotationProperty(obo:IAO_0100001))
+ Declaration(AnnotationProperty(obo:RO_0002161))
+ Declaration(AnnotationProperty(cl:BDS_subset))
++Declaration(AnnotationProperty(cl:add_by_HRA))
+ Declaration(AnnotationProperty(cl:added_for_HCA))
+ Declaration(AnnotationProperty(cl:blood_and_immune_upper_slim))
+ Declaration(AnnotationProperty(cl:eye_upper_slim))
+@@ -3639,6 +3640,14 @@ AnnotationAssertion(rdfs:label obo:IAO_0000028 "symbol")
+ 
+ SubAnnotationPropertyOf(cl:BDS_subset oboInOwl:SubsetProperty)
+ 
++# Annotation Property: cl:add_by_HRA (add_by_HRA)
++
++AnnotationAssertion(terms:date cl:add_by_HRA "2026-05-17T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:comment cl:add_by_HRA "Subset tag for terms added by HRA and HuBMAP team members.")
++AnnotationAssertion(rdfs:label cl:add_by_HRA "add_by_HRA")
++AnnotationAssertion(obo:IAO_0000233 cl:add_by_HRA <https://github.com/obophenotype/cell-ontology/issues/3590>)
++SubAnnotationPropertyOf(cl:add_by_HRA oboInOwl:SubsetProperty)
++
+ # Annotation Property: cl:added_for_HCA (cl:added_for_HCA)
+ 
+ SubAnnotationPropertyOf(cl:added_for_HCA oboInOwl:SubsetProperty)
+@@ -36002,4 +36011,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)
