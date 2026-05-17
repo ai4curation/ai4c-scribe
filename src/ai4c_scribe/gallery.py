@@ -328,10 +328,9 @@ def collect_gallery_data(analysis_dir: Path, *, max_diff_lines: int = 200) -> di
 
             # Serialize dates to strings for JSON
             metadata = dict(frontmatter)
-            for key in ("issue_created_at", "pr_merged_at", "curated_at",
-                        "issue_closed_at"):
-                if key in metadata and hasattr(metadata[key], "isoformat"):
-                    metadata[key] = metadata[key].isoformat()
+            for key, val in metadata.items():
+                if hasattr(val, "isoformat"):
+                    metadata[key] = val.isoformat()
 
             cases.append({
                 "pr_number": pr_number,
@@ -705,6 +704,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .attempt-link { font-size: 11px; color: #89b4fa; text-decoration: none; margin-left: 4px; }
 .attempt-link:hover { text-decoration: underline; }
 .agent-comment { font-size: 13px; border-left: 3px solid #ddd; padding-left: 12px; margin-bottom: 12px; }
+.quality-warnings { margin-bottom: 12px; }
+.quality-warning { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 8px 12px; margin-bottom: 8px; font-size: 13px; line-height: 1.5; color: #92400e; }
 </style>
 </head>
 <body>
@@ -1107,6 +1108,35 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     if (m.scoping) badges.innerHTML += badgeHtml('scoping', m.scoping, 'badge badge-scoping');
     if (m.review_outcome) badges.innerHTML += badgeHtml('review_outcome', m.review_outcome, 'badge badge-review_outcome');
     if (m.pr_author) badges.innerHTML += badgeHtml('author', '@' + m.pr_author, 'badge badge-author');
+    if (m.case_quality) {
+      var qCls = m.case_quality === 'poor' ? 'badge badge-difficulty-hard' : m.case_quality === 'ok' ? 'badge badge-difficulty-medium' : 'badge badge-difficulty-simple';
+      badges.innerHTML += '<span class="badge ' + qCls + '">quality: ' + escHtml(m.case_quality) + '</span>';
+    }
+    if (m.eval_suitability) {
+      var sCls = m.eval_suitability === 'unusable' ? 'badge badge-difficulty-hard' : m.eval_suitability === 'flawed' ? 'badge badge-difficulty-medium' : 'badge badge-difficulty-simple';
+      badges.innerHTML += '<span class="badge ' + sCls + '">eval: ' + escHtml(m.eval_suitability) + '</span>';
+    }
+
+    // Quality/scoring warnings — remove any old ones first
+    var oldWarnings = document.querySelectorAll('.quality-warnings');
+    oldWarnings.forEach(function(el) { el.remove(); });
+    var warnings = document.createElement('div');
+    warnings.className = 'quality-warnings';
+    if (m.scoring_caveat) {
+      var w = document.createElement('div');
+      w.className = 'quality-warning';
+      w.innerHTML = '<strong>Scoring caveat:</strong> ' + escHtml(m.scoring_caveat);
+      warnings.appendChild(w);
+    }
+    if (m.case_quality_reason) {
+      var w2 = document.createElement('div');
+      w2.className = 'quality-warning';
+      w2.innerHTML = '<strong>Quality reason:</strong> ' + escHtml(m.case_quality_reason);
+      warnings.appendChild(w2);
+    }
+    // Insert warnings before narrative
+    var narrativeEl = document.getElementById('d-narrative');
+    narrativeEl.parentNode.insertBefore(warnings, narrativeEl);
 
     document.getElementById('d-narrative').innerHTML = renderMarkdown(c.narrative_md);
 
