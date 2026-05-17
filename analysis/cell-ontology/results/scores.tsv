@@ -1,4 +1,5 @@
 ontology	issue_number	pr_number	case_type	difficulty	agent_config_tag	model	runtime	eval_repo_pr	f1	precision	recall	jaccard	case	agent
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.5	opencode	604	0.182	0.25	0.143	0.1	cel#3479	std_opencode_g55
 cell-ontology	3597	3598	new_term	hard	v3	gpt-5.4	opencode	598	0.714	0.741	0.69	0.556	cel#3597	std_opencode_g54
 cell-ontology	3584	3585	new_term	hard	v3	gpt-5.4	opencode	597	0.0	0.0	0.0	0.0	cel#3584	std_opencode_g54
 cell-ontology	3590	3591	other	simple	v3	gpt-5.4	opencode	596	0.0	0.0	0.0	0.0	cel#3590	std_opencode_g54
@@ -50,6 +51,7 @@ cell-ontology	3346	3549	axiom_repair	hard	v3	gpt-5.5	opencode	547	0.593	0.667	0.
 cell-ontology	3333	3547	axiom_repair	simple	v3	gpt-5.5	opencode	546	0.429	0.5	0.375	0.273	cel#3333	std_opencode_g55
 cell-ontology	3534	3535	new_term	medium	v3	gpt-5.5	opencode	545	0.0	0.0	0.0	0.0	cel#3534	std_opencode_g55
 cell-ontology	3523	3524	other	simple	v3	gpt-5.5	opencode	543	0.353	0.429	0.3	0.214	cel#3523	std_opencode_g55
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.5	opencode	542	0.182	0.25	0.143	0.1	cel#3479	std_opencode_g55
 cell-ontology	3447	3448	other	medium	v3	claude-opus-4.7	claude	537	0.444	0.375	0.545	0.286	cel#3447	std_claude_op47
 cell-ontology	3597	3598	new_term	hard	v3	gpt-5.4	opencode	536	0.714	0.741	0.69	0.556	cel#3597	std_opencode_g54
 cell-ontology	3590	3591	other	simple	v3	gpt-5.4	opencode	535	0.0	0.0	0.0	0.0	cel#3590	std_opencode_g54
