@@ -8023,6 +8023,20 @@ type and number of attempts, so those can be controlled for.</li>
 <li>Caveat: per-ontology IAA varies (§2); mondo agreement is weakest, so
 mondo reviewer scores carry more uncertainty.</li>
 </ul>
+<h3 id="Coverage-caveat-%E2%80%94-structural-no-coverage-cases">Coverage caveat — structural no-coverage cases<a class="anchor-link" href="#Coverage-caveat-%E2%80%94-structural-no-coverage-cases">¶</a></h3><p>Over the fillable universe (valid/non-poor cases) all 6 target agents are
+100% covered, with <strong>4 (agent, case) slots accepted as measured outcomes</strong>
+(not fillable by re-dispatch — re-running only reproduces the empty result):</p>
+<ul>
+<li><strong>cell #3163</strong> — every agent produces no committed edit
+(<code>sound_gold_no_agent_coverage</code>).</li>
+<li><strong>cell #3559 / std_claude_op47</strong> — Opus issues edits that don't land as
+commits across 6 attempts; other agents scored it (Opus-specific edit
+behaviour on the large <code>cl-edit.owl</code>).</li>
+<li><strong>go #19185, uberon #3591</strong> — eval-base branch step fails for every
+agent (ancient base commit, push timeout).</li>
+</ul>
+<p>An empty / failed-edit result <em>is</em> the agent's measured behaviour; these
+are excluded by the same logic as <code>case_quality: poor</code>.</p>
 </div>
 </div>
 </div>
