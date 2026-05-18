@@ -11,8 +11,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: neuroscience
 best_f1: 0.769
 best_model: claude-opus-4.7
@@ -69,14 +69,16 @@ index e7bfdf082..5fbc53ff9 100644
 
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-opus-4.7 | claude | 0.769 | 0.833 | 0.714 | `e22364c` | [#182](https://github.com/ai4curation/eval-ont-agent-cl/pull/182) | [attempt](attempts/pr182.md) |
 | 2 | claude-sonnet-4.5 | claude | 0.615 | 0.667 | 0.571 | `792d38e` | [#3](https://github.com/ai4curation/eval-ont-agent-cl/pull/3) | [attempt](attempts/pr3.md) |
 | 3 | gpt-5.4 | codex | 0.267 | 0.333 | 0.222 | `7edd46f` | [#6](https://github.com/ai4curation/eval-ont-agent-cl/pull/6) | [attempt](attempts/pr6.md) |
-| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `e540d57` | [#68](https://github.com/ai4curation/eval-ont-agent-cl/pull/68) | [attempt](attempts/pr68.md) |
-| 5 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `e540d57` | [#49](https://github.com/ai4curation/eval-ont-agent-cl/pull/49) | [attempt](attempts/pr49.md) |
-| 6 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `dda1f7e` | [#31](https://github.com/ai4curation/eval-ont-agent-cl/pull/31) | [attempt](attempts/pr31.md) |
-| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dcfde2c` | [#5](https://github.com/ai4curation/eval-ont-agent-cl/pull/5) | [attempt](attempts/pr5.md) |
+| 4 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `997deaa` | [#577](https://github.com/ai4curation/eval-ont-agent-cl/pull/577) | [attempt](attempts/pr577.md) |
+| 5 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `997deaa` | [#514](https://github.com/ai4curation/eval-ont-agent-cl/pull/514) | [attempt](attempts/pr514.md) |
+| 6 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `e540d57` | [#68](https://github.com/ai4curation/eval-ont-agent-cl/pull/68) | [attempt](attempts/pr68.md) |
+| 7 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `e540d57` | [#49](https://github.com/ai4curation/eval-ont-agent-cl/pull/49) | [attempt](attempts/pr49.md) |
+| 8 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `dda1f7e` | [#31](https://github.com/ai4curation/eval-ont-agent-cl/pull/31) | [attempt](attempts/pr31.md) |
+| 9 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dcfde2c` | [#5](https://github.com/ai4curation/eval-ont-agent-cl/pull/5) | [attempt](attempts/pr5.md) |

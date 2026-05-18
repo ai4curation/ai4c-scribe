@@ -11,12 +11,12 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: changes_requested
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 17
+generated_at: '2026-05-17'
 scoping_notes: Changes limited to relabeling one term and updating its synonyms.
 domain_area: oncology
 best_f1: 0.769
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #10206 — chronic myelogenous leukemia, BCR-ABL1 positive
@@ -38,6 +38,49 @@ Relabeled MONDO:0011996 from "chronic myelogenous leukemia, BCR-ABL1 positive" t
 ## Resolution
 
 Easy difficulty overall, though it required a minor judgment call about naming conventions. The multiple commits suggest some back-and-forth about the exact label wording. An agent would need to understand Mondo's relationship with OMIM naming and when to simplify versus preserve qualifier terms.
+
+## Curation Note (data quality)
+
+*Added by claude-opus-4.7, 2026-05-15.*
+
+This is flagged `case_quality: poor` because the gold PR over-reaches the issue,
+making metadiff F1 a poor proxy for the well-scoped attempts.
+
+**What issue #9892 actually asked for** (verified against the issue body and the only
+PR resolving it, #10206 — there are no companion PRs): (1) relabel MONDO:0011996 to
+"chronic myeloid leukemia"; (2) keep "chronic myelogenous leukemia, BCR-ABL1 positive"
+as a synonym. The issue body cites three source URLs (cancer.gov, medlineplus.gov,
+cancer.org).
+
+**What gold PR #10206 additionally did, none of it requested by the issue:**
+
+- Repointed the existing `synonym: "chronic myeloid leukemia" EXACT` xref list from
+  `[DOID:8552, NCIT:C3174, Orphanet:521]` to additionally include the three issue
+  URLs **plus the human curator's own ORCID** `https://orcid.org/0000-0001-9310-0163`
+  (the ORCID is not derivable from the issue by any agent).
+- Deleted `synonym: "leukemia, chronic myeloid" RELATED []`,
+  `synonym: "leukemia, chronic myeloid, Philadelphia chromosome positive, somatic"
+  EXACT []`, and `synonym: "leukemia, Philadelphia chromosome-positive, resistant to
+  imatinib, Somatic mutation" EXACT []`.
+- Added `synonym: "leukimia, chronic myeloid" EXACT [OMIM:608232]` — a verbatim,
+  typo-bearing OMIM-pipeline synonym introduced by the PR's "normalize to fix failed
+  qc" / "fix failed qc of double genes" commits, not a curation decision tied to the
+  issue.
+
+**Consequence for scoring.** Every well-scoped attempt is capped at ~0.769 F1 purely
+because it (correctly) did not reproduce this gold-only OMIM/QC churn. The four 0.769
+runs (#520, #488, #397, #251) and the four 0.741 runs (#435, #82, #63, #44) are
+substantively correct, complete, tightly scoped solutions to the *issue*; their F1
+**under-represents** quality. #251 (kimi-k2.6) is the strongest — it actually read the
+issue's cited URLs and migrated them onto the synonym, matching gold's intent.
+
+Conversely, the two gemma-4-31b runs (#291, #206, F1=0.211) are **genuinely
+incomplete**, not metadiff victims: they skipped the three `is_a` referrer comment
+updates and the `IAO:0000233` term-tracker item, left an EXACT synonym identical to the
+new primary label (a likely Mondo QC failure), and made inaccurate self-reports
+("moved to synonyms list" when no synonym was added). For these runs the low F1 is
+representative. Downstream aggregation should down-weight the 0.769/0.741 cap as a gold
+artifact but treat the gemma gap as real.
 
 ## Human Diff
 
@@ -111,17 +154,24 @@ index 1d63d0424f..29e09aaed4 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (17)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#520](https://github.com/ai4curation/eval-ont-agent-mondo/pull/520) | [attempt](attempts/pr520.md) |
-| 2 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#488](https://github.com/ai4curation/eval-ont-agent-mondo/pull/488) | [attempt](attempts/pr488.md) |
-| 3 | claude-opus-4.7 | claude | 0.769 | 0.667 | 0.909 | `4514441` | [#397](https://github.com/ai4curation/eval-ont-agent-mondo/pull/397) | [attempt](attempts/pr397.md) |
-| 4 | kimi-k2.6 | opencode | 0.769 | 0.667 | 0.909 | `c5db975` | [#251](https://github.com/ai4curation/eval-ont-agent-mondo/pull/251) | [attempt](attempts/pr251.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.741 | 0.667 | 0.833 | `65a5b11` | [#435](https://github.com/ai4curation/eval-ont-agent-mondo/pull/435) | [attempt](attempts/pr435.md) |
-| 6 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#82](https://github.com/ai4curation/eval-ont-agent-mondo/pull/82) | [attempt](attempts/pr82.md) |
-| 7 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#63](https://github.com/ai4curation/eval-ont-agent-mondo/pull/63) | [attempt](attempts/pr63.md) |
-| 8 | gpt-5.5 | codex | 0.741 | 0.667 | 0.833 | `fc7a3ab` | [#44](https://github.com/ai4curation/eval-ont-agent-mondo/pull/44) | [attempt](attempts/pr44.md) |
-| 9 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#291](https://github.com/ai4curation/eval-ont-agent-mondo/pull/291) | [attempt](attempts/pr291.md) |
-| 10 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#206](https://github.com/ai4curation/eval-ont-agent-mondo/pull/206) | [attempt](attempts/pr206.md) |
+| 1 | gpt-5.4 | codex | 0.769 | 0.667 | 0.909 | `4bcd24d` | [#568](https://github.com/ai4curation/eval-ont-agent-mondo/pull/568) | [attempt](attempts/pr568.md) |
+| 2 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#520](https://github.com/ai4curation/eval-ont-agent-mondo/pull/520) | [attempt](attempts/pr520.md) |
+| 3 | claude-sonnet-4.5 | copilot | 0.769 | 0.667 | 0.909 | `e3e3dd9` | [#488](https://github.com/ai4curation/eval-ont-agent-mondo/pull/488) | [attempt](attempts/pr488.md) |
+| 4 | claude-opus-4.7 | claude | 0.769 | 0.667 | 0.909 | `4514441` | [#397](https://github.com/ai4curation/eval-ont-agent-mondo/pull/397) | [attempt](attempts/pr397.md) |
+| 5 | kimi-k2.6 | opencode | 0.769 | 0.667 | 0.909 | `c5db975` | [#251](https://github.com/ai4curation/eval-ont-agent-mondo/pull/251) | [attempt](attempts/pr251.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.741 | 0.667 | 0.833 | `65a5b11` | [#435](https://github.com/ai4curation/eval-ont-agent-mondo/pull/435) | [attempt](attempts/pr435.md) |
+| 7 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#82](https://github.com/ai4curation/eval-ont-agent-mondo/pull/82) | [attempt](attempts/pr82.md) |
+| 8 | gpt-5.5 | opencode | 0.741 | 0.667 | 0.833 | `65a5b11` | [#63](https://github.com/ai4curation/eval-ont-agent-mondo/pull/63) | [attempt](attempts/pr63.md) |
+| 9 | gpt-5.5 | codex | 0.741 | 0.667 | 0.833 | `fc7a3ab` | [#44](https://github.com/ai4curation/eval-ont-agent-mondo/pull/44) | [attempt](attempts/pr44.md) |
+| 10 | claude-haiku-4.5 | claude | 0.720 | 0.600 | 0.900 | `97c8008` | [#599](https://github.com/ai4curation/eval-ont-agent-mondo/pull/599) | [attempt](attempts/pr599.md) |
+| 11 | gpt-5.4 | opencode | 0.400 | 0.267 | 0.800 | `b55172e` | [#756](https://github.com/ai4curation/eval-ont-agent-mondo/pull/756) | [attempt](attempts/pr756.md) |
+| 12 | gpt-5.4 | opencode | 0.400 | 0.267 | 0.800 | `b55172e` | [#703](https://github.com/ai4curation/eval-ont-agent-mondo/pull/703) | [attempt](attempts/pr703.md) |
+| 13 | gpt-5.4 | codex | 0.400 | 0.267 | 0.800 | `6c971b8` | [#14](https://github.com/ai4curation/eval-ont-agent-mondo/pull/14) | [attempt](attempts/pr14.md) |
+| 14 | gpt-5.4 | codex | 0.400 | 0.267 | 0.800 | `bc85eb4` | [#5](https://github.com/ai4curation/eval-ont-agent-mondo/pull/5) | [attempt](attempts/pr5.md) |
+| 15 | claude-haiku-4.5 | claude | 0.400 | 0.267 | 0.800 | `866cca0` | [#3](https://github.com/ai4curation/eval-ont-agent-mondo/pull/3) | [attempt](attempts/pr3.md) |
+| 16 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#291](https://github.com/ai4curation/eval-ont-agent-mondo/pull/291) | [attempt](attempts/pr291.md) |
+| 17 | gemma-4-31b | opencode | 0.211 | 0.133 | 0.500 | `faea8f9` | [#206](https://github.com/ai4curation/eval-ont-agent-mondo/pull/206) | [attempt](attempts/pr206.md) |

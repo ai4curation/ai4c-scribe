@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: changes_requested
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: renal
 best_f1: 0.706
 best_model: claude-haiku-4.5
@@ -35,6 +35,22 @@ Added 14 new lines to `cl-edit.owl` defining the tPC-IC term with a class declar
 ## Resolution
 
 The PR required changes during review before approval and merge, going through 7 commits total. Medium difficulty because modeling a transitional cell state between two existing cell types requires careful consideration of the ontological relationship -- it is not simply a subclass of either parent type but represents a hybrid phenotype that needed appropriate axiomatization.
+
+## Curation Note (data quality)
+
+`case_quality: poor` (flagged by claude-opus-4.7, 2026-05-16). Step 3a confirms this is a **single-PR resolution** of issue #3259 — PR #3450 fully resolves it; there are no companion PRs, so the union-of-PRs concern does not apply.
+
+The case is poor for two Step 3b reasons:
+
+1. **Placeholder-vs-canonical CL ID artifact (decisive).** The cl-agent-config instructs agents to mint new terms with an ID from the `CL_99xxxxx` temporary range (`9900000-9999999`). The blinded gold human PR landed on `CL_9900001`. Every line of a new-term diff embeds the subject IRI, so an attempt's metadiff score is determined by whether it coincidentally picked the same placeholder:
+   - **ID = CL_9900001** → #91 (haiku-4.5, F1 0.706), #65 / #46 (gpt-5.5/opencode, F1 0.696, duplicate runs), #27 (gpt-5.5/codex, F1 0.636)
+   - **ID = CL_9900000** → #272 (opus-4.7) and #200 (sonnet-4.5), F1 **0.000**
+   - **ID = CL_9903259** (derived from issue #3259) → #82 (gpt-5.4/codex), F1 **0.000**
+   All seven attempts produced an ontologically correct and essentially equivalent term (correct parent `CL_1000454`, `part_of UBERON_0001232`, both requested synonyms with correct types, both contributor ORCIDs, PMID-xref'd definition). The three F1=0 results reflect ID luck only, **not** a content failure. All seven are graded `outcome: success`.
+
+2. **Gold has an out-of-scope serialization-order edit.** PR #3450's diff also flips an annotation-property comment from `# Annotation Property: oboInOwl:hasDbXref (has cross-reference)` to `(database_cross_reference)` — a ROBOT/serialization artifact the issue never requested and that no agent could or should reproduce. This depresses recall (and hence F1) on even the ID-matching attempts, so the metadiff under-represents their quality too.
+
+Downstream scoring/aggregation should exclude or down-weight this case's metadiff and treat all attempts as substantive successes. Note also that #46 is a byte-identical duplicate of #65 (same run/blob) and should count once.
 
 ## Human Diff
 
@@ -82,7 +98,7 @@ index 51d0f7774..601768459 100644
 
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -90,6 +106,8 @@ index 51d0f7774..601768459 100644
 | 2 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | `3623b1a` | [#65](https://github.com/ai4curation/eval-ont-agent-cl/pull/65) | [attempt](attempts/pr65.md) |
 | 3 | gpt-5.5 | opencode | 0.696 | 0.727 | 0.667 | `3623b1a` | [#46](https://github.com/ai4curation/eval-ont-agent-cl/pull/46) | [attempt](attempts/pr46.md) |
 | 4 | gpt-5.5 | codex | 0.636 | 0.636 | 0.636 | `85668d0` | [#27](https://github.com/ai4curation/eval-ont-agent-cl/pull/27) | [attempt](attempts/pr27.md) |
-| 5 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `10f66ad` | [#272](https://github.com/ai4curation/eval-ont-agent-cl/pull/272) | [attempt](attempts/pr272.md) |
-| 6 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `cd6ae51` | [#200](https://github.com/ai4curation/eval-ont-agent-cl/pull/200) | [attempt](attempts/pr200.md) |
-| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `c91bfd7` | [#82](https://github.com/ai4curation/eval-ont-agent-cl/pull/82) | [attempt](attempts/pr82.md) |
+| 5 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `00f884a` | [#573](https://github.com/ai4curation/eval-ont-agent-cl/pull/573) | [attempt](attempts/pr573.md) |
+| 6 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `00f884a` | [#511](https://github.com/ai4curation/eval-ont-agent-cl/pull/511) | [attempt](attempts/pr511.md) |
+| 7 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `10f66ad` | [#272](https://github.com/ai4curation/eval-ont-agent-cl/pull/272) | [attempt](attempts/pr272.md) |
+| 8 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `cd6ae51` | [#200](https://github.com/ai4curation/eval-ont-agent-cl/pull/200) | [attempt](attempts/pr200.md) |
+| 9 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `c91bfd7` | [#82](https://github.com/ai4curation/eval-ont-agent-cl/pull/82) | [attempt](attempts/pr82.md) |

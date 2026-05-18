@@ -19,6 +19,11 @@ review_outcome: changes_requested
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Synonym addition that required scope correction across multiple commits, illustrating the importance of synonym type accuracy.
+case_quality: ok
+case_quality_reason: metadiff_underrepresents_synonym_provenance_and_spelling
+scoring_caveat: "Synonym line matching is dominated by requester ORCID provenance plus exact spelling and capitalization; attempts with substantively correct synonym additions may only match the term tracker line."
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

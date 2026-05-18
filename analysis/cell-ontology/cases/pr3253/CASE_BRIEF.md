@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 domain_area: connective-tissue
 best_f1: 0.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3253 — [NTR] quiescent fibroblast
@@ -35,6 +35,24 @@ Added 11 new lines to `cl-edit.owl` defining the quiescent fibroblast term. This
 ## Resolution
 
 Approved on first review. Medium difficulty because creating a cell-state-qualified term requires understanding the distinction between cell states and cell types in ontology modeling, choosing appropriate GO terms for the quiescent state, and correctly structuring the logical definition.
+
+## Curation Note (data quality)
+
+**Flagged poor by claude-opus-4.7 on 2026-05-16.**
+
+This is a clean, fully-specified single-PR NTR. Step 3a does not apply: PR #3253 is the *complete and only* human resolution (no companion PRs; `gh search prs` for "3252" and "quiescent fibroblast" returns only #3253; the related #2097 is a parent tracking issue, not a separate resolving PR; approved first time by RiveraAndrea83).
+
+The case is nonetheless a **poor evaluation reference** due to the **placeholder-vs-canonical ID artifact**:
+
+- The `ai4curation/cl-agent-config` CLAUDE.md *explicitly mandates*: "New term IDs MUST start with CL_99xxxxx (as specified in Datatype: idrange:81 in src/ontology/cl-idranges.owl)". All 8 attempts complied, using `CL_9900001` or `CL_4072103`.
+- The gold PR #3253 used the curator's live-assigned canonical ID **`CL_4052071`** (from a real curator idrange, with `terms:contributor` ORCID 0009-0000-8480-9277).
+- The new term's entire stanza, plus its `Declaration(Class(...))` line, is ID-anchored, and the term sorts to a different file location depending on its ID. An ID-naive line-level metadiff therefore yields **exactly F1=0.000 / P=0 / R=0 for all 8 attempts**, regardless of content correctness.
+
+Substantively, the agents performed well. The gold definition is *verbatim* the issue-requested definition; pr281 (sonnet-4.5) and pr90 (haiku-4.5) reproduced it byte-for-byte, and pr90/pr14 even matched gold's `hasExactSynonym` scope. Several attempts added value beyond gold (pr57/pr41 cross-reference `circulating fibrocyte` CL:0000135; pr14 verified and correctly dropped the unrelated DOI; pr26 added a defensible `participates in GO:0044838` logical definition).
+
+Config-driven divergences from gold that also depress metadiff but are **not agent errors**: agents add `IAO_0000233` term-tracker links and `dc:creator "GitHub Copilot"` because cl-agent-config instructs it, whereas the human gold used `terms:contributor` ORCID and no tracker item.
+
+**Downstream guidance:** exclude or down-weight this case in F1 aggregation; judge attempts on substance against the issue spec and gold content. Best substantive outcomes: pr281, pr273, pr57/pr41, pr14, pr10 (success); pr26 (success, mild over-modeling); pr90 (partial — dropped xrefs/comment).
 
 ## Human Diff
 
@@ -71,15 +89,17 @@ index fd1ae3fd5..54be84d7a 100644
 
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `123c646` | [#281](https://github.com/ai4curation/eval-ont-agent-cl/pull/281) | [attempt](attempts/pr281.md) |
-| 2 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `a0bad0c` | [#273](https://github.com/ai4curation/eval-ont-agent-cl/pull/273) | [attempt](attempts/pr273.md) |
-| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `53b7fa9` | [#90](https://github.com/ai4curation/eval-ont-agent-cl/pull/90) | [attempt](attempts/pr90.md) |
-| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `23bb2b2` | [#57](https://github.com/ai4curation/eval-ont-agent-cl/pull/57) | [attempt](attempts/pr57.md) |
-| 5 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `23bb2b2` | [#41](https://github.com/ai4curation/eval-ont-agent-cl/pull/41) | [attempt](attempts/pr41.md) |
-| 6 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `259a71e` | [#26](https://github.com/ai4curation/eval-ont-agent-cl/pull/26) | [attempt](attempts/pr26.md) |
-| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `38123a4` | [#14](https://github.com/ai4curation/eval-ont-agent-cl/pull/14) | [attempt](attempts/pr14.md) |
-| 8 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `79cc581` | [#10](https://github.com/ai4curation/eval-ont-agent-cl/pull/10) | [attempt](attempts/pr10.md) |
+| 1 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `c774463` | [#564](https://github.com/ai4curation/eval-ont-agent-cl/pull/564) | [attempt](attempts/pr564.md) |
+| 2 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `c774463` | [#503](https://github.com/ai4curation/eval-ont-agent-cl/pull/503) | [attempt](attempts/pr503.md) |
+| 3 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `123c646` | [#281](https://github.com/ai4curation/eval-ont-agent-cl/pull/281) | [attempt](attempts/pr281.md) |
+| 4 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `a0bad0c` | [#273](https://github.com/ai4curation/eval-ont-agent-cl/pull/273) | [attempt](attempts/pr273.md) |
+| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `53b7fa9` | [#90](https://github.com/ai4curation/eval-ont-agent-cl/pull/90) | [attempt](attempts/pr90.md) |
+| 6 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `23bb2b2` | [#57](https://github.com/ai4curation/eval-ont-agent-cl/pull/57) | [attempt](attempts/pr57.md) |
+| 7 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `23bb2b2` | [#41](https://github.com/ai4curation/eval-ont-agent-cl/pull/41) | [attempt](attempts/pr41.md) |
+| 8 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `259a71e` | [#26](https://github.com/ai4curation/eval-ont-agent-cl/pull/26) | [attempt](attempts/pr26.md) |
+| 9 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `38123a4` | [#14](https://github.com/ai4curation/eval-ont-agent-cl/pull/14) | [attempt](attempts/pr14.md) |
+| 10 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `79cc581` | [#10](https://github.com/ai4curation/eval-ont-agent-cl/pull/10) | [attempt](attempts/pr10.md) |

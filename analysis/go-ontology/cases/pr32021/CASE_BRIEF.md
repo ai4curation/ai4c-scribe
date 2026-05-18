@@ -12,7 +12,7 @@ scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
 num_agent_attempts: 11
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 domain_area: biological_process
 best_f1: 0.148
 best_model: gpt-5.4

@@ -12,7 +12,7 @@ scoping: loosely_scoped
 scope: structural_refactor
 review_outcome: approved_first_time
 num_agent_attempts: 6
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 scoping_notes: Bulk addition of hundreds of non-human animal disease terms from the
   VeNom coding system.
 domain_area: veterinary-disease
@@ -37,6 +37,20 @@ The PR added 9,006 lines to `src/ontology/mondo-edit.obo` across 3 commits, with
 ## Resolution
 
 Complex difficulty due to the sheer volume of terms and the need for systematic curation decisions. Each VeNom entry required evaluation of whether it represents a true disease (vs. a phenotype or procedure), selection of an appropriate parent class, and construction of valid cross-references. This task is not well-suited to a single agent pass and instead required iterative human curation across multiple PRs addressing the same long-running issue.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` on 2026-05-15 by claude-opus-4.7 after reviewing all 6 attempts.
+
+**Two compounding problems make this an unreliable evaluation case:**
+
+1. **Gold-leakage / eval base-state contamination (primary).** The three attempts reporting F1=1.0 (eval PRs #71, #90, #263) did not produce the scored work. In each eval PR the substantive change is a `github-actions[bot]` commit whose content is **byte-identical to gold PR #10155** — all 724 curator-minted MONDO IDs in the same sequence (MONDO:1010206, MONDO:1013000–1013014, …), identical ORCID provenance, identical `disease_has_infectious_agent NCBITaxon:*` assignments, even mirrored commit messages ("update due to qc failure" / "Add VeNom non-human animal disease analogs"). The actual `eval-agent` commit in every one of these PRs is **empty (0 additions / 0 deletions)**. Independently minting 724 brand-new canonical MONDO IDs is impossible without the gold; gold PR #10155 only modifies `mondo-edit.obo` (the curated VeNom TSVs were never committed to the repo) and the agent comments themselves state those TSVs were unavailable. The perfect scores are pure contamination artifacts and the true outcome for #71/#90/#263 is **no_output**.
+
+2. **Multi-PR partial gold (Step 3a, secondary).** Issue #5726 (opened Dec 2022) was a long-running VeNom import resolved across at least six human PRs. The eval base branch `eval-base-issue-5726` is pinned at `7fe96d42e` = the merge of **#10145** ("add venom xrefs", Template 1, 229 NHA exact-match xrefs). The gold for this case is **#10155** ("Add non-human animal diseases from VeNom", Template 2, 728 new cross-species-analog terms) only. Later body-system tranches (**#10231** infectious diseases, **#10232** reproductive, **#10234** hematopoietic, plus open **#10233** masses, **#10235** endocrine) further resolve the same issue. Scoring any single-pass attempt against #10155 alone never captures the full issue resolution.
+
+**Companion PRs:** #10145 (eval base / Template 1), #10231, #10232, #10234, #10235, #10233.
+
+**Scoring guidance:** Exclude or heavily down-weight this case in aggregation. The three opencode "1.0" runs must not be counted as three independent perfect successes (they share the same leaked diff). The codex runs (#153/#47 = small correct scoped 4-line edit; #158 = unrelated off-target axiom change) are the only attempts reflecting genuine model behavior, and their near-zero metadiff under-represents (#153/#47) the quality of their honest, in-scope reasoning under genuinely missing curated inputs.
 
 ## Human Diff
 

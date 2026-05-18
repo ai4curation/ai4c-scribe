@@ -30,6 +30,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: New gene-disease term for a rare neuromyopathy requiring correct classification and logical axioms
+case_quality: ok
+case_quality_reason: sound_gold_but_gene_disease_new_term_scores_sensitive_to_pattern_details
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

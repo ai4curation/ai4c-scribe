@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 2
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: dental-anatomy
-best_f1: 0.632
-best_model: claude-opus-4.7
+best_f1: 0.923
+best_model: gpt-5.4
 ---
 
 # PR #3603 — NTR: occlusal surface of tooth
@@ -62,9 +62,16 @@ index 989f151e1..138990fd8 100644
 
 ```
 
-## Agent Attempts (2)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.632 | 1.000 | 0.462 | `57b2049` | [#252](https://github.com/ai4curation/eval-ont-agent-uberon/pull/252) | [attempt](attempts/pr252.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.615 | 0.667 | 0.571 | `88fd2c2` | [#298](https://github.com/ai4curation/eval-ont-agent-uberon/pull/298) | [attempt](attempts/pr298.md) |
+| 1 | gpt-5.4 | opencode | 0.923 | 1.000 | 0.857 | `43e2c58` | [#668](https://github.com/ai4curation/eval-ont-agent-uberon/pull/668) | [attempt](attempts/pr668.md) |
+| 2 | gpt-5.4 | opencode | 0.923 | 1.000 | 0.857 | `43e2c58` | [#609](https://github.com/ai4curation/eval-ont-agent-uberon/pull/609) | [attempt](attempts/pr609.md) |
+| 3 | gpt-5.4 | codex | 0.923 | 1.000 | 0.857 | `4a6a1c4` | [#387](https://github.com/ai4curation/eval-ont-agent-uberon/pull/387) | [attempt](attempts/pr387.md) |
+| 4 | gpt-5.5 | opencode | 0.769 | 0.833 | 0.714 | `8365fb1` | [#632](https://github.com/ai4curation/eval-ont-agent-uberon/pull/632) | [attempt](attempts/pr632.md) |
+| 5 | gpt-5.5 | opencode | 0.769 | 0.833 | 0.714 | `8365fb1` | [#571](https://github.com/ai4curation/eval-ont-agent-uberon/pull/571) | [attempt](attempts/pr571.md) |
+| 6 | claude-haiku-4.5 | claude | 0.667 | 0.667 | 0.667 | `4f8e476` | [#501](https://github.com/ai4curation/eval-ont-agent-uberon/pull/501) | [attempt](attempts/pr501.md) |
+| 7 | claude-haiku-4.5 | claude | 0.667 | 0.667 | 0.667 | `4f8e476` | [#373](https://github.com/ai4curation/eval-ont-agent-uberon/pull/373) | [attempt](attempts/pr373.md) |
+| 8 | claude-opus-4.7 | claude | 0.632 | 1.000 | 0.462 | `57b2049` | [#252](https://github.com/ai4curation/eval-ont-agent-uberon/pull/252) | [attempt](attempts/pr252.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.615 | 0.667 | 0.571 | `88fd2c2` | [#298](https://github.com/ai4curation/eval-ont-agent-uberon/pull/298) | [attempt](attempts/pr298.md) |

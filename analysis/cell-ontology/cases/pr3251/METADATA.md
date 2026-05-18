@@ -26,6 +26,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Definition revision requiring domain knowledge about fibroblast-fibrocyte relationship and careful axiom construction
+case_quality: ok
+case_quality_reason: sound_gold_but_requires_modeling_choice_between_equivalence_and_subclass_axioms
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

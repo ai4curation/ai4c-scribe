@@ -19,6 +19,10 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Minimal axiom addition fixing a missing part_of relationship in the clathrin-dependent endocytosis pathway
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

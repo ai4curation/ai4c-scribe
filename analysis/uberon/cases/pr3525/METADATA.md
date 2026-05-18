@@ -25,6 +25,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Logical definition repair for two cardiac foramen terms, replacing non-unique equivalence axioms with subclass assertions
+case_quality: ok
+case_quality_reason: sound_gold_but_requires_equivalence_to_subclass_modeling_repair
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

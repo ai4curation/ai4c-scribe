@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 best_f1: 0.933
 best_model: claude-opus-4.7
 ---
@@ -77,7 +77,7 @@ index a42b54384..0c887671c 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -91,3 +91,5 @@ index a42b54384..0c887671c 100644
 | 8 | gpt-5.5 | opencode | 0.765 | 0.867 | 0.684 | `a7c1bb2` | [#89](https://github.com/ai4curation/eval-ont-agent-go/pull/89) | [attempt](attempts/pr89.md) |
 | 9 | claude-sonnet-4.5 | copilot | 0.692 | 0.600 | 0.818 | `249436b` | [#503](https://github.com/ai4curation/eval-ont-agent-go/pull/503) | [attempt](attempts/pr503.md) |
 | 10 | claude-sonnet-4.5 | copilot | 0.692 | 0.600 | 0.818 | `249436b` | [#448](https://github.com/ai4curation/eval-ont-agent-go/pull/448) | [attempt](attempts/pr448.md) |
+| 11 | gpt-5.4 | opencode | 0.667 | 0.733 | 0.611 | `72fef7d` | [#677](https://github.com/ai4curation/eval-ont-agent-go/pull/677) | [attempt](attempts/pr677.md) |
+| 12 | gpt-5.4 | opencode | 0.667 | 0.733 | 0.611 | `72fef7d` | [#629](https://github.com/ai4curation/eval-ont-agent-go/pull/629) | [attempt](attempts/pr629.md) |

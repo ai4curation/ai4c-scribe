@@ -12,13 +12,13 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: changes_requested
-num_agent_attempts: 4
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 scoping_notes: Changes focused on porphyria disease branch with minor supporting infrastructure
   changes.
 domain_area: rare-disease
-best_f1: 0.441
-best_model: claude-opus-4.7
+best_f1: 0.923
+best_model: gpt-5.4
 ---
 
 # PR #9770 — Updates to Gene-Disease Classifications and Inheritance Patterns for Porphyria Disease Entities - ClinGen EIM group
@@ -40,6 +40,43 @@ The PR made 60 additions and 9 deletions across `src/ontology/mondo-edit.obo`, i
 ## Resolution
 
 Hard difficulty because the porphyria branch restructure required coordinating multiple types of changes (new terms, relabeling, inheritance updates, reclassification) across several related terms while maintaining consistency with ClinGen's expert classifications. An agent would need to interpret the spreadsheet-based requirements and apply domain-specific knowledge about porphyria subtypes.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` by claude-opus-4.7 on 2026-05-15.
+
+**Single-PR resolution (no companion PRs).** Issue #9703 was resolved entirely by PR #9770
+(`gh search prs "9703"` returns only #9770; the other porphyria PRs — #8394, #8206, #5151,
+#2855 — are unrelated older work). Step 3a does not apply.
+
+**Placeholder-vs-canonical MONDO ID artifact (primary reason).** The gold PR created three
+new grouping terms with registered IDs:
+
+- `MONDO:0700382` HMBS-related hepatic porphyria
+- `MONDO:0700383` PPOX-related hepatic porphyria
+- `MONDO:0700384` porphyria, acute intermittent, nonerythroid variant
+
+The `ai4curation/mondo-agent-config` CLAUDE.md explicitly instructs agents: *"New terms
+start MONDO:777xxxx"*. All four attempts correctly followed this and used
+`MONDO:7770003/7770004/7770005`. OBO metadiff does not normalize new-term ID minting, so
+every `id:`, `name:`, `def:`, `intersection_of:` line on the three new terms **and** every
+lumping `is_a:` axiom that references a new ID (≈6 lines pointing existing porphyria
+entities at the new HMBS/PPOX/UROD groupers) is scored as a miss by construction, in every
+attempt — including the strongest run. This systematically caps F1 far below substantive
+quality (best observed F1 = 0.441; substance is appreciably better). Downstream
+scoring/aggregation should down-weight or exclude this case, and reviewers should judge
+attempts on substance (correct gene-grouping equivalence axioms `hepatic porphyria` +
+`has_material_basis_in_germline_mutation_in <gene>`, correct lumping targets, faithful
+GCEP definitions, ClinGen-attributed synonyms, `term_tracker_item` provenance) rather than
+the metadiff.
+
+**Separate genuine error common to all attempts (NOT an artifact).** Every agent renamed
+the primary `name:` of ~6 existing terms (MONDO:0008319, 0009902, 0010420, 0013000,
+0100498, 0800180), demoting the original labels to synonyms. The curator deliberately did
+**not** rename any existing term — the ClinGen names were added only as EXACT synonyms
+(with the `OMO:0002001` ClinGen qualifier) while primary labels were preserved. This is a
+legitimate quality finding scored in the individual reviews (`wrong_pattern`) and is not
+covered by the ID-artifact caveat.
 
 ## Human Diff
 
@@ -247,11 +284,17 @@ index 1cb7a9c08b..960785b57e 100644
 ... (97 more lines truncated)
 ```
 
-## Agent Attempts (4)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.441 | 0.531 | 0.377 | `45d5d9b` | [#409](https://github.com/ai4curation/eval-ont-agent-mondo/pull/409) | [attempt](attempts/pr409.md) |
-| 2 | gpt-5.5 | opencode | 0.268 | 0.347 | 0.218 | `8b95d2a` | [#91](https://github.com/ai4curation/eval-ont-agent-mondo/pull/91) | [attempt](attempts/pr91.md) |
-| 3 | gpt-5.5 | opencode | 0.268 | 0.347 | 0.218 | `8b95d2a` | [#74](https://github.com/ai4curation/eval-ont-agent-mondo/pull/74) | [attempt](attempts/pr74.md) |
-| 4 | gpt-5.5 | codex | 0.252 | 0.286 | 0.226 | `b0039e3` | [#53](https://github.com/ai4curation/eval-ont-agent-mondo/pull/53) | [attempt](attempts/pr53.md) |
+| 1 | gpt-5.4 | codex | 0.923 | 0.857 | 1.000 | `960785b` | [#576](https://github.com/ai4curation/eval-ont-agent-mondo/pull/576) | [attempt](attempts/pr576.md) |
+| 2 | gpt-5.4 | codex | 0.923 | 0.857 | 1.000 | `960785b` | [#156](https://github.com/ai4curation/eval-ont-agent-mondo/pull/156) | [attempt](attempts/pr156.md) |
+| 3 | claude-opus-4.7 | claude | 0.441 | 0.531 | 0.377 | `45d5d9b` | [#409](https://github.com/ai4curation/eval-ont-agent-mondo/pull/409) | [attempt](attempts/pr409.md) |
+| 4 | gpt-5.4 | opencode | 0.273 | 0.306 | 0.246 | `28c7285` | [#769](https://github.com/ai4curation/eval-ont-agent-mondo/pull/769) | [attempt](attempts/pr769.md) |
+| 5 | gpt-5.4 | opencode | 0.273 | 0.306 | 0.246 | `28c7285` | [#714](https://github.com/ai4curation/eval-ont-agent-mondo/pull/714) | [attempt](attempts/pr714.md) |
+| 6 | gpt-5.5 | opencode | 0.268 | 0.347 | 0.218 | `8b95d2a` | [#91](https://github.com/ai4curation/eval-ont-agent-mondo/pull/91) | [attempt](attempts/pr91.md) |
+| 7 | gpt-5.5 | opencode | 0.268 | 0.347 | 0.218 | `8b95d2a` | [#74](https://github.com/ai4curation/eval-ont-agent-mondo/pull/74) | [attempt](attempts/pr74.md) |
+| 8 | gpt-5.5 | codex | 0.252 | 0.286 | 0.226 | `b0039e3` | [#53](https://github.com/ai4curation/eval-ont-agent-mondo/pull/53) | [attempt](attempts/pr53.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.243 | 0.286 | 0.212 | `175d21f` | [#604](https://github.com/ai4curation/eval-ont-agent-mondo/pull/604) | [attempt](attempts/pr604.md) |
+| 10 | claude-sonnet-4.5 | claude | 0.243 | 0.286 | 0.212 | `175d21f` | [#547](https://github.com/ai4curation/eval-ont-agent-mondo/pull/547) | [attempt](attempts/pr547.md) |

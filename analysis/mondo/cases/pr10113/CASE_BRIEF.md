@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: changes_requested
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 scoping_notes: PR relabels an existing term and updates its classification and synonyms
   based on user request.
 domain_area: metabolic-disease
@@ -37,6 +37,49 @@ The PR modified MONDO:0011236 in `src/ontology/mondo-edit.obo` with 13 additions
 ## Resolution
 
 Medium difficulty because the curator needed to recognize that an existing term matched the new term request rather than creating a duplicate. The review process involved a classification question from the reviewer, requiring the contributor to confirm that the OMIM entry and the requested term were the same concept. An agent would need to search for existing terms before creating new ones and handle reviewer questions about hierarchical placement.
+
+## Curation Note (data quality)
+
+Flagged by claude-opus-4.7 on 2026-05-15 during agent-attempt review.
+
+**This is NOT a poor case in the gold-PR sense:** PR #10113 is the complete and
+sole human resolution of issue #9861. The other PR returned by search, #10090, is
+merely the conflicted predecessor that #10113 replaced (`replace #10090` in the PR
+body) — there are no companion PRs, and the CASE_BRIEF gold diff matches the merged
+PR diff byte-for-byte.
+
+**Why every attempt scores low F1 (0.188–0.421), and how to read it:** the low
+scores are genuine substantive divergence, not a metadiff artifact. Two factors:
+
+1. **Contradictory primary-label requirement.** The issue body lists
+   "Hyperinsulinemic hypoglycemia, familial 3" as the *preferred gene-related
+   syndrome label* and "GCK-related hyperinsulinism" as a *synonym*. The comment
+   thread then reverses this: `tpollin` (Co-Chair, ClinGen Monogenic Diabetes GCEP)
+   explicitly asks for "GCK-related hyperinsulinism" as the **primary** term. The
+   gold curator chose the OMIM-style label "hyperinsulinemic hypoglycemia, familial,
+   3" as primary and made "GCK-related hyperinsulinism" a ClinGen-preferred EXACT
+   synonym (`{OMO:0002001=".../clingen"}`) — the opposite of `tpollin`'s stated
+   request. 9/10 agents reasonably honored the explicit ClinGen request and were
+   systematically penalized on precision for it. Treat the primary-label choice as a
+   defensible interpretation, not an error.
+
+2. **Reviewer-driven reclassification.** After a CHANGES_REQUESTED review by
+   `katiermullen` about classification, the gold *removed* `is_a: MONDO:0015624`
+   (diazoxide-sensitive diffuse hyperinsulinism), added
+   `relationship: excluded_subClassOf MONDO:0015624`, and added
+   `is_a: MONDO:0019010` (congenital isolated hyperinsulinism). This is not derivable
+   from the issue text; no agent (single-shot, no reviewer dialogue) could foresee
+   it. Do not penalize attempts for missing it beyond noting incompleteness.
+
+**Recommended grading basis:** judge attempts on (a) the core disambiguation —
+recognizing MONDO:0011236 already covers the request and updating it in place rather
+than minting a duplicate; (b) refreshing the definition with the supplied
+PMID:15277402/24890200/34680961 (and retaining Orphanet:79299); (c) correct ClinGen
+`OMO:0002001` synonym handling; (d) provenance hygiene — adding the `#9861`
+`IAO:0000233` tracker *without dropping* the existing `#4985` tracker. Metadiff F1
+materially under-represents quality for the higher-tier attempts (kimi #270, the
+gpt/copilot runs) and roughly tracks quality for the weakest (haiku #194, which also
+has a malformed `intersection_of` axiom and an empty PR narrative).
 
 ## Human Diff
 
@@ -93,7 +136,7 @@ index 70c79e85cd..819fd34156 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -103,7 +146,9 @@ index 70c79e85cd..819fd34156 100644
 | 4 | gpt-5.4 | codex | 0.400 | 0.316 | 0.545 | `aab83f4` | [#170](https://github.com/ai4curation/eval-ont-agent-mondo/pull/170) | [attempt](attempts/pr170.md) |
 | 5 | gpt-5.5 | opencode | 0.378 | 0.368 | 0.389 | `3fe151a` | [#76](https://github.com/ai4curation/eval-ont-agent-mondo/pull/76) | [attempt](attempts/pr76.md) |
 | 6 | gpt-5.5 | opencode | 0.378 | 0.368 | 0.389 | `3fe151a` | [#55](https://github.com/ai4curation/eval-ont-agent-mondo/pull/55) | [attempt](attempts/pr55.md) |
-| 7 | gpt-5.5 | codex | 0.312 | 0.263 | 0.385 | `bbf125f` | [#38](https://github.com/ai4curation/eval-ont-agent-mondo/pull/38) | [attempt](attempts/pr38.md) |
-| 8 | claude-sonnet-4.5 | claude | 0.250 | 0.211 | 0.308 | `e79778b` | [#447](https://github.com/ai4curation/eval-ont-agent-mondo/pull/447) | [attempt](attempts/pr447.md) |
-| 9 | claude-opus-4.7 | claude | 0.240 | 0.158 | 0.500 | `6b2861c` | [#381](https://github.com/ai4curation/eval-ont-agent-mondo/pull/381) | [attempt](attempts/pr381.md) |
-| 10 | claude-haiku-4.5 | claude | 0.188 | 0.158 | 0.231 | `3009f15` | [#194](https://github.com/ai4curation/eval-ont-agent-mondo/pull/194) | [attempt](attempts/pr194.md) |
+| 7 | gpt-5.4 | opencode | 0.323 | 0.263 | 0.417 | `d404700` | [#741](https://github.com/ai4curation/eval-ont-agent-mondo/pull/741) | [attempt](attempts/pr741.md) |
+| 8 | gpt-5.4 | opencode | 0.323 | 0.263 | 0.417 | `d404700` | [#685](https://github.com/ai4curation/eval-ont-agent-mondo/pull/685) | [attempt](attempts/pr685.md) |
+| 9 | gpt-5.5 | codex | 0.312 | 0.263 | 0.385 | `bbf125f` | [#38](https://github.com/ai4curation/eval-ont-agent-mondo/pull/38) | [attempt](attempts/pr38.md) |
+| 10 | claude-sonnet-4.5 | claude | 0.250 | 0.211 | 0.308 | `e79778b` | [#447](https://github.com/ai4curation/eval-ont-agent-mondo/pull/447) | [attempt](attempts/pr447.md) |
+| 11 | claude-opus-4.7 | claude | 0.240 | 0.158 | 0.500 | `6b2861c` | [#381](https://github.com/ai4curation/eval-ont-agent-mondo/pull/381) | [attempt](attempts/pr381.md) |
+| 12 | claude-haiku-4.5 | claude | 0.188 | 0.158 | 0.231 | `3009f15` | [#194](https://github.com/ai4curation/eval-ont-agent-mondo/pull/194) | [attempt](attempts/pr194.md) |

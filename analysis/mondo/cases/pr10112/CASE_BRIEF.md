@@ -11,12 +11,12 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 9
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 scoping_notes: PR adds exactly one new disease term stanza.
 domain_area: rare-disease
 best_f1: 0.609
-best_model: claude-sonnet-4.5
+best_model: claude-haiku-4.5
 ---
 
 # PR #10112 — NTR/KY
@@ -90,16 +90,20 @@ index 8fe17dbb40..9326e393df 100644
 
 ```
 
-## Agent Attempts (9)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.609 | 0.583 | 0.636 | `6e13439` | [#439](https://github.com/ai4curation/eval-ont-agent-mondo/pull/439) | [attempt](attempts/pr439.md) |
-| 2 | claude-sonnet-4.5 | copilot | 0.583 | 0.583 | 0.583 | `e9d3ddd` | [#532](https://github.com/ai4curation/eval-ont-agent-mondo/pull/532) | [attempt](attempts/pr532.md) |
-| 3 | claude-sonnet-4.5 | copilot | 0.583 | 0.583 | 0.583 | `e9d3ddd` | [#491](https://github.com/ai4curation/eval-ont-agent-mondo/pull/491) | [attempt](attempts/pr491.md) |
-| 4 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | `4d28596` | [#383](https://github.com/ai4curation/eval-ont-agent-mondo/pull/383) | [attempt](attempts/pr383.md) |
-| 5 | kimi-k2.6 | opencode | 0.538 | 0.583 | 0.500 | `2920954` | [#268](https://github.com/ai4curation/eval-ont-agent-mondo/pull/268) | [attempt](attempts/pr268.md) |
-| 6 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `df272e4` | [#75](https://github.com/ai4curation/eval-ont-agent-mondo/pull/75) | [attempt](attempts/pr75.md) |
-| 7 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `df272e4` | [#56](https://github.com/ai4curation/eval-ont-agent-mondo/pull/56) | [attempt](attempts/pr56.md) |
-| 8 | gpt-5.5 | codex | 0.500 | 0.500 | 0.500 | `52d46aa` | [#36](https://github.com/ai4curation/eval-ont-agent-mondo/pull/36) | [attempt](attempts/pr36.md) |
-| 9 | gpt-5.4 | codex | 0.500 | 0.583 | 0.438 | `1b5bcc9` | [#20](https://github.com/ai4curation/eval-ont-agent-mondo/pull/20) | [attempt](attempts/pr20.md) |
+| 1 | claude-haiku-4.5 | claude | 0.609 | 0.583 | 0.636 | `06b249e` | [#602](https://github.com/ai4curation/eval-ont-agent-mondo/pull/602) | [attempt](attempts/pr602.md) |
+| 2 | claude-haiku-4.5 | claude | 0.609 | 0.583 | 0.636 | `06b249e` | [#469](https://github.com/ai4curation/eval-ont-agent-mondo/pull/469) | [attempt](attempts/pr469.md) |
+| 3 | claude-sonnet-4.5 | claude | 0.609 | 0.583 | 0.636 | `6e13439` | [#439](https://github.com/ai4curation/eval-ont-agent-mondo/pull/439) | [attempt](attempts/pr439.md) |
+| 4 | claude-sonnet-4.5 | copilot | 0.583 | 0.583 | 0.583 | `e9d3ddd` | [#532](https://github.com/ai4curation/eval-ont-agent-mondo/pull/532) | [attempt](attempts/pr532.md) |
+| 5 | claude-sonnet-4.5 | copilot | 0.583 | 0.583 | 0.583 | `e9d3ddd` | [#491](https://github.com/ai4curation/eval-ont-agent-mondo/pull/491) | [attempt](attempts/pr491.md) |
+| 6 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | `4d28596` | [#383](https://github.com/ai4curation/eval-ont-agent-mondo/pull/383) | [attempt](attempts/pr383.md) |
+| 7 | kimi-k2.6 | opencode | 0.538 | 0.583 | 0.500 | `2920954` | [#268](https://github.com/ai4curation/eval-ont-agent-mondo/pull/268) | [attempt](attempts/pr268.md) |
+| 8 | gpt-5.4 | opencode | 0.500 | 0.500 | 0.500 | `ad127a1` | [#740](https://github.com/ai4curation/eval-ont-agent-mondo/pull/740) | [attempt](attempts/pr740.md) |
+| 9 | gpt-5.4 | opencode | 0.500 | 0.500 | 0.500 | `ad127a1` | [#686](https://github.com/ai4curation/eval-ont-agent-mondo/pull/686) | [attempt](attempts/pr686.md) |
+| 10 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `df272e4` | [#75](https://github.com/ai4curation/eval-ont-agent-mondo/pull/75) | [attempt](attempts/pr75.md) |
+| 11 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `df272e4` | [#56](https://github.com/ai4curation/eval-ont-agent-mondo/pull/56) | [attempt](attempts/pr56.md) |
+| 12 | gpt-5.5 | codex | 0.500 | 0.500 | 0.500 | `52d46aa` | [#36](https://github.com/ai4curation/eval-ont-agent-mondo/pull/36) | [attempt](attempts/pr36.md) |
+| 13 | gpt-5.4 | codex | 0.500 | 0.583 | 0.438 | `1b5bcc9` | [#20](https://github.com/ai4curation/eval-ont-agent-mondo/pull/20) | [attempt](attempts/pr20.md) |

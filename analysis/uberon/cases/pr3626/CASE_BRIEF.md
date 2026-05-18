@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 7
+generated_at: '2026-05-17'
 domain_area: neuroanatomy
 best_f1: 1.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3626 — Edit vestibular nerve ABA xrefs
@@ -54,10 +54,14 @@ index 281bbce91..02593cf1b 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (7)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#320](https://github.com/ai4curation/eval-ont-agent-uberon/pull/320) | [attempt](attempts/pr320.md) |
-| 2 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#257](https://github.com/ai4curation/eval-ont-agent-uberon/pull/257) | [attempt](attempts/pr257.md) |
-| 3 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#190](https://github.com/ai4curation/eval-ont-agent-uberon/pull/190) | [attempt](attempts/pr190.md) |
+| 1 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `02593cf` | [#672](https://github.com/ai4curation/eval-ont-agent-uberon/pull/672) | [attempt](attempts/pr672.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `02593cf` | [#635](https://github.com/ai4curation/eval-ont-agent-uberon/pull/635) | [attempt](attempts/pr635.md) |
+| 3 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `02593cf` | [#577](https://github.com/ai4curation/eval-ont-agent-uberon/pull/577) | [attempt](attempts/pr577.md) |
+| 4 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `02593cf` | [#393](https://github.com/ai4curation/eval-ont-agent-uberon/pull/393) | [attempt](attempts/pr393.md) |
+| 5 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#320](https://github.com/ai4curation/eval-ont-agent-uberon/pull/320) | [attempt](attempts/pr320.md) |
+| 6 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#257](https://github.com/ai4curation/eval-ont-agent-uberon/pull/257) | [attempt](attempts/pr257.md) |
+| 7 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `02593cf` | [#190](https://github.com/ai4curation/eval-ont-agent-uberon/pull/190) | [attempt](attempts/pr190.md) |

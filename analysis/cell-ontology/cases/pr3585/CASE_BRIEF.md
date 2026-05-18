@@ -11,8 +11,8 @@ difficulty: hard
 scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: neuroscience
 best_f1: 0.711
 best_model: claude-haiku-4.5
@@ -35,6 +35,16 @@ Added 188 new lines to `cl-edit.owl` defining 14 myenteric neuron terms. Each te
 ## Resolution
 
 Approved on first review after 12 commits of iterative development. Hard difficulty because designing a coherent hierarchy for 14 related neuron types required understanding enteric nervous system organization, correctly classifying each subtype by function and neurotransmitter phenotype, and ensuring the terms are mutually consistent and properly differentiated from each other.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` by claude-opus-4.7 on 2026-05-16. The gold PR #3585 is the single complete human resolution (no companion PRs — search of `3584`/`myenteric` returns only #3585), so this is **not** a partial-gold case. However the metadiff against #3585 is misleading for two independent reasons:
+
+1. **Gold renegotiated in PR review.** The merged gold state is not the agent-predictable issue spec. During review, curators (`dosumis`, `RiveraAndrea83`) had copilot (a) remove `SubClassOf(CL_9900009 obo:CL_0008015)` because it forced the spiny Dogiel I term to `SubClassOf owl:Nothing` (an unsatisfiability surfaced by the taxon-constraint reasoning bot), and (b) add `SubClassOf(CL_9900001 obo:CL_0007011)`. The gold also carries an **out-of-scope edit to pre-existing term `CL_4033160`** (`SubClassOf(CL_4033160 RO_0002215 some GO_0014055)`) that issue #3584 never requested, and an **unrequested `BFO_0000050 some UBERON_0002005`** (part of enteric nervous system) on the generic "Dogiel type II neuron" class, whose issue spec (Term 14) explicitly says "UBERON Terms: None". `dosumis` approved with "Good for now. Let's aim for a second round with more refs and slightly broadened terms," signalling the merged state is an interim, negotiated artifact. All three attempts faithfully follow the original issue text (including the unsatisfiability-prone `CL_0008015` axiom) and cannot be expected to reproduce these review-only / out-of-scope changes; this caps achievable F1 below 1.0 for every well-scoped attempt.
+
+2. **Placeholder-vs-canonical CL ID artifact.** The 14 new terms use temporary IDs from `idrange:81` (CL_9900000–CL_9999999). Gold assigned CL_9900001–CL_9900014 (prerequisite generic Dogiel type II = CL_9900001). Attempt pr143 (haiku) matched that mapping and scored F1=0.711. Attempts pr195 (opus) and pr214 (sonnet) numbered CL_9900000–CL_9900013 (prerequisite = CL_9900000). Both schemes are equally valid — the issue pins no numeric IDs and both lie inside the allocated range — but the uniform off-by-one shift makes every axiom line mismatch under whole-file metadiff, collapsing pr195/pr214 to F1≈0.26 despite being ontologically equivalent to gold for all 14 terms. Their low scores are a scoring artifact, **not** a quality signal.
+
+Downstream scoring/aggregation should down-weight or exclude this case, and the attempts should be judged against the issue #3584 specification rather than the line-level metadiff vs #3585. All three attempts are graded `success` on substance in the reviews.
 
 ## Human Diff
 
@@ -242,10 +252,16 @@ index 0d25aa5a0..d376c3aa6 100644
 ... (14 more lines truncated)
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-haiku-4.5 | claude | 0.711 | 0.667 | 0.762 | `23406ed` | [#143](https://github.com/ai4curation/eval-ont-agent-cl/pull/143) | [attempt](attempts/pr143.md) |
-| 2 | claude-opus-4.7 | claude | 0.262 | 0.264 | 0.260 | `4c4f12c` | [#195](https://github.com/ai4curation/eval-ont-agent-cl/pull/195) | [attempt](attempts/pr195.md) |
-| 3 | claude-sonnet-4.5 | claude | 0.254 | 0.250 | 0.257 | `1277dee` | [#214](https://github.com/ai4curation/eval-ont-agent-cl/pull/214) | [attempt](attempts/pr214.md) |
+| 2 | gpt-5.5 | opencode | 0.639 | 0.639 | 0.639 | `417596b` | [#560](https://github.com/ai4curation/eval-ont-agent-cl/pull/560) | [attempt](attempts/pr560.md) |
+| 3 | gpt-5.5 | opencode | 0.639 | 0.639 | 0.639 | `417596b` | [#495](https://github.com/ai4curation/eval-ont-agent-cl/pull/495) | [attempt](attempts/pr495.md) |
+| 4 | claude-opus-4.7 | claude | 0.262 | 0.264 | 0.260 | `4c4f12c` | [#195](https://github.com/ai4curation/eval-ont-agent-cl/pull/195) | [attempt](attempts/pr195.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.254 | 0.250 | 0.257 | `1277dee` | [#214](https://github.com/ai4curation/eval-ont-agent-cl/pull/214) | [attempt](attempts/pr214.md) |
+| 6 | gpt-5.4 | codex | 0.249 | 0.250 | 0.248 | `cc28a17` | [#480](https://github.com/ai4curation/eval-ont-agent-cl/pull/480) | [attempt](attempts/pr480.md) |
+| 7 | gpt-5.4 | opencode | 0.249 | 0.250 | 0.248 | `cc28a17` | [#471](https://github.com/ai4curation/eval-ont-agent-cl/pull/471) | [attempt](attempts/pr471.md) |
+| 8 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `b76ab78` | [#597](https://github.com/ai4curation/eval-ont-agent-cl/pull/597) | [attempt](attempts/pr597.md) |
+| 9 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `b76ab78` | [#533](https://github.com/ai4curation/eval-ont-agent-cl/pull/533) | [attempt](attempts/pr533.md) |

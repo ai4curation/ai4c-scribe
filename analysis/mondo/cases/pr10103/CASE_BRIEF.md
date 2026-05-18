@@ -13,10 +13,10 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 9
-generated_at: '2026-05-15'
+num_agent_attempts: 11
+generated_at: '2026-05-17'
 best_f1: 0.182
-best_model: claude-opus-4.7
+best_model: gpt-5.4
 ---
 
 # PR #10103 — Request for new synonym [Add GEMIN5-related neurodevelopmental disorders and GEMIN5 disorders as new synonym for Neurodevelopmental disorder with cerebellar atrophy and motor dysfunction]
@@ -71,16 +71,18 @@ index 8013937e49..f1d2fdc824 100644
 
 ```
 
-## Agent Attempts (9)
+## Agent Attempts (11)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.182 | 0.125 | 0.333 | `0ca798d` | [#371](https://github.com/ai4curation/eval-ont-agent-mondo/pull/371) | [attempt](attempts/pr371.md) |
-| 2 | kimi-k2.6 | opencode | 0.182 | 0.125 | 0.333 | `4748e96` | [#257](https://github.com/ai4curation/eval-ont-agent-mondo/pull/257) | [attempt](attempts/pr257.md) |
-| 3 | gpt-5.4 | codex | 0.182 | 0.125 | 0.333 | `9a113c1` | [#168](https://github.com/ai4curation/eval-ont-agent-mondo/pull/168) | [attempt](attempts/pr168.md) |
-| 4 | gpt-5.5 | opencode | 0.182 | 0.125 | 0.333 | `50c891a` | [#132](https://github.com/ai4curation/eval-ont-agent-mondo/pull/132) | [attempt](attempts/pr132.md) |
-| 5 | gpt-5.5 | opencode | 0.182 | 0.125 | 0.333 | `50c891a` | [#111](https://github.com/ai4curation/eval-ont-agent-mondo/pull/111) | [attempt](attempts/pr111.md) |
-| 6 | gpt-5.5 | codex | 0.182 | 0.125 | 0.333 | `a441a7a` | [#96](https://github.com/ai4curation/eval-ont-agent-mondo/pull/96) | [attempt](attempts/pr96.md) |
-| 7 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `88cc75e` | [#450](https://github.com/ai4curation/eval-ont-agent-mondo/pull/450) | [attempt](attempts/pr450.md) |
-| 8 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `f82142c` | [#331](https://github.com/ai4curation/eval-ont-agent-mondo/pull/331) | [attempt](attempts/pr331.md) |
-| 9 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `24ffac0` | [#192](https://github.com/ai4curation/eval-ont-agent-mondo/pull/192) | [attempt](attempts/pr192.md) |
+| 1 | gpt-5.4 | opencode | 0.182 | 0.125 | 0.333 | `7156040` | [#731](https://github.com/ai4curation/eval-ont-agent-mondo/pull/731) | [attempt](attempts/pr731.md) |
+| 2 | gpt-5.4 | opencode | 0.182 | 0.125 | 0.333 | `7156040` | [#675](https://github.com/ai4curation/eval-ont-agent-mondo/pull/675) | [attempt](attempts/pr675.md) |
+| 3 | claude-opus-4.7 | claude | 0.182 | 0.125 | 0.333 | `0ca798d` | [#371](https://github.com/ai4curation/eval-ont-agent-mondo/pull/371) | [attempt](attempts/pr371.md) |
+| 4 | kimi-k2.6 | opencode | 0.182 | 0.125 | 0.333 | `4748e96` | [#257](https://github.com/ai4curation/eval-ont-agent-mondo/pull/257) | [attempt](attempts/pr257.md) |
+| 5 | gpt-5.4 | codex | 0.182 | 0.125 | 0.333 | `9a113c1` | [#168](https://github.com/ai4curation/eval-ont-agent-mondo/pull/168) | [attempt](attempts/pr168.md) |
+| 6 | gpt-5.5 | opencode | 0.182 | 0.125 | 0.333 | `50c891a` | [#132](https://github.com/ai4curation/eval-ont-agent-mondo/pull/132) | [attempt](attempts/pr132.md) |
+| 7 | gpt-5.5 | opencode | 0.182 | 0.125 | 0.333 | `50c891a` | [#111](https://github.com/ai4curation/eval-ont-agent-mondo/pull/111) | [attempt](attempts/pr111.md) |
+| 8 | gpt-5.5 | codex | 0.182 | 0.125 | 0.333 | `a441a7a` | [#96](https://github.com/ai4curation/eval-ont-agent-mondo/pull/96) | [attempt](attempts/pr96.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `88cc75e` | [#450](https://github.com/ai4curation/eval-ont-agent-mondo/pull/450) | [attempt](attempts/pr450.md) |
+| 10 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `f82142c` | [#331](https://github.com/ai4curation/eval-ont-agent-mondo/pull/331) | [attempt](attempts/pr331.md) |
+| 11 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `24ffac0` | [#192](https://github.com/ai4curation/eval-ont-agent-mondo/pull/192) | [attempt](attempts/pr192.md) |

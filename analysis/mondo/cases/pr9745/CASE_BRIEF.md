@@ -11,8 +11,8 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 scoping_notes: Adds two new terms and reclassifies a related existing term.
 domain_area: cardiac-disease
 best_f1: 0.615
@@ -38,6 +38,18 @@ Added two new SCN5A-related disease terms to `src/ontology/mondo-edit.obo` with 
 ## Resolution
 
 Hard difficulty because the PR involves multiple coordinated changes: creating two new gene-disease terms, adding their children, and correcting the classification of an existing term. An agent would need to understand the SCN5A channelopathy spectrum, determine correct parent classes for each new term, and recognize that the existing atrioventricular dissociation term was incorrectly classified as hereditary.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` after reviewing all 11 attempts (claude-opus-4.7, 2026-05-15).
+
+Two factors make the metadiff F1 a poor proxy for quality on this case:
+
+1. **Placeholder-vs-canonical MONDO ID artifact.** The merged gold PR #9745 uses canonical IDs `MONDO:1010180` (cardiogenetic rhythm disorder) and `MONDO:1010181` (SCN5A-related cardiac rhythm disorder). Every agent used the eval base's auto-allocated placeholder range `MONDO:7770003`/`MONDO:7770004`. Since most of both diffs are `is_a:` lines that reference these IDs, OBO metadiff scores nearly every correct reparenting as a miss. F1 is structurally compressed (best 0.615, most ~0.31, lowest 0.216) even where agents attached the right child to the conceptually right parent.
+
+2. **Out-of-scope gold cleanup.** The gold also reclassified `atrioventricular dissociation` (MONDO:0000465) from `MONDO:0003847` (hereditary disease) to `MONDO:0100042` (cardiac conduction defect) and added `excluded_subClassOf` plus two `excluded_from_qc_check` relationships. The issue (#9707) never requested this; it is incidental curator cleanup that no well-scoped agent would reproduce, accounting for the gold's single deletion and several additions and further depressing recall.
+
+This issue was resolved by a single PR (#9745); no companion PRs exist. Recommended handling: down-weight or exclude this case from line-level F1 aggregation and judge attempts against the issue text and the gold's term-creation/reparenting substance. On that basis the best attempts (#261 kimi-k2.6/opencode F1=0.615; #407 claude-opus-4.7/claude F1=0.311; #89/#68 gpt-5.5/opencode F1=0.311) are substantively strong partial successes, far better than their raw F1 suggests.
 
 ## Human Diff
 
@@ -195,7 +207,7 @@ index f26e3f70a0..31deccd70c 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -208,5 +220,7 @@ index f26e3f70a0..31deccd70c 100644
 | 7 | gpt-5.5 | opencode | 0.311 | 0.292 | 0.333 | `9617ce8` | [#68](https://github.com/ai4curation/eval-ont-agent-mondo/pull/68) | [attempt](attempts/pr68.md) |
 | 8 | gpt-5.5 | codex | 0.308 | 0.250 | 0.400 | `dab7fd5` | [#48](https://github.com/ai4curation/eval-ont-agent-mondo/pull/48) | [attempt](attempts/pr48.md) |
 | 9 | gpt-5.4 | codex | 0.270 | 0.208 | 0.385 | `895fb4a` | [#160](https://github.com/ai4curation/eval-ont-agent-mondo/pull/160) | [attempt](attempts/pr160.md) |
-| 10 | claude-haiku-4.5 | claude | 0.216 | 0.167 | 0.308 | `391e147` | [#427](https://github.com/ai4curation/eval-ont-agent-mondo/pull/427) | [attempt](attempts/pr427.md) |
-| 11 | claude-haiku-4.5 | claude | 0.216 | 0.167 | 0.308 | `391e147` | [#300](https://github.com/ai4curation/eval-ont-agent-mondo/pull/300) | [attempt](attempts/pr300.md) |
+| 10 | gpt-5.4 | opencode | 0.256 | 0.208 | 0.333 | `a739698` | [#767](https://github.com/ai4curation/eval-ont-agent-mondo/pull/767) | [attempt](attempts/pr767.md) |
+| 11 | gpt-5.4 | opencode | 0.256 | 0.208 | 0.333 | `a739698` | [#713](https://github.com/ai4curation/eval-ont-agent-mondo/pull/713) | [attempt](attempts/pr713.md) |
+| 12 | claude-haiku-4.5 | claude | 0.216 | 0.167 | 0.308 | `391e147` | [#427](https://github.com/ai4curation/eval-ont-agent-mondo/pull/427) | [attempt](attempts/pr427.md) |
+| 13 | claude-haiku-4.5 | claude | 0.216 | 0.167 | 0.308 | `391e147` | [#300](https://github.com/ai4curation/eval-ont-agent-mondo/pull/300) | [attempt](attempts/pr300.md) |

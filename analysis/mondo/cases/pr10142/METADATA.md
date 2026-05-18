@@ -26,6 +26,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Straightforward term merge following an OMIM consolidation of two skeletal dysplasia entries
+case_quality: good
+case_quality_reason: single_complete_term_merge_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

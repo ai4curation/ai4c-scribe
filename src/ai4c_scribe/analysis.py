@@ -12,6 +12,7 @@ Example:
     >>> df.groupby("agent")["f1"].mean()  # doctest: +SKIP
 """
 
+import re
 from pathlib import Path
 
 import yaml
@@ -475,6 +476,136 @@ def reviewer_score(reviews_df, by: str = "agent"):
     out = r.groupby(by, group_keys=False).apply(_agg).round(3)
     out["n"] = out["n"].astype(int)
     return out
+
+
+_REVIEWER_RE = re.compile(r"pr\d+-(claude|claudecode|codex)-(?:complete|stub)\.md$")
+
+
+def reviewer_label(file_path: str):
+    """Reviewer identity from a review filename.
+
+    Review files are ``pr{N}-{reviewer}-{complete|stub}.md``; ``claudecode``
+    is an early alias for ``claude``.
+
+    >>> reviewer_label("x/pr40-codex-complete.md")
+    'codex'
+    >>> reviewer_label("pr7-claudecode-complete.md")
+    'claude'
+    >>> reviewer_label("pr7-stub.md") is None
+    True
+    """
+    m = _REVIEWER_RE.search(str(file_path))
+    if not m:
+        return None
+    return "claude" if m.group(1) in ("claude", "claudecode") else "codex"
+
+
+def cohen_kappa(a, b, weights=None):
+    """Cohen's kappa between two label sequences (no sklearn dependency).
+
+    Args:
+        a, b: equal-length sequences of labels.
+        weights: ``None`` for nominal kappa, ``"linear"`` or
+            ``"quadratic"`` for weighted kappa (labels must be numeric).
+
+    >>> cohen_kappa([1, 2, 3], [1, 2, 3])
+    1.0
+    """
+    a = list(a)
+    b = list(b)
+    if len(a) != len(b) or not a:
+        raise ValueError("a and b must be non-empty and equal length")
+    cats = sorted(set(a) | set(b))
+    idx = {c: i for i, c in enumerate(cats)}
+    n = len(a)
+    k = len(cats)
+    obs = [[0] * k for _ in range(k)]
+    for x, y in zip(a, b):
+        obs[idx[x]][idx[y]] += 1
+
+    if weights is None:
+        w = [[0.0 if i == j else 1.0 for j in range(k)] for i in range(k)]
+    else:
+        rng = (cats[-1] - cats[0]) or 1
+        w = [
+            [
+                (abs(cats[i] - cats[j]) / rng) ** (2 if weights == "quadratic" else 1)
+                for j in range(k)
+            ]
+            for i in range(k)
+        ]
+
+    row = [sum(obs[i]) for i in range(k)]
+    col = [sum(obs[i][j] for i in range(k)) for j in range(k)]
+    obs_disagree = sum(w[i][j] * obs[i][j] for i in range(k) for j in range(k))
+    exp_disagree = sum(
+        w[i][j] * row[i] * col[j] / n for i in range(k) for j in range(k)
+    )
+    if exp_disagree == 0:
+        return 1.0
+    return round(1.0 - obs_disagree / exp_disagree, 4)
+
+
+def pair_reviewers(reviews_df):
+    """Pivot reviews so each scored eval PR has one row per reviewer.
+
+    Keyed on **(ontology, eval_repo_pr)** only — a PR is one artifact
+    regardless of the (unreliable, often hallucinated) free-text
+    ``agent`` field each reviewer wrote. Join the canonical agent from
+    the scores afterward. Adds the mapped reviewer score for ``claude``
+    and ``codex``, the number of reviewers, and the per-PR
+    ``consensus_score`` (mean of available reviewers).
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews` (needs ``_file``
+            or ``reviewer``, plus ``ontology``, ``eval_repo_pr``,
+            ``outcome``).
+
+    Returns:
+        DataFrame with one row per (ontology, eval_repo_pr).
+    """
+    import pandas as pd
+
+    r = reviews_df.copy()
+    if "reviewer" not in r.columns:
+        r["reviewer"] = r["_file"].map(reviewer_label)
+    r = r[
+        r["reviewer"].notna()
+        & r["outcome"].isin(_OUTCOME_SCORE)
+        & r["eval_repo_pr"].notna()
+    ].copy()
+    if r.empty:
+        return pd.DataFrame(
+            columns=[
+                "ontology",
+                "eval_repo_pr",
+                "claude_outcome",
+                "codex_outcome",
+                "claude_score",
+                "codex_score",
+                "n_reviewers",
+                "consensus_score",
+            ]
+        )
+    r["_score"] = r["outcome"].map(_OUTCOME_SCORE)
+    keys = ["ontology", "eval_repo_pr"]
+    out = []
+    for kv, g in r.groupby(keys):
+        rec = dict(zip(keys, kv))
+        scores = []
+        for rev in ("claude", "codex"):
+            sub = g[g["reviewer"] == rev]
+            if len(sub):
+                rec[f"{rev}_outcome"] = sub["outcome"].iloc[0]
+                rec[f"{rev}_score"] = float(sub["_score"].iloc[0])
+                scores.append(rec[f"{rev}_score"])
+            else:
+                rec[f"{rev}_outcome"] = None
+                rec[f"{rev}_score"] = float("nan")
+        rec["n_reviewers"] = len(scores)
+        rec["consensus_score"] = sum(scores) / len(scores) if scores else float("nan")
+        out.append(rec)
+    return pd.DataFrame(out)
 
 
 def failure_mode_counts(reviews_df):

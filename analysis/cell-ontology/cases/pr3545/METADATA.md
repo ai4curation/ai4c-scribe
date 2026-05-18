@@ -26,6 +26,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Adding negative marker phenotype annotations to multiple dendritic cell terms using the lacks_plasma_membrane_part pattern
+case_quality: ok
+case_quality_reason: sound_gold_no_agent_coverage
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 agent_coverage: none
 agent_coverage_note: "no eval attempts generated as of 2026-05-16"
 ---

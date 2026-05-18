@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 9
-generated_at: '2026-05-15'
+num_agent_attempts: 11
+generated_at: '2026-05-17'
 domain_area: biological_process
 best_f1: 1.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #31953 — Obsoletion request: GO:0140057 vacuole-mitochondria membrane tethering
@@ -68,16 +68,18 @@ index e7328841b..4aa8b2aca 100644
 
 ```
 
-## Agent Attempts (9)
+## Agent Attempts (11)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `8664710` | [#456](https://github.com/ai4curation/eval-ont-agent-go/pull/456) | [attempt](attempts/pr456.md) |
-| 2 | claude-sonnet-4.5 | copilot | 1.000 | 1.000 | 1.000 | `8664710` | [#376](https://github.com/ai4curation/eval-ont-agent-go/pull/376) | [attempt](attempts/pr376.md) |
-| 3 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `bb3b5b7` | [#333](https://github.com/ai4curation/eval-ont-agent-go/pull/333) | [attempt](attempts/pr333.md) |
-| 4 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#256](https://github.com/ai4curation/eval-ont-agent-go/pull/256) | [attempt](attempts/pr256.md) |
-| 5 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `bb3b5b7` | [#198](https://github.com/ai4curation/eval-ont-agent-go/pull/198) | [attempt](attempts/pr198.md) |
-| 6 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `8664710` | [#175](https://github.com/ai4curation/eval-ont-agent-go/pull/175) | [attempt](attempts/pr175.md) |
-| 7 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#150](https://github.com/ai4curation/eval-ont-agent-go/pull/150) | [attempt](attempts/pr150.md) |
-| 8 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#129](https://github.com/ai4curation/eval-ont-agent-go/pull/129) | [attempt](attempts/pr129.md) |
-| 9 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | `8664710` | [#116](https://github.com/ai4curation/eval-ont-agent-go/pull/116) | [attempt](attempts/pr116.md) |
+| 1 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#647](https://github.com/ai4curation/eval-ont-agent-go/pull/647) | [attempt](attempts/pr647.md) |
+| 2 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#598](https://github.com/ai4curation/eval-ont-agent-go/pull/598) | [attempt](attempts/pr598.md) |
+| 3 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `8664710` | [#456](https://github.com/ai4curation/eval-ont-agent-go/pull/456) | [attempt](attempts/pr456.md) |
+| 4 | claude-sonnet-4.5 | copilot | 1.000 | 1.000 | 1.000 | `8664710` | [#376](https://github.com/ai4curation/eval-ont-agent-go/pull/376) | [attempt](attempts/pr376.md) |
+| 5 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `bb3b5b7` | [#333](https://github.com/ai4curation/eval-ont-agent-go/pull/333) | [attempt](attempts/pr333.md) |
+| 6 | kimi-k2.6 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#256](https://github.com/ai4curation/eval-ont-agent-go/pull/256) | [attempt](attempts/pr256.md) |
+| 7 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `bb3b5b7` | [#198](https://github.com/ai4curation/eval-ont-agent-go/pull/198) | [attempt](attempts/pr198.md) |
+| 8 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `8664710` | [#175](https://github.com/ai4curation/eval-ont-agent-go/pull/175) | [attempt](attempts/pr175.md) |
+| 9 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#150](https://github.com/ai4curation/eval-ont-agent-go/pull/150) | [attempt](attempts/pr150.md) |
+| 10 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `8664710` | [#129](https://github.com/ai4curation/eval-ont-agent-go/pull/129) | [attempt](attempts/pr129.md) |
+| 11 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | `8664710` | [#116](https://github.com/ai4curation/eval-ont-agent-go/pull/116) | [attempt](attempts/pr116.md) |

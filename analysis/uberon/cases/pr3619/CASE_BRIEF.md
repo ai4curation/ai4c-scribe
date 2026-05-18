@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: single_term
 review_outcome: multiple_rounds
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 7
+generated_at: '2026-05-17'
 domain_area: respiratory-anatomy
 best_f1: 1.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.5
 ---
 
 # PR #3619 — Parent-child relationship between tracheal mucosa and nasal cavity mucosa
@@ -64,10 +64,14 @@ index 1554053e6..2c38526e9 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (7)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#322](https://github.com/ai4curation/eval-ont-agent-uberon/pull/322) | [attempt](attempts/pr322.md) |
-| 2 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#191](https://github.com/ai4curation/eval-ont-agent-uberon/pull/191) | [attempt](attempts/pr191.md) |
-| 3 | claude-opus-4.7 | claude | 0.750 | 0.750 | 0.750 | `05c99b1` | [#256](https://github.com/ai4curation/eval-ont-agent-uberon/pull/256) | [attempt](attempts/pr256.md) |
+| 1 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `2c38526` | [#633](https://github.com/ai4curation/eval-ont-agent-uberon/pull/633) | [attempt](attempts/pr633.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `2c38526` | [#575](https://github.com/ai4curation/eval-ont-agent-uberon/pull/575) | [attempt](attempts/pr575.md) |
+| 3 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `2c38526` | [#395](https://github.com/ai4curation/eval-ont-agent-uberon/pull/395) | [attempt](attempts/pr395.md) |
+| 4 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#322](https://github.com/ai4curation/eval-ont-agent-uberon/pull/322) | [attempt](attempts/pr322.md) |
+| 5 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `2c38526` | [#191](https://github.com/ai4curation/eval-ont-agent-uberon/pull/191) | [attempt](attempts/pr191.md) |
+| 6 | gpt-5.4 | opencode | 0.750 | 0.750 | 0.750 | `05c99b1` | [#671](https://github.com/ai4curation/eval-ont-agent-uberon/pull/671) | [attempt](attempts/pr671.md) |
+| 7 | claude-opus-4.7 | claude | 0.750 | 0.750 | 0.750 | `05c99b1` | [#256](https://github.com/ai4curation/eval-ont-agent-uberon/pull/256) | [attempt](attempts/pr256.md) |

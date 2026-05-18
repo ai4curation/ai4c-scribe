@@ -19,6 +19,11 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Synonym addition combined with definition and logical definition creation for an under-annotated term.
+case_quality: poor
+case_quality_reason: gold_scope_expanded_beyond_synonym_request
+scoring_caveat: "Gold adds definition, comment, logical definition, abbreviation synonym, and tracker beyond the explicit synonym request; agents that only add requested synonyms are penalized, so metadiff is a poor quality proxy."
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

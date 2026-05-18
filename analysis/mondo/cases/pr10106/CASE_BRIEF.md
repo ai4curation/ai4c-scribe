@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 best_f1: 0.772
 best_model: gpt-5.5
 ---
@@ -34,6 +34,17 @@ The PR merged MONDO:0023243 into MONDO:0011274 (Muenke syndrome) in a single com
 ## Resolution
 
 Moderate difficulty because the merge decision required evaluating evidence from multiple sources (SNOMED CT retirement, Orphanet mapping, UMLS data) to confirm equivalence. Once the merge decision is made, the mechanical execution follows standard Mondo merge SOP. An agent would need access to external database lookups to validate such merge proposals.
+
+## Curation Note (data quality)
+
+This case is **ok** (not poor): the gold PR #10106 is the complete, reviewer-approved final resolution. But there is an important durable finding for downstream scoring/aggregation:
+
+- **Two human PRs exist.** PR #10087 ("obsolete glass-chapman-hockley syndrome") was the curator's *first* attempt: a plain obsoletion that kept the obsoleted stanza fat and only added one EXACT synonym to Muenke. Reviewer **@sabrinatoro** rejected this approach and instructed a full **merge**; the curator closed #10087 and opened **PR #10106** (the gold), which follows the canonical Mondo `merge-terms` SOP (obsoleted stanza reduced to id/name/`IAO:0000231 MONDO:TermsMerged`/issue link/`is_obsolete`/`replaced_by`; synonyms + xrefs transferred to MONDO:0011274 with `MONDO:equivalentObsolete`).
+- **The issue text is misleading by itself.** Issue #9798 says "[Obsolete]" and "Suggested term to consider", which an agent reasonably reads as a pure obsoletion. The 10 attempts split bimodally: **full-merge** attempts (gpt-5.5/codex #100 F1 0.765, gpt-5.4/codex #165 0.716, opus-4.7 #375 0.706, and the partial gpt-5.5/opencode #135/#116 0.772) vs **obsolete-only** attempts that reproduced the *repudiated* PR #10087 pattern (haiku #424/#293 0.600, copilot/sonnet #335 0.561, claude/sonnet #434 0.500). The metadiff ordering is meaningful and correctly rewards the merge.
+- **Metadiff still under-represents the best merge attempts.** #100/#165/#375 made defensible curatorial choices that differ from gold without being wrong: keeping transferred synonyms at `RELATED` (gold promotes to `EXACT`), citing `[Orphanet:1535]` rather than gold's `[PMID:20108486]`, and (for #165/#375) deliberately dropping the retired `xref: SCTID:720814001` which gold instead retains as `MONDO:equivalentObsolete`. Gold additionally makes issue-unrelated incidental edits to Muenke (`MNKES` RELATED→EXACT ABBREVIATION; deleting synonym "Muenke nonsyndromic coronal craniosynostosis"; adding `subset: inferred_rare`) that cap even a well-scoped agent below F1=1.0.
+- **Recurring agent error to track:** four lower-tier attempts fabricated the non-existent xref qualifier `MONDO:obsoleteEquivalent` (correct value is `MONDO:equivalentObsolete`), and used the generic obsoletion reason `OMO:0001000` instead of the merge-specific `MONDO:TermsMerged`.
+
+Flagged by claude-opus-4.7, 2026-05-15.
 
 ## Human Diff
 
@@ -119,7 +130,7 @@ index e6a3057543..dc8b5b6e0c 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -131,5 +142,7 @@ index e6a3057543..dc8b5b6e0c 100644
 | 6 | kimi-k2.6 | opencode | 0.621 | 0.514 | 0.783 | `1f596cc` | [#247](https://github.com/ai4curation/eval-ont-agent-mondo/pull/247) | [attempt](attempts/pr247.md) |
 | 7 | claude-haiku-4.5 | claude | 0.600 | 0.514 | 0.720 | `dd5bee2` | [#424](https://github.com/ai4curation/eval-ont-agent-mondo/pull/424) | [attempt](attempts/pr424.md) |
 | 8 | claude-haiku-4.5 | claude | 0.600 | 0.514 | 0.720 | `dd5bee2` | [#293](https://github.com/ai4curation/eval-ont-agent-mondo/pull/293) | [attempt](attempts/pr293.md) |
-| 9 | claude-sonnet-4.5 | copilot | 0.561 | 0.457 | 0.727 | `8919301` | [#335](https://github.com/ai4curation/eval-ont-agent-mondo/pull/335) | [attempt](attempts/pr335.md) |
-| 10 | claude-sonnet-4.5 | claude | 0.500 | 0.400 | 0.667 | `f607b76` | [#434](https://github.com/ai4curation/eval-ont-agent-mondo/pull/434) | [attempt](attempts/pr434.md) |
+| 9 | gpt-5.4 | opencode | 0.593 | 0.457 | 0.842 | `b9c6c2b` | [#735](https://github.com/ai4curation/eval-ont-agent-mondo/pull/735) | [attempt](attempts/pr735.md) |
+| 10 | gpt-5.4 | opencode | 0.593 | 0.457 | 0.842 | `b9c6c2b` | [#680](https://github.com/ai4curation/eval-ont-agent-mondo/pull/680) | [attempt](attempts/pr680.md) |
+| 11 | claude-sonnet-4.5 | copilot | 0.561 | 0.457 | 0.727 | `8919301` | [#335](https://github.com/ai4curation/eval-ont-agent-mondo/pull/335) | [attempt](attempts/pr335.md) |
+| 12 | claude-sonnet-4.5 | claude | 0.500 | 0.400 | 0.667 | `f607b76` | [#434](https://github.com/ai4curation/eval-ont-agent-mondo/pull/434) | [attempt](attempts/pr434.md) |

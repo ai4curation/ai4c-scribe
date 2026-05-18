@@ -28,6 +28,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: New terms for CD4+ and CD8+ stem cell memory T cells requiring understanding of T cell differentiation hierarchy and memory compartments
+case_quality: ok
+case_quality_reason: sound_gold_but_metadiff_sensitive_to_new_term_provenance_and_wording
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

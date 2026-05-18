@@ -12,8 +12,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 domain_area: immunology
 best_f1: 0.75
 best_model: gpt-5.5
@@ -36,6 +36,50 @@ Removed CD44-high and CD122-high marker assertions from the CD45RO-positive memo
 ## Resolution
 
 Approved on first review. Medium difficulty because correctly identifying which markers are species-specific requires understanding of comparative immunology between mouse and human T cell biology. An agent would need to recognize that combining mouse markers (CD44-high, CD122-high) with a human marker (CD45RO) is biologically inconsistent.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` by claude-opus-4.7 on 2026-05-16.
+
+**Finding.** The single gold PR (#3555, copilot-swe-agent, the only PR for
+issue #3454 — no companion PRs) is **incomplete relative to the issue's
+explicit instruction**. Issue #3454 states, for both CL_0001203 and
+CL_0001204, under a heading reading *"References — do not replace existing
+references but add these along existing ones"*: PMID:24258910, PMID:21926977,
+**and PMID:41254224**. The gold PR added only the first two and **omitted
+PMID:41254224** ("Guidelines for T cell nomenclature", which the issue
+specifically called out for its Table 4 list of memory T-cell markers — all
+three PMIDs are real and valid, verified via NCBI eUtils).
+
+**Effect on scoring.** Whole-file OBO metadiff compares each attempt to this
+partial gold. Consequently:
+
+- The core ontological repair — removing
+  `ObjectSomeValuesFrom(obo:RO_0015015 obo:PR_000001307)` (CD44-high) and
+  `ObjectSomeValuesFrom(obo:RO_0015015 obo:PR_000001381)` (CD122-high) from the
+  EquivalentClasses axioms of CL_0001203 and CL_0001204, plus deleting
+  "CD44-high, and CD122-high" from both IAO_0000115 definitions — was performed
+  **correctly and completely by all 11 attempts**.
+- Every attempt that *complied with the issue* by adding all three requested
+  PMIDs is penalized: precision is capped at 0.750 and recall is reduced by the
+  issue-compliant 3rd-PMID line, so the best achievable F1 is ~0.750 even for a
+  fully correct, more-faithful-than-gold answer.
+- Attempts that additionally added a `term_tracker_item` (IAO_0000233 →
+  issue #3454) — which the config CLAUDE.md explicitly directs ("Link back to
+  the issue ... using the `term_tracker_item`") — are penalized further to
+  F1 0.667 / 0.600 for following their instructions.
+- Several codex/opencode attempts also carry a benign end-of-file
+  serialization artifact (no-op `)` → `)` adding a trailing newline at
+  ~line 35622–35624) from their editing tooling; issue-irrelevant churn that
+  whole-file metadiff can over-weight.
+
+**Guidance for downstream scoring.** Metadiff here **inverts the quality
+signal**. All 11 attempts solved the substantive task; the F1 spread
+(0.750 → 0.600) reflects issue-compliant and config-directed extras, not
+correctness. Judge attempts against the issue text and the union of (a) the
+two marker-axiom removals, (b) both definition text edits, and (c) the three
+requested PMIDs — not against the partial gold. Down-weight or exclude this
+case from aggregate F1-based agent ranking.
 
 ## Human Diff
 
@@ -75,18 +119,20 @@ index f08e6e234..48518dd27 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.5 | opencode | 0.750 | 0.750 | 0.750 | `ad57c40` | [#17](https://github.com/ai4curation/eval-ont-agent-cl/pull/17) | [attempt](attempts/pr17.md) |
 | 2 | claude-sonnet-4.5 | claude | 0.750 | 0.750 | 0.750 | `42eac3b` | [#15](https://github.com/ai4curation/eval-ont-agent-cl/pull/15) | [attempt](attempts/pr15.md) |
 | 3 | claude-haiku-4.5 | claude | 0.750 | 0.750 | 0.750 | `c8a388a` | [#7](https://github.com/ai4curation/eval-ont-agent-cl/pull/7) | [attempt](attempts/pr7.md) |
-| 4 | claude-opus-4.7 | claude | 0.667 | 0.750 | 0.600 | `18ef085` | [#187](https://github.com/ai4curation/eval-ont-agent-cl/pull/187) | [attempt](attempts/pr187.md) |
-| 5 | gpt-5.5 | opencode | 0.667 | 0.750 | 0.600 | `aa27cfb` | [#70](https://github.com/ai4curation/eval-ont-agent-cl/pull/70) | [attempt](attempts/pr70.md) |
-| 6 | gpt-5.5 | opencode | 0.667 | 0.750 | 0.600 | `aa27cfb` | [#50](https://github.com/ai4curation/eval-ont-agent-cl/pull/50) | [attempt](attempts/pr50.md) |
-| 7 | gpt-5.5 | codex | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#33](https://github.com/ai4curation/eval-ont-agent-cl/pull/33) | [attempt](attempts/pr33.md) |
-| 8 | gpt-5.5 | codex | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#19](https://github.com/ai4curation/eval-ont-agent-cl/pull/19) | [attempt](attempts/pr19.md) |
-| 9 | gpt-5.4 | codex | 0.667 | 0.750 | 0.600 | `99ff8dc` | [#4](https://github.com/ai4curation/eval-ont-agent-cl/pull/4) | [attempt](attempts/pr4.md) |
-| 10 | gpt-5.5 | opencode | 0.600 | 0.750 | 0.500 | `6019604` | [#18](https://github.com/ai4curation/eval-ont-agent-cl/pull/18) | [attempt](attempts/pr18.md) |
-| 11 | gpt-5.5 | codex | 0.600 | 0.750 | 0.500 | `d0ae498` | [#16](https://github.com/ai4curation/eval-ont-agent-cl/pull/16) | [attempt](attempts/pr16.md) |
+| 4 | gpt-5.4 | opencode | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#585](https://github.com/ai4curation/eval-ont-agent-cl/pull/585) | [attempt](attempts/pr585.md) |
+| 5 | gpt-5.4 | opencode | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#525](https://github.com/ai4curation/eval-ont-agent-cl/pull/525) | [attempt](attempts/pr525.md) |
+| 6 | claude-opus-4.7 | claude | 0.667 | 0.750 | 0.600 | `18ef085` | [#187](https://github.com/ai4curation/eval-ont-agent-cl/pull/187) | [attempt](attempts/pr187.md) |
+| 7 | gpt-5.5 | opencode | 0.667 | 0.750 | 0.600 | `aa27cfb` | [#70](https://github.com/ai4curation/eval-ont-agent-cl/pull/70) | [attempt](attempts/pr70.md) |
+| 8 | gpt-5.5 | opencode | 0.667 | 0.750 | 0.600 | `aa27cfb` | [#50](https://github.com/ai4curation/eval-ont-agent-cl/pull/50) | [attempt](attempts/pr50.md) |
+| 9 | gpt-5.5 | codex | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#33](https://github.com/ai4curation/eval-ont-agent-cl/pull/33) | [attempt](attempts/pr33.md) |
+| 10 | gpt-5.5 | codex | 0.667 | 0.750 | 0.600 | `83fa1bd` | [#19](https://github.com/ai4curation/eval-ont-agent-cl/pull/19) | [attempt](attempts/pr19.md) |
+| 11 | gpt-5.4 | codex | 0.667 | 0.750 | 0.600 | `99ff8dc` | [#4](https://github.com/ai4curation/eval-ont-agent-cl/pull/4) | [attempt](attempts/pr4.md) |
+| 12 | gpt-5.5 | opencode | 0.600 | 0.750 | 0.500 | `6019604` | [#18](https://github.com/ai4curation/eval-ont-agent-cl/pull/18) | [attempt](attempts/pr18.md) |
+| 13 | gpt-5.5 | codex | 0.600 | 0.750 | 0.500 | `d0ae498` | [#16](https://github.com/ai4curation/eval-ont-agent-cl/pull/16) | [attempt](attempts/pr16.md) |

@@ -32,6 +32,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-03"
 rationale: New term requiring correct hierarchy placement and literature-backed definition using genus-differentia pattern
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

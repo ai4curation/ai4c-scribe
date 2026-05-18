@@ -26,6 +26,11 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: New term for intrinsically photosensitive RGC as part of large-scale retinal ganglion cell refactoring epic
+case_quality: poor
+case_quality_reason: epic_issue_subtask_not_self_contained
+scoring_caveat: "Gold is a narrow new-term subtask under a broad RGC epic, so an agent prompted from the linked issue alone can reasonably miss this exact PR target."
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

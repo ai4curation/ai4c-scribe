@@ -11,11 +11,11 @@ difficulty: hard
 scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: oral
-best_f1: 0.697
-best_model: claude-haiku-4.5
+best_f1: 0.714
+best_model: gpt-5.4
 ---
 
 # PR #3598 — [NTR] Add mouth terms for HubMap
@@ -35,6 +35,44 @@ Added 113 new lines to `cl-edit.owl` defining 8 new cell types. Each term follow
 ## Resolution
 
 Approved on first review in just 3 commits, reflecting efficient implementation. Hard difficulty because the 8 terms span diverse parent cell types (epithelial cells, fibroblasts, ionocytes, myoepithelial cells) each requiring different axiom patterns, and the salivary gland anatomy involves specific UBERON structures (parotid, sublingual, submandibular) that must be correctly referenced.
+
+## Curation Note (data quality)
+
+*Added by claude-opus-4.7 on 2026-05-16 during attempt review.*
+
+This is a **clean, valid evaluation case**, not a poor one in the Step 3a/3b
+sense: issue #3597 is a single NTR for 8 terms; PR #3598 is the sole, complete,
+human-approved (reviewer: dosumis) resolution; there are **no companion PRs**,
+no base-state contamination, no gold leakage, no metadiff-ignored-field-only
+gold, no curator repudiation, and no substantive renegotiation in issue/PR
+comments (the issue has zero comments; the PR comments are only bot
+classified-diff posts and `#gogoeditdiff` triggers).
+
+The caveat is purely a **metadiff scoring artifact** affecting 2 of the 3
+attempts and is recorded so downstream aggregation does not misread it as
+quality failure:
+
+- **claude-haiku-4.5 (eval PR 233, F1=0.697)** — coincidentally allocated the
+  same temporary ID range (CL_9900001–CL_9900008) and the same mid-file
+  insertion point as gold, so its F1 genuinely tracks substance. It is the best
+  attempt by score *and* substance, though it omitted the `IAO_0000233`
+  term_tracker_item present in gold and used bare `SubClassOf` rather than
+  gold's `EquivalentClasses` for the compositional terms.
+- **claude-sonnet-4.5 (eval PR 213, F1=0.091)** and
+  **claude-opus-4.7 (eval PR 196, F1=0.086)** — both produced substantively
+  near-gold work (correct parents, UBERON `part_of`, GO `capable_of`,
+  synonyms, term_tracker_item; opus additionally ran ROBOT/ELK validation and
+  documented its EquivalentClasses-vs-SubClassOf reasoning, which matches gold's
+  actual treatment of the periductal and junctional terms). Their near-zero F1
+  is a **placeholder/off-by-one CL ID artifact** (they used
+  CL_9900000–CL_9900007 vs gold's CL_9900001–CL_9900008 — agents cannot know
+  the human's chosen offset) compounded by an **OWL serialization-order
+  artifact** (different in-file insertion location). Whole-line metadiff
+  therefore craters despite the content being correct.
+
+**Action for scoring/aggregation:** grade all three attempts on substance; treat
+the sonnet/opus ~0.09 F1 as an artifact, not a failure. All three reviewed as
+`outcome: success`.
 
 ## Human Diff
 
@@ -173,10 +211,15 @@ index 0837f612e..f42efb759 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (8)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 0.697 | 0.654 | 0.746 | `7e99c53` | [#233](https://github.com/ai4curation/eval-ont-agent-cl/pull/233) | [attempt](attempts/pr233.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.091 | 0.086 | 0.096 | `eec23b5` | [#213](https://github.com/ai4curation/eval-ont-agent-cl/pull/213) | [attempt](attempts/pr213.md) |
-| 3 | claude-opus-4.7 | claude | 0.086 | 0.086 | 0.085 | `e7629bf` | [#196](https://github.com/ai4curation/eval-ont-agent-cl/pull/196) | [attempt](attempts/pr196.md) |
+| 1 | gpt-5.4 | opencode | 0.714 | 0.741 | 0.690 | `4a04425` | [#598](https://github.com/ai4curation/eval-ont-agent-cl/pull/598) | [attempt](attempts/pr598.md) |
+| 2 | gpt-5.4 | opencode | 0.714 | 0.741 | 0.690 | `4a04425` | [#536](https://github.com/ai4curation/eval-ont-agent-cl/pull/536) | [attempt](attempts/pr536.md) |
+| 3 | claude-haiku-4.5 | claude | 0.697 | 0.654 | 0.746 | `7e99c53` | [#233](https://github.com/ai4curation/eval-ont-agent-cl/pull/233) | [attempt](attempts/pr233.md) |
+| 4 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `3a20009` | [#559](https://github.com/ai4curation/eval-ont-agent-cl/pull/559) | [attempt](attempts/pr559.md) |
+| 5 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `3a20009` | [#499](https://github.com/ai4curation/eval-ont-agent-cl/pull/499) | [attempt](attempts/pr499.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.091 | 0.086 | 0.096 | `eec23b5` | [#213](https://github.com/ai4curation/eval-ont-agent-cl/pull/213) | [attempt](attempts/pr213.md) |
+| 7 | claude-opus-4.7 | claude | 0.086 | 0.086 | 0.085 | `e7629bf` | [#196](https://github.com/ai4curation/eval-ont-agent-cl/pull/196) | [attempt](attempts/pr196.md) |
+| 8 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `0bb580c` | [#297](https://github.com/ai4curation/eval-ont-agent-cl/pull/297) | [attempt](attempts/pr297.md) |

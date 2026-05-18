@@ -11,8 +11,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 domain_area: immunology
 best_f1: 0.5
 best_model: claude-sonnet-4.5
@@ -36,6 +36,36 @@ Changed a single GO term reference in `cl-edit.owl`, replacing the obsolete GO c
 
 Approved on first review in a single commit. Simple difficulty because the fix is mechanical: identify the obsolete term, find its replacement, and update the reference. However, this case illustrates an important pattern for agents working with OBO ontologies: they must be able to detect and resolve obsolete cross-ontology references.
 
+## Curation Note (data quality)
+
+`case_quality: poor` — flagged because the metadiff score systematically
+under-represents agent quality on this case (a scoring artifact, not a gold
+defect; the gold PR #3309 is correct, single, and complete — issue #2967's only
+actionable ask was the specific term replacement, with @addiehl twice
+recommending `GO:0051024` → `GO:0002639`; the broader release-time
+`deprecated_class_reference` check discussed in the thread was never converted
+to a CL PR and was explicitly out of scope, exactly as gouttegd scoped #3309).
+
+**The artifact:** The gold `EquivalentClasses(CL:0002038 ...)` axiom serializes
+its two `ObjectSomeValuesFrom(obo:RO_0002215 ...)` conjuncts in sorted order —
+`GO_0002639` before `GO_0045830` — because the editing tool/ROBOT normalizes
+conjunct order. All 8 agents performed a literal in-place text substitution of
+`GO_0051024` → `GO_0002639`, leaving the order as `GO_0045830` then
+`GO_0002639`. `ObjectIntersectionOf` is commutative, so the agent and gold
+axioms are **logically identical**; the line-based metadiff nonetheless scores
+the changed line as a mismatch, capping F1 at **0.500** (claude/opencode runs)
+and **0.333** (codex runs, additionally hit by an incidental EOF-newline
+normalization producing a spurious second hunk).
+
+**Consequence for scoring/aggregation:** All 8 attempts (claude-sonnet-4.5,
+claude-opus-4.7, claude-haiku-4.5, gemma-4-31b, gpt-5.5 ×2 opencode, gpt-5.4 &
+gpt-5.5 codex) are substantively **success** — every one produced the correct
+biological fix with tight scope. The recorded F1 values (`best_f1: 0.5`) should
+be treated as a serialization floor, not a quality signal; downstream scoring
+should down-weight or exclude this case, or compare on logical/normalized-axiom
+equivalence rather than line diff. A ROBOT-normalized comparison would yield
+F1 ≈ 1.0 for the 6 non-codex attempts.
+
 ## Human Diff
 
 ```diff
@@ -55,7 +85,7 @@ index c107a4bed..b63bf2eb3 100644
 
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -65,5 +95,7 @@ index c107a4bed..b63bf2eb3 100644
 | 4 | claude-haiku-4.5 | claude | 0.500 | 0.500 | 0.500 | `b6ee438` | [#84](https://github.com/ai4curation/eval-ont-agent-cl/pull/84) | [attempt](attempts/pr84.md) |
 | 5 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `b6ee438` | [#56](https://github.com/ai4curation/eval-ont-agent-cl/pull/56) | [attempt](attempts/pr56.md) |
 | 6 | gpt-5.5 | opencode | 0.500 | 0.500 | 0.500 | `b6ee438` | [#38](https://github.com/ai4curation/eval-ont-agent-cl/pull/38) | [attempt](attempts/pr38.md) |
-| 7 | gpt-5.4 | codex | 0.333 | 0.500 | 0.250 | `b5c2038` | [#74](https://github.com/ai4curation/eval-ont-agent-cl/pull/74) | [attempt](attempts/pr74.md) |
-| 8 | gpt-5.5 | codex | 0.333 | 0.500 | 0.250 | `b5c2038` | [#22](https://github.com/ai4curation/eval-ont-agent-cl/pull/22) | [attempt](attempts/pr22.md) |
+| 7 | gpt-5.4 | opencode | 0.333 | 0.500 | 0.250 | `b5c2038` | [#567](https://github.com/ai4curation/eval-ont-agent-cl/pull/567) | [attempt](attempts/pr567.md) |
+| 8 | gpt-5.4 | opencode | 0.333 | 0.500 | 0.250 | `b5c2038` | [#505](https://github.com/ai4curation/eval-ont-agent-cl/pull/505) | [attempt](attempts/pr505.md) |
+| 9 | gpt-5.4 | codex | 0.333 | 0.500 | 0.250 | `b5c2038` | [#74](https://github.com/ai4curation/eval-ont-agent-cl/pull/74) | [attempt](attempts/pr74.md) |
+| 10 | gpt-5.5 | codex | 0.333 | 0.500 | 0.250 | `b5c2038` | [#22](https://github.com/ai4curation/eval-ont-agent-cl/pull/22) | [attempt](attempts/pr22.md) |

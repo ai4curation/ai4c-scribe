@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 4
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: skeletal
 best_f1: 0.824
 best_model: claude-sonnet-4.5
@@ -73,11 +73,16 @@ index 6f5e0fa5b..4100b8144 100644
 
 ```
 
-## Agent Attempts (4)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-sonnet-4.5 | claude | 0.824 | 0.778 | 0.875 | `0631c1b` | [#224](https://github.com/ai4curation/eval-ont-agent-cl/pull/224) | [attempt](attempts/pr224.md) |
 | 2 | claude-opus-4.7 | claude | 0.778 | 0.778 | 0.778 | `c5ecafa` | [#279](https://github.com/ai4curation/eval-ont-agent-cl/pull/279) | [attempt](attempts/pr279.md) |
-| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `db1dbca` | [#232](https://github.com/ai4curation/eval-ont-agent-cl/pull/232) | [attempt](attempts/pr232.md) |
-| 4 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `db1dbca` | [#155](https://github.com/ai4curation/eval-ont-agent-cl/pull/155) | [attempt](attempts/pr155.md) |
+| 3 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `1c26cc0` | [#582](https://github.com/ai4curation/eval-ont-agent-cl/pull/582) | [attempt](attempts/pr582.md) |
+| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `0d47195` | [#545](https://github.com/ai4curation/eval-ont-agent-cl/pull/545) | [attempt](attempts/pr545.md) |
+| 5 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `1c26cc0` | [#520](https://github.com/ai4curation/eval-ont-agent-cl/pull/520) | [attempt](attempts/pr520.md) |
+| 6 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `0d47195` | [#484](https://github.com/ai4curation/eval-ont-agent-cl/pull/484) | [attempt](attempts/pr484.md) |
+| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `7383923` | [#300](https://github.com/ai4curation/eval-ont-agent-cl/pull/300) | [attempt](attempts/pr300.md) |
+| 8 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `db1dbca` | [#232](https://github.com/ai4curation/eval-ont-agent-cl/pull/232) | [attempt](attempts/pr232.md) |
+| 9 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `db1dbca` | [#155](https://github.com/ai4curation/eval-ont-agent-cl/pull/155) | [attempt](attempts/pr155.md) |

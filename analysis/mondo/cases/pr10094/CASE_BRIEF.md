@@ -12,8 +12,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 best_f1: 1.0
 best_model: claude-sonnet-4.5
 ---
@@ -55,7 +55,7 @@ index bac19f0a39..a1b914908e 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -67,5 +67,7 @@ index bac19f0a39..a1b914908e 100644
 | 6 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `a1b9149` | [#201](https://github.com/ai4curation/eval-ont-agent-mondo/pull/201) | [attempt](attempts/pr201.md) |
 | 7 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `a1b9149` | [#129](https://github.com/ai4curation/eval-ont-agent-mondo/pull/129) | [attempt](attempts/pr129.md) |
 | 8 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `a1b9149` | [#109](https://github.com/ai4curation/eval-ont-agent-mondo/pull/109) | [attempt](attempts/pr109.md) |
-| 9 | gpt-5.4 | codex | 0.857 | 1.000 | 0.750 | `42db013` | [#176](https://github.com/ai4curation/eval-ont-agent-mondo/pull/176) | [attempt](attempts/pr176.md) |
-| 10 | gpt-5.5 | codex | 0.353 | 1.000 | 0.214 | `fd2667f` | [#93](https://github.com/ai4curation/eval-ont-agent-mondo/pull/93) | [attempt](attempts/pr93.md) |
+| 9 | gpt-5.4 | opencode | 0.857 | 1.000 | 0.750 | `42db013` | [#730](https://github.com/ai4curation/eval-ont-agent-mondo/pull/730) | [attempt](attempts/pr730.md) |
+| 10 | gpt-5.4 | opencode | 0.857 | 1.000 | 0.750 | `42db013` | [#676](https://github.com/ai4curation/eval-ont-agent-mondo/pull/676) | [attempt](attempts/pr676.md) |
+| 11 | gpt-5.4 | codex | 0.857 | 1.000 | 0.750 | `42db013` | [#176](https://github.com/ai4curation/eval-ont-agent-mondo/pull/176) | [attempt](attempts/pr176.md) |
+| 12 | gpt-5.5 | codex | 0.353 | 1.000 | 0.214 | `fd2667f` | [#93](https://github.com/ai4curation/eval-ont-agent-mondo/pull/93) | [attempt](attempts/pr93.md) |

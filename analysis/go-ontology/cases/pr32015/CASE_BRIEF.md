@@ -12,7 +12,7 @@ scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
 num_agent_attempts: 23
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 scoping_notes: All changes directly address the obsoletion of the single term GO:0008785.
 domain_area: molecular_function
 best_f1: 0.8
@@ -44,6 +44,57 @@ In `src/ontology/go-edit.obo`, the term GO:0008785 was modified:
 ## Resolution
 
 Straightforward obsoletion following standard OBO pattern. The key reasoning was identifying that GO:0102039 is the correct replacement based on EC number alignment (EC:1.11.1.26). Approved without changes on first review.
+
+## Curation Note (data quality)
+
+Flagged by claude-opus-4.7 on 2026-05-15 during review of all 23 agent attempts.
+
+**This is NOT a partial-gold case.** Step 3a checks confirm a single human PR
+(#32015, by dragon-ai-agent, merged 2026-04-29) fully and correctly resolved
+issue #31961; no companion PRs. The gold stanza is well-formed and standard.
+`case_quality` is therefore `ok`, not `poor`.
+
+**The caveat is metadiff resolution, not gold completeness.** This case is a
+useful illustration of two metadiff limitations that downstream
+scoring/aggregation should account for:
+
+1. **Systematic under-crediting of the correct pattern.** 16 of 23 attempts
+   converge on a diff that is structurally identical to the gold for the
+   GO:0008785 stanza but additionally (a) rewires the GO:0009321 *alkyl
+   hydroperoxide reductase complex* `comment` from GO:0008785 to the active
+   replacement GO:0102039, and (b) deletes a pre-existing spurious comment on
+   GO:0070937 *CRD-mediated mRNA stability complex* that erroneously
+   referenced GO:0008785 (a long-standing copy/paste artifact; the two terms
+   are biologically unrelated). Both are defensible ontology hygiene that
+   discharge dangling references to the obsoleted term; the human PR simply
+   did not do them. They cost recall (0.727) with no loss of correctness, so
+   F1=0.800 *under*-represents quality for this cluster.
+
+2. **Failure to discriminate real regressions within the F1=0.800 tie.**
+   Attempts #33 (claude-haiku-4.5) and #32 (gpt-5.4/codex v8) did *not* delete
+   the GO:0070937 comment — they rewired it to point at GO:0102039, launder-
+   ing a biologically meaningless cross-reference into an active term. This is
+   strictly worse than the artifact it "fixed," yet both score an identical
+   F1=0.800 to the fully-correct attempts. The metadiff cannot see this.
+
+**Other score-masked defects (judge on substance):**
+- #225 (gemma-4-31b, F1=0.727): dropped the historical term_tracker_items
+  #28261/#28340 — a provenance regression, not mere scope difference.
+- #103/#84 (gpt-5.5/opencode, F1=0.696): edited the build-generated derived
+  artifacts `src/ontology/comments.txt` and `src/ontology/ld.txt` directly —
+  genuine scope creep into non-source files.
+- #51/#50/#38 (F1=0.762): added a redundant near-duplicate EXACT synonym and a
+  non-standard #31961 tracker item to the active replacement term GO:0102039 —
+  benign churn; the recall penalty here is a fair one.
+- #362 (gemini-2.5-flash, F1=0.308): the only true failure — retained `is_a`
+  on the obsolete term, no "obsolete"/"OBSOLETE." prefixes, no #31961 tracker
+  item, and a backwards `consider: GO:0008785` on the replacement. Would fail
+  obsoletion QC. The low F1 here is accurate.
+
+**Recommendation:** keep the case (it is a good standard-obsoletion exemplar)
+but do not treat the F1=0.800 cluster as homogeneous in aggregation; the
+narrative reviews distinguish the fully-correct majority from the
+GO:0070937-rewire regressions (#33, #32).
 
 ## Human Diff
 
@@ -89,11 +140,11 @@ index 05f772421..f1ce0ab45 100644
 | 9 | gpt-5.5 | codex | 0.800 | 0.889 | 0.727 | `29a680f` | [#54](https://github.com/ai4curation/eval-ont-agent-go/pull/54) | [attempt](attempts/pr54.md) |
 | 10 | gpt-5.4 | codex | 0.800 | 0.889 | 0.727 | `d9a1e5c` | [#46](https://github.com/ai4curation/eval-ont-agent-go/pull/46) | [attempt](attempts/pr46.md) |
 | 11 | gpt-5.4 | codex | 0.800 | 0.889 | 0.727 | `d9a1e5c` | [#40](https://github.com/ai4curation/eval-ont-agent-go/pull/40) | [attempt](attempts/pr40.md) |
-| 12 | gpt-5.4 | codex | 0.800 | 0.889 | 0.727 | `7960fbb` | [#37](https://github.com/ai4curation/eval-ont-agent-go/pull/37) | [attempt](attempts/pr37.md) |
-| 13 | claude-sonnet-4.5 | claude | 0.800 | 0.889 | 0.727 | `e347ebb` | [#31](https://github.com/ai4curation/eval-ont-agent-go/pull/31) | [attempt](attempts/pr31.md) |
+| 12 | claude-sonnet-4.5 | claude | 0.800 | 0.889 | 0.727 | `d02b23b` | [#39](https://github.com/ai4curation/eval-ont-agent-go/pull/39) | [attempt](attempts/pr39.md) |
+| 13 | gpt-5.4 | codex | 0.800 | 0.889 | 0.727 | `7960fbb` | [#37](https://github.com/ai4curation/eval-ont-agent-go/pull/37) | [attempt](attempts/pr37.md) |
 | 14 | claude-haiku-4.5 | claude | 0.800 | 0.889 | 0.727 | `f5c2608` | [#33](https://github.com/ai4curation/eval-ont-agent-go/pull/33) | [attempt](attempts/pr33.md) |
 | 15 | gpt-5.4 | codex | 0.800 | 0.889 | 0.727 | `ed8baba` | [#32](https://github.com/ai4curation/eval-ont-agent-go/pull/32) | [attempt](attempts/pr32.md) |
-| 16 | claude-sonnet-4.5 | claude | 0.800 | 0.889 | 0.727 | `d02b23b` | [#39](https://github.com/ai4curation/eval-ont-agent-go/pull/39) | [attempt](attempts/pr39.md) |
+| 16 | claude-sonnet-4.5 | claude | 0.800 | 0.889 | 0.727 | `e347ebb` | [#31](https://github.com/ai4curation/eval-ont-agent-go/pull/31) | [attempt](attempts/pr31.md) |
 | 17 | gpt-5.4 | opencode | 0.762 | 0.889 | 0.667 | `e255e07` | [#51](https://github.com/ai4curation/eval-ont-agent-go/pull/51) | [attempt](attempts/pr51.md) |
 | 18 | gpt-5.4 | opencode | 0.762 | 0.889 | 0.667 | `e255e07` | [#50](https://github.com/ai4curation/eval-ont-agent-go/pull/50) | [attempt](attempts/pr50.md) |
 | 19 | gpt-5.5 | codex | 0.762 | 0.889 | 0.667 | `ae96d5d` | [#38](https://github.com/ai4curation/eval-ont-agent-go/pull/38) | [attempt](attempts/pr38.md) |

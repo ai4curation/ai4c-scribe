@@ -26,6 +26,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Complex axiom repair requiring understanding of how logical definitions drive OWL reasoning and produce unintended inferences
+case_quality: ok
+case_quality_reason: sound_gold_but_multi_round_reasoner_driven_axiom_repair
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

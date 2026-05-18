@@ -12,11 +12,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 domain_area: cellular_component
 best_f1: 0.9
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #31960 — Obsoletion request: GO:0005870 actin capping protein of dynactin complex (unused, direct replacement)
@@ -69,17 +69,19 @@ index 4aa8b2aca..6dd226998 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.900 | 0.900 | 0.900 | `44241dd` | [#471](https://github.com/ai4curation/eval-ont-agent-go/pull/471) | [attempt](attempts/pr471.md) |
-| 2 | claude-sonnet-4.5 | copilot | 0.900 | 0.900 | 0.900 | `ae5eb58` | [#388](https://github.com/ai4curation/eval-ont-agent-go/pull/388) | [attempt](attempts/pr388.md) |
-| 3 | claude-opus-4.7 | claude | 0.900 | 0.900 | 0.900 | `eb67838` | [#342](https://github.com/ai4curation/eval-ont-agent-go/pull/342) | [attempt](attempts/pr342.md) |
-| 4 | kimi-k2.6 | opencode | 0.900 | 0.900 | 0.900 | `207ee23` | [#272](https://github.com/ai4curation/eval-ont-agent-go/pull/272) | [attempt](attempts/pr272.md) |
-| 5 | gemma-4-31b | opencode | 0.900 | 0.900 | 0.900 | `d89bc91` | [#243](https://github.com/ai4curation/eval-ont-agent-go/pull/243) | [attempt](attempts/pr243.md) |
-| 6 | claude-haiku-4.5 | claude | 0.900 | 0.900 | 0.900 | `9a77745` | [#207](https://github.com/ai4curation/eval-ont-agent-go/pull/207) | [attempt](attempts/pr207.md) |
-| 7 | gpt-5.4 | codex | 0.900 | 0.900 | 0.900 | `280f07d` | [#184](https://github.com/ai4curation/eval-ont-agent-go/pull/184) | [attempt](attempts/pr184.md) |
-| 8 | gpt-5.5 | opencode | 0.900 | 0.900 | 0.900 | `9a77745` | [#151](https://github.com/ai4curation/eval-ont-agent-go/pull/151) | [attempt](attempts/pr151.md) |
-| 9 | gpt-5.5 | opencode | 0.900 | 0.900 | 0.900 | `9a77745` | [#132](https://github.com/ai4curation/eval-ont-agent-go/pull/132) | [attempt](attempts/pr132.md) |
-| 10 | gpt-5.5 | codex | 0.900 | 0.900 | 0.900 | `9a77745` | [#115](https://github.com/ai4curation/eval-ont-agent-go/pull/115) | [attempt](attempts/pr115.md) |
+| 1 | gpt-5.4 | opencode | 0.900 | 0.900 | 0.900 | `9071acb` | [#645](https://github.com/ai4curation/eval-ont-agent-go/pull/645) | [attempt](attempts/pr645.md) |
+| 2 | gpt-5.4 | opencode | 0.900 | 0.900 | 0.900 | `9071acb` | [#599](https://github.com/ai4curation/eval-ont-agent-go/pull/599) | [attempt](attempts/pr599.md) |
+| 3 | claude-sonnet-4.5 | claude | 0.900 | 0.900 | 0.900 | `44241dd` | [#471](https://github.com/ai4curation/eval-ont-agent-go/pull/471) | [attempt](attempts/pr471.md) |
+| 4 | claude-sonnet-4.5 | copilot | 0.900 | 0.900 | 0.900 | `ae5eb58` | [#388](https://github.com/ai4curation/eval-ont-agent-go/pull/388) | [attempt](attempts/pr388.md) |
+| 5 | claude-opus-4.7 | claude | 0.900 | 0.900 | 0.900 | `eb67838` | [#342](https://github.com/ai4curation/eval-ont-agent-go/pull/342) | [attempt](attempts/pr342.md) |
+| 6 | kimi-k2.6 | opencode | 0.900 | 0.900 | 0.900 | `207ee23` | [#272](https://github.com/ai4curation/eval-ont-agent-go/pull/272) | [attempt](attempts/pr272.md) |
+| 7 | gemma-4-31b | opencode | 0.900 | 0.900 | 0.900 | `d89bc91` | [#243](https://github.com/ai4curation/eval-ont-agent-go/pull/243) | [attempt](attempts/pr243.md) |
+| 8 | claude-haiku-4.5 | claude | 0.900 | 0.900 | 0.900 | `9a77745` | [#207](https://github.com/ai4curation/eval-ont-agent-go/pull/207) | [attempt](attempts/pr207.md) |
+| 9 | gpt-5.4 | codex | 0.900 | 0.900 | 0.900 | `280f07d` | [#184](https://github.com/ai4curation/eval-ont-agent-go/pull/184) | [attempt](attempts/pr184.md) |
+| 10 | gpt-5.5 | opencode | 0.900 | 0.900 | 0.900 | `9a77745` | [#151](https://github.com/ai4curation/eval-ont-agent-go/pull/151) | [attempt](attempts/pr151.md) |
+| 11 | gpt-5.5 | opencode | 0.900 | 0.900 | 0.900 | `9a77745` | [#132](https://github.com/ai4curation/eval-ont-agent-go/pull/132) | [attempt](attempts/pr132.md) |
+| 12 | gpt-5.5 | codex | 0.900 | 0.900 | 0.900 | `9a77745` | [#115](https://github.com/ai4curation/eval-ont-agent-go/pull/115) | [attempt](attempts/pr115.md) |

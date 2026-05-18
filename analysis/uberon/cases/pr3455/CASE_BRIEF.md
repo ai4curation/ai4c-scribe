@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 11
+generated_at: '2026-05-17'
 domain_area: invertebrate-anatomy
 best_f1: 0.473
-best_model: gpt-5.5
+best_model: gpt-5.4
 ---
 
 # PR #3455 — Newly introduced crab and lobster terms violate taxon constraints
@@ -35,6 +35,23 @@ The PR replaced the separate in_taxon restrictions to Astacidea (NCBITaxon:6712)
 ## Resolution
 
 Hard difficulty. An agent would need to understand Uberon's taxon constraint system, look up the NCBI taxonomy to find the appropriate common ancestor for Astacidea and Brachyura (Pleocyemata), update the import configuration to include the new taxon term, and fix the cross-reference formatting issues. The multi-file changes and taxonomic reasoning make this significantly more complex than a simple axiom edit. Same-day merge reflects the urgency of fixing constraint violations.
+
+## Curation Note (data quality)
+
+**Flagged poor by claude-opus-4.7 on 2026-05-16.** This is a single-PR resolution (verified: only PR #3455 references issue #3454; no companion PRs), so it is *not* a multi-PR partial-gold case. However, the gold PR's diff is a poor scoring reference for the following reasons:
+
+- **ODK build-regenerated file domination.** `src/ontology/imports/merged_import.owl` contributes 42 additions / 3 deletions — version-string bumps (`2024-12-17` → `2024-12-23`), bulk `Declaration(Class(...))` lines, NCBITaxon stanza imports, disjointness GCIs, and a dropped `dcterms:title` annotation-property declaration. These are mechanically produced by the ODK import-refresh pipeline once Pleocyemata is added to `ncbitaxon_terms.txt`; they are not independent curator decisions and no agent reproduces them faithfully.
+- **OWL/OBO serialization-order artifacts.** The gold `uberon-edit.obo` change (39 add / 54 del) is largely a whole-file `robot` reserialization commit: xref normalization (`[PMID: 17009928]` → `[PMID:17009928]`, sorted xref lists), `is_a`/`relationship` line reordering, trailing-whitespace trimming, a `has_part CL:4023161 ! unipolar brush cell` label fill-in, and a separate commit changing the STG/abbreviation synonyms from `EXACT` to `RELATED ... OMO:0003000`. Only ~15 line-pairs are the substantive curation the issue demanded.
+
+**Substantive task** (what the issue #3454 author explicitly asked for): replace the contradictory `relationship: in_taxon NCBITaxon:6712 ! Astacidea` + `relationship: in_taxon NCBITaxon:6752 ! Brachyura` pair with a single `relationship: in_taxon NCBITaxon:6692` (Pleocyemata) on the ~15 affected stomatogastric terms, and add NCBITaxon:6692 to the NCBITaxon import so the build stays complete.
+
+**Scoring impact:**
+
+- All 4 `claude` attempts (pr309, pr233, pr178, pr92; blob `c8688e4`) produced a byte-identical, perfectly-scoped minimal diff whose 15 `in_taxon ... ! Pleocyemata` lines are **byte-identical to gold's substantive lines**, yet score F1=0.073 (recall=1.000, precision=0.038) purely because they did not reproduce the ODK/reserialization noise. F1 grossly under-represents quality here.
+- The `codex`/`opencode` attempts (pr17, pr12, pr53, pr35; F1≈0.47) ran `robot convert` and so partially reproduced the reserialization hunks (recall ≈0.82–0.84), but did not regenerate `merged_import.owl`; their F1 also under-represents the correctness of the core fix.
+- **Genuine shared defect (not a scoring artifact):** none of the 8 attempts added `NCBITaxon:6692` to `ncbitaxon_terms.txt` / refreshed `merged_import.owl`, so all leave the import membership incomplete. This is a real `missed_requirement`, distinct from the reserialization noise.
+
+Recommendation for downstream aggregation: down-weight or exclude this case's raw F1; score attempts on the substantive `in_taxon` replacement plus the import-membership requirement rather than the full gold diff.
 
 ## Human Diff
 
@@ -242,15 +259,18 @@ index b54fec4d5d..b145789506 100644
 ... (147 more lines truncated)
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (11)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gpt-5.5 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#17](https://github.com/ai4curation/eval-ont-agent-uberon/pull/17) | [attempt](attempts/pr17.md) |
-| 2 | gpt-5.4 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#12](https://github.com/ai4curation/eval-ont-agent-uberon/pull/12) | [attempt](attempts/pr12.md) |
-| 3 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#53](https://github.com/ai4curation/eval-ont-agent-uberon/pull/53) | [attempt](attempts/pr53.md) |
-| 4 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#35](https://github.com/ai4curation/eval-ont-agent-uberon/pull/35) | [attempt](attempts/pr35.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#309](https://github.com/ai4curation/eval-ont-agent-uberon/pull/309) | [attempt](attempts/pr309.md) |
-| 6 | claude-opus-4.7 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#233](https://github.com/ai4curation/eval-ont-agent-uberon/pull/233) | [attempt](attempts/pr233.md) |
-| 7 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#178](https://github.com/ai4curation/eval-ont-agent-uberon/pull/178) | [attempt](attempts/pr178.md) |
-| 8 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#92](https://github.com/ai4curation/eval-ont-agent-uberon/pull/92) | [attempt](attempts/pr92.md) |
+| 1 | gpt-5.4 | opencode | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#647](https://github.com/ai4curation/eval-ont-agent-uberon/pull/647) | [attempt](attempts/pr647.md) |
+| 2 | gpt-5.4 | opencode | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#588](https://github.com/ai4curation/eval-ont-agent-uberon/pull/588) | [attempt](attempts/pr588.md) |
+| 3 | gpt-5.5 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#17](https://github.com/ai4curation/eval-ont-agent-uberon/pull/17) | [attempt](attempts/pr17.md) |
+| 4 | gpt-5.4 | codex | 0.473 | 0.329 | 0.839 | `2a8dee9` | [#12](https://github.com/ai4curation/eval-ont-agent-uberon/pull/12) | [attempt](attempts/pr12.md) |
+| 5 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#53](https://github.com/ai4curation/eval-ont-agent-uberon/pull/53) | [attempt](attempts/pr53.md) |
+| 6 | gpt-5.5 | opencode | 0.468 | 0.329 | 0.812 | `125b85b` | [#35](https://github.com/ai4curation/eval-ont-agent-uberon/pull/35) | [attempt](attempts/pr35.md) |
+| 7 | claude-sonnet-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#309](https://github.com/ai4curation/eval-ont-agent-uberon/pull/309) | [attempt](attempts/pr309.md) |
+| 8 | claude-opus-4.7 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#233](https://github.com/ai4curation/eval-ont-agent-uberon/pull/233) | [attempt](attempts/pr233.md) |
+| 9 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#178](https://github.com/ai4curation/eval-ont-agent-uberon/pull/178) | [attempt](attempts/pr178.md) |
+| 10 | claude-haiku-4.5 | claude | 0.073 | 0.038 | 1.000 | `c8688e4` | [#92](https://github.com/ai4curation/eval-ont-agent-uberon/pull/92) | [attempt](attempts/pr92.md) |
+| 11 | kimi-k2.6 | opencode | 0.048 | 0.025 | 0.500 | `e609b4d` | [#467](https://github.com/ai4curation/eval-ont-agent-uberon/pull/467) | [attempt](attempts/pr467.md) |

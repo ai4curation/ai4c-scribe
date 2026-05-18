@@ -38,6 +38,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Infrastructure-level refactoring of cross-species bridge axiom patterns, changing from single to dual axiom form
+case_quality: ok
+case_quality_reason: sound_gold_but_hard_infrastructure_refactor_high_variance
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

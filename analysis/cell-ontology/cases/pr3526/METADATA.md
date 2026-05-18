@@ -27,6 +27,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Neuroscience-domain definition update requiring knowledge of MGE-derived interneuron markers and developmental biology
+case_quality: ok
+case_quality_reason: sound_gold_but_domain_specific_axiom_repair
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

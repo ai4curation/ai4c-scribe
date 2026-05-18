@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 14
+generated_at: '2026-05-17'
 domain_area: neuroanatomy
 best_f1: 0.0
-best_model: claude-haiku-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3506 — two new defs for undefined terms
@@ -35,6 +35,49 @@ The PR added two definition lines to src/ontology/uberon-edit.obo, one for each 
 ## Resolution
 
 Simple difficulty. Adding text definitions to existing terms is a straightforward operation in OBO format. The key requirement is having an accurate, well-sourced definition text. In this case, the definitions were provided by a domain expert in the issue, so an agent would primarily need to format them correctly in OBO syntax with proper attribution.
+
+## Curation Note (data quality)
+
+**Flagged poor (`metadiff_line_atomic_def_xref`) by claude-opus-4.7 on 2026-05-16.**
+
+This is a poor *evaluation* case, not a poor agent cohort. Every one of the
+11 attempts scored exactly `f1 = precision = recall = jaccard = 0.000`, and
+investigation shows this is a scoring artifact rather than a uniform agent
+failure:
+
+- **Gold is correct and complete; not multi-PR.** `gh search prs` confirms
+  #3506 is the sole human resolution of issue #3448 (no companion PRs). Its
+  parent commit (`595f751`) is byte-identical to the eval base branch
+  `eval-base-issue-3448`, so there is **no base contamination and no
+  wrong-base** problem. Gold added exactly 2 lines: one `def:` line per term.
+- **The zero scores are a line-atomic metadiff artifact.** The OBO metadiff
+  (`src/ai4c_scribe/metadiff/api.py`) compares entire normalized added/removed
+  lines as set members. A `def:` line is one atomic element including its
+  trailing xref bracket. Gold idiosyncratically folded the contributor ORCID
+  *inside* the def bracket and used Uberon's legacy internal identifiers:
+  - BA9 (UBERON:0013540): `... [Wikipedia:Brodmann_area_9, https://orcid.org/0000-0002-4964-5083]`
+  - insular cortex (UBERON:0034891): `... [Wikipedia:INSULA, MESH:D007419, https://orcid.org/0000-0002-4964-5083]`
+  None of these xref choices is derivable from issue #3448, which only said
+  "References: Wikipedia, MeSH" / "Adapted from Wikipedia". No agent matched
+  the exact bracket, so every `def:` line is a non-matching string → 0 true
+  positives → F1=0 for all 11, **by construction**.
+- **Several attempts are substantively excellent.** pr300 (sonnet-4.5) and
+  pr237 (opus-4.7) reproduced gold's definition *prose* byte-for-byte and
+  still scored 0.0. pr237 in particular is the model attempt: gold-verbatim
+  text, perfect scope, transparent methodology.
+- **Gold vs. agent-config mismatch.** The uberon-agent-config CLAUDE.md
+  explicitly instructs agents to add `dc-contributor`, `dcterms-date`, and
+  `term_tracker_item`. The agents that did so were following instructions;
+  the quick human gold commit did none of that. The metadiff ignores those
+  keys but cannot reward the (correct) def lines, so instruction-following
+  agents are doubly disadvantaged.
+
+**Scoring guidance:** exclude or down-weight this case in aggregate F1.
+Judge attempts on substance: (1) accurate definition text faithful to the
+expert-supplied issue text, (2) valid OBO xref formatting, (3) contributor
+attribution, (4) issue link. On that basis the cohort is largely
+successful — best: pr237/pr300 (success); worst: pr150/pr107 (correct text
+but malformed `[Wikipedia]` xrefs).
 
 ## Human Diff
 
@@ -62,18 +105,21 @@ index d32bd11801..82a8b281c3 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (14)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `bf16fa9` | [#331](https://github.com/ai4curation/eval-ont-agent-uberon/pull/331) | [attempt](attempts/pr331.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `1adf922` | [#300](https://github.com/ai4curation/eval-ont-agent-uberon/pull/300) | [attempt](attempts/pr300.md) |
-| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `bf16fa9` | [#271](https://github.com/ai4curation/eval-ont-agent-uberon/pull/271) | [attempt](attempts/pr271.md) |
-| 4 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `df3230c` | [#237](https://github.com/ai4curation/eval-ont-agent-uberon/pull/237) | [attempt](attempts/pr237.md) |
-| 5 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `181a59c` | [#196](https://github.com/ai4curation/eval-ont-agent-uberon/pull/196) | [attempt](attempts/pr196.md) |
-| 6 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | `47a42b9` | [#150](https://github.com/ai4curation/eval-ont-agent-uberon/pull/150) | [attempt](attempts/pr150.md) |
-| 7 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | `47a42b9` | [#107](https://github.com/ai4curation/eval-ont-agent-uberon/pull/107) | [attempt](attempts/pr107.md) |
-| 8 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `d772d4f` | [#78](https://github.com/ai4curation/eval-ont-agent-uberon/pull/78) | [attempt](attempts/pr78.md) |
-| 9 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `5b33600` | [#62](https://github.com/ai4curation/eval-ont-agent-uberon/pull/62) | [attempt](attempts/pr62.md) |
-| 10 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `5b33600` | [#42](https://github.com/ai4curation/eval-ont-agent-uberon/pull/42) | [attempt](attempts/pr42.md) |
-| 11 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `941a29d` | [#23](https://github.com/ai4curation/eval-ont-agent-uberon/pull/23) | [attempt](attempts/pr23.md) |
+| 1 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `dd55704` | [#652](https://github.com/ai4curation/eval-ont-agent-uberon/pull/652) | [attempt](attempts/pr652.md) |
+| 2 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `dd55704` | [#595](https://github.com/ai4curation/eval-ont-agent-uberon/pull/595) | [attempt](attempts/pr595.md) |
+| 3 | kimi-k2.6 | opencode | 0.000 | 0.000 | 0.000 | `de2aae8` | [#449](https://github.com/ai4curation/eval-ont-agent-uberon/pull/449) | [attempt](attempts/pr449.md) |
+| 4 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `bf16fa9` | [#331](https://github.com/ai4curation/eval-ont-agent-uberon/pull/331) | [attempt](attempts/pr331.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `1adf922` | [#300](https://github.com/ai4curation/eval-ont-agent-uberon/pull/300) | [attempt](attempts/pr300.md) |
+| 6 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `bf16fa9` | [#271](https://github.com/ai4curation/eval-ont-agent-uberon/pull/271) | [attempt](attempts/pr271.md) |
+| 7 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `df3230c` | [#237](https://github.com/ai4curation/eval-ont-agent-uberon/pull/237) | [attempt](attempts/pr237.md) |
+| 8 | claude-sonnet-4.5 | copilot | 0.000 | 0.000 | 0.000 | `181a59c` | [#196](https://github.com/ai4curation/eval-ont-agent-uberon/pull/196) | [attempt](attempts/pr196.md) |
+| 9 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | `47a42b9` | [#150](https://github.com/ai4curation/eval-ont-agent-uberon/pull/150) | [attempt](attempts/pr150.md) |
+| 10 | gemma-4-31b | opencode | 0.000 | 0.000 | 0.000 | `47a42b9` | [#107](https://github.com/ai4curation/eval-ont-agent-uberon/pull/107) | [attempt](attempts/pr107.md) |
+| 11 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `d772d4f` | [#78](https://github.com/ai4curation/eval-ont-agent-uberon/pull/78) | [attempt](attempts/pr78.md) |
+| 12 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `5b33600` | [#62](https://github.com/ai4curation/eval-ont-agent-uberon/pull/62) | [attempt](attempts/pr62.md) |
+| 13 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `5b33600` | [#42](https://github.com/ai4curation/eval-ont-agent-uberon/pull/42) | [attempt](attempts/pr42.md) |
+| 14 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `941a29d` | [#23](https://github.com/ai4curation/eval-ont-agent-uberon/pull/23) | [attempt](attempts/pr23.md) |

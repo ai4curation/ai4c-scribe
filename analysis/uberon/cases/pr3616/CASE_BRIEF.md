@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 5
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 domain_area: hepatic-anatomy
 best_f1: 1.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3616 — Typos in labels of UBERON:0009548 and UBERON:0009549
@@ -64,12 +64,17 @@ index 45a291322..1554053e6 100644
 
 ```
 
-## Agent Attempts (5)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#312](https://github.com/ai4curation/eval-ont-agent-uberon/pull/312) | [attempt](attempts/pr312.md) |
-| 2 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#284](https://github.com/ai4curation/eval-ont-agent-uberon/pull/284) | [attempt](attempts/pr284.md) |
-| 3 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#254](https://github.com/ai4curation/eval-ont-agent-uberon/pull/254) | [attempt](attempts/pr254.md) |
-| 4 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#186](https://github.com/ai4curation/eval-ont-agent-uberon/pull/186) | [attempt](attempts/pr186.md) |
-| 5 | gemma-4-31b | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#114](https://github.com/ai4curation/eval-ont-agent-uberon/pull/114) | [attempt](attempts/pr114.md) |
+| 1 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#670](https://github.com/ai4curation/eval-ont-agent-uberon/pull/670) | [attempt](attempts/pr670.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#630](https://github.com/ai4curation/eval-ont-agent-uberon/pull/630) | [attempt](attempts/pr630.md) |
+| 3 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#612](https://github.com/ai4curation/eval-ont-agent-uberon/pull/612) | [attempt](attempts/pr612.md) |
+| 4 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#573](https://github.com/ai4curation/eval-ont-agent-uberon/pull/573) | [attempt](attempts/pr573.md) |
+| 5 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#312](https://github.com/ai4curation/eval-ont-agent-uberon/pull/312) | [attempt](attempts/pr312.md) |
+| 6 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#284](https://github.com/ai4curation/eval-ont-agent-uberon/pull/284) | [attempt](attempts/pr284.md) |
+| 7 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#254](https://github.com/ai4curation/eval-ont-agent-uberon/pull/254) | [attempt](attempts/pr254.md) |
+| 8 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `1554053` | [#186](https://github.com/ai4curation/eval-ont-agent-uberon/pull/186) | [attempt](attempts/pr186.md) |
+| 9 | gemma-4-31b | opencode | 1.000 | 1.000 | 1.000 | `1554053` | [#114](https://github.com/ai4curation/eval-ont-agent-uberon/pull/114) | [attempt](attempts/pr114.md) |
+| 10 | gpt-5.4 | codex | 0.667 | 1.000 | 0.500 | `5bb4699` | [#392](https://github.com/ai4curation/eval-ont-agent-uberon/pull/392) | [attempt](attempts/pr392.md) |

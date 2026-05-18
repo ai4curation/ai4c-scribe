@@ -27,6 +27,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: New terms for exhausted T cell subsets requiring understanding of T cell exhaustion biology and inhibitory receptor expression patterns
+case_quality: ok
+case_quality_reason: sound_gold_but_complex_new_term_pair_scores_sensitive_to_definition_and_synonym_details
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

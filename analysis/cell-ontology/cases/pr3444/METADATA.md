@@ -27,6 +27,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Single-axiom reclassification changing the genus class in an equivalence axiom for a dendritic cell subtype
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

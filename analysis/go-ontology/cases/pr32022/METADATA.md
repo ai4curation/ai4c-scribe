@@ -26,6 +26,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Part of systematic effort to reclassify membrane tethering terms from BP to MF namespace, demonstrating ontological namespace correction
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: structural_refactor
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: ontology-infrastructure
 best_f1: 0.001
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3652 — Newly introduced disjointness axioms cause OBO serialisation issue
@@ -35,6 +35,20 @@ The PR removed eight lines of disjoint axioms from src/ontology/uberon-edit.obo 
 ## Resolution
 
 Hard difficulty. An agent would need to understand the limitations of OBO format serialisation for disjoint union axioms, know that the ODK pipeline supports component-based OWL files for axioms that cannot be represented in OBO, and correctly move the axioms while ensuring the build pipeline picks them up. The large diff in merged_import.owl is a pipeline artifact, not manual editing. Two-day turnaround from issue to merge.
+
+## Curation Note (data quality)
+
+**Flagged `case_quality: poor` (robot_convert_reserialization_churn) by claude-opus-4.7 on 2026-05-16.**
+
+The reported metadiff F1=0.001 (P=0.000) for all three attempts (#292 sonnet-4.5, #261 opus-4.7, #165 haiku-4.5) is an evaluation artifact, not a quality signal:
+
+1. **Pipeline reserialization churn dominates the gold diff.** The substantive human change in PR #3652 is only ~9 lines: 8 deletions in `src/ontology/uberon-edit.obo` (the two orphan label-less `[Term] id: GO:0005623` / `[Term] id: GO:0110165` frames) plus **one** added `DisjointClasses` line in `src/ontology/components/disjoint_union_over.owl`. The remaining ~13,431 changed lines are entirely in `src/ontology/imports/merged_import.owl` and are pure ODK release-pipeline reserialization: `chebi#…` → `chebi/…` annotation/object-property prefix migration, RO import refresh (new RO_0018xxx chemical-relationship properties), CHEBI/GO declaration additions, and a version-date bump (`2026-01-12` → `2026-01-20`). An agent neither would nor should hand-author this regenerated import file; whole-file metadiff therefore craters recall/precision to ~0 for every attempt regardless of correctness.
+
+2. **Single-PR resolution (Step 3a N/A).** Issue #3651 was resolved entirely by PR #3652; the only cross-reference on the issue is #3652 itself. `companion_prs: []`.
+
+3. **The gold itself is imperfect.** Gold #3652 re-adds only `DisjointClasses(UBERON_0000001 GO_0110165)` to the component and silently **drops the `GO:0005623` disjointness axiom** (GO:0005623 was "obsolete cell" by then). All three agents preserved *both* the GO_0005623 and GO_0110165 disjointness axioms, which is a more faithful reading of the issue's intent ("move the disjointness axioms"). A strict line-match thus penalizes the agents for being more semantically complete than the gold.
+
+**Adjudication:** Judge attempts against issue #3651's solution (B) (curator-endorsed: move the axioms to an imported OWL Functional Syntax component) and the issue's explicit ask, not the metadiff. On that basis all three attempts are substantive successes: #261 (opus) is the cleanest minimal implementation; #292 (sonnet) is correct but adds a defensible extra duplicate into `external-disjoints.obo`; #165 (haiku) is correct but with a thin/stub PR writeup. Downstream scoring/aggregation should exclude or down-weight the F1 for this case.
 
 ## Human Diff
 
@@ -242,10 +256,16 @@ index 578e75871..a3422f8b6 100644
 ... (20454 more lines truncated)
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.001 | 0.000 | 0.400 | `f4561c9` | [#292](https://github.com/ai4curation/eval-ont-agent-uberon/pull/292) | [attempt](attempts/pr292.md) |
-| 2 | claude-opus-4.7 | claude | 0.001 | 0.000 | 0.667 | `f4561c9` | [#261](https://github.com/ai4curation/eval-ont-agent-uberon/pull/261) | [attempt](attempts/pr261.md) |
-| 3 | claude-haiku-4.5 | claude | 0.001 | 0.000 | 0.833 | `ec8b1ba` | [#165](https://github.com/ai4curation/eval-ont-agent-uberon/pull/165) | [attempt](attempts/pr165.md) |
+| 1 | gpt-5.4 | opencode | 0.001 | 0.000 | 0.667 | `f4561c9` | [#679](https://github.com/ai4curation/eval-ont-agent-uberon/pull/679) | [attempt](attempts/pr679.md) |
+| 2 | gpt-5.5 | opencode | 0.001 | 0.000 | 0.667 | `f4561c9` | [#643](https://github.com/ai4curation/eval-ont-agent-uberon/pull/643) | [attempt](attempts/pr643.md) |
+| 3 | gpt-5.4 | opencode | 0.001 | 0.000 | 0.667 | `f4561c9` | [#619](https://github.com/ai4curation/eval-ont-agent-uberon/pull/619) | [attempt](attempts/pr619.md) |
+| 4 | gpt-5.5 | opencode | 0.001 | 0.000 | 0.667 | `f4561c9` | [#582](https://github.com/ai4curation/eval-ont-agent-uberon/pull/582) | [attempt](attempts/pr582.md) |
+| 5 | kimi-k2.6 | opencode | 0.001 | 0.000 | 0.667 | `f4561c9` | [#444](https://github.com/ai4curation/eval-ont-agent-uberon/pull/444) | [attempt](attempts/pr444.md) |
+| 6 | gpt-5.4 | codex | 0.001 | 0.000 | 0.667 | `f4561c9` | [#381](https://github.com/ai4curation/eval-ont-agent-uberon/pull/381) | [attempt](attempts/pr381.md) |
+| 7 | claude-sonnet-4.5 | claude | 0.001 | 0.000 | 0.400 | `f4561c9` | [#292](https://github.com/ai4curation/eval-ont-agent-uberon/pull/292) | [attempt](attempts/pr292.md) |
+| 8 | claude-opus-4.7 | claude | 0.001 | 0.000 | 0.667 | `f4561c9` | [#261](https://github.com/ai4curation/eval-ont-agent-uberon/pull/261) | [attempt](attempts/pr261.md) |
+| 9 | claude-haiku-4.5 | claude | 0.001 | 0.000 | 0.833 | `ec8b1ba` | [#165](https://github.com/ai4curation/eval-ont-agent-uberon/pull/165) | [attempt](attempts/pr165.md) |

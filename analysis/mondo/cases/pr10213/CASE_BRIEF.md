@@ -11,8 +11,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 best_f1: 0.5
 best_model: gpt-5.5
 ---
@@ -34,6 +34,19 @@ The PR added the ClinGen preferred label as an exact synonym to MONDO:0044205 an
 ## Resolution
 
 Simple difficulty because it follows a well-established pattern for ClinGen label requests. The curator needs to locate the term stanza, add the synonym with appropriate scope and source annotations, and optionally update the definition. An agent with knowledge of OBO synonym format and ClinGen naming conventions could handle this reliably.
+
+## Curation Note (data quality)
+
+This is **not** a poor case in the Step 3a/3b sense: issue #9940 was resolved by the single PR #10213 (no companion PRs), the gold is genuine curator work approved by sabrinatoro, all attempts used the canonical `MONDO:0044205` (no placeholder artifact), and there is no gold leakage or base-state contamination (best F1 across 7 attempts is only 0.5).
+
+However, a config-vs-gold pattern mismatch makes the per-line metadiff under-represent agent quality on the synonym:
+
+- The mondo-agent-config `template/CLAUDE.md` ClinGen section explicitly documents the preferred-label synonym with **empty brackets**: `synonym: "Hajdu-Cheney syndrome-NOTCH2" EXACT [] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}`. This directly contradicts the same file's general rule ("Never use empty brackets").
+- The human curator instead used the GCEP affiliation URL: `EXACT [https://clinicalgenome.org/affiliation/40157/]`.
+- Agents that followed the ClinGen-specific instruction (pr517, pr483, pr400, pr246, pr429, pr298) all emit `EXACT []` and are penalized for instruction-following. This drives pr298 (haiku, single correct synonym line) to a misleading **F1=0.0**.
+- Only pr554 (gpt-5.5/codex) independently chose the affiliation URL and matched the human synonym line (best F1=0.5).
+
+Substance check (judge against the issue's explicit asks, not only the metadiff): the issue requested (1) the ClinGen preferred label and (2) a new EFL1-specific definition. The human additionally (3) added `intersection_of` genus-differentia axioms (defined class under the disease-series-by-gene pattern) and (4) a second `IAO:0000233` term-tracker for #9940 while retaining the existing #4948 line. **No attempt** performed the definition rewrite (an explicit issue request) or added the equivalence axiom. pr429 (sonnet/claude) destructively overwrote the existing #4948 tracker instead of appending #9940 — a provenance regression a curator would reject. Overall the best attempts are partial successes; the metadiff slightly over-represents quality relative to the issue's full ask, except for pr298 where it under-represents.
 
 ## Human Diff
 
@@ -72,14 +85,19 @@ index 28406f6c4f..af5d13f986 100644
 
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gpt-5.5 | codex | 0.500 | 0.333 | 1.000 | `5ab3104` | [#554](https://github.com/ai4curation/eval-ont-agent-mondo/pull/554) | [attempt](attempts/pr554.md) |
-| 2 | claude-sonnet-4.5 | copilot | 0.250 | 0.167 | 0.500 | `e7b987a` | [#517](https://github.com/ai4curation/eval-ont-agent-mondo/pull/517) | [attempt](attempts/pr517.md) |
-| 3 | claude-sonnet-4.5 | copilot | 0.250 | 0.167 | 0.500 | `e7b987a` | [#483](https://github.com/ai4curation/eval-ont-agent-mondo/pull/483) | [attempt](attempts/pr483.md) |
-| 4 | claude-opus-4.7 | claude | 0.250 | 0.167 | 0.500 | `e7b987a` | [#400](https://github.com/ai4curation/eval-ont-agent-mondo/pull/400) | [attempt](attempts/pr400.md) |
-| 5 | kimi-k2.6 | opencode | 0.250 | 0.167 | 0.500 | `e7b987a` | [#246](https://github.com/ai4curation/eval-ont-agent-mondo/pull/246) | [attempt](attempts/pr246.md) |
-| 6 | claude-sonnet-4.5 | claude | 0.222 | 0.167 | 0.333 | `abb5d39` | [#429](https://github.com/ai4curation/eval-ont-agent-mondo/pull/429) | [attempt](attempts/pr429.md) |
-| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `0b009ef` | [#298](https://github.com/ai4curation/eval-ont-agent-mondo/pull/298) | [attempt](attempts/pr298.md) |
+| 1 | gpt-5.5 | opencode | 0.500 | 0.333 | 1.000 | `5ab3104` | [#729](https://github.com/ai4curation/eval-ont-agent-mondo/pull/729) | [attempt](attempts/pr729.md) |
+| 2 | gpt-5.5 | opencode | 0.500 | 0.333 | 1.000 | `5ab3104` | [#672](https://github.com/ai4curation/eval-ont-agent-mondo/pull/672) | [attempt](attempts/pr672.md) |
+| 3 | gpt-5.4 | codex | 0.500 | 0.333 | 1.000 | `5ab3104` | [#565](https://github.com/ai4curation/eval-ont-agent-mondo/pull/565) | [attempt](attempts/pr565.md) |
+| 4 | gpt-5.5 | codex | 0.500 | 0.333 | 1.000 | `5ab3104` | [#554](https://github.com/ai4curation/eval-ont-agent-mondo/pull/554) | [attempt](attempts/pr554.md) |
+| 5 | gpt-5.4 | opencode | 0.400 | 0.333 | 0.500 | `d237c92` | [#760](https://github.com/ai4curation/eval-ont-agent-mondo/pull/760) | [attempt](attempts/pr760.md) |
+| 6 | gpt-5.4 | opencode | 0.400 | 0.333 | 0.500 | `d237c92` | [#706](https://github.com/ai4curation/eval-ont-agent-mondo/pull/706) | [attempt](attempts/pr706.md) |
+| 7 | claude-sonnet-4.5 | copilot | 0.250 | 0.167 | 0.500 | `e7b987a` | [#517](https://github.com/ai4curation/eval-ont-agent-mondo/pull/517) | [attempt](attempts/pr517.md) |
+| 8 | claude-sonnet-4.5 | copilot | 0.250 | 0.167 | 0.500 | `e7b987a` | [#483](https://github.com/ai4curation/eval-ont-agent-mondo/pull/483) | [attempt](attempts/pr483.md) |
+| 9 | claude-opus-4.7 | claude | 0.250 | 0.167 | 0.500 | `e7b987a` | [#400](https://github.com/ai4curation/eval-ont-agent-mondo/pull/400) | [attempt](attempts/pr400.md) |
+| 10 | kimi-k2.6 | opencode | 0.250 | 0.167 | 0.500 | `e7b987a` | [#246](https://github.com/ai4curation/eval-ont-agent-mondo/pull/246) | [attempt](attempts/pr246.md) |
+| 11 | claude-sonnet-4.5 | claude | 0.222 | 0.167 | 0.333 | `abb5d39` | [#429](https://github.com/ai4curation/eval-ont-agent-mondo/pull/429) | [attempt](attempts/pr429.md) |
+| 12 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `0b009ef` | [#298](https://github.com/ai4curation/eval-ont-agent-mondo/pull/298) | [attempt](attempts/pr298.md) |

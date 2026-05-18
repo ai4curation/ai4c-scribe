@@ -12,8 +12,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 12
-generated_at: '2026-05-15'
+num_agent_attempts: 14
+generated_at: '2026-05-17'
 domain_area: biological_process
 best_f1: 0.927
 best_model: gpt-5.5
@@ -40,6 +40,24 @@ In `src/ontology/go-edit.obo`, GO:0009095 was obsoleted:
 ## Resolution
 
 Merged directly. The obsoletion rationale was clear: GO prefers atomic terms that can be composed via GO-CAM models rather than pre-composed superpathway terms. No annotation migration was needed since the term had minimal direct annotations.
+
+## Curation Note (data quality)
+
+**Flagged poor due to eval base-state contamination — not partial gold.**
+
+Step 3a checks confirm issue #32005 was resolved by a **single** human PR (#32026); there are no companion PRs and the gold is complete. The near-zero F1 of 9 of the 12 attempts is therefore *not* a partial-gold artifact. It is caused by **contamination of the eval harness base `go-edit.obo`**.
+
+Findings:
+
+- The merged human gold (#32026) is a tiny diff: obsolete GO:0009095 (name/def prefixed, logical axioms + 5 synonyms + `xref: MetaCyc:PWY-3481` removed, `is_obsolete: true`, `consider: GO:0009094` + `consider: GO:0006571`, tracker replaced #31091 → #32005). Net ~6 lines.
+- Attempts #163, #145, #127 (gpt-5.5; opencode×2 + codex) ran from a **clean base** (blob index `ccb7aa216`), produced clean diffs, and substantively match the gold. F1 0.927 (only deviation: they kept #31091 in addition to adding #32005 — defensible). These are valid `success` runs.
+- Attempts #291, #224, #223, #491, #487, #525, #450, #404, #324 ran from a **contaminated base**. Their diffs each carry an **identical ~311-line foreign block** of unrelated edits (GO:0000268 peroxisome targeting, GO:0003400 COPII, GO:0005048 signal sequence, GO:0008785/0008873/0008874/0008875 enzyme activities, exocyst, etc. — from other issues #31419/#31922/#31945/#31961/#31989). This block is byte-identical across all 9 and was present **before** the agent ran. It is not agent work.
+- Of those 9, **5 still correctly obsoleted GO:0009095** in-scope (#291, #224, #223, #491, #487): #291/#224/#223 are substantive gold matches in the GO:0009095 stanza; #491/#487 are correct except for retaining `xref: MetaCyc:PWY-3481`. Their reported F1 (0.072–0.080) grossly under-represents quality and should not be used; these are reviewed as `partial_success` with the over_editing flag attributed to contamination, not the agent.
+- The remaining **4 produced no obsoletion at all** (#525 gemma, #450/#404 copilot-sonnet, #324 opus-4.7): their diffs (blob `961e08a`) do not touch the GO:0009095 stanza — they are *only* the unchanged contaminated base. These are genuine `no_output` for the task (the contamination only explains the non-zero F1≈0.017 via incidental overlap, not the missing work).
+
+Downstream scoring should: (a) keep #163/#145/#127 as-is; (b) re-score #291/#224/#223/#491/#487 on the GO:0009095 stanza only (or exclude/down-weight); (c) treat #525/#450/#404/#324 as `no_output`. The whole-file metadiff is unreliable for this case for the 9 contaminated attempts.
+
+Flagged by claude-opus-4.7 on 2026-05-15.
 
 ## Human Diff
 
@@ -80,19 +98,21 @@ index 961e08ab9..017033244 100644
 
 ```
 
-## Agent Attempts (12)
+## Agent Attempts (14)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.5 | opencode | 0.927 | 0.905 | 0.950 | `995aa71` | [#163](https://github.com/ai4curation/eval-ont-agent-go/pull/163) | [attempt](attempts/pr163.md) |
 | 2 | gpt-5.5 | opencode | 0.927 | 0.905 | 0.950 | `995aa71` | [#145](https://github.com/ai4curation/eval-ont-agent-go/pull/145) | [attempt](attempts/pr145.md) |
 | 3 | gpt-5.5 | codex | 0.927 | 0.905 | 0.950 | `80c9bf3` | [#127](https://github.com/ai4curation/eval-ont-agent-go/pull/127) | [attempt](attempts/pr127.md) |
-| 4 | kimi-k2.6 | opencode | 0.080 | 0.952 | 0.042 | `9bfb355` | [#291](https://github.com/ai4curation/eval-ont-agent-go/pull/291) | [attempt](attempts/pr291.md) |
-| 5 | claude-haiku-4.5 | claude | 0.080 | 0.952 | 0.042 | `8b1a7d9` | [#224](https://github.com/ai4curation/eval-ont-agent-go/pull/224) | [attempt](attempts/pr224.md) |
-| 6 | gpt-5.4 | codex | 0.076 | 0.905 | 0.040 | `f1536da` | [#223](https://github.com/ai4curation/eval-ont-agent-go/pull/223) | [attempt](attempts/pr223.md) |
-| 7 | claude-sonnet-4.5 | claude | 0.072 | 0.857 | 0.038 | `318b009` | [#491](https://github.com/ai4curation/eval-ont-agent-go/pull/491) | [attempt](attempts/pr491.md) |
-| 8 | claude-sonnet-4.5 | claude | 0.072 | 0.857 | 0.038 | `318b009` | [#487](https://github.com/ai4curation/eval-ont-agent-go/pull/487) | [attempt](attempts/pr487.md) |
-| 9 | gemma-4-31b | opencode | 0.017 | 0.190 | 0.009 | `961e08a` | [#525](https://github.com/ai4curation/eval-ont-agent-go/pull/525) | [attempt](attempts/pr525.md) |
-| 10 | claude-sonnet-4.5 | copilot | 0.017 | 0.190 | 0.009 | `961e08a` | [#450](https://github.com/ai4curation/eval-ont-agent-go/pull/450) | [attempt](attempts/pr450.md) |
-| 11 | claude-sonnet-4.5 | copilot | 0.017 | 0.190 | 0.009 | `961e08a` | [#404](https://github.com/ai4curation/eval-ont-agent-go/pull/404) | [attempt](attempts/pr404.md) |
-| 12 | claude-opus-4.7 | claude | 0.017 | 0.190 | 0.009 | `961e08a` | [#324](https://github.com/ai4curation/eval-ont-agent-go/pull/324) | [attempt](attempts/pr324.md) |
+| 4 | gpt-5.4 | opencode | 0.080 | 0.952 | 0.042 | `a1039a7` | [#672](https://github.com/ai4curation/eval-ont-agent-go/pull/672) | [attempt](attempts/pr672.md) |
+| 5 | kimi-k2.6 | opencode | 0.080 | 0.952 | 0.042 | `9bfb355` | [#291](https://github.com/ai4curation/eval-ont-agent-go/pull/291) | [attempt](attempts/pr291.md) |
+| 6 | claude-haiku-4.5 | claude | 0.080 | 0.952 | 0.042 | `8b1a7d9` | [#224](https://github.com/ai4curation/eval-ont-agent-go/pull/224) | [attempt](attempts/pr224.md) |
+| 7 | gpt-5.4 | codex | 0.076 | 0.905 | 0.040 | `f1536da` | [#223](https://github.com/ai4curation/eval-ont-agent-go/pull/223) | [attempt](attempts/pr223.md) |
+| 8 | claude-sonnet-4.5 | claude | 0.072 | 0.857 | 0.038 | `318b009` | [#491](https://github.com/ai4curation/eval-ont-agent-go/pull/491) | [attempt](attempts/pr491.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.072 | 0.857 | 0.038 | `318b009` | [#487](https://github.com/ai4curation/eval-ont-agent-go/pull/487) | [attempt](attempts/pr487.md) |
+| 10 | gpt-5.4 | opencode | 0.017 | 0.190 | 0.009 | `961e08a` | [#630](https://github.com/ai4curation/eval-ont-agent-go/pull/630) | [attempt](attempts/pr630.md) |
+| 11 | gemma-4-31b | opencode | 0.017 | 0.190 | 0.009 | `961e08a` | [#525](https://github.com/ai4curation/eval-ont-agent-go/pull/525) | [attempt](attempts/pr525.md) |
+| 12 | claude-sonnet-4.5 | copilot | 0.017 | 0.190 | 0.009 | `961e08a` | [#450](https://github.com/ai4curation/eval-ont-agent-go/pull/450) | [attempt](attempts/pr450.md) |
+| 13 | claude-sonnet-4.5 | copilot | 0.017 | 0.190 | 0.009 | `961e08a` | [#404](https://github.com/ai4curation/eval-ont-agent-go/pull/404) | [attempt](attempts/pr404.md) |
+| 14 | claude-opus-4.7 | claude | 0.017 | 0.190 | 0.009 | `961e08a` | [#324](https://github.com/ai4curation/eval-ont-agent-go/pull/324) | [attempt](attempts/pr324.md) |

@@ -13,7 +13,7 @@ scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
 num_agent_attempts: 0
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 ---
 
 # PR #31911 — NTR actin-filament cross-linking activity (replace actin crosslink formation MF in BP ontology)

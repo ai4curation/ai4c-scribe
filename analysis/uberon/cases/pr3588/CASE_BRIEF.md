@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 2
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: dental-anatomy
-best_f1: 0.379
-best_model: claude-opus-4.7
+best_f1: 0.444
+best_model: gpt-5.4
 ---
 
 # PR #3588 — New terms for tooth surfaces
@@ -35,6 +35,20 @@ Added approximately 7-8 new tooth surface terms with 75 lines of additions to ub
 ## Resolution
 
 Medium difficulty because while each individual term follows a standard pattern, the agent must consistently apply the same modeling approach across multiple terms, ensure no duplication, and get the dental anatomy right for each surface type. The batch nature makes it more complex than a single NTR.
+
+## Curation Note (data quality)
+
+**Flagged `case_quality: poor` — `gold_renegotiated_in_pr_comments` (claude-opus-4.7, 2026-05-16).**
+
+The gold PR #3588 is a faithful, single self-contained PR that resolves issue #3583, but it is a **poor metadiff reference** because the human solution was substantially renegotiated *during PR review*, beyond anything the agent could see:
+
+- **Issue #3583 asked for**: 5 terms (distal, incisal, labial, lingual, mesial); definitions in the form "A tooth surface that…"; parent term **`surface structure` (UBERON:0003102)** directly; ORCID 0000-0001-6677-8489.
+- **Issue comments added**: discussion that `facial surface` should parent `labial`/`buccal`, and the clinical "F for facial" shorthand (so a `facial`↔`labial` synonym is warranted). Agents legitimately had this.
+- **Introduced only in PR review (not visible to agents)**: reviewer @wdduncan (PR comment 2025-08-02) proposed creating a new intermediate grouping class **`tooth surface structure` (UBERON:8600148)**, `is_a surface structure` + `part_of calcareous tooth`, with `synonym "tooth surface" EXACT`, and reparenting every surface term under it. A multi-round label/definition debate followed ("tooth surface" vs "tooth surface structure", whether surfaces are 2D or 3D, adding a buccal-mucosa gloss). The final gold definitions read "A tooth surface **structure** that…" purely because of this review thread. This is the single biggest structural feature of the gold diff and is unreachable from the issue.
+
+Consequently every agent attempt scores low F1 (~0.36–0.38) by construction. The two attempts are in fact substantively strong: both produced the 5 requested terms with near-verbatim definitions, correctly synthesised the facial/labial/buccal hierarchy from the issue comments, attached `part_of calcareous tooth`, and used the correct contributor ORCID. Attempt #318 (sonnet-4.5) even used the literally-requested `surface structure` parent and added `occlusal` (later independently added by humans in PRs #3603/#3633 as UBERON:8600149, vindicating the instinct). The low F1 is driven by (a) the PR-review-only `tooth surface structure` superclass and definition rewording, and (b) the standard placeholder-vs-canonical UBERON ID artifact (UBERON:99xxxxx vs UBERON:86001xx). Downstream scoring should exclude or heavily down-weight this case, or re-score attempts against the issue + issue comments rather than the renegotiated gold.
+
+No companion PRs are needed to reconstruct the issue resolution (PR #3588 alone fully resolved #3583); `companion_prs` is empty. The later occlusal PRs (#3603, #3632, #3633) are independent follow-ups for a different surface and are not part of this issue's resolution.
 
 ## Human Diff
 
@@ -128,9 +142,16 @@ index a84557c7c..0479f338d 100644
 
 ```
 
-## Agent Attempts (2)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.379 | 0.440 | 0.333 | `65caaa1` | [#250](https://github.com/ai4curation/eval-ont-agent-uberon/pull/250) | [attempt](attempts/pr250.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.364 | 0.400 | 0.333 | `a806812` | [#318](https://github.com/ai4curation/eval-ont-agent-uberon/pull/318) | [attempt](attempts/pr318.md) |
+| 1 | gpt-5.4 | opencode | 0.444 | 0.400 | 0.500 | `977ff8e` | [#667](https://github.com/ai4curation/eval-ont-agent-uberon/pull/667) | [attempt](attempts/pr667.md) |
+| 2 | gpt-5.4 | opencode | 0.444 | 0.400 | 0.500 | `977ff8e` | [#608](https://github.com/ai4curation/eval-ont-agent-uberon/pull/608) | [attempt](attempts/pr608.md) |
+| 3 | gpt-5.5 | opencode | 0.431 | 0.440 | 0.423 | `80fd07e` | [#628](https://github.com/ai4curation/eval-ont-agent-uberon/pull/628) | [attempt](attempts/pr628.md) |
+| 4 | gpt-5.5 | opencode | 0.431 | 0.440 | 0.423 | `80fd07e` | [#570](https://github.com/ai4curation/eval-ont-agent-uberon/pull/570) | [attempt](attempts/pr570.md) |
+| 5 | claude-opus-4.7 | claude | 0.379 | 0.440 | 0.333 | `65caaa1` | [#250](https://github.com/ai4curation/eval-ont-agent-uberon/pull/250) | [attempt](attempts/pr250.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.364 | 0.400 | 0.333 | `a806812` | [#318](https://github.com/ai4curation/eval-ont-agent-uberon/pull/318) | [attempt](attempts/pr318.md) |
+| 7 | claude-haiku-4.5 | claude | 0.341 | 0.280 | 0.438 | `91b605a` | [#566](https://github.com/ai4curation/eval-ont-agent-uberon/pull/566) | [attempt](attempts/pr566.md) |
+| 8 | claude-haiku-4.5 | claude | 0.341 | 0.280 | 0.438 | `91b605a` | [#504](https://github.com/ai4curation/eval-ont-agent-uberon/pull/504) | [attempt](attempts/pr504.md) |
+| 9 | gpt-5.4 | codex | 0.339 | 0.400 | 0.294 | `d9694a9` | [#394](https://github.com/ai4curation/eval-ont-agent-uberon/pull/394) | [attempt](attempts/pr394.md) |

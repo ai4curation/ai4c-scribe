@@ -28,6 +28,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Taxon constraint violations require understanding how logical definitions interact with species-specific anatomy
+case_quality: ok
+case_quality_reason: sound_gold_but_taxon_constraint_repair_requires_reasoner_context
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

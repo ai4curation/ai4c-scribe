@@ -11,8 +11,8 @@ difficulty: medium
 scoping: mostly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 scoping_notes: Primarily removes redundant labels but also adds SPARQL-based annotations
   to prevent future regressions, which goes slightly beyond the original issue scope.
 domain_area: ontology-maintenance
@@ -37,6 +37,43 @@ Removed 92 lines of redundant annotation property labels from `cl-edit.owl` and 
 ## Resolution
 
 Approved on first review despite a dismissed review comment. Medium difficulty because the change requires understanding the OWL import chain to identify which labels are redundant versus essential, and adding preventive measures requires knowledge of SPARQL-based quality checking in OBO ontology workflows.
+
+## Curation Note (data quality)
+
+**Flagged poor on 2026-05-16 by claude-opus-4.7 during agent-attempt review.**
+
+Issue #3332 asks for one thing only: remove the redundant `rdfs:label`
+AnnotationAssertion axioms that CL locally restates for imported annotation
+properties (the maintainer matentzn confirmed: "you are totally right in your
+assessment"). The selected gold PR #3333 resolves this issue (no companion PRs;
+#3547 and #3589 are unrelated later recurrences), but it **bundles a large
+out-of-scope re-serialization**. Quantified from `gh pr diff 3333`:
+
+- Issue-relevant: 12 `AnnotationAssertion(rdfs:label …)` removals on imported
+  IAO/oboInOwl/`rdfs:seeAlso` APs, plus their now-empty ROBOT comment
+  headers/blank lines (~36 deletion lines).
+- Out of scope: ~56 lines that **move** the misplaced `CL_4072027`,
+  `CL_7770002`, and `CL_7770005` class blocks and reorder
+  `Declaration(Class(...))` lines into canonical OFN sort order. All 32 of the
+  gold's *additions* are this churn (relocated class text). The PR body states
+  verbatim that this is a "side-effect ... needed because a previous
+  AI-generated change inserted a class at the wrong place" — it cleans up a
+  *prior* PR and is unrelated to and not inferable from #3332.
+
+Consequence: every one of the 7 agent attempts that correctly and completely
+solves #3332 is capped at F1 ≈ 0.41–0.43 (P=0.300) purely because it cannot
+reproduce an unrelated, undocumented serialization artifact. The metadiff
+**under-represents quality by roughly 2x** for the strong attempts (pr204,
+pr177, pr93, pr60, pr42, pr75 — all `success` on the issue). The genuine
+quality differentiator is invisible to metadiff: pr20 (gpt-5.5/codex) is the
+only attempt with a real defect — it deleted the label axioms but left ~16
+orphaned `# Annotation Property:` header comments behind (`partial_success`,
+`under_editing`), which would itself reintroduce the spurious-diff problem the
+issue targets.
+
+Recommendation for downstream scoring: down-weight or exclude the raw metadiff
+for this case; treat pr204/pr177/pr93/pr60/pr42/pr75 as successes and pr20 as
+partial. Do not treat the uniform ~0.41 F1 as agent failure.
 
 ## Human Diff
 
@@ -242,7 +279,7 @@ index 33b355012..c1eb99f68 100644
 
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -251,5 +288,7 @@ index 33b355012..c1eb99f68 100644
 | 3 | claude-haiku-4.5 | claude | 0.414 | 0.300 | 0.667 | `2d1b484` | [#93](https://github.com/ai4curation/eval-ont-agent-cl/pull/93) | [attempt](attempts/pr93.md) |
 | 4 | gpt-5.5 | opencode | 0.414 | 0.300 | 0.667 | `2d1b484` | [#60](https://github.com/ai4curation/eval-ont-agent-cl/pull/60) | [attempt](attempts/pr60.md) |
 | 5 | gpt-5.5 | opencode | 0.414 | 0.300 | 0.667 | `2d1b484` | [#42](https://github.com/ai4curation/eval-ont-agent-cl/pull/42) | [attempt](attempts/pr42.md) |
-| 6 | gpt-5.4 | codex | 0.407 | 0.300 | 0.632 | `fdd9657` | [#75](https://github.com/ai4curation/eval-ont-agent-cl/pull/75) | [attempt](attempts/pr75.md) |
-| 7 | gpt-5.5 | codex | 0.235 | 0.150 | 0.545 | `82d3a82` | [#20](https://github.com/ai4curation/eval-ont-agent-cl/pull/20) | [attempt](attempts/pr20.md) |
+| 6 | gpt-5.4 | opencode | 0.407 | 0.300 | 0.632 | `fdd9657` | [#569](https://github.com/ai4curation/eval-ont-agent-cl/pull/569) | [attempt](attempts/pr569.md) |
+| 7 | gpt-5.4 | opencode | 0.407 | 0.300 | 0.632 | `fdd9657` | [#506](https://github.com/ai4curation/eval-ont-agent-cl/pull/506) | [attempt](attempts/pr506.md) |
+| 8 | gpt-5.4 | codex | 0.407 | 0.300 | 0.632 | `fdd9657` | [#75](https://github.com/ai4curation/eval-ont-agent-cl/pull/75) | [attempt](attempts/pr75.md) |
+| 9 | gpt-5.5 | codex | 0.235 | 0.150 | 0.545 | `82d3a82` | [#20](https://github.com/ai4curation/eval-ont-agent-cl/pull/20) | [attempt](attempts/pr20.md) |

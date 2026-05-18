@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 best_f1: 0.9
 best_model: claude-opus-4.7
 ---
@@ -34,6 +34,14 @@ Three terms were modified in `go-edit.obo`: GO:0003400 was obsoleted with `repla
 ## Resolution
 
 Medium difficulty because the changes required understanding the biological distinction between regulation of a process and participation in that process. In vesicle biology, COPII coat proteins like Sec23/Sec24 are components of the coating machinery, not regulators of it. The obsoletion of the regulation term and simultaneous renaming of the target term ensured that annotation migration would be semantically correct.
+
+## Curation Note (data quality)
+
+Reviewed by claude-opus-4.7 on 2026-05-15 (Step 3a sanity check). This is a **good** evaluation case, recorded here so downstream scoring is not misled:
+
+- **Gold is complete and single-PR.** `gh search prs --repo geneontology/go-ontology 31945` and a "COPII vesicle coat" term search return only PR #32013. There are no companion PRs; the issue's three asks (obsolete GO:0003400 → replaced_by GO:0048208; rename GO:0048208 and GO:0006901 to "...coat assembly") are fully covered by the single gold PR. The merged ontology state was verified to match the gold diff exactly. Metadiff is meaningful: attempts span F1 0.82–0.90 (none ~0), so Step 3a does **not** apply as a poor-case flag.
+- **Gold is itself an agent PR.** PR #32013 was authored by `dragon-ai-agent` (claude-opus-4.7, claude-code harness), triggered by curator @raymond91125. This is agent-vs-agent, not human gold — relevant when aggregating "human parity" claims.
+- **The recall differentiator is cosmetic.** The largest source of F1 spread is whether an attempt refreshed the stale `! vesicle coating` → `! vesicle coat assembly` inline label-comments on incoming `is_a: GO:0006901` edges (`GO:0016183`, `GO:0048200`, and `GO:0048208`'s own self-edge). Only pr344 (opus-4.7) and pr61 (gpt-5.5 codex) did all of them. These are non-semantic OBO `!` comments; substantively-correct attempts (pr489/pr465/pr211/pr381) are under-rated by F1, while attempts that added unrequested logical definitions / definition rewrites on active terms (pr104/pr83 added an `intersection_of` to `GO:0006901`; pr183 rewrote two defs) or deleted `created_by`/`creation_date` provenance (pr278, pr61) are somewhat over-rated. Interpret F1 alongside the per-attempt reviews rather than as a standalone quality proxy for this case.
 
 ## Human Diff
 
@@ -111,7 +119,7 @@ index 6e6af3307..05f772421 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -120,9 +128,11 @@ index 6e6af3307..05f772421 100644
 | 3 | claude-sonnet-4.5 | claude | 0.895 | 0.850 | 0.944 | `b83c095` | [#489](https://github.com/ai4curation/eval-ont-agent-go/pull/489) | [attempt](attempts/pr489.md) |
 | 4 | claude-sonnet-4.5 | claude | 0.895 | 0.850 | 0.944 | `b83c095` | [#465](https://github.com/ai4curation/eval-ont-agent-go/pull/465) | [attempt](attempts/pr465.md) |
 | 5 | claude-haiku-4.5 | claude | 0.895 | 0.850 | 0.944 | `3b5eea6` | [#211](https://github.com/ai4curation/eval-ont-agent-go/pull/211) | [attempt](attempts/pr211.md) |
-| 6 | gpt-5.4 | codex | 0.864 | 0.950 | 0.792 | `086b308` | [#183](https://github.com/ai4curation/eval-ont-agent-go/pull/183) | [attempt](attempts/pr183.md) |
-| 7 | claude-sonnet-4.5 | copilot | 0.842 | 0.800 | 0.889 | `4e8dc49` | [#381](https://github.com/ai4curation/eval-ont-agent-go/pull/381) | [attempt](attempts/pr381.md) |
-| 8 | gemma-4-31b | opencode | 0.833 | 0.750 | 0.938 | `830593e` | [#247](https://github.com/ai4curation/eval-ont-agent-go/pull/247) | [attempt](attempts/pr247.md) |
-| 9 | gpt-5.5 | codex | 0.826 | 0.950 | 0.731 | `2cb1ca3` | [#61](https://github.com/ai4curation/eval-ont-agent-go/pull/61) | [attempt](attempts/pr61.md) |
-| 10 | gpt-5.5 | opencode | 0.818 | 0.900 | 0.750 | `8b01af9` | [#104](https://github.com/ai4curation/eval-ont-agent-go/pull/104) | [attempt](attempts/pr104.md) |
-| 11 | gpt-5.5 | opencode | 0.818 | 0.900 | 0.750 | `8b01af9` | [#83](https://github.com/ai4curation/eval-ont-agent-go/pull/83) | [attempt](attempts/pr83.md) |
+| 6 | gpt-5.4 | opencode | 0.864 | 0.950 | 0.792 | `d0ad58c` | [#667](https://github.com/ai4curation/eval-ont-agent-go/pull/667) | [attempt](attempts/pr667.md) |
+| 7 | gpt-5.4 | opencode | 0.864 | 0.950 | 0.792 | `d0ad58c` | [#616](https://github.com/ai4curation/eval-ont-agent-go/pull/616) | [attempt](attempts/pr616.md) |
+| 8 | gpt-5.4 | codex | 0.864 | 0.950 | 0.792 | `086b308` | [#183](https://github.com/ai4curation/eval-ont-agent-go/pull/183) | [attempt](attempts/pr183.md) |
+| 9 | claude-sonnet-4.5 | copilot | 0.842 | 0.800 | 0.889 | `4e8dc49` | [#381](https://github.com/ai4curation/eval-ont-agent-go/pull/381) | [attempt](attempts/pr381.md) |
+| 10 | gemma-4-31b | opencode | 0.833 | 0.750 | 0.938 | `830593e` | [#247](https://github.com/ai4curation/eval-ont-agent-go/pull/247) | [attempt](attempts/pr247.md) |
+| 11 | gpt-5.5 | codex | 0.826 | 0.950 | 0.731 | `2cb1ca3` | [#61](https://github.com/ai4curation/eval-ont-agent-go/pull/61) | [attempt](attempts/pr61.md) |
+| 12 | gpt-5.5 | opencode | 0.818 | 0.900 | 0.750 | `8b01af9` | [#104](https://github.com/ai4curation/eval-ont-agent-go/pull/104) | [attempt](attempts/pr104.md) |
+| 13 | gpt-5.5 | opencode | 0.818 | 0.900 | 0.750 | `8b01af9` | [#83](https://github.com/ai4curation/eval-ont-agent-go/pull/83) | [attempt](attempts/pr83.md) |

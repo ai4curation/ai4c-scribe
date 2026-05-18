@@ -11,8 +11,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 14
-generated_at: '2026-05-15'
+num_agent_attempts: 16
+generated_at: '2026-05-17'
 scoping_notes: PR obsoletes a single term with appropriate replaced_by annotation.
 domain_area: congenital-disease
 best_f1: 0.812
@@ -36,6 +36,45 @@ Obsoleted MONDO:0009327 by marking it as obsolete, removing its classification a
 ## Resolution
 
 Easy difficulty because this follows the standard Mondo obsoletion pattern. The curator needs to mark the term as obsolete, remove is_a parents and logical definitions, and add replaced_by or consider pointers. An agent should be able to handle this with knowledge of the obsoletion SOP.
+
+## Curation Note (data quality)
+
+`case_quality: poor` — flagged by claude-opus-4.7 on 2026-05-15.
+
+The gold PR #10102 is a faithful but **incomplete** resolution of issue #9771.
+It correctly obsoletes MONDO:0009327, but it does **not** rewire
+`MONDO:0007703` (an already-obsolete term whose stanza reads
+`replaced_by: MONDO:0009327`). After #10102, MONDO:0007703 points via
+`replaced_by` to a term that is itself now obsolete — a dangling/QC-violating
+reference. This was verified still broken in the live `mondo-edit.obo`
+(MONDO:0007703 stanza unchanged) as of 2026-05-15. No companion PR fixed it
+(`gh search prs --repo monarch-initiative/mondo "9771"` returns only #10102;
+#9768 is unrelated).
+
+The `mondo-agent-config` CLAUDE.md states explicitly: *"No relationship should
+point to an obsolete term - when you obsolete a term, you may need to also
+rewire terms to 'skip' the obsoleted term"*, and the `merge-terms` skill has a
+dedicated "Step 6 — Rewire children/references of the obsoleted term". 11 of
+14 agent attempts (#31, #275, #28, #27, #33, #70, #51, #26, #332, #229, #19)
+correctly performed this rewiring (`MONDO:0007703 replaced_by: MONDO:0009327`
+→ `consider: MONDO:0005267`). This extra-but-correct edit is **penalized by
+the whole-file metadiff** because it has no counterpart in the single selected
+gold PR, suppressing recall/F1 for the best attempts (best F1 only 0.812;
+several substantively-correct runs score 0.70–0.81).
+
+Additional metadiff under-representation in this case (normal, not flagged
+per-attempt as failure): the gold's free-text `comment` rewording, and the
+choice of OMIM xref source qualifier (`MONDO:obsoleteEquivalentObsolete` vs
+`MONDO:obsoleteEquivalent`) where both are defensible. Conversely, several
+genuinely poor edits *are* charged against attempts in the per-attempt
+reviews: invalid synonym evidence tokens (raw URLs, `MONDO:obsolete`,
+self-citation), subset/provenance over-stripping, `replaced_by` instead of
+`consider` (#24), and adding a `def:` to an obsolete stanza (#24).
+
+Downstream scoring should down-weight or exclude the metadiff F1 for this case
+and instead use the per-attempt narrative reviews, which judge each attempt
+against the issue and the documented Mondo obsoletion SOP rather than the
+incomplete gold.
 
 ## Human Diff
 
@@ -80,21 +119,23 @@ index 8013937e49..dc4f8b360b 100644
 
 ```
 
-## Agent Attempts (14)
+## Agent Attempts (16)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.5 | opencode | 0.812 | 0.765 | 0.867 | `201ffda` | [#31](https://github.com/ai4curation/eval-ont-agent-mondo/pull/31) | [attempt](attempts/pr31.md) |
 | 2 | kimi-k2.6 | opencode | 0.811 | 0.882 | 0.750 | `fe48080` | [#275](https://github.com/ai4curation/eval-ont-agent-mondo/pull/275) | [attempt](attempts/pr275.md) |
-| 3 | claude-opus-4.7 | claude | 0.800 | 0.941 | 0.696 | `fcd5057` | [#372](https://github.com/ai4curation/eval-ont-agent-mondo/pull/372) | [attempt](attempts/pr372.md) |
-| 4 | gpt-5.5 | opencode | 0.765 | 0.765 | 0.765 | `76a81ae` | [#28](https://github.com/ai4curation/eval-ont-agent-mondo/pull/28) | [attempt](attempts/pr28.md) |
-| 5 | gpt-5.5 | codex | 0.757 | 0.824 | 0.700 | `648307b` | [#27](https://github.com/ai4curation/eval-ont-agent-mondo/pull/27) | [attempt](attempts/pr27.md) |
-| 6 | gpt-5.5 | codex | 0.757 | 0.824 | 0.700 | `648307b` | [#33](https://github.com/ai4curation/eval-ont-agent-mondo/pull/33) | [attempt](attempts/pr33.md) |
-| 7 | gpt-5.5 | opencode | 0.722 | 0.765 | 0.684 | `630ad3f` | [#70](https://github.com/ai4curation/eval-ont-agent-mondo/pull/70) | [attempt](attempts/pr70.md) |
-| 8 | gpt-5.5 | opencode | 0.722 | 0.765 | 0.684 | `630ad3f` | [#51](https://github.com/ai4curation/eval-ont-agent-mondo/pull/51) | [attempt](attempts/pr51.md) |
-| 9 | gpt-5.5 | codex | 0.698 | 0.882 | 0.577 | `5a88c68` | [#26](https://github.com/ai4curation/eval-ont-agent-mondo/pull/26) | [attempt](attempts/pr26.md) |
-| 10 | claude-sonnet-4.5 | claude | 0.667 | 0.824 | 0.560 | `c7064a5` | [#25](https://github.com/ai4curation/eval-ont-agent-mondo/pull/25) | [attempt](attempts/pr25.md) |
-| 11 | claude-sonnet-4.5 | copilot | 0.585 | 0.706 | 0.500 | `95a5edd` | [#332](https://github.com/ai4curation/eval-ont-agent-mondo/pull/332) | [attempt](attempts/pr332.md) |
-| 12 | claude-haiku-4.5 | claude | 0.579 | 0.647 | 0.524 | `19ead47` | [#24](https://github.com/ai4curation/eval-ont-agent-mondo/pull/24) | [attempt](attempts/pr24.md) |
-| 13 | gemma-4-31b | opencode | 0.571 | 0.471 | 0.727 | `30ccb67` | [#229](https://github.com/ai4curation/eval-ont-agent-mondo/pull/229) | [attempt](attempts/pr229.md) |
-| 14 | gpt-5.4 | codex | 0.562 | 0.529 | 0.600 | `a6f6bbf` | [#19](https://github.com/ai4curation/eval-ont-agent-mondo/pull/19) | [attempt](attempts/pr19.md) |
+| 3 | gpt-5.4 | opencode | 0.800 | 0.706 | 0.923 | `ad1b398` | [#733](https://github.com/ai4curation/eval-ont-agent-mondo/pull/733) | [attempt](attempts/pr733.md) |
+| 4 | gpt-5.4 | opencode | 0.800 | 0.706 | 0.923 | `ad1b398` | [#677](https://github.com/ai4curation/eval-ont-agent-mondo/pull/677) | [attempt](attempts/pr677.md) |
+| 5 | claude-opus-4.7 | claude | 0.800 | 0.941 | 0.696 | `fcd5057` | [#372](https://github.com/ai4curation/eval-ont-agent-mondo/pull/372) | [attempt](attempts/pr372.md) |
+| 6 | gpt-5.5 | opencode | 0.765 | 0.765 | 0.765 | `76a81ae` | [#28](https://github.com/ai4curation/eval-ont-agent-mondo/pull/28) | [attempt](attempts/pr28.md) |
+| 7 | gpt-5.5 | codex | 0.757 | 0.824 | 0.700 | `648307b` | [#33](https://github.com/ai4curation/eval-ont-agent-mondo/pull/33) | [attempt](attempts/pr33.md) |
+| 8 | gpt-5.5 | codex | 0.757 | 0.824 | 0.700 | `648307b` | [#27](https://github.com/ai4curation/eval-ont-agent-mondo/pull/27) | [attempt](attempts/pr27.md) |
+| 9 | gpt-5.5 | opencode | 0.722 | 0.765 | 0.684 | `630ad3f` | [#70](https://github.com/ai4curation/eval-ont-agent-mondo/pull/70) | [attempt](attempts/pr70.md) |
+| 10 | gpt-5.5 | opencode | 0.722 | 0.765 | 0.684 | `630ad3f` | [#51](https://github.com/ai4curation/eval-ont-agent-mondo/pull/51) | [attempt](attempts/pr51.md) |
+| 11 | gpt-5.5 | codex | 0.698 | 0.882 | 0.577 | `5a88c68` | [#26](https://github.com/ai4curation/eval-ont-agent-mondo/pull/26) | [attempt](attempts/pr26.md) |
+| 12 | claude-sonnet-4.5 | claude | 0.667 | 0.824 | 0.560 | `c7064a5` | [#25](https://github.com/ai4curation/eval-ont-agent-mondo/pull/25) | [attempt](attempts/pr25.md) |
+| 13 | claude-sonnet-4.5 | copilot | 0.585 | 0.706 | 0.500 | `95a5edd` | [#332](https://github.com/ai4curation/eval-ont-agent-mondo/pull/332) | [attempt](attempts/pr332.md) |
+| 14 | claude-haiku-4.5 | claude | 0.579 | 0.647 | 0.524 | `19ead47` | [#24](https://github.com/ai4curation/eval-ont-agent-mondo/pull/24) | [attempt](attempts/pr24.md) |
+| 15 | gemma-4-31b | opencode | 0.571 | 0.471 | 0.727 | `30ccb67` | [#229](https://github.com/ai4curation/eval-ont-agent-mondo/pull/229) | [attempt](attempts/pr229.md) |
+| 16 | gpt-5.4 | codex | 0.562 | 0.529 | 0.600 | `a6f6bbf` | [#19](https://github.com/ai4curation/eval-ont-agent-mondo/pull/19) | [attempt](attempts/pr19.md) |

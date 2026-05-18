@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 4
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: neuroanatomy
 best_f1: 1.0
-best_model: claude-haiku-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3628 — Fix issue with inferred equivalences for uberon terms for BG
@@ -86,11 +86,16 @@ index 02593cf1b..3cbe2c361 100644
 
 ```
 
-## Agent Attempts (4)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#335](https://github.com/ai4curation/eval-ont-agent-uberon/pull/335) | [attempt](attempts/pr335.md) |
-| 2 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#316](https://github.com/ai4curation/eval-ont-agent-uberon/pull/316) | [attempt](attempts/pr316.md) |
-| 3 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#282](https://github.com/ai4curation/eval-ont-agent-uberon/pull/282) | [attempt](attempts/pr282.md) |
-| 4 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#258](https://github.com/ai4curation/eval-ont-agent-uberon/pull/258) | [attempt](attempts/pr258.md) |
+| 1 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#674](https://github.com/ai4curation/eval-ont-agent-uberon/pull/674) | [attempt](attempts/pr674.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#637](https://github.com/ai4curation/eval-ont-agent-uberon/pull/637) | [attempt](attempts/pr637.md) |
+| 3 | gpt-5.4 | opencode | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#614](https://github.com/ai4curation/eval-ont-agent-uberon/pull/614) | [attempt](attempts/pr614.md) |
+| 4 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#578](https://github.com/ai4curation/eval-ont-agent-uberon/pull/578) | [attempt](attempts/pr578.md) |
+| 5 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#418](https://github.com/ai4curation/eval-ont-agent-uberon/pull/418) | [attempt](attempts/pr418.md) |
+| 6 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#335](https://github.com/ai4curation/eval-ont-agent-uberon/pull/335) | [attempt](attempts/pr335.md) |
+| 7 | claude-sonnet-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#316](https://github.com/ai4curation/eval-ont-agent-uberon/pull/316) | [attempt](attempts/pr316.md) |
+| 8 | claude-haiku-4.5 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#282](https://github.com/ai4curation/eval-ont-agent-uberon/pull/282) | [attempt](attempts/pr282.md) |
+| 9 | claude-opus-4.7 | claude | 1.000 | 1.000 | 1.000 | `3cbe2c3` | [#258](https://github.com/ai4curation/eval-ont-agent-uberon/pull/258) | [attempt](attempts/pr258.md) |

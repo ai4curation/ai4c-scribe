@@ -11,9 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 0
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: biological_process
+best_f1: 0.0
+best_model: gpt-5.4
 ---
 
 # PR #32012 — NTR: MF vesicle membrane tethering activity
@@ -21,6 +23,26 @@ domain_area: biological_process
 **go-ontology** | [geneontology/go-ontology](https://github.com/geneontology/go-ontology) | [Issue #31863](https://github.com/geneontology/go-ontology/issues/31863) | [PR #32012](https://github.com/geneontology/go-ontology/pull/32012) | @dragon-ai-agent | merged 2026-04-29
 
 `obsoletion` `hard` `tightly_scoped` `approved_first_time`
+
+## Curation Note (data quality)
+
+**Issue-to-gold-PR misattribution.** The case links issue #31863 ("NTR: MF
+vesicle membrane tethering activity", a new-term request) to gold PR #32012.
+But PR #32012's own body states it "Closes/addresses: #31868, #31871, #31872,
+#31881" — it obsoletes 5 vesicle-tethering BP terms (GO:0099022, GO:0099069,
+GO:0090522, GO:0099041, GO:0099044) and rewires 8 complex terms to
+`capable_of GO:7770062`. The actual resolution of issue #31863 is **PR #31895**
+("NTR: vesicle membrane tethering activity (GO:7770062) (fixes #31863)"),
+which created GO:7770062 and extended GO:0140177's definition.
+
+PR #32012 is internally well-formed and ontologically sound as an
+obsoletion-cascade PR, but it is the wrong reference for issue #31863: it is
+neither the whole nor a sub-step of that issue's resolution — it resolves
+*other* issues that depend on the term #31895 created. Any future attempt
+prompted with issue #31863 should be judged against the issue's actual ask
+(create GO:7770062 + extend GO:0140177, i.e. PR #31895), not against #32012's
+metadiff. Recommend re-pairing or excluding from scoring. Case-level review:
+`analysis/go-ontology/results/reviews/pr32012-claude-case-review.md`.
 
 ## Context
 
@@ -213,3 +235,16 @@ index f6a5e38a4..6e6af3307 100644
  id: GO:0099070
 
 ```
+
+## Agent Attempts (8)
+
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `49ebe8c` | [#661](https://github.com/ai4curation/eval-ont-agent-go/pull/661) | [attempt](attempts/pr661.md) |
+| 2 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `f7eb695` | [#638](https://github.com/ai4curation/eval-ont-agent-go/pull/638) | [attempt](attempts/pr638.md) |
+| 3 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `49ebe8c` | [#615](https://github.com/ai4curation/eval-ont-agent-go/pull/615) | [attempt](attempts/pr615.md) |
+| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `f7eb695` | [#589](https://github.com/ai4curation/eval-ont-agent-go/pull/589) | [attempt](attempts/pr589.md) |
+| 5 | kimi-k2.6 | opencode | 0.000 | 0.000 | 0.000 | `f7eb695` | [#571](https://github.com/ai4curation/eval-ont-agent-go/pull/571) | [attempt](attempts/pr571.md) |
+| 6 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `ac63162` | [#569](https://github.com/ai4curation/eval-ont-agent-go/pull/569) | [attempt](attempts/pr569.md) |
+| 7 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `ac63162` | [#546](https://github.com/ai4curation/eval-ont-agent-go/pull/546) | [attempt](attempts/pr546.md) |
+| 8 | kimi-k2.6 | opencode | 0.000 | 0.000 | 0.000 | `f7eb695` | [#259](https://github.com/ai4curation/eval-ont-agent-go/pull/259) | [attempt](attempts/pr259.md) |

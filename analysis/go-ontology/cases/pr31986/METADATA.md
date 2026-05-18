@@ -27,6 +27,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Complex enzyme term realignment requiring cross-database reconciliation of EC, RHEA, and MetaCyc identifiers with GO classification
+case_quality: good
+case_quality_reason: hard_but_clean_single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

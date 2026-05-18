@@ -12,7 +12,7 @@ scoping: mostly_scoped
 scope: single_term
 review_outcome: approved_first_time
 num_agent_attempts: 0
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 domain_area: skeletal
 ---
 
@@ -33,3 +33,35 @@ Updated `cl-edit.owl` with a revised textual definition for CL:0000743 that remo
 ## Resolution
 
 Approved on first review after 10 commits of refinement. Medium difficulty because the change required understanding current research on chondrocyte transdifferentiation and selecting the appropriate UBERON and GO terms to cross-reference, while ensuring the updated definition accurately reflects the cell's biology without overclaiming.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` on 2026-05-16 by claude-opus-4.7.
+
+This case has **no eval attempts** (`num_agent_attempts: 0`, no `attempts/`
+directory) as of 2026-05-16 — an eval-coverage gap, not an agent failure.
+
+Poor as a *scoring* reference (gold substance is sound and curator-approved):
+
+1. **Regenerated-import + component-serialization churn.** PR #3507 touches
+   13 files; only `src/ontology/cl-edit.owl` (8+/3-) is the substantive
+   edit. The other 12 (`imports/merged_import.owl`, `imports/go_terms.txt`,
+   `imports/uberon_terms.txt`, `src/patterns/definitions.owl`, and eight
+   `components/*.owl`) are `make imports` / re-serialization byproducts.
+   Whole-file metadiff against this gold will be dominated by import noise no
+   well-scoped agent edit should reproduce. Score only the cl-edit.owl
+   CL:0000743 hunk + the three Declaration adds.
+2. **Gold renegotiated within the PR.** Curator @Caroline-99 directed
+   "DO NOT replace existing references… add PMID:25321476 and PMID:35179487
+   to existing ones" and "refresh the imports". The merged gold is the
+   post-feedback state, not the literal issue text, so a single-shot agent
+   matching the issue would diverge on the reference-handling detail.
+
+**No companion PRs** — issue #3506 resolved entirely by #3507 (#3508
+"prehypertrophic chondrocyte" and #3571 "articular cartilage zonal
+chondrocyte" are independent new-term PRs). The cl-edit substance is correct:
+definition replaced with issue-supplied text (xref union, not replacement),
+transdifferentiation comment added, `EquivalentClasses(CL:0000743 =
+CL:0000138 and part_of some UBERON:0008187)`, `capable_of (RO:0002215) some
+GO:0001958`, and a defensible extra `expresses (RO:0002292) some
+PR:000005693` (COL10A1). Retain for qualitative use; down-weight for scoring.

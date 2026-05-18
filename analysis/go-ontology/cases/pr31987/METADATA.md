@@ -19,6 +19,10 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Enzyme term realignment requiring deep understanding of CO dehydrogenase biochemistry and correct EC/RHEA mapping across aerobic and anaerobic variants
+case_quality: good
+case_quality_reason: hard_but_clean_single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

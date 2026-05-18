@@ -28,6 +28,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Simple new grouping term with definition confirmed by the requesting user
+case_quality: ok
+case_quality_reason: sound_gold_but_new_grouping_term_has_sparse_issue_signal
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

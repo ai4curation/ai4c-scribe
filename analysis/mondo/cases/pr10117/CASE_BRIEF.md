@@ -11,12 +11,12 @@ difficulty: hard
 scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 scoping_notes: Bulk removal of synonyms across many terms in the ontology.
 domain_area: quality-control
 best_f1: 0.003
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #10117 — Incorrect synonyms for MONDO_0001628
@@ -38,6 +38,20 @@ Removed 5,103 lines from `src/ontology/mondo-edit.obo` with zero additions, repr
 ## Resolution
 
 Hard difficulty due to the scale and risk involved. Removing over 5,000 synonym lines requires high confidence that none of them are valid. The curator needed to develop criteria for identifying problematic synonyms, validate the removal set, and ensure no valuable synonyms were lost. An agent would struggle with this task as it requires both programmatic analysis and expert judgment about synonym quality.
+
+## Curation Note (data quality)
+
+**This is a poor evaluation case (`case_quality: poor`, reason `gold_pr_is_out_of_scope_mega_edit`).** Flagged by claude-opus-4.7 on 2026-05-15 during attempt review.
+
+**The issue vs. the gold PR are not scope-matched.** Issue #10030 ("Incorrect synonyms for MONDO_0001628") reports a single, specific defect: the term MONDO:0001628 "tinea unguium" (a fungal nail infection) carries 8 erroneous "cellulitis and abscess..." synonyms (bacterial soft-tissue infections at unrelated body sites) mis-imported from DOID:13074. In the issue thread the curators (matentzn, sabrinatoro) decided against fixing it one-by-one and opted for "a more drastic-large scale approach."
+
+The selected gold PR #10117 ("Remove synonyms with uncertain semantics") *is* that drastic approach: it deletes **5,103 synonym lines with zero additions across hundreds of unrelated terms** ontology-wide (corticoadrenal insufficiency, growth hormone deficiency, spotted fevers, multiple sclerosis, Jaccoud syndrome, etc.). Within it, the 8 tinea-unguium synonyms are removed — but so are thousands of unrelated lines, and even two *valid* tinea-unguium synonyms (`dermatophytic onychomycosis`, `onychomycosis due to dermatophyte`) are swept out as collateral.
+
+**Scoring consequence.** Whole-diff metadiff compares each attempt's correct ~8–10-line single-term fix against this 5,103-line ontology-wide sweep. Every one of the 8 attempts is therefore capped at F1≈0.003 by construction, regardless of quality. This is the Step 3b "gold has an out-of-scope mega-edit" signature: F1 is uniformly near-zero across all attempts, including no-op-equivalent runs.
+
+**Judging the attempts.** Against the *literal ask of issue #10030*, all 8 attempts succeed: each correctly removes exactly the 8 erroneous "cellulitis and abscess..." synonyms from MONDO:0001628 and preserves the valid nail-dermatophytosis synonyms and all logical axioms. The opencode/codex variants (kimi-k2.6, gpt-5.5 ×3) additionally and defensibly remove the parallel mis-imported `xref: ICD9:681.9 {source="DOID:13074"}` and add an `IAO:0000233` issue-tracker provenance annotation per the mondo-agent-config convention. The claude-opus-4.7 run additionally shows the best judgment by explicitly recognizing the curators' large-scale-cleanup intent and consciously scoping its PR narrowly while flagging the broader DO-import audit as follow-up.
+
+No companion PRs exist (`gh search prs --repo monarch-initiative/mondo "10030"` returns only #10117); the issue was resolved by the single ontology-wide PR. Downstream aggregation should down-weight or exclude this case, or re-score attempts against the issue's narrow ask rather than the metadiff vs. #10117.
 
 ## Human Diff
 
@@ -245,15 +259,19 @@ index 5f0045ca84..c06f1160a7 100644
 ... (29844 more lines truncated)
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#462](https://github.com/ai4curation/eval-ont-agent-mondo/pull/462) | [attempt](attempts/pr462.md) |
-| 2 | claude-opus-4.7 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#386](https://github.com/ai4curation/eval-ont-agent-mondo/pull/386) | [attempt](attempts/pr386.md) |
-| 3 | kimi-k2.6 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#273](https://github.com/ai4curation/eval-ont-agent-mondo/pull/273) | [attempt](attempts/pr273.md) |
-| 4 | claude-haiku-4.5 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#175](https://github.com/ai4curation/eval-ont-agent-mondo/pull/175) | [attempt](attempts/pr175.md) |
-| 5 | gpt-5.4 | codex | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#154](https://github.com/ai4curation/eval-ont-agent-mondo/pull/154) | [attempt](attempts/pr154.md) |
-| 6 | gpt-5.5 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#88](https://github.com/ai4curation/eval-ont-agent-mondo/pull/88) | [attempt](attempts/pr88.md) |
-| 7 | gpt-5.5 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#69](https://github.com/ai4curation/eval-ont-agent-mondo/pull/69) | [attempt](attempts/pr69.md) |
-| 8 | gpt-5.5 | codex | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#49](https://github.com/ai4curation/eval-ont-agent-mondo/pull/49) | [attempt](attempts/pr49.md) |
+| 1 | gpt-5.4 | opencode | 0.003 | 0.002 | 0.889 | `a9a6bf8` | [#744](https://github.com/ai4curation/eval-ont-agent-mondo/pull/744) | [attempt](attempts/pr744.md) |
+| 2 | gpt-5.4 | opencode | 0.003 | 0.002 | 0.889 | `a9a6bf8` | [#690](https://github.com/ai4curation/eval-ont-agent-mondo/pull/690) | [attempt](attempts/pr690.md) |
+| 3 | gemma-4-31b | opencode | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#596](https://github.com/ai4curation/eval-ont-agent-mondo/pull/596) | [attempt](attempts/pr596.md) |
+| 4 | claude-sonnet-4.5 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#462](https://github.com/ai4curation/eval-ont-agent-mondo/pull/462) | [attempt](attempts/pr462.md) |
+| 5 | claude-opus-4.7 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#386](https://github.com/ai4curation/eval-ont-agent-mondo/pull/386) | [attempt](attempts/pr386.md) |
+| 6 | kimi-k2.6 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#273](https://github.com/ai4curation/eval-ont-agent-mondo/pull/273) | [attempt](attempts/pr273.md) |
+| 7 | gemma-4-31b | opencode | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#243](https://github.com/ai4curation/eval-ont-agent-mondo/pull/243) | [attempt](attempts/pr243.md) |
+| 8 | claude-haiku-4.5 | claude | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#175](https://github.com/ai4curation/eval-ont-agent-mondo/pull/175) | [attempt](attempts/pr175.md) |
+| 9 | gpt-5.4 | codex | 0.003 | 0.002 | 1.000 | `b9af5d1` | [#154](https://github.com/ai4curation/eval-ont-agent-mondo/pull/154) | [attempt](attempts/pr154.md) |
+| 10 | gpt-5.5 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#88](https://github.com/ai4curation/eval-ont-agent-mondo/pull/88) | [attempt](attempts/pr88.md) |
+| 11 | gpt-5.5 | opencode | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#69](https://github.com/ai4curation/eval-ont-agent-mondo/pull/69) | [attempt](attempts/pr69.md) |
+| 12 | gpt-5.5 | codex | 0.003 | 0.002 | 0.800 | `a8c0e6e` | [#49](https://github.com/ai4curation/eval-ont-agent-mondo/pull/49) | [attempt](attempts/pr49.md) |

@@ -12,8 +12,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: immunology
 best_f1: 0.75
 best_model: claude-opus-4.7
@@ -95,10 +95,15 @@ index f08e6e234..740d2b469 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (8)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-opus-4.7 | claude | 0.750 | 0.750 | 0.750 | `8d8a7f0` | [#189](https://github.com/ai4curation/eval-ont-agent-cl/pull/189) | [attempt](attempts/pr189.md) |
 | 2 | claude-sonnet-4.5 | claude | 0.696 | 0.667 | 0.727 | `5eda277` | [#226](https://github.com/ai4curation/eval-ont-agent-cl/pull/226) | [attempt](attempts/pr226.md) |
 | 3 | claude-haiku-4.5 | claude | 0.130 | 0.125 | 0.136 | `c55910f` | [#156](https://github.com/ai4curation/eval-ont-agent-cl/pull/156) | [attempt](attempts/pr156.md) |
+| 4 | gpt-5.4 | opencode | 0.125 | 0.125 | 0.125 | `b4b7a88` | [#588](https://github.com/ai4curation/eval-ont-agent-cl/pull/588) | [attempt](attempts/pr588.md) |
+| 5 | gpt-5.4 | opencode | 0.125 | 0.125 | 0.125 | `b4b7a88` | [#526](https://github.com/ai4curation/eval-ont-agent-cl/pull/526) | [attempt](attempts/pr526.md) |
+| 6 | gpt-5.4 | codex | 0.125 | 0.125 | 0.125 | `02ec74a` | [#301](https://github.com/ai4curation/eval-ont-agent-cl/pull/301) | [attempt](attempts/pr301.md) |
+| 7 | gpt-5.5 | opencode | 0.120 | 0.125 | 0.115 | `252ee7f` | [#550](https://github.com/ai4curation/eval-ont-agent-cl/pull/550) | [attempt](attempts/pr550.md) |
+| 8 | gpt-5.5 | opencode | 0.120 | 0.125 | 0.115 | `252ee7f` | [#489](https://github.com/ai4curation/eval-ont-agent-cl/pull/489) | [attempt](attempts/pr489.md) |

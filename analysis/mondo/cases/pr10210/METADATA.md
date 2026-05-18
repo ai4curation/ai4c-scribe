@@ -19,6 +19,11 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Multiple synonym additions to a single term following a gene-disease association request.
+case_quality: ok
+case_quality_reason: gold_scope_includes_design_pattern_enrichment_beyond_synonym_request
+scoring_caveat: "Gold includes disease-series design-pattern enrichment in addition to synonym additions; F1 partly measures Mondo pattern completion rather than simple synonym extraction."
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

@@ -11,8 +11,8 @@ difficulty: hard
 scoping: mostly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 6
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: auditory
 best_f1: 0.631
 best_model: claude-opus-4.7
@@ -35,6 +35,18 @@ Extensively updated `cl-edit.owl` with 63 additions and 26 deletions affecting a
 ## Resolution
 
 Approved on first review in 6 commits. Hard difficulty because the update required coordinating changes across 5 related terms simultaneously, ensuring consistent naming conventions, accurate anatomical placement within cochlear substructures, and correct representation of each type's distinct ion transport roles in endolymph homeostasis.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (claude-opus-4.7, 2026-05-16). The gold PR #3522 shares the **exact** eval base commit `0c07461c` (verified via `gh pr view 184` baseRefOid == gold PR baseRefOid), so the metadiff is base-aligned and not contaminated. However, the gold diff is **dominated by non-issue-driven content** that mechanically depresses recall/F1 for every attempt:
+
+- **ODK/ROBOT serialization artifact (~14 of 51 added lines, ~27%)**: a block of six annotation-property `rdfs:label` declarations (`hasBroadSynonym`, `hasDbXref`, `hasExactSynonym`, `hasNarrowSynonym`, `hasRelatedSynonym`, `hasSynonymType`) plus blank lines, and 2 `Declaration(Class(obo:UBERON_0002282))`/`Declaration(Class(obo:UBERON_0006725))` housekeeping lines. The eval base already *uses* `hasBroadSynonym` 282× and `hasExactSynonym` 2436× and already uses UBERON_0006725, so these declarations were injected by a ROBOT round-trip / build pipeline, not by issue #3408 curation. No agent should (or did) reproduce them.
+- **Gold-only stylistic synonyms not requested by the issue**: 5 "type N SLF" `hasRelatedSynonym` lines with `oboInOwl:hasSynonymType obo:OMO_0003000` + PMID:33193034, and 4 Arabic "type N spiral ligament fibrocyte" `hasExactSynonym` lines. Issue #3408 only asked for the old labels as **broad** synonyms.
+- **Gold-only strategic refactor**: gold keeps `SubClassOf CL_0002665` and instead converts `CL_0020005` from two SubClassOf axioms to `EquivalentClasses(CL_0020005 ObjectIntersectionOf(CL_0002665 part-of UBERON_0006725))`, making type I–V inferred (not asserted) subclasses of spiral ligament fibrocyte. Every agent instead asserted `SubClassOf CL_0020005` directly — an equally valid, more conventional choice that is ontologically equivalent post-reasoning. The issue never specified either approach.
+
+Net: ~45% of the 51 gold additions are artifacts or unrequested gold-only style/strategy. Attempts should be judged against the issue's explicit asks (relabel; old label as broad synonym; update definition text; **ADD** the per-type PMIDs to existing `GOC:tfm`/`PMID:18353863`; `part of some spiral ligament` UBERON_0006725; type-I `adjacent to some stria vascularis of cochlear duct` UBERON_0002282; type-III `tension fibroblast` exact synonym). Under that lens, attempts #184 (opus), #32 (codex gpt-5.5), #69/#51 (opencode gpt-5.5) are substantive successes despite F1≈0.56–0.63; the metadiff under-represents them. Genuine defects remain real: **#211** (sonnet-4.5) used the wrong `part of` target `UBERON_0001863` (scala vestibuli) instead of UBERON_0006725 on all five terms; **#97** (haiku-4.5) deleted the existing `GOC:tfm`/`PMID:18353863` definition xrefs in direct violation of the issue's bolded "DO NOT replace references" instruction and omitted the type-I adjacency axiom.
+
+Companion PRs for the broader otic-fibrocyte refactor program (different issues, listed for context, not part of #3408's gold): #3409 (broaden CL_0002665 otic fibrocyte to `part of internal ear`, issue #3246) and #3410 (create `spiral ligament fibrocyte` term, issue #3407; later renumbered to CL_0020005 in the eval base). These were resolved before #3522 and are not required to satisfy issue #3408.
 
 ## Human Diff
 
@@ -195,13 +207,16 @@ index e7bfdf082..daf0cf9b5 100644
 
 ```
 
-## Agent Attempts (6)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-opus-4.7 | claude | 0.631 | 0.610 | 0.653 | `8a1f8d6` | [#184](https://github.com/ai4curation/eval-ont-agent-cl/pull/184) | [attempt](attempts/pr184.md) |
 | 2 | gpt-5.5 | opencode | 0.614 | 0.558 | 0.683 | `a493391` | [#69](https://github.com/ai4curation/eval-ont-agent-cl/pull/69) | [attempt](attempts/pr69.md) |
 | 3 | gpt-5.5 | opencode | 0.614 | 0.558 | 0.683 | `a493391` | [#51](https://github.com/ai4curation/eval-ont-agent-cl/pull/51) | [attempt](attempts/pr51.md) |
-| 4 | claude-sonnet-4.5 | claude | 0.565 | 0.455 | 0.745 | `57a4ade` | [#211](https://github.com/ai4curation/eval-ont-agent-cl/pull/211) | [attempt](attempts/pr211.md) |
-| 5 | gpt-5.5 | codex | 0.559 | 0.494 | 0.644 | `99eb874` | [#32](https://github.com/ai4curation/eval-ont-agent-cl/pull/32) | [attempt](attempts/pr32.md) |
-| 6 | claude-haiku-4.5 | claude | 0.481 | 0.338 | 0.839 | `27585f3` | [#97](https://github.com/ai4curation/eval-ont-agent-cl/pull/97) | [attempt](attempts/pr97.md) |
+| 4 | gpt-5.4 | codex | 0.609 | 0.597 | 0.622 | `000a358` | [#289](https://github.com/ai4curation/eval-ont-agent-cl/pull/289) | [attempt](attempts/pr289.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.565 | 0.455 | 0.745 | `57a4ade` | [#211](https://github.com/ai4curation/eval-ont-agent-cl/pull/211) | [attempt](attempts/pr211.md) |
+| 6 | gpt-5.5 | codex | 0.559 | 0.494 | 0.644 | `99eb874` | [#32](https://github.com/ai4curation/eval-ont-agent-cl/pull/32) | [attempt](attempts/pr32.md) |
+| 7 | claude-haiku-4.5 | claude | 0.481 | 0.338 | 0.839 | `27585f3` | [#97](https://github.com/ai4curation/eval-ont-agent-cl/pull/97) | [attempt](attempts/pr97.md) |
+| 8 | gpt-5.4 | opencode | 0.357 | 0.299 | 0.442 | `2b77ae5` | [#580](https://github.com/ai4curation/eval-ont-agent-cl/pull/580) | [attempt](attempts/pr580.md) |
+| 9 | gpt-5.4 | opencode | 0.357 | 0.299 | 0.442 | `2b77ae5` | [#517](https://github.com/ai4curation/eval-ont-agent-cl/pull/517) | [attempt](attempts/pr517.md) |

@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 9
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 best_f1: 1.0
 best_model: claude-sonnet-4.5
 ---
@@ -72,7 +72,7 @@ index 23834996e..dd6593ace 100644
 
 ```
 
-## Agent Attempts (9)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -83,5 +83,9 @@ index 23834996e..dd6593ace 100644
 | 5 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `dd6593a` | [#96](https://github.com/ai4curation/eval-ont-agent-go/pull/96) | [attempt](attempts/pr96.md) |
 | 6 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `dd6593a` | [#78](https://github.com/ai4curation/eval-ont-agent-go/pull/78) | [attempt](attempts/pr78.md) |
 | 7 | kimi-k2.6 | opencode | 0.889 | 1.000 | 0.800 | `feeefb7` | [#271](https://github.com/ai4curation/eval-ont-agent-go/pull/271) | [attempt](attempts/pr271.md) |
-| 8 | claude-haiku-4.5 | claude | 0.857 | 0.750 | 1.000 | `8d9910a` | [#208](https://github.com/ai4curation/eval-ont-agent-go/pull/208) | [attempt](attempts/pr208.md) |
-| 9 | gpt-5.5 | codex | 0.857 | 0.750 | 1.000 | `8d9910a` | [#56](https://github.com/ai4curation/eval-ont-agent-go/pull/56) | [attempt](attempts/pr56.md) |
+| 8 | gpt-5.4 | opencode | 0.857 | 0.750 | 1.000 | `8d9910a` | [#650](https://github.com/ai4curation/eval-ont-agent-go/pull/650) | [attempt](attempts/pr650.md) |
+| 9 | gpt-5.4 | opencode | 0.857 | 0.750 | 1.000 | `8d9910a` | [#604](https://github.com/ai4curation/eval-ont-agent-go/pull/604) | [attempt](attempts/pr604.md) |
+| 10 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `8d9910a` | [#578](https://github.com/ai4curation/eval-ont-agent-go/pull/578) | [attempt](attempts/pr578.md) |
+| 11 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `8d9910a` | [#530](https://github.com/ai4curation/eval-ont-agent-go/pull/530) | [attempt](attempts/pr530.md) |
+| 12 | claude-haiku-4.5 | claude | 0.857 | 0.750 | 1.000 | `8d9910a` | [#208](https://github.com/ai4curation/eval-ont-agent-go/pull/208) | [attempt](attempts/pr208.md) |
+| 13 | gpt-5.5 | codex | 0.857 | 0.750 | 1.000 | `8d9910a` | [#56](https://github.com/ai4curation/eval-ont-agent-go/pull/56) | [attempt](attempts/pr56.md) |

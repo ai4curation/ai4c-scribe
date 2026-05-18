@@ -12,8 +12,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 4
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: neuroscience
 best_f1: 1.0
 best_model: claude-haiku-4.5
@@ -62,7 +62,7 @@ index e7bfdf082..3b1912a19 100644
 
 ```
 
-## Agent Attempts (4)
+## Agent Attempts (8)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -70,3 +70,7 @@ index e7bfdf082..3b1912a19 100644
 | 2 | claude-opus-4.7 | claude | 0.889 | 1.000 | 0.800 | `1fe6c39` | [#183](https://github.com/ai4curation/eval-ont-agent-cl/pull/183) | [attempt](attempts/pr183.md) |
 | 3 | claude-sonnet-4.5 | claude | 0.333 | 0.250 | 0.500 | `577c48d` | [#282](https://github.com/ai4curation/eval-ont-agent-cl/pull/282) | [attempt](attempts/pr282.md) |
 | 4 | claude-sonnet-4.5 | claude | 0.333 | 0.250 | 0.500 | `577c48d` | [#217](https://github.com/ai4curation/eval-ont-agent-cl/pull/217) | [attempt](attempts/pr217.md) |
+| 5 | gpt-5.5 | opencode | 0.182 | 0.250 | 0.143 | `85be3b3` | [#604](https://github.com/ai4curation/eval-ont-agent-cl/pull/604) | [attempt](attempts/pr604.md) |
+| 6 | gpt-5.5 | opencode | 0.182 | 0.250 | 0.143 | `85be3b3` | [#542](https://github.com/ai4curation/eval-ont-agent-cl/pull/542) | [attempt](attempts/pr542.md) |
+| 7 | gpt-5.4 | codex | 0.182 | 0.250 | 0.143 | `19b787b` | [#329](https://github.com/ai4curation/eval-ont-agent-cl/pull/329) | [attempt](attempts/pr329.md) |
+| 8 | gpt-5.4 | codex | 0.182 | 0.250 | 0.143 | `19b787b` | [#295](https://github.com/ai4curation/eval-ont-agent-cl/pull/295) | [attempt](attempts/pr295.md) |

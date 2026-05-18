@@ -19,6 +19,10 @@ review_outcome: changes_requested
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Cross-reference correction requiring investigation of source annotation provenance when moving xrefs between terms.
+case_quality: ok
+case_quality_reason: sound_gold_but_requires_source_provenance_investigation
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

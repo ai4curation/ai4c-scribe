@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 domain_area: molecular_function
 best_f1: 0.9
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #31994 — Obsoletion request: glycoprotein cargo receptor activity
@@ -69,14 +69,19 @@ index 1855cac26..f53920e0d 100644
 
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.900 | 0.900 | 0.900 | `b001826` | [#462](https://github.com/ai4curation/eval-ont-agent-go/pull/462) | [attempt](attempts/pr462.md) |
-| 2 | claude-opus-4.7 | claude | 0.900 | 0.900 | 0.900 | `b987e86` | [#341](https://github.com/ai4curation/eval-ont-agent-go/pull/341) | [attempt](attempts/pr341.md) |
-| 3 | gemma-4-31b | opencode | 0.900 | 0.900 | 0.900 | `93d37f5` | [#237](https://github.com/ai4curation/eval-ont-agent-go/pull/237) | [attempt](attempts/pr237.md) |
-| 4 | gpt-5.5 | codex | 0.842 | 0.800 | 0.889 | `643b96e` | [#542](https://github.com/ai4curation/eval-ont-agent-go/pull/542) | [attempt](attempts/pr542.md) |
-| 5 | claude-sonnet-4.5 | copilot | 0.842 | 0.800 | 0.889 | `07c474c` | [#390](https://github.com/ai4curation/eval-ont-agent-go/pull/390) | [attempt](attempts/pr390.md) |
-| 6 | kimi-k2.6 | opencode | 0.842 | 0.800 | 0.889 | `643b96e` | [#270](https://github.com/ai4curation/eval-ont-agent-go/pull/270) | [attempt](attempts/pr270.md) |
-| 7 | claude-haiku-4.5 | claude | 0.800 | 0.800 | 0.800 | `c96008a` | [#405](https://github.com/ai4curation/eval-ont-agent-go/pull/405) | [attempt](attempts/pr405.md) |
+| 1 | gpt-5.4 | opencode | 0.900 | 0.900 | 0.900 | `dbcf4b8` | [#654](https://github.com/ai4curation/eval-ont-agent-go/pull/654) | [attempt](attempts/pr654.md) |
+| 2 | gpt-5.4 | opencode | 0.900 | 0.900 | 0.900 | `dbcf4b8` | [#608](https://github.com/ai4curation/eval-ont-agent-go/pull/608) | [attempt](attempts/pr608.md) |
+| 3 | claude-sonnet-4.5 | claude | 0.900 | 0.900 | 0.900 | `b001826` | [#462](https://github.com/ai4curation/eval-ont-agent-go/pull/462) | [attempt](attempts/pr462.md) |
+| 4 | claude-opus-4.7 | claude | 0.900 | 0.900 | 0.900 | `b987e86` | [#341](https://github.com/ai4curation/eval-ont-agent-go/pull/341) | [attempt](attempts/pr341.md) |
+| 5 | gemma-4-31b | opencode | 0.900 | 0.900 | 0.900 | `93d37f5` | [#237](https://github.com/ai4curation/eval-ont-agent-go/pull/237) | [attempt](attempts/pr237.md) |
+| 6 | gpt-5.5 | opencode | 0.842 | 0.800 | 0.889 | `9226d70` | [#636](https://github.com/ai4curation/eval-ont-agent-go/pull/636) | [attempt](attempts/pr636.md) |
+| 7 | gpt-5.5 | opencode | 0.842 | 0.800 | 0.889 | `9226d70` | [#587](https://github.com/ai4curation/eval-ont-agent-go/pull/587) | [attempt](attempts/pr587.md) |
+| 8 | gpt-5.4 | codex | 0.842 | 0.800 | 0.889 | `e5ac8ab` | [#547](https://github.com/ai4curation/eval-ont-agent-go/pull/547) | [attempt](attempts/pr547.md) |
+| 9 | gpt-5.5 | codex | 0.842 | 0.800 | 0.889 | `643b96e` | [#542](https://github.com/ai4curation/eval-ont-agent-go/pull/542) | [attempt](attempts/pr542.md) |
+| 10 | claude-sonnet-4.5 | copilot | 0.842 | 0.800 | 0.889 | `07c474c` | [#390](https://github.com/ai4curation/eval-ont-agent-go/pull/390) | [attempt](attempts/pr390.md) |
+| 11 | kimi-k2.6 | opencode | 0.842 | 0.800 | 0.889 | `643b96e` | [#270](https://github.com/ai4curation/eval-ont-agent-go/pull/270) | [attempt](attempts/pr270.md) |
+| 12 | claude-haiku-4.5 | claude | 0.800 | 0.800 | 0.800 | `c96008a` | [#405](https://github.com/ai4curation/eval-ont-agent-go/pull/405) | [attempt](attempts/pr405.md) |

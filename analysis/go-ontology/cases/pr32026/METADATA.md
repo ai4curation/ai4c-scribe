@@ -66,3 +66,21 @@ Findings:
 Downstream scoring should: (a) keep #163/#145/#127 as-is; (b) re-score #291/#224/#223/#491/#487 on the GO:0009095 stanza only (or exclude/down-weight); (c) treat #525/#450/#404/#324 as `no_output`. The whole-file metadiff is unreliable for this case for the 9 contaminated attempts.
 
 Flagged by claude-opus-4.7 on 2026-05-15.
+
+### Correction (2026-05-17)
+
+The 2026-05-15 note classified eval PR **#630** as `no_output` based on stale
+attempt-file data (go-edit.obo blob `961e08a`, GO:0009095 stanza untouched). On
+re-review of the **live** eval PRs, #630's actual go-edit.obo diff is blob
+`ccb7aa216..a1039a71c` and **does contain a correct, complete GO:0009095
+obsoletion** — byte-identical to eval PR #672 (both opencode/gpt-5.4). #630 is
+therefore re-classified `partial_success` (correct in-scope obsoletion;
+over_editing is base-state contamination only), NOT `no_output`. The contamination
+finding itself is unchanged and still applies (`eval_base_state_contamination`,
+no companion PRs). Other attempts not re-verified in this round; the
+`scoring_caveat` membership lists may likewise reflect stale blobs for any
+attempt whose live eval PR was not directly re-checked, and should be
+re-validated against live eval-PR diffs before downstream scoring.
+
+quality_flagged_by: claude-opus-4.7
+quality_flagged_at: 2026-05-17

@@ -11,11 +11,11 @@ difficulty: hard
 scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 4
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: skeletal
-best_f1: 0.005
-best_model: claude-sonnet-4.5
+best_f1: 0.009
+best_model: gpt-5.4
 ---
 
 # PR #3571 — Add articular cartilage zonal chondrocyte cell types
@@ -35,6 +35,22 @@ Added 51 new lines and removed 5 in `cl-edit.owl`, defining multiple articular c
 ## Resolution
 
 Approved on first review in 8 commits. Hard difficulty because this required defining multiple coordinated terms with zone-specific biological properties, ensuring consistent use of UBERON anatomical references for each cartilage zone, and managing the large-scale HRA subset update that accompanied the new terms.
+
+## Curation Note (data quality)
+
+**Flagged poor: ODK build-regenerated-file domination.** `quality_flagged_by: claude-opus-4.7`, `quality_flagged_at: 2026-05-16`.
+
+The genuine, hand-authored content of gold PR #3571 is confined to ~46 lines in `src/ontology/cl-edit.owl`: four new classes `CL_9900000`–`CL_9900003` (superficial / middle / deep / calcified zone articular chondrocyte) as `SubClassOf CL_1001607`, plus a handful of new GO/PR `Declaration`s, three GO `expresses`/equivalence swaps, and two synonym-annotation-property label fixes. Everything else in the PR is ODK release-pipeline output that an issue-scoped agent cannot and should not reproduce:
+
+- `src/ontology/imports/merged_import.owl`: +920 / **-5186** (regenerated import module)
+- `src/ontology/components/hra_subset.owl`: +898 / -20 (regenerated HRA subset, incl. unrelated `RO_0002175`/NCBITaxon blocks for `CL_0000067` etc.)
+- `src/templates/cellxgene_subset.tsv`: +959 / -959 (pure regeneration/reordering)
+- Six component files (`bgo-cl-comp.owl`, `cellxgene_subset.owl`, `clm-cl.owl`, `hra_subset.owl`, `wmbo-cl-comp.owl`, `definitions.owl`) with only `versionIRI`/`versionInfo` date bumps (2025-12-17 / 2025-10-29 → 2026-02-19)
+- `imports/go_terms.txt` (+4), `imports/pr_terms.txt` (+2/-1)
+
+Whole-file metadiff divides each agent's correct ~40-line term block by this ~9000-line regenerated denominator, yielding artificial F1 of 0.002–0.005 for all four attempts despite all four substantively resolving the issue. The case is **not** curator-repudiated and **not** multi-PR: search confirms #3571 is the sole PR for issue #3533, and curator @RiveraAndrea83 (MEMBER) explicitly confirmed in the issue thread that the terms were added to the correct parent. The issue itself contained an erroneous parent ID (`CL:0002557` = "fibroblast of pulmonary artery"); all four agents correctly resolved it to `CL_1001607`, matching gold and the curator's confirmation.
+
+**Scoring guidance:** exclude or heavily down-weight the reported F1/precision/recall/jaccard for this case. Evaluate attempts against the issue text and gold's `cl-edit.owl` term block only. Substantive ranking: pr193 (opus-4.7) ≈ pr205 (sonnet-4.5) > pr244 (copilot/sonnet-4.5) ≈ pr142 (haiku-4.5); the latter two used a one-position ID offset (`CL_9900001`–`CL_9900004`) and weaker synonym coverage, but all four are functionally successful.
 
 ## Human Diff
 
@@ -242,11 +258,16 @@ index 8cf47ec60..5f2c302e7 100644
 ... (14255 more lines truncated)
 ```
 
-## Agent Attempts (4)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.005 | 0.003 | 0.571 | `314289f` | [#205](https://github.com/ai4curation/eval-ont-agent-cl/pull/205) | [attempt](attempts/pr205.md) |
-| 2 | claude-opus-4.7 | claude | 0.005 | 0.003 | 0.457 | `69f614d` | [#193](https://github.com/ai4curation/eval-ont-agent-cl/pull/193) | [attempt](attempts/pr193.md) |
-| 3 | claude-sonnet-4.5 | copilot | 0.002 | 0.001 | 0.231 | `12f9189` | [#244](https://github.com/ai4curation/eval-ont-agent-cl/pull/244) | [attempt](attempts/pr244.md) |
-| 4 | claude-haiku-4.5 | claude | 0.002 | 0.001 | 0.250 | `457a8ed` | [#142](https://github.com/ai4curation/eval-ont-agent-cl/pull/142) | [attempt](attempts/pr142.md) |
+| 1 | gpt-5.4 | opencode | 0.009 | 0.004 | 0.926 | `ccb1341` | [#593](https://github.com/ai4curation/eval-ont-agent-cl/pull/593) | [attempt](attempts/pr593.md) |
+| 2 | gpt-5.4 | opencode | 0.009 | 0.004 | 0.926 | `ccb1341` | [#530](https://github.com/ai4curation/eval-ont-agent-cl/pull/530) | [attempt](attempts/pr530.md) |
+| 3 | gpt-5.5 | opencode | 0.005 | 0.003 | 0.421 | `b8a9acb` | [#554](https://github.com/ai4curation/eval-ont-agent-cl/pull/554) | [attempt](attempts/pr554.md) |
+| 4 | gpt-5.5 | opencode | 0.005 | 0.003 | 0.421 | `b8a9acb` | [#493](https://github.com/ai4curation/eval-ont-agent-cl/pull/493) | [attempt](attempts/pr493.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.005 | 0.003 | 0.571 | `314289f` | [#205](https://github.com/ai4curation/eval-ont-agent-cl/pull/205) | [attempt](attempts/pr205.md) |
+| 6 | claude-opus-4.7 | claude | 0.005 | 0.003 | 0.457 | `69f614d` | [#193](https://github.com/ai4curation/eval-ont-agent-cl/pull/193) | [attempt](attempts/pr193.md) |
+| 7 | gpt-5.4 | codex | 0.002 | 0.001 | 0.150 | `843f02f` | [#288](https://github.com/ai4curation/eval-ont-agent-cl/pull/288) | [attempt](attempts/pr288.md) |
+| 8 | claude-sonnet-4.5 | copilot | 0.002 | 0.001 | 0.231 | `12f9189` | [#244](https://github.com/ai4curation/eval-ont-agent-cl/pull/244) | [attempt](attempts/pr244.md) |
+| 9 | claude-haiku-4.5 | claude | 0.002 | 0.001 | 0.250 | `457a8ed` | [#142](https://github.com/ai4curation/eval-ont-agent-cl/pull/142) | [attempt](attempts/pr142.md) |

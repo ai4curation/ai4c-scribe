@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: comparative-anatomy
 best_f1: 0.444
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3597 — Revise lofical definition causing violations of taxon constraints
@@ -64,10 +64,16 @@ index 0479f338d..989f151e1 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#297](https://github.com/ai4curation/eval-ont-agent-uberon/pull/297) | [attempt](attempts/pr297.md) |
-| 2 | claude-opus-4.7 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#251](https://github.com/ai4curation/eval-ont-agent-uberon/pull/251) | [attempt](attempts/pr251.md) |
-| 3 | claude-haiku-4.5 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#176](https://github.com/ai4curation/eval-ont-agent-uberon/pull/176) | [attempt](attempts/pr176.md) |
+| 1 | gpt-5.4 | opencode | 0.444 | 0.500 | 0.400 | `12c2854` | [#666](https://github.com/ai4curation/eval-ont-agent-uberon/pull/666) | [attempt](attempts/pr666.md) |
+| 2 | gpt-5.5 | opencode | 0.444 | 0.500 | 0.400 | `12c2854` | [#631](https://github.com/ai4curation/eval-ont-agent-uberon/pull/631) | [attempt](attempts/pr631.md) |
+| 3 | gpt-5.4 | opencode | 0.444 | 0.500 | 0.400 | `12c2854` | [#610](https://github.com/ai4curation/eval-ont-agent-uberon/pull/610) | [attempt](attempts/pr610.md) |
+| 4 | gpt-5.5 | opencode | 0.444 | 0.500 | 0.400 | `12c2854` | [#572](https://github.com/ai4curation/eval-ont-agent-uberon/pull/572) | [attempt](attempts/pr572.md) |
+| 5 | gpt-5.4 | codex | 0.444 | 0.500 | 0.400 | `12c2854` | [#384](https://github.com/ai4curation/eval-ont-agent-uberon/pull/384) | [attempt](attempts/pr384.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#297](https://github.com/ai4curation/eval-ont-agent-uberon/pull/297) | [attempt](attempts/pr297.md) |
+| 7 | claude-opus-4.7 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#251](https://github.com/ai4curation/eval-ont-agent-uberon/pull/251) | [attempt](attempts/pr251.md) |
+| 8 | claude-haiku-4.5 | claude | 0.444 | 0.500 | 0.400 | `12c2854` | [#176](https://github.com/ai4curation/eval-ont-agent-uberon/pull/176) | [attempt](attempts/pr176.md) |
+| 9 | kimi-k2.6 | opencode | 0.400 | 0.500 | 0.333 | `101a879` | [#448](https://github.com/ai4curation/eval-ont-agent-uberon/pull/448) | [attempt](attempts/pr448.md) |

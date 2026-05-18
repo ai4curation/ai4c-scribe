@@ -11,11 +11,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 2
-generated_at: '2026-05-15'
+num_agent_attempts: 7
+generated_at: '2026-05-17'
 domain_area: cell-biology
 best_f1: 0.0
-best_model: claude-sonnet-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3564 — [Synonym] abbreviations like PBMC
@@ -35,6 +35,39 @@ Added 3 exact synonym annotations to `cl-edit.owl`: "PBMC" for peripheral blood 
 ## Resolution
 
 Approved on first review. This is a straightforward synonym addition requiring knowledge of OWL synonym annotation patterns (exact vs. related scope) and proper cross-referencing. An agent would need to identify the correct terms and apply the right synonym type with provenance.
+
+## Curation Note (data quality)
+
+Flagged by claude-opus-4.7 on 2026-05-16 during attempt review.
+
+**Gold PR is valid and complete.** PR #3564 is the sole human resolution of
+issue #3559: a single PR by RiveraAndrea83, approved first-time by dosumis,
+adding all three requested synonyms. There are no companion PRs. The issue
+explicitly requested PBMC, WBC, **and RPE**, and curators addiehl and scheuerm
+confirmed all three (RPE specifically approved for CL:0002586). So this is NOT
+a Step 3a multi-PR partial-gold case, and NOT a Step 3b poor case — gold is
+correct, complete, in-scope, and curator-approved. `case_quality: ok`.
+
+**Metadiff under-represents agent quality (scoring caveat).** All three gold
+lines carry axiom annotations:
+`AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:...") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasExactSynonym obo:CL_xxxx "ABBR")`
+— PMID:40794848 (WBC/CL:0000738), PMID:35835183 (RPE/CL:0002586),
+PMID:27696124 (PBMC/CL:2000001). Both agent attempts (#210 sonnet-4.5, #149
+haiku-4.5) added the correct three abbreviations to the correct three terms
+with the correct `hasExactSynonym` scope, but as bare assertions without the
+PMID xref or OMO_0003000 synonym type. Because zero agent lines match a gold
+line byte-for-byte, metadiff returns F1=precision=recall=0.0 by construction.
+This is a real omission (the issue asked for "reference(s)" and the
+cl-agent-config CLAUDE.md demonstrates the exact OMO_0003000 pattern), so
+both attempts are scored `partial_success` (~70% correct substance), not
+`failure`. Aggregations should not read F1=0.0 here as "agent did nothing."
+
+**CASE_BRIEF text inaccuracy (informational).** The auto-generated
+CASE_BRIEF.md (and the Context/Changes Made prose mirrored above) describes
+the gold as adding only PBMC and WBC (2 terms), omitting RPE for CL:0002586.
+The actual gold PR diff and the issue both cover all three. CASE_BRIEF.md is
+derived/auto-generated and was not edited; this note records the discrepancy
+for downstream consumers.
 
 ## Human Diff
 
@@ -70,9 +103,14 @@ index 0e1a96337..decb9fc0f 100644
 
 ```
 
-## Agent Attempts (2)
+## Agent Attempts (7)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `6da6106` | [#210](https://github.com/ai4curation/eval-ont-agent-cl/pull/210) | [attempt](attempts/pr210.md) |
-| 2 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `86c7e41` | [#149](https://github.com/ai4curation/eval-ont-agent-cl/pull/149) | [attempt](attempts/pr149.md) |
+| 1 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `54d61fe` | [#590](https://github.com/ai4curation/eval-ont-agent-cl/pull/590) | [attempt](attempts/pr590.md) |
+| 2 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `01f8370` | [#552](https://github.com/ai4curation/eval-ont-agent-cl/pull/552) | [attempt](attempts/pr552.md) |
+| 3 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `54d61fe` | [#529](https://github.com/ai4curation/eval-ont-agent-cl/pull/529) | [attempt](attempts/pr529.md) |
+| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `01f8370` | [#491](https://github.com/ai4curation/eval-ont-agent-cl/pull/491) | [attempt](attempts/pr491.md) |
+| 5 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `138cb33` | [#291](https://github.com/ai4curation/eval-ont-agent-cl/pull/291) | [attempt](attempts/pr291.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `6da6106` | [#210](https://github.com/ai4curation/eval-ont-agent-cl/pull/210) | [attempt](attempts/pr210.md) |
+| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `86c7e41` | [#149](https://github.com/ai4curation/eval-ont-agent-cl/pull/149) | [attempt](attempts/pr149.md) |

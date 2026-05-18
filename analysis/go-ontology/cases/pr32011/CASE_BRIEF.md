@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 9
-generated_at: '2026-05-15'
+num_agent_attempts: 11
+generated_at: '2026-05-17'
 scoping_notes: PR adds exactly one new term stanza with no unrelated changes.
 domain_area: biological_process
 best_f1: 1.0
@@ -77,7 +77,7 @@ index 37f74ff37..f6a5e38a4 100644
 
 ```
 
-## Agent Attempts (9)
+## Agent Attempts (11)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -90,3 +90,5 @@ index 37f74ff37..f6a5e38a4 100644
 | 7 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | `fc67f17` | [#102](https://github.com/ai4curation/eval-ont-agent-go/pull/102) | [attempt](attempts/pr102.md) |
 | 8 | gpt-5.5 | opencode | 0.941 | 1.000 | 0.889 | `fc67f17` | [#81](https://github.com/ai4curation/eval-ont-agent-go/pull/81) | [attempt](attempts/pr81.md) |
 | 9 | gpt-5.5 | codex | 0.941 | 1.000 | 0.889 | `02c093d` | [#55](https://github.com/ai4curation/eval-ont-agent-go/pull/55) | [attempt](attempts/pr55.md) |
+| 10 | gpt-5.4 | opencode | 0.875 | 0.875 | 0.875 | `a68c74c` | [#663](https://github.com/ai4curation/eval-ont-agent-go/pull/663) | [attempt](attempts/pr663.md) |
+| 11 | gpt-5.4 | opencode | 0.875 | 0.875 | 0.875 | `a68c74c` | [#614](https://github.com/ai4curation/eval-ont-agent-go/pull/614) | [attempt](attempts/pr614.md) |

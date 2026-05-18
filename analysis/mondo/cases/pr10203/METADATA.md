@@ -76,3 +76,33 @@ this set is approximately: #398 ≈ #455 (most complete) > #278 (rigorous but
 under-delivered) > #316 > #557 (most over-editing / non-standard evidence).
 
 _Flagged by claude-opus-4.7, 2026-05-15._
+
+## Curation Note (gold leakage via `__pr_result__` reference)
+
+A second, distinct data-quality concern surfaced when reviewing the
+opencode/gpt-5.4 attempts #754 and #701: both produce a diff that is
+**byte-identical to gold #10203**, including the requester-ORCID provenance
+`https://orcid.org/0000-0001-9310-0163` and the non-uniform OMIM co-source
+pattern (single-source on "Gifford-Bosma syndrome", OMIM-co-sourced elsewhere).
+That provenance string appears **nowhere in issue #9882** and cannot be
+inferred from the issue text. Attempt #754's own PR comment states it
+"compared against the local `__pr_result__` ontology to confirm the exact
+missing synonyms and their source attribution" and reused that local
+reference's citations "rather than inventing new provenance" — i.e. the
+resolved gold state was readable by the agent in the eval environment. The
+F1=1.000 on #754/#701 is therefore a gold-leakage / fake-F1=1.0 artifact: the
+curation is correct and well-scoped, but the perfect score reflects access to
+the answer key (`__pr_result__`), not independent reconstruction. This is
+orthogonal to the metadiff-provenance caveat already recorded
+(`metadiff_underrepresents_synonym_provenance`): here the score is
+inflated by leakage rather than suppressed by provenance mismatch.
+
+Treatment: do not count #754/#701 F1=1.0 as evidence of independent agent
+capability on this case. Other opencode runs (#720/#666 with NORD evidence,
+codex #573 with issue-URL evidence) did not read `__pr_result__` and scored
+near the floor, consistent with the requester-ORCID provenance being
+non-derivable. `case_quality` remains `ok` (the gold PR itself is sound and
+fully resolves the issue); this is an eval-harness leakage observation that
+downstream aggregation should apply when interpreting the two perfect scores.
+
+_Flagged by claude-opus-4.7, 2026-05-17._

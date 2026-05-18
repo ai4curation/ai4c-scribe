@@ -11,10 +11,10 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 6
-generated_at: '2026-05-15'
-best_f1: 0.571
-best_model: gpt-5.5
+num_agent_attempts: 11
+generated_at: '2026-05-17'
+best_f1: 0.667
+best_model: gpt-5.4
 ---
 
 # PR #10210 — GINS3 Meier-Gorlin syndrome
@@ -67,13 +67,18 @@ index 1d63d0424f..1f59ad4a5b 100644
 
 ```
 
-## Agent Attempts (6)
+## Agent Attempts (11)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gpt-5.5 | codex | 0.571 | 0.500 | 0.667 | `b36c2ca` | [#556](https://github.com/ai4curation/eval-ont-agent-mondo/pull/556) | [attempt](attempts/pr556.md) |
-| 2 | kimi-k2.6 | opencode | 0.526 | 0.625 | 0.455 | `11990af` | [#274](https://github.com/ai4curation/eval-ont-agent-mondo/pull/274) | [attempt](attempts/pr274.md) |
-| 3 | claude-opus-4.7 | claude | 0.333 | 0.375 | 0.300 | `3f8f0d3` | [#403](https://github.com/ai4curation/eval-ont-agent-mondo/pull/403) | [attempt](attempts/pr403.md) |
-| 4 | claude-sonnet-4.5 | claude | 0.316 | 0.375 | 0.273 | `aad9643` | [#452](https://github.com/ai4curation/eval-ont-agent-mondo/pull/452) | [attempt](attempts/pr452.md) |
-| 5 | claude-haiku-4.5 | claude | 0.308 | 0.250 | 0.400 | `35b0571` | [#477](https://github.com/ai4curation/eval-ont-agent-mondo/pull/477) | [attempt](attempts/pr477.md) |
-| 6 | claude-haiku-4.5 | claude | 0.308 | 0.250 | 0.400 | `35b0571` | [#419](https://github.com/ai4curation/eval-ont-agent-mondo/pull/419) | [attempt](attempts/pr419.md) |
+| 1 | gpt-5.4 | codex | 0.667 | 0.750 | 0.600 | `a4bd617` | [#570](https://github.com/ai4curation/eval-ont-agent-mondo/pull/570) | [attempt](attempts/pr570.md) |
+| 2 | gpt-5.5 | codex | 0.571 | 0.500 | 0.667 | `b36c2ca` | [#556](https://github.com/ai4curation/eval-ont-agent-mondo/pull/556) | [attempt](attempts/pr556.md) |
+| 3 | kimi-k2.6 | opencode | 0.526 | 0.625 | 0.455 | `11990af` | [#274](https://github.com/ai4curation/eval-ont-agent-mondo/pull/274) | [attempt](attempts/pr274.md) |
+| 4 | gpt-5.4 | opencode | 0.429 | 0.375 | 0.500 | `5a63382` | [#758](https://github.com/ai4curation/eval-ont-agent-mondo/pull/758) | [attempt](attempts/pr758.md) |
+| 5 | gpt-5.4 | opencode | 0.429 | 0.375 | 0.500 | `5a63382` | [#707](https://github.com/ai4curation/eval-ont-agent-mondo/pull/707) | [attempt](attempts/pr707.md) |
+| 6 | claude-opus-4.7 | claude | 0.333 | 0.375 | 0.300 | `3f8f0d3` | [#403](https://github.com/ai4curation/eval-ont-agent-mondo/pull/403) | [attempt](attempts/pr403.md) |
+| 7 | claude-sonnet-4.5 | claude | 0.316 | 0.375 | 0.273 | `aad9643` | [#452](https://github.com/ai4curation/eval-ont-agent-mondo/pull/452) | [attempt](attempts/pr452.md) |
+| 8 | claude-haiku-4.5 | claude | 0.308 | 0.250 | 0.400 | `35b0571` | [#477](https://github.com/ai4curation/eval-ont-agent-mondo/pull/477) | [attempt](attempts/pr477.md) |
+| 9 | claude-haiku-4.5 | claude | 0.308 | 0.250 | 0.400 | `35b0571` | [#419](https://github.com/ai4curation/eval-ont-agent-mondo/pull/419) | [attempt](attempts/pr419.md) |
+| 10 | gpt-5.5 | opencode | 0.167 | 0.125 | 0.250 | `23581f9` | [#725](https://github.com/ai4curation/eval-ont-agent-mondo/pull/725) | [attempt](attempts/pr725.md) |
+| 11 | gpt-5.5 | opencode | 0.167 | 0.125 | 0.250 | `23581f9` | [#673](https://github.com/ai4curation/eval-ont-agent-mondo/pull/673) | [attempt](attempts/pr673.md) |

@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 6
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: reproductive-biology
 best_f1: 0.231
 best_model: gpt-5.4
@@ -35,6 +35,50 @@ Added 16 lines and modified 2 lines in `cl-edit.owl`. The new term includes a cl
 ## Resolution
 
 Approved on first review. Medium difficulty because placing a novel dual-lineage progenitor cell requires understanding progenitor cell classification patterns, choosing appropriate parent classes when the cell has multi-potent differentiation potential, and correctly asserting anatomical location relationships.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (claude-opus-4.7, 2026-05-16). This case's metadiff
+scores are systematically misleading and should be excluded or heavily
+down-weighted in any aggregate quality metric.
+
+**Primary artifact — placeholder vs canonical ID.** The `cl-agent-config`
+CLAUDE.md explicitly *mandates* that new-term IDs be drawn from the
+`CL_99xxxxx` range ("New term IDs MUST start with CL_99xxxxx"). Agents that
+followed this instruction used `CL_9900000`/`CL_9900001`. The gold PR #3248,
+however, used `CL_4052070` — an ID issued by the live CL ID-assignment system
+that is not present in the eval base snapshot and is not derivable by any
+agent. Because OBO metadiff keys on subject IRIs, *every* annotation line of a
+correct term fails to align, forcing F1=0 by construction. Only codex #13
+(F1=0.231) scored nonzero, solely because it read `CL_4052070` from the live
+CL browser — not because its content was uniquely better.
+
+**Secondary factors that further suppress F1 / penalize correct agents.**
+- Gold's `part of` filler is `UBERON_8600124` ("fallopian tube epithelium"),
+  a high-numbered UBERON ID minted essentially concurrently with this PR
+  (the reasoned PR diff shows `UBERON_8600124` itself "Added Class"). It is
+  not resolvable from the label "fallopian tube epithelium" alone; reasonable
+  agents chose `UBERON_0003889` (fallopian tube) or `UBERON_0007589` (oviduct
+  epithelium). The two gpt-5.5/opencode runs (#58, #39) *did* land on
+  `UBERON_8600124` correctly.
+- The issue's reviewed (2025-08-12, approved by @biobenkj) logical definition
+  explicitly lists `'develops into' some 'fallopian tube secretory epithelial
+  cell'` and `'develops into' some 'fallopian tube multiciliated epithelial
+  cell'`. The gold PR **omitted both** develops-into axioms. Most agents
+  correctly **included** them — i.e. they followed the curator-reviewed spec
+  more faithfully than the merged gold did, yet are scored down for it.
+- The issue text says the NCSE2 synonyms are "related synonym"; gold encoded
+  them as `hasNarrowSynonym`. Agents that used related synonyms followed the
+  issue.
+
+**Reviewer judgement (against issue #3196, not metadiff):** 4 of 6 attempts
+are substantive successes (codex #13, sonnet #216, opus #172, opencode #58
+and #39 — though #58/#39 share a backwards `develops_from`/`RO_0002202`
+relation defect that should have been `RO_0002203`). haiku #87 is a
+partial_success: content is sound but it violated the mandatory `CL_99xxxxx`
+ID-range instruction by using `CL_4072103`. opus #172 is the strongest,
+best-documented attempt overall. No companion PRs — issue #3196 was fully
+resolved by the single PR #3248.
 
 ## Human Diff
 
@@ -93,13 +137,16 @@ index 46e47c7af..0a185896b 100644
 
 ```
 
-## Agent Attempts (6)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.4 | codex | 0.231 | 0.214 | 0.250 | `70ef42a` | [#13](https://github.com/ai4curation/eval-ont-agent-cl/pull/13) | [attempt](attempts/pr13.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `7dd21d5` | [#216](https://github.com/ai4curation/eval-ont-agent-cl/pull/216) | [attempt](attempts/pr216.md) |
-| 3 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `9836cc6` | [#172](https://github.com/ai4curation/eval-ont-agent-cl/pull/172) | [attempt](attempts/pr172.md) |
-| 4 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `f541f36` | [#87](https://github.com/ai4curation/eval-ont-agent-cl/pull/87) | [attempt](attempts/pr87.md) |
-| 5 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `648d52f` | [#58](https://github.com/ai4curation/eval-ont-agent-cl/pull/58) | [attempt](attempts/pr58.md) |
-| 6 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `648d52f` | [#39](https://github.com/ai4curation/eval-ont-agent-cl/pull/39) | [attempt](attempts/pr39.md) |
+| 2 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `ecb9f9c` | [#563](https://github.com/ai4curation/eval-ont-agent-cl/pull/563) | [attempt](attempts/pr563.md) |
+| 3 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `ecb9f9c` | [#501](https://github.com/ai4curation/eval-ont-agent-cl/pull/501) | [attempt](attempts/pr501.md) |
+| 4 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `c77b48d` | [#315](https://github.com/ai4curation/eval-ont-agent-cl/pull/315) | [attempt](attempts/pr315.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `7dd21d5` | [#216](https://github.com/ai4curation/eval-ont-agent-cl/pull/216) | [attempt](attempts/pr216.md) |
+| 6 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `9836cc6` | [#172](https://github.com/ai4curation/eval-ont-agent-cl/pull/172) | [attempt](attempts/pr172.md) |
+| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `f541f36` | [#87](https://github.com/ai4curation/eval-ont-agent-cl/pull/87) | [attempt](attempts/pr87.md) |
+| 8 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `648d52f` | [#58](https://github.com/ai4curation/eval-ont-agent-cl/pull/58) | [attempt](attempts/pr58.md) |
+| 9 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `648d52f` | [#39](https://github.com/ai4curation/eval-ont-agent-cl/pull/39) | [attempt](attempts/pr39.md) |

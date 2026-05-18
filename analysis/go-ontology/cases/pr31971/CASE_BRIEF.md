@@ -11,8 +11,8 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: changes_requested
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 15
+generated_at: '2026-05-17'
 domain_area: molecular_function
 best_f1: 1.0
 best_model: gpt-5.5
@@ -41,6 +41,16 @@ Net +5 lines reflecting additional xrefs and expanded definitions.
 ## Resolution
 
 The PR was merged same-day but received review feedback from @pgaudet requesting that child term names follow the standard "X as acceptor" naming pattern. This was addressed in follow-up PR #31979. This case demonstrates how enzyme term refactoring often requires multiple rounds: first the biochemical content is corrected, then naming conventions are applied.
+
+## Curation Note (data quality)
+
+Issue #31965 was resolved by **two** human PRs: the scored gold **#31971** (biochemical content: defs, EC/RHEA xrefs, label change to "quinone-dependent...") and companion **#31979** ("X as acceptor" restyling of GO:0004729 and GO:0070819).
+
+Unlike the classic partial-gold pattern, the gold PR here is a **fair scoring target**. The issue #31965 body contains six explicit checkboxes, and #31971 implements all six exactly — including specifying the literal target label "quinone-dependent protoporphyrinogen oxidase activity". Attempt **pr122** (gpt-5.5/codex) legitimately reproduces #31971 and scores F1=1.0; the attempt F1 spread (1.0 → 0.33) reflects real quality differences, not a misaligned reference.
+
+The `review_outcome: changes_requested` and companion PR **#31979** stem from a **post-hoc reviewer comment** (@pgaudet, 2026-04-27 — three days after the issue was filed and #31971 merged) proposing the "X as acceptor" convention. That naming request is **not present in the issue body the agents were given**, so attempts must **not** be penalized for not anticipating it. None of the 11 attempts attempted the "X as acceptor" rename, which is correct behavior given their inputs.
+
+Practical scoring guidance: judge attempts against issue #31965 + gold PR #31971 only. Do not treat the absence of #31979's renaming as an agent failure, and do not down-weight or exclude this case — the metadiff is reliable here. The single discriminating curation subtlety (which the metadiff does capture) is the GO:0070819 synonym restructuring: demote `protoporphyrinogen-IX:menaquinone oxidoreductase activity` EXACT→NARROW and preserve the old label `menaquinone-dependent protoporphyrinogen oxidase activity` as a NARROW synonym. Flagged by claude-opus-4.7 on 2026-05-15.
 
 ## Human Diff
 
@@ -89,7 +99,7 @@ index 35df222a1..336a9ade7 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (15)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -102,5 +112,9 @@ index 35df222a1..336a9ade7 100644
 | 7 | claude-haiku-4.5 | claude | 0.727 | 0.615 | 0.889 | `6faf7e6` | [#212](https://github.com/ai4curation/eval-ont-agent-go/pull/212) | [attempt](attempts/pr212.md) |
 | 8 | claude-sonnet-4.5 | claude | 0.696 | 0.615 | 0.800 | `4f99a6a` | [#475](https://github.com/ai4curation/eval-ont-agent-go/pull/475) | [attempt](attempts/pr475.md) |
 | 9 | claude-sonnet-4.5 | copilot | 0.696 | 0.615 | 0.800 | `1471025` | [#391](https://github.com/ai4curation/eval-ont-agent-go/pull/391) | [attempt](attempts/pr391.md) |
-| 10 | claude-sonnet-4.5 | copilot | 0.333 | 0.846 | 0.208 | `1be19e9` | [#436](https://github.com/ai4curation/eval-ont-agent-go/pull/436) | [attempt](attempts/pr436.md) |
-| 11 | claude-sonnet-4.5 | copilot | 0.333 | 0.846 | 0.208 | `1be19e9` | [#421](https://github.com/ai4curation/eval-ont-agent-go/pull/421) | [attempt](attempts/pr421.md) |
+| 10 | gpt-5.4 | opencode | 0.333 | 0.846 | 0.208 | `1be19e9` | [#617](https://github.com/ai4curation/eval-ont-agent-go/pull/617) | [attempt](attempts/pr617.md) |
+| 11 | gpt-5.4 | opencode | 0.333 | 0.846 | 0.208 | `1be19e9` | [#603](https://github.com/ai4curation/eval-ont-agent-go/pull/603) | [attempt](attempts/pr603.md) |
+| 12 | claude-sonnet-4.5 | copilot | 0.333 | 0.846 | 0.208 | `1be19e9` | [#436](https://github.com/ai4curation/eval-ont-agent-go/pull/436) | [attempt](attempts/pr436.md) |
+| 13 | claude-sonnet-4.5 | copilot | 0.333 | 0.846 | 0.208 | `1be19e9` | [#421](https://github.com/ai4curation/eval-ont-agent-go/pull/421) | [attempt](attempts/pr421.md) |
+| 14 | gpt-5.4 | opencode | 0.294 | 0.769 | 0.182 | `1be19e9` | [#656](https://github.com/ai4curation/eval-ont-agent-go/pull/656) | [attempt](attempts/pr656.md) |
+| 15 | gpt-5.4 | opencode | 0.294 | 0.769 | 0.182 | `1be19e9` | [#646](https://github.com/ai4curation/eval-ont-agent-go/pull/646) | [attempt](attempts/pr646.md) |

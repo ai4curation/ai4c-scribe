@@ -12,7 +12,7 @@ scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
 num_agent_attempts: 1
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 domain_area: neuroscience
 best_f1: 0.0
 best_model: claude-haiku-4.5

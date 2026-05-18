@@ -11,11 +11,11 @@ difficulty: hard
 scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: epithelial
-best_f1: 0.32
-best_model: claude-opus-4.7
+best_f1: 0.613
+best_model: gpt-5.4
 ---
 
 # PR #3537 — Fix design patterns for columnar cuboidal and squamous epithelial cells
@@ -35,6 +35,41 @@ Added new DOSDP pattern YAML files for both cuboidal and squamous epithelial cel
 ## Resolution
 
 Approved on first review in 10 commits. Hard difficulty because this required designing DOSDP patterns from scratch, understanding PATO quality terms for cell morphology (squamous, cuboidal), ensuring the patterns correctly compose with anatomical location, and updating multiple existing terms to conform to the new patterns while maintaining backward compatibility.
+
+## Curation Note (data quality)
+
+flagged_by: claude-opus-4.7 — flagged_at: 2026-05-16
+
+This case is **`case_quality: poor`**. The gold PR #3537 should not be used as a
+line-level metadiff reference; judge attempts against the issue's four explicit asks.
+
+1. **Gold PR is internally inconsistent (gold error).** The issue asks for
+   `cuboidal epithelial cell ≡ epithelial cell and has_characteristic some cuboidal`.
+   PATO has no class literally labelled "cuboidal"; the correct term is
+   **`PATO:0001872`** ("cuboid", with exact synonyms "cuboidal" and "block-like").
+   The gold's OWL axioms correctly use `PATO:0001872` (for `CL_9900001`, `CL_0000634`,
+   `CL_0002223`, `CL_0002662`, `CL_4033084`). However, the gold's **documentation and
+   pattern files use `PATO:0002312`**, which is actually labelled **"segmented"**
+   ("Consisting of segments… arranged in a longitudinal series") — a clear error in
+   `docs/patterns/cuboidalEpithelialCell.md`, `docs/relations_guide.md`, and
+   `src/patterns/dosdp-patterns/cuboidalEpithelialCell.yaml`. Agents that used
+   `PATO:0001872` consistently everywhere (pr188 opus, pr151 haiku) are *more*
+   internally consistent than the gold but are penalized by metadiff.
+
+2. **Gold contains out-of-scope structural edits.** Beyond the issue's asks, the gold
+   reparents `CL_0000237` (keratinizing barrier epithelial cell) from `CL_0000240` to
+   `CL_0000066` and adds `part_of UBERON_0000486`; adds `EquivalentClasses` to
+   `CL_0000079` (stratified epithelial cell) and rewrites the `CL_0000240` equivalence
+   with `part_of UBERON_0000486`; and merges/reorders `CL_0002063` axioms. None of
+   this is requested by issue #3536. Well-scoped agents that omit these are penalized
+   on recall.
+
+3. **Effect on scoring.** All three attempts scored F1 0.26–0.32. For pr188 (opus) and
+   pr151 (haiku) the metadiff **substantially under-represents quality** — both met all
+   four explicit asks with correct, reasoner-safe axioms. pr222 (sonnet) is a genuine
+   partial: it correctly did the squamous half but abandoned the entire cuboidal half
+   on the false premise that PATO has no cuboidal term, so its low score is only
+   *partly* a case-quality artifact.
 
 ## Human Diff
 
@@ -242,10 +277,15 @@ index 876a6ef11..e80ee36b7 100644
 ... (150 more lines truncated)
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (8)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-opus-4.7 | claude | 0.320 | 0.286 | 0.364 | `4f63cf7` | [#188](https://github.com/ai4curation/eval-ont-agent-cl/pull/188) | [attempt](attempts/pr188.md) |
-| 2 | claude-haiku-4.5 | claude | 0.292 | 0.255 | 0.342 | `7381859` | [#151](https://github.com/ai4curation/eval-ont-agent-cl/pull/151) | [attempt](attempts/pr151.md) |
-| 3 | claude-sonnet-4.5 | claude | 0.260 | 0.194 | 0.396 | `ef01ecf` | [#222](https://github.com/ai4curation/eval-ont-agent-cl/pull/222) | [attempt](attempts/pr222.md) |
+| 1 | gpt-5.4 | opencode | 0.613 | 0.663 | 0.570 | `6735706` | [#584](https://github.com/ai4curation/eval-ont-agent-cl/pull/584) | [attempt](attempts/pr584.md) |
+| 2 | gpt-5.4 | opencode | 0.613 | 0.663 | 0.570 | `6735706` | [#521](https://github.com/ai4curation/eval-ont-agent-cl/pull/521) | [attempt](attempts/pr521.md) |
+| 3 | gpt-5.4 | codex | 0.344 | 0.265 | 0.491 | `f932cec` | [#591](https://github.com/ai4curation/eval-ont-agent-cl/pull/591) | [attempt](attempts/pr591.md) |
+| 4 | claude-opus-4.7 | claude | 0.320 | 0.286 | 0.364 | `4f63cf7` | [#188](https://github.com/ai4curation/eval-ont-agent-cl/pull/188) | [attempt](attempts/pr188.md) |
+| 5 | claude-haiku-4.5 | claude | 0.292 | 0.255 | 0.342 | `7381859` | [#151](https://github.com/ai4curation/eval-ont-agent-cl/pull/151) | [attempt](attempts/pr151.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.260 | 0.194 | 0.396 | `ef01ecf` | [#222](https://github.com/ai4curation/eval-ont-agent-cl/pull/222) | [attempt](attempts/pr222.md) |
+| 7 | gpt-5.5 | opencode | 0.083 | 0.061 | 0.128 | `0e0d3a6` | [#548](https://github.com/ai4curation/eval-ont-agent-cl/pull/548) | [attempt](attempts/pr548.md) |
+| 8 | gpt-5.5 | opencode | 0.083 | 0.061 | 0.128 | `0e0d3a6` | [#485](https://github.com/ai4curation/eval-ont-agent-cl/pull/485) | [attempt](attempts/pr485.md) |

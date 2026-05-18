@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# Updates to Gene-Disease Classifications and Inheritance Patterns for Porphyria Disease Entities\n\nThis PR implements the updates to porphyria disease entities as requested by the ClinGen General Inborn Errors of Metabolism Gene Curation Expert Panel (GCEP) in issue #9703.",
+  "issue_comment": "@mtwilke-art @sabrinatoro \n\nI've implemented all the requested updates for porphyria disease entities from the attached Excel file. Changes have been committed in PR #<NN>.",
+  "workflow_run": "25950819273",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25950819273",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-mondo/pull/604"
+}

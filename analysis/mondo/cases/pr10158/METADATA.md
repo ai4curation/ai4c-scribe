@@ -31,6 +31,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Term merge requiring cross-reference analysis to confirm two Mondo terms represent the same disease entity
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

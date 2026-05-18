@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 8
+generated_at: '2026-05-17'
 domain_area: skeletal-anatomy
-best_f1: 0.926
-best_model: claude-sonnet-4.5
+best_f1: 0.999
+best_model: gpt-5.4
 ---
 
 # PR #3679 — Add bone part terms from HubMap - HRA
@@ -35,6 +35,26 @@ Rather than editing uberon-edit.obo directly, the PR introduced a ROBOT template
 ## Resolution
 
 This is a complex case requiring understanding of the ODK component pipeline, ROBOT template syntax, prefix management in OWL builds, and batch term quality review. The PR touches 11 files across templates, build configuration, and documentation. An agent would need to generate the ROBOT template TSV, wire it into the build system, and handle edge cases around prefix declarations. Approved after review with no changes requested.
+
+## Curation Note (data quality)
+
+**Flagged `case_quality: poor` — gold-artifact leakage (Step 3b).**
+
+Gold PR #3679 was itself produced "via an agentic workflow" (issue #3678 comment by dosumis) followed by substantial human curation: the `parents_as` column was discarded as unreliable and parents re-derived from term labels, ~9 mismatch corrections were applied (see `corrections_report.md`), and four likely-duplicate terms were dropped before merge. It was merged upstream on 2026-03-25.
+
+The eval runs occurred after that merge. Inspection of git blob hashes shows:
+
+- eval #305 (sonnet): `hra_skeleton.owl` blob `9934d34b0` and `hra-skeleton.template.tsv` blob `b10105932` — **byte-identical** to gold blobs `9934d34b01` / `b10105932c`.
+- eval #175 (haiku): `hra_skeleton.owl` blob `9934d34b0` — **byte-identical** to gold.
+
+A 5156-line ROBOT-template-generated OWL component (with a fixed `releases/2026-03-20` version IRI and deterministic declaration ordering) and a 286-line template in which every row carries a unique 150–250-word genus-differentia definition plus corrections-report-driven parent fixes cannot be independently regenerated bit-for-bit from the issue CSV. The byte-identity indicates the leaking attempts retrieved/reproduced the already-published gold artifact rather than synthesizing it. The eval-base branch `eval-base-issue-3678` does **not** contain these files (404), but the eval repo's default branch and upstream `obophenotype/uberon` both do — the most plausible leakage path.
+
+Consequence for scoring:
+
+- Metadiff F1 for #305 (0.926) and #175 (0.894) **over-represents** capability; it rewards copying a merged answer.
+- Metadiff F1 for #267 (opus, 0.001) **under-represents** quality: it is the only attempt that did genuine independent work — a conservative 129-row draft template plus a data-quality report that independently rediscovered the same CSV defects the gold's own corrections report documents (non-bone `parents_as` IDs, row-shifted rib/vertebra parents, ASCTB-TEMP/FMA URIs). Its main genuine shortfall is over-aggressive duplicate exclusion (~102 qualified "... of <bone>" terms the gold kept as new terms).
+
+Downstream aggregation should exclude or heavily down-weight the metadiff for this case and judge attempts on the independent reasoning in their reports/PR comments. Companion PRs #3686 (template/prefix refinement) and #3685 (release integration) are post-merge follow-ups, not separate sub-steps — gold #3679 is the complete substantive resolution of the issue, so this is a leakage case, not a partial-gold case.
 
 ## Human Diff
 
@@ -242,10 +262,15 @@ index 0000000000..9934d34b01
 ... (7156 more lines truncated)
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (8)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.926 | 0.862 | 0.999 | `5a07746` | [#305](https://github.com/ai4curation/eval-ont-agent-uberon/pull/305) | [attempt](attempts/pr305.md) |
-| 2 | claude-haiku-4.5 | claude | 0.894 | 0.808 | 1.000 | `9934d34` | [#175](https://github.com/ai4curation/eval-ont-agent-uberon/pull/175) | [attempt](attempts/pr175.md) |
-| 3 | claude-opus-4.7 | claude | 0.001 | 0.000 | 0.005 | `89c16aa` | [#267](https://github.com/ai4curation/eval-ont-agent-uberon/pull/267) | [attempt](attempts/pr267.md) |
+| 1 | gpt-5.4 | codex | 0.999 | 0.998 | 0.999 | `1a9a07c` | [#386](https://github.com/ai4curation/eval-ont-agent-uberon/pull/386) | [attempt](attempts/pr386.md) |
+| 2 | gpt-5.4 | opencode | 0.928 | 0.866 | 1.000 | `1aef767` | [#684](https://github.com/ai4curation/eval-ont-agent-uberon/pull/684) | [attempt](attempts/pr684.md) |
+| 3 | gpt-5.4 | opencode | 0.928 | 0.866 | 1.000 | `1aef767` | [#623](https://github.com/ai4curation/eval-ont-agent-uberon/pull/623) | [attempt](attempts/pr623.md) |
+| 4 | gpt-5.5 | opencode | 0.927 | 0.865 | 0.999 | `7dfb241` | [#646](https://github.com/ai4curation/eval-ont-agent-uberon/pull/646) | [attempt](attempts/pr646.md) |
+| 5 | gpt-5.5 | opencode | 0.927 | 0.865 | 0.999 | `7dfb241` | [#587](https://github.com/ai4curation/eval-ont-agent-uberon/pull/587) | [attempt](attempts/pr587.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.926 | 0.862 | 0.999 | `5a07746` | [#305](https://github.com/ai4curation/eval-ont-agent-uberon/pull/305) | [attempt](attempts/pr305.md) |
+| 7 | claude-haiku-4.5 | claude | 0.894 | 0.808 | 1.000 | `9934d34` | [#175](https://github.com/ai4curation/eval-ont-agent-uberon/pull/175) | [attempt](attempts/pr175.md) |
+| 8 | claude-opus-4.7 | claude | 0.001 | 0.000 | 0.005 | `89c16aa` | [#267](https://github.com/ai4curation/eval-ont-agent-uberon/pull/267) | [attempt](attempts/pr267.md) |

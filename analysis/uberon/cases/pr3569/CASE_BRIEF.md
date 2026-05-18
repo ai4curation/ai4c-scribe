@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: changes_requested
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 domain_area: vascular-anatomy
-best_f1: 0.626
-best_model: gpt-5.5
+best_f1: 0.962
+best_model: gpt-5.4
 ---
 
 # PR #3569 — Track the addition of VCCF vasculature terms here
@@ -35,6 +35,16 @@ The PR added four new entries to the artery_and_arteriole_pattern.tsv and three 
 ## Resolution
 
 Medium difficulty. An agent would need to understand the DOSDP (Dead Simple OWL Design Patterns) framework used for systematic vasculature term creation, populate the correct pattern data TSV files with appropriate anatomical region references, and ensure the generated OWL definitions are consistent with existing vasculature terms. The six commits and multi-PR series suggest iterative review feedback across the batch import effort.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (claude-opus-4.7, 2026-05-16).
+
+**Workflow / ID-scheme mismatch.** Issue #3457 is a HuBMAP/VCCF tracking ticket resolved by five batched human PRs (#3497, #3513, #3559, #3566, #3569). The selected gold #3569 is a clean, self-contained sub-batch (the 7 terms in the June 24 2025 comment: lobar artery of spleen, esophageal branches of left gastric artery, posterior scrotal artery, vaginal artery, superior rectal vein, inferior rectal vein, posterior scrotal vein), so the *task* is well-defined and not "gold is partial" in the disqualifying sense. The problem is mechanism: gold #3569 edits the **DOSDP pattern-data TSVs** (`src/patterns/data/default/artery_and_arteriole_pattern.tsv`, `vein_and_venule_pattern.tsv`) and regenerates `src/patterns/definitions.owl`, assigning canonical `UBERON:8920049`–`8920055` and contributor ORCID `0000-0001-6757-4744` (Arwa Ibrahim). The agent `CLAUDE.md` in `uberon-agent-config@v3` instead prescribes the `uberon-edit.obo` + `terms/` checkout workflow and `UBERON:99xxxxx` placeholder IDs. An agent that faithfully follows its instructions therefore scores **F1 = 0 by construction** (different target file, different IDs) even when the anatomical content is correct. Only the codex attempt (#34, F1 0.626) discovered the pattern-TSV route and reused the canonical 8920xxx IDs.
+
+**Base-state contamination.** The obo-route attempts (#323, #253, #189, #93, #71, #54; blobs `dda7aa8`/`7e174bf`/`aaf65e4`) additionally carry an identical foreign hunk unrelated to the issue: `seeAlso`/`source` annotation reordering on flying-fish wing, hyoid bone, spinal accessory nerve, manual digits, spleen marginal sinus and lateral malleolus, plus an `airway hillock` (UBERON:8910024) `part_of`/`has_part` reorder — robot-reserialization churn leaked into the eval base.
+
+**Recommendation for scoring/aggregation.** Down-weight or exclude the line-wise metadiff vs #3569 for this case. Judge attempts against the issue's June 24 batch and the union of companion PRs #3497/#3513/#3559/#3566. The two haiku runs (#189, #93) still fail on substance (no terms created; out-of-scope harness-config edits); opus #253 fails on substance (added the wrong, already-handled April 30 lung batch); codex #34 substantively succeeds; sonnet #323 and the opencode pair #71/#54 are substantively partial successes (correct batch and anatomy, one wrong arterial parent, wrong workflow/IDs).
 
 ## Human Diff
 
@@ -242,14 +252,17 @@ index c05827054..b7e402b10 100644
 ... (10 more lines truncated)
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gpt-5.5 | codex | 0.626 | 0.604 | 0.649 | `51f7fbf` | [#34](https://github.com/ai4curation/eval-ont-agent-uberon/pull/34) | [attempt](attempts/pr34.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `a6b5a8c` | [#323](https://github.com/ai4curation/eval-ont-agent-uberon/pull/323) | [attempt](attempts/pr323.md) |
-| 3 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `aaf65e4` | [#253](https://github.com/ai4curation/eval-ont-agent-uberon/pull/253) | [attempt](attempts/pr253.md) |
-| 4 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dda7aa8` | [#189](https://github.com/ai4curation/eval-ont-agent-uberon/pull/189) | [attempt](attempts/pr189.md) |
-| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dda7aa8` | [#93](https://github.com/ai4curation/eval-ont-agent-uberon/pull/93) | [attempt](attempts/pr93.md) |
-| 6 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `7e174bf` | [#71](https://github.com/ai4curation/eval-ont-agent-uberon/pull/71) | [attempt](attempts/pr71.md) |
-| 7 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `7e174bf` | [#54](https://github.com/ai4curation/eval-ont-agent-uberon/pull/54) | [attempt](attempts/pr54.md) |
+| 1 | gpt-5.4 | opencode | 0.962 | 1.000 | 0.927 | `a17ae74` | [#665](https://github.com/ai4curation/eval-ont-agent-uberon/pull/665) | [attempt](attempts/pr665.md) |
+| 2 | gpt-5.4 | opencode | 0.962 | 1.000 | 0.927 | `a17ae74` | [#606](https://github.com/ai4curation/eval-ont-agent-uberon/pull/606) | [attempt](attempts/pr606.md) |
+| 3 | gpt-5.5 | codex | 0.626 | 0.604 | 0.649 | `51f7fbf` | [#34](https://github.com/ai4curation/eval-ont-agent-uberon/pull/34) | [attempt](attempts/pr34.md) |
+| 4 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `37532f0` | [#397](https://github.com/ai4curation/eval-ont-agent-uberon/pull/397) | [attempt](attempts/pr397.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `a6b5a8c` | [#323](https://github.com/ai4curation/eval-ont-agent-uberon/pull/323) | [attempt](attempts/pr323.md) |
+| 6 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `aaf65e4` | [#253](https://github.com/ai4curation/eval-ont-agent-uberon/pull/253) | [attempt](attempts/pr253.md) |
+| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dda7aa8` | [#189](https://github.com/ai4curation/eval-ont-agent-uberon/pull/189) | [attempt](attempts/pr189.md) |
+| 8 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `dda7aa8` | [#93](https://github.com/ai4curation/eval-ont-agent-uberon/pull/93) | [attempt](attempts/pr93.md) |
+| 9 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `7e174bf` | [#71](https://github.com/ai4curation/eval-ont-agent-uberon/pull/71) | [attempt](attempts/pr71.md) |
+| 10 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `7e174bf` | [#54](https://github.com/ai4curation/eval-ont-agent-uberon/pull/54) | [attempt](attempts/pr54.md) |

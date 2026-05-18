@@ -28,6 +28,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Simple NTR with clear parent term and straightforward anatomical definition
+case_quality: good
+case_quality_reason: single_complete_new_term_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

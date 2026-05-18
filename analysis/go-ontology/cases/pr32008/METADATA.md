@@ -29,6 +29,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Multi-file change involving both term obsoletion and OWL import cleanup, addressing a long-standing issue from 2023
+case_quality: ok
+case_quality_reason: sound_gold_but_multi_file_obsoletion_and_import_cleanup
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

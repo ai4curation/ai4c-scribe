@@ -25,6 +25,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Clean obsoletion with direct replacement, typical of enzyme term consolidation where duplicate terms exist for the same activity
+case_quality: good
+case_quality_reason: sound_gold_no_agent_coverage
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 agent_coverage: none
 agent_coverage_note: "no eval attempts generated as of 2026-05-15"
 companion_prs: [32006]

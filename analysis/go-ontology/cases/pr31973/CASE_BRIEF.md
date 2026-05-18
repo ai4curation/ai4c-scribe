@@ -12,8 +12,8 @@ difficulty: hard
 scoping: mostly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 scoping_notes: Primary change was obsoletion of GO:0010381 but the PR also touched
   taxon constraint files due to cascading effects of the obsoletion on constraint
   imports.
@@ -43,6 +43,52 @@ Four files were modified across 5 commits:
 ## Resolution
 
 The 5 commits show iterative resolution of CI failures: the initial obsoletion passed validation but the taxon constraint files needed manual cleanup to remove references to the now-obsolete term. This case demonstrates that GO obsoletion is not always a single-file operation -- terms with taxon constraints require coordinated changes across the constraint pipeline.
+
+## Curation Note (data quality)
+
+**Flagged poor by claude-opus-4.7, 2026-05-15.** This is a poor evaluation
+case: the metadiff gold (#31973) is self-contradicting and dominated by
+auto-generated artifact noise. Reviewing the issue thread (#31877) and PR
+commit history establishes the following.
+
+### The issue's actual asks and curator-blessed solution
+
+1. The issue requested obsoletion of `GO:0010381` (BP) because it represents
+   a molecular function, with reannotation to the new MF term `GO:7770065`
+   (added separately in companion **PR #31929**, which is *not* in scope for
+   this eval — agents were only asked to obsolete).
+2. `raymond91125` triggered the obsoletion; `tberardini` (TAIR, the sole
+   annotator) approved proceeding and asked the ticket stay open until she
+   migrates the one EXP annotation.
+3. **`consider:` is correct, `replaced_by:` is wrong.** The author first used
+   `consider: GO:7770065` (cross-aspect BP→MF needs manual review, not
+   automatic replacement). `pgaudet` confirmed in-thread: *"I dont think we
+   want to `replace` terms across ontology aspects."* The merged gold's
+   `go-edit.obo` final state uses `consider: GO:7770065`.
+4. **TC cleanup is `.tsv`-only.** `raymond91125` explicitly instructed:
+   *"please reverse the changes for taxon restrictions on files other than
+   src/taxon_constraints/never_in_taxon.tsv. Other files are regenerated based
+   on src/taxon_constraints/never_in_taxon.tsv by post-processing."* The only
+   hand edit that should be in the PR is removing the 4 `GO:0010381` rows from
+   `never_in_taxon.tsv` (Choanoflagellida, Metazoa, Fungi, Amoebozoa).
+
+### Why the gold PR is a poor reference
+
+The 5 commits are: (1) obsolete in go-edit.obo, (2) remove 4 `.tsv` rows,
+(3) **`113327b7c` Revert post-processed taxon constraint files** (complying
+with raymond91125), (4) merge master, (5) **`e1cd54e5c` Regenerate taxon
+constraint OWL files** — which re-introduced exactly the `.ofn` (-20) and
+`go_taxon_constraints.owl` (+481/-558) churn that commit 3 had reverted and
+the curator had said must not be in the PR. The merged net diff therefore
+contradicts the curator's own instruction, and its ~1000-line OWL delta is
+overwhelmingly blank-node `genidNNNN` renumbering noise with no semantic
+content (a single class removal shifts every downstream blank-node ID).
+
+Consequently the metadiff F1 measures reproduction of generated-file noise,
+not curation quality. Attempts that produced the clean, curator-blessed edit
+score F1≈0.016 (go-edit.obo only) or F1≈0.553 (go-edit.obo + full TC
+regeneration, which the curator explicitly rejected). All ten attempts should
+be judged against the issue + curator comments, not the metadiff.
 
 ## Human Diff
 
@@ -250,17 +296,19 @@ index 3f8051b7fd..21690045fb 100644
 ... (2824 more lines truncated)
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.5 | opencode | 0.553 | 0.458 | 0.698 | `d8cfeac` | [#164](https://github.com/ai4curation/eval-ont-agent-go/pull/164) | [attempt](attempts/pr164.md) |
 | 2 | gpt-5.5 | opencode | 0.553 | 0.458 | 0.698 | `d8cfeac` | [#146](https://github.com/ai4curation/eval-ont-agent-go/pull/146) | [attempt](attempts/pr146.md) |
-| 3 | gpt-5.5 | codex | 0.552 | 0.457 | 0.697 | `d1745c1` | [#130](https://github.com/ai4curation/eval-ont-agent-go/pull/130) | [attempt](attempts/pr130.md) |
-| 4 | gpt-5.4 | codex | 0.540 | 0.464 | 0.647 | `59f8ff4` | [#185](https://github.com/ai4curation/eval-ont-agent-go/pull/185) | [attempt](attempts/pr185.md) |
-| 5 | claude-sonnet-4.5 | claude | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#454](https://github.com/ai4curation/eval-ont-agent-go/pull/454) | [attempt](attempts/pr454.md) |
-| 6 | claude-sonnet-4.5 | copilot | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#377](https://github.com/ai4curation/eval-ont-agent-go/pull/377) | [attempt](attempts/pr377.md) |
-| 7 | claude-opus-4.7 | claude | 0.016 | 0.008 | 0.800 | `d1745c1` | [#343](https://github.com/ai4curation/eval-ont-agent-go/pull/343) | [attempt](attempts/pr343.md) |
-| 8 | kimi-k2.6 | opencode | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#258](https://github.com/ai4curation/eval-ont-agent-go/pull/258) | [attempt](attempts/pr258.md) |
-| 9 | gemma-4-31b | opencode | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#244](https://github.com/ai4curation/eval-ont-agent-go/pull/244) | [attempt](attempts/pr244.md) |
-| 10 | claude-haiku-4.5 | claude | 0.016 | 0.008 | 0.800 | `72b55e6` | [#201](https://github.com/ai4curation/eval-ont-agent-go/pull/201) | [attempt](attempts/pr201.md) |
+| 3 | gpt-5.4 | opencode | 0.552 | 0.457 | 0.697 | `35156a4` | [#651](https://github.com/ai4curation/eval-ont-agent-go/pull/651) | [attempt](attempts/pr651.md) |
+| 4 | gpt-5.4 | opencode | 0.552 | 0.457 | 0.697 | `35156a4` | [#602](https://github.com/ai4curation/eval-ont-agent-go/pull/602) | [attempt](attempts/pr602.md) |
+| 5 | gpt-5.5 | codex | 0.552 | 0.457 | 0.697 | `d1745c1` | [#130](https://github.com/ai4curation/eval-ont-agent-go/pull/130) | [attempt](attempts/pr130.md) |
+| 6 | gpt-5.4 | codex | 0.540 | 0.464 | 0.647 | `59f8ff4` | [#185](https://github.com/ai4curation/eval-ont-agent-go/pull/185) | [attempt](attempts/pr185.md) |
+| 7 | claude-sonnet-4.5 | claude | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#454](https://github.com/ai4curation/eval-ont-agent-go/pull/454) | [attempt](attempts/pr454.md) |
+| 8 | claude-sonnet-4.5 | copilot | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#377](https://github.com/ai4curation/eval-ont-agent-go/pull/377) | [attempt](attempts/pr377.md) |
+| 9 | claude-opus-4.7 | claude | 0.016 | 0.008 | 0.800 | `d1745c1` | [#343](https://github.com/ai4curation/eval-ont-agent-go/pull/343) | [attempt](attempts/pr343.md) |
+| 10 | kimi-k2.6 | opencode | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#258](https://github.com/ai4curation/eval-ont-agent-go/pull/258) | [attempt](attempts/pr258.md) |
+| 11 | gemma-4-31b | opencode | 0.016 | 0.008 | 0.800 | `cf80bf7` | [#244](https://github.com/ai4curation/eval-ont-agent-go/pull/244) | [attempt](attempts/pr244.md) |
+| 12 | claude-haiku-4.5 | claude | 0.016 | 0.008 | 0.800 | `72b55e6` | [#201](https://github.com/ai4curation/eval-ont-agent-go/pull/201) | [attempt](attempts/pr201.md) |

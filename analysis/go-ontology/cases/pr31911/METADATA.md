@@ -19,6 +19,10 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Long-standing NTR (6 years open) addressing MF-in-BP misclassification, with new term creation and parent term rename in one PR
+case_quality: good
+case_quality_reason: sound_gold_no_agent_coverage
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 agent_coverage: none
 agent_coverage_note: "no eval attempts generated as of 2026-05-15"
 ---

@@ -27,6 +27,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: Simple obsoletion of an overly specific complex subunit term with clear direct replacement
+case_quality: good
+case_quality_reason: single_complete_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

@@ -12,7 +12,7 @@ scoping: loosely_scoped
 scope: multi_term
 review_outcome: approved_first_time
 num_agent_attempts: 0
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 eval_suitability: unusable
 eval_suitability_notes: 'PR was auto-linked to issue #3224 (skos:prefLabel import
   bug) but actually addresses issue #3010 (obsolete structural cell). Agent given
@@ -45,7 +45,39 @@ Modified `cl-edit.owl` with 9 additions and 7 deletions across three classes:
 
 ## Resolution
 
-Approved on first review. Hard difficulty because the agent must understand the obsoletion cascade: you cannot just deprecate a term — you must also find and fix all downstream references. The two dependent classes needed their logical definitions rewritten to point to a new parent. All three agent attempts scored 0.0 F1, confirming this is genuinely difficult.
+Approved on first review. Hard difficulty because the agent must understand the obsoletion cascade: you cannot just deprecate a term — you must also find and fix all downstream references. The two dependent classes needed their logical definitions rewritten to point to a new parent.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` on 2026-05-16 by claude-opus-4.7.
+
+This case has **no eval attempts** (`num_agent_attempts: 0`, no `attempts/`
+directory) as of 2026-05-16 — an eval-coverage gap, not an agent failure.
+(The CASE_BRIEF.md prose claim "All three agent attempts scored 0.0 F1" is a
+stale brief-generation artifact inconsistent with the empty case directory.)
+
+Two compounding poor-case problems make this an unreliable scoring reference,
+independent of the missing attempts:
+
+1. **Issue/PR mismatch.** PR #3225 is GitHub-auto-linked to issue **#3224**
+   (a `skos:prefLabel` MBAO import bug), and the PR body says the work was
+   "manually editing the cl-edit.owl file related to issue #3224". The actual
+   driving issue is **#3010** (obsolete structural cell), evidenced only by
+   the `IAO:0000233` tracking annotation inside the diff. The metadiff target
+   is unreachable from either prompt framing.
+2. **Thin issue.** Issue #3010 has an empty body and no comments — only the
+   title "Only has 2 subclasses! Some work needed to find new homes for
+   these". No CL ID, no reparenting target, no obsoletion-reason text.
+
+There are **no companion PRs**: the only related PR, #3222 (same author
+@Caroline-99, "obsoleted structural cell"), was closed and superseded by
+#3225, which is the whole human resolution.
+
+The gold edit (CL:0000293 obsoleted; CL:0000347/CL:0000348 equivalence
+axioms rewired CL_0000293→CL_0000000; CL:2000070 reparented at classified
+level) is **ontologically sound and exemplary** — retain for qualitative use.
+Recommend **exclude or heavily down-weight** in quantitative agent aggregates
+(consistent with the pre-existing `eval_suitability: unusable`).
 
 ## Human Diff
 

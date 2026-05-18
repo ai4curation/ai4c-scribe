@@ -11,11 +11,11 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 domain_area: cardiac-anatomy
 best_f1: 0.364
-best_model: claude-haiku-4.5
+best_model: gpt-5.4
 ---
 
 # PR #3525 — relationship is reversed between Uberon and NCIT for foramen secundum
@@ -77,15 +77,19 @@ index d1d6c46d4a..61c8ce1465 100644
 
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-haiku-4.5 | claude | 0.364 | 0.286 | 0.500 | `1e45be5` | [#329](https://github.com/ai4curation/eval-ont-agent-uberon/pull/329) | [attempt](attempts/pr329.md) |
-| 2 | claude-haiku-4.5 | claude | 0.364 | 0.286 | 0.500 | `1e45be5` | [#273](https://github.com/ai4curation/eval-ont-agent-uberon/pull/273) | [attempt](attempts/pr273.md) |
-| 3 | gemma-4-31b | opencode | 0.364 | 0.286 | 0.500 | `3ce54da` | [#111](https://github.com/ai4curation/eval-ont-agent-uberon/pull/111) | [attempt](attempts/pr111.md) |
-| 4 | claude-sonnet-4.5 | claude | 0.333 | 0.286 | 0.400 | `2a30263` | [#294](https://github.com/ai4curation/eval-ont-agent-uberon/pull/294) | [attempt](attempts/pr294.md) |
-| 5 | claude-opus-4.7 | claude | 0.286 | 0.286 | 0.286 | `dbb386a` | [#244](https://github.com/ai4curation/eval-ont-agent-uberon/pull/244) | [attempt](attempts/pr244.md) |
-| 6 | gpt-5.5 | opencode | 0.286 | 0.286 | 0.286 | `e69c750` | [#65](https://github.com/ai4curation/eval-ont-agent-uberon/pull/65) | [attempt](attempts/pr65.md) |
-| 7 | gpt-5.5 | opencode | 0.286 | 0.286 | 0.286 | `e69c750` | [#47](https://github.com/ai4curation/eval-ont-agent-uberon/pull/47) | [attempt](attempts/pr47.md) |
-| 8 | gpt-5.5 | codex | 0.286 | 0.286 | 0.286 | `798336a` | [#26](https://github.com/ai4curation/eval-ont-agent-uberon/pull/26) | [attempt](attempts/pr26.md) |
+| 1 | gpt-5.4 | codex | 0.364 | 0.286 | 0.500 | `1e45be5` | [#383](https://github.com/ai4curation/eval-ont-agent-uberon/pull/383) | [attempt](attempts/pr383.md) |
+| 2 | claude-haiku-4.5 | claude | 0.364 | 0.286 | 0.500 | `1e45be5` | [#329](https://github.com/ai4curation/eval-ont-agent-uberon/pull/329) | [attempt](attempts/pr329.md) |
+| 3 | claude-haiku-4.5 | claude | 0.364 | 0.286 | 0.500 | `1e45be5` | [#273](https://github.com/ai4curation/eval-ont-agent-uberon/pull/273) | [attempt](attempts/pr273.md) |
+| 4 | gemma-4-31b | opencode | 0.364 | 0.286 | 0.500 | `3ce54da` | [#111](https://github.com/ai4curation/eval-ont-agent-uberon/pull/111) | [attempt](attempts/pr111.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.333 | 0.286 | 0.400 | `2a30263` | [#294](https://github.com/ai4curation/eval-ont-agent-uberon/pull/294) | [attempt](attempts/pr294.md) |
+| 6 | gpt-5.4 | opencode | 0.308 | 0.286 | 0.333 | `cd58b24` | [#660](https://github.com/ai4curation/eval-ont-agent-uberon/pull/660) | [attempt](attempts/pr660.md) |
+| 7 | gpt-5.4 | opencode | 0.308 | 0.286 | 0.333 | `cd58b24` | [#600](https://github.com/ai4curation/eval-ont-agent-uberon/pull/600) | [attempt](attempts/pr600.md) |
+| 8 | kimi-k2.6 | opencode | 0.286 | 0.286 | 0.286 | `46a72b8` | [#446](https://github.com/ai4curation/eval-ont-agent-uberon/pull/446) | [attempt](attempts/pr446.md) |
+| 9 | claude-opus-4.7 | claude | 0.286 | 0.286 | 0.286 | `dbb386a` | [#244](https://github.com/ai4curation/eval-ont-agent-uberon/pull/244) | [attempt](attempts/pr244.md) |
+| 10 | gpt-5.5 | opencode | 0.286 | 0.286 | 0.286 | `e69c750` | [#65](https://github.com/ai4curation/eval-ont-agent-uberon/pull/65) | [attempt](attempts/pr65.md) |
+| 11 | gpt-5.5 | opencode | 0.286 | 0.286 | 0.286 | `e69c750` | [#47](https://github.com/ai4curation/eval-ont-agent-uberon/pull/47) | [attempt](attempts/pr47.md) |
+| 12 | gpt-5.5 | codex | 0.286 | 0.286 | 0.286 | `798336a` | [#26](https://github.com/ai4curation/eval-ont-agent-uberon/pull/26) | [attempt](attempts/pr26.md) |

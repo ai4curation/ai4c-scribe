@@ -12,11 +12,11 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 3
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: neuroscience
-best_f1: 0.571
-best_model: gemma-4-31b
+best_f1: 0.667
+best_model: claude-opus-4.7
 ---
 
 # PR #3524 — Revise textual definition of Retinal Ganglion Cell A into Alpha retinal ganglion cell
@@ -36,6 +36,40 @@ Updated `cl-edit.owl` with 4 additions and 3 deletions: the primary label was ch
 ## Resolution
 
 Approved on first review despite requiring 14 commits to finalize. Simple difficulty because the change is primarily a label and definition text update following the RGC nomenclature standardization pattern established across the series.
+
+## Curation Note (data quality)
+
+**Flagged poor by claude-opus-4.7 on 2026-05-16.**
+
+This is a single-PR resolution (search of issue #3523 / "alpha retinal
+ganglion cell" returns only #3524 as the resolving PR — no companion PRs),
+so it is **not** a multi-PR partial-gold case. However it is a poor
+*evaluation* case because the gold label was renegotiated after the agents'
+information cut-off:
+
+- Issue #3523 explicitly states `**Revised cell label** alpha retinal
+  ganglion cell` and supplies the exact definition text and references.
+- The gold PR #3524 was initially built to exactly that spec (label =
+  "alpha retinal ganglion cell"). Then on 2025-12-15 curator RiveraAndrea83
+  left a PR comment: *"@copilot please change label to: alpha retinal
+  ganglion cell (Mmus)"*, and Copilot amended the label in commit 120a536.
+- The `(Mmus)` species qualifier therefore appears in the gold diff but is
+  **not present anywhere in the issue** the eval agents were given. No agent
+  relying only on the issue could produce it.
+
+Consequence: the metadiff F1 ceiling for this case is ~0.571 (gemma-4-31b)
+and the two claude attempts land at 0.429, even though **all three attempts
+correctly and faithfully implement every change the issue actually
+requested**. The residual gap is the renegotiated label, an en-dash vs hyphen
+typographic difference in `non[-/–]direction-selective`, synonym casing
+("Retinal ganglion cell A" vs gold's lowercased "retinal ganglion cell A"),
+and (sonnet only) one unrequested `terms:date` annotation.
+
+Recommendation for downstream scoring: treat metadiff for this case as a
+**lower bound**; the substantive outcome for all three attempts is
+`success` against the issue as written. Down-weight or exclude this case from
+F1-based aggregation, or re-score against the issue spec rather than the
+post-comment gold label.
 
 ## Human Diff
 
@@ -69,10 +103,16 @@ index 0a225c81e..123d89816 100644
 
 ```
 
-## Agent Attempts (3)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gemma-4-31b | opencode | 0.571 | 0.571 | 0.571 | `ebc9dfc` | [#120](https://github.com/ai4curation/eval-ont-agent-cl/pull/120) | [attempt](attempts/pr120.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.429 | 0.429 | 0.429 | `47f4a71` | [#198](https://github.com/ai4curation/eval-ont-agent-cl/pull/198) | [attempt](attempts/pr198.md) |
-| 3 | claude-haiku-4.5 | claude | 0.429 | 0.429 | 0.429 | `ba136d0` | [#140](https://github.com/ai4curation/eval-ont-agent-cl/pull/140) | [attempt](attempts/pr140.md) |
+| 1 | claude-opus-4.7 | claude | 0.667 | 0.571 | 0.800 | `393f9a3` | [#475](https://github.com/ai4curation/eval-ont-agent-cl/pull/475) | [attempt](attempts/pr475.md) |
+| 2 | gemma-4-31b | opencode | 0.571 | 0.571 | 0.571 | `ebc9dfc` | [#120](https://github.com/ai4curation/eval-ont-agent-cl/pull/120) | [attempt](attempts/pr120.md) |
+| 3 | claude-sonnet-4.5 | claude | 0.429 | 0.429 | 0.429 | `47f4a71` | [#198](https://github.com/ai4curation/eval-ont-agent-cl/pull/198) | [attempt](attempts/pr198.md) |
+| 4 | claude-haiku-4.5 | claude | 0.429 | 0.429 | 0.429 | `ba136d0` | [#140](https://github.com/ai4curation/eval-ont-agent-cl/pull/140) | [attempt](attempts/pr140.md) |
+| 5 | gpt-5.4 | opencode | 0.375 | 0.429 | 0.333 | `79b0ce9` | [#578](https://github.com/ai4curation/eval-ont-agent-cl/pull/578) | [attempt](attempts/pr578.md) |
+| 6 | gpt-5.4 | opencode | 0.375 | 0.429 | 0.333 | `79b0ce9` | [#518](https://github.com/ai4curation/eval-ont-agent-cl/pull/518) | [attempt](attempts/pr518.md) |
+| 7 | gpt-5.5 | opencode | 0.353 | 0.429 | 0.300 | `bff85a1` | [#543](https://github.com/ai4curation/eval-ont-agent-cl/pull/543) | [attempt](attempts/pr543.md) |
+| 8 | gpt-5.5 | opencode | 0.353 | 0.429 | 0.300 | `bff85a1` | [#481](https://github.com/ai4curation/eval-ont-agent-cl/pull/481) | [attempt](attempts/pr481.md) |
+| 9 | gpt-5.4 | codex | 0.353 | 0.429 | 0.300 | `3f3ee54` | [#321](https://github.com/ai4curation/eval-ont-agent-cl/pull/321) | [attempt](attempts/pr321.md) |

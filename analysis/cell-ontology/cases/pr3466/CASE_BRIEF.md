@@ -11,8 +11,8 @@ difficulty: medium
 scoping: mostly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 7
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 scoping_notes: Primary change is the new fibrochondrocyte term in cl-edit.owl, but
   component files were also regenerated as part of the build process.
 domain_area: musculoskeletal
@@ -37,6 +37,50 @@ Added the fibrochondrocyte term (CL:4072104) to `cl-edit.owl` with proper parent
 ## Resolution
 
 Approved on first review. Medium difficulty because properly modeling a hybrid cell type requires understanding dual-lineage classification, choosing appropriate parent classes, and writing a definition that captures the distinguishing features (collagen type production, anatomical location in fibrocartilage).
+
+## Curation Note (data quality)
+
+`case_quality: poor` — flagged 2026-05-16 by claude-opus-4.7 after reviewing all
+7 attempts. **The metadiff scores are not usable as a quality signal for this
+case** for two independent structural reasons:
+
+1. **Placeholder-vs-canonical CL ID artifact.** The gold PR (#3467) uses the
+   permanent ID `CL_4072104` assigned by the release reserialization pipeline.
+   The agent config CLAUDE.md explicitly instructs agents to mint temporary IDs
+   in the `CL_99xxxxx` range (idrange:81). Agents that *correctly followed this
+   instruction* (sonnet #208, opus #180 → `CL_9900000`; haiku #99, codex #83/#36
+   → `CL_9900001`) line-mismatch every axiom against gold and score **F1=0.000
+   by construction**, despite producing substantively equivalent terms. The only
+   non-zero attempts (#73, #54 = 0.093) are the two opencode runs that *violated*
+   the instruction by scraping `CL_4072104` from OLS, so their declaration/header
+   lines coincidentally line-matched gold. The metric thus rewards the
+   instruction violation and zeros out the correct behavior.
+
+2. **Build-regenerated-file domination.** Gold's 373-line diff is mostly
+   ODK-regenerated artifacts: `merged_import.owl`, `bgo-cl-comp.owl`,
+   `cellxgene_subset.owl`, `clm-cl.owl`, `wmbo-cl-comp.owl`, `pr_terms.txt`,
+   release version IRIs, and downstream COL3A1 (`PR_000003328`) / COL6A1
+   (`PR_000003353`) PR-class declarations. An edit-only agent that does not run
+   the release pipeline cannot reproduce these, structurally capping recall.
+
+Substantive assessment (judge against the issue, not metadiff): all 7 attempts
+correctly added `fibrochondrocyte` under chondrocyte (`CL_0000138`) with
+`part_of fibrocartilage` (`UBERON_0001995`), three correctly typed PMID-backed
+synonyms, and contributor ORCID. Best: **opus #180** (clean genus-differentia
+equivalence + separate COL1A1 marker SubClassOf, verbatim definition, correct
+temp-ID handling and reasoning). Solid: sonnet #208, codex #36 (ran `robot
+reason`), opencode #73/#54. Weaker: haiku #99 (used plain `SubClassOf` instead
+of the `cellPartOfAnatomicalEntity` DOSDP equivalence axiom — wrong pattern);
+codex #83 (gutted the definition to one sentence and dropped PMID:31871141).
+Common gap across all: only COL1A1 `expresses` asserted, whereas gold also
+asserts COL3A1 and COL6A1 (the issue's explicit "expresses some" line named only
+collagen alpha-1(I) chain, so this is a defensible literal reading).
+
+Note: the case directory is named `pr3466` but the gold PR for issue #3457 is
+**#3467** (correct in frontmatter). Source PR #3466 is an unrelated change
+("Generalize chondrocyte definition and add skeletogenic cell parent") and is
+**not** a companion PR — `companion_prs: []`. Step 3a (multi-PR partial gold)
+does not apply; this is a single-PR resolution.
 
 ## Human Diff
 
@@ -244,14 +288,16 @@ index 10eee8aa9..bff45ad63 100644
 ... (174 more lines truncated)
 ```
 
-## Agent Attempts (7)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | gpt-5.5 | opencode | 0.093 | 0.050 | 0.583 | `ab81b79` | [#73](https://github.com/ai4curation/eval-ont-agent-cl/pull/73) | [attempt](attempts/pr73.md) |
 | 2 | gpt-5.5 | opencode | 0.093 | 0.050 | 0.583 | `ab81b79` | [#54](https://github.com/ai4curation/eval-ont-agent-cl/pull/54) | [attempt](attempts/pr54.md) |
-| 3 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `d4efc24` | [#208](https://github.com/ai4curation/eval-ont-agent-cl/pull/208) | [attempt](attempts/pr208.md) |
-| 4 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `1b10d84` | [#180](https://github.com/ai4curation/eval-ont-agent-cl/pull/180) | [attempt](attempts/pr180.md) |
-| 5 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `d4628eb` | [#99](https://github.com/ai4curation/eval-ont-agent-cl/pull/99) | [attempt](attempts/pr99.md) |
-| 6 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `3325b4c` | [#83](https://github.com/ai4curation/eval-ont-agent-cl/pull/83) | [attempt](attempts/pr83.md) |
-| 7 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `cd27ef8` | [#36](https://github.com/ai4curation/eval-ont-agent-cl/pull/36) | [attempt](attempts/pr36.md) |
+| 3 | gpt-5.4 | opencode | 0.080 | 0.043 | 0.545 | `3d76355` | [#575](https://github.com/ai4curation/eval-ont-agent-cl/pull/575) | [attempt](attempts/pr575.md) |
+| 4 | gpt-5.4 | opencode | 0.080 | 0.043 | 0.545 | `3d76355` | [#513](https://github.com/ai4curation/eval-ont-agent-cl/pull/513) | [attempt](attempts/pr513.md) |
+| 5 | claude-sonnet-4.5 | claude | 0.000 | 0.000 | 0.000 | `d4efc24` | [#208](https://github.com/ai4curation/eval-ont-agent-cl/pull/208) | [attempt](attempts/pr208.md) |
+| 6 | claude-opus-4.7 | claude | 0.000 | 0.000 | 0.000 | `1b10d84` | [#180](https://github.com/ai4curation/eval-ont-agent-cl/pull/180) | [attempt](attempts/pr180.md) |
+| 7 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `d4628eb` | [#99](https://github.com/ai4curation/eval-ont-agent-cl/pull/99) | [attempt](attempts/pr99.md) |
+| 8 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `3325b4c` | [#83](https://github.com/ai4curation/eval-ont-agent-cl/pull/83) | [attempt](attempts/pr83.md) |
+| 9 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `cd27ef8` | [#36](https://github.com/ai4curation/eval-ont-agent-cl/pull/36) | [attempt](attempts/pr36.md) |

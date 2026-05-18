@@ -12,12 +12,12 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 14
-generated_at: '2026-05-15'
+num_agent_attempts: 22
+generated_at: '2026-05-17'
 scoping_notes: PR adds exactly one new disease term stanza with no unrelated modifications.
 domain_area: rare-disease
-best_f1: 0.667
-best_model: gpt-5.5
+best_f1: 0.696
+best_model: claude-sonnet-4.5
 ---
 
 # PR #10214 — New Term Request/TSEN2-related neurodevelopmental disorder with or without thrombotic microangiopathy
@@ -58,6 +58,20 @@ Medium difficulty because it requires:
 
 An agent would need to understand Mondo's patterns for gene-disease terms: the specific use of `has_material_basis_in_germline_mutation_in`, the intersection_of pattern for logical definitions, and how to correctly attribute sources to individual axioms.
 
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (reason: `new_term_canonical_id_artifact`) on 2026-05-15 by claude-opus-4.7 after reviewing all 14 attempts.
+
+**Not a Step 3a problem.** Issue #9956 was resolved by exactly one PR (#10214); `gh search prs` for both `9956` and `TSEN2` returns only #10214. No companion PRs, no gold leakage, no F1=1.0 fakes, no curator repudiation (the only review, by sabrinatoro, approved and merely suggested adding a logical definition — which agents did).
+
+**The problem is the standard new_term metadiff artifact.** F1 is structurally capped for *every* attempt (best 0.667, gpt-5.5/opencode #84/#64; worst 0.435, sonnet/copilot #521/#482) because:
+
+1. **Placeholder-vs-canonical ID**: gold's `MONDO:1060216` is assigned only at merge. Agents correctly use placeholder `MONDO:777xxxx` NTR-range IDs per Mondo convention (the right behavior). The `id:` line and stanza insertion location therefore never match gold. Attempt #254 (kimi) is the lone exception that used `MONDO:1060216` and gold's insertion location — verified as genuine agent work (definition wording, expanded per-axiom source lists, and creator value all diverge from gold; not a copied stanza), and it scored highest recall as a result.
+2. **Creator ORCID**: gold uses the human curator's ORCID `0000-0002-7638-4659`; agents cannot reproduce this.
+3. **Gold's second parent** `is_a: MONDO:0002254` (syndromic disease) was added by the curator beyond the issue's explicit single-parent request (`Parent term: MONDO:0700092`). Almost no agent added it; this is a defensible scoping decision (claude-opus #404 explicitly flagged the dual-parent question for reviewer attention — exemplary behavior), not a failure.
+
+**Net**: metadiff substantially **under-represents** quality for the strong attempts (gpt-5.5 opencode/codex, kimi, claude-opus all produced substantively correct, mergeable terms with correct `HGNC:28422` grounding and correct `intersection_of MONDO:0700092 + has_material_basis_in_germline_mutation_in` logical definitions). Genuine quality differentiators that metadiff does *not* capture well: pr521/pr482 (copilot) truncated the term name (real `wrong_term`); pr199/pr23 (haiku) split the label into bogus "with/without TMA" EXACT synonyms and mis-cited TRACK syndrome; pr551 (sonnet) likely fabricated a TRACK-expansion synonym; pr32 (opencode) omitted the synonym entirely. Downstream aggregation should down-weight raw F1 for this case and rely on the substantive review narratives.
+
 ## Human Diff
 
 ```diff
@@ -88,21 +102,29 @@ index 28406f6c4f..0c6f2c245a 100644
 
 ```
 
-## Agent Attempts (14)
+## Agent Attempts (22)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `6b9c134` | [#84](https://github.com/ai4curation/eval-ont-agent-mondo/pull/84) | [attempt](attempts/pr84.md) |
-| 2 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `6b9c134` | [#64](https://github.com/ai4curation/eval-ont-agent-mondo/pull/64) | [attempt](attempts/pr64.md) |
-| 3 | kimi-k2.6 | opencode | 0.609 | 0.583 | 0.636 | `75ccb21` | [#254](https://github.com/ai4curation/eval-ont-agent-mondo/pull/254) | [attempt](attempts/pr254.md) |
-| 4 | claude-opus-4.7 | claude | 0.583 | 0.583 | 0.583 | `4b66154` | [#404](https://github.com/ai4curation/eval-ont-agent-mondo/pull/404) | [attempt](attempts/pr404.md) |
-| 5 | gpt-5.5 | codex | 0.583 | 0.583 | 0.583 | `fc3f66d` | [#29](https://github.com/ai4curation/eval-ont-agent-mondo/pull/29) | [attempt](attempts/pr29.md) |
-| 6 | gpt-5.5 | codex | 0.583 | 0.583 | 0.583 | `fc3f66d` | [#52](https://github.com/ai4curation/eval-ont-agent-mondo/pull/52) | [attempt](attempts/pr52.md) |
-| 7 | claude-sonnet-4.5 | claude | 0.560 | 0.583 | 0.538 | `692f48f` | [#551](https://github.com/ai4curation/eval-ont-agent-mondo/pull/551) | [attempt](attempts/pr551.md) |
-| 8 | gpt-5.5 | opencode | 0.545 | 0.500 | 0.600 | `ac635dd` | [#32](https://github.com/ai4curation/eval-ont-agent-mondo/pull/32) | [attempt](attempts/pr32.md) |
-| 9 | gpt-5.4 | codex | 0.538 | 0.583 | 0.500 | `653b5d4` | [#21](https://github.com/ai4curation/eval-ont-agent-mondo/pull/21) | [attempt](attempts/pr21.md) |
-| 10 | gpt-5.4 | codex | 0.538 | 0.583 | 0.500 | `653b5d4` | [#16](https://github.com/ai4curation/eval-ont-agent-mondo/pull/16) | [attempt](attempts/pr16.md) |
-| 11 | claude-haiku-4.5 | claude | 0.480 | 0.500 | 0.462 | `3ad01f1` | [#199](https://github.com/ai4curation/eval-ont-agent-mondo/pull/199) | [attempt](attempts/pr199.md) |
-| 12 | claude-haiku-4.5 | claude | 0.480 | 0.500 | 0.462 | `3ad01f1` | [#23](https://github.com/ai4curation/eval-ont-agent-mondo/pull/23) | [attempt](attempts/pr23.md) |
-| 13 | claude-sonnet-4.5 | copilot | 0.435 | 0.417 | 0.455 | `20ca02c` | [#521](https://github.com/ai4curation/eval-ont-agent-mondo/pull/521) | [attempt](attempts/pr521.md) |
-| 14 | claude-sonnet-4.5 | copilot | 0.435 | 0.417 | 0.455 | `20ca02c` | [#482](https://github.com/ai4curation/eval-ont-agent-mondo/pull/482) | [attempt](attempts/pr482.md) |
+| 1 | claude-sonnet-4.5 | claude | 0.696 | 0.667 | 0.727 | `ad9df40` | [#1](https://github.com/ai4curation/eval-ont-agent-mondo/pull/1) | [attempt](attempts/pr1.md) |
+| 2 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `6b9c134` | [#84](https://github.com/ai4curation/eval-ont-agent-mondo/pull/84) | [attempt](attempts/pr84.md) |
+| 3 | gpt-5.5 | opencode | 0.667 | 0.667 | 0.667 | `6b9c134` | [#64](https://github.com/ai4curation/eval-ont-agent-mondo/pull/64) | [attempt](attempts/pr64.md) |
+| 4 | kimi-k2.6 | opencode | 0.609 | 0.583 | 0.636 | `75ccb21` | [#254](https://github.com/ai4curation/eval-ont-agent-mondo/pull/254) | [attempt](attempts/pr254.md) |
+| 5 | gpt-5.5 | codex | 0.609 | 0.583 | 0.636 | `7949549` | [#11](https://github.com/ai4curation/eval-ont-agent-mondo/pull/11) | [attempt](attempts/pr11.md) |
+| 6 | claude-opus-4.7 | claude | 0.583 | 0.583 | 0.583 | `4b66154` | [#404](https://github.com/ai4curation/eval-ont-agent-mondo/pull/404) | [attempt](attempts/pr404.md) |
+| 7 | gpt-5.5 | codex | 0.583 | 0.583 | 0.583 | `fc3f66d` | [#52](https://github.com/ai4curation/eval-ont-agent-mondo/pull/52) | [attempt](attempts/pr52.md) |
+| 8 | gpt-5.5 | codex | 0.583 | 0.583 | 0.583 | `fc3f66d` | [#29](https://github.com/ai4curation/eval-ont-agent-mondo/pull/29) | [attempt](attempts/pr29.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.560 | 0.583 | 0.538 | `692f48f` | [#551](https://github.com/ai4curation/eval-ont-agent-mondo/pull/551) | [attempt](attempts/pr551.md) |
+| 10 | gpt-5.5 | opencode | 0.545 | 0.500 | 0.600 | `ac635dd` | [#32](https://github.com/ai4curation/eval-ont-agent-mondo/pull/32) | [attempt](attempts/pr32.md) |
+| 11 | gpt-5.4 | codex | 0.538 | 0.583 | 0.500 | `653b5d4` | [#21](https://github.com/ai4curation/eval-ont-agent-mondo/pull/21) | [attempt](attempts/pr21.md) |
+| 12 | gpt-5.4 | codex | 0.538 | 0.583 | 0.500 | `653b5d4` | [#16](https://github.com/ai4curation/eval-ont-agent-mondo/pull/16) | [attempt](attempts/pr16.md) |
+| 13 | gpt-5.4 | opencode | 0.500 | 0.500 | 0.500 | `73fd3b2` | [#763](https://github.com/ai4curation/eval-ont-agent-mondo/pull/763) | [attempt](attempts/pr763.md) |
+| 14 | gpt-5.4 | opencode | 0.500 | 0.500 | 0.500 | `73fd3b2` | [#708](https://github.com/ai4curation/eval-ont-agent-mondo/pull/708) | [attempt](attempts/pr708.md) |
+| 15 | claude-haiku-4.5 | claude | 0.480 | 0.500 | 0.462 | `3ad01f1` | [#199](https://github.com/ai4curation/eval-ont-agent-mondo/pull/199) | [attempt](attempts/pr199.md) |
+| 16 | claude-haiku-4.5 | claude | 0.480 | 0.500 | 0.462 | `3ad01f1` | [#23](https://github.com/ai4curation/eval-ont-agent-mondo/pull/23) | [attempt](attempts/pr23.md) |
+| 17 | gpt-5.4 | codex | 0.462 | 0.500 | 0.429 | `db23281` | [#15](https://github.com/ai4curation/eval-ont-agent-mondo/pull/15) | [attempt](attempts/pr15.md) |
+| 18 | gpt-5.4 | codex | 0.462 | 0.500 | 0.429 | `1aea928` | [#2](https://github.com/ai4curation/eval-ont-agent-mondo/pull/2) | [attempt](attempts/pr2.md) |
+| 19 | claude-sonnet-4.5 | copilot | 0.435 | 0.417 | 0.455 | `20ca02c` | [#521](https://github.com/ai4curation/eval-ont-agent-mondo/pull/521) | [attempt](attempts/pr521.md) |
+| 20 | claude-sonnet-4.5 | copilot | 0.435 | 0.417 | 0.455 | `20ca02c` | [#482](https://github.com/ai4curation/eval-ont-agent-mondo/pull/482) | [attempt](attempts/pr482.md) |
+| 21 | gpt-5.4 | codex | 0.006 | 1.000 | 0.003 | `be724eb` | [#8](https://github.com/ai4curation/eval-ont-agent-mondo/pull/8) | [attempt](attempts/pr8.md) |
+| 22 | claude-sonnet-4.5 | claude | 0.006 | 1.000 | 0.003 | `be724eb` | [#6](https://github.com/ai4curation/eval-ont-agent-mondo/pull/6) | [attempt](attempts/pr6.md) |

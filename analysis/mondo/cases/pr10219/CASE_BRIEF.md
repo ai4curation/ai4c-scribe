@@ -11,8 +11,8 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: changes_requested
-num_agent_attempts: 10
-generated_at: '2026-05-15'
+num_agent_attempts: 12
+generated_at: '2026-05-17'
 scoping_notes: All changes are within the hypophysitis branch of the ontology, restructuring
   subtypes.
 domain_area: rare-disease
@@ -39,6 +39,52 @@ The PR relabeled MONDO:0019835 to "lymphocytic hypophysitis" and restructured al
 ## Resolution
 
 This is a hard case because it requires understanding the clinical distinction between primary/secondary hypophysitis and histological subtypes, then making a judgment call about how best to restructure the hierarchy. An agent would need domain knowledge about hypophysitis classification and the ability to reorganize multiple related terms consistently while preserving cross-references.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` by claude-opus-4.7 on 2026-05-15.
+
+The single gold PR (#10219) *is* the whole human resolution — `gh search prs`
+on both "9859" and "hypophysitis" returns only #10219, so this is NOT a
+partial/multi-PR case (no companion PRs). The agent commits are genuine
+agent-authored work (github-actions bot + model author), not leaked gold, and
+no attempt scores F1≈1.0 (max 0.259), so there is no gold-leakage artifact.
+
+The case is poor because the metadiff F1 **systematically under-represents
+agent quality** for two compounding reasons:
+
+1. **Relabel-vs-create-child modeling fork.** The maintainer (MeeSiing,
+   2026-05-01 comment) explicitly chose to *relabel* the existing
+   MONDO:0019835 from "primary hypophysitis" to "lymphocytic hypophysitis"
+   and add "primary hypophysitis" as a RELATED synonym, putting all subtypes
+   directly under MONDO:0021156 hypophysitis. Most agents instead created a
+   *new* lymphocytic hypophysitis term as a child of the unchanged
+   MONDO:0019835 "primary hypophysitis" grouping. Both faithfully model the
+   biology described in the issue and galyea123's classification comment;
+   the choice was resolved by maintainer fiat in issue comments, not by
+   ontological necessity.
+
+2. **Placeholder-vs-canonical ID artifact.** Agents that created a new term
+   assigned the placeholder ID `MONDO:7770747`, which is never reconciled to
+   a canonical ID, while the gold reuses the existing `MONDO:0019835`. Every
+   new-term line and every reparent line (`is_a: MONDO:7770747 ...`) is then
+   scored as a mismatched "extra" edit, capping precision near 0.05–0.17 for
+   even the most substantively correct attempts (#459, #280, #45).
+
+Additionally, the lowest-F1 attempts (#166, #320, #190) have **degenerate
+recall=1.0** because their diffs are only 1–2 lines, so they cannot contain a
+mismatch — recall here is a metadiff degeneracy, not completeness.
+
+Downstream scoring/aggregation should down-weight or exclude line-level
+metadiff for this case and judge attempts against the issue text plus the
+MeeSiing/galyea123 comment plan. Substantive ranking of the attempts:
+#459 (sonnet-4.5, most complete restructure incl. reparenting) >
+#45 (gpt-5.5 codex, careful xref relocation) ≈ #280 (kimi, clean minimal
+create) > #550/#401 (opus, NARROW + explanatory comment, no structure) >
+#85/#65 (gpt-5.5 NARROW only) > #166 (one synonym del + annotation) >
+#320/#190 (one synonym del only). All are partial — none reproduced the
+full restructure (new MONDO:1060217–1060219 subtype terms, definition
+backfill on MONDO:0016534/0019838/0019839/0957423, MONDO:0021156 cleanup).
 
 ## Human Diff
 
@@ -224,17 +270,19 @@ index 027d104cae..c9dd4a3954 100644
 
 ```
 
-## Agent Attempts (10)
+## Agent Attempts (12)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-sonnet-4.5 | claude | 0.259 | 0.171 | 0.538 | `1492dca` | [#459](https://github.com/ai4curation/eval-ont-agent-mondo/pull/459) | [attempt](attempts/pr459.md) |
-| 2 | kimi-k2.6 | opencode | 0.235 | 0.146 | 0.600 | `d16b683` | [#280](https://github.com/ai4curation/eval-ont-agent-mondo/pull/280) | [attempt](attempts/pr280.md) |
-| 3 | gpt-5.5 | codex | 0.233 | 0.171 | 0.368 | `bdcdba2` | [#45](https://github.com/ai4curation/eval-ont-agent-mondo/pull/45) | [attempt](attempts/pr45.md) |
-| 4 | claude-opus-4.7 | claude | 0.128 | 0.073 | 0.500 | `d697c5f` | [#550](https://github.com/ai4curation/eval-ont-agent-mondo/pull/550) | [attempt](attempts/pr550.md) |
-| 5 | claude-opus-4.7 | claude | 0.128 | 0.073 | 0.500 | `d697c5f` | [#401](https://github.com/ai4curation/eval-ont-agent-mondo/pull/401) | [attempt](attempts/pr401.md) |
-| 6 | gpt-5.4 | codex | 0.093 | 0.049 | 1.000 | `8a92d19` | [#166](https://github.com/ai4curation/eval-ont-agent-mondo/pull/166) | [attempt](attempts/pr166.md) |
-| 7 | gpt-5.5 | opencode | 0.091 | 0.049 | 0.667 | `d21c91a` | [#85](https://github.com/ai4curation/eval-ont-agent-mondo/pull/85) | [attempt](attempts/pr85.md) |
-| 8 | gpt-5.5 | opencode | 0.091 | 0.049 | 0.667 | `d21c91a` | [#65](https://github.com/ai4curation/eval-ont-agent-mondo/pull/65) | [attempt](attempts/pr65.md) |
-| 9 | claude-haiku-4.5 | claude | 0.048 | 0.024 | 1.000 | `6b06d2e` | [#320](https://github.com/ai4curation/eval-ont-agent-mondo/pull/320) | [attempt](attempts/pr320.md) |
-| 10 | claude-haiku-4.5 | claude | 0.048 | 0.024 | 1.000 | `6b06d2e` | [#190](https://github.com/ai4curation/eval-ont-agent-mondo/pull/190) | [attempt](attempts/pr190.md) |
+| 2 | gpt-5.4 | opencode | 0.255 | 0.171 | 0.500 | `78654bd` | [#761](https://github.com/ai4curation/eval-ont-agent-mondo/pull/761) | [attempt](attempts/pr761.md) |
+| 3 | gpt-5.4 | opencode | 0.255 | 0.171 | 0.500 | `78654bd` | [#710](https://github.com/ai4curation/eval-ont-agent-mondo/pull/710) | [attempt](attempts/pr710.md) |
+| 4 | kimi-k2.6 | opencode | 0.235 | 0.146 | 0.600 | `d16b683` | [#280](https://github.com/ai4curation/eval-ont-agent-mondo/pull/280) | [attempt](attempts/pr280.md) |
+| 5 | gpt-5.5 | codex | 0.233 | 0.171 | 0.368 | `bdcdba2` | [#45](https://github.com/ai4curation/eval-ont-agent-mondo/pull/45) | [attempt](attempts/pr45.md) |
+| 6 | claude-opus-4.7 | claude | 0.128 | 0.073 | 0.500 | `d697c5f` | [#550](https://github.com/ai4curation/eval-ont-agent-mondo/pull/550) | [attempt](attempts/pr550.md) |
+| 7 | claude-opus-4.7 | claude | 0.128 | 0.073 | 0.500 | `d697c5f` | [#401](https://github.com/ai4curation/eval-ont-agent-mondo/pull/401) | [attempt](attempts/pr401.md) |
+| 8 | gpt-5.4 | codex | 0.093 | 0.049 | 1.000 | `8a92d19` | [#166](https://github.com/ai4curation/eval-ont-agent-mondo/pull/166) | [attempt](attempts/pr166.md) |
+| 9 | gpt-5.5 | opencode | 0.091 | 0.049 | 0.667 | `d21c91a` | [#85](https://github.com/ai4curation/eval-ont-agent-mondo/pull/85) | [attempt](attempts/pr85.md) |
+| 10 | gpt-5.5 | opencode | 0.091 | 0.049 | 0.667 | `d21c91a` | [#65](https://github.com/ai4curation/eval-ont-agent-mondo/pull/65) | [attempt](attempts/pr65.md) |
+| 11 | claude-haiku-4.5 | claude | 0.048 | 0.024 | 1.000 | `6b06d2e` | [#320](https://github.com/ai4curation/eval-ont-agent-mondo/pull/320) | [attempt](attempts/pr320.md) |
+| 12 | claude-haiku-4.5 | claude | 0.048 | 0.024 | 1.000 | `6b06d2e` | [#190](https://github.com/ai4curation/eval-ont-agent-mondo/pull/190) | [attempt](attempts/pr190.md) |

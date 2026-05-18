@@ -14,8 +14,11 @@ import pandas as pd
 
 from ai4c_scribe.analysis import (
     attach_case_quality,
+    cohen_kappa,
     load_case_quality,
     load_scores,
+    pair_reviewers,
+    reviewer_label,
     reviewer_score,
 )
 
@@ -136,3 +139,66 @@ def test_attach_case_quality_is_idempotent():
     df2 = attach_case_quality(df, ANALYSIS)
     assert (df2["case_quality"] == df["case_quality"]).all()
     assert len(df2) == len(df)
+
+
+# === Inter-annotator agreement helpers ===
+
+
+def test_reviewer_label_from_path():
+    assert reviewer_label("a/pr40-claude-complete.md") == "claude"
+    assert reviewer_label("x/pr102-codex-complete.md") == "codex"
+    assert reviewer_label("pr7-claudecode-complete.md") == "claude"  # alias
+    assert reviewer_label("pr7-stub.md") is None
+
+
+def test_cohen_kappa_perfect_and_chance():
+    a = ["s", "p", "f", "s", "p"]
+    assert cohen_kappa(a, a) == 1.0
+    # total disagreement structured so observed == expected -> ~0
+    k = cohen_kappa(["s", "s", "f", "f"], ["s", "f", "s", "f"])
+    assert -0.6 < k < 0.6  # near chance
+
+    # weighted kappa rewards near-misses: linear weighted >= nominal here
+    c = [1.0, 0.5, 0.0, 1.0]
+    d = [0.5, 0.5, 0.0, 1.0]  # one near-miss (1.0 vs 0.5)
+    assert cohen_kappa(c, d, weights="linear") >= cohen_kappa(c, d)
+
+
+def test_pair_reviewers_pairs_on_eval_pr():
+    reviews = pd.DataFrame(
+        [
+            {
+                "_file": "analysis/go/results/reviews/pr1-claude-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 1,
+                "agent": "A",
+                "outcome": "success",
+            },
+            {
+                "_file": "analysis/go/results/reviews/pr1-codex-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 1,
+                "agent": "A",
+                "outcome": "partial_success",
+            },
+            {
+                "_file": "analysis/go/results/reviews/pr2-claude-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 2,
+                "agent": "A",
+                "outcome": "failure",
+            },
+        ]
+    )
+    paired = pair_reviewers(reviews)
+    # PR1 reviewed by both; PR2 by only claude
+    row1 = paired[paired["eval_repo_pr"] == 1].iloc[0]
+    assert row1["claude_score"] == 1.0
+    assert row1["codex_score"] == 0.5
+    assert row1["n_reviewers"] == 2
+    assert row1["consensus_score"] == 0.75  # mean(1.0, 0.5)
+
+    row2 = paired[paired["eval_repo_pr"] == 2].iloc[0]
+    assert row2["n_reviewers"] == 1
+    assert row2["consensus_score"] == 0.0
+    assert pd.isna(row2["codex_score"])

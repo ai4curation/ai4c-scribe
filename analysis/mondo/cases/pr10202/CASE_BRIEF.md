@@ -12,10 +12,10 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 8
-generated_at: '2026-05-15'
-best_f1: 0.8
-best_model: claude-sonnet-4.5
+num_agent_attempts: 13
+generated_at: '2026-05-17'
+best_f1: 1.0
+best_model: gpt-5.5
 ---
 
 # PR #10202 — Typo for MONDO:0700039 bladder exstrophy-epispadias-cloacal extrophy complex
@@ -63,15 +63,20 @@ index 1d63d0424f..e6e017c643 100644
 
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#446](https://github.com/ai4curation/eval-ont-agent-mondo/pull/446) | [attempt](attempts/pr446.md) |
-| 2 | claude-haiku-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#428](https://github.com/ai4curation/eval-ont-agent-mondo/pull/428) | [attempt](attempts/pr428.md) |
-| 3 | claude-haiku-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#314](https://github.com/ai4curation/eval-ont-agent-mondo/pull/314) | [attempt](attempts/pr314.md) |
-| 4 | gemma-4-31b | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#290](https://github.com/ai4curation/eval-ont-agent-mondo/pull/290) | [attempt](attempts/pr290.md) |
-| 5 | kimi-k2.6 | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#269](https://github.com/ai4curation/eval-ont-agent-mondo/pull/269) | [attempt](attempts/pr269.md) |
-| 6 | gemma-4-31b | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#205](https://github.com/ai4curation/eval-ont-agent-mondo/pull/205) | [attempt](attempts/pr205.md) |
-| 7 | gpt-5.5 | codex | 0.750 | 1.000 | 0.600 | `ee922f2` | [#562](https://github.com/ai4curation/eval-ont-agent-mondo/pull/562) | [attempt](attempts/pr562.md) |
-| 8 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | `a5af3ce` | [#399](https://github.com/ai4curation/eval-ont-agent-mondo/pull/399) | [attempt](attempts/pr399.md) |
+| 1 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `e6e017c` | [#722](https://github.com/ai4curation/eval-ont-agent-mondo/pull/722) | [attempt](attempts/pr722.md) |
+| 2 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `e6e017c` | [#669](https://github.com/ai4curation/eval-ont-agent-mondo/pull/669) | [attempt](attempts/pr669.md) |
+| 3 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `e6e017c` | [#574](https://github.com/ai4curation/eval-ont-agent-mondo/pull/574) | [attempt](attempts/pr574.md) |
+| 4 | gpt-5.4 | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#751](https://github.com/ai4curation/eval-ont-agent-mondo/pull/751) | [attempt](attempts/pr751.md) |
+| 5 | gpt-5.4 | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#700](https://github.com/ai4curation/eval-ont-agent-mondo/pull/700) | [attempt](attempts/pr700.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#446](https://github.com/ai4curation/eval-ont-agent-mondo/pull/446) | [attempt](attempts/pr446.md) |
+| 7 | claude-haiku-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#428](https://github.com/ai4curation/eval-ont-agent-mondo/pull/428) | [attempt](attempts/pr428.md) |
+| 8 | claude-haiku-4.5 | claude | 0.800 | 0.667 | 1.000 | `911990e` | [#314](https://github.com/ai4curation/eval-ont-agent-mondo/pull/314) | [attempt](attempts/pr314.md) |
+| 9 | gemma-4-31b | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#290](https://github.com/ai4curation/eval-ont-agent-mondo/pull/290) | [attempt](attempts/pr290.md) |
+| 10 | kimi-k2.6 | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#269](https://github.com/ai4curation/eval-ont-agent-mondo/pull/269) | [attempt](attempts/pr269.md) |
+| 11 | gemma-4-31b | opencode | 0.800 | 0.667 | 1.000 | `911990e` | [#205](https://github.com/ai4curation/eval-ont-agent-mondo/pull/205) | [attempt](attempts/pr205.md) |
+| 12 | gpt-5.5 | codex | 0.750 | 1.000 | 0.600 | `ee922f2` | [#562](https://github.com/ai4curation/eval-ont-agent-mondo/pull/562) | [attempt](attempts/pr562.md) |
+| 13 | claude-opus-4.7 | claude | 0.571 | 0.667 | 0.500 | `a5af3ce` | [#399](https://github.com/ai4curation/eval-ont-agent-mondo/pull/399) | [attempt](attempts/pr399.md) |

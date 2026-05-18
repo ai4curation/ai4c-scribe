@@ -13,7 +13,7 @@ scoping: mostly_scoped
 scope: single_term
 review_outcome: approved_first_time
 num_agent_attempts: 7
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 scoping_notes: Primary change is the new human-specific term, but also includes cleanup
   of the clm-cl.owl component file.
 domain_area: neuroscience
@@ -38,6 +38,53 @@ Added a new human-specific term for chandelier Pvalb GABAergic interneuron to `c
 ## Resolution
 
 Medium difficulty because creating species-specific neuron subtypes requires understanding the CL pattern for taxon-specific terms, including: proper parentage under the species-neutral type, correct taxon constraint assertions, and appropriate marker annotations based on transcriptomic evidence. The component file changes add additional complexity.
+
+## Curation Note (data quality)
+
+`quality_flagged_by: claude-opus-4.7` · `quality_flagged_at: 2026-05-16`
+
+This is a **poor evaluation case**: the line-level metadiff score (best F1 = 0.034,
+all others 0.000) does **not** reflect agent quality. Findings:
+
+1. **Empty issue body.** Issue #3353 contains only the template headers
+   (`**CL term**` / `**Suggested revision of textual definition**`) — no content.
+   Every agent had to infer the entire task from the title alone, and all seven
+   did so correctly ("create a human-specific chandelier Pvalb GABAergic neuron
+   term").
+
+2. **Placeholder-vs-canonical CL ID artifact (new_term).** The `cl-agent-config`
+   CLAUDE.md explicitly mandates *"New term IDs MUST start with CL_99xxxxx"*.
+   Agents correctly used `CL_9900000`/`CL_9900001`; the gold uses the minted
+   canonical `CL_4072046`. The new-term ID can therefore never line-match the
+   gold, forcing F1≈0 for an otherwise-correct term.
+
+3. **Metadiff-blind provenance.** The config also instructs `terms:creator
+   "GitHub Copilot"` and a `terms:date` timestamp for new terms; these are
+   normalized/ignored or mismatched by OBO metadiff, adding further unavoidable
+   line divergence.
+
+4. **Gold has large unstated side-edits.** Beyond creating the new term, the
+   gold PR generalized the parent `CL_4023036` (relabel — dropped "cortical";
+   generalized the text definition; reparented `CL_4023018`→`CL_4023069`; added
+   `develops from UBERON_0004024`), moved the NS-Forest marker comment +
+   `RO_0015004 some CLM_1000063` and the ILX xref onto the new term, and cleaned
+   up the `clm-cl.owl` component file. None of this was requested in the empty
+   issue and could only be discovered by mining the source term's embedded
+   marker comment — so well-scoped agents are penalized for *not* doing
+   undocumented work.
+
+**Substantive assessment vs the accepted canonical gold (`CL_4072046`, current
+master: subclass of `CL_4023036` + `RO_0002162 some NCBITaxon_9606` +
+`RO_0015004 some CLM_1000063`):** all seven attempts produced the correct core
+modeling (human-specific subclass of `CL_4023036` with a Homo sapiens taxon
+restriction). Best attempts: **pr178 (claude-opus-4.7)** — strongest
+methodology, conventional naming research, conservative scope; and **pr283 /
+pr225 (claude-sonnet-4.5)** — clean, minimal, no parent over-edit. **pr80
+(gpt-5.4/codex)** over-edited the parent definition (partial scope creep).
+**pr62 / pr43 / pr23 (gpt-5.5)** added a non-idiomatic second parent
+`CL_4072029`. All are `partial_success`, not failures; F1 grossly
+under-represents quality across the board. Single-PR resolution — no companion
+PRs.
 
 ## Human Diff
 

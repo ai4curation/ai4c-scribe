@@ -19,6 +19,10 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-10"
 rationale: New term request that required merging information from a previously obsoleted term, demonstrating knowledge of obsoletion recovery patterns.
+case_quality: ok
+case_quality_reason: sound_gold_but_requires_obsoleted_term_recovery
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

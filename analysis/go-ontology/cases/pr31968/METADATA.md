@@ -34,6 +34,10 @@ tags:
 curated_by: claude-opus-4
 curated_at: "2026-05-03"
 rationale: Large-scale structural refactor (49 terms) that is mechanical once the correct parent is identified, good test of bulk editing capability
+case_quality: good
+case_quality_reason: single_complete_bulk_reclassification_gold_pr
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

@@ -12,10 +12,10 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 6
-generated_at: '2026-05-15'
-best_f1: 0.348
-best_model: claude-sonnet-4.5
+num_agent_attempts: 13
+generated_at: '2026-05-17'
+best_f1: 0.667
+best_model: gpt-5.4
 ---
 
 # PR #10115 — Request for new term PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
@@ -92,13 +92,20 @@ index 8fe17dbb40..db0b71d65b 100644
 
 ```
 
-## Agent Attempts (6)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.348 | 0.286 | 0.444 | `769001c` | [#467](https://github.com/ai4curation/eval-ont-agent-mondo/pull/467) | [attempt](attempts/pr467.md) |
-| 2 | claude-sonnet-4.5 | claude | 0.348 | 0.286 | 0.444 | `769001c` | [#436](https://github.com/ai4curation/eval-ont-agent-mondo/pull/436) | [attempt](attempts/pr436.md) |
-| 3 | claude-opus-4.7 | claude | 0.333 | 0.286 | 0.400 | `4f7f0f1` | [#384](https://github.com/ai4curation/eval-ont-agent-mondo/pull/384) | [attempt](attempts/pr384.md) |
-| 4 | gpt-5.5 | codex | 0.286 | 0.214 | 0.429 | `59fa801` | [#561](https://github.com/ai4curation/eval-ont-agent-mondo/pull/561) | [attempt](attempts/pr561.md) |
-| 5 | claude-sonnet-4.5 | copilot | 0.267 | 0.214 | 0.353 | `562167e` | [#533](https://github.com/ai4curation/eval-ont-agent-mondo/pull/533) | [attempt](attempts/pr533.md) |
-| 6 | claude-sonnet-4.5 | copilot | 0.267 | 0.214 | 0.353 | `562167e` | [#493](https://github.com/ai4curation/eval-ont-agent-mondo/pull/493) | [attempt](attempts/pr493.md) |
+| 1 | gpt-5.4 | opencode | 0.667 | 0.679 | 0.655 | `ad38d78` | [#745](https://github.com/ai4curation/eval-ont-agent-mondo/pull/745) | [attempt](attempts/pr745.md) |
+| 2 | gpt-5.4 | opencode | 0.667 | 0.679 | 0.655 | `ad38d78` | [#688](https://github.com/ai4curation/eval-ont-agent-mondo/pull/688) | [attempt](attempts/pr688.md) |
+| 3 | gpt-5.4 | codex | 0.566 | 0.536 | 0.600 | `72dc46e` | [#572](https://github.com/ai4curation/eval-ont-agent-mondo/pull/572) | [attempt](attempts/pr572.md) |
+| 4 | gpt-5.5 | opencode | 0.415 | 0.393 | 0.440 | `ab89854` | [#724](https://github.com/ai4curation/eval-ont-agent-mondo/pull/724) | [attempt](attempts/pr724.md) |
+| 5 | gpt-5.5 | opencode | 0.415 | 0.393 | 0.440 | `ab89854` | [#667](https://github.com/ai4curation/eval-ont-agent-mondo/pull/667) | [attempt](attempts/pr667.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.348 | 0.286 | 0.444 | `769001c` | [#467](https://github.com/ai4curation/eval-ont-agent-mondo/pull/467) | [attempt](attempts/pr467.md) |
+| 7 | claude-sonnet-4.5 | claude | 0.348 | 0.286 | 0.444 | `769001c` | [#436](https://github.com/ai4curation/eval-ont-agent-mondo/pull/436) | [attempt](attempts/pr436.md) |
+| 8 | claude-opus-4.7 | claude | 0.333 | 0.286 | 0.400 | `4f7f0f1` | [#384](https://github.com/ai4curation/eval-ont-agent-mondo/pull/384) | [attempt](attempts/pr384.md) |
+| 9 | gpt-5.5 | codex | 0.286 | 0.214 | 0.429 | `59fa801` | [#561](https://github.com/ai4curation/eval-ont-agent-mondo/pull/561) | [attempt](attempts/pr561.md) |
+| 10 | claude-sonnet-4.5 | copilot | 0.267 | 0.214 | 0.353 | `562167e` | [#533](https://github.com/ai4curation/eval-ont-agent-mondo/pull/533) | [attempt](attempts/pr533.md) |
+| 11 | claude-sonnet-4.5 | copilot | 0.267 | 0.214 | 0.353 | `562167e` | [#493](https://github.com/ai4curation/eval-ont-agent-mondo/pull/493) | [attempt](attempts/pr493.md) |
+| 12 | claude-haiku-4.5 | claude | 0.244 | 0.179 | 0.385 | `20cd5f3` | [#601](https://github.com/ai4curation/eval-ont-agent-mondo/pull/601) | [attempt](attempts/pr601.md) |
+| 13 | claude-haiku-4.5 | claude | 0.244 | 0.179 | 0.385 | `20cd5f3` | [#513](https://github.com/ai4curation/eval-ont-agent-mondo/pull/513) | [attempt](attempts/pr513.md) |

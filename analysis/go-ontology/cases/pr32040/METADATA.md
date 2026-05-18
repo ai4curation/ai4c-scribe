@@ -19,6 +19,10 @@ review_outcome: approved_first_time
 curated_by: claude-opus-4
 curated_at: "2026-05-08"
 rationale: Cellular component NTR for a well-characterized protein complex needed for GO-CAM modeling, with a 4-month lag from issue to PR
+case_quality: ok
+case_quality_reason: sound_gold_but_new_term_requires_external_domain_context
+quality_flagged_by: codex
+quality_flagged_at: "2026-05-17"
 ---
 
 ## Context

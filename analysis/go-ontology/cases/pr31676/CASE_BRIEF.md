@@ -12,7 +12,7 @@ scoping: mostly_scoped
 scope: multi_term
 review_outcome: multiple_rounds
 num_agent_attempts: 10
-generated_at: '2026-05-15'
+generated_at: '2026-05-17'
 scoping_notes: Primary goal was adding taxon constraints for specific terms. Also
   fixed a formatting error in the migrasome entry (extra NCBITaxon column) which was
   incidental cleanup.
@@ -51,6 +51,48 @@ The PR went through 3 rounds of formal review over 10 commits. Key discussion po
 3. Formatting of the TSV entries (evidence column with PMIDs)
 
 Hard difficulty because taxon constraint decisions require biological reasoning about which organisms possess the relevant cellular machinery, and reviewers disagreed on scope.
+
+## Curation Note (data quality)
+
+**Flagged poor for scoring: gold PR is partial (multi-PR human resolution).**
+
+Issue #31670 (reporter asked for `never_in_taxon: 2` Bacteria on GO:0070478 and
+similar NMD terms) was resolved by the curator (@pgaudet) across **two** human PRs:
+
+1. **PR #31676** (the configured `pr_number`, "Add new GO terms for Eukaryota and
+   Bacteria"): added `only_in_taxon: NCBITaxon:2759` (Eukaryota) for **GO:0141065**
+   maternal mRNA clearance, **GO:0000958** mitochondrial mRNA catabolic process, and
+   **GO:0000956** nuclear-transcribed mRNA catabolic process to
+   `src/taxon_constraints/only_in_taxon.tsv`, plus an incidental cleanup of a
+   malformed **GO:0140494** migrasome row (stray extra `NCBITaxon:7742` column).
+2. **PR #31677** ("Add entry for polyuridylation-dependent mRNA catabolism", body
+   = "fixes #31670"): separately added **GO:1990074** polyuridylation-dependent
+   mRNA catabolic process → Bacteria to `src/taxon_constraints/never_in_taxon.tsv`
+   (the human PR also bundled unrelated GO:1901174 / GO:0046905 phytoene rows —
+   scope creep in the human PR itself).
+
+Implications for scoring:
+
+- The metadiff compares attempts against **#31676 only**. Best attempts
+  (pr263, pr177) reach F1 0.571 with recall 1.000, so the gold is not *entirely*
+  partial — but it omits the companion `never_in_taxon` step and penalizes the
+  un-derivable migrasome formatting fix.
+- The curator chose a **different modeling than the reporter requested**
+  (`only_in_taxon: Eukaryota` on parents rather than `never_in_taxon: Bacteria`
+  on leaves). Attempts that faithfully implemented the *literal* request via
+  `never_in_taxon.tsv` (pr413 Sonnet/copilot, pr199 Haiku) score F1 0.000 against
+  the gold despite being biologically correct and instruction-faithful. These are
+  defensible alternative resolutions, not failures.
+- Several attempts (pr92/pr67/pr64 gpt-5.5; pr328 opus) made the *correct* source
+  TSV edit but committed regenerated `only_in_taxon.ofn` / `go_taxon_constraints.owl`
+  build products, producing thousands of lines of blank-node renumbering. Their
+  near-zero F1 is a derived-file artifact, not a semantic error.
+
+Recommendation: down-weight or exclude this case from aggregate metadiff scoring,
+or re-score against the union of #31676 + #31677 and against the issue text. Judge
+attempts on whether they (a) constrained the nuclear-transcribed mRNA decay branch
+to exclude bacteria via either modeling, and (b) kept the diff minimal (source TSV
+only, no regenerated artifacts, no full-file reorder).
 
 ## Human Diff
 

@@ -11,8 +11,8 @@ difficulty: simple
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 11
-generated_at: '2026-05-15'
+num_agent_attempts: 13
+generated_at: '2026-05-17'
 scoping_notes: Minimal change updating only the label of a single term.
 domain_area: rare-disease
 best_f1: 1.0
@@ -61,7 +61,7 @@ index 07692c19ee..0fb072a040 100644
 
 ```
 
-## Agent Attempts (11)
+## Agent Attempts (13)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
@@ -69,10 +69,12 @@ index 07692c19ee..0fb072a040 100644
 | 2 | gpt-5.4 | codex | 1.000 | 1.000 | 1.000 | `7cd1ac6` | [#159](https://github.com/ai4curation/eval-ont-agent-mondo/pull/159) | [attempt](attempts/pr159.md) |
 | 3 | gpt-5.5 | opencode | 1.000 | 1.000 | 1.000 | `7cd1ac6` | [#80](https://github.com/ai4curation/eval-ont-agent-mondo/pull/80) | [attempt](attempts/pr80.md) |
 | 4 | gpt-5.5 | codex | 1.000 | 1.000 | 1.000 | `7cd1ac6` | [#37](https://github.com/ai4curation/eval-ont-agent-mondo/pull/37) | [attempt](attempts/pr37.md) |
-| 5 | claude-sonnet-4.5 | copilot | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#528](https://github.com/ai4curation/eval-ont-agent-mondo/pull/528) | [attempt](attempts/pr528.md) |
-| 6 | claude-sonnet-4.5 | copilot | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#501](https://github.com/ai4curation/eval-ont-agent-mondo/pull/501) | [attempt](attempts/pr501.md) |
-| 7 | claude-sonnet-4.5 | claude | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#448](https://github.com/ai4curation/eval-ont-agent-mondo/pull/448) | [attempt](attempts/pr448.md) |
-| 8 | kimi-k2.6 | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#260](https://github.com/ai4curation/eval-ont-agent-mondo/pull/260) | [attempt](attempts/pr260.md) |
-| 9 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#240](https://github.com/ai4curation/eval-ont-agent-mondo/pull/240) | [attempt](attempts/pr240.md) |
-| 10 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#203](https://github.com/ai4curation/eval-ont-agent-mondo/pull/203) | [attempt](attempts/pr203.md) |
-| 11 | claude-haiku-4.5 | claude | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#183](https://github.com/ai4curation/eval-ont-agent-mondo/pull/183) | [attempt](attempts/pr183.md) |
+| 5 | gpt-5.4 | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#748](https://github.com/ai4curation/eval-ont-agent-mondo/pull/748) | [attempt](attempts/pr748.md) |
+| 6 | gpt-5.4 | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#694](https://github.com/ai4curation/eval-ont-agent-mondo/pull/694) | [attempt](attempts/pr694.md) |
+| 7 | claude-sonnet-4.5 | copilot | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#528](https://github.com/ai4curation/eval-ont-agent-mondo/pull/528) | [attempt](attempts/pr528.md) |
+| 8 | claude-sonnet-4.5 | copilot | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#501](https://github.com/ai4curation/eval-ont-agent-mondo/pull/501) | [attempt](attempts/pr501.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#448](https://github.com/ai4curation/eval-ont-agent-mondo/pull/448) | [attempt](attempts/pr448.md) |
+| 10 | kimi-k2.6 | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#260](https://github.com/ai4curation/eval-ont-agent-mondo/pull/260) | [attempt](attempts/pr260.md) |
+| 11 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#240](https://github.com/ai4curation/eval-ont-agent-mondo/pull/240) | [attempt](attempts/pr240.md) |
+| 12 | gemma-4-31b | opencode | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#203](https://github.com/ai4curation/eval-ont-agent-mondo/pull/203) | [attempt](attempts/pr203.md) |
+| 13 | claude-haiku-4.5 | claude | 0.857 | 0.750 | 1.000 | `9a6d3aa` | [#183](https://github.com/ai4curation/eval-ont-agent-mondo/pull/183) | [attempt](attempts/pr183.md) |

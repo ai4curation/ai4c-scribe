@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: single_term
 review_outcome: approved_first_time
-num_agent_attempts: 6
-generated_at: '2026-05-15'
+num_agent_attempts: 9
+generated_at: '2026-05-17'
 domain_area: skeletal
 best_f1: 0.696
 best_model: claude-sonnet-4.5
@@ -35,6 +35,48 @@ Added 14 new lines to `cl-edit.owl` defining the FCP term with appropriate class
 ## Resolution
 
 Approved on first review after 8 commits of iterative refinement. Medium difficulty because correctly modeling a progenitor cell requires establishing the develops_into relationship to the mature fibrochondrocyte and positioning the term appropriately within both the progenitor cell hierarchy and the cartilage cell lineage.
+
+## Curation Note (data quality)
+
+`quality_flagged_by: claude-opus-4.7` · `quality_flagged_at: 2026-05-16`
+
+This is **not** a poor evaluation case: gold PR #3505 is the single, complete,
+merged human resolution of issue #3458 (confirmed via `gh search prs --repo
+obophenotype/cell-ontology 3458` → only #3505; PR metadata shows files_changed =
+src/ontology/cl-edit.owl only). No base-state contamination, no gold leakage, no
+curator repudiation, no multi-PR partial gold, no metadiff-blind gold field.
+Marked `case_quality: ok`.
+
+Two durable scoring caveats nonetheless make the F1 numbers misleading and
+should down-weight metadiff-based aggregation for this case:
+
+1. **Placeholder-vs-canonical CL ID artifact.** Gold (Copilot-authored, merged)
+   allocated `CL_9900000`. The agent config mandates the CL_99xxxxx range but
+   agents cannot know which exact free offset the human picked. Attempts pr100
+   (`CL_9900001`) and pr29 (`CL_9900001`) used in-range but offset IDs; pr66/pr48
+   (`CL_0020021`) used a different range entirely. All four score F1=precision=
+   recall=0.000 by whole-line metadiff purely because the subject IRI differs on
+   every line. pr100 (claude-haiku-4.5) is in fact the **closest model to gold**
+   of all six attempts (correct conservative parentage, no marker axioms) yet
+   scores 0.000 — a stark metadiff under-representation. Only pr230 and pr280
+   (both `CL_9900000`) get non-zero F1.
+
+2. **Gold omitted issue-requested marker axioms.** The issue explicitly asked
+   for `expresses some` COL1A1, COL3A1, MCAM/CD146, MYLK. Reviewer @dosumis
+   raised that the in-vitro colony-forming/multi-lineage text was "too in vitro
+   (non-canonical) for a CL def"; gold responded conservatively — split that
+   text to an `rdfs:comment` and added **no** `RO_0002292` marker axioms at all.
+   Gold also added a reciprocal `SubClassOf(CL_4072104 RO_0002202 some
+   CL_9900000)` (fibrochondrocyte develops_from FCP) which no agent reproduced
+   (the issue author said they would add it themselves later). Agents that
+   formalized the requested markers (all except pr100) therefore lose recall
+   against the conservative gold despite doing arguably more complete,
+   issue-faithful work.
+
+Net: judge attempts on substance (cell model correctness, parentage, location,
+synonym/definition fidelity, modeling pattern) against the issue, not on the
+metadiff F1. Reviews in `analysis/cell-ontology/results/reviews/pr{230,280,100,
+66,48,29}-claude-complete.md` grade accordingly.
 
 ## Human Diff
 
@@ -81,13 +123,16 @@ index 7bcf184f9..ead4ebcf5 100644
 
 ```
 
-## Agent Attempts (6)
+## Agent Attempts (9)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-sonnet-4.5 | claude | 0.696 | 0.727 | 0.667 | `92da4d4` | [#230](https://github.com/ai4curation/eval-ont-agent-cl/pull/230) | [attempt](attempts/pr230.md) |
 | 2 | claude-opus-4.7 | claude | 0.615 | 0.727 | 0.533 | `960b14c` | [#280](https://github.com/ai4curation/eval-ont-agent-cl/pull/280) | [attempt](attempts/pr280.md) |
-| 3 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `67c802e` | [#100](https://github.com/ai4curation/eval-ont-agent-cl/pull/100) | [attempt](attempts/pr100.md) |
-| 4 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `8e94f3f` | [#66](https://github.com/ai4curation/eval-ont-agent-cl/pull/66) | [attempt](attempts/pr66.md) |
-| 5 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `8e94f3f` | [#48](https://github.com/ai4curation/eval-ont-agent-cl/pull/48) | [attempt](attempts/pr48.md) |
-| 6 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `66a3b1b` | [#29](https://github.com/ai4curation/eval-ont-agent-cl/pull/29) | [attempt](attempts/pr29.md) |
+| 3 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `f51e8c8` | [#574](https://github.com/ai4curation/eval-ont-agent-cl/pull/574) | [attempt](attempts/pr574.md) |
+| 4 | gpt-5.4 | opencode | 0.000 | 0.000 | 0.000 | `f51e8c8` | [#515](https://github.com/ai4curation/eval-ont-agent-cl/pull/515) | [attempt](attempts/pr515.md) |
+| 5 | gpt-5.4 | codex | 0.000 | 0.000 | 0.000 | `b9e2b80` | [#333](https://github.com/ai4curation/eval-ont-agent-cl/pull/333) | [attempt](attempts/pr333.md) |
+| 6 | claude-haiku-4.5 | claude | 0.000 | 0.000 | 0.000 | `67c802e` | [#100](https://github.com/ai4curation/eval-ont-agent-cl/pull/100) | [attempt](attempts/pr100.md) |
+| 7 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `8e94f3f` | [#66](https://github.com/ai4curation/eval-ont-agent-cl/pull/66) | [attempt](attempts/pr66.md) |
+| 8 | gpt-5.5 | opencode | 0.000 | 0.000 | 0.000 | `8e94f3f` | [#48](https://github.com/ai4curation/eval-ont-agent-cl/pull/48) | [attempt](attempts/pr48.md) |
+| 9 | gpt-5.5 | codex | 0.000 | 0.000 | 0.000 | `66a3b1b` | [#29](https://github.com/ai4curation/eval-ont-agent-cl/pull/29) | [attempt](attempts/pr29.md) |

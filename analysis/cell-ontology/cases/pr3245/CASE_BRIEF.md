@@ -11,8 +11,8 @@ difficulty: medium
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: multiple_rounds
-num_agent_attempts: 8
-generated_at: '2026-05-15'
+num_agent_attempts: 10
+generated_at: '2026-05-17'
 diff_noise: noisy
 diff_noise_notes: 'Protege serialization artifacts: CL_4072017/CL_4072018 declaration
   and stanza reordering, oboInOwl:hasDbXref comment label change. Only 2 of 5 diff
@@ -41,6 +41,49 @@ Modified 14 lines and added 14 lines in `cl-edit.owl`, changing the SubClassOf a
 ## Resolution
 
 This PR went through multiple rounds of review, with changes requested before final approval. The reviewer flagged concerns about the reclassification, leading to iterative refinement. Medium difficulty because correctly reclassifying these cells requires understanding the biological distinction between fibrocytes (fibroblast-derived quiescent cells) and cells that merely have "fibrocyte" in their name due to historical convention.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` on 2026-05-16 (claude-opus-4.7) after detailed
+review of all 8 attempts against issue #3239 and gold PR #3245.
+
+PR #3245 is the *only* PR resolving issue #3239 (companion-PR search confirms
+no other PR references #3239; PRs #3409/#3410/#3522 are the explicitly
+deferred "separate ticket" work and belong to issue #3246, out of scope
+here). However the gold reference is both **incomplete** and **noisy**:
+
+1. **Gold under-resolves the issue.** Issue #3239 explicitly asks for two
+   otic fibrocyte synonyms — "cochlear fibrocyte" (PMID:31866825) and
+   "spiral ligament fibrocyte" (PMID:33193034). The merged gold PR adds
+   *neither*; the curator deferred synonym/relabel work to issue #3246.
+   All 8 attempts correctly followed the issue and added these synonyms,
+   so they are penalized by metadiff for *correctly* doing what the issue
+   asked.
+2. **Gold has an out-of-scope extra edit.** Gold adds PMID:37894875 (a 2023
+   tendon-aging review) to the tendon cell definition xref and substantially
+   rewords the definition prose — neither requested by the issue. This caps
+   well-scoped agents below 1.0 on precision.
+3. **Gold leaves a stale axiom.** Gold retargets only the
+   `EquivalentClasses` for tendon cell to fibroblast (CL_0000057) but leaves
+   `SubClassOf(Annotation(is_inferred "true") CL_0000388 CL_0000135)` still
+   pointing at fibrocyte. Agents that fixed this (pr86, pr55, pr37, pr79,
+   pr171) are *more* internally consistent than gold yet score lower.
+4. **Serialization noise dominates the diff.** 3 of gold's 5 hunks are pure
+   Protege artifacts (CL_4072017/CL_4072018 declaration + stanza reorder, and
+   an `oboInOwl:hasDbXref` comment-label change "database_cross_reference" →
+   "has cross-reference"). Agents editing a normalized base file cannot and
+   should not reproduce these, structurally capping recall.
+
+Consequence: every attempt scores F1 in a compressed 0.24–0.41 band that
+**systematically under-represents** quality. The substantive reclassification
+work (tendon cell → fibroblast; otic fibrocyte → mesenchymal cell CL_0008019)
+was done correctly by all 8 attempts. The strongest attempts on substance
+(pr86 haiku-4.5, pr55/pr37 gpt-5.5 opencode, pr171 opus-4.7) are *more*
+complete and internally consistent than the gold itself. Downstream scoring
+should down-weight or exclude this case, or re-score against the issue text
+rather than the line-level metadiff. No gold leakage / bot-commit / placeholder
+artifact was found — gold commits are genuine human work by Caroline-99 with
+RiveraAndrea83 review.
 
 ## Human Diff
 
@@ -129,15 +172,17 @@ index 0a185896b..620efebd0 100644
 
 ```
 
-## Agent Attempts (8)
+## Agent Attempts (10)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
 | 1 | claude-sonnet-4.5 | claude | 0.412 | 0.318 | 0.583 | `af197aa` | [#229](https://github.com/ai4curation/eval-ont-agent-cl/pull/229) | [attempt](attempts/pr229.md) |
 | 2 | claude-haiku-4.5 | claude | 0.353 | 0.273 | 0.500 | `312c71d` | [#86](https://github.com/ai4curation/eval-ont-agent-cl/pull/86) | [attempt](attempts/pr86.md) |
 | 3 | gpt-5.4 | codex | 0.343 | 0.273 | 0.462 | `5edd5c4` | [#77](https://github.com/ai4curation/eval-ont-agent-cl/pull/77) | [attempt](attempts/pr77.md) |
-| 4 | gemma-4-31b | opencode | 0.333 | 0.227 | 0.625 | `29d488e` | [#131](https://github.com/ai4curation/eval-ont-agent-cl/pull/131) | [attempt](attempts/pr131.md) |
-| 5 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#55](https://github.com/ai4curation/eval-ont-agent-cl/pull/55) | [attempt](attempts/pr55.md) |
-| 6 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#37](https://github.com/ai4curation/eval-ont-agent-cl/pull/37) | [attempt](attempts/pr37.md) |
-| 7 | gpt-5.5 | codex | 0.316 | 0.273 | 0.375 | `dd0dde9` | [#79](https://github.com/ai4curation/eval-ont-agent-cl/pull/79) | [attempt](attempts/pr79.md) |
-| 8 | claude-opus-4.7 | claude | 0.235 | 0.182 | 0.333 | `4163841` | [#171](https://github.com/ai4curation/eval-ont-agent-cl/pull/171) | [attempt](attempts/pr171.md) |
+| 4 | gpt-5.4 | opencode | 0.333 | 0.273 | 0.429 | `fdecb9f` | [#561](https://github.com/ai4curation/eval-ont-agent-cl/pull/561) | [attempt](attempts/pr561.md) |
+| 5 | gpt-5.4 | opencode | 0.333 | 0.273 | 0.429 | `fdecb9f` | [#500](https://github.com/ai4curation/eval-ont-agent-cl/pull/500) | [attempt](attempts/pr500.md) |
+| 6 | gemma-4-31b | opencode | 0.333 | 0.227 | 0.625 | `29d488e` | [#131](https://github.com/ai4curation/eval-ont-agent-cl/pull/131) | [attempt](attempts/pr131.md) |
+| 7 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#55](https://github.com/ai4curation/eval-ont-agent-cl/pull/55) | [attempt](attempts/pr55.md) |
+| 8 | gpt-5.5 | opencode | 0.333 | 0.273 | 0.429 | `c9e7644` | [#37](https://github.com/ai4curation/eval-ont-agent-cl/pull/37) | [attempt](attempts/pr37.md) |
+| 9 | gpt-5.5 | codex | 0.316 | 0.273 | 0.375 | `dd0dde9` | [#79](https://github.com/ai4curation/eval-ont-agent-cl/pull/79) | [attempt](attempts/pr79.md) |
+| 10 | claude-opus-4.7 | claude | 0.235 | 0.182 | 0.333 | `4163841` | [#171](https://github.com/ai4curation/eval-ont-agent-cl/pull/171) | [attempt](attempts/pr171.md) |

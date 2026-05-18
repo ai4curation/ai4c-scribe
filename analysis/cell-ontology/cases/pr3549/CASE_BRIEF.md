@@ -11,11 +11,11 @@ difficulty: hard
 scoping: tightly_scoped
 scope: multi_term
 review_outcome: approved_first_time
-num_agent_attempts: 2
-generated_at: '2026-05-15'
+num_agent_attempts: 6
+generated_at: '2026-05-17'
 domain_area: immunology
 best_f1: 0.615
-best_model: claude-sonnet-4.5
+best_model: claude-opus-4.7
 ---
 
 # PR #3549 — Revise intraepithelial lymphocyte and subclasses
@@ -35,6 +35,38 @@ Modified `cl-edit.owl` with 15 additions and 2 deletions. The changes broaden th
 ## Resolution
 
 Approved on first review. Hard difficulty because this requires: (1) understanding mucosal immunology well enough to know IELs exist outside the gut, (2) correctly broadening a definition without breaking existing annotations, (3) creating a subclass to preserve backward compatibility, and (4) ensuring the logical axioms correctly reflect the broader anatomical scope.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` (quality_flagged_by: claude-opus-4.7, 2026-05-16).
+This is a single-PR resolution (gold #3549 fully covers issue #3346; no companion
+PRs), so there is no multi-PR fragmentation. The poor flag is for **metadiff
+scoring artifacts** that make F1 a misleading quality proxy here:
+
+- **Placeholder-vs-canonical CL ID artifact**: the issue requires minting a new
+  `intestinal intraepithelial lymphocyte` term. Gold minted `CL_9900000`. The agent
+  cannot predict which placeholder/canonical ID the curators will assign:
+  sonnet-4.5 (eval PR #207) used `CL_9900000` and matched by convention; haiku-4.5
+  (eval PR #144) used `CL_9900001` and is penalized across the entire subclass block
+  for an ID it had no way to know.
+- **OWL serialization / xref-placement convention**: both attempts add the
+  issue-requested `WIKIPEDIA:Intraepithelial_lymphocyte` (sonnet) as a top-level
+  `AnnotationAssertion(oboInOwl:hasDbXref ...)` line, whereas gold embeds it as an
+  axiom-annotation inside the IAO_0000115 definition. Same content, different line
+  shape — line-oriented metadiff penalizes it.
+- **Gold term-tracker misattribution**: gold's `AnnotationAssertion(obo:IAO_0000233
+  obo:CL_9900000 "https://github.com/.../issues/3455")` points to issue **#3455**,
+  not the actual issue **#3346**. Reproducing gold faithfully on this field is not
+  the quality target; sonnet's use of #3346 is arguably more correct.
+
+Net: eval PR #207 (sonnet-4.5) is a substantively correct/complete resolution
+scored `success` (F1=0.615 under-represents). Eval PR #144 (haiku-4.5) is
+`partial_success` — core axiom repair correct, but it omitted the explicitly
+requested WIKIPEDIA xref on both terms, omitted the ORCID contributor on the
+broadened parent, and introduced an `is_inferred="true"` modeling error on the new
+asserted subclass edge (real defects, not artifacts). Downstream aggregation should
+down-weight the line-level F1 for this case and use the substance assessment in the
+per-attempt reviews.
 
 ## Human Diff
 
@@ -91,9 +123,13 @@ index f3b8d2f57..7adcc8e0c 100644
 
 ```
 
-## Agent Attempts (2)
+## Agent Attempts (6)
 
 | # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
 |---|-------|---------|-----|-----|-----|------|---------|--------|
-| 1 | claude-sonnet-4.5 | claude | 0.615 | 0.667 | 0.571 | `ecd7923` | [#207](https://github.com/ai4curation/eval-ont-agent-cl/pull/207) | [attempt](attempts/pr207.md) |
-| 2 | claude-haiku-4.5 | claude | 0.261 | 0.250 | 0.273 | `2bd94c2` | [#144](https://github.com/ai4curation/eval-ont-agent-cl/pull/144) | [attempt](attempts/pr144.md) |
+| 1 | claude-opus-4.7 | claude | 0.615 | 0.667 | 0.571 | `2d0a27b` | [#476](https://github.com/ai4curation/eval-ont-agent-cl/pull/476) | [attempt](attempts/pr476.md) |
+| 2 | claude-sonnet-4.5 | claude | 0.615 | 0.667 | 0.571 | `ecd7923` | [#207](https://github.com/ai4curation/eval-ont-agent-cl/pull/207) | [attempt](attempts/pr207.md) |
+| 3 | gpt-5.5 | opencode | 0.593 | 0.667 | 0.533 | `2484338` | [#547](https://github.com/ai4curation/eval-ont-agent-cl/pull/547) | [attempt](attempts/pr547.md) |
+| 4 | gpt-5.5 | opencode | 0.593 | 0.667 | 0.533 | `2484338` | [#487](https://github.com/ai4curation/eval-ont-agent-cl/pull/487) | [attempt](attempts/pr487.md) |
+| 5 | claude-haiku-4.5 | claude | 0.261 | 0.250 | 0.273 | `2bd94c2` | [#144](https://github.com/ai4curation/eval-ont-agent-cl/pull/144) | [attempt](attempts/pr144.md) |
+| 6 | gpt-5.4 | codex | 0.222 | 0.250 | 0.200 | `aba5ac6` | [#287](https://github.com/ai4curation/eval-ont-agent-cl/pull/287) | [attempt](attempts/pr287.md) |
