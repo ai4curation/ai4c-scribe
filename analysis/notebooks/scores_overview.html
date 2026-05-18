@@ -2,7 +2,7 @@
 
 ## 0. Case Suitability (read this first)
 
-<p>Of <b>149</b> curated issue/PR cases, <b>71</b> (48%) were found <b>unsuitable for automatic scoring</b> and are flagged <code>case_quality: poor</code>. They are excluded from every comparison below. Only the <b>78 clear cases</b> are used. This is a substantive methodological result: metadiff F1 against a single gold PR is only meaningful when that PR is the correct, complete, leak-free resolution of the issue — often it is not (the issue is split across companion PRs, the gold leaked into the eval base, or the linked PR does not resolve the stated issue).</p>
+<p>Of <b>149</b> curated issue/PR cases, <b>73</b> (49%) were found <b>unsuitable for automatic scoring</b> and are flagged <code>case_quality: poor</code>. They are excluded from every comparison below. Only the <b>76 clear cases</b> are used. This is a substantive methodological result: metadiff F1 against a single gold PR is only meaningful when that PR is the correct, complete, leak-free resolution of the issue — often it is not (the issue is split across companion PRs, the gold leaked into the eval base, or the linked PR does not resolve the stated issue).</p>
 
 ### Case quality by ontology
 
@@ -13,11 +13,9 @@
       <th>good</th>
       <th>ok</th>
       <th>poor</th>
-      <th>unflagged</th>
     </tr>
     <tr>
       <th>ontology</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,31 +24,27 @@
   <tbody>
     <tr>
       <th>cell-ontology</th>
-      <td>0</td>
-      <td>6</td>
-      <td>21</td>
-      <td>10</td>
+      <td>3</td>
+      <td>12</td>
+      <td>22</td>
     </tr>
     <tr>
       <th>go-ontology</th>
-      <td>1</td>
-      <td>1</td>
+      <td>20</td>
+      <td>3</td>
       <td>13</td>
-      <td>21</td>
     </tr>
     <tr>
       <th>mondo</th>
-      <td>0</td>
       <td>5</td>
-      <td>18</td>
-      <td>14</td>
+      <td>13</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>uberon</th>
-      <td>0</td>
-      <td>8</td>
+      <td>7</td>
+      <td>13</td>
       <td>19</td>
-      <td>12</td>
     </tr>
   </tbody>
 </table>
@@ -194,6 +188,10 @@
       <td>1</td>
     </tr>
     <tr>
+      <th>epic_issue_subtask_not_self_contained</th>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>gold_artifact_leakage</th>
       <td>1</td>
     </tr>
@@ -298,6 +296,10 @@
       <td>1</td>
     </tr>
     <tr>
+      <th>gold_scope_expanded_beyond_synonym_request</th>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>gold_leakage_base_contamination</th>
       <td>1</td>
     </tr>
@@ -316,6 +318,12 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>cell-ontology</td>
+      <td>2844</td>
+      <td>epic_issue_subtask_not_self_contained</td>
+      <td>Gold is a narrow new-term subtask under a broad RGC epic, so an agent prompted from the linked issue alone can reasonably miss this exact PR target.</td>
+    </tr>
     <tr>
       <td>cell-ontology</td>
       <td>2967</td>
@@ -564,6 +572,12 @@
     </tr>
     <tr>
       <td>mondo</td>
+      <td>9862</td>
+      <td>gold_scope_expanded_beyond_synonym_request</td>
+      <td>Gold adds definition, comment, logical definition, abbreviation synonym, and tracker beyond the explicit synonym request; agents that only add requested synonyms are penalized, so metadiff is a poor quality proxy.</td>
+    </tr>
+    <tr>
+      <td>mondo</td>
       <td>9871</td>
       <td>gold_scope_expanded_off_issue</td>
       <td>metadiff vs #10201 penalizes well-scoped agents: ~45 of 59 gold additions are 3 new subtype terms (MONDO:1060220-1060222) plus an obsoletion-merge rewrite of MONDO:0035541/0035542 that issue #9871 did NOT request (it explicitly flagged subtypes as 'may or may not be in scope') and that originated from a private curator 1:1, not the issue thread. Judge attempts against the issue's actual ask (Orphanet:1671 -&gt; Orphanet:573278 equivalent swap + provenance cleanup); F1 systematically under-represents quality for attempts that correctly did the xref fix.</td>
@@ -767,44 +781,44 @@
   <tbody>
     <tr>
       <th>std_claude_op47</th>
-      <td>14/16</td>
+      <td>14/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
     <tr>
       <th>std_claude_son45</th>
-      <td>15/16</td>
+      <td>15/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
     <tr>
       <th>std_claude_hai45</th>
-      <td>16/16</td>
+      <td>15/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
     <tr>
       <th>std_codex_g54</th>
-      <td>15/16</td>
+      <td>15/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
     <tr>
       <th>std_opencode_g55</th>
-      <td>15/16</td>
+      <td>15/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
     <tr>
       <th>std_opencode_g54</th>
-      <td>14/16</td>
+      <td>15/15</td>
       <td>23/23</td>
-      <td>19/19</td>
+      <td>18/18</td>
       <td>20/20</td>
     </tr>
   </tbody>
@@ -845,49 +859,49 @@
     </tr>
     <tr>
       <th>kimi-k2.6</th>
-      <td>0.688</td>
-      <td>0.286</td>
-      <td>53</td>
+      <td>0.698</td>
+      <td>0.280</td>
+      <td>52</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>claude-sonnet-4.5</th>
-      <td>0.680</td>
-      <td>0.287</td>
-      <td>143</td>
+      <td>0.690</td>
+      <td>0.277</td>
+      <td>141</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>gpt-5.5</th>
-      <td>0.643</td>
-      <td>0.326</td>
-      <td>217</td>
+      <td>0.649</td>
+      <td>0.324</td>
+      <td>214</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>claude-opus-4.7</th>
-      <td>0.642</td>
-      <td>0.317</td>
-      <td>76</td>
+      <td>0.648</td>
+      <td>0.314</td>
+      <td>75</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>gpt-5.4</th>
-      <td>0.628</td>
-      <td>0.317</td>
-      <td>232</td>
+      <td>0.630</td>
+      <td>0.316</td>
+      <td>231</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>claude-haiku-4.5</th>
-      <td>0.557</td>
-      <td>0.355</td>
-      <td>103</td>
+      <td>0.568</td>
+      <td>0.350</td>
+      <td>101</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
@@ -926,33 +940,33 @@
   <tbody>
     <tr>
       <th>copilot</th>
-      <td>0.724</td>
-      <td>0.274</td>
-      <td>59</td>
+      <td>0.736</td>
+      <td>0.259</td>
+      <td>58</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>opencode</th>
-      <td>0.655</td>
-      <td>0.318</td>
-      <td>402</td>
+      <td>0.659</td>
+      <td>0.316</td>
+      <td>399</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>codex</th>
-      <td>0.636</td>
-      <td>0.300</td>
-      <td>143</td>
+      <td>0.642</td>
+      <td>0.297</td>
+      <td>141</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>claude</th>
-      <td>0.610</td>
-      <td>0.328</td>
-      <td>262</td>
+      <td>0.619</td>
+      <td>0.322</td>
+      <td>258</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
@@ -1022,18 +1036,18 @@
       <td>1.000</td>
     </tr>
     <tr>
-      <th>gpt-5.4</th>
-      <td>0.478</td>
-      <td>0.331</td>
-      <td>451</td>
-      <td>0.000</td>
-      <td>1.000</td>
-    </tr>
-    <tr>
       <th>claude-opus-4.7</th>
       <td>0.477</td>
       <td>0.343</td>
       <td>150</td>
+      <td>0.000</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>gpt-5.4</th>
+      <td>0.477</td>
+      <td>0.331</td>
+      <td>453</td>
       <td>0.000</td>
       <td>1.000</td>
     </tr>
@@ -1084,87 +1098,87 @@
   <tbody>
     <tr>
       <th>std_claude_op47</th>
-      <td>119</td>
-      <td>0.639</td>
-      <td>0.328</td>
-      <td>0.034</td>
-      <td>0.803</td>
+      <td>118</td>
+      <td>0.644</td>
+      <td>0.331</td>
+      <td>0.025</td>
+      <td>0.809</td>
     </tr>
     <tr>
       <th>std_opencode_g55</th>
-      <td>162</td>
-      <td>0.574</td>
-      <td>0.414</td>
-      <td>0.012</td>
-      <td>0.781</td>
+      <td>213</td>
+      <td>0.540</td>
+      <td>0.451</td>
+      <td>0.009</td>
+      <td>0.765</td>
     </tr>
     <tr>
       <th>std_codex_g55</th>
-      <td>110</td>
+      <td>108</td>
+      <td>0.500</td>
       <td>0.491</td>
-      <td>0.491</td>
-      <td>0.018</td>
-      <td>0.736</td>
-    </tr>
-    <tr>
-      <th>std_codex_g54</th>
-      <td>92</td>
-      <td>0.467</td>
-      <td>0.511</td>
-      <td>0.022</td>
-      <td>0.723</td>
-    </tr>
-    <tr>
-      <th>std_opencode_kimi</th>
-      <td>84</td>
-      <td>0.452</td>
-      <td>0.524</td>
-      <td>0.024</td>
-      <td>0.714</td>
+      <td>0.009</td>
+      <td>0.745</td>
     </tr>
     <tr>
       <th>std_copilot_son45</th>
-      <td>115</td>
-      <td>0.461</td>
+      <td>113</td>
+      <td>0.469</td>
       <td>0.504</td>
-      <td>0.035</td>
-      <td>0.713</td>
+      <td>0.027</td>
+      <td>0.721</td>
     </tr>
     <tr>
       <th>std_claude_son45</th>
-      <td>133</td>
-      <td>0.459</td>
+      <td>131</td>
+      <td>0.466</td>
       <td>0.496</td>
-      <td>0.045</td>
-      <td>0.707</td>
+      <td>0.038</td>
+      <td>0.714</td>
+    </tr>
+    <tr>
+      <th>std_codex_g54</th>
+      <td>122</td>
+      <td>0.434</td>
+      <td>0.549</td>
+      <td>0.016</td>
+      <td>0.709</td>
+    </tr>
+    <tr>
+      <th>std_opencode_kimi</th>
+      <td>96</td>
+      <td>0.438</td>
+      <td>0.542</td>
+      <td>0.021</td>
+      <td>0.708</td>
+    </tr>
+    <tr>
+      <th>std_opencode_g54</th>
+      <td>141</td>
+      <td>0.433</td>
+      <td>0.539</td>
+      <td>0.028</td>
+      <td>0.702</td>
     </tr>
     <tr>
       <th>std_opencode_gem4</th>
-      <td>69</td>
-      <td>0.406</td>
-      <td>0.565</td>
-      <td>0.029</td>
-      <td>0.688</td>
+      <td>75</td>
+      <td>0.373</td>
+      <td>0.600</td>
+      <td>0.027</td>
+      <td>0.673</td>
     </tr>
     <tr>
       <th>std_claude_hai45</th>
-      <td>149</td>
-      <td>0.302</td>
-      <td>0.544</td>
-      <td>0.154</td>
-      <td>0.574</td>
+      <td>154</td>
+      <td>0.305</td>
+      <td>0.558</td>
+      <td>0.136</td>
+      <td>0.584</td>
     </tr>
     <tr>
       <th>codex/claude-sonnet-4.5/v9</th>
       <td>2</td>
-      <td>0.000</td>
-      <td>1.000</td>
-      <td>0.000</td>
-      <td>0.500</td>
-    </tr>
-    <tr>
-      <th>std_opencode_g54</th>
-      <td>4</td>
       <td>0.000</td>
       <td>1.000</td>
       <td>0.000</td>
@@ -1205,35 +1219,35 @@
   <tbody>
     <tr>
       <th>opencode</th>
-      <td>319</td>
-      <td>0.498</td>
-      <td>0.483</td>
+      <td>529</td>
+      <td>0.473</td>
+      <td>0.509</td>
       <td>0.019</td>
-      <td>0.740</td>
+      <td>0.727</td>
     </tr>
     <tr>
       <th>codex</th>
-      <td>204</td>
-      <td>0.475</td>
-      <td>0.505</td>
-      <td>0.020</td>
-      <td>0.728</td>
+      <td>233</td>
+      <td>0.459</td>
+      <td>0.528</td>
+      <td>0.013</td>
+      <td>0.723</td>
     </tr>
     <tr>
       <th>copilot</th>
-      <td>115</td>
-      <td>0.461</td>
+      <td>113</td>
+      <td>0.469</td>
       <td>0.504</td>
-      <td>0.035</td>
-      <td>0.713</td>
+      <td>0.027</td>
+      <td>0.721</td>
     </tr>
     <tr>
       <th>claude</th>
-      <td>402</td>
-      <td>0.453</td>
-      <td>0.463</td>
-      <td>0.085</td>
-      <td>0.684</td>
+      <td>404</td>
+      <td>0.455</td>
+      <td>0.470</td>
+      <td>0.074</td>
+      <td>0.691</td>
     </tr>
     <tr>
       <th>gemini</th>
@@ -1279,12 +1293,12 @@
   <tbody>
     <tr>
       <th>cell-ontology</th>
-      <td>0.371</td>
+      <td>0.395</td>
       <td>0.580</td>
       <td>0.579</td>
       <td>—</td>
       <td>—</td>
-      <td>0.304</td>
+      <td>0.300</td>
       <td>0.335</td>
       <td>—</td>
     </tr>
@@ -1301,14 +1315,14 @@
     </tr>
     <tr>
       <th>mondo</th>
-      <td>0.414</td>
-      <td>0.487</td>
-      <td>0.509</td>
+      <td>0.428</td>
+      <td>0.504</td>
+      <td>0.535</td>
       <td>—</td>
       <td>0.723</td>
-      <td>0.608</td>
-      <td>0.554</td>
-      <td>0.600</td>
+      <td>0.631</td>
+      <td>0.575</td>
+      <td>0.623</td>
     </tr>
     <tr>
       <th>uberon</th>
@@ -1365,25 +1379,25 @@
     </tr>
     <tr>
       <th>medium</th>
-      <td>0.611</td>
+      <td>0.623</td>
       <td>0.654</td>
       <td>0.708</td>
       <td>—</td>
       <td>0.798</td>
-      <td>0.644</td>
+      <td>0.635</td>
       <td>0.655</td>
       <td>0.749</td>
     </tr>
     <tr>
       <th>simple</th>
-      <td>0.498</td>
-      <td>0.630</td>
-      <td>0.659</td>
+      <td>0.510</td>
+      <td>0.645</td>
+      <td>0.682</td>
       <td>0.308</td>
       <td>0.731</td>
-      <td>0.627</td>
-      <td>0.633</td>
-      <td>0.657</td>
+      <td>0.641</td>
+      <td>0.648</td>
+      <td>0.679</td>
     </tr>
   </tbody>
 </table>
@@ -1416,7 +1430,7 @@
       <td>0.624</td>
       <td>0.856</td>
       <td>—</td>
-      <td>0.722</td>
+      <td>0.711</td>
     </tr>
     <tr>
       <th>documentation</th>
@@ -1428,7 +1442,7 @@
     </tr>
     <tr>
       <th>new_term</th>
-      <td>0.536</td>
+      <td>0.544</td>
       <td>0.484</td>
       <td>0.576</td>
       <td>—</td>
@@ -1460,11 +1474,11 @@
     </tr>
     <tr>
       <th>synonym_update</th>
-      <td>0.365</td>
-      <td>0.517</td>
-      <td>0.492</td>
+      <td>0.392</td>
+      <td>0.557</td>
+      <td>0.554</td>
       <td>—</td>
-      <td>0.505</td>
+      <td>0.536</td>
     </tr>
   </tbody>
 </table>
@@ -1493,16 +1507,16 @@
   <tbody>
     <tr>
       <th>v3</th>
-      <td>0.512</td>
-      <td>0.50</td>
-      <td>0.529</td>
+      <td>0.523</td>
+      <td>0.507</td>
+      <td>0.551</td>
       <td>—</td>
-      <td>0.539</td>
+      <td>0.543</td>
     </tr>
     <tr>
       <th>v9</th>
       <td>0.868</td>
-      <td>0.86</td>
+      <td>0.860</td>
       <td>0.867</td>
       <td>0.308</td>
       <td>0.868</td>
@@ -1512,7 +1526,7 @@
 
 ## 4. Qualitative Reviews (clear cases)
 
-<p>1526 review files on clear cases (1523 with an outcome verdict).</p>
+<p>2204 review files on clear cases (2201 with an outcome verdict).</p>
 
 
 ### Reviews by ontology and reviewer
@@ -1538,28 +1552,28 @@
     <tr>
       <th>cell-ontology</th>
       <td>1</td>
-      <td>65</td>
+      <td>109</td>
       <td>0</td>
       <td>7</td>
     </tr>
     <tr>
       <th>go-ontology</th>
       <td>1</td>
-      <td>239</td>
+      <td>301</td>
       <td>3</td>
       <td>251</td>
     </tr>
     <tr>
       <th>mondo</th>
       <td>20</td>
-      <td>166</td>
+      <td>215</td>
       <td>0</td>
-      <td>181</td>
+      <td>172</td>
     </tr>
     <tr>
       <th>uberon</th>
       <td>1</td>
-      <td>110</td>
+      <td>203</td>
       <td>0</td>
       <td>0</td>
     </tr>
@@ -1590,22 +1604,22 @@
       <th>claude-haiku-4-5</th>
       <td>2</td>
       <td>0</td>
-      <td>6</td>
+      <td>9</td>
       <td>0</td>
     </tr>
     <tr>
       <th>claude-haiku-4-5-20251001</th>
-      <td>2</td>
+      <td>1</td>
       <td>0</td>
       <td>15</td>
       <td>16</td>
     </tr>
     <tr>
       <th>claude-haiku-4.5</th>
-      <td>19</td>
+      <td>18</td>
       <td>0</td>
-      <td>60</td>
-      <td>29</td>
+      <td>62</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>claude-opus-4-7</th>
@@ -1616,7 +1630,7 @@
     </tr>
     <tr>
       <th>claude-opus-4.7</th>
-      <td>4</td>
+      <td>3</td>
       <td>0</td>
       <td>31</td>
       <td>54</td>
@@ -1625,7 +1639,7 @@
       <th>claude-sonnet-4-5</th>
       <td>0</td>
       <td>0</td>
-      <td>9</td>
+      <td>7</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1637,7 +1651,7 @@
     </tr>
     <tr>
       <th>claude-sonnet-4.5</th>
-      <td>9</td>
+      <td>7</td>
       <td>0</td>
       <td>108</td>
       <td>95</td>
@@ -1653,35 +1667,42 @@
       <th>gemma-4-31b</th>
       <td>2</td>
       <td>0</td>
-      <td>38</td>
+      <td>44</td>
       <td>19</td>
     </tr>
     <tr>
       <th>gpt-5.4</th>
-      <td>2</td>
+      <td>6</td>
       <td>0</td>
-      <td>51</td>
-      <td>43</td>
+      <td>132</td>
+      <td>114</td>
     </tr>
     <tr>
       <th>gpt-5.5</th>
-      <td>4</td>
+      <td>3</td>
       <td>0</td>
-      <td>113</td>
       <td>137</td>
+      <td>161</td>
     </tr>
     <tr>
       <th>kimi-k2.6</th>
       <td>2</td>
       <td>0</td>
-      <td>44</td>
-      <td>37</td>
+      <td>49</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>openai/gpt-5.4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>openai/gpt-5.5</th>
       <td>0</td>
       <td>0</td>
-      <td>8</td>
+      <td>12</td>
       <td>10</td>
     </tr>
     <tr>
@@ -1695,8 +1716,8 @@
       <th>togetherai/moonshotai/Kimi-K2.6</th>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
+      <td>3</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1713,43 +1734,59 @@
   <tbody>
     <tr>
       <th>missed_requirement</th>
-      <td>441</td>
+      <td>832</td>
     </tr>
     <tr>
       <th>over_editing</th>
-      <td>403</td>
+      <td>797</td>
     </tr>
     <tr>
       <th>under_editing</th>
-      <td>328</td>
+      <td>698</td>
     </tr>
     <tr>
       <th>wrong_pattern</th>
-      <td>266</td>
+      <td>394</td>
     </tr>
     <tr>
       <th>scope_creep</th>
-      <td>128</td>
+      <td>162</td>
     </tr>
     <tr>
       <th>wrong_term</th>
-      <td>58</td>
+      <td>82</td>
     </tr>
     <tr>
       <th>syntax_error</th>
-      <td>45</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>instruction_violation</th>
-      <td>30</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>gold_orcid_source</th>
+      <td>7</td>
     </tr>
     <tr>
       <th>no_changes</th>
-      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>missing_metadata</th>
       <td>3</td>
+    </tr>
+    <tr>
+      <th>misattribution</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>placeholder_cl_id</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>placeholder_id</th>
+      <td>2</td>
     </tr>
     <tr>
       <th>permission_blocked</th>
@@ -1904,6 +1941,15 @@
       <td>NaN</td>
     </tr>
     <tr>
+      <th>openai/gpt-5.4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
       <th>openai/gpt-5.5</th>
       <td>NaN</td>
       <td>NaN</td>
@@ -1951,18 +1997,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>cell-ontology</td>
-      <td>2844</td>
-      <td>new_term</td>
-      <td>medium</td>
-      <td>CC.hai45.v3</td>
-      <td>claude-haiku-4.5</td>
-      <td>claude</td>
-      <td>0.000</td>
-      <td>0.000</td>
-      <td>0.000</td>
-    </tr>
     <tr>
       <td>cell-ontology</td>
       <td>3243</td>
@@ -2838,6 +2872,30 @@
       <td>0.333</td>
       <td>0.250</td>
       <td>0.500</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3479</td>
+      <td>axiom_repair</td>
+      <td>medium</td>
+      <td>OC.g54.v3</td>
+      <td>gpt-5.4</td>
+      <td>opencode</td>
+      <td>0.200</td>
+      <td>0.250</td>
+      <td>0.167</td>
+    </tr>
+    <tr>
+      <td>cell-ontology</td>
+      <td>3479</td>
+      <td>axiom_repair</td>
+      <td>medium</td>
+      <td>OC.g54.v3</td>
+      <td>gpt-5.4</td>
+      <td>opencode</td>
+      <td>0.200</td>
+      <td>0.250</td>
+      <td>0.167</td>
     </tr>
     <tr>
       <td>cell-ontology</td>
@@ -8634,138 +8692,6 @@
       <td>0.421</td>
       <td>0.421</td>
       <td>0.421</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CC.hai45.v3</td>
-      <td>claude-haiku-4.5</td>
-      <td>claude</td>
-      <td>0.000</td>
-      <td>0.000</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CC.op47.v3</td>
-      <td>claude-opus-4.7</td>
-      <td>claude</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CC.son45.v3</td>
-      <td>claude-sonnet-4.5</td>
-      <td>claude</td>
-      <td>0.000</td>
-      <td>0.000</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CP.son45.v3</td>
-      <td>claude-sonnet-4.5</td>
-      <td>copilot</td>
-      <td>0.000</td>
-      <td>0.000</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>OC.g54.v3</td>
-      <td>gpt-5.4</td>
-      <td>opencode</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>OC.g54.v3</td>
-      <td>gpt-5.4</td>
-      <td>opencode</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CX.g54.v3</td>
-      <td>gpt-5.4</td>
-      <td>codex</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>OC.g55.v3</td>
-      <td>gpt-5.5</td>
-      <td>opencode</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>OC.g55.v3</td>
-      <td>gpt-5.5</td>
-      <td>opencode</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>CX.g55.v3</td>
-      <td>gpt-5.5</td>
-      <td>codex</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
-    </tr>
-    <tr>
-      <td>mondo</td>
-      <td>9862</td>
-      <td>synonym_update</td>
-      <td>simple</td>
-      <td>OC.kimi.v3</td>
-      <td>kimi-k2.6</td>
-      <td>opencode</td>
-      <td>0.182</td>
-      <td>0.125</td>
-      <td>0.333</td>
     </tr>
     <tr>
       <td>mondo</td>

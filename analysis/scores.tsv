@@ -465,7 +465,9 @@ go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	37	0.8	0.889	0.727	0.
 go-ontology	31961	32015	obsoletion	simple	v9	claude-haiku-4.5	claude	33	0.8	0.889	0.727	0.667	go-#31961	std_claude_hai45
 go-ontology	31961	32015	obsoletion	simple	v9	gpt-5.4	codex	32	0.8	0.889	0.727	0.667	go-#31961	std_codex_g54
 go-ontology	31961	32015	obsoletion	simple	v9	claude-sonnet-4.5	claude	31	0.8	0.889	0.727	0.667	go-#31961	std_claude_son45
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.4	opencode	605	0.2	0.25	0.167	0.111	cel#3479	std_opencode_g54
 cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.5	opencode	604	0.182	0.25	0.143	0.1	cel#3479	std_opencode_g55
+cell-ontology	3479	3526	axiom_repair	medium	v3	gpt-5.4	opencode	602	0.2	0.25	0.167	0.111	cel#3479	std_opencode_g54
 cell-ontology	3597	3598	new_term	hard	v3	gpt-5.4	opencode	598	0.714	0.741	0.69	0.556	cel#3597	std_opencode_g54
 cell-ontology	3584	3585	new_term	hard	v3	gpt-5.4	opencode	597	0.0	0.0	0.0	0.0	cel#3584	std_opencode_g54
 cell-ontology	3590	3591	other	simple	v3	gpt-5.4	opencode	596	0.0	0.0	0.0	0.0	cel#3590	std_opencode_g54
