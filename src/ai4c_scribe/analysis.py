@@ -608,6 +608,78 @@ def pair_reviewers(reviews_df):
     return pd.DataFrame(out)
 
 
+def reviewer_case_scores(reviews_df, scores_df):
+    """One reviewer score per (canonical agent, case) for paired tests.
+
+    Pairs reviews per eval PR (:func:`pair_reviewers`), joins the
+    authoritative ``(ontology, eval_repo_pr)`` metadata from the scores
+    (canonical agent, case, model, runtime, case_type, difficulty,
+    case_quality), then averages the per-PR consensus to a single
+    ``rscore`` per (agent, case) so it slots straight into
+    :func:`paired_test` / :func:`significance_summary` /
+    :func:`summary_by_model` with ``score_col="rscore"``.
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews`.
+        scores_df: DataFrame from :func:`load_scores` with the canonical
+            agent in ``agent`` and :func:`attach_case_quality` applied.
+
+    Returns:
+        DataFrame: agent, case, ontology, model, runtime, case_type,
+        difficulty, case_quality, n_prs, rscore.
+    """
+    import pandas as pd
+
+    paired = pair_reviewers(reviews_df)
+    if paired.empty:
+        return pd.DataFrame(
+            columns=[
+                "agent",
+                "case",
+                "ontology",
+                "model",
+                "runtime",
+                "case_type",
+                "difficulty",
+                "case_quality",
+                "n_prs",
+                "rscore",
+            ]
+        )
+    paired["eval_repo_pr"] = pd.to_numeric(paired["eval_repo_pr"], errors="coerce")
+    meta_cols = [
+        "agent",
+        "case",
+        "model",
+        "runtime",
+        "case_type",
+        "difficulty",
+        "case_quality",
+    ]
+    s = scores_df.copy()
+    s["eval_repo_pr"] = pd.to_numeric(s["eval_repo_pr"], errors="coerce")
+    meta = (
+        s.dropna(subset=["eval_repo_pr"])
+        .drop_duplicates(["ontology", "eval_repo_pr"])
+        .set_index(["ontology", "eval_repo_pr"])[meta_cols]
+    )
+    idx = paired.set_index(["ontology", "eval_repo_pr"]).index
+    for c in meta_cols:
+        paired[c] = idx.map(meta[c])
+    paired = paired.dropna(subset=["agent", "case", "consensus_score"])
+    g = paired.groupby(["agent", "case"], as_index=False).agg(
+        ontology=("ontology", "first"),
+        model=("model", "first"),
+        runtime=("runtime", "first"),
+        case_type=("case_type", "first"),
+        difficulty=("difficulty", "first"),
+        case_quality=("case_quality", "first"),
+        n_prs=("consensus_score", "size"),
+        rscore=("consensus_score", "mean"),
+    )
+    return g
+
+
 def failure_mode_counts(reviews_df):
     """Count failure modes across all reviews.
 

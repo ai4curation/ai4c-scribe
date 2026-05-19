@@ -202,3 +202,64 @@ def test_pair_reviewers_pairs_on_eval_pr():
     assert row2["n_reviewers"] == 1
     assert row2["consensus_score"] == 0.0
     assert pd.isna(row2["codex_score"])
+
+
+def test_reviewer_case_scores_aggregates_per_agent_case():
+    """rscore = mean consensus over an agent's eval PRs for that case;
+    joins canonical agent + metadata from scores by (ont, eval_pr)."""
+    from ai4c_scribe.analysis import reviewer_case_scores
+
+    reviews = pd.DataFrame(
+        [
+            {
+                "_file": "a/pr1-claude-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 1,
+                "outcome": "success",
+            },
+            {
+                "_file": "a/pr1-codex-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 1,
+                "outcome": "failure",
+            },  # PR1 consensus=0.5
+            {
+                "_file": "a/pr2-claude-complete.md",
+                "ontology": "go",
+                "eval_repo_pr": 2,
+                "outcome": "success",
+            },  # PR2 consensus=1.0
+        ]
+    )
+    scores = pd.DataFrame(
+        [
+            {
+                "ontology": "go",
+                "eval_repo_pr": 1,
+                "agent": "std_x",
+                "case": "go#5",
+                "model": "m",
+                "runtime": "r",
+                "case_type": "new_term",
+                "difficulty": "simple",
+                "case_quality": "ok",
+            },
+            {
+                "ontology": "go",
+                "eval_repo_pr": 2,
+                "agent": "std_x",
+                "case": "go#5",
+                "model": "m",
+                "runtime": "r",
+                "case_type": "new_term",
+                "difficulty": "simple",
+                "case_quality": "ok",
+            },
+        ]
+    )
+    out = reviewer_case_scores(reviews, scores)
+    assert len(out) == 1  # one (agent, case) row
+    row = out.iloc[0]
+    assert row["agent"] == "std_x" and row["case"] == "go#5"
+    assert row["n_prs"] == 2
+    assert round(row["rscore"], 3) == 0.75  # mean(0.5, 1.0)
