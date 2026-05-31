@@ -93,7 +93,7 @@ def score_all_cmd(
 
     Writes both an aggregate scores.tsv and per-ontology scores.tsv files.
     """
-    from ai4c_scribe.scoring import score_all, records_to_dataframe, EVAL_REPOS
+    from ai4c_scribe.scoring import score_all, records_to_dataframe
 
     records = score_all(analysis_dir=analysis_dir, use_cache=not no_cache)
     df = records_to_dataframe(records)

@@ -10,6 +10,7 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from typing import Optional
 
 import yaml
 
@@ -61,9 +62,6 @@ def _discover_ontologies(analysis_dir: Path) -> list[str]:
         d.name for d in analysis_dir.iterdir()
         if d.is_dir() and (d / "cases").is_dir()
     )
-
-
-from typing import Optional
 
 
 def _truncate_diff(text: Optional[str], max_lines: int) -> Optional[str]:
@@ -381,7 +379,6 @@ def _brief_frontmatter(case: dict, eval_repos: dict) -> dict:
 
     m = case["metadata"]
     ont = case["ontology"]
-    eval_cfg = eval_repos.get(ont, {})
     attempts = case.get("agent_attempts", [])
 
     fm: dict = {

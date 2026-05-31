@@ -153,7 +153,7 @@ def load_case_metadata(ontology: str, analysis_dir: Path = Path("analysis")) -> 
 
     Returns dict mapping issue_number (str) -> {pr, task_type, difficulty}
     """
-    cases = {}
+    cases: dict = {}
     case_dir = analysis_dir / ontology / "cases"
     if not case_dir.exists():
         return cases

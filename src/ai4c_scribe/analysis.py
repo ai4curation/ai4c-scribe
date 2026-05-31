@@ -14,6 +14,7 @@ Example:
 
 import re
 from pathlib import Path
+from typing import Optional
 
 import yaml
 
@@ -744,14 +745,14 @@ def paired_test(
             scores_a.append(sa[0])
             scores_b.append(sb[0])
 
-    scores_a = np.array(scores_a)
-    scores_b = np.array(scores_b)
-    n = len(scores_a)
+    arr_a = np.array(scores_a)
+    arr_b = np.array(scores_b)
+    n = len(arr_a)
 
     if n < 2:
         return None
 
-    diff = scores_b - scores_a
+    diff = arr_b - arr_a
     mean_diff = diff.mean()
     std_diff = diff.std(ddof=1) if n > 1 else 0
 
@@ -759,15 +760,15 @@ def paired_test(
         "agent_a": agent_a,
         "agent_b": agent_b,
         "n_shared": n,
-        "mean_a": scores_a.mean(),
-        "mean_b": scores_b.mean(),
+        "mean_a": arr_a.mean(),
+        "mean_b": arr_b.mean(),
         "mean_diff": mean_diff,
         "std_diff": std_diff,
     }
 
     # Paired t-test
     if n >= 3:
-        t_stat, p_val = stats.ttest_rel(scores_b, scores_a)
+        t_stat, p_val = stats.ttest_rel(arr_b, arr_a)
         result["t_statistic"] = t_stat
         result["p_value_ttest"] = p_val
     else:
@@ -777,7 +778,7 @@ def paired_test(
     # Wilcoxon (needs n >= 6 for reliability)
     if n >= 6:
         try:
-            w_stat, w_p = stats.wilcoxon(scores_b, scores_a)
+            w_stat, w_p = stats.wilcoxon(arr_b, arr_a)
             result["p_value_wilcoxon"] = w_p
         except ValueError:
             result["p_value_wilcoxon"] = None
@@ -825,7 +826,7 @@ def paired_test(
 
 def significance_summary(
     df,
-    agents: list = None,
+    agents: Optional[list] = None,
     agent_col: str = "agent",
     case_col: str = "case",
     score_col: str = "f1",
