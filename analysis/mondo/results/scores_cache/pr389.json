@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9877,
+  "pr_number": 10123,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "claude-opus-4.7",
+  "runtime": "claude",
+  "eval_repo_pr": 389,
+  "f1": 0.526,
+  "precision": 0.556,
+  "recall": 0.5,
+  "jaccard": 0.357
+}

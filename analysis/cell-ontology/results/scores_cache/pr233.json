@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3597,
+  "pr_number": 3598,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 233,
+  "f1": 0.697,
+  "precision": 0.654,
+  "recall": 0.746,
+  "jaccard": 0.535
+}

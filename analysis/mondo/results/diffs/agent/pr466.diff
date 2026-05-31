@@ -1,0 +1,20 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..e9deb1e92 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665381,6 +665381,15 @@ name: disease by molecular mechanism
+ def: "A grouping class for human diseases classified by their underlying molecular or pathophysiological mechanism, such as protein aggregation, ion channel dysfunction, or signal transduction disruption." [https://orcid.org/0000-0003-2360-2664]
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
++format-version: 1.2
++
++[Term]
++id: MONDO:7770012
++name: preneoplastic lesion
++def: "A clonal proliferation of cells that have accumulated some, but not all, molecular alterations necessary for malignant transformation, representing an intermediate stage in carcinogenesis with increased risk of progression to invasive neoplasia." [PMID:37775701, PMID:39754221, PMID:40624726, PMID:40684183]
++is_a: MONDO:0021074 ! precancerous condition
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-2336-2552
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9781" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:8000000

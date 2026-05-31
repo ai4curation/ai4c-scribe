@@ -1,0 +1,23 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index bdb0f1896..a415c020f 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -117341,15 +117341,16 @@ property_value: external_definition "The thick, high squamous-stratified epithel
+ [Term]
+ id: UBERON:0006914
+ name: squamous epithelium
+-def: "An epithelium characterised by its most superficial layer consisting of squamous epithelial cells." [Wikipedia:Squamous_epithelium]
++def: "An epithelium that is composed primarily of squamous epithelial cells." [Wikipedia:Squamous_epithelium]
+ xref: BTO:0002072
+ xref: NCIT:C12848
+ xref: SCTID:40118003
+ xref: UMLS:C0221909 {source="ncithesaurus:Squamous_Epithelium"}
+ xref: Wikipedia:Squamous_epithelium
+ intersection_of: UBERON:0000483 ! epithelium
+-intersection_of: has_part CL:0000076 ! squamous epithelial cell
++intersection_of: composed_primarily_of CL:0000076 ! squamous epithelial cell
+ property_value: external_ontology_notes "FBbt:00007028 (squamous epithelium) A type of epithelium that is made up of flattened cells which are arranged with their long axes in the plane of the epithelium" xsd:string {external_ontology="FBbt"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3473" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0006915

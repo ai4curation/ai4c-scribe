@@ -1,0 +1,15 @@
+diff --git a/src/ontology/components/external-disjoints.obo b/src/ontology/components/external-disjoints.obo
+index 98c0068ef..659d1ea23 100644
+--- a/src/ontology/components/external-disjoints.obo
++++ b/src/ontology/components/external-disjoints.obo
+@@ -227,6 +227,10 @@ disjoint_from: FMA:61104 ! Scapha
+ id: UBERON:0002470 ! autopod region
+ disjoint_from: BTO:0001095 ! pod
+ 
++[Term]
++id: UBERON:0000468 ! multicellular organism
++disjoint_from: UBERON:0000463 ! organism substance
++
+ [Term]
+ id: UBERON:0000983 ! metatarsus region ! metatarsus region
+ disjoint_from: FBbt:00004648

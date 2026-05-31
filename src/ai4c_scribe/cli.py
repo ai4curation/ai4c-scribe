@@ -18,6 +18,7 @@ from ai4c_scribe.api import (
     FixIssueStatus,
 )
 from ai4c_scribe.cache import clear_cache, get_cache_stats
+from ai4c_scribe.gallery import generate_gallery, fetch_all_eval_pr_data, generate_case_briefs
 from ai4c_scribe.case_studies import load_case_study, load_case_studies_dir
 from ai4c_scribe.metadiff.cli import app as metadiff_app
 from ai4c_scribe.workflows.cli import app as workflows_app
@@ -73,6 +74,149 @@ def list_cases(directory: Path = typer.Argument(..., help="Directory of case stu
             f"[{task_type}] [{difficulty}] "
             f"{case.issue_title}"
         )
+
+
+score_app = typer.Typer(help="Score evaluation runs.")
+app.add_typer(score_app, name="score")
+
+
+@score_app.command("all")
+def score_all_cmd(
+    analysis_dir: Path = typer.Argument(Path("analysis"), help="Analysis directory (contains {ont}/cases/ and {ont}/results/)"),
+    no_cache: bool = typer.Option(False, help="Ignore cached scores, re-fetch and re-score everything"),
+    output: Optional[Path] = typer.Option(None, "-o", help="Output TSV file (default: {analysis_dir}/scores.tsv)"),
+):
+    """Score all evaluation runs across all ontologies.
+
+    Discovers ontologies from subdirectories of ANALYSIS_DIR that contain
+    a cases/ folder and a matching entry in the eval repos config.
+
+    Writes both an aggregate scores.tsv and per-ontology scores.tsv files.
+    """
+    from ai4c_scribe.scoring import score_all, records_to_dataframe
+
+    records = score_all(analysis_dir=analysis_dir, use_cache=not no_cache)
+    df = records_to_dataframe(records)
+
+    # Write aggregate
+    out_path = output or (analysis_dir / "scores.tsv")
+    df.to_csv(out_path, sep="\t", index=False)
+
+    # Write per-ontology
+    for ontology in df["ontology"].unique():
+        ont_df = df[df["ontology"] == ontology]
+        ont_path = analysis_dir / ontology / "results" / "scores.tsv"
+        ont_path.parent.mkdir(parents=True, exist_ok=True)
+        ont_df.to_csv(ont_path, sep="\t", index=False)
+
+    typer.echo(f"Scored {len(df)} runs -> {out_path}")
+    for ont in sorted(df["ontology"].unique()):
+        n = len(df[df["ontology"] == ont])
+        typer.echo(f"  {ont}: {n} runs")
+    typer.echo(f"  By runtime: {df['runtime'].value_counts().to_dict()}")
+    typer.echo(f"  By model: {df['model'].value_counts().to_dict()}")
+
+
+@score_app.command("fetch-traces")
+def fetch_traces_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
+):
+    """Fetch and cache all traces for scored runs of an ontology."""
+    from ai4c_scribe.scoring import fetch_trace, load_cached_scores, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    records = load_cached_scores(ontology, analysis_dir)
+    fetched = 0
+    for r in records:
+        # Try to fetch trace using eval_repo_pr as run_id hint
+        # The actual run_id is in the traces/ directory on master
+        result = fetch_trace(cfg["eval_repo"], str(r.eval_repo_pr), ontology, analysis_dir)
+        if result:
+            fetched += 1
+    typer.echo(f"Fetched {fetched}/{len(records)} traces for {ontology}")
+
+
+@score_app.command("repo")
+def score_repo_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
+    no_cache: bool = typer.Option(False, help="Ignore cached scores"),
+):
+    """Score evaluation runs for a single ontology."""
+    from ai4c_scribe.scoring import score_eval_repo, records_to_dataframe, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    records = score_eval_repo(ontology=ontology, analysis_dir=analysis_dir, use_cache=not no_cache, **cfg)
+    df = records_to_dataframe(records)
+
+    out_path = analysis_dir / ontology / "results" / "scores.tsv"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out_path, sep="\t", index=False)
+    typer.echo(f"Scored {len(df)} runs -> {out_path}")
+
+
+@score_app.command("retryable")
+def retryable_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name"),
+    limit: int = typer.Option(50, help="Number of recent traces to check"),
+):
+    """Find rate-limited runs that should be retried.
+
+    Scans traces in the eval repo for rate limit / quota errors.
+    These are runs where the agent was blocked before doing any work.
+    """
+    from ai4c_scribe.scoring import find_rate_limited_runs, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    cfg = EVAL_REPOS[ontology]
+    runs = find_rate_limited_runs(cfg["eval_repo"], limit=limit)
+    if not runs:
+        typer.echo(f"No rate-limited runs found in last {limit} traces for {ontology}")
+        return
+
+    typer.echo(f"Found {len(runs)} rate-limited runs for {ontology}:")
+    for r in runs:
+        typer.echo(f"  issue #{r['issue_number']} ({r['runtime']}/{r['model']}) — run {r['run_id']}")
+
+
+@score_app.command("review-stubs")
+def review_stubs_cmd(
+    ontology: str = typer.Argument(..., help="Ontology name (go-ontology, cell-ontology, uberon, mondo)"),
+    reviewer: str = typer.Option("claudecode", help="Reviewer agent/harness (e.g., claudecode, codex)"),
+    analysis_dir: Path = typer.Option(Path("analysis"), help="Analysis directory"),
+    overwrite: bool = typer.Option(False, help="Overwrite existing stubs"),
+):
+    """Generate review stub files for all scored runs of an ontology.
+
+    Stubs contain pre-filled frontmatter (scores, URLs) for a reviewer agent.
+    The reviewer reads the issue + PRs and fills in the body sections.
+
+    Output: analysis/{ont}/results/reviews/prNN-{reviewer}-stub.md
+    """
+    from ai4c_scribe.scoring import generate_review_stubs, EVAL_REPOS
+
+    if ontology not in EVAL_REPOS:
+        typer.echo(f"Unknown ontology: {ontology}. Available: {list(EVAL_REPOS.keys())}", err=True)
+        raise typer.Exit(1)
+
+    generated = generate_review_stubs(ontology, analysis_dir, reviewer, overwrite)
+    typer.echo(f"Generated {len(generated)} review stubs for {ontology} (reviewer: {reviewer})")
+    for p in generated[:5]:
+        typer.echo(f"  {p}")
+    if len(generated) > 5:
+        typer.echo(f"  ... and {len(generated) - 5} more")
 
 
 @app.command()
@@ -261,6 +405,73 @@ def browse(
     except Exception as e:
         typer.echo(f"❌ Error generating browser: {e}", err=True)
         raise typer.Exit(code=1)
+
+
+@app.command()
+def gallery(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory (contains {ont}/cases/ and {ont}/results/)")],
+    output: Annotated[Path, typer.Option("--output", "-o", help="Output HTML file")] = Path("gallery.html"),
+    max_diff_lines: Annotated[int, typer.Option("--max-diff-lines", help="Max lines per diff (0 for unlimited)")] = 200,
+):
+    """Generate a static HTML gallery browser for evaluation case studies.
+
+    Scans the analysis directory for case study METADATA.md files, human/agent
+    diffs, scores, and reviews. Produces a single self-contained HTML file with
+    a sidebar-list + detail-pane layout for browsing cases.
+
+    Diffs are truncated to --max-diff-lines (default 200) to keep file size
+    manageable. Use --max-diff-lines 0 for full diffs.
+
+    Example:
+        ai4c-scribe gallery analysis/ -o gallery.html
+        open gallery.html
+    """
+    typer.echo(f"Generating gallery from {analysis_dir}...")
+    result = generate_gallery(analysis_dir, output, max_diff_lines=max_diff_lines)
+    typer.echo(f"Gallery written to {result}")
+
+
+@app.command(name="gallery-fetch")
+def gallery_fetch(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory")] = Path("analysis"),
+    force: Annotated[bool, typer.Option("--force", help="Re-fetch all, ignoring cache")] = False,
+):
+    """Fetch and cache eval PR data (agent comments, traces) for the gallery.
+
+    Fetches PR body, comments, and trace files (PR_COMMENTS.md,
+    ISSUE_COMMENTS.md) from eval repos via gh CLI. Caches parsed results
+    in {ont}/results/pr_data/. Only fetches uncached PRs unless --force.
+
+    Example:
+        ai4c-scribe gallery-fetch analysis/
+        ai4c-scribe gallery-fetch analysis/ --force  # re-fetch all
+    """
+    typer.echo(f"Fetching eval PR data from {analysis_dir}...")
+    if force:
+        typer.echo("  (--force: re-fetching all)")
+    fetched = fetch_all_eval_pr_data(analysis_dir, force=force)
+    typer.echo(f"Fetched {fetched} eval PRs")
+
+
+@app.command(name="case-briefs")
+def case_briefs_cmd(
+    analysis_dir: Annotated[Path, typer.Argument(help="Analysis directory")] = Path("analysis"),
+    max_diff_lines: Annotated[int, typer.Option("--max-diff-lines", help="Max lines per diff")] = 200,
+):
+    """Generate CASE_BRIEF.md files for all cases.
+
+    Each brief assembles everything about one case into a single markdown
+    file: metadata, narrative, human diff, and all agent attempts with
+    their comments, diffs, scores, and reviews.
+
+    Written to {ont}/cases/pr{N}/CASE_BRIEF.md alongside METADATA.md.
+
+    Example:
+        ai4c-scribe case-briefs analysis/
+    """
+    typer.echo(f"Generating case briefs from {analysis_dir}...")
+    generated = generate_case_briefs(analysis_dir, max_diff_lines=max_diff_lines)
+    typer.echo(f"Generated {len(generated)} case briefs")
 
 
 @app.command()

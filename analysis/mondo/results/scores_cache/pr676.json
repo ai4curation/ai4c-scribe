@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9987,
+  "pr_number": 10094,
+  "case_type": "axiom_repair",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "opencode",
+  "eval_repo_pr": 676,
+  "f1": 0.857,
+  "precision": 1.0,
+  "recall": 0.75,
+  "jaccard": 0.75
+}

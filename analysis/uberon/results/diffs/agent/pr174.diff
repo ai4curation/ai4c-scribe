@@ -1,0 +1,15 @@
+diff --git a/src/ontology/components/external-disjoints.obo b/src/ontology/components/external-disjoints.obo
+index 98c0068ef..e2a9fc409 100644
+--- a/src/ontology/components/external-disjoints.obo
++++ b/src/ontology/components/external-disjoints.obo
+@@ -950,6 +950,10 @@ id: UBERON:0006770 ! apophysis
+ disjoint_from: FBbt:00005813 ! apophysis
+ disjoint_from: HAO:0000143 ! apophysis
+ 
++[Term]
++id: UBERON:0000468 ! multicellular organism
++disjoint_from: UBERON:0000463 ! organism substance
++
+ [Typedef]
+ id: foaf-homepage
+ name: homepage

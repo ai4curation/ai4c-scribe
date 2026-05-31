@@ -1,0 +1,46 @@
+diff --git a/src/ontology/make-bridge-ontologies-from-xrefs.pl b/src/ontology/make-bridge-ontologies-from-xrefs.pl
+index 662171c54..2fc7700ce 100755
+--- a/src/ontology/make-bridge-ontologies-from-xrefs.pl
++++ b/src/ontology/make-bridge-ontologies-from-xrefs.pl
+@@ -84,7 +84,7 @@
+                 elsif ($t eq 'gd') {
+                     print $fh "intersection_of: $id ! $n\n";
+                     if (exists($lsxrefs{$x})) {
+-                        $rel = "occurs_in";
++                        $rel = "in_taxon";
+                     }
+                     print $fh "intersection_of: $rel $filler\n";
+                 }
+@@ -130,6 +130,9 @@
+     print $fh "[Typedef]\n";
+     print $fh "id: occurs_in\n";
+     print $fh "xref: BFO:0000066\n\n";
++    print $fh "[Typedef]\n";
++    print $fh "id: in_taxon\n";
++    print $fh "xref: RO:0002162\n\n";
+ 
+     open(F,"ftr.obo");
+     while(<F>) {
+diff --git a/src/scripts/make-bridge-ontologies-from-xrefs.pl b/src/scripts/make-bridge-ontologies-from-xrefs.pl
+index 662171c54..2fc7700ce 100755
+--- a/src/scripts/make-bridge-ontologies-from-xrefs.pl
++++ b/src/scripts/make-bridge-ontologies-from-xrefs.pl
+@@ -84,7 +84,7 @@
+                 elsif ($t eq 'gd') {
+                     print $fh "intersection_of: $id ! $n\n";
+                     if (exists($lsxrefs{$x})) {
+-                        $rel = "occurs_in";
++                        $rel = "in_taxon";
+                     }
+                     print $fh "intersection_of: $rel $filler\n";
+                 }
+@@ -130,6 +130,9 @@
+     print $fh "[Typedef]\n";
+     print $fh "id: occurs_in\n";
+     print $fh "xref: BFO:0000066\n\n";
++    print $fh "[Typedef]\n";
++    print $fh "id: in_taxon\n";
++    print $fh "xref: RO:0002162\n\n";
+ 
+     open(F,"ftr.obo");
+     while(<F>) {

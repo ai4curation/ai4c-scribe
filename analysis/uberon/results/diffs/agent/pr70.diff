@@ -1,0 +1,30 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 48ea1df76..30e675aa0 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -11506,7 +11506,6 @@ is_a: UBERON:0000062 {source="FMA", source="MA"} ! organ
+ is_a: UBERON:0004921 ! subdivision of digestive tract
+ relationship: develops_from UBERON:0001041 ! foregut
+ relationship: distally_connected_to UBERON:0000945 {gci_relation="part_of", gci_filler="NCBITaxon:40674", notes="only in species that have a stomach"} ! stomach
+-relationship: located_in UBERON:0002224 ! thoracic cavity
+ relationship: part_of UBERON:0004908 ! upper digestive tract
+ relationship: proximally_connected_to UBERON:0001042 ! chordate pharynx
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/d/d4/Illu01_head_neck.jpg" xsd:anyURI
+@@ -11514,6 +11513,7 @@ property_value: external_definition "Anterior end of the alimentary canal lined
+ property_value: external_ontology_notes "esophagus NOT part of gut in MA. part of gut in ZFA. part_of gut (via UGIT) in FMA. Consider splitting. Interspecies: The human oesophagus is 25 cm long and has a diameter of ca. 2 cm. Only little information was found on the oesophagus in rat, rabbit and pig. The oesophagus of rat (75 x 2 mm) and rabbit has no mucous glands and the cardia of the stomach has a well-developed sphincter, which prevents them from vomiting (Hebel and Stromberg, 1988; Manning et al., 1994). Morphologically the oesophagus is similar in man and pig; both are omnivores and have a non-keratinised epithelium, submucous glands and similar membrane enzymes. Like in humans, pigs can suffer from reflux oesophagitis and stress ulceration of the oesophagus. The pig oesophagus may therefore be a good model for investigation compared to the human oesophagus (Christie et al., 1995)" xsd:string {external_ontology="MA"}
+ property_value: has_relational_adjective "esophageal" xsd:string
+ property_value: homology_notes "The few structural specializations in (adult lampreys) pharynx include complex valves on the external gill openings that direct the tidal flow, and the division of the ancestral pharynx into an oesophagus and a respiratory pharynx.[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0000450", ontology="VHOG", source="DOI:10.1111/j.1096-3642.1996.tb01658.x Mallatt J, Ventilation and the origin of jawed vertebrates: a new mouth. Zoological Journal of the Linnean Society (1996)", source="http://bgee.unil.ch/"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3572" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0001044
+@@ -184163,7 +184163,8 @@ xref: UMLS:C0226294
+ is_a: UBERON:0004573 {source="FMA"} ! systemic artery
+ intersection_of: UBERON:0001637 ! artery
+ intersection_of: vessel_supplies_blood_to UBERON:0001043 ! esophagus
+-relationship: branching_part_of UBERON:0001515 {source="FMA"} ! thoracic aorta
++relationship: connecting_branch_of UBERON:0001515 {source="FMA"} ! thoracic aorta
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3572" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0035542

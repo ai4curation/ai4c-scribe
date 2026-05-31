@@ -1,0 +1,22 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 1554053e6..2c38526e9 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -5515,7 +5515,7 @@ property_value: homology_notes "The lamprey head contains another group of muscl
+ [Term]
+ id: UBERON:0000379
+ name: tracheal mucosa
+-def: "A mucosa that is part of a respiratory airway." [OBOL:automatic]
++def: "A mucosa that is part of a trachea." [OBOL:automatic]
+ synonym: "mucosa of organ of trachea" EXACT [OBOL:automatic]
+ synonym: "mucosa of organ of windpipe" EXACT [OBOL:automatic]
+ synonym: "mucosa of trachea" EXACT [OBOL:automatic]
+@@ -5539,7 +5539,7 @@ xref: BTO:0001390
+ xref: FMA:7471
+ xref: SCTID:660006
+ intersection_of: UBERON:0000344 ! mucosa
+-intersection_of: part_of UBERON:0001005 ! respiratory airway
++intersection_of: part_of UBERON:0003126 ! trachea
+ 
+ [Term]
+ id: UBERON:0000380

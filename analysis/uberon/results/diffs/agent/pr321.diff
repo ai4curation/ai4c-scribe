@@ -1,0 +1,31 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..0f06ccb5a 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2889,7 +2889,7 @@ xref: BILS:0000110
+ xref: XAO:1000006
+ is_a: UBERON:0000105 ! life cycle stage
+ relationship: dubious_for_taxon NCBITaxon:7955 ! Danio rerio
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 ! Chordata
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by UBERON:0000109 ! gastrula stage
+ relationship: simultaneous_with GO:0001841 ! neural tube formation
+@@ -90625,7 +90625,7 @@ xref: OGES:000006
+ xref: Wikipedia:Pharyngula
+ xref: ZFS:0000050
+ is_a: UBERON:0000105 ! life cycle stage
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 ! Chordata
+ relationship: part_of UBERON:0000111 ! organogenesis stage
+ relationship: preceded_by UBERON:0000110 ! neurula stage
+ property_value: taxon_notes "Corresponds to E7-E11 in Mouse (Galis et al, TREE, 2001)" xsd:string
+@@ -119536,7 +119536,7 @@ is_a: UBERON:0000105 ! life cycle stage
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by RnorDv:0000010 {gci_relation="part_of", gci_filler="NCBITaxon:10116"}
+ relationship: preceded_by UBERON:0000111 ! organogenesis stage
+-relationship: preceded_by UBERON:0004707 ! pharyngula stage
++relationship: preceded_by UBERON:0004707 {gci_relation="part_of", gci_filler="NCBITaxon:7711"} ! pharyngula stage
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/355" xsd:anyURI
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/565" xsd:anyURI
+ 

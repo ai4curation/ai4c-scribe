@@ -1,0 +1,47 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..52d46aafd 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -387232,6 +387232,7 @@ xref: MEDGEN:934678 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:617114 {source="DOID:0080098", source="MONDO:equivalentTo"}
+ xref: UMLS:C4310711 {source="MEDGEN:934678", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0018943 {source="DOID:0080098", source="MONDO:Redundant", source="OMIM:617114"} ! myofibrillar myopathy
++is_a: MONDO:7770012 {source="PMID:27484770", source="PMID:27485408", source="https://clinicalgenome.org/affiliation/40151/"} ! KY-related neuromyopathy
+ intersection_of: MONDO:0018943 ! myofibrillar myopathy
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/26576 ! KY
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/26576 {source="OMIM:617114"} ! KY
+@@ -586707,6 +586708,7 @@ xref: MEDGEN:1798876 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: Orphanet:496686 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5567453 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1798876"}
+ is_a: MONDO:0018943 {source="Orphanet:496686"} ! myofibrillar myopathy
++is_a: MONDO:7770012 {source="PMID:27484770", source="PMID:27485408", source="https://clinicalgenome.org/affiliation/40151/"} ! KY-related neuromyopathy
+ property_value: curated_content_resource "https://www.malacards.org/card/kyphosis_lateral_tongue_atrophy_myofibrillar_myopathy_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+ [Term]
+@@ -586727,6 +586729,7 @@ is_a: MONDO:0002254 {source="https://orcid.org/0000-0002-5002-8648"} ! syndromic
+ is_a: MONDO:0003847 {source="https://orcid.org/0000-0002-5002-8648"} ! hereditary disease
+ is_a: MONDO:0005071 {source="https://orcid.org/0000-0001-9310-0163"} ! nervous system disorder
+ is_a: MONDO:0015150 {source="https://orcid.org/0000-0002-4142-7153"} ! complex hereditary spastic paraplegia
++is_a: MONDO:7770012 {source="PMID:28488683", source="PMID:32818658", source="https://clinicalgenome.org/affiliation/40151/"} ! KY-related neuromyopathy
+ property_value: curated_content_resource "https://www.malacards.org/card/kyphoscoliosis_lateral_tongue_atrophy_hereditary_spastic_paraplegia_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/6752" xsd:anyURI
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/6877" xsd:anyURI
+@@ -665382,6 +665385,18 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: KY-related neuromyopathy
++def: "Any hereditary neuromuscular disease in which the cause of the disease is a mutation in the KY gene." [https://clinicalgenome.org/affiliation/40151/, PMID:27484770, PMID:27485408, PMID:28488683, PMID:32818658]
++subset: rare
++is_a: MONDO:0100546 {source="PMID:27484770", source="PMID:27485408", source="PMID:28488683", source="PMID:32818658", source="https://clinicalgenome.org/affiliation/40151/"} ! hereditary neuromuscular disease
++intersection_of: MONDO:0100546 ! hereditary neuromuscular disease
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/26576 ! KY
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/26576 {source="PMID:27484770", source="PMID:27485408", source="PMID:28488683", source="PMID:32818658", source="https://clinicalgenome.org/affiliation/40151/"} ! KY
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-2078-7280
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9937" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

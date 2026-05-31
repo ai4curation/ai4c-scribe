@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3495,
+  "pr_number": 3542,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.5",
+  "runtime": "codex",
+  "eval_repo_pr": 31,
+  "f1": 0.235,
+  "precision": 0.222,
+  "recall": 0.25,
+  "jaccard": 0.133
+}

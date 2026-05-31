@@ -1,0 +1,22 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 1448889b3..72b55e6de 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -103437,11 +103437,13 @@ relationship: regulates GO:0015995 ! chlorophyll biosynthetic process
+ 
+ [Term]
+ id: GO:0010381
+-name: peroxisome-chloroplast membrane tethering
++name: obsolete peroxisome-chloroplast membrane tethering
+ namespace: biological_process
+-def: "The attachment of a peroxisome to a chloroplast via molecular tethers that physically bridge their respective membranes and attach them to each other. The tethering may facilitate exchange of metabolites between the organelles." [PMID:17215364]
+-synonym: "attachment of peroxisome to chloroplast" EXACT []
+-is_a: GO:0140056 ! organelle localization by membrane tethering
++def: "OBSOLETE. The attachment of a peroxisome to a chloroplast via molecular tethers that physically bridge their respective membranes and attach them to each other. The tethering may facilitate exchange of metabolites between the organelles." [PMID:17215364]
++comment: The reason for obsoletion is that this term represents a biological process describing a molecular tethering activity, which has been superseded by a more precise molecular function term.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31877" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:7770065 ! peroxisome-chloroplast membrane tether activity
+ 
+ [Term]
+ id: GO:0010383

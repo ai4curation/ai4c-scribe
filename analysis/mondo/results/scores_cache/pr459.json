@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9859,
+  "pr_number": 10219,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 459,
+  "f1": 0.259,
+  "precision": 0.171,
+  "recall": 0.538,
+  "jaccard": 0.149
+}

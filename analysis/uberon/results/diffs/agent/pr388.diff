@@ -1,0 +1,52 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index d41f07f57..ae275d89a 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -30594,11 +30594,11 @@ relationship: contributes_to_morphology_of UBERON:0000019 ! camera-type eye
+ relationship: has_part UBERON:0001769 ! iris
+ relationship: has_part UBERON:0001775 ! ciliary body
+ relationship: has_part UBERON:0001776 ! optic choroid
+-relationship: part_of UBERON:0001801 ! anterior segment of eyeball
+ relationship: present_in_taxon NCBITaxon:7955 {source="DOI:10.1177/0192623311409597"} ! Danio rerio
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/e/eb/Gray869.png" xsd:anyURI
+ property_value: editor_note "TODO - check child terms, isa vs partof. See also MA:0001284 ! tunica vasculosa plexus" xsd:string
+ property_value: has_relational_adjective "uveal" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3354" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0001769
+@@ -154060,6 +154060,7 @@ relationship: part_of UBERON:0007277 {source="EHDAA2"} ! presumptive hindbrain
+ [Term]
+ id: UBERON:0013150
+ name: future brain vesicle
++def: "A developing anatomical structure that is part of the future brain and gives rise to components of the ventricular system of the central nervous system." [ISBN:9780878932504, Wikipedia:Ventricular_system]
+ synonym: "brain vesicle" RELATED []
+ synonym: "early brain vesicle" EXACT []
+ synonym: "primary brain vesicle" NARROW []
+@@ -154068,12 +154069,13 @@ synonym: "secondary brain vesicle" NARROW []
+ xref: NCIT:C34259
+ xref: neuronames:2499
+ xref: SCTID:360409004
+-is_a: UBERON:0010064 {source="EHDAA2"} ! open anatomical space
++is_a: UBERON:0005423 ! developing anatomical structure
+ relationship: part_of UBERON:0000922 ! embryo
+ relationship: part_of UBERON:0005281 {source="EHDAA2"} ! ventricular system of central nervous system
+ relationship: part_of UBERON:0006238 ! future brain
+ property_value: editor_note "consider adding all secondary vesicles (e.g. diencephalic; my/metencephalic. See http://www.dartmouth.edu/~rswenson/NeuroSci/chapter_4.html)." xsd:string
+ property_value: external_ontology_notes "Note that some sources may treat the term vesicle as the progenitor of the whole brain region; for example 'The retina develops directly from the neural tube as an outpouching from the diencephalic vesicle'" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3354" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0013151
+@@ -201997,9 +201999,10 @@ def: "Fine ridge on surface of scale, often parallel to the circumference of sca
+ synonym: "circuli" EXACT OMO:0003004 [TAO:0002051]
+ synonym: "crétule" EXACT [PSPUB:0000149]
+ xref: ZFA:0005499
+-is_a: UBERON:0006800 ! anatomical line
++is_a: UBERON:0004529 ! anatomical projection
+ relationship: part_of UBERON:0007380 ! dermal scale
+ property_value: provenance_notes "This class was sourced from an external ontology (teleost_anatomy). Its definitions, naming conventions and relationships may need to be checked for compatibility with uberon" xsd:string {source="http://purl.obolibrary.org/obo/tao.owl"}
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3354" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:2002052

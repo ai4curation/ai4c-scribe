@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31985,
+  "pr_number": 31986,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v9",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 283,
+  "f1": 0.957,
+  "precision": 0.917,
+  "recall": 1.0,
+  "jaccard": 0.917
+}

@@ -1,0 +1,16 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index f26e3f70a..02cd841db 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -116781,9 +116781,11 @@ xref: SCTID:82272006 {source="DOID:10459", source="MONDO:equivalentTo"}
+ xref: UMLS:C0009443 {source="MEDGEN:3179", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0001040 {source="NCIT:C34500"} ! nasopharyngitis
+ is_a: MONDO:0004867 {source="DOID:10459", source="MONDO:Redundant"} ! upper respiratory tract disorder
++is_a: MONDO:0024352 {source="https://orcid.org/0000-0003-2955-4640"} ! viral respiratory tract infection
+ relationship: disease_has_feature HP:0012735 {source="MONDO:Wikidata"} ! Cough
+ property_value: curated_content_resource "https://www.malacards.org/card/common_cold" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9493" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0005710

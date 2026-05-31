@@ -1,0 +1,95 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index f7788e570..95b972b3f 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225127,6 +225127,90 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900000
++name: salivary gland ducto-acinar unit
++def: "An organ subunit of a saliva-secreting gland that consists of secretory acini together with their contiguous ductal segments, associated myoepithelial cells, stromal tissue, and vasculature, and that functions in saliva production and modification." [https://www.ncbi.nlm.nih.gov/books/NBK538325/, PMID:24862590]
++subset: added_by_HRA
++subset: human_reference_atlas
++synonym: "salivary gland ducto-acinar" RELATED [PMID:24862590]
++synonym: "salivon" EXACT [https://www.ncbi.nlm.nih.gov/books/NBK538325/]
++is_a: UBERON:0000063 ! organ subunit
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: in_taxon NCBITaxon:9606 ! Homo sapiens
++relationship: part_of UBERON:0001044 ! saliva-secreting gland
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900001
++name: parotid gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of a parotid gland." [https://www.ncbi.nlm.nih.gov/books/NBK538325/, PMID:24862590]
++subset: added_by_HRA
++subset: human_reference_atlas
++synonym: "parotid gland ducto-acinar" RELATED [PMID:24862590]
++is_a: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: part_of UBERON:0001831 ! parotid gland
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: in_taxon NCBITaxon:9606 ! Homo sapiens
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: sublingual gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of a sublingual gland." [https://www.ncbi.nlm.nih.gov/books/NBK538325/, PMID:24862590]
++subset: added_by_HRA
++subset: human_reference_atlas
++synonym: "sublingual gland ducto-acinar" RELATED [PMID:24862590]
++is_a: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: part_of UBERON:0001832 ! sublingual gland
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: in_taxon NCBITaxon:9606 ! Homo sapiens
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: submandibular gland ducto-acinar unit
++def: "A salivary gland ducto-acinar unit that is part of a submandibular gland." [https://www.ncbi.nlm.nih.gov/books/NBK538325/, PMID:24862590]
++subset: added_by_HRA
++subset: human_reference_atlas
++synonym: "submandibular gland ducto-acinar" RELATED [PMID:24862590]
++is_a: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: UBERON:9900000 ! salivary gland ducto-acinar unit
++intersection_of: part_of UBERON:0001736 ! submandibular gland
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: in_taxon NCBITaxon:9606 ! Homo sapiens
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: dentogingival junction
++def: "An anatomical junction between the gingiva and a tooth that comprises the multi-tissue attachment apparatus, including the junctional epithelium, supracrestal connective tissue attachment fibers, and associated stromal and vascular elements." [PMID:38876998]
++subset: added_by_HRA
++subset: human_reference_atlas
++synonym: "dentogingival attachment apparatus" RELATED [PMID:38876998]
++synonym: "gingival attachment" RELATED [PMID:38876998]
++synonym: "supracrestal tissue attachment" RELATED [PMID:38876998]
++is_a: UBERON:0007651 ! anatomical junction
++intersection_of: UBERON:0007651 ! anatomical junction
++intersection_of: connects UBERON:0001091 ! calcareous tooth
++intersection_of: connects UBERON:0001828 ! gingiva
++relationship: dc-contributor https://orcid.org/0000-0002-2999-0103
++relationship: in_taxon NCBITaxon:9606 ! Homo sapiens
++relationship: part_of UBERON:0001758 ! periodontium
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3657" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

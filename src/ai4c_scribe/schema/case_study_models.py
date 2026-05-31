@@ -1,7 +1,9 @@
+from __future__ import annotations 
+
 from datetime import (
     date
 )
-from enum import Enum
+from enum import Enum 
 from typing import (
     Any,
     ClassVar,
@@ -128,6 +130,30 @@ class ReviewOutcomeEnum(str, Enum):
     multiple_rounds = "multiple_rounds"
 
 
+class EvalSuitabilityEnum(str, Enum):
+    """
+    Whether this case is suitable for fair agent evaluation
+    """
+    # Issue clearly describes the task, PR directly addresses it, agent can reasonably produce comparable output
+    good = "good"
+    # Issue-to-PR mapping is imperfect (vague issue, PR does more/less than requested) but still somewhat evaluable
+    flawed = "flawed"
+    # Issue and PR are fundamentally disconnected; scoring against the gold PR is meaningless
+    unusable = "unusable"
+
+
+class DiffNoiseEnum(str, Enum):
+    """
+    Whether the gold-standard diff contains serialization noise
+    """
+    # Diff contains only intentional changes
+    clean = "clean"
+    # Some tool-generated noise (reordering, whitespace) but core changes are clear
+    minor_noise = "minor_noise"
+    # Significant serialization artifacts that make character-level diff comparison unreliable
+    noisy = "noisy"
+
+
 class ScopingEnum(str, Enum):
     """
     How well-scoped the PR is relative to its issue
@@ -139,17 +165,6 @@ class ScopingEnum(str, Enum):
     # Significant unrelated changes mixed in, harder to isolate the fix
     loosely_scoped = "loosely_scoped"
 
-
-
-class FileChange(ConfiguredBaseModel):
-    """
-    A single file changed in the PR, with line counts.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/ai4c-scribe/case-study'})
-
-    path: str = Field(default=..., description="""File path relative to repo root""", json_schema_extra = { "linkml_meta": {'alias': 'path', 'domain_of': ['FileChange']} })
-    additions: int = Field(default=..., description="""Number of lines added""", json_schema_extra = { "linkml_meta": {'alias': 'additions', 'domain_of': ['FileChange']} })
-    deletions: int = Field(default=..., description="""Number of lines deleted""", json_schema_extra = { "linkml_meta": {'alias': 'deletions', 'domain_of': ['FileChange']} })
 
 
 class CaseStudy(ConfiguredBaseModel):
@@ -175,6 +190,10 @@ class CaseStudy(ConfiguredBaseModel):
     files_changed: Optional[List[FileChange]] = Field(default=None, description="""Files modified in the PR with line change counts""", json_schema_extra = { "linkml_meta": {'alias': 'files_changed', 'domain_of': ['CaseStudy']} })
     scoping: ScopingEnum = Field(default=..., description="""Assessment of how well-scoped the PR is""", json_schema_extra = { "linkml_meta": {'alias': 'scoping', 'domain_of': ['CaseStudy']} })
     scoping_notes: Optional[str] = Field(default=None, description="""Brief explanation of scoping assessment. Note any unrelated changes, scope creep, or reasons the PR is not cleanly scoped.""", json_schema_extra = { "linkml_meta": {'alias': 'scoping_notes', 'domain_of': ['CaseStudy']} })
+    eval_suitability: Optional[EvalSuitabilityEnum] = Field(default=None, description="""Whether this case is suitable for fair agent evaluation. Orthogonal to difficulty — a case can be simple but unusable if the issue-to-PR mapping is misleading.""", json_schema_extra = { "linkml_meta": {'alias': 'eval_suitability', 'domain_of': ['CaseStudy']} })
+    eval_suitability_notes: Optional[str] = Field(default=None, description="""Explanation of eval_suitability rating. Describe what makes the case flawed or unusable (e.g. wrong issue linked, contradictory instructions).""", json_schema_extra = { "linkml_meta": {'alias': 'eval_suitability_notes', 'domain_of': ['CaseStudy']} })
+    diff_noise: Optional[DiffNoiseEnum] = Field(default=None, description="""Whether the gold-standard diff contains noise unrelated to the actual task (e.g. Protege serialization reordering, whitespace, tool-generated comment changes). Affects scoring fairness.""", json_schema_extra = { "linkml_meta": {'alias': 'diff_noise', 'domain_of': ['CaseStudy']} })
+    diff_noise_notes: Optional[str] = Field(default=None, description="""Description of what noise is present in the diff.""", json_schema_extra = { "linkml_meta": {'alias': 'diff_noise_notes', 'domain_of': ['CaseStudy']} })
     task_type: TaskTypeEnum = Field(default=..., description="""Primary task type for this case""", json_schema_extra = { "linkml_meta": {'alias': 'task_type', 'domain_of': ['CaseStudy']} })
     difficulty: DifficultyEnum = Field(default=..., description="""Estimated difficulty level""", json_schema_extra = { "linkml_meta": {'alias': 'difficulty', 'domain_of': ['CaseStudy']} })
     scope: ScopeEnum = Field(default=..., description="""Scope of changes in the PR""", json_schema_extra = { "linkml_meta": {'alias': 'scope', 'domain_of': ['CaseStudy']} })
@@ -184,6 +203,27 @@ class CaseStudy(ConfiguredBaseModel):
     curated_by: str = Field(default=..., description="""Who or what created this case study (agent model, human username)""", json_schema_extra = { "linkml_meta": {'alias': 'curated_by', 'domain_of': ['CaseStudy']} })
     curated_at: date = Field(default=..., description="""When this case study was curated""", json_schema_extra = { "linkml_meta": {'alias': 'curated_at', 'domain_of': ['CaseStudy']} })
     rationale: str = Field(default=..., description="""One-liner explaining why this is a good test case""", json_schema_extra = { "linkml_meta": {'alias': 'rationale', 'domain_of': ['CaseStudy']} })
+    case_quality: Optional[str] = Field(default=None, description="""Overall quality assessment for use as an eval case (good, ok, poor)""", json_schema_extra = { "linkml_meta": {'alias': 'case_quality', 'domain_of': ['CaseStudy']} })
+    case_quality_reason: Optional[str] = Field(default=None, description="""Free-form machine-readable reason code for the quality assessment""", json_schema_extra = { "linkml_meta": {'alias': 'case_quality_reason', 'domain_of': ['CaseStudy']} })
+    companion_prs: Optional[List[int]] = Field(default=None, description="""Other PR numbers that, together with the gold PR, fully resolve the issue""", json_schema_extra = { "linkml_meta": {'alias': 'companion_prs', 'domain_of': ['CaseStudy']} })
+    scoring_caveat: Optional[str] = Field(default=None, description="""Human-readable note on how to interpret metadiff scores for this case""", json_schema_extra = { "linkml_meta": {'alias': 'scoring_caveat', 'domain_of': ['CaseStudy']} })
+    quality_flagged_by: Optional[str] = Field(default=None, description="""Who or what flagged the quality assessment (agent model or username)""", json_schema_extra = { "linkml_meta": {'alias': 'quality_flagged_by', 'domain_of': ['CaseStudy']} })
+    quality_flagged_at: Optional[date] = Field(default=None, description="""When the quality assessment was made""", json_schema_extra = { "linkml_meta": {'alias': 'quality_flagged_at', 'domain_of': ['CaseStudy']} })
+    agent_coverage: Optional[str] = Field(default=None, description="""Whether any agent eval attempts exist for this case (e.g. none, partial, full)""", json_schema_extra = { "linkml_meta": {'alias': 'agent_coverage', 'domain_of': ['CaseStudy']} })
+    agent_coverage_note: Optional[str] = Field(default=None, description="""Free-form note on agent eval coverage status""", json_schema_extra = { "linkml_meta": {'alias': 'agent_coverage_note', 'domain_of': ['CaseStudy']} })
+    task_type_correction: Optional[str] = Field(default=None, description="""Corrected task_type when the curated value is imprecise""", json_schema_extra = { "linkml_meta": {'alias': 'task_type_correction', 'domain_of': ['CaseStudy']} })
+    task_type_note: Optional[str] = Field(default=None, description="""Explanation of a task_type correction or imprecision""", json_schema_extra = { "linkml_meta": {'alias': 'task_type_note', 'domain_of': ['CaseStudy']} })
+
+
+class FileChange(ConfiguredBaseModel):
+    """
+    A single file changed in the PR, with line counts.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/ai4c-scribe/case-study'})
+
+    path: str = Field(default=..., description="""File path relative to repo root""", json_schema_extra = { "linkml_meta": {'alias': 'path', 'domain_of': ['FileChange']} })
+    additions: int = Field(default=..., description="""Number of lines added""", json_schema_extra = { "linkml_meta": {'alias': 'additions', 'domain_of': ['FileChange']} })
+    deletions: int = Field(default=..., description="""Number of lines deleted""", json_schema_extra = { "linkml_meta": {'alias': 'deletions', 'domain_of': ['FileChange']} })
 
 
 # Model rebuild

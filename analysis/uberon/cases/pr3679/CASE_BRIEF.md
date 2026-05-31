@@ -1,0 +1,276 @@
+---
+ontology: uberon
+repo: obophenotype/uberon
+issue_number: 3678
+pr_number: 3679
+issue_title: Add bone part terms from HubMap - HRA
+pr_author: dosumis
+pr_merged_at: '2026-03-25'
+task_type: new_term
+difficulty: hard
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 8
+generated_at: '2026-05-17'
+domain_area: skeletal-anatomy
+best_f1: 0.999
+best_model: gpt-5.4
+---
+
+# PR #3679 — Add bone part terms from HubMap - HRA
+
+**uberon** | [obophenotype/uberon](https://github.com/obophenotype/uberon) | [Issue #3678](https://github.com/obophenotype/uberon/issues/3678) | [PR #3679](https://github.com/obophenotype/uberon/pull/3679) | @dosumis | merged 2026-03-25
+
+`new_term` `hard` `tightly_scoped` `approved_first_time`
+
+## Context
+
+The Human Reference Atlas (HRA) / HuBMAP project needed 386 new skeletal anatomical terms integrated into Uberon. These terms cover bone zones, projections, fossae, foramina, and other features of the human skeleton. IDs were assigned in the automation range UBERON:1200004 through UBERON:1200389, each with definitions, part_of axioms, cross-references, and present_in_taxon restrictions to NCBITaxon:9606.
+
+## Changes Made
+
+Rather than editing uberon-edit.obo directly, the PR introduced a ROBOT template-based component (hra_skeleton.owl) built from src/templates/hra-skeleton.template.tsv. The ODK configuration (uberon-odk.yaml) was updated to register the new component, and a custom Makefile rule was added in uberon.Makefile to supply dcterms/dc prefix declarations during the build. Four problematic terms were dropped after quality review, as documented in a corrections report.
+
+## Resolution
+
+This is a complex case requiring understanding of the ODK component pipeline, ROBOT template syntax, prefix management in OWL builds, and batch term quality review. The PR touches 11 files across templates, build configuration, and documentation. An agent would need to generate the ROBOT template TSV, wire it into the build system, and handle edge cases around prefix declarations. Approved after review with no changes requested.
+
+## Curation Note (data quality)
+
+**Flagged `case_quality: poor` — gold-artifact leakage (Step 3b).**
+
+Gold PR #3679 was itself produced "via an agentic workflow" (issue #3678 comment by dosumis) followed by substantial human curation: the `parents_as` column was discarded as unreliable and parents re-derived from term labels, ~9 mismatch corrections were applied (see `corrections_report.md`), and four likely-duplicate terms were dropped before merge. It was merged upstream on 2026-03-25.
+
+The eval runs occurred after that merge. Inspection of git blob hashes shows:
+
+- eval #305 (sonnet): `hra_skeleton.owl` blob `9934d34b0` and `hra-skeleton.template.tsv` blob `b10105932` — **byte-identical** to gold blobs `9934d34b01` / `b10105932c`.
+- eval #175 (haiku): `hra_skeleton.owl` blob `9934d34b0` — **byte-identical** to gold.
+
+A 5156-line ROBOT-template-generated OWL component (with a fixed `releases/2026-03-20` version IRI and deterministic declaration ordering) and a 286-line template in which every row carries a unique 150–250-word genus-differentia definition plus corrections-report-driven parent fixes cannot be independently regenerated bit-for-bit from the issue CSV. The byte-identity indicates the leaking attempts retrieved/reproduced the already-published gold artifact rather than synthesizing it. The eval-base branch `eval-base-issue-3678` does **not** contain these files (404), but the eval repo's default branch and upstream `obophenotype/uberon` both do — the most plausible leakage path.
+
+Consequence for scoring:
+
+- Metadiff F1 for #305 (0.926) and #175 (0.894) **over-represents** capability; it rewards copying a merged answer.
+- Metadiff F1 for #267 (opus, 0.001) **under-represents** quality: it is the only attempt that did genuine independent work — a conservative 129-row draft template plus a data-quality report that independently rediscovered the same CSV defects the gold's own corrections report documents (non-bone `parents_as` IDs, row-shifted rib/vertebra parents, ASCTB-TEMP/FMA URIs). Its main genuine shortfall is over-aggressive duplicate exclusion (~102 qualified "... of <bone>" terms the gold kept as new terms).
+
+Downstream aggregation should exclude or heavily down-weight the metadiff for this case and judge attempts on the independent reasoning in their reports/PR comments. Companion PRs #3686 (template/prefix refinement) and #3685 (release integration) are post-merge follow-ups, not separate sub-steps — gold #3679 is the complete substantive resolution of the issue, so this is a leakage case, not a partial-gold case.
+
+## Human Diff
+
+```diff
+diff --git a/docs/odk-workflows/RepositoryFileStructure.md b/docs/odk-workflows/RepositoryFileStructure.md
+index 342e7f8e56..d2d4bc4fcf 100644
+--- a/docs/odk-workflows/RepositoryFileStructure.md
++++ b/docs/odk-workflows/RepositoryFileStructure.md
+@@ -48,3 +48,4 @@ These are the components in UBERON
+ | hra_subset.owl | https://raw.githubusercontent.com/hubmapconsortium/ccf-validation-tools/master/owl/UB_ASCTB_subset.owl |
+ | vasculature_class.owl | None |
+ | hra_depiction_3d_images.owl | https://raw.githubusercontent.com/hubmapconsortium/ccf-validation-tools/master/owl/hra_uberon_3d_images.owl |
++| hra_skeleton.owl | None |
+diff --git a/src/ontology/Makefile b/src/ontology/Makefile
+index 145e7d803f..1aef767c91 100644
+--- a/src/ontology/Makefile
++++ b/src/ontology/Makefile
+@@ -1,7 +1,7 @@
+ # ----------------------------------------
+ # Makefile for uberon
+ # Generated using ontology-development-kit
+-# ODK Version: v1.6
++# ODK Version: v1.6.1
+ # ----------------------------------------
+ # IMPORTANT: DO NOT EDIT THIS FILE. To override default make goals, use uberon.Makefile instead
+ 
+@@ -10,7 +10,7 @@
+ # More information: https://github.com/INCATools/ontology-development-kit/
+ 
+ # Fingerprint of the configuration file when this Makefile was last generated
+-CONFIG_HASH=                0c09c67446229bbfacf685a28a496609521da5454d237d04715fcc7f737f6dee
++CONFIG_HASH=                4a0a1ec54c99987a5f925c045d14b90a8cea94072e234dab7b5b4841b16aa062
+ 
+ 
+ # ----------------------------------------
+@@ -50,7 +50,7 @@ REPORT_PROFILE_OPTS =       --profile $(ROBOT_PROFILE)
+ OBO_FORMAT_OPTIONS =        --clean-obo "strict drop-untranslatable-axioms"
+ SPARQL_VALIDATION_CHECKS =  equivalent-classes owldef-self-reference illegal-annotation-property taxon-range orcid-contributor obsolete-replaced_by xrefs-mesh-pattern label-synonym-polysemy id-format 
+ SPARQL_EXPORTS =            basic-report 
+-ODK_VERSION_MAKEFILE =      v1.6
++ODK_VERSION_MAKEFILE =      v1.6.1
+ RELAX_OPTIONS =             --include-subclass-of true
+ REDUCE_OPTIONS =            --include-subproperties true
+ 
+@@ -59,7 +59,7 @@ OBODATE ?=                  $(shell date +'%d:%m:%Y %H:%M')
+ VERSION=                    $(TODAY)
+ ANNOTATE_ONTOLOGY_VERSION = annotate -V $(ONTBASE)/releases/$(VERSION)/$@ --annotation owl:versionInfo $(VERSION)
+ ANNOTATE_CONVERT_FILE =     annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) convert -f ofn --output $@.tmp.owl && mv $@.tmp.owl $@
+-OTHER_SRC =                 $(PATTERNDIR)/definitions.owl $(COMPONENTSDIR)/disjoint_union_over.owl $(COMPONENTSDIR)/mappings.owl $(COMPONENTSDIR)/in-subset.owl $(COMPONENTSDIR)/hra_subset.owl $(COMPONENTSDIR)/vasculature_class.owl $(COMPONENTSDIR)/hra_depiction_3d_images.owl 
++OTHER_SRC =                 $(PATTERNDIR)/definitions.owl $(COMPONENTSDIR)/disjoint_union_over.owl $(COMPONENTSDIR)/mappings.owl $(COMPONENTSDIR)/in-subset.owl $(COMPONENTSDIR)/hra_subset.owl $(COMPONENTSDIR)/vasculature_class.owl $(COMPONENTSDIR)/hra_depiction_3d_images.owl $(COMPONENTSDIR)/hra_skeleton.owl 
+ ONTOLOGYTERMS =             $(TMPDIR)/ontologyterms.txt
+ EDIT_PREPROCESSED =         $(TMPDIR)/$(ONT)-preprocess.owl
+ 
+@@ -492,6 +492,7 @@ recreate-components:
+ 		--assume-new=$(TMPDIR)/stamp-component-hra_subset.owl \
+ 		--assume-new=$(TMPDIR)/stamp-component-vasculature_class.owl \
+ 		--assume-new=$(TMPDIR)/stamp-component-hra_depiction_3d_images.owl \
++		--assume-new=$(TMPDIR)/stamp-component-hra_skeleton.owl \
+ 		COMP=true IMP=false MIR=true PAT=true all_components
+ 
+ .PHONY: no-mirror-recreate-components
+@@ -502,6 +503,7 @@ no-mirror-recreate-components:
+ 		--assume-new=$(TMPDIR)/stamp-component-hra_subset.owl \
+ 		--assume-new=$(TMPDIR)/stamp-component-vasculature_class.owl \
+ 		--assume-new=$(TMPDIR)/stamp-component-hra_depiction_3d_images.owl \
++		--assume-new=$(TMPDIR)/stamp-component-hra_skeleton.owl \
+ 		COMP=true IMP=false MIR=false PAT=true all_components
+ 
+ .PHONY: recreate-%
+@@ -566,6 +568,12 @@ $(COMPONENTSDIR)/hra_depiction_3d_images.owl: component-download-hra_depiction_3
+ .PRECIOUS: $(COMPONENTSDIR)/hra_depiction_3d_images.owl
+ endif # MIR=true
+ 
++$(COMPONENTSDIR)/hra_skeleton.owl: $(TEMPLATEDIR)/hra-skeleton.template.tsv $(TMPDIR)/stamp-component-hra_skeleton.owl
++	$(ROBOT) template  \
++		 --template $(TEMPLATEDIR)/hra-skeleton.template.tsv \
++		 $(ANNOTATE_CONVERT_FILE)
++.PRECIOUS: $(COMPONENTSDIR)/hra_skeleton.owl
++
+ endif # COMP=true
+ # ----------------------------------------
+ # Mirroring upstream ontologies
+diff --git a/src/ontology/catalog-v001.xml b/src/ontology/catalog-v001.xml
+index a4a6da501f..b745320eac 100644
+--- a/src/ontology/catalog-v001.xml
++++ b/src/ontology/catalog-v001.xml
+@@ -9,6 +9,7 @@
+     <uri name="http://purl.obolibrary.org/obo/uberon/components/hra_subset.owl" uri="components/hra_subset.owl" />
+     <uri name="http://purl.obolibrary.org/obo/uberon/components/vasculature_class.owl" uri="components/vasculature_class.owl" />
+     <uri name="http://purl.obolibrary.org/obo/uberon/components/hra_depiction_3d_images.owl" uri="components/hra_depiction_3d_images.owl" />
++    <uri name="http://purl.obolibrary.org/obo/uberon/components/hra_skeleton.owl" uri="components/hra_skeleton.owl" />
+     <uri name="http://purl.obolibrary.org/obo/uberon/patterns/definitions.owl" uri="../patterns/definitions.owl" />
+   </group>
+   <group id="Folder Repository, directory=, recursive=false, Auto-Update=false, version=2" prefer="public">
+diff --git a/src/ontology/components/hra_skeleton.owl b/src/ontology/components/hra_skeleton.owl
+new file mode 100644
+index 0000000000..9934d34b01
+--- /dev/null
++++ b/src/ontology/components/hra_skeleton.owl
+@@ -0,0 +1,5156 @@
++Prefix(:=<http://purl.obolibrary.org/obo/uberon/components/hra_skeleton.owl#>)
++Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
++Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
++Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
++Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
++Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
++
++
++Ontology(<http://purl.obolibrary.org/obo/uberon/components/hra_skeleton.owl>
++<http://purl.obolibrary.org/obo/uberon/releases/2026-03-20/components/hra_skeleton.owl>
++Annotation(owl:versionInfo "2026-03-20")
++
++Declaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_9606>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000209>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000210>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000975>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000976>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000979>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0000981>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001075>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001076>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001078>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001092>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001093>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001272>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001350>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001423>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001424>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001450>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001455>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001676>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001677>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001678>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001679>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001680>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001683>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001684>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0001685>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0002396>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0002397>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0003690>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0003861>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004311>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004312>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004313>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004314>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004315>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004316>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004320>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004321>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004324>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004332>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004337>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004338>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004601>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004602>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004603>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004604>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004605>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004606>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004607>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004608>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004609>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004610>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004611>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004612>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004613>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004614>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004615>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004616>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004617>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004618>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004619>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004620>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004621>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004626>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004627>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004628>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004629>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004630>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004631>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004632>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004633>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004634>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004635>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004636>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004662>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0004704>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0005744>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0005814>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0005913>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0006061>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0006846>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0006849>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0009979>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0010757>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_0011050>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200004>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200005>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200006>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200007>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200008>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200009>))
++Declaration(Class(<http://purl.obolibrary.org/obo/UBERON_1200010>))
+... (7156 more lines truncated)
+```
+
+## Agent Attempts (8)
+
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.4 | codex | 0.999 | 0.998 | 0.999 | `1a9a07c` | [#386](https://github.com/ai4curation/eval-ont-agent-uberon/pull/386) | [attempt](attempts/pr386.md) |
+| 2 | gpt-5.4 | opencode | 0.928 | 0.866 | 1.000 | `1aef767` | [#684](https://github.com/ai4curation/eval-ont-agent-uberon/pull/684) | [attempt](attempts/pr684.md) |
+| 3 | gpt-5.4 | opencode | 0.928 | 0.866 | 1.000 | `1aef767` | [#623](https://github.com/ai4curation/eval-ont-agent-uberon/pull/623) | [attempt](attempts/pr623.md) |
+| 4 | gpt-5.5 | opencode | 0.927 | 0.865 | 0.999 | `7dfb241` | [#646](https://github.com/ai4curation/eval-ont-agent-uberon/pull/646) | [attempt](attempts/pr646.md) |
+| 5 | gpt-5.5 | opencode | 0.927 | 0.865 | 0.999 | `7dfb241` | [#587](https://github.com/ai4curation/eval-ont-agent-uberon/pull/587) | [attempt](attempts/pr587.md) |
+| 6 | claude-sonnet-4.5 | claude | 0.926 | 0.862 | 0.999 | `5a07746` | [#305](https://github.com/ai4curation/eval-ont-agent-uberon/pull/305) | [attempt](attempts/pr305.md) |
+| 7 | claude-haiku-4.5 | claude | 0.894 | 0.808 | 1.000 | `9934d34` | [#175](https://github.com/ai4curation/eval-ont-agent-uberon/pull/175) | [attempt](attempts/pr175.md) |
+| 8 | claude-opus-4.7 | claude | 0.001 | 0.000 | 0.005 | `89c16aa` | [#267](https://github.com/ai4curation/eval-ont-agent-uberon/pull/267) | [attempt](attempts/pr267.md) |

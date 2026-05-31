@@ -1,0 +1,106 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 0239d1945..4fc8ac107 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2757,7 +2757,7 @@ synonym: "lifespan" EXACT []
+ xref: FBdv:00000000
+ xref: ncithesaurus:Life
+ xref: OGES:000011
+-is_a: UBERON:0000000 ! processual entity
++is_a: BFO:0000015 ! process
+ relationship: ends_with UBERON:0000071 ! death stage
+ relationship: has_part UBERON:0000105 ! life cycle stage
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+@@ -2765,6 +2765,7 @@ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+ relationship: present_in_taxon NCBITaxon:4751 ! Fungi
+ relationship: starts_with UBERON:0000106 {gci_relation="in_taxon", gci_filler="NCBITaxon:33208"} ! zygote stage
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/532" xsd:anyURI
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000105
+@@ -2786,7 +2787,7 @@ xref: WBls:0000002
+ xref: XAO:1000000
+ xref: ZFS:0000000
+ xref: ZFS:0100000
+-is_a: UBERON:0000000 ! processual entity
++is_a: BFO:0000015 ! process
+ relationship: part_of UBERON:0000104 ! life cycle
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+@@ -2794,6 +2795,7 @@ relationship: present_in_taxon NCBITaxon:4751 ! Fungi
+ property_value: editor_note "this class represents a proper part of the life cycle of an organism. The class 'life cycle' should not be placed here" xsd:string
+ property_value: external_ontology_notes "the WBls class 'all stages' belongs here as it is the superclass of other WBls stages" xsd:string
+ property_value: external_ontology_notes "we map the ZFS unknown stage here as it is logically equivalent to saying *some* life cycle stage" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000106
+@@ -186580,51 +186582,31 @@ relationship: part_of UBERON:0003129 ! skull
+ 
+ [Term]
+ id: UBERON:0035943
+-name: life cycle temporal boundary
+-def: "A temporal boundary connecting two life cycle stages that follow in immediate succession. A temporal boundary is an abstract, instantaneous entity." [https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
+-subset: upper_level
+-is_a: UBERON:0000000 ! processual entity
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++name: obsolete life cycle temporal boundary
++comment: Obsoleted in response to issue #3464 because this unused temporal-boundary branch overmodels life-cycle transitions as instantaneous entities.
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
++is_obsolete: true
+ 
+ [Term]
+ id: UBERON:0035944
+-name: life-death temporal boundary
+-def: "A life cycle temporal boundary that marks the end of the life cycle of the organism." [https://github.com/obophenotype/uberon/issues/1172, https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
+-synonym: "death" RELATED INCONSISTENT []
+-synonym: "end of life" RELATED []
+-synonym: "end of life cycle" EXACT []
+-synonym: "moment of death" EXACT []
+-synonym: "time of death" EXACT []
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: ends UBERON:0000104 ! life cycle
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++name: obsolete life-death temporal boundary
++comment: Obsoleted in response to issue #3464 because this unused temporal-boundary branch overmodels life-cycle transitions as instantaneous entities.
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
++is_obsolete: true
+ 
+ [Term]
+ id: UBERON:0035945
+-name: start of life cycle
+-def: "A life cycle temporal boundary that marks the start of the life cycle of the organism." [https://github.com/obophenotype/uberon/issues/1172, https://orcid.org/0000-0002-6601-2165]
+-subset: common_anatomy
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: starts UBERON:0000104 ! life cycle
+-relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+-relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+-relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++name: obsolete start of life cycle
++comment: Obsoleted in response to issue #3464 because this unused temporal-boundary branch overmodels life-cycle transitions as instantaneous entities.
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
++is_obsolete: true
+ 
+ [Term]
+ id: UBERON:0035946
+-name: start of neonate stage
+-def: "A life cycle temporal boundary that marks the start of the neonate stage of the organism." [https://github.com/obophenotype/uberon/issues/1204, https://orcid.org/0000-0002-6601-2165]
+-synonym: "birth" RELATED INCONSISTENT []
+-synonym: "moment of birth" EXACT []
+-synonym: "time of birth" EXACT []
+-intersection_of: UBERON:0035943 ! life cycle temporal boundary
+-intersection_of: starts UBERON:0007221 ! neonate stage
++name: obsolete start of neonate stage
++comment: Obsoleted in response to issue #3464 because this unused temporal-boundary branch overmodels life-cycle transitions as instantaneous entities.
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3464" xsd:anyURI
++is_obsolete: true
+ 
+ [Term]
+ id: UBERON:0035955

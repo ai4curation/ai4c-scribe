@@ -1,0 +1,26 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 88c721ae8..d07944be4 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -31938,14 +31938,17 @@ SubClassOf(obo:CL_4030052 obo:CL_1001474)
+ SubClassOf(obo:CL_4030052 ObjectSomeValuesFrom(obo:RO_0002100 obo:UBERON_0005403))
+ SubClassOf(obo:CL_4030052 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_000001177))
+ 
+-# Class: obo:CL_4030053 (Island of Calleja granule cell)
++# Class: obo:CL_4030053 (Islands of Calleja granule cell)
+ 
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cub.2021.10.015") obo:IAO_0000115 obo:CL_4030053 "A DRD1-expressing, medium spiny neuron-like granule cell that is part of an Island of Calleja.")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cub.2021.10.015") Annotation(oboInOwl:hasDbXref "PMID:34795450") Annotation(oboInOwl:hasDbXref "PMID:37898623") obo:IAO_0000115 obo:CL_4030053 "A GABAergic neuron that resides in the Islands of Calleja and shows the cytoarchitectural and molecular features characteristic of this granule-like cell population. In mice and primates, it expresses D1 and D3 dopamine receptors (Drd1; Drd3) and GABAergic markers (GAD1/2), and forms densely packed granule cell clusters in the olfactory tubercle within the ventral striatum. It receives dense dopaminergic input from the ventral tegmental area (VTA), and is functionally associated with self-grooming behaviors and depression-like behaviors.")
+ AnnotationAssertion(terms:date obo:CL_4030053 "2023-06-14T13:37:45Z"^^xsd:dateTime)
++AnnotationAssertion(obo:IAO_0000233 obo:CL_4030053 "https://github.com/obophenotype/cell-ontology/issues/3447")
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cub.2021.10.015") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_4030053 "D1-ICj")
+-AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cub.2021.10.015") rdfs:comment obo:CL_4030053 "In Rhesus macaques, the Island of Calleja granule cell type has been noted to have enriched gene expression of CPNE4.")
+-AnnotationAssertion(rdfs:label obo:CL_4030053 "Island of Calleja granule cell")
++AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_4030053 "Island of Calleja granule cell")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cub.2021.10.015") rdfs:comment obo:CL_4030053 "In Rhesus macaques, the Islands of Calleja granule cell type has been noted to have enriched gene expression of CPNE4.")
++AnnotationAssertion(rdfs:label obo:CL_4030053 "Islands of Calleja granule cell")
+ SubClassOf(obo:CL_4030053 obo:CL_0000120)
++SubClassOf(obo:CL_4030053 obo:CL_0000617)
+ SubClassOf(obo:CL_4030053 ObjectSomeValuesFrom(obo:RO_0002100 ObjectIntersectionOf(obo:UBERON_0001881 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0005403))))
+ SubClassOf(obo:CL_4030053 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_000001175))
+ 

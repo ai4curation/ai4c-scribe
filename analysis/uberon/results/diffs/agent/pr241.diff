@@ -1,0 +1,58 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index b727e1726..97cb728be 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -119281,7 +119281,6 @@ xref: FMA:18324
+ intersection_of: UBERON:0000042 ! serous membrane
+ intersection_of: part_of UBERON:0003984 ! uterine tube infundibulum
+ 
+-
+ [Term]
+ id: UBERON:0007182
+ name: muscle layer of infundibulum of uterine tube
+@@ -119294,7 +119293,6 @@ xref: FMA:18336
+ intersection_of: UBERON:0006660 ! muscular coat
+ intersection_of: part_of UBERON:0003984 ! uterine tube infundibulum
+ 
+-
+ [Term]
+ id: UBERON:0007185
+ name: pericardio-peritoneal canal mesothelium
+@@ -156264,7 +156262,7 @@ is_a: UBERON:0013529 {source="NIFSTD"} ! Brodmann area
+ [Term]
+ id: UBERON:0013540
+ name: Brodmann (1909) area 9
+-def: "Brodmann area 9, or BA9, refers to a cytoarchitecturally defined portion of the frontal cortex in the brain of humans and other primates. It contributes to the dorsolateral and medial prefrontal cortex and plays a role in executive functions such as working memory, planning, inhibition, decision-making, and reasoning. Its cytoarchitecture is referred to as granular due to the concentration of granule cells in layer IV. Its internal pyramidal layer (V) is divisible into two sublayers, an outer layer 5a of densely distributed medium-size ganglion cells that partially merges with layer IV, and an inner, clearer, cell-poor layer 5b; the pyramidal cells of sublayer 3b of the external pyramidal layer (III) are smaller and sparser in distribution; the external granular layer (II) is narrow, with small numbers of sparsely distributed granule cells." [Wikipedia:Brodmann_area_9, https://orcid.org/0000-0002-4964-5083]
++def: "Brodmann area 9, or BA9, refers to a cytoarchitecturally defined portion of the frontal cortex in the brain of humans and other primates. It contributes to the dorsolateral and medial prefrontal cortex and plays a role in executive functions such as working memory, planning, inhibition, decision-making, and reasoning. Its cytoarchitecture is referred to as granular due to the concentration of granule cells in layer IV. Its internal pyramidal layer (V) is divisible into two sublayers, an outer layer 5a of densely distributed medium-size ganglion cells that partially merges with layer IV, and an inner, clearer, cell-poor layer 5b; the pyramidal cells of sublayer 3b of the external pyramidal layer (III) are smaller and sparser in distribution; the external granular layer (II) is narrow, with small numbers of sparsely distributed granule cells." [https://orcid.org/0000-0002-4964-5083, Wikipedia:Brodmann_area_9]
+ synonym: "area 9 of Brodmann" EXACT [FMA:68606]
+ synonym: "area 9 of Brodmann (guenon)" RELATED [NeuroNames:1024]
+ synonym: "area 9 of Brodmann-1909" EXACT [BIRNLEX:1740]
+@@ -180721,7 +180719,7 @@ relationship: part_of UBERON:0016530 {source="DHBA"} ! parietal cortex
+ [Term]
+ id: UBERON:0034891
+ name: insular cortex
+-def: "The insular cortex (also insula and insular lobe) is a portion of the cerebral cortex folded deep within the lateral sulcus (the fissure separating the temporal lobe from the parietal and frontal lobes) within each hemisphere of the mammalian brain. It is the primary gustatory cortex and is involved in sensorimotor and somatosensory as well as socioemotional functions." [Wikipedia:INSULA, MESH:D007419, https://orcid.org/0000-0002-4964-5083]
++def: "The insular cortex (also insula and insular lobe) is a portion of the cerebral cortex folded deep within the lateral sulcus (the fissure separating the temporal lobe from the parietal and frontal lobes) within each hemisphere of the mammalian brain. It is the primary gustatory cortex and is involved in sensorimotor and somatosensory as well as socioemotional functions." [https://orcid.org/0000-0002-4964-5083, MESH:D007419, Wikipedia:INSULA]
+ synonym: "cortex of insula" EXACT [FMA:242223]
+ synonym: "gray matter of insula" RELATED [FMA:242223]
+ synonym: "ICx" RELATED OMO:0003000 [DHBA:10288]
+@@ -225031,6 +225029,19 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++[Term]
++id: UBERON:9900001
++name: medial prefrontal cortex
++def: "A subdivision of the prefrontal cortex located on the medial aspect of the frontal lobe. In humans it is composed of Brodmann area 12, Brodmann area 25, and the anterior cingulate cortex (Brodmann areas 24, 32, and 33). It plays a role in the maintenance and manipulation of information (working memory), as well as supporting cognitive functions such as emotion processing and regulation, memory, decision making, and conflict resolution." [https://orcid.org/0000-0001-7628-5565, https://orcid.org/0000-0002-4964-5083, Wikipedia:Prefrontal_cortex]
++synonym: "mPFC" EXACT OMO:0003000 []
++is_a: UBERON:0002616 ! regional part of brain
++relationship: dc-contributor https://orcid.org/0000-0001-7628-5565
++relationship: dc-contributor https://orcid.org/0000-0002-4964-5083
++relationship: part_of UBERON:0000451 ! prefrontal cortex
++property_value: dcterms-date "2026-05-14T00:45:41Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3446" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

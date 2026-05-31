@@ -1,0 +1,52 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..29396e1c8 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -9020,15 +9020,16 @@ consider: WBbt:0005441
+ 
+ [Term]
+ id: UBERON:0000961
+-name: thoracic ganglion
++name: thoracic paravertebral ganglion
+ def: "The thoracic ganglia are paravertebral ganglia. The thoracic portion of the sympathetic trunk typically has 12 thoracic ganglia. Emerging from the ganglia are thoracic splancic nerves (the cardiopulmonary, the greater, lesser, and least splanchic nerves) that help provide sympathetic innervation to abdominal structures. Also, the ganglia of the thoracic sympathetic trunk have both white and gray rami communicantes. The white rami carry sympathetic fibers arising in the spinal cord into the sympathetic trunk. [WP,unvetted]." [Wikipedia:Thoracic_ganglion]
++comment: Renamed from 'thoracic ganglion' to 'thoracic paravertebral ganglion' for clarity, since 'thoracic ganglion' more properly refers generically to any ganglion within the thorax (including spinal, prevertebral and paravertebral ganglia). See https://github.com/obophenotype/uberon/issues/3475.
+ subset: uberon_slim
+-synonym: "ganglion of thorax" EXACT [OBOL:automatic]
+ synonym: "ganglion thoracicum splanchnicum" EXACT OMO:0003011 [FMA:6471, FMA:TA]
+-synonym: "thoracic paravertebral ganglion" EXACT [MA:0001159]
+ synonym: "thoracic splanchnic ganglion" EXACT []
+ synonym: "thoracic sympathetic ganglion" EXACT []
+-synonym: "thorax ganglion" EXACT [OBOL:automatic]
++synonym: "ganglion of thorax" RELATED [OBOL:automatic]
++synonym: "thoracic ganglion" RELATED []
++synonym: "thorax ganglion" RELATED [OBOL:automatic]
+ xref: BTO:0001831
+ xref: EHDAA:4664
+ xref: EMAPA:17158
+@@ -9044,6 +9045,7 @@ intersection_of: UBERON:0001807 ! paravertebral ganglion
+ intersection_of: part_of UBERON:0004863 ! thoracic sympathetic nerve trunk
+ relationship: extends_fibers_into UBERON:0018679 ! thoracic splanchnic nerve
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/3/3e/Gray849.png" xsd:anyURI
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3475" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000962
+@@ -60552,6 +60554,7 @@ intersection_of: extends_fibers_into UBERON:0009632 ! root of cervical nerve
+ id: UBERON:0002835
+ name: thoracic dorsal root ganglion
+ def: "A dorsal root ganglion that is part of a thorax [Automatically generated definition]." [OBOL:automatic]
++comment: Removed the asserted is_a parent 'thoracic ganglion' (UBERON:0000961, since renamed to 'thoracic paravertebral ganglion'). A dorsal root ganglion is a sensory ganglion and is not a paravertebral (sympathetic) ganglion. The correct parentage (dorsal root ganglion) is preserved via the logical (intersection_of) definition. See https://github.com/obophenotype/uberon/issues/3475.
+ synonym: "dorsal root ganglion of thorax" EXACT [OBOL:automatic]
+ synonym: "ganglion of dorsal root of thorax" EXACT [OBOL:automatic]
+ synonym: "ganglion spinalis of thorax" EXACT [OBOL:automatic]
+@@ -60564,9 +60567,9 @@ xref: BIRNLEX:2600
+ xref: FMA:6006
+ xref: SCTID:278326009
+ xref: UMLS:C0457467 {source="BIRNLEX:2600"}
+-is_a: UBERON:0000961 ! thoracic ganglion
+ intersection_of: UBERON:0000044 ! dorsal root ganglion
+ intersection_of: extends_fibers_into UBERON:0009630 ! root of thoracic nerve
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3475" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0002836

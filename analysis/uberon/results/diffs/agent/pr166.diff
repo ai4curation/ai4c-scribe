@@ -1,0 +1,24 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 138990fd8..9ee79cf29 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -221432,6 +221432,19 @@ intersection_of: part_of UBERON:0001159 ! sigmoid colon
+ relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
+ property_value: dcterms-date "2025-05-27T17:07:22Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:7770009
++name: kidney interpolar region
++def: "The middle portion of the kidney situated between the upper pole and the lower pole, representing approximately the middle third of the kidney along its longitudinal axis." [Wikipedia:Kidney]
++synonym: "central pole of kidney" EXACT []
++synonym: "interpolar region of kidney" EXACT []
++is_a: UBERON:0000064 ! organ part
++relationship: part_of UBERON:0002113 ! kidney
++relationship: dc-contributor https://orcid.org/0000-0002-3302-4610 ! Deanne Taylor
++created_by: dragon-ai-agent
++property_value: dcterms-date "2026-05-12T00:00:00" xsd:dateTime
++term_tracker_item: https://github.com/obophenotype/uberon/issues/3604
++
+ [Term]
+ id: UBERON:8000000
+ name: first instar larva stage

@@ -1,0 +1,16 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 08af3bf04..0b1ee1ac8 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -218,9 +218,11 @@ treat-xrefs-as-reverse-genus-differentia: ZFS part_of NCBITaxon:7954
+ id: UBERON:0000000
+ name: processual entity
+ def: "An occurrent [span:Occurrent] that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity." [span:ProcessualEntity]
++comment: This term is being aligned with COB (Common Ontology for Biology).
+ subset: common_anatomy
+ subset: upper_level
+ xref: BFO:0000003
++property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ disjoint_from: UBERON:0001062 ! anatomical entity
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa

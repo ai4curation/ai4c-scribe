@@ -1,0 +1,56 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index be4a4f262..d768749ab 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -134972,20 +134972,21 @@ id: GO:0018242
+ name: obsolete protein O-linked glycosylation via serine
+ namespace: biological_process
+ def: "OBSOLETE. The glycosylation of protein via the O3 atom of peptidyl-serine, forming O3-glycosyl-L-serine; the most common forms are N-acetylgalactosaminyl, mannosyl, galactosyl, and xylosyl serine." [https://www.ncbi.nlm.nih.gov/books/NBK579918/]
+-comment: This term was obsoleted because it did not represent a specific process. It may correspond to protein O-linked galactosylation; GO:0180062, protein O-linked xylosylation ; GO:0180064, protein O-linked glucosylation ; GO:0180059, and protein O-linked GFucNAcylation, all of which may be linked to a serine in a protein.
++comment: This term was obsoleted because it did not represent a specific process. It may correspond to protein O-linked glycosylation via N-acetylglucosamine ; GO:7770074, protein O-linked glycosylation via galactose ; GO:0180062, protein O-linked glycosylation via glucose ; GO:0180059, or protein O-linked glycosylation via xylose ; GO:0180064, all of which may be linked to a serine in a protein.
+ synonym: "protein amino acid O-linked glycosylation via serine" EXACT [GOC:bf]
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30517" xsd:anyURI
+ is_obsolete: true
+ consider: GO:0180059
+ consider: GO:0180062
+ consider: GO:0180064
++consider: GO:7770074
+ 
+ [Term]
+ id: GO:0018243
+ name: obsolete protein O-linked glycosylation via threonine
+ namespace: biological_process
+ def: "OBSOLETE. The glycosylation of protein via the O3 atom of peptidyl-threonine, forming O3-glycosyl-L-threonine; the most common forms are N-acetylgalactosaminyl, mannosyl, and galactosyl threonine." [https://www.ncbi.nlm.nih.gov/books/NBK579918/]
+-comment: This term was obsoleted because it did not represent a specific process. It may correspond to protein O-linked GalNAcylation ; GO:0016266, protein O-linked glucosylation ; GO:0180059, protein O-linked galactosylation; GO:0180062, or protein O-linked mannosylation ; GO:0035269, all of which may be linked to a threonine in a protein.
++comment: This term was obsoleted because it did not represent a specific process. It may correspond to protein O-linked glycosylation via N-acetyl-galactosamine ; GO:0016266, protein O-linked glycosylation via N-acetylglucosamine ; GO:7770074, protein O-linked glycosylation via mannose ; GO:0035269, protein O-linked glycosylation via glucose ; GO:0180059, or protein O-linked glycosylation via galactose ; GO:0180062, all of which may be linked to a threonine in a protein.
+ synonym: "protein amino acid O-linked glycosylation via threonine" EXACT [GOC:bf]
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30517" xsd:anyURI
+ is_obsolete: true
+@@ -134993,6 +134994,7 @@ consider: GO:0016266
+ consider: GO:0035269
+ consider: GO:0180059
+ consider: GO:0180062
++consider: GO:7770074
+ 
+ [Term]
+ id: GO:0018244
+@@ -617560,6 +617562,19 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-05-07T12:45:27Z
+ 
++[Term]
++id: GO:7770074
++name: protein O-linked glycosylation via N-acetylglucosamine
++namespace: biological_process
++def: "A glycoprotein biosynthetic process starting with the covalent linkage of a single N-acetylglucosamine via a beta-glycosidic bond to the oxygen atom of a serine or threonine side chain in a protein, resulting in the formation of a protein O-linked glycan. In contrast to other forms of protein O-linked glycosylation, the sugar is not further elongated into a larger oligosaccharide chain." [PMID:35536957]
++synonym: "protein O-GlcNAcylation" EXACT []
++synonym: "protein O-linked GlcNAcylation" EXACT []
++synonym: "protein O-linked N-acetylglucosaminylation" EXACT []
++is_a: GO:0006493 ! protein O-linked glycosylation
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32044" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-16T01:21:48Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

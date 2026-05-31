@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9799,
+  "pr_number": 10114,
+  "case_type": "other",
+  "difficulty": "simple",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "codex",
+  "eval_repo_pr": 162,
+  "f1": 0.727,
+  "precision": 0.615,
+  "recall": 0.889,
+  "jaccard": 0.571
+}

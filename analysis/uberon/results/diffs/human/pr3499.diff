@@ -1,0 +1,94 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 218542b971..d32bd11801 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -224744,6 +224744,89 @@ intersection_of: part_of UBERON:0001558 ! lower respiratory tract
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ property_value: dcterms-date "2025-02-24T14:15:29Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8600124
++name: fallopian tube epithelium
++def: "A simple columnar epithelium that is part of the fallopian tube." [PMID:7714136, Wikipedia:Fallopian_tube]
++is_a: UBERON:0012274 ! columnar epithelium
++intersection_of: UBERON:0000483 ! epithelium
++intersection_of: part_of UBERON:0003889 ! fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833 ! Ellen Quardokus
++property_value: dcterms-date "2025-03-04T14:24:07Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600125
++name: superior fallopian tube epithelium
++def: "The superior region of the fallopian tube epithelium." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:8600124 ! fallopian tube epithelium
++property_value: dcterms-date "2025-03-04T14:25:21Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600126
++name: inferior fallopian tube epithelium
++def: "The inferior region of the fallopian tube epithelium." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:8600124 ! fallopian tube epithelium
++property_value: dcterms-date "2025-03-04T14:26:37Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600127
++name: mesosalpinx-proximal fallopian tube epithelium
++def: "The most proximal region to the mesosalpinx of the fallopian tube epithelium." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:8600124 ! fallopian tube epithelium
++property_value: dcterms-date "2025-03-04T14:27:25Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600128
++name: antimesosalpinx-proximal fallopian tube epithelium
++def: "The most proximal region to the antimesosalpinx of the fallopian tube epithelium." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:8600124 ! fallopian tube epithelium
++property_value: dcterms-date "2025-03-04T14:27:50Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600130
++name: superior muscular layer of fallopian tube
++def: "The most superior region of the muscularis layer of the fallopian tube." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2025-03-04T15:32:23Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600131
++name: inferior muscular layer of fallopian tube
++def: "The most inferior region of the muscularis layer of the fallopian tube." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2025-03-04T15:32:52Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600132
++name: mesosalpinx-proximal muscular layer of fallopian tube
++def: "The most proximal region to the mesosalpinx of the muscularis layer of the fallopian tube." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2025-03-04T15:33:06Z" xsd:dateTime
++
++[Term]
++id: UBERON:8600133
++name: antimesosalpinx-proximal muscular layer of fallopian tube
++def: "The most proximal region to the antimesosalpinx of the muscularis layer of the fallopian tube." [https://orcid.org/0000-0001-6677-8489]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++property_value: dcterms-date "2025-03-04T15:33:17Z" xsd:dateTime
++
+ [Term]
+ id: UBERON:8700000
+ name: aorta-gonad-mesonephros

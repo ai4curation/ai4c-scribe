@@ -1,0 +1,23 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e7bfdf082..dcfde2c69 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -35535,6 +35535,18 @@ AnnotationAssertion(rdfs:comment obo:D96882F1-8709-49AB-BCA9-772A67EA6C33 "ID wa
+ AnnotationAssertion(rdfs:label obo:D96882F1-8709-49AB-BCA9-772A67EA6C33 "obsolete D96882F1-8709-49AB-BCA9-772A67EA6C33")
+ AnnotationAssertion(owl:deprecated obo:D96882F1-8709-49AB-BCA9-772A67EA6C33 "true"^^xsd:boolean)
+ 
++# Class: obo:CL_9900001 (oRGC2)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:37066415") Annotation(oboInOwl:hasDbXref "PMID:31784286") obo:IAO_0000115 obo:CL_9900001 "A conserved retinal ganglion cell orthotype whose transcriptomic profile groups together ON parasol RGCs from primate foveal and peripheral retina with their molecularly homologous mouse α RGC subtype (ON-transient α RGC, C41).")
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0002-5507-2103>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-09T13:06:36Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:hasOBONamespace obo:CL_9900001 "cell")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3519>)
++AnnotationAssertion(oboInOwl:id obo:CL_9900001 "CL:9900001")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "oRGC2")
++SubClassOf(obo:CL_9900001 obo:CL_0000740)
++
+ # Class: obo:GO_0051932 (synaptic transmission, GABAergic)
+ 
+ EquivalentClasses(obo:GO_0051932 ObjectIntersectionOf(obo:GO_0007268 ObjectSomeValuesFrom(obo:RO_0000057 obo:CHEBI_59888) ObjectSomeValuesFrom(obo:RO_0000057 obo:CL_0000617)))

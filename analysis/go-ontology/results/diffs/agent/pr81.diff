@@ -1,0 +1,23 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 37f74ff37..fc67f1785 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617400,6 +617400,18 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-04-28T09:37:41Z
+ 
++[Term]
++id: GO:7770069
++name: ferritinophagy
++namespace: biological_process
++def: "The selective degradation of ferritin to release iron by macroautophagy." [PMID:25327288, PMID:26436293, PMID:38714719]
++synonym: "ferritin-specific autophagy" EXACT []
++is_a: GO:0016236 ! macroautophagy
++relationship: has_primary_input GO:0070288 ! ferritin complex
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30894" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T02:34:16Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

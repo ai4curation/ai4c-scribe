@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3414,
+  "pr_number": 3499,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 311,
+  "f1": 0.109,
+  "precision": 0.115,
+  "recall": 0.103,
+  "jaccard": 0.058
+}

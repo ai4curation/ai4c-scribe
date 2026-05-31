@@ -1,0 +1,13 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index ccb7aa216..8262d5a8a 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -468391,7 +468391,7 @@ creation_date: 2021-02-09T19:43:51Z
+ id: GO:0140597
+ name: protein carrier activity
+ namespace: molecular_function
+-def: "Binding to and carrying a protein to an acceptor molecule or to a specific location by moving along with the target protein." [PMID:7628437]
++def: "Directly binding to a protein and delivering it either to an acceptor molecule or to a specific location." [PMID:7628437]
+ synonym: "protein carrier chaperone" EXACT []
+ synonym: "protein chaperone" BROAD []
+ intersection_of: GO:0140104 ! molecular carrier activity

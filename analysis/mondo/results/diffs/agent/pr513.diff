@@ -1,0 +1,25 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..20cd5f36c 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,20 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is characterized by early embryonic arrest and female infertility due to defects in oocyte cytoplasmic maturation." [PMID:27545678, PMID:29693651]
++synonym: "early embryonic arrest" EXACT [PMID:27545678]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [PMID:27545678]
++synonym: "PREIMPLANTATION EMBRYONIC LETHALITY 2" EXACT [PMID:27545678]
++is_a: MONDO:0014769 {source="PMID:27545678"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMID:27545678"} ! PADI6
++property_value: http://purl.org/dc/terms/creator https://clinicalgenome.org/affiliation/40106
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

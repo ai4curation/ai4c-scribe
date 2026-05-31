@@ -1,0 +1,45 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e7bfdf082..e540d5702 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3292,6 +3292,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -25704,6 +25705,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:26735013") rdfs:comment
+ AnnotationAssertion(rdfs:label obo:CL_0020027 "alpha retinal ganglion cell ON-transient (Mmus)")
+ SubClassOf(obo:CL_0020027 obo:CL_0004117)
+ SubClassOf(obo:CL_0020027 obo:CL_4023032)
++SubClassOf(obo:CL_0020027 obo:CL_9900001)
+ SubClassOf(obo:CL_0020027 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_10090))
+ 
+ # Class: obo:CL_0700009 (obsolete kidney collecting duct beta-intercalated cell)
+@@ -32838,6 +32840,7 @@ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:34093409") oboInOwl:hasE
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:32032773") oboInOwl:hasExactSynonym obo:CL_4033052 "inner parasol cell")
+ AnnotationAssertion(rdfs:label obo:CL_4033052 "ON parasol ganglion cell")
+ EquivalentClasses(obo:CL_4033052 ObjectIntersectionOf(obo:CL_4023032 obo:CL_4023189))
++SubClassOf(obo:CL_4033052 obo:CL_9900001)
+ 
+ # Class: obo:CL_4033053 (small bistratified retinal ganglion cell)
+ 
+@@ -35465,6 +35468,16 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900001 (oRGC2)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31784286") Annotation(oboInOwl:hasDbXref "PMID:37066415") obo:IAO_0000115 obo:CL_9900001 "A conserved retinal ganglion cell orthotype whose transcriptomic profile groups ON parasol retinal ganglion cells from primate foveal and peripheral retina with the molecularly homologous mouse alpha retinal ganglion cell ON-transient subtype C41 (Hahn et al., 2023; Tran et al., 2019).")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3519>)
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0002-5507-2103>)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-10T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(rdfs:label obo:CL_9900001 "oRGC2")
++SubClassOf(obo:CL_9900001 obo:CL_0000740)
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

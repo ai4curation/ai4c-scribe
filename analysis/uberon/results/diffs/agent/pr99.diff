@@ -1,0 +1,110 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 76d60d4dd..459175c80 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -221096,6 +221096,105 @@ relationship: dc-contributor https://orcid.org/0000-0001-8415-4848 ! Helena Mach
+ relationship: dc-contributor https://orcid.org/0000-0003-2699-3066 ! Meghan Balk
+ property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/2882" xsd:anyURI
+ 
++[Term]
++id: UBERON:7700001
++name: epithelium of ascending colon
++def: "An epithelial layer that lines the ascending colon." [UBERON:cjm]
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001156 ! ascending colon
++is_a: UBERON:0001277 ! intestinal epithelium
++relationship: part_of UBERON:0001156 ! ascending colon
++
++[Term]
++id: UBERON:7700002
++name: epithelium of descending colon
++def: "An epithelial layer that lines the descending colon." [UBERON:cjm]
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001158 ! descending colon
++is_a: UBERON:0001277 ! intestinal epithelium
++relationship: part_of UBERON:0001158 ! descending colon
++
++[Term]
++id: UBERON:7700003
++name: epithelium of sigmoid colon
++def: "An epithelial layer that lines the sigmoid colon." [UBERON:cjm]
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++is_a: UBERON:0001277 ! intestinal epithelium
++relationship: part_of UBERON:0001159 ! sigmoid colon
++
++[Term]
++id: UBERON:7700004
++name: epithelium of transverse colon
++def: "An epithelial layer that lines the transverse colon." [UBERON:cjm]
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001157 ! transverse colon
++is_a: UBERON:0001277 ! intestinal epithelium
++relationship: part_of UBERON:0001157 ! transverse colon
++
++[Term]
++id: UBERON:7700005
++name: ascending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the ascending colon." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001156 ! ascending colon
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001156 ! ascending colon
++
++[Term]
++id: UBERON:7700006
++name: descending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the descending colon." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001158 ! descending colon
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001158 ! descending colon
++
++[Term]
++id: UBERON:7700007
++name: sigmoid colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the sigmoid colon." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001159 ! sigmoid colon
++
++[Term]
++id: UBERON:7700008
++name: transverse colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the transverse colon." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001157 ! transverse colon
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001157 ! transverse colon
++
++[Term]
++id: UBERON:7700009
++name: stomach lamina propria
++def: "The lamina propria that underlies the epithelial lining of the stomach." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0000945 ! stomach
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0000945 ! stomach
++
++[Term]
++id: UBERON:7700010
++name: caecum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the caecum." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001153 ! caecum
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001153 ! caecum
++
++[Term]
++id: UBERON:7700011
++name: rectum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the rectum." [UBERON:cjm]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001052 ! rectum
++is_a: UBERON:0000030 ! lamina propria
++relationship: part_of UBERON:0001052 ! rectum
++
+ [Term]
+ id: UBERON:8000000
+ name: first instar larva stage

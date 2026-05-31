@@ -1,0 +1,13 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index d657bb9e5..306c81205 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -268909,7 +268909,7 @@ consider: GO:0070987
+ id: GO:0045022
+ name: early endosome to late endosome transport
+ namespace: biological_process
+-def: "The directed movement of substances, in membrane-bounded vesicles, from the early sorting endosomes to the late sorting endosomes; transport occurs along microtubules and can be experimentally blocked with microtubule-depolymerizing drugs." [ISBN:0815316194, PMID:29980602]
++def: "The directed movement of substances, in membrane-bounded vesicles, from the early sorting endosomes to the late sorting endosomes." [ISBN:0815316194, PMID:29980602]
+ synonym: "endosome maturation" RELATED [PMID:21878991, PMID:29980602]
+ intersection_of: GO:0016192 ! vesicle-mediated transport
+ intersection_of: has_target_end_location GO:0005770 ! late endosome

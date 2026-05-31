@@ -1,0 +1,26 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 48ea1df76..33e79793c 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -11506,7 +11506,6 @@ is_a: UBERON:0000062 {source="FMA", source="MA"} ! organ
+ is_a: UBERON:0004921 ! subdivision of digestive tract
+ relationship: develops_from UBERON:0001041 ! foregut
+ relationship: distally_connected_to UBERON:0000945 {gci_relation="part_of", gci_filler="NCBITaxon:40674", notes="only in species that have a stomach"} ! stomach
+-relationship: located_in UBERON:0002224 ! thoracic cavity
+ relationship: part_of UBERON:0004908 ! upper digestive tract
+ relationship: proximally_connected_to UBERON:0001042 ! chordate pharynx
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/d/d4/Illu01_head_neck.jpg" xsd:anyURI
+@@ -184163,7 +184162,7 @@ xref: UMLS:C0226294
+ is_a: UBERON:0004573 {source="FMA"} ! systemic artery
+ intersection_of: UBERON:0001637 ! artery
+ intersection_of: vessel_supplies_blood_to UBERON:0001043 ! esophagus
+-relationship: branching_part_of UBERON:0001515 {source="FMA"} ! thoracic aorta
++relationship: connecting_branch_of UBERON:0001515 {source="FMA"} ! thoracic aorta
+ 
+ [Term]
+ id: UBERON:0035542
+@@ -226372,4 +226371,3 @@ xref: RO:0020102
+ id: vessel_supplies_blood_to
+ name: vessel supplies blood to
+ xref: RO:0020101
+-

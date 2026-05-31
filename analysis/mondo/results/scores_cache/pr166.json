@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9859,
+  "pr_number": 10219,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "codex",
+  "eval_repo_pr": 166,
+  "f1": 0.093,
+  "precision": 0.049,
+  "recall": 1.0,
+  "jaccard": 0.049
+}

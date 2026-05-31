@@ -1,0 +1,13 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..88cc75e96 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -618923,6 +618923,8 @@ id: MONDO:0859152
+ name: neurodevelopmental disorder with cerebellar atrophy and motor dysfunction
+ subset: doid {source="DOID:0070443"}
+ subset: omim {source="OMIM:619333"}
++synonym: "GEMIN5 disorders" EXACT [PMID:33963192, PMID:38773790]
++synonym: "GEMIN5-related neurodevelopmental disorders" EXACT [PMID:33963192, PMID:38773790]
+ xref: DOID:0070443 {source="MONDO:equivalentTo"}
+ xref: MEDGEN:1781936 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:619333 {source="MONDO:equivalentTo"}

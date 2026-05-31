@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31981,
+  "pr_number": 31995,
+  "case_type": "axiom_repair",
+  "difficulty": "simple",
+  "agent_config_tag": "v9",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 281,
+  "f1": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "jaccard": 1.0
+}

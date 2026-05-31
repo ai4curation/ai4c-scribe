@@ -1,0 +1,26 @@
+# Copilot CLI + Sonnet 4.5 evaluation on GO ontology
+workflow: eval-agent-on-issue.yml
+repo: ai4curation/eval-ont-agent-go
+description: "GO ontology - Copilot CLI + Sonnet 4.5"
+tags: ["go-ontology", "copilot"]
+
+input_sets_dir: ../cases
+
+inputs:
+  issue_repo: geneontology/go-ontology
+  timeout_minutes: 90
+  agent_config_repo: ai4curation/go-ontology-agent-config
+  agent_config_tag: v9
+  agent_config_directory: .
+  force_new_branch: "true"
+  create_pr: "true"
+  iter_num: 1
+  container: obolibrary/odkfull:latest
+
+  agent_runtime: [copilot]
+  model: [claude-sonnet-4.5]
+
+limits:
+  max_concurrent: 5
+  batch_size: 10
+  poll_interval_seconds: 30

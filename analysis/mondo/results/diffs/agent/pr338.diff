@@ -1,0 +1,155 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..3e2c89275 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -214991,17 +214991,16 @@ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/1550/costell
+ 
+ [Term]
+ id: MONDO:0009027
+-name: cramps, familial adolescent
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical diseaseAfter obsoletion, this term will not have a replacement ID, but one could consider the following term: creatine phosphokinase, elevated serum-MONDO:0007402
+-subset: obsoletion_candidate
++name: obsolete cramps, familial adolescent
+ synonym: "cramps, familial adolescent" EXACT []
+-xref: MEDGEN:347475 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: OMIM:218050 {source="MONDO:equivalentObsolete"}
+-xref: UMLS:C1857533 {source="MEDGEN:347475", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+-property_value: curated_content_resource "https://www.malacards.org/card/cramps_familial_adolescent" xsd:anyURI {source="MONDO:MalaCards"}
++xref: MEDGEN:347475 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++xref: OMIM:218050 {source="MONDO:obsoleteEquivalent"}
++xref: UMLS:C1857533 {source="MEDGEN:347475", source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0009-0000-1074-3026
++property_value: IAO:0000231 OMO:0001000
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0007402
+ 
+ [Term]
+ id: MONDO:0009028
+@@ -263759,18 +263758,17 @@ property_value: curated_content_resource "https://www.malacards.org/card/charcot
+ 
+ [Term]
+ id: MONDO:0010553
+-name: Charcot-Marie-Tooth peroneal muscular atrophy and Friedreich ataxia, combined
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical diseaseAfter obsoletion, this term will not have a replacement ID, but one could consider the following term: Charcot-Marie-Tooth disease X-linked dominant 1-MONDO:0010549
+-subset: obsoletion_candidate
++name: obsolete Charcot-Marie-Tooth peroneal muscular atrophy and Friedreich ataxia, combined
+ synonym: "Charcot-Marie-Tooth peroneal muscular atrophy and Friedreich ataxia, combined" EXACT []
+-xref: MEDGEN:337104 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: MESH:C564446 {source="MONDO:equivalentTo"}
+-xref: OMIM:302900 {source="MONDO:equivalentObsolete"}
+-xref: UMLS:C1844863 {source="MEDGEN:337104", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-is_a: MONDO:0003847 {source="MESH:C564446/inferred"} ! hereditary disease
+-property_value: curated_content_resource "https://www.malacards.org/card/charcot_marie_tooth_peroneal_muscular_atrophy_and_friedreich_ataxia_combined" xsd:anyURI {source="MONDO:MalaCards"}
++xref: MEDGEN:337104 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++xref: MESH:C564446 {source="MONDO:obsoleteEquivalent"}
++xref: OMIM:302900 {source="MONDO:obsoleteEquivalent"}
++xref: UMLS:C1844863 {source="MEDGEN:337104", source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0009-0000-1074-3026
++property_value: IAO:0000231 OMO:0001000
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0010549
+ 
+ [Term]
+ id: MONDO:0010554
+@@ -304316,19 +304314,7 @@ property_value: curated_content_resource "https://www.malacards.org/card/schizop
+ 
+ [Term]
+ id: MONDO:0011961
+-name: hereditary sensory and autonomic neuropathy type 1B
+-def: "Hereditary sensory and autonomic neuropathy, type 1B (HSAN1B) is characterized by the association of type 1 HSAN with paroxysmal cough and gastroesophageal reflux (GOR)." [Orphanet:139564]
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical diseaseAfter obsoletion, this term will not have a replacement ID, but one could consider the following term: cerebellar ataxia with neuropathy and bilateral vestibular areflexia syndrome-MONDO:0044720
+-subset: doid {source="DOID:0070148"}
+-subset: doid_rare {source="DOID:0070148"}
+-subset: gard_rare {source="GARD:0016958", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: ordo_disorder {source="Orphanet:139564"}
+-subset: orphanet {source="Orphanet:139564"}
+-subset: orphanet_rare {source="Orphanet:139564"}
+-subset: otar {source="MONDO:OTAR"}
+-subset: rare
++name: obsolete hereditary sensory and autonomic neuropathy type 1B
+ synonym: "hereditary sensory and autonomic neuropathy type 1 with cough and gastroesophageal reflux" EXACT [Orphanet:139564]
+ synonym: "hereditary sensory and autonomic neuropathy type IB" EXACT [Orphanet:139564]
+ synonym: "hereditary sensory neuropathy type 1B" RELATED []
+@@ -304339,23 +304325,23 @@ synonym: "neuropathy, hereditary sensory and autonomic, type 1B" RELATED []
+ synonym: "neuropathy, hereditary sensory and autonomic, type I, with cough and gastroesophageal reflux" RELATED []
+ synonym: "neuropathy, hereditary sensory, type 1B" RELATED []
+ synonym: "neuropathy, hereditary sensory, type IB" EXACT []
+-xref: DOID:0070148 {source="MONDO:equivalentTo"}
++xref: DOID:0070148 {source="MONDO:obsoleteEquivalent"}
+ xref: GARD:0016958 {source="MONDO:GARD"}
+ xref: ICD10CM:G60.8 {source="Orphanet:139564/attributed", source="Orphanet:139564/ntbt", source="Orphanet:139564"}
+-xref: MEDGEN:330880 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: MESH:C564296 {source="MONDO:equivalentTo"}
+-xref: OMIM:608088 {source="MONDO:equivalentObsolete", source="Orphanet:139564/e", source="DOID:0070148", source="Orphanet:139564"}
+-xref: Orphanet:139564 {source="DOID:0070148", source="MONDO:equivalentTo", source="OMIM:608088"}
++xref: MEDGEN:330880 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++xref: MESH:C564296 {source="MONDO:obsoleteEquivalent"}
++xref: OMIM:608088 {source="MONDO:obsoleteEquivalent", source="Orphanet:139564/e", source="DOID:0070148", source="Orphanet:139564"}
++xref: Orphanet:139564 {source="MONDO:obsoleteEquivalent", source="DOID:0070148", source="OMIM:608088"}
+ xref: PMID:12870133 {source="DOID:0070148"}
+ xref: PMID:16311270 {source="DOID:0070148"}
+-xref: SCTID:717825008 {source="MONDO:equivalentTo"}
+-xref: UMLS:C1842586 {source="MEDGEN:330880", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-is_a: MONDO:0015364 {source="DOID:0070148", source="MESH:C564296", source="OMIM:608088", source="Orphanet:139564/inferred"} ! hereditary sensory and autonomic neuropathy
+-is_a: MONDO:0018213 {source="https://orcid.org/0000-0002-6601-2165"} ! hereditary sensory and autonomic neuropathy type 1
+-property_value: curated_content_resource "https://www.malacards.org/card/neuropathy_hereditary_sensory_and_autonomic_type_i_with_cough_and_gastroesophageal_reflux" xsd:anyURI {source="MONDO:MalaCards"}
++xref: SCTID:717825008 {source="MONDO:obsoleteEquivalent"}
++xref: UMLS:C1842586 {source="MEDGEN:330880", source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0009-0000-1074-3026
++property_value: IAO:0000231 OMO:0001000
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0044720
+ 
+ [Term]
+ id: MONDO:0011962
+@@ -358932,31 +358918,24 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0013935
+-name: Usher syndrome type 1J
+-def: "Any Usher syndrome in which the cause of the disease is a mutation in the CIB2 gene." [MONDO:patterns/disease_series_by_gene]
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical diseaseAfter obsoletion, this term will not have a replacement ID, but one could consider the following term: autosomal recessive nonsyndromic hearing loss 48-MONDO:0012273
+-subset: gard_rare {source="GARD:0015863", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: rare
++name: obsolete Usher syndrome type 1J
+ synonym: "CIB2 Usher syndrome" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
+ synonym: "USH1J" EXACT ABBREVIATION [MONDO:Lexical]
+ synonym: "Usher syndrome caused by mutation in CIB2" EXACT [MONDO:design_pattern]
+ synonym: "Usher syndrome type Ij" EXACT []
+ synonym: "Usher syndrome, type 1J" RELATED []
+ synonym: "USHER syndrome, type Ij" RELATED [MONDO:Lexical]
+-xref: DOID:0110836 {source="MONDO:equivalentObsolete"}
++xref: DOID:0110836 {source="MONDO:obsoleteEquivalent"}
+ xref: GARD:0015863 {source="MONDO:GARD"}
+-xref: MEDGEN:766858 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: OMIM:614869 {source="MONDO:equivalentObsolete", source="DOID:0110836"}
+-xref: UMLS:C3553944 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:766858"}
+-is_a: MONDO:0010168 {source="DOID:0110836", source="Orphanet:231169"} ! Usher syndrome type 1
+-is_a: MONDO:0019501 {source="DOID:0110836/inferred", source="MONDO:Redundant", source="OMIM:614869"} ! Usher syndrome
+-relationship: has_characteristic HP:0000007 {source="MONDO:HPOA", source="OMIM:614869"} ! Autosomal recessive inheritance
+-property_value: curated_content_resource "https://www.malacards.org/card/usher_syndrome_type_ij" xsd:anyURI {source="MONDO:MalaCards"}
++xref: MEDGEN:766858 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN"}
++xref: OMIM:614869 {source="MONDO:obsoleteEquivalent", source="DOID:0110836"}
++xref: UMLS:C3553944 {source="MONDO:obsoleteEquivalent", source="MONDO:MEDGEN", source="MEDGEN:766858"}
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0009-0000-1074-3026
++property_value: IAO:0000231 OMO:0001000
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9778" xsd:anyURI
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0012273
+ 
+ [Term]
+ id: MONDO:0013936

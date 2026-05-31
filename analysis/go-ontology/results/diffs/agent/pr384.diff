@@ -1,0 +1,22 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 7aec1566d..bf06cbba7 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617485,6 +617485,17 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-05-06T17:36:35Z
+ 
++[Term]
++id: GO:7770071
++name: venom-mediated activation of inflammatory response
++namespace: biological_process
++def: "A process by which an organism causes inflammatory response in another organism via the action of a venom." [PMID:19000915, PMID:32024243]
++synonym: "venom-mediated inflammation" BROAD []
++is_a: GO:0035738 ! venom-mediated perturbation of biological process
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31902" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-12T17:57:18Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

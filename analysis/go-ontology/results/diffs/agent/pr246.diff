@@ -1,0 +1,21 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index c1698b781..7fa9725a6 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -255886,10 +255886,13 @@ is_a: GO:0008410 ! CoA-transferase activity
+ 
+ [Term]
+ id: GO:0043713
+-name: (R)-2-hydroxyisocaproate dehydrogenase activity
++name: obsolete (R)-2-hydroxyisocaproate dehydrogenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: 2-oxoisocaproate + NADH + H+ = (R)-2-hydroxyisocaproate + NAD+." [GOC:jl, PMID:16957230]
+-is_a: GO:0016616 ! oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor
++def: "OBSOLETE. Catalysis of the reaction: 2-oxoisocaproate + NADH + H+ = (R)-2-hydroxyisocaproate + NAD+." [GOC:jl, PMID:16957230]
++comment: The reason for obsoletion is that this term is equivalent to GO:0140175 ((2R)-2-hydroxyacid dehydrogenase (NAD+) activity).
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31966" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0140175
+ 
+ [Term]
+ id: GO:0043714

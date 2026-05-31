@@ -1,0 +1,23 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index e32c8f848..d9dad19bc 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225647,6 +225647,18 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900000
++name: uterine fundus
++def: "The superior portion of the uterus above the uterine tube line opposite to the cervix." [MESH:D014599]
++synonym: "fundus uteri" EXACT [PMID:39112955]
++is_a: UBERON:0000064 ! organ part
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0000995 ! uterus
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3637" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

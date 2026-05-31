@@ -1,0 +1,85 @@
+# Global agent definitions for evaluation analysis
+#
+# Maps (runtime, model) -> logical handle. Config tags are ontology-specific
+# and NOT used for matching — the same logical agent can run with different
+# config tags on different ontologies.
+#
+# This file is used by scoring to produce readable agent names in scores.tsv.
+# It replaces the per-ontology agents.yaml files.
+
+agents:
+  # --- Claude Code ---
+  std_claude_op47:
+    description: "Claude Code + Opus 4.7"
+    runtime: claude
+    model: claude-opus-4.7
+
+  std_claude_son45:
+    description: "Claude Code + Sonnet 4.5"
+    runtime: claude
+    model: claude-sonnet-4.5
+
+  std_claude_hai45:
+    description: "Claude Code + Haiku 4.5"
+    runtime: claude
+    model: claude-haiku-4.5
+
+  # --- Copilot CLI ---
+  std_copilot_son45:
+    description: "Copilot CLI + Sonnet 4.5"
+    runtime: copilot
+    model: claude-sonnet-4.5
+
+  # --- Codex ---
+  std_codex_g55:
+    description: "Codex + GPT-5.5"
+    runtime: codex
+    model: gpt-5.5
+
+  std_codex_g54:
+    description: "Codex + GPT-5.4"
+    runtime: codex
+    model: gpt-5.4
+
+  # --- OpenCode ---
+  std_opencode_g55:
+    description: "OpenCode + GPT-5.5"
+    runtime: opencode
+    model: gpt-5.5
+
+  std_opencode_g54:
+    description: "OpenCode + GPT-5.4"
+    runtime: opencode
+    model: gpt-5.4
+
+  # --- Open-weight models (via Together AI / OpenCode) ---
+  std_opencode_gem4:
+    description: "OpenCode + Gemma 4 31B (Together AI)"
+    runtime: opencode
+    model: gemma-4-31b
+
+  std_opencode_kimi:
+    description: "OpenCode + Kimi K2.6 (Together AI)"
+    runtime: opencode
+    model: kimi-k2.6
+
+  # --- Gemini CLI ---
+  std_gemini_flash:
+    description: "Gemini CLI + Flash 2.5"
+    runtime: gemini
+    model: gemini-2.5-flash
+
+  # --- Ablation (GO only) ---
+  noskills_codex_g55:
+    description: "Codex + GPT-5.5 (NO skills)"
+    runtime: codex
+    model: gpt-5.5
+    skills: false
+    category: ablation
+
+  noskills_claude_son45:
+    description: "Claude Code + Sonnet 4.5 (NO skills)"
+    runtime: claude
+    model: claude-sonnet-4.5
+    skills: false
+    category: ablation

@@ -1,0 +1,25 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 05f772421..dddefb5e8 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -85579,9 +85579,12 @@ id: GO:0008785
+ name: alkyl hydroperoxide reductase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: octane hydroperoxide + NADH + H+ = H2O + NAD+ + 1-octanol." [GOC:curators]
++comment: This term was obsoleted because it is more specific than the specificity of any known gene product. It is replaced by GO:0102039.
+ is_a: GO:0016668 ! oxidoreductase activity, acting on a sulfur group of donors, NAD(P) as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28261" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28340" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0102039
+ 
+ [Term]
+ id: GO:0008786
+@@ -439746,6 +439749,7 @@ xref: MetaCyc:R4-RXN
+ xref: RHEA:62628 {source="skos:exactMatch"}
+ is_a: GO:0051920 ! peroxiredoxin activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++consider: GO:0008785
+ 
+ [Term]
+ id: GO:0102040

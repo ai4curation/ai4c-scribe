@@ -1,0 +1,13 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..b025ce2be 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -395279,7 +395279,7 @@ synonym: "MHA" RELATED ABBREVIATION []
+ synonym: "MYH9 related disorders" RELATED [GARD:0000180]
+ synonym: "MYH9 related thrombocytopenia" RELATED [GARD:0000180]
+ synonym: "MYH9-RD" EXACT ABBREVIATION [Orphanet:182050]
+-synonym: "MYH9-related disease" EXACT []
++synonym: "MYH9-related disease" EXACT [Orphanet:182050]
+ synonym: "MYH9-related disorder" EXACT [Orphanet:182050]
+ synonym: "MYH9-related syndrome" EXACT [Orphanet:182050]
+ synonym: "MYH9-related syndromic thrombocytopenia" EXACT [Orphanet:182050]

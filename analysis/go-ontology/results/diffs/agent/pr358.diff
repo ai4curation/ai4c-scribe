@@ -1,0 +1,77 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index fe2f8414b..dae7ce450 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -268710,7 +268710,7 @@ xref: EC:1.14.99.50 {source="skos:exactMatch"}
+ xref: RHEA:42672 {source="skos:exactMatch"}
+ is_a: GO:0004497 ! monooxygenase activity
+ is_a: GO:0016705 ! oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen
+-relationship: part_of GO:0052704 ! ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
++relationship: part_of GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ created_by: jl
+@@ -346824,6 +346824,8 @@ synonym: "ergothioneine anabolism" EXACT []
+ synonym: "ergothioneine biosynthesis" EXACT []
+ synonym: "ergothioneine formation" EXACT []
+ synonym: "ergothioneine synthesis" EXACT []
++xref: MetaCyc:PWY-7255 {source="skos:narrowMatch"}
++xref: MetaCyc:PWY-7550 {source="skos:narrowMatch"}
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:134344 ! ergothioneine(1+)
+ created_by: ai
+@@ -346909,13 +346911,13 @@ creation_date: 2011-08-01T03:49:39Z
+ 
+ [Term]
+ id: GO:0052704
+-name: ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
++name: obsolete ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide
+ namespace: biological_process
+-def: "The pathway resulting in the formation of ergothioneine from histidine via a set of steps in which gamma-glutamyl-hercynylcysteine sulfoxide is formed as an intermediate." [PMID:4276459, PMID:5484456]
+-synonym: "ergothioneine biosynthesis from histidine via N-alpha,N-alpha,N-alpha-trimethyl-L-histidine" BROAD []
+-xref: Wikipedia:Ergothioneine
+-is_a: GO:0052699 ! ergothioneine biosynthetic process
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
++def: "OBSOLETE. The pathway resulting in the formation of ergothioneine from histidine via a set of steps in which gamma-glutamyl-hercynylcysteine sulfoxide is formed as an intermediate." [PMID:4276459, PMID:5484456]
++comment: This term was obsoleted because variant biosynthesis pathways (here, the bacterial ergothioneine biosynthesis pathway, MetaCyc:PWY-7255) are out of scope for GO and are better captured as GO-CAMs. Annotations should be migrated to the parent term GO:0052699 (ergothioneine biosynthetic process).
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0052699
+ creation_date: 2011-08-05T11:31:52Z
+ 
+ [Term]
+@@ -346971,7 +346973,7 @@ synonym: "histidine catabolism to hercynine" EXACT []
+ synonym: "histidine catabolism to N-alpha,N-alpha,N-alpha-trimethyl-L-histidine" EXACT []
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28375" xsd:anyURI
+ is_obsolete: true
+-replaced_by: GO:0052704
++replaced_by: GO:0052699
+ created_by: ai
+ creation_date: 2011-08-05T02:07:24Z
+ 
+@@ -369626,7 +369628,7 @@ synonym: "hercynylcysteine sulfoxide synthase" EXACT []
+ xref: EC:1.21.3.10 {source="skos:exactMatch"}
+ xref: RHEA:42704 {source="skos:exactMatch"}
+ is_a: GO:0046993 ! oxidoreductase activity, acting on X-H and Y-H to form an X-Y bond, with oxygen as acceptor
+-relationship: part_of GO:0140479 ! ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++relationship: part_of GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24051" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+@@ -467256,10 +467258,13 @@ creation_date: 2020-06-23T15:54:56Z
+ 
+ [Term]
+ id: GO:0140479
+-name: ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++name: obsolete ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
+ namespace: biological_process
+-def: "A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
+-is_a: GO:0052699 ! ergothioneine biosynthetic process
++def: "OBSOLETE. A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
++comment: This term was obsoleted because variant biosynthesis pathways (here, the fungal ergothioneine biosynthesis pathway, MetaCyc:PWY-7550) are out of scope for GO and are better captured as GO-CAMs. Annotations should be migrated to the parent term GO:0052699 (ergothioneine biosynthetic process).
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0052699
+ created_by: pg
+ creation_date: 2020-06-25T09:58:21Z
+ 

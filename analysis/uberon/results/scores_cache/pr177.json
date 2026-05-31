@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3464,
+  "pr_number": 3646,
+  "case_type": "reclassification",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 177,
+  "f1": 0.0,
+  "precision": 0.0,
+  "recall": 0.0,
+  "jaccard": 0.0
+}

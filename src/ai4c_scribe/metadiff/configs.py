@@ -63,6 +63,26 @@ PYTHON_CONFIG = MetadiffConfig(
     ),
 )
 
+# OWL: ontology files in OWL functional syntax (CL, etc.)
+OWL_CONFIG = MetadiffConfig(
+    name="owl",
+    description="OWL functional syntax ontology comparison (CL, etc.)",
+    normalizer=NormalizerConfig(
+        mask_ids=True,  # Mask CURIEs: obo:CL_4052071 -> obo:CL_NNNNNNN
+        strip_whitespace=True,
+        ignore_keys=[
+            "terms:date",           # creation timestamps
+            "terms:contributor",    # contributor ORCIDs
+            "dc:date",             # Dublin Core dates
+            "dcterms:date",        # Dublin Core terms dates
+        ],
+        ignore_patterns=[
+            r".*xsd:dateTime.*",   # Any dateTime annotation
+        ],
+        custom_normalizers=[mask_timestamps, mask_version_numbers],
+    ),
+)
+
 # Strict: no normalization
 STRICT_CONFIG = MetadiffConfig(
     name="strict",
@@ -80,6 +100,7 @@ STRICT_CONFIG = MetadiffConfig(
 CONFIG_REGISTRY = {
     "generic": GENERIC_CONFIG,
     "obo": OBO_CONFIG,
+    "owl": OWL_CONFIG,
     "python": PYTHON_CONFIG,
     "strict": STRICT_CONFIG,
 }

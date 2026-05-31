@@ -1,0 +1,26 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..59fa80102 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,21 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "An inherited oocyte maturation defect caused by variation in the PADI6 gene, characterized by early embryonic arrest and female infertility, and reported with other maternal-effect reproductive outcomes including miscarriages and hydatidiform moles." [https://clinicalgenome.org/affiliation/40106, PMID:27545678, PMID:29693651]
++synonym: "early embryonic arrest" EXACT [PMID:27545678]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder" EXACT [https://clinicalgenome.org/affiliation/40106] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++synonym: "PREIMPLANTATION EMBRYONIC LETHALITY 2" EXACT [OMIM:617234]
++is_a: MONDO:0014769 {source="PMID:27545678", source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMID:27545678", source="PMID:29693651", source="https://clinicalgenome.org/affiliation/40106"} ! PADI6
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-7638-4659
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

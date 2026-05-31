@@ -1,0 +1,67 @@
+diff --git a/docs/annotation_properties.md b/docs/annotation_properties.md
+index 43942d41b..514813497 100644
+--- a/docs/annotation_properties.md
++++ b/docs/annotation_properties.md
+@@ -4,6 +4,8 @@ _Note- this page is currently under development._
+ 
+ The Cell Ontology has the following annotation properties:
+ 
++Imported `oboInOwl:*` annotation properties already carry labels from the import chain. Do not add or restore `rdfs:label` assertions for those imported properties in `src/ontology/cl-edit.owl`, as doing so creates spurious serialization diffs.
++
+ Annotation property	| 	Description	|	Example term	|	Example annotation | Must have? | Only one use per term is allowed?
+ -- | -- | -- | --  | -- | --
+ consider	|	To be used on obsoleted classes, to point to a term that should be considered by curators for use in place of the obsoleted term.  Multiple consider terms are allowed.  It can be useful to combine this with a comment to indicate when replacement would be appropriate.	|	CL:0000610 `obsolete plant cell`	|	PO:0009002 | No | No
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index efa4c875d..ad5669e0a 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3683,42 +3683,6 @@ SubAnnotationPropertyOf(core:human_reference_atlas oboInOwl:SubsetProperty)
+ AnnotationAssertion(rdfs:comment ubprop:_upper_level "abstract upper-level terms not directly useful for analysis")
+ SubAnnotationPropertyOf(ubprop:_upper_level oboInOwl:SubsetProperty)
+ 
+-# Annotation Property: oboInOwl:SubsetProperty (subset_property)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:SubsetProperty "subset_property")
+-
+-# Annotation Property: oboInOwl:consider (consider)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:consider "consider")
+-
+-# Annotation Property: oboInOwl:hasBroadSynonym (has_broad_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasBroadSynonym "has_broad_synonym")
+-
+-# Annotation Property: oboInOwl:hasDbXref (database_cross_reference)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasDbXref "database_cross_reference")
+-
+-# Annotation Property: oboInOwl:hasExactSynonym (has exact synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasExactSynonym "has_exact_synonym")
+-
+-# Annotation Property: oboInOwl:hasNarrowSynonym (has narrow synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasNarrowSynonym "has_narrow_synonym")
+-
+-# Annotation Property: oboInOwl:hasRelatedSynonym (has_related_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasRelatedSynonym "has_related_synonym")
+-
+-# Annotation Property: oboInOwl:hasSynonymType (has_synonym_type)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasSynonymType "has_synonym_type")
+-
+-# Annotation Property: oboInOwl:inSubset (in_subset)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:inSubset "in_subset")
+-
+ # Annotation Property: rdfs:seeAlso (see also)
+ 
+ AnnotationAssertion(oboInOwl:hasDbXref rdfs:seeAlso "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+@@ -35838,4 +35802,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

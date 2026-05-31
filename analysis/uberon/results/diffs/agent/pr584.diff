@@ -1,0 +1,15 @@
+diff --git a/src/ontology/components/external-disjoints.obo b/src/ontology/components/external-disjoints.obo
+index 98c0068ef..f457c1dcc 100644
+--- a/src/ontology/components/external-disjoints.obo
++++ b/src/ontology/components/external-disjoints.obo
+@@ -108,6 +108,10 @@ disjoint_from: XAO:0003082 ! sucker
+ id: UBERON:0000476 ! acellular anatomical structure
+ disjoint_from: CL:0000000 ! cell
+ 
++[Term]
++id: UBERON:0000468 ! multicellular organism
++disjoint_from: UBERON:0000463 ! organism substance
++
+ [Term]
+ id: UBERON:0005341 ! ventral commissure ! ventral commissure
+ disjoint_from: FBbt:00001104  ! ventral nerve cord commissure

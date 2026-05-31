@@ -1,0 +1,27 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index f91b7513c..605cdb260 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -18578,8 +18578,10 @@ AnnotationAssertion(terms:contributor obo:CL_0002423 <https://orcid.org/0000-000
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002423 "2010-10-21T10:12:05Z"^^xsd:dateTime)
+ AnnotationAssertion(rdfs:comment obo:CL_0002423 "Observed in mice. There is growing evidence that molecular markers characterizing double negative thymocytes are different across species, especially in mouse versus human thymus. If in doubt, please consider using CL:0002489 'double negative thymocyte'.")
+ AnnotationAssertion(rdfs:label obo:CL_0002423 "DN2a thymocyte")
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_0002423 "https://github.com/obophenotype/cell-ontology/issues/3500"^^xsd:anyURI)
+ EquivalentClasses(obo:CL_0002423 ObjectIntersectionOf(obo:CL_0000806 ObjectSomeValuesFrom(obo:RO_0015015 obo:PR_000002065)))
+ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0002423 obo:CL_0000806)
++SubClassOf(obo:CL_0002423 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_10090))
+ 
+ # Class: obo:CL_0002424 (DN2b thymocyte)
+ 
+@@ -18588,9 +18590,11 @@ AnnotationAssertion(terms:contributor obo:CL_0002424 <https://orcid.org/0000-000
+ AnnotationAssertion(oboInOwl:creation_date obo:CL_0002424 "2010-10-21T10:12:08Z"^^xsd:dateTime)
+ AnnotationAssertion(rdfs:comment obo:CL_0002424 "Observed in mice. There is growing evidence that molecular markers characterizing double negative thymocytes are different across species, especially in mouse versus human thymus. If in doubt, please consider using CL:0002489 'double negative thymocyte'.")
+ AnnotationAssertion(rdfs:label obo:CL_0002424 "DN2b thymocyte")
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_0002424 "https://github.com/obophenotype/cell-ontology/issues/3500"^^xsd:anyURI)
+ EquivalentClasses(obo:CL_0002424 ObjectIntersectionOf(obo:CL_0000806 ObjectSomeValuesFrom(obo:RO_0015016 obo:PR_000002065)))
+ SubClassOf(Annotation(oboInOwl:is_inferred "true") obo:CL_0002424 obo:CL_0000806)
+ SubClassOf(obo:CL_0002424 ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0002423))
++SubClassOf(obo:CL_0002424 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_10090))
+ 
+ # Class: obo:CL_0002425 (early T lineage precursor)
+ 

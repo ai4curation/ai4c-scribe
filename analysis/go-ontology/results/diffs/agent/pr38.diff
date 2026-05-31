@@ -1,0 +1,55 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 05f772421..ae96d5d1f 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -85576,12 +85576,15 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0008785
+-name: alkyl hydroperoxide reductase activity
++name: obsolete alkyl hydroperoxide reductase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: octane hydroperoxide + NADH + H+ = H2O + NAD+ + 1-octanol." [GOC:curators]
+-is_a: GO:0016668 ! oxidoreductase activity, acting on a sulfur group of donors, NAD(P) as acceptor
++def: "OBSOLETE. Catalysis of the reaction: octane hydroperoxide + NADH + H+ = H2O + NAD+ + 1-octanol." [GOC:curators]
++comment: The reason for obsoletion is that this term describes an over-specific substrate-specific reaction that is more specific than the specificity of any known gene product.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28261" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28340" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31961" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0102039
+ 
+ [Term]
+ id: GO:0008786
+@@ -92759,7 +92762,7 @@ id: GO:0009321
+ name: alkyl hydroperoxide reductase complex
+ namespace: cellular_component
+ def: "An enzyme complex, usually a homodimer, which directly reduces cellular levels of organic hydroperoxides." [GOC:jl, PMID:2649484]
+-comment: See also the molecular function term 'alkyl hydroperoxide reductase activity ; GO:0008785'.
++comment: See also the molecular function term 'NADH-dependent peroxiredoxin activity ; GO:0102039'.
+ is_a: GO:0032991 ! protein-containing complex
+ relationship: part_of GO:0005737 ! cytoplasm
+ 
+@@ -385451,7 +385454,6 @@ id: GO:0070937
+ name: CRD-mediated mRNA stability complex
+ namespace: cellular_component
+ def: "A protein complex that binds to, and promotes stabilization of, mRNA molecules containing the coding region instability determinant (CRD). In human, it may consist of IGF2BP1, HNRNPU, SYNCRIP/HNRNPQ, YBX1, and DHX9." [GOC:mah, PMID:19029303]
+-comment: See also the molecular function term 'alkyl hydroperoxide reductase activity ; GO:0008785'.
+ synonym: "coding-region determinant of instability-mediated mRNA stability complex" EXACT []
+ synonym: "coding-region instability determinant -mediated mRNA stability complex" EXACT []
+ is_a: GO:0140535 ! intracellular protein-containing complex
+@@ -439740,12 +439742,14 @@ id: GO:0102039
+ name: NADH-dependent peroxiredoxin activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: a hydroperoxide + H+ + NADH = an alcohol + H2O + NAD+." [GOC:pz, PMID:12517450, RHEA:62628]
++synonym: "alkyl hydroperoxide reductase activity" EXACT []
+ synonym: "alkylhydroperoxide reductase activity" EXACT []
+ xref: EC:1.11.1.26 {source="skos:exactMatch"}
+ xref: MetaCyc:R4-RXN
+ xref: RHEA:62628 {source="skos:exactMatch"}
+ is_a: GO:0051920 ! peroxiredoxin activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31961" xsd:anyURI
+ 
+ [Term]
+ id: GO:0102040

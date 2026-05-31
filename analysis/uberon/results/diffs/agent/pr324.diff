@@ -1,0 +1,27 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index e32c8f848..59d0d714e 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225647,6 +225647,22 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++format-version: 1.2
++
++[Term]
++id: UBERON:9900001
++name: uterine fundus
++def: "The superior, dome-shaped portion of the uterus." [PMID:41204538, PMID:40653088]
++synonym: "fundus uteri" EXACT [PMID:39112955]
++is_a: UBERON:0000064 ! organ part
++intersection_of: UBERON:0000064 ! organ part
++intersection_of: part_of UBERON:0000995 ! uterus
++relationship: part_of UBERON:0000995 ! uterus
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Contributor
++created_by: dragon-ai-agent
++property_value: dcterms-date "2026-05-15T00:00:00Z" xsd:dateTime
++term_tracker_item: https://github.com/obophenotype/uberon/issues/3637
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

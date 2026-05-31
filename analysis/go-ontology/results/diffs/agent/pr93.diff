@@ -1,0 +1,25 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 7d228a566..4457f3231 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617470,6 +617470,20 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-04-29T15:27:39Z
+ 
++[Term]
++id: GO:7770070
++name: p24 cargo receptor complex
++namespace: cellular_component
++def: "A cargo receptor complex composed of p24 family proteins that cycles between endoplasmic reticulum and Golgi compartments and acts at endoplasmic reticulum exit sites to select cargo, including GPI-anchored proteins, for packaging into COPII-coated vesicles." [PMID:32456004, PMID:34647572, PMID:27569046]
++synonym: "p24 complex" EXACT []
++synonym: "p24 protein complex" EXACT []
++synonym: "p24 cargo receptor protein complex" EXACT []
++is_a: GO:0062137 ! cargo receptor complex
++relationship: capable_of_part_of GO:0006888 ! endoplasmic reticulum to Golgi vesicle-mediated transport
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31295" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T02:37:56Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

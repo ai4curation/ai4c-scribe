@@ -1,0 +1,64 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 027d104ca..1492dcac0 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -408818,7 +408818,7 @@ xref: ICD10CM:E23.6 {source="Orphanet:238305"}
+ xref: MEDGEN:1683829 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: Orphanet:238305 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5190834 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1683829"}
+-is_a: MONDO:0019835 {source="Orphanet:238305"} ! primary hypophysitis
++is_a: MONDO:7770747 {source="Orphanet:238305"} ! lymphocytic hypophysitis
+ property_value: curated_content_resource "https://www.malacards.org/card/infundibulo_neurohypophysitis" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+ [Term]
+@@ -484707,8 +484707,6 @@ subset: ncit {source="NCIT:C132055"}
+ subset: ordo_group_of_disorders {source="Orphanet:95506"}
+ subset: orphanet {source="Orphanet:95506"}
+ subset: rare
+-synonym: "autoimmune hypophysitis" EXACT [NCIT:C132055, Orphanet:95506]
+-synonym: "lymphocytic hypophysitis" EXACT [NCIT:C132055]
+ xref: GARD:0019281 {source="MONDO:GARD"}
+ xref: ICD10CM:E23.6 {source="Orphanet:95506"}
+ xref: ICD9:253.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+@@ -484782,7 +484780,7 @@ xref: ICD10CM:E23.6 {source="Orphanet:95512"}
+ xref: MEDGEN:1677203 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: Orphanet:95512 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5190880 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1677203"}
+-is_a: MONDO:0019835 {source="Orphanet:95512"} ! primary hypophysitis
++is_a: MONDO:7770747 {source="Orphanet:95512"} ! lymphocytic hypophysitis
+ intersection_of: MONDO:0000001 ! disease
+ intersection_of: disease_has_inflammation_site UBERON:0002196 ! adenohypophysis
+ property_value: curated_content_resource "https://www.malacards.org/card/adenohypophysitis" xsd:anyURI {source="MONDO:MalaCards"}
+@@ -484802,7 +484800,7 @@ xref: ICD10CM:E23.6 {source="Orphanet:95513"}
+ xref: MEDGEN:1674527 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: Orphanet:95513 {source="MONDO:equivalentTo"}
+ xref: UMLS:C5190786 {source="MEDGEN:1674527", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-is_a: MONDO:0019835 {source="Orphanet:95513"} ! primary hypophysitis
++is_a: MONDO:7770747 {source="Orphanet:95513"} ! lymphocytic hypophysitis
+ property_value: curated_content_resource "https://www.malacards.org/card/panhypophysitis" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+ [Term]
+@@ -524753,7 +524751,7 @@ synonym: "idiopathic granulomatous hypophysitis" RELATED [GARD:0006547]
+ xref: icd11.foundation:1410645474 {source="MONDO:equivalentTo"}
+ xref: MEDGEN:878912 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: UMLS:C4046048 {source="MONDO:equivalentTo", source="MEDGEN:878912", source="MONDO:MEDGEN"}
+-is_a: MONDO:0021156 {source="doi:10.1002/ccr3.1007", source="icd11.foundation:1410645474"} ! hypophysitis
++is_a: MONDO:0019835 {source="doi:10.1002/ccr3.1007", source="icd11.foundation:1410645474"} ! primary hypophysitis
+ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6547/granulomatous-hypophysitis" xsd:anyURI {source="GARD:0006547"}
+ 
+ [Term]
+@@ -664326,6 +664324,14 @@ is_a: MONDO:1011302 {source="https://orcid.org/0000-0002-5002-8648"} ! branchial
+ relationship: in_taxon NCBITaxon:9986 {source="OMIA:000618-9986"} ! Oryctolagus cuniculus
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10159" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770747
++name: lymphocytic hypophysitis
++def: "A primary hypophysitis characterized by lymphocytic infiltration of the pituitary gland. Lymphocytic hypophysitis is the most common histopathologic subtype of primary hypophysitis and is classified based on the anatomical region affected into lymphocytic adenohypophysitis (anterior pituitary), lymphocytic infundibuloneurohypophysitis (posterior pituitary and stalk), and lymphocytic panhypophysitis (both anterior and posterior regions)." [https://www.ncbi.nlm.nih.gov/books/NBK562255/]
++synonym: "autoimmune hypophysitis" EXACT [NCIT:C132055, Orphanet:95506]
++is_a: MONDO:0019835 ! primary hypophysitis
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9859" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

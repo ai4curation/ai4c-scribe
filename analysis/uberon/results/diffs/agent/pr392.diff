@@ -1,0 +1,26 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 45a291322..5bb46997e 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -131431,8 +131431,8 @@ relationship: develops_from UBERON:0003324 ! mesenchyme of lower jaw
+ 
+ [Term]
+ id: UBERON:0009548
+-name: hepatic sinusoid of left of lobe of liver
+-def: "A hepatic sinusoid that is part of a left lobe of liver." [OBOL:automatic]
++name: hepatic sinusoid of left lobe of liver
++def: "A hepatic sinusoid that is part of the left lobe of liver." [OBOL:automatic]
+ subset: emapa_ehdaa2
+ synonym: "left lobe hepatic sinusoids" EXACT [VHOG:0000709]
+ xref: EHDAA2:0001001
+@@ -131444,8 +131444,8 @@ relationship: develops_in UBERON:0001115 ! left lobe of liver
+ 
+ [Term]
+ id: UBERON:0009549
+-name: hepatic sinusoid of right of lobe of liver
+-def: "A hepatic sinusoid that is part of a right lobe of liver." [OBOL:automatic]
++name: hepatic sinusoid of right lobe of liver
++def: "A hepatic sinusoid that is part of the right lobe of liver." [OBOL:automatic]
+ subset: emapa_ehdaa2
+ synonym: "right lobe hepatic sinusoids" EXACT [VHOG:0000710]
+ xref: EHDAA2:0001009

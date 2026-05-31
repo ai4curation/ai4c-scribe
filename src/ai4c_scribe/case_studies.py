@@ -72,7 +72,7 @@ def load_case_studies_dir(directory: Path) -> list[CaseStudy]:
     >>> cases = load_case_studies_dir(Path("tests/fixtures/cases"))
     >>> len(cases) >= 1
     True
-    >>> cases = load_case_studies_dir(Path("examples/cases/go-ontology"))
+    >>> cases = load_case_studies_dir(Path("analysis/go-ontology/cases"))
     >>> len(cases) >= 1
     True
     """

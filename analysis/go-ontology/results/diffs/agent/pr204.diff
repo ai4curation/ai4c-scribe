@@ -1,0 +1,131 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 1ae42d961..c18720799 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -92094,19 +92094,13 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0009255
+-name: Entner-Doudoroff pathway through 6-phosphogluconate
++name: obsolete Entner-Doudoroff pathway through 6-phosphogluconate
+ namespace: biological_process
+-def: "A pathway that converts a carbohydrate to pyruvate and glyceraldehyde-3 phosphate by producing 6-phosphogluconate and then dehydrating it." [GOC:jl, MetaCyc:PWY-8004, PMID:12921356, PMID:12981024]
+-xref: MetaCyc:PWY-8004
+-is_a: GO:0005975 ! carbohydrate metabolic process
+-is_a: GO:0044281 ! small molecule metabolic process
+-is_a: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: ends_with GO:0008675 ! 2-dehydro-3-deoxy-phosphogluconate aldolase activity
+-intersection_of: has_intermediate CHEBI:58759 ! 6-phosphonatooxy-D-gluconate
+-intersection_of: has_part GO:0004456 ! phosphogluconate dehydratase activity
+-intersection_of: has_primary_output CHEBI:15361 ! pyruvate
+-intersection_of: has_primary_output CHEBI:58027 ! glyceraldehyde 3-phosphate(2-)
++def: "OBSOLETE. A pathway that converts a carbohydrate to pyruvate and glyceraldehyde-3 phosphate by producing 6-phosphogluconate and then dehydrating it." [GOC:jl, MetaCyc:PWY-8004, PMID:12921356, PMID:12981024]
++comment: This term was obsoleted as the specific variants of the Entner-Doudoroff pathway are better represented as separate GO-CAMs rather than as distinct terms in the ontology.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ 
+ [Term]
+ id: GO:0009256
+@@ -369507,7 +369501,10 @@ id: GO:0061678
+ name: Entner-Doudoroff pathway
+ namespace: biological_process
+ def: "A cellular carbohydrate catabolic process that converts a carbohydrate to pyruvate and either glyceraldehyde or glyceraldehyde-3 phosphate by dehydration and aldol cleavage via a gluconate or 6-phosphogluconate intermediate." [GOC:dph, PMID:12921536]
+-xref: MetaCyc:Entner-Doudoroff-Pathways
++xref: MetaCyc:PWY-8004
++xref: MetaCyc:NPGLUCAT-PWY
++xref: MetaCyc:PWY-2221
++xref: MetaCyc:ENTNER-DOUDOROFF-PWY
+ is_a: GO:0016052 ! carbohydrate catabolic process
+ relationship: has_primary_output CHEBI:15361 ! pyruvate
+ created_by: dph
+@@ -369515,47 +369512,33 @@ creation_date: 2015-01-16T15:28:25Z
+ 
+ [Term]
+ id: GO:0061679
+-name: Entner-Doudoroff pathway through gluconate
+-namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate." [GOC:dph, PMID:12921536]
+-synonym: "gluconate pathway" RELATED []
+-is_a: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: has_intermediate CHEBI:18391 ! D-gluconate
+-intersection_of: has_part GO:0047929 ! gluconate dehydratase activity
+-intersection_of: has_part GO:0047935 ! glucose 1-dehydrogenase (NADP+) activity
+-intersection_of: has_primary_output CHEBI:15361 ! pyruvate
+-created_by: dph
+-creation_date: 2015-01-16T15:41:22Z
++name: obsolete Entner-Doudoroff pathway through gluconate
++namespace: biological_process
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate." [GOC:dph, PMID:12921536]
++comment: This term was obsoleted as the specific variants of the Entner-Doudoroff pathway are better represented as separate GO-CAMs rather than as distinct terms in the ontology.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ 
+ [Term]
+ id: GO:0061680
+-name: Entner-Doudoroff pathway through gluconate to D-glyceraldehyde
++name: obsolete Entner-Doudoroff pathway through gluconate to D-glyceraldehyde
+ namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde." [GOC:dph, MetaCyc:NPGLUCAT-PWY, PMID:12921536]
+-xref: MetaCyc:NPGLUCAT-PWY
+-is_a: GO:0019595 ! non-phosphorylated glucose catabolic process
+-is_a: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: ends_with GO:0061677 ! 2-dehydro-3-deoxy-D-gluconate aldolase activity
+-intersection_of: has_primary_output CHEBI:17378 ! D-glyceraldehyde
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28392" xsd:anyURI
+-created_by: dph
+-creation_date: 2015-01-22T08:51:31Z
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde." [GOC:dph, MetaCyc:NPGLUCAT-PWY, PMID:12921536]
++comment: This term was obsoleted as the specific variants of the Entner-Doudoroff pathway are better represented as separate GO-CAMs rather than as distinct terms in the ontology.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ 
+ [Term]
+ id: GO:0061681
+-name: Entner-Doudoroff pathway through gluconate to D-glyceraldehyde-3-phosphate
++name: obsolete Entner-Doudoroff pathway through gluconate to D-glyceraldehyde-3-phosphate
+ namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde-3-phosphate." [GOC:dph, PMID:12921536]
+-xref: MetaCyc:PWY-2221
+-is_a: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: ends_with GO:0008675 ! 2-dehydro-3-deoxy-phosphogluconate aldolase activity
+-intersection_of: has_part GO:0008673 ! 2-dehydro-3-deoxygluconokinase activity
+-intersection_of: has_primary_output CHEBI:58027 ! glyceraldehyde 3-phosphate(2-)
+-created_by: dph
+-creation_date: 2015-01-22T08:55:22Z
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde-3-phosphate." [GOC:dph, PMID:12921536]
++comment: This term was obsoleted as the specific variants of the Entner-Doudoroff pathway are better represented as separate GO-CAMs rather than as distinct terms in the ontology.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ 
+ [Term]
+ id: GO:0061682
+@@ -369646,15 +369629,13 @@ creation_date: 2015-03-09T09:16:23Z
+ 
+ [Term]
+ id: GO:0061688
+-name: glycolytic process via Entner-Doudoroff Pathway
++name: obsolete glycolytic process via Entner-Doudoroff Pathway
+ namespace: biological_process
+-def: "A glycolytic process in which the glucose is catabolized to pyruvate by first entering the Entner-Doudoroff pathway to yield pyruvate and glyceraldehyde-3-phosphate. The glyceraldehyde-3-phosphate is subsequently converted to pyruvate by the core glycolytic enzymes." [GOC:dph, PMID:9657988]
+-synonym: "gluconate pathway" RELATED []
+-is_a: GO:0006096 ! glycolytic process
+-intersection_of: GO:0006096 ! glycolytic process
+-intersection_of: starts_with GO:0061678 ! Entner-Doudoroff pathway
+-created_by: dph
+-creation_date: 2015-03-12T14:39:00Z
++def: "OBSOLETE. A glycolytic process in which the glucose is catabolized to pyruvate by first entering the Entner-Doudoroff pathway to yield pyruvate and glyceraldehyde-3-phosphate. The glyceraldehyde-3-phosphate is subsequently converted to pyruvate by the core glycolytic enzymes." [GOC:dph, PMID:9657988]
++comment: This term was obsoleted. Annotations to this term should be updated to the parent term 'glycolytic process'.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0006096
+ 
+ [Term]
+ id: GO:0061689

@@ -1,0 +1,50 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 989f151e1..57b204926 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -38857,7 +38857,7 @@ xref: SCTID:420086000
+ xref: UMLS:C0221924 {source="ncithesaurus:Stratum_Spinosum"}
+ xref: Wikipedia:Stratum_spinosum
+ intersection_of: UBERON:0013754 ! integumentary system layer
+-intersection_of: composed_primarily_of CL:0000649 ! prickle cell
++intersection_of: composed_primarily_of CL:0000649 ! spinous cell of epidermis
+ relationship: adjacent_to UBERON:0002025 ! stratum basale of epidermis
+ relationship: adjacent_to UBERON:0002069 ! stratum granulosum of epidermis
+ relationship: has_part CL:0000453 ! Langerhans cell
+@@ -65391,7 +65391,7 @@ subset: uberon_slim
+ synonym: "nematode cuticle" RELATED []
+ xref: WBbt:0005755
+ is_a: UBERON:0001002 ! cuticle
+-relationship: has_part GO:0098643 ! banded collagen fibril
++relationship: has_part GO:0098643 ! fibrillar collagen
+ relationship: has_quality PATO:0002462 ! collagenous
+ relationship: in_taxon NCBITaxon:6231 ! Nematoda
+ property_value: taxon_notes "currently restricted to nematodes, but this may be too strict" xsd:string
+@@ -148704,7 +148704,7 @@ xref: NCIT:C32339
+ xref: NIF_Subcellular:sao7547390221
+ is_a: UBERON:0000476 {source="ZFA"} ! acellular anatomical structure
+ relationship: composed_primarily_of GO:0005581 ! collagen trimer
+-relationship: composed_primarily_of GO:0098643 ! banded collagen fibril
++relationship: composed_primarily_of GO:0098643 ! fibrillar collagen
+ relationship: seeAlso UBERON:0007377 ! stratum compactum of dermis
+ property_value: external_ontology_notes "the FMA class specifically refers to ureter" xsd:string {external_ontology="FMA"}
+ 
+@@ -225363,6 +225363,18 @@ intersection_of: part_of UBERON:0001091 ! calcareous tooth
+ relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
+ property_value: dcterms-date "2025-08-05T09:28:57Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8600149
++name: occlusal surface of tooth
++def: "A tooth surface structure that forms the biting or grinding surface of a molar or premolar." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++synonym: "occlusal surface" EXACT [https://dentaleducationhub.com/surfaces-of-the-teeth/]
++is_a: UBERON:8600148 ! tooth surface structure
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: dc-contributor https://orcid.org/0000-0001-9625-1899
++property_value: dcterms-date "2026-05-14T01:08:54Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3602" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Term]
+ id: UBERON:8700000
+ name: aorta-gonad-mesonephros

@@ -1,0 +1,23 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..7920413a9 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665300,6 +665300,18 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: SYCE1-related gametogenic failure
++def: "A reproductive system disorder caused by a variation in the SYCE1 gene, and characterized by gametogenic failure that can present as non-obstructive azoospermia due to maturation arrest or meiotic failure in 46,XY individuals and primary ovarian insufficiency in 46,XX individuals." [https://www.clinicalgenome.org/affiliation/40073/, PMID:25062452, PMID:25899990, PMID:34718620, PMID:36177363]
++comment: Requested by ClinGen's Male Infertility GCEP. 46,XY individuals can present with non-obstructive azoospermia due to maturation arrest or meiotic failure. 46,XX individuals can present with primary ovarian insufficiency.
++synonym: "SYCE1-related gametogenic failure" EXACT [https://www.clinicalgenome.org/affiliation/40073/] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
++is_a: MONDO:0005039 {source="PMID:34718620", source="https://www.clinicalgenome.org/affiliation/40073/"} ! reproductive system disorder
++intersection_of: MONDO:0005039 ! reproductive system disorder
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 ! SYCE1
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/28852 {source="PMID:25062452", source="PMID:25899990", source="PMID:34718620", source="https://www.clinicalgenome.org/affiliation/40073/"} ! SYCE1
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9864" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

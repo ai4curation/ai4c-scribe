@@ -1,0 +1,80 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb40..655cff2e9c 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -312900,8 +312900,6 @@ subset: gard_rare {source="GARD:0022612", source="MONDO:GARD"}
+ subset: nord_rare {source="MONDO:NORD"}
+ subset: omim {source="OMIM:609439"}
+ subset: rare
+-synonym: "autosomal recessive deafness 48" NARROW []
+-synonym: "autosomal recessive nonsyndromic deafness 48" NARROW []
+ synonym: "autosomal recessive nonsyndromic deafness caused by mutation in CIB2" NARROW [MONDO:design_pattern]
+ synonym: "autosomal recessive nonsyndromic deafness type 48" NARROW [MONDO:RULE_2]
+ synonym: "autosomal recessive nonsyndromic hearing loss 48" EXACT [] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+@@ -312909,13 +312907,20 @@ synonym: "CIB2 autosomal recessive nonsyndromic deafness" NARROW [MONDO:design_p
+ synonym: "deafness, autosomal recessive 48" NARROW [MONDO:Lexical]
+ synonym: "deafness, autosomal recessive type 48" NARROW [MONDO:RULE_2]
+ synonym: "DFNB48" NARROW ABBREVIATION [MONDO:Lexical]
++synonym: "USH1J" EXACT ABBREVIATION [OMIM:609439]
++synonym: "Usher syndrome type 1J" EXACT [OMIM:609439]
+ xref: DOID:0110505 {source="MONDO:equivalentTo"}
++xref: DOID:0110836 {source="MONDO:equivalentObsolete"}
++xref: GARD:0015863 {source="MONDO:GARD"}
+ xref: GARD:0022612 {source="MONDO:GARD"}
+ xref: ICD10CM:H90.3 {source="DOID:0110505"}
+-xref: MEDGEN:332149 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
++xref: MEDGEN:332149 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MONDO:preferredExternal"}
++xref: MEDGEN:766858 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: MESH:C563720 {source="MONDO:equivalentTo"}
+ xref: OMIM:609439 {source="DOID:0110505", source="MONDO:equivalentTo"}
+-xref: UMLS:C1836199 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:332149"}
++xref: OMIM:614869 {source="MONDO:equivalentObsolete", source="DOID:0110836"}
++xref: UMLS:C1836199 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:332149", source="MONDO:preferredExternal"}
++xref: UMLS:C3553944 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:766858"}
+ is_a: MONDO:0019588 {source="DC-OMIM:609439", source="DOID:0110505", source="MONDO:Redundant", source="OMIM:609439"} ! hearing loss, autosomal recessive
+ intersection_of: MONDO:0019588 ! hearing loss, autosomal recessive
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/24579 ! CIB2
+@@ -312923,6 +312928,7 @@ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/
+ property_value: curated_content_resource "https://www.malacards.org/card/deafness_autosomal_recessive_48_2" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/551" xsd:anyURI
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0012274
+@@ -358932,31 +358938,11 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0013935
+-name: Usher syndrome type 1J
+-def: "Any Usher syndrome in which the cause of the disease is a mutation in the CIB2 gene." [MONDO:patterns/disease_series_by_gene]
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical diseaseAfter obsoletion, this term will not have a replacement ID, but one could consider the following term: autosomal recessive nonsyndromic hearing loss 48-MONDO:0012273
+-subset: gard_rare {source="GARD:0015863", source="MONDO:GARD"}
+-subset: nord_rare {source="MONDO:NORD"}
+-subset: obsoletion_candidate
+-subset: rare
+-synonym: "CIB2 Usher syndrome" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
+-synonym: "USH1J" EXACT ABBREVIATION [MONDO:Lexical]
+-synonym: "Usher syndrome caused by mutation in CIB2" EXACT [MONDO:design_pattern]
+-synonym: "Usher syndrome type Ij" EXACT []
+-synonym: "Usher syndrome, type 1J" RELATED []
+-synonym: "USHER syndrome, type Ij" RELATED [MONDO:Lexical]
+-xref: DOID:0110836 {source="MONDO:equivalentObsolete"}
+-xref: GARD:0015863 {source="MONDO:GARD"}
+-xref: MEDGEN:766858 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+-xref: OMIM:614869 {source="MONDO:equivalentObsolete", source="DOID:0110836"}
+-xref: UMLS:C3553944 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:766858"}
+-is_a: MONDO:0010168 {source="DOID:0110836", source="Orphanet:231169"} ! Usher syndrome type 1
+-is_a: MONDO:0019501 {source="DOID:0110836/inferred", source="MONDO:Redundant", source="OMIM:614869"} ! Usher syndrome
+-relationship: has_characteristic HP:0000007 {source="MONDO:HPOA", source="OMIM:614869"} ! Autosomal recessive inheritance
+-property_value: curated_content_resource "https://www.malacards.org/card/usher_syndrome_type_ij" xsd:anyURI {source="MONDO:MalaCards"}
+-property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9778" xsd:anyURI
++name: obsolete Usher syndrome type 1J
++property_value: IAO:0000231 MONDO:TermsMerged
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9795" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0012273
+ 
+ [Term]
+ id: MONDO:0013936

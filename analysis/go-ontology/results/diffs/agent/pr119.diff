@@ -1,0 +1,22 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 55fadafbd..cf5bf65f2 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -465236,7 +465236,7 @@ creation_date: 2025-10-20T15:19:56Z
+ id: GO:0140309
+ name: unfolded protein holdase activity
+ namespace: molecular_function
+-def: "A protein carrier activity that binds to a protein in an unfolded state and escorts it to an acceptor molecule or to a specific location. The unfolded protein carrier prevents aggregation of the target protein while it's being delivers to its final destination." [PMID:39488384]
++def: "A protein carrier activity that directly binds to a protein in an unfolded state and delivers it either to an acceptor molecule or to a specific location. The unfolded protein carrier prevents aggregation of the target protein while it is being delivered to its final destination." [PMID:39488384]
+ comment: Note that an holdase binds an unfolded protein and keeps it unfolded, unlike a protein folding chaperone, which binds an unfolded protein to fold it.
+ synonym: "holdase" EXACT []
+ synonym: "holdase-carrier chaperone" EXACT []
+@@ -468391,7 +468391,7 @@ creation_date: 2021-02-09T19:43:51Z
+ id: GO:0140597
+ name: protein carrier activity
+ namespace: molecular_function
+-def: "Binding to and carrying a protein to an acceptor molecule or to a specific location by moving along with the target protein." [PMID:7628437]
++def: "Directly binding to a protein and delivering it either to an acceptor molecule or to a specific location." [PMID:7628437]
+ synonym: "protein carrier chaperone" EXACT []
+ synonym: "protein chaperone" BROAD []
+ intersection_of: GO:0140104 ! molecular carrier activity

@@ -1,0 +1,58 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 945615c52..457a8ed5d 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3301,6 +3301,10 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
++Declaration(Class(obo:CL_9900002))
++Declaration(Class(obo:CL_9900003))
++Declaration(Class(obo:CL_9900004))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -29180,6 +29184,42 @@ AnnotationAssertion(oboInOwl:hasDbXref obo:CL_1001607 "CALOHA:TS-0056")
+ AnnotationAssertion(rdfs:label obo:CL_1001607 "articular chondrocyte")
+ EquivalentClasses(obo:CL_1001607 ObjectIntersectionOf(obo:CL_0000138 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0010996)))
+ 
++# Class: obo:CL_9900001 (superficial zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:41226342") Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") obo:IAO_0000115 obo:CL_9900001 "An articular chondrocyte located in the most superficial layer of articular cartilage, characterized by flattened morphology, tangential alignment parallel to the joint surface, and high expression of lubricin (PRG4). These cells experience the highest shear stress and contain progenitor-like populations marked by CD44 and superficial zone protein.")
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-12T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_9900001 "https://github.com/obophenotype/cell-ontology/issues/3533")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "superficial zone articular chondrocyte")
++SubClassOf(obo:CL_9900001 obo:CL_1001607)
++
++# Class: obo:CL_9900002 (middle zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:41226342") Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") obo:IAO_0000115 obo:CL_9900002 "An articular chondrocyte located in the middle (transitional) zone of articular cartilage, characterized by round morphology, random spatial organization, and production of large amounts of proteoglycans and collagen. These cells represent the largest volume of articular cartilage and function primarily in load distribution.")
++AnnotationAssertion(terms:contributor obo:CL_9900002 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:date obo:CL_9900002 "2026-05-12T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_9900002 "https://github.com/obophenotype/cell-ontology/issues/3533")
++AnnotationAssertion(rdfs:label obo:CL_9900002 "middle zone articular chondrocyte")
++SubClassOf(obo:CL_9900002 obo:CL_1001607)
++
++# Class: obo:CL_9900003 (deep zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:41226342") Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") obo:IAO_0000115 obo:CL_9900003 "An articular chondrocyte located in the deep (radial) zone of articular cartilage, characterized by columnar arrangement perpendicular to the joint surface and high expression of collagen type X and MMP-13. These cells are in the highest proteoglycan concentration region and anchor to the calcified cartilage.")
++AnnotationAssertion(terms:contributor obo:CL_9900003 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:date obo:CL_9900003 "2026-05-12T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_9900003 "https://github.com/obophenotype/cell-ontology/issues/3533")
++AnnotationAssertion(rdfs:label obo:CL_9900003 "deep zone articular chondrocyte")
++SubClassOf(obo:CL_9900003 obo:CL_1001607)
++
++# Class: obo:CL_9900004 (calcified zone articular chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:41226342") Annotation(oboInOwl:hasDbXref "PMID:18455690") Annotation(oboInOwl:hasDbXref "PMID:23124445") obo:IAO_0000115 obo:CL_9900004 "An articular chondrocyte located in the calcified cartilage zone at the interface between articular cartilage and subchondral bone, characterized by a hypertrophic-like phenotype, surrounded by calcified extracellular matrix, and expression of markers including collagen type X. This zone serves as a transitional interface providing mechanical integration between cartilage and bone.")
++AnnotationAssertion(terms:contributor obo:CL_9900004 <https://orcid.org/0000-0003-0098-4399>)
++AnnotationAssertion(terms:date obo:CL_9900004 "2026-05-12T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:term_tracker_item obo:CL_9900004 "https://github.com/obophenotype/cell-ontology/issues/3533")
++AnnotationAssertion(rdfs:label obo:CL_9900004 "calcified zone articular chondrocyte")
++SubClassOf(obo:CL_9900004 obo:CL_1001607)
++
+ # Class: obo:CL_1001608 (foreskin fibroblast)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "NPX:PDR") obo:IAO_0000115 obo:CL_1001608 "Fibroblast from foreskin.")

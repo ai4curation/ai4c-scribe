@@ -1,0 +1,41 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 35df222a1..336a9ade7 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -384002,26 +384002,31 @@ creation_date: 2009-07-13T04:20:17Z
+ id: GO:0070818
+ name: protoporphyrinogen oxidase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: protoporphyrinogen IX + acceptor = protoporphyrin IX + reduced acceptor." [GOC:mah, PMID:19583219]
++def: "Catalysis of the reaction: protoporphyrinogen IX + 3 acceptor = protoporphyrin IX + 3 reduced acceptor." [RHEA:62000, PMID:19583219]
+ synonym: "protoporphyrinogen IX oxidase activity" RELATED [EC:1.3.3.4]
+ synonym: "protoporphyrinogen-IX oxidase activity" RELATED [EC:1.3.3.4]
+ synonym: "protoporphyrinogenase activity" RELATED [EC:1.3.3.4]
++xref: RHEA:62000 {source="skos:exactMatch"}
+ is_a: GO:0016627 ! oxidoreductase activity, acting on the CH-CH group of donors
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28776" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31965" xsd:anyURI
+ created_by: mah
+ creation_date: 2009-07-20T02:41:12Z
+ 
+ [Term]
+ id: GO:0070819
+-name: menaquinone-dependent protoporphyrinogen oxidase activity
++name: quinone-dependent protoporphyrinogen oxidase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: protoporphyrinogen IX + menaquinone = protoporphyrin IX + reduced menaquinone." [GOC:mah, PMID:19583219]
+-synonym: "protoporphyrinogen-IX:menaquinone oxidoreductase activity" EXACT [GOC:mah]
+-xref: EC:1.3.3.4 {source="skos:broadMatch"}
++def: "Catalysis of the reaction: protoporphyrinogen IX + 3 a quinone = protoporphyrin IX + 3 a quinol." [RHEA:65032, PMID:19583219]
++synonym: "protoporphyrinogen-IX:menaquinone oxidoreductase activity" NARROW [GOC:mah]
++synonym: "menaquinone-dependent protoporphyrinogen oxidase activity" NARROW []
++xref: EC:1.3.5.3 {source="skos:exactMatch"}
++xref: RHEA:65032 {source="skos:exactMatch"}
+ is_a: GO:0016635 ! oxidoreductase activity, acting on the CH-CH group of donors, quinone or related compound as acceptor
+ is_a: GO:0070818 ! protoporphyrinogen oxidase activity
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24056" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28520" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31965" xsd:anyURI
+ created_by: mah
+ creation_date: 2009-07-20T02:46:06Z
+ 

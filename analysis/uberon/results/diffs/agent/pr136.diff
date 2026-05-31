@@ -1,0 +1,28 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index d41f07f57..1404836ae 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -30599,6 +30599,7 @@ relationship: present_in_taxon NCBITaxon:7955 {source="DOI:10.1177/0192623311409
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/e/eb/Gray869.png" xsd:anyURI
+ property_value: editor_note "TODO - check child terms, isa vs partof. See also MA:0001284 ! tunica vasculosa plexus" xsd:string
+ property_value: has_relational_adjective "uveal" xsd:string
++term_tracker_item UBERON:0001768 3354
+ 
+ [Term]
+ id: UBERON:0001769
+@@ -154074,6 +154075,7 @@ relationship: part_of UBERON:0005281 {source="EHDAA2"} ! ventricular system of c
+ relationship: part_of UBERON:0006238 ! future brain
+ property_value: editor_note "consider adding all secondary vesicles (e.g. diencephalic; my/metencephalic. See http://www.dartmouth.edu/~rswenson/NeuroSci/chapter_4.html)." xsd:string
+ property_value: external_ontology_notes "Note that some sources may treat the term vesicle as the progenitor of the whole brain region; for example 'The retina develops directly from the neural tube as an outpouching from the diencephalic vesicle'" xsd:string
++term_tracker_item UBERON:0013150 3354
+ 
+ [Term]
+ id: UBERON:0013151
+@@ -202000,6 +202002,7 @@ xref: ZFA:0005499
+ is_a: UBERON:0006800 ! anatomical line
+ relationship: part_of UBERON:0007380 ! dermal scale
+ property_value: provenance_notes "This class was sourced from an external ontology (teleost_anatomy). Its definitions, naming conventions and relationships may need to be checked for compatibility with uberon" xsd:string {source="http://purl.obolibrary.org/obo/tao.owl"}
++term_tracker_item UBERON:2002051 3354
+ 
+ [Term]
+ id: UBERON:2002052

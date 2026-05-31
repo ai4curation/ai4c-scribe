@@ -1,0 +1,28 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 819fd3415..54e764363 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -660295,6 +660295,23 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: GPR161-related medulloblastoma predisposition
++def: "A susceptibility or predisposition to medulloblastoma in which the cause of the disease is a germline mutation in the GPR161 gene. GPR161 mutations define a novel brain tumor predisposition syndrome characterized by medulloblastoma in infants, typically with onset in the first years of life. The mutations are exclusively associated with the sonic hedgehog medulloblastoma (MBSHH) subgroup." [https://clinicalgenome.org/affiliation/40157/, PMID:31609649]
++subset: predisposition
++synonym: "GPR161 tumor predisposition syndrome" EXACT [PMID:31609649]
++synonym: "medulloblastoma susceptibility, GPR161 form" EXACT [MONDO:design_pattern]
++synonym: "medulloblastoma susceptibility caused by GPR161" EXACT [MONDO:design_pattern]
++is_a: MONDO:0020573 {source="PMID:31609649"} ! inherited disease susceptibility
++intersection_of: MONDO:0020573 ! inherited disease susceptibility
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/23694 ! GPR161
++intersection_of: predisposes_towards MONDO:0007959 ! medulloblastoma
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/23694 {source="PMID:31609649"} ! GPR161
++relationship: predisposes_towards MONDO:0007959 {source="PMID:31609649"} ! medulloblastoma
++property_value: http://purl.org/dc/terms/creator https://clinicalgenome.org/affiliation/40157/
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9877" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

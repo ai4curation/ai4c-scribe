@@ -1,0 +1,44 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index d32bd1180..941a29d6e 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -156265,6 +156265,7 @@ is_a: UBERON:0013529 {source="NIFSTD"} ! Brodmann area
+ [Term]
+ id: UBERON:0013540
+ name: Brodmann (1909) area 9
++def: "A Brodmann area that is a cytoarchitecturally defined region of frontal cortex in primates, with a granular layer IV, and that contributes to the dorsolateral and medial prefrontal cortex." [Wikipedia:Brodmann_area_9]
+ synonym: "area 9 of Brodmann" EXACT [FMA:68606]
+ synonym: "area 9 of Brodmann (guenon)" RELATED [NeuroNames:1024]
+ synonym: "area 9 of Brodmann-1909" EXACT [BIRNLEX:1740]
+@@ -156283,7 +156284,9 @@ xref: neuronames:1024 {source="BIRNLEX:1740"}
+ xref: UMLS:C1272531 {source="BIRNLEX:1740"}
+ xref: Wikipedia:Brodmann_area_9
+ is_a: UBERON:0013529 {source="NIFSTD"} ! Brodmann area
++relationship: dc-contributor https://orcid.org/0000-0002-4964-5083
+ relationship: part_of UBERON:0009834 {source="https://orcid.org/0000-0003-3308-6245"} ! dorsolateral prefrontal cortex
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3448" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0013541
+@@ -180721,6 +180724,7 @@ relationship: part_of UBERON:0016530 {source="DHBA"} ! parietal cortex
+ [Term]
+ id: UBERON:0034891
+ name: insular cortex
++def: "A cortex of cerebral lobe that is part of the insula and is located deep within the lateral sulcus." [MESH:D000087623, Wikipedia:Insular_cortex]
+ synonym: "cortex of insula" EXACT [FMA:242223]
+ synonym: "gray matter of insula" RELATED [FMA:242223]
+ synonym: "ICx" RELATED OMO:0003000 [DHBA:10288]
+@@ -180732,9 +180736,13 @@ xref: DMBA:16058
+ xref: EMAPA:35432
+ xref: FMA:242223
+ xref: MA:0000909
++xref: MESH:D000087623
+ xref: SCTID:369221008
++xref: Wikipedia:Insular_cortex
+ is_a: UBERON:0016529 ! cortex of cerebral lobe
++relationship: dc-contributor https://orcid.org/0000-0002-4964-5083
+ relationship: part_of UBERON:0002022 ! insula
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3448" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0034892

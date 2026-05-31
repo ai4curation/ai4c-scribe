@@ -1,0 +1,24 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index e9503de8d..11c20b9d1 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -174270,13 +174270,13 @@ relationship: part_of UBERON:0002421 {source="ABA"} ! hippocampal formation
+ [Term]
+ id: UBERON:0022232
+ name: secondary visual cortex
++def: "A functional part of the visual cortex that integrates information from multiple visual modalities and contributes to higher-order visual functions, including color processing, object recognition, and spatial awareness." [ISBN:978-0-323-10027-4, WikipediaVersioned:Visual_cortex&oldid=1268682728]
+ xref: EMAPA:35758
+ xref: MA:0000915
+ is_a: UBERON:0035014 {source="cjm"} ! functional part of brain
+ relationship: capable_of_part_of GO:0007601 ! visual perception
+ relationship: overlaps UBERON:0006473 ! Brodmann (1909) area 18
+ relationship: part_of UBERON:0000411 {source="cjm"} ! visual cortex
+-relationship: part_of UBERON:0002021 {source="MA"} ! occipital lobe
+ 
+ [Term]
+ id: UBERON:0022234
+@@ -226040,4 +226040,3 @@ xref: RO:0020102
+ id: vessel_supplies_blood_to
+ name: vessel supplies blood to
+ xref: RO:0020101
+-

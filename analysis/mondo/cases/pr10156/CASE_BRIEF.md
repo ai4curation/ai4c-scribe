@@ -1,0 +1,165 @@
+---
+ontology: mondo
+repo: monarch-initiative/mondo
+issue_number: 10149
+pr_number: 10156
+issue_title: Request for new term [podocytopathy]
+pr_author: sabrinatoro
+pr_merged_at: '2026-04-15'
+task_type: new_term
+difficulty: medium
+scoping: tightly_scoped
+scope: multi_term
+review_outcome: approved_first_time
+num_agent_attempts: 13
+generated_at: '2026-05-17'
+scoping_notes: PR adds a new parent term and reclassifies three existing children
+  under it.
+domain_area: kidney-disease
+best_f1: 0.476
+best_model: gpt-5.5
+---
+
+# PR #10156 — Request for new term [podocytopathy]
+
+**mondo** | [monarch-initiative/mondo](https://github.com/monarch-initiative/mondo) | [Issue #10149](https://github.com/monarch-initiative/mondo/issues/10149) | [PR #10156](https://github.com/monarch-initiative/mondo/pull/10156) | @sabrinatoro | merged 2026-04-15
+
+`new_term` `medium` `tightly_scoped` `approved_first_time`
+
+## Context
+
+A request was made for a new term "podocytopathy" to serve as a grouping class for diseases caused by podocyte dysfunction. Podocytes are specialized cells in the kidney glomerulus, and podocytopathies include conditions like minimal change disease and focal segmental glomerulosclerosis. The term was needed to provide a clinically meaningful grouping in the disease hierarchy.
+
+This was a collaborative effort with a domain expert (cws99) who helped define the scope and children of the new term.
+
+## Changes Made
+
+Added the new term "podocytopathy" to `src/ontology/mondo-edit.obo` with 17 lines of additions. The PR created the parent term with a definition and also reclassified three existing disease terms as children of the new grouping class. No lines were deleted, indicating clean additions to the hierarchy.
+
+## Resolution
+
+Medium difficulty because it requires understanding renal pathology well enough to determine which existing Mondo terms should be classified as podocytopathies. The curator needed to create a proper definition and identify the correct children, which requires domain knowledge about glomerular disease classification.
+
+## Curation Note (data quality)
+
+Flagged `case_quality: poor` on 2026-05-15 (claude-opus-4.7). Two compounding
+reasons make the metadiff F1 a misleading quality signal for **every** attempt:
+
+1. **Placeholder-vs-canonical MONDO ID artifact.** This is a `new_term` case.
+   Agents allocate from the eval base's temp ID range and all chose
+   `MONDO:7770018`; the gold curator assigned canonical `MONDO:0700328`. The
+   agents cannot know the curator-assigned ID, yet every `id:` and `is_a:
+   ... ! podocytopathy` line therefore mismatches the gold under whole-file
+   metadiff. This alone caps F1 well below 1.0 for a perfectly correct
+   solution. F1 differences among attempts here mostly reflect ancillary
+   metadata (presence of `subset: disease_grouping`, `dcterms:creator` ORCID,
+   PMID sources on child axioms), not core correctness.
+
+2. **The single gold PR exceeds the issue scope.** Issue #10149 explicitly
+   requested: a new term `podocytopathy`, parent `MONDO:0019722 glomerular
+   disorder`, and exactly **two** children — `MONDO:0006835` lipoid nephrosis
+   (minimal change disease) and `MONDO:0100313` focal segmental
+   glomerulosclerosis. Gold PR #10156 additionally (a) reparents a **third**
+   term not in the issue — `MONDO:0005376 membranous glomerulonephritis`
+   (membranous nephropathy); (b) authors a logical/equivalence definition
+   (`intersection_of: MONDO:0019722` + `intersection_of: disease_has_location
+   CL:0000653`, with matching `relationship`); (c) adds `xref:
+   SCTID:1367669003`; (d) adds per-child `property_value: IAO:0000233`. None of
+   these were requested. A well-scoped, issue-faithful agent solution is
+   therefore structurally unable to reach F1=1.0.
+
+There are **no companion PRs** — the issue was resolved by the single PR
+#10156 — but the gold itself is a superset of the issue, which is the relevant
+poor-case signature here (Step 3b: "gold has out-of-scope extra edits the issue
+never asked for", compounded by the new-term ID artifact).
+
+**Reviewer judgment of the cohort (against the issue, not the metadiff):**
+9 of 11 attempts (the gpt-5.5 opencode/codex, gpt-5.4 codex, kimi opencode,
+claude sonnet native + copilot, claude opus runs) correctly and faithfully
+implemented the issue request: the new term under `MONDO:0019722` with both
+requested children added as additional (parent-preserving) subclasses — graded
+`success`. The 2 claude-haiku runs (pr478, pr415, identical) created the term
+but **omitted both requested children**, a genuine missed requirement — graded
+`partial_success`. No attempt reproduced the gold's equivalence axiom or third
+child, but neither was requested by the issue, so this is a scope-faithful
+divergence rather than a failure. Downstream aggregation should down-weight or
+exclude this case's raw F1 and rely on the per-attempt outcome grades.
+
+## Human Diff
+
+```diff
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 3f4dea1042..54f9817370 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -115279,8 +115279,10 @@ xref: SCTID:197710000 {source="DOID:10976"}
+ xref: SCTID:77182004 {source="EFO:0004254", source="DOID:10976", source="MONDO:equivalentTo"}
+ xref: UMLS:C0017665 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:42231"}
+ is_a: MONDO:0002462 {source="DOID:10976", source="MESH:D015433", source="NCIT:C34645"} ! glomerulonephritis
++is_a: MONDO:0700328 {source="PMID:41381622"} ! podocytopathy
+ relationship: disease_has_location UBERON:0005777 ! glomerular basement membrane
+ property_value: curated_content_resource "https://www.malacards.org/card/membranous_nephropathy" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0005377
+@@ -149461,8 +149463,10 @@ xref: SCTID:197592009 {source="DOID:10966"}
+ xref: SCTID:44785005 {source="EFO:1001020", source="DOID:10966", source="MONDO:equivalentTo"}
+ xref: UMLS:C0027721 {source="MEDGEN:10307", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0002462 {source="DOID:10966", source="NCIT:C34844"} ! glomerulonephritis
++is_a: MONDO:0700328 {source="PMID:17699461", source="PMID:25684864", source="PMID:38804512", source="PMID:41381622"} ! podocytopathy
+ relationship: excluded_subClassOf MONDO:0005377 {source="DOID:10966", source="https://orcid.org/0000-0001-5208-3432"} ! nephrotic syndrome
+ property_value: curated_content_resource "https://www.malacards.org/card/lipoid_nephrosis" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0006836
+@@ -583383,8 +583387,10 @@ xref: SCTID:236403004 {source="EFO:0004236", source="MONDO:equivalentTo", source
+ xref: SCTID:25821008 {source="DOID:1312"}
+ xref: UMLS:C0017668 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:4904"}
+ is_a: MONDO:0000490 {source="DOID:1312"} ! glomerulosclerosis
++is_a: MONDO:0700328 {source="PMID:17699461", source="PMID:25684864", source="PMID:38804512", source="PMID:41381622"} ! podocytopathy
+ property_value: curated_content_resource "https://www.malacards.org/card/focal_segmental_glomerulosclerosis" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-5208-3432
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0100314
+@@ -593048,6 +593054,17 @@ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.o
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/6119 {source="PMID:29408330"} ! IRF4
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/8090" xsd:anyURI
+ 
++[Term]
++id: MONDO:0700328
++name: podocytopathy
++def: "A glomerular disorder caused by the structural or functional impairment of podocytes, which leads to proteinuria and often nephrotic syndrome." [https://orcid.org/0009-0009-0876-0331, PMID:17699461, PMID:25684864, PMID:32792490, PMID:38804512, PMID:41381622]
++xref: SCTID:1367669003 {source="MONDO:equivalentTo"}
++is_a: MONDO:0019722 {source="PMID:17699461", source="PMID:25684864", source="PMID:41381622"} ! glomerular disorder
++intersection_of: MONDO:0019722 ! glomerular disorder
++intersection_of: disease_has_location CL:0000653
++relationship: disease_has_location CL:0000653 {source="PMID:17699461", source="PMID:25684864", source="PMID:32792490", source="PMID:41381622"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/10149" xsd:anyURI
++
+ [Term]
+ id: MONDO:0700330
+ name: PTEN harmartoma tumor syndrome with immune disorder
+
+```
+
+## Agent Attempts (13)
+
+| # | Model | Runtime | F1 | P | R | Blob | Eval PR | Detail |
+|---|-------|---------|-----|-----|-----|------|---------|--------|
+| 1 | gpt-5.5 | opencode | 0.476 | 0.417 | 0.556 | `055ab90` | [#79](https://github.com/ai4curation/eval-ont-agent-mondo/pull/79) | [attempt](attempts/pr79.md) |
+| 2 | gpt-5.5 | opencode | 0.476 | 0.417 | 0.556 | `055ab90` | [#61](https://github.com/ai4curation/eval-ont-agent-mondo/pull/61) | [attempt](attempts/pr61.md) |
+| 3 | gpt-5.4 | opencode | 0.455 | 0.417 | 0.500 | `dc07fab` | [#752](https://github.com/ai4curation/eval-ont-agent-mondo/pull/752) | [attempt](attempts/pr752.md) |
+| 4 | gpt-5.4 | opencode | 0.455 | 0.417 | 0.500 | `dc07fab` | [#697](https://github.com/ai4curation/eval-ont-agent-mondo/pull/697) | [attempt](attempts/pr697.md) |
+| 5 | gpt-5.4 | codex | 0.455 | 0.417 | 0.500 | `4818d40` | [#155](https://github.com/ai4curation/eval-ont-agent-mondo/pull/155) | [attempt](attempts/pr155.md) |
+| 6 | claude-sonnet-4.5 | copilot | 0.400 | 0.333 | 0.500 | `f4291e9` | [#527](https://github.com/ai4curation/eval-ont-agent-mondo/pull/527) | [attempt](attempts/pr527.md) |
+| 7 | claude-sonnet-4.5 | copilot | 0.400 | 0.333 | 0.500 | `f4291e9` | [#498](https://github.com/ai4curation/eval-ont-agent-mondo/pull/498) | [attempt](attempts/pr498.md) |
+| 8 | kimi-k2.6 | opencode | 0.400 | 0.333 | 0.500 | `d72fa64` | [#271](https://github.com/ai4curation/eval-ont-agent-mondo/pull/271) | [attempt](attempts/pr271.md) |
+| 9 | claude-sonnet-4.5 | claude | 0.381 | 0.333 | 0.444 | `e387adb` | [#451](https://github.com/ai4curation/eval-ont-agent-mondo/pull/451) | [attempt](attempts/pr451.md) |
+| 10 | claude-opus-4.7 | claude | 0.381 | 0.333 | 0.444 | `c034be4` | [#392](https://github.com/ai4curation/eval-ont-agent-mondo/pull/392) | [attempt](attempts/pr392.md) |
+| 11 | claude-haiku-4.5 | claude | 0.364 | 0.333 | 0.400 | `aa79350` | [#478](https://github.com/ai4curation/eval-ont-agent-mondo/pull/478) | [attempt](attempts/pr478.md) |
+| 12 | claude-haiku-4.5 | claude | 0.364 | 0.333 | 0.400 | `aa79350` | [#415](https://github.com/ai4curation/eval-ont-agent-mondo/pull/415) | [attempt](attempts/pr415.md) |
+| 13 | gpt-5.5 | codex | 0.364 | 0.333 | 0.400 | `4f40379` | [#42](https://github.com/ai4curation/eval-ont-agent-mondo/pull/42) | [attempt](attempts/pr42.md) |

@@ -1,0 +1,114 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 76d60d4dd..1abe664cb 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -223,10 +223,10 @@ subset: common_anatomy
+ subset: upper_level
+ xref: BFO:0000003
+ disjoint_from: UBERON:0001062 ! anatomical entity
+-property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+ relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000002
+@@ -224898,6 +224898,97 @@ relationship: dc-contributor https://orcid.org/0009-0005-7919-4905
+ relationship: part_of UBERON:0001043 ! esophagus
+ property_value: dcterms-date "2024-11-14T15:00:21Z" xsd:dateTime
+ 
++[Term]
++id: UBERON:8700003
++name: ascending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the ascending colon." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "ascending colonic lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of ascending colon" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001156 ! ascending colon
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700004
++name: transverse colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the transverse colon." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of transverse colon" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "transverse colonic lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001157 ! transverse colon
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700005
++name: descending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the descending colon." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "descending colonic lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of descending colon" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001158 ! descending colon
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700006
++name: sigmoid colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the sigmoid colon." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of sigmoid colon" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "sigmoid colonic lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700007
++name: stomach lamina propria
++def: "The lamina propria that underlies the epithelial lining of the stomach." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "gastric lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of stomach" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0000945 ! stomach
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700008
++name: caecum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the caecum." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "caecal lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of caecum" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001153 ! caecum
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:8700009
++name: rectum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the rectum." [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "lamina propria of rectum" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++synonym: "rectal lamina propria" EXACT [https://github.com/obophenotype/uberon/issues/3495]
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001052 ! rectum
++relationship: dc-contributor https://github.com/dosumis
++property_value: dcterms-date "2026-05-17T01:05:19Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Term]
+ id: UBERON:8850000
+ name: lumen of pulmonary alveolus

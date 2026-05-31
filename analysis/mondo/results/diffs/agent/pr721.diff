@@ -1,0 +1,46 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 3616a71b6..4c6b2f88b 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -210460,19 +210460,17 @@ subset: gard_rare {source="GARD:0001851", source="MONDO:GARD"}
+ subset: ncit {source="NCIT:C98913"}
+ subset: nord_rare {source="MONDO:NORD"}
+ subset: omim {source="OMIM:222500"}
+-subset: ordo_disorder {source="Orphanet:1671"}
+-subset: ordo_morphological_anomaly {source="Orphanet:1671"}
+-subset: orphanet {source="Orphanet:1671"}
+-subset: orphanet_rare {source="Orphanet:1671"}
++subset: ordo_group_of_disorders {source="Orphanet:573278"}
++subset: orphanet {source="Orphanet:573278"}
+ subset: otar {source="MONDO:OTAR"}
+ subset: rare
+-synonym: "diastematomyelia" EXACT [ICD10CM:Q06.2, icd11.foundation:2070601288, NCIT:C98913, OMIM:222500, Orphanet:1671]
++synonym: "diastematomyelia" EXACT [ICD10CM:Q06.2, icd11.foundation:2070601288, NCIT:C98913, OMIM:222500, Orphanet:573278]
+ synonym: "Dimyelia" RELATED [GARD:0001851]
+ synonym: "diplomyelia" RELATED [GARD:0001851]
+ synonym: "Pseudodiplomyelia" RELATED [GARD:0001851]
+-synonym: "SCM type 1" EXACT [Orphanet:1671]
+-synonym: "split cord malformation" RELATED [GARD:0001851]
+-synonym: "split cord malformation type 1" EXACT [Orphanet:1671]
++synonym: "SCM type 1" NARROW [Orphanet:1671]
++synonym: "split cord malformation" EXACT [GARD:0001851, Orphanet:573278]
++synonym: "split cord malformation type 1" NARROW [Orphanet:1671]
+ synonym: "split spinal cord malformation" RELATED [GARD:0001851]
+ synonym: "SSCM" RELATED ABBREVIATION [GARD:0001851]
+ xref: GARD:0001851 {source="MONDO:GARD"}
+@@ -210483,12 +210481,14 @@ xref: MedDRA:10012750 {source="Orphanet:1671", source="Orphanet:1671/e"}
+ xref: MEDGEN:3801 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: NCIT:C98913 {source="MONDO:equivalentTo"}
+ xref: OMIM:222500 {source="Orphanet:1671", source="MONDO:equivalentTo", source="Orphanet:1671/e"}
+-xref: Orphanet:1671 {source="MONDO:equivalentTo", source="OMIM:222500"}
++xref: Orphanet:1671 {source="MONDO:mondoIsBroaderThanSource", source="OMIM:222500"}
++xref: Orphanet:573278 {source="MONDO:equivalentTo"}
+ xref: SCTID:49351009 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0011999 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:3801"}
+ is_a: MONDO:0002320 {source="NCIT:C98913"} ! congenital nervous system disorder
+ is_a: MONDO:0018075 {source="MONDO:0017085-obsoleted", source="https://github.com/monarch-initiative/mondo/pull/2571/"} ! neural tube defect
+ property_value: curated_content_resource "https://www.malacards.org/card/diastematomyelia" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9871" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0009107

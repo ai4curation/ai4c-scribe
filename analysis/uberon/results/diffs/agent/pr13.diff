@@ -1,0 +1,159 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index a653f8d41..9d681d4e8 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2195,7 +2195,7 @@ xref: NCIT:C34309
+ xref: UMLS:C1515087 {source="ncithesaurus:Surface_Ectoderm"}
+ xref: Wikipedia:External_ectoderm
+ is_a: UBERON:0000490 {source="EHDAA2"} ! unilaminar epithelium
+-relationship: mutually_spatially_disjoint_with UBERON:0002346 ! neurectoderm
++relationship: mutually_spatially_disjoint_with UBERON:0002346 ! neuroectoderm
+ relationship: part_of UBERON:0000922 ! embryo
+ relationship: part_of UBERON:0000924 {source="EHDAA2"} ! ectoderm
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/1/1d/Ectoderm.png" xsd:anyURI
+@@ -25851,7 +25851,7 @@ xref: Wikipedia:Iris_sphincter_muscle
+ is_a: UBERON:0004234 {source="BTO"} ! iris smooth muscle
+ intersection_of: UBERON:0004590 ! sphincter muscle
+ intersection_of: part_of UBERON:0001769 ! iris
+-relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neurectoderm
++relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neuroectoderm
+ relationship: has_muscle_antagonist UBERON:0001608 {source="dbpedia"} ! dilatator pupillae
+ relationship: has_muscle_insertion UBERON:0001769 {notes="encircles iris", source="dbpedia"} ! iris
+ relationship: has_muscle_origin UBERON:0001769 {notes="encircles iris", source="dbpedia"} ! iris
+@@ -25892,7 +25892,7 @@ xref: SCTID:280890008
+ xref: UMLS:C0229190 {source="ncithesaurus:Dilator_Pupillae_Muscle"}
+ xref: Wikipedia:Iris_dilator_muscle
+ is_a: UBERON:0004234 {source="BTO"} ! iris smooth muscle
+-relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neurectoderm
++relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neuroectoderm
+ relationship: has_muscle_antagonist UBERON:0001607 {source="dbpedia"} ! sphincter pupillae
+ relationship: has_muscle_insertion UBERON:0001769 {notes="inner margins of iris", source="dbpedia"} ! iris
+ relationship: has_muscle_origin UBERON:0001769 {notes="outer margins of iris", source="dbpedia"} ! iris
+@@ -30818,7 +30818,7 @@ xref: Wikipedia:Ciliary_body
+ xref: XAO:0000186
+ is_a: UBERON:0000481 ! multi-tissue structure
+ relationship: contributes_to_morphology_of UBERON:0011892 ! anterior uvea
+-relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neurectoderm
++relationship: develops_from UBERON:0002346 {source="ISBN:0781772214"} ! neuroectoderm
+ relationship: has_part UBERON:0001605 ! ciliary muscle
+ relationship: has_part UBERON:0010427 ! ciliary processes
+ relationship: part_of UBERON:0011892 ! anterior uvea
+@@ -31606,7 +31606,7 @@ xref: SCTID:181170006
+ xref: UMLS:C0042905 {source="ncithesaurus:Vitreous_Body"}
+ is_a: UBERON:0011825 {source="FMA"} ! loose connective tissue
+ relationship: composed_primarily_of UBERON:0001797 ! vitreous humor
+-relationship: has_developmental_contribution_from UBERON:0002346 {notes="neural ectoderm of optic cup", source="ISBN:0781772214"} ! neurectoderm
++relationship: has_developmental_contribution_from UBERON:0002346 {notes="neural ectoderm of optic cup", source="ISBN:0781772214"} ! neuroectoderm
+ relationship: part_of UBERON:0001799 ! vitreous chamber of eyeball
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/1/1e/Schematic_diagram_of_the_human_eye_en.svg" xsd:anyURI
+ property_value: editor_note "distinciton between body and humor requires more work. These may be merged in future. Note that FMA includes the hyaloid canal as part of the vitreous body" xsd:string
+@@ -44080,7 +44080,7 @@ xref: ZFA:0001271
+ is_a: UBERON:0010134 {source="MA"} ! secretory circumventricular organ
+ relationship: capable_of GO:0001992 {source="Wikipedia"} ! regulation of systemic arterial blood pressure by vasopressin
+ relationship: capable_of GO:0030103 {source="Wikipedia"} ! vasopressin secretion
+-relationship: develops_from UBERON:0002346 ! neurectoderm
++relationship: develops_from UBERON:0002346 ! neuroectoderm
+ relationship: in_taxon NCBITaxon:7742 {source="PMID:19084529"} ! Vertebrata <vertebrates>
+ relationship: part_of UBERON:0000007 {source="ZFA"} ! pituitary gland
+ relationship: present_in_taxon NCBITaxon:117569 {source="Ariens, p. 1192"} ! Hyperoartia
+@@ -47898,7 +47898,7 @@ relationship: develops_from UBERON:0005062 {source="PMID:11523831"} ! neural fol
+ relationship: dubious_for_taxon NCBITaxon:117565 {source="ISBN:0073040584", source="PMID:17377535"} ! Myxini
+ relationship: existence_starts_during UBERON:0000110 {source="PMID:11523831"} ! neurula stage
+ relationship: in_taxon NCBITaxon:89593 {notes="Hall and others restrict NC to vertebrates but we opt for a less restrictive constraint to avoid inconsistencies when areas such as P1 area of pallium in hagfishes inherit cell lineage from telecephalon-contributing NC cells", source="ISBN:0073040584"} ! Craniata <chordates>
+-relationship: part_of UBERON:0002346 {source="XAO", source="https://github.com/obophenotype/uberon/wiki/The-neural-crest"} ! neurectoderm
++relationship: part_of UBERON:0002346 {source="XAO", source="https://github.com/obophenotype/uberon/wiki/The-neural-crest"} ! neuroectoderm
+ property_value: curator_notes "EDITOR_NOTE consider including subclasses for pre- and post- migratory (e.g. sheets/paths/streams)." xsd:string
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/5/5f/Gray644.png" xsd:anyURI
+ property_value: depiction "https://upload.wikimedia.org/wikipedia/commons/8/8f/Neural_Crest.png" xsd:anyURI
+@@ -47946,14 +47946,14 @@ relationship: part_of UBERON:0001515 ! thoracic aorta
+ 
+ [Term]
+ id: UBERON:0002346
+-name: neurectoderm
++name: neuroectoderm
+ def: "Embryonic ectoderm that gives rise to nervous tissue." [Wikipedia:Neuroectoderm]
+ subset: uberon_slim
+ subset: vertebrate_core
+ synonym: "epithelium tubi neuralis; neuroectoderma" RELATED OMO:0003011 [Wikipedia:Neuroectoderm]
+ synonym: "neuaral ectoderm" RELATED []
+ synonym: "neural ectoderm" EXACT []
+-synonym: "neuroectoderm" EXACT []
++synonym: "neurectoderm" EXACT []
+ synonym: "presumptive central nervous system" RELATED []
+ synonym: "ventral neurogenic region" RELATED [VHOG:0000150]
+ xref: AAO:0011074
+@@ -47977,9 +47977,9 @@ xref: ZFA:0001120
+ is_a: UBERON:0000923 ! germ layer
+ relationship: develops_from UBERON:0000924 {source="https://github.com/obophenotype/uberon/wiki/The-neural-crest"} ! ectoderm
+ relationship: has_part CL:0000133 ! neurectodermal cell
+-property_value: has_relational_adjective "neurectodermal" xsd:string
++property_value: has_relational_adjective "neuroectodermal" xsd:string
+ property_value: homology_notes "(...) the ability of ectoderm to produce neuronal cells is a general metazoan feature.[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0000150", ontology="VHOG", source="DOI:10.1046/j.1469-7580.2001.19910133.x Graham A. The development and evolution of the pharyngeal arches. J Anat (2001)", source="http://bgee.unil.ch/"}
+-property_value: terminology_notes "we prefer neurectoderm to neural ectoderm since placodal ectoderm is not classified here" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3682" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0002347
+@@ -65252,7 +65252,7 @@ xref: Wikipedia:Nasal_placode
+ xref: XAO:0000005
+ xref: ZFA:0000048
+ is_a: UBERON:0009955 {contradicted_by="NCBIBook:NBK53171", source="ZFA"} ! neurogenic placode
+-relationship: develops_from UBERON:0002346 ! neurectoderm
++relationship: develops_from UBERON:0002346 ! neuroectoderm
+ relationship: part_of UBERON:0000076 {source="EHDAA2"} ! external ectoderm
+ relationship: part_of UBERON:0000922 ! embryo
+ property_value: homology_notes "We conclude this section by listing some of the many synapomorphies of craniates, including (...) (2) neurogenic placodes (...).[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0000186", ontology="VHOG", source="ISBN:978-0030223693 Liem KF, Bemis WE, Walker WF, Grande L, Functional Anatomy of the Vertebrates: An Evolutionary Perspective (2001) p.43", source="http://bgee.unil.ch/"}
+@@ -82168,7 +82168,7 @@ xref: XAO:0000228
+ xref: ZFA:0000050
+ is_a: UBERON:0000479 ! tissue
+ relationship: developmentally_induced_by UBERON:0004880 ! chordamesoderm
+-relationship: develops_from UBERON:0002346 {source="GO-def"} ! neurectoderm
++relationship: develops_from UBERON:0002346 {source="GO-def"} ! neuroectoderm
+ relationship: develops_from UBERON:0003071 {source="ZFA"} ! eye primordium
+ relationship: part_of UBERON:0010312 {source="ZFA"} ! immature eye
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/e/e0/Gray863.png" xsd:anyURI
+@@ -102529,7 +102529,7 @@ xref: XAO:0004091
+ xref: ZFA:0001178
+ is_a: UBERON:0000479 {source="ZFA"} ! tissue
+ relationship: develops_from UBERON:0000924 {source="https://github.com/obophenotype/uberon/wiki/The-neural-crest"} ! ectoderm
+-relationship: mutually_spatially_disjoint_with UBERON:0002346 ! neurectoderm
++relationship: mutually_spatially_disjoint_with UBERON:0002346 ! neuroectoderm
+ property_value: development_notes "After gastrulation, neural crest cells are specified at the border of the neural plate and the non-neural ectoderm." xsd:string
+ property_value: editor_note "todo - epidermis? todo - track down EHDAA2 class in new release" xsd:string
+ property_value: homology_notes "In the early gastrula of vertebrates, factors from the organizer (e.g. noggin, chordin, and follistatin in Xenopus) antagonize the epidermalizing factor bone morphogenetic protein 4 (BMP4), thus dividing the epiblast into neuroectoderm. In Drosophila, decapentaplegic, the homologue of BMP4, interacts similarly with the protein short gastrulation, the homologue of chordin. Thus, a comparable molecular mechanism for distinguishing non-neural ectoderm from neural ectoderm was probably present in the common ancestor of all bilaterally symmetrical animals.[well established][VHOG]" xsd:string {date_retrieved="2012-09-17", external_class="VHOG:0001372", ontology="VHOG", source="DOI:10.1016/S0959-4388(99)00003-3 Holland LZ and Holland ND, Chordate origins of the vertebrate central nervous system. Current Opinion in Neurobiology (1999)", source="http://bgee.unil.ch/"}
+@@ -109911,7 +109911,7 @@ xref: TAO:0000146
+ xref: ZFA:0000146
+ is_a: UBERON:0005423 ! developing anatomical structure
+ relationship: has_potential_to_develop_into UBERON:0000955 ! brain
+-relationship: part_of UBERON:0002346 ! neurectoderm
++relationship: part_of UBERON:0002346 ! neuroectoderm
+ property_value: external_definition "The embryonic precursor of the brain and the set of mature brain structures that derive from it (CUMBO)" xsd:string {source="http://neurolex.org/wiki/Cumbo_terms"}
+ 
+ [Term]
+@@ -120269,7 +120269,7 @@ xref: ZFA:0000063
+ is_a: UBERON:0016879 ! future central nervous system
+ intersection_of: UBERON:0006598 ! presumptive structure
+ intersection_of: has_potential_to_develop_into UBERON:0003075 ! neural plate
+-relationship: develops_from UBERON:0002346 ! neurectoderm
++relationship: develops_from UBERON:0002346 ! neuroectoderm
+ relationship: part_of UBERON:0004734 ! gastrula
+ property_value: editor_note "consider merging" xsd:string
+ property_value: external_definition "Region of the gastrula which gives rise to the neural plate.[TAO]" xsd:string {date_retrieved="2012-08-14", external_class="TAO:0000063", ontology="TAO", source="ZFIN:curator"}
+@@ -168925,7 +168925,7 @@ synonym: "presumptive central nervous system" EXACT []
+ intersection_of: UBERON:0006598 ! presumptive structure
+ intersection_of: has_potential_to_develop_into UBERON:0001017 ! central nervous system
+ relationship: develops_from UBERON:0000924 ! ectoderm
+-relationship: develops_from UBERON:0002346 {gci_relation="part_of", gci_filler="NCBITaxon:7742"} ! neurectoderm
++relationship: develops_from UBERON:0002346 {gci_relation="part_of", gci_filler="NCBITaxon:7742"} ! neuroectoderm
+ relationship: part_of UBERON:0016880 ! future nervous system
+ 
+ [Term]
+@@ -219662,7 +219662,7 @@ synonym: "P2 iVenEp" RELATED [https://orcid.org/0000-0002-7073-9172]
+ synonym: "venEpiP2" RELATED []
+ is_a: UBERON:0001048 ! primordium
+ is_a: UBERON:6025993 ! insect ventral ectoderm derivative
+-relationship: develops_from UBERON:0002346 ! neurectoderm
++relationship: develops_from UBERON:0002346 ! neuroectoderm
+ relationship: part_of UBERON:0000922 ! embryo
+ 
+ [Term]

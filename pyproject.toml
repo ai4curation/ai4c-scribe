@@ -34,6 +34,13 @@ dev = [
     "jupyter>=1.0.0",
     "mkdocs-jupyter>=0.24.0",
     "types-pyyaml>=6.0.12.20250915",
+    "pandas>=3.0.2",
+    "matplotlib>=3.10.9",
+    "seaborn>=0.13.2",
+    "nbconvert>=7.16.6",
+    "ipykernel>=6.31.0",
+    "scipy>=1.17.1",
+    "playwright>=1.59.0",
 ]
 
 [project.scripts]
@@ -54,6 +61,11 @@ fallback-version = "0.0.0"
 
 # Pytest config is in pytest.ini (takes precedence over pyproject.toml)
 # See pytest.ini for marker definitions and default options
+
+[tool.ruff]
+# Exploratory analysis notebooks are not held to library lint standards
+# (imports-not-at-top, scratch variables, etc. are expected there).
+extend-exclude = ["*.ipynb"]
 
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
@@ -82,3 +94,4 @@ extend-exclude = [
   "src/ai4c_scribe/datamodel/ai4c_scribe_pydantic.py",
   "src/ai4c_scribe/datamodel/ai4c_scribe.py",
 ]
+

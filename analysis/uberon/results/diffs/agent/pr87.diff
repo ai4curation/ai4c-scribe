@@ -1,0 +1,30 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index d41f07f57..3fd9e7b06 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -30594,7 +30594,6 @@ relationship: contributes_to_morphology_of UBERON:0000019 ! camera-type eye
+ relationship: has_part UBERON:0001769 ! iris
+ relationship: has_part UBERON:0001775 ! ciliary body
+ relationship: has_part UBERON:0001776 ! optic choroid
+-relationship: part_of UBERON:0001801 ! anterior segment of eyeball
+ relationship: present_in_taxon NCBITaxon:7955 {source="DOI:10.1177/0192623311409597"} ! Danio rerio
+ property_value: depiction "http://upload.wikimedia.org/wikipedia/commons/e/eb/Gray869.png" xsd:anyURI
+ property_value: editor_note "TODO - check child terms, isa vs partof. See also MA:0001284 ! tunica vasculosa plexus" xsd:string
+@@ -154068,7 +154067,7 @@ synonym: "secondary brain vesicle" NARROW []
+ xref: NCIT:C34259
+ xref: neuronames:2499
+ xref: SCTID:360409004
+-is_a: UBERON:0010064 {source="EHDAA2"} ! open anatomical space
++is_a: UBERON:0000061 ! anatomical structure
+ relationship: part_of UBERON:0000922 ! embryo
+ relationship: part_of UBERON:0005281 {source="EHDAA2"} ! ventricular system of central nervous system
+ relationship: part_of UBERON:0006238 ! future brain
+@@ -201997,7 +201996,7 @@ def: "Fine ridge on surface of scale, often parallel to the circumference of sca
+ synonym: "circuli" EXACT OMO:0003004 [TAO:0002051]
+ synonym: "crétule" EXACT [PSPUB:0000149]
+ xref: ZFA:0005499
+-is_a: UBERON:0006800 ! anatomical line
++is_a: UBERON:0000061 ! anatomical structure
+ relationship: part_of UBERON:0007380 ! dermal scale
+ property_value: provenance_notes "This class was sourced from an external ontology (teleost_anatomy). Its definitions, naming conventions and relationships may need to be checked for compatibility with uberon" xsd:string {source="http://purl.obolibrary.org/obo/tao.owl"}
+ 

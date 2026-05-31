@@ -1,0 +1,13 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 27fc3d562..a3d6cea54 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -124373,7 +124373,7 @@ xref: VeNom:20422 {source="MONDO:equivalentTo"}
+ is_a: MONDO:0005583 {source="https://orcid.org/0000-0001-5493-2602"} ! non-human animal disease
+ is_a: MONDO:0024950 {source="https://orcid.org/0000-0001-5208-3432"} ! horse disease
+ is_a: MONDO:0700053 {source="EFO:0007263", source="MESH:D004859/inferred"} ! viral infectious disease, non-human animal
+-is_a: MONDO:0700170 {source="https://orcid.org/0000-0002-4142-7153"} ! equine neoplasm
++relationship: excluded_subClassOf MONDO:0700170 {source="https://orcid.org/0000-0002-4142-7153"} ! equine neoplasm
+ relationship: in_taxon NCBITaxon:9788 {source="https://orcid.org/0000-0002-4142-7153", source="https://orcid.org/0000-0002-5002-8648", source="https://www.merckvetmanual.com/"} ! Equidae
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4420" xsd:anyURI
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5252" xsd:anyURI

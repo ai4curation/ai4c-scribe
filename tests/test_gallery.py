@@ -1,0 +1,153 @@
+"""Tests for gallery browser generation."""
+
+from pathlib import Path
+
+from typer.testing import CliRunner
+
+from ai4c_scribe.cli import app
+from ai4c_scribe.gallery import collect_gallery_data, generate_gallery
+
+runner = CliRunner()
+
+
+FIXTURE_DIR = Path(__file__).parent / "fixtures" / "gallery"
+
+
+def test_collect_discovers_ontologies():
+    """Discovers ontology directories that contain cases/."""
+    data = collect_gallery_data(FIXTURE_DIR)
+    assert "test-ont" in data["ontologies"]
+
+
+def test_collect_loads_cases():
+    """Loads case metadata and narrative from METADATA.md."""
+    data = collect_gallery_data(FIXTURE_DIR)
+    cases = data["ontologies"]["test-ont"]["cases"]
+    # pr100, pr200, and pr201 (a companion of pr200 sharing issue #190)
+    assert len(cases) == 3
+
+    pr100 = next(c for c in cases if c["pr_number"] == 100)
+    assert pr100["metadata"]["issue_title"] == "Add new term: foo bar"
+    assert pr100["metadata"]["difficulty"] == "simple"
+    assert pr100["metadata"]["task_type"] == "new_term"
+    assert "Issue requested a new term" in pr100["narrative_md"]
+
+
+def test_collect_loads_human_diffs():
+    """Loads human diffs matched by source pr_number."""
+    data = collect_gallery_data(FIXTURE_DIR)
+    pr100 = next(
+        c for c in data["ontologies"]["test-ont"]["cases"]
+        if c["pr_number"] == 100
+    )
+    assert pr100["human_diff"] is not None
+    assert "+name: foo bar" in pr100["human_diff"]
+
+
+def test_collect_joins_agent_attempts_via_scores():
+    """Agent attempts are joined through scores.tsv eval_repo_pr."""
+    data = collect_gallery_data(FIXTURE_DIR)
+    pr100 = next(
+        c for c in data["ontologies"]["test-ont"]["cases"]
+        if c["pr_number"] == 100
+    )
+    # pr100 has 2 agent attempts (eval_repo_pr 10 and 11)
+    assert len(pr100["agent_attempts"]) == 2
+    models = {a["model"] for a in pr100["agent_attempts"]}
+    assert models == {"claude-haiku-4.5", "claude-opus-4.7"}
+
+    haiku = next(a for a in pr100["agent_attempts"] if a["model"] == "claude-haiku-4.5")
+    assert haiku["eval_repo_pr"] == 10
+    assert haiku["f1"] == 0.8
+    assert haiku["diff"] is not None
+    assert "+name: foo bar" in haiku["diff"]
+
+
+def test_collect_attaches_reviews():
+    """Review files are parsed into frontmatter + body and attached to attempts."""
+    data = collect_gallery_data(FIXTURE_DIR)
+    pr100 = next(
+        c for c in data["ontologies"]["test-ont"]["cases"]
+        if c["pr_number"] == 100
+    )
+    haiku = next(a for a in pr100["agent_attempts"] if a["model"] == "claude-haiku-4.5")
+    assert len(haiku["reviews"]) == 1
+    review = haiku["reviews"][0]
+    assert review["frontmatter"]["outcome"] == "partial_success"
+    assert "missed the definition" in review["body_md"]
+
+
+def test_generate_gallery_creates_html(tmp_path):
+    """generate_gallery() writes a valid HTML file."""
+    output = tmp_path / "gallery.html"
+    result = generate_gallery(FIXTURE_DIR, output)
+    assert result == output
+    assert output.exists()
+    content = output.read_text()
+    assert "<!DOCTYPE html>" in content
+    assert "galleryData" in content
+
+
+def test_generate_gallery_embeds_case_data(tmp_path):
+    """Generated HTML contains embedded case data as JSON."""
+    output = tmp_path / "gallery.html"
+    generate_gallery(FIXTURE_DIR, output)
+    content = output.read_text()
+    assert "Add new term: foo bar" in content
+    assert "Reclassify baz widget" in content
+
+
+def test_generate_gallery_embeds_diff_data(tmp_path):
+    """Generated HTML contains embedded diff content."""
+    output = tmp_path / "gallery.html"
+    generate_gallery(FIXTURE_DIR, output)
+    content = output.read_text()
+    assert "+name: foo bar" in content
+
+
+def test_gallery_cli_generates_html(tmp_path):
+    """CLI gallery command generates an HTML file."""
+    output = tmp_path / "out.html"
+    result = runner.invoke(app, ["gallery", str(FIXTURE_DIR), "-o", str(output)])
+    assert result.exit_code == 0, result.output
+    assert output.exists()
+
+
+def test_gallery_cli_default_output(tmp_path, monkeypatch):
+    """CLI gallery command uses gallery.html as default output."""
+    monkeypatch.chdir(tmp_path)
+    result = runner.invoke(app, ["gallery", str(FIXTURE_DIR)])
+    assert result.exit_code == 0, result.output
+    assert (tmp_path / "gallery.html").exists()
+
+
+def test_collect_case_without_results():
+    """Cases with no scores/diffs still load with empty agent_attempts."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_path = Path(tmp)
+        case_dir = tmp_path / "myont" / "cases" / "pr999"
+        case_dir.mkdir(parents=True)
+        (case_dir / "METADATA.md").write_text(
+            "---\n"
+            "repo: test/repo\n"
+            "issue_number: 998\n"
+            "pr_number: 999\n"
+            'issue_title: "Test case"\n'
+            'issue_created_at: "2026-01-01"\n'
+            "pr_author: tester\n"
+            "scoping: tightly_scoped\n"
+            "task_type: new_term\n"
+            "difficulty: simple\n"
+            "scope: single_term\n"
+            "review_outcome: approved_first_time\n"
+            "curated_by: test\n"
+            'curated_at: "2026-01-01"\n'
+            "rationale: test\n"
+            "---\n\nBody text.\n"
+        )
+        data = collect_gallery_data(tmp_path)
+        case = data["ontologies"]["myont"]["cases"][0]
+        assert case["pr_number"] == 999
+        assert case["human_diff"] is None
+        assert case["agent_attempts"] == []

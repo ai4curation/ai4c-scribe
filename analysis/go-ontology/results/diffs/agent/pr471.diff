@@ -1,0 +1,22 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 4aa8b2aca..44241dda2 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -57936,11 +57936,13 @@ relationship: part_of GO:0015629 ! actin cytoskeleton
+ 
+ [Term]
+ id: GO:0005870
+-name: actin capping protein of dynactin complex
++name: obsolete actin capping protein of dynactin complex
+ namespace: cellular_component
+-def: "A heterodimer consisting of alpha and beta subunits that binds to and caps the barbed ends of actin filaments, nucleates the polymerization of actin monomers but does not sever actin filaments, and which is a part of the dynactin complex." [GOC:jl, PMID:18221362, PMID:18544499]
+-intersection_of: GO:0008290 ! F-actin capping protein complex
+-intersection_of: part_of GO:0005869 ! dynactin complex
++def: "OBSOLETE. A heterodimer consisting of alpha and beta subunits that binds to and caps the barbed ends of actin filaments, nucleates the polymerization of actin monomers but does not sever actin filaments, and which is a part of the dynactin complex." [GOC:jl, PMID:18221362, PMID:18544499]
++comment: The reason for obsoletion is that this term represents a specific instance of an F-actin capping protein complex and can be accurately represented by the more general term GO:0008290.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31956" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0008290
+ 
+ [Term]
+ id: GO:0005871

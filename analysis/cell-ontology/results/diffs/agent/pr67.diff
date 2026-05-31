@@ -1,0 +1,31 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e5192d5f3..6dfcce166 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3286,6 +3286,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900000))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -35404,6 +35405,18 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900000 (prehypertrophic chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:29985449") Annotation(oboInOwl:hasDbXref "PMID:34137454") obo:IAO_0000115 obo:CL_9900000 "A post-proliferative chondrocyte in the prehypertrophic zone of cartilage tissue, located between the proliferative and hypertrophic zones. A prehypertrophic chondrocyte has increased cell volume relative to proliferative chondrocytes, expresses Indian hedgehog, PTH1R, and RUNX2/RUNX3, coordinates PTHrP-Ihh signalling during chondrocyte differentiation, and develops into a hypertrophic chondrocyte during endochondral ossification.")
++AnnotationAssertion(terms:contributor obo:CL_9900000 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:creator obo:CL_9900000 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900000 "2026-05-10T02:10:52Z"^^xsd:dateTime)
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900000 <https://github.com/obophenotype/cell-ontology/issues/3460>)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900000 "preHTC")
++AnnotationAssertion(rdfs:label obo:CL_9900000 "prehypertrophic chondrocyte")
++SubClassOf(obo:CL_9900000 obo:CL_0000138)
++SubClassOf(obo:CL_9900000 ObjectSomeValuesFrom(obo:RO_0002203 obo:CL_0000743))
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

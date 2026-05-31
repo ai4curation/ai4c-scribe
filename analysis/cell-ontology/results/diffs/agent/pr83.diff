@@ -1,0 +1,33 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index ed68a9183..3325b4c8d 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3278,6 +3278,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -35362,4 +35363,18 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++
++# Class: obo:CL_9900001 (fibrochondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:28939894") Annotation(oboInOwl:hasDbXref "PMID:34608249") obo:IAO_0000115 obo:CL_9900001 "A chondrocyte that is part of fibrocartilage, including the avascular region of the meniscus, and is characterized by expression of collagen alpha-1(I) chain.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3457>)
++AnnotationAssertion(dc:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:contributor obo:CL_9900001 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-10T21:35:56Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:34608249") oboInOwl:hasExactSynonym obo:CL_9900001 "fibrocartilage chondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:28939894") oboInOwl:hasNarrowSynonym obo:CL_9900001 "meniscus fibrochondrocyte")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_9900001 "FC")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "fibrochondrocyte")
++EquivalentClasses(obo:CL_9900001 ObjectIntersectionOf(obo:CL_0000138 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001995)))
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_000003264))
++)

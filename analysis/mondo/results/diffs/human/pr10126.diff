@@ -1,0 +1,24 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index f1c7c0e8f5..45dbc41774 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -619475,6 +619475,19 @@ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-5002-8648
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9877" xsd:anyURI
+ 
++[Term]
++id: MONDO:1010205
++name: southern tick-associated rash illness
++def: "A tick-borne infectious disease transmitted by the lone star tick, Amblyomma americanum, and causing an erythema migrans–like rash with or without mild constitutional symptoms." [https://orcid.org/0000-0001-5705-7831, PMID:19522220, PMID:36116832, PMID:40267428]
++synonym: "Masters disease" EXACT [PMID:18452807]
++synonym: "STARI" EXACT ABBREVIATION [PMID:18452807]
++xref: NCIT:C128427 {source="MONDO:equivalentTo"}
++xref: SCTID:444100007 {source="MONDO:equivalentTo"}
++is_a: MONDO:0025294 {source="PMID:19522220", source="PMID:36116832", source="PMID:40267428", source="https://orcid.org/0000-0001-5705-7831"} ! tick-borne infectious disease
++relationship: transmitted_by NCBITaxon:6943 {source="PMID:19522220", source="PMID:36116832", source="PMID:40267428", source="https://orcid.org/0000-0001-5705-7831"} ! Amblyomma americanum
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-5002-8648
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9873" xsd:anyURI
++
+ [Term]
+ id: MONDO:1010206
+ name: meningeal neoplasm, non-human animal

@@ -1,0 +1,26 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 92902c0f4..0b8a5d48d 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -40925,7 +40925,7 @@ property_value: external_ontology_notes "FMA also has terms for the apical zone"
+ [Term]
+ id: UBERON:0002099
+ name: cardiac septum
+-def: "The thin membranous structure between the two heart atria or the thick muscular structure between the two heart ventricles." [MESH:A07.541.459]
++def: "A septum between parts of the heart, including the atria, ventricles, and outflow tract." [MESH:D006346]
+ subset: pheno_slim
+ subset: uberon_slim
+ synonym: "cardiac septa" EXACT OMO:0003004 []
+@@ -40949,6 +40949,7 @@ relationship: contributes_to_morphology_of UBERON:0000948 ! heart
+ relationship: part_of UBERON:0000948 ! heart
+ property_value: external_ontology_notes "in GO, septum morphogenesis is part of cardiac chamber morphogenesis; need to add axioms to infer this" xsd:string {external_ontology="GO"}
+ property_value: taxon_notes "'Terrestrial vertebrates have divided hearts in which septae separate the oxygenated and deoxygenated blood within the pulmonary and systemic circulations'" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3003" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0002100
+@@ -226188,4 +226189,3 @@ xref: RO:0020102
+ id: vessel_supplies_blood_to
+ name: vessel supplies blood to
+ xref: RO:0020101
+-

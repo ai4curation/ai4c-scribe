@@ -1,0 +1,23 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index dcc3e5d07..936307993 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -672872,6 +672872,18 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: reticular pseudodrusen
++def: "Retinal drusen characterized by subretinal deposits located internal to the retinal pigment epithelium, composed of aggregations of material in the subretinal space between photoreceptors and the retinal pigment epithelium that can extend through the ellipsoid zone. These deposits have a bluish-white appearance by biomicroscopy, appear as hyperreflective lesions above the retinal pigment epithelium on optical coherence tomography, and are associated with increased risk of progression to late age-related macular degeneration." [PMID:29859199, PMID:41361163]
++synonym: "RPD" EXACT ABBREVIATION [PMID:41361163]
++synonym: "SDD" EXACT ABBREVIATION [PMID:29859199]
++synonym: "subretinal drusenoid deposits" EXACT [PMID:29859199]
++xref: SCTID:762533006 {source="MONDO:equivalentTo"}
++is_a: MONDO:0006949 {source="PMID:29859199", source="https://orcid.org/0000-0001-6677-8489"} ! retinal drusen
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0001-6677-8489
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9849" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

@@ -1,0 +1,30 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..769001c58 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -665382,6 +665382,25 @@ def: "A grouping class for human diseases classified by their underlying molecul
+ comment: This term is intended solely for classification purposes and should not be used for direct data annotation.
+ is_a: MONDO:0700096 ! human disease
+ 
++[Term]
++id: MONDO:7770012
++name: PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder
++def: "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the PADI6 gene. This condition is characterized by early embryonic arrest at the 2-5 cell stage, defective zygotic genome activation, and primary female infertility despite normal ovulation and fertilization." [PMC5010645, PMC6018785]
++subset: rare
++synonym: "early embryonic arrest" EXACT [PMC5010645]
++synonym: "oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "OZEMA16" EXACT ABBREVIATION [OMIM:617234]
++synonym: "PADI6-related oocyte/zygote/embryo maturation arrest 16" EXACT [OMIM:617234]
++synonym: "preimplantation embryonic lethality 2" EXACT [OMIM:617234]
++synonym: "PREMBL2" EXACT ABBREVIATION [OMIM:617234]
++xref: OMIM:617234 {source="MONDO:equivalentTo"}
++is_a: MONDO:0014769 {source="https://clinicalgenome.org/affiliation/40106"} ! inherited oocyte maturation defect
++intersection_of: MONDO:0014769 ! inherited oocyte maturation defect
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 ! PADI6
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20449 {source="PMC5010645", source="PMC6018785"} ! PADI6
++property_value: http://purl.org/dc/terms/creator doi:10.1186/s13326-024-00320-3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9855" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

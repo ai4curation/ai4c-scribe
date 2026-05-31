@@ -1,0 +1,863 @@
+"""Analysis utilities for loading and aggregating evaluation results.
+
+An "agent" is the full configuration tuple: (runtime, model, config_tag,
+reasoning_effort). Comparisons between agents are only valid when they
+share the same set of test cases.
+
+Loads scores.tsv and review files into pandas DataFrames for analysis.
+
+Example:
+    >>> from ai4c_scribe.analysis import load_scores
+    >>> df = load_scores(Path("analysis/scores.tsv"))
+    >>> df.groupby("agent")["f1"].mean()  # doctest: +SKIP
+"""
+
+import re
+from pathlib import Path
+from typing import Optional
+
+import yaml
+
+
+MODEL_SHORT = {
+    # Canonical model names (after normalization in scores.tsv)
+    "claude-sonnet-4.5": "son45",
+    "claude-haiku-4.5": "hai45",
+    "claude-opus-4.7": "op47",
+    "gpt-5.4": "g54",
+    "gpt-5.5": "g55",
+    "codex-mini-latest": "cxm",
+    "gemma-4-31b": "gem4",
+    "kimi-k2.6": "kimi",
+    "deepseek-v4": "ds4",
+    "gemini-2.5-pro": "g25p",
+    "gemini-2.5-flash": "g25f",
+    # Full dated versions (from older runs)
+    "claude-sonnet-4-5-20250929": "son45",
+    "claude-haiku-4-5-20251001": "hai45",
+    "claude-opus-4-7-20250623": "op47",
+}
+
+RUNTIME_SHORT = {
+    "claude": "CC",
+    "codex": "CX",
+    "opencode": "OC",
+    "pi": "PI",
+    "gemini": "GE",
+    "copilot": "CP",
+}
+
+
+def agent_code(row) -> str:
+    """Derive a short agent code from a scores row.
+
+    Format: {runtime}.{model}.{config_tag}[.{effort}]
+
+    Example:
+        >>> agent_code({"runtime": "codex", "model": "gpt-5.4", "agent_config_tag": "v9", "reasoning_effort": ""})
+        'CX.g54.v9'
+        >>> agent_code({"runtime": "claude", "model": "claude-sonnet-4-5-20250929", "agent_config_tag": "v8", "reasoning_effort": ""})
+        'CC.son45.v8'
+    """
+    rt = RUNTIME_SHORT.get(row["runtime"], row["runtime"][:2])
+    m = MODEL_SHORT.get(row["model"], row["model"][:6])
+    tag = row["agent_config_tag"]
+    code = f"{rt}.{m}.{tag}"
+    effort = row.get("reasoning_effort", "")
+    if effort and str(effort) != "nan" and str(effort) != "":
+        code += f".{effort}"
+    return code
+
+
+def load_scores(scores_path: Path = Path("analysis/scores.tsv")):
+    """Load the master scores TSV into a pandas DataFrame.
+
+    Adds an 'agent' column with short agent codes and a 'case'
+    column combining ontology and issue number.
+
+    Args:
+        scores_path: Path to scores.tsv
+
+    Returns:
+        pandas DataFrame with typed columns
+    """
+    import pandas as pd
+
+    df = pd.read_csv(scores_path, sep="\t")
+    df["f1"] = pd.to_numeric(df["f1"], errors="coerce")
+    df["precision"] = pd.to_numeric(df["precision"], errors="coerce")
+    df["recall"] = pd.to_numeric(df["recall"], errors="coerce")
+    df["jaccard"] = pd.to_numeric(df["jaccard"], errors="coerce")
+    df["agent"] = df.apply(agent_code, axis=1)
+    df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"].astype(str)
+    return df
+
+
+_QUALITY_COLS = [
+    "case_quality",
+    "case_quality_reason",
+    "scoring_caveat",
+    "companion_prs",
+    "eval_suitability",
+    "quality_flagged_by",
+    "quality_flagged_at",
+]
+
+
+def load_case_quality(analysis_dir: Path = Path("analysis")):
+    """Load per-case quality flags from ``cases/*/METADATA.md`` frontmatter.
+
+    ~Half the eval cases are flagged ``case_quality: poor`` (mis-paired
+    gold, gold leakage, eval-base contamination). Aggregates must be able
+    to exclude them. Cases with no flag default to ``'unflagged'`` (never
+    NaN) so callers can simply filter ``df.case_quality != 'poor'``.
+
+    Args:
+        analysis_dir: Root analysis directory (contains ``{ont}/cases/``)
+
+    Returns:
+        pandas DataFrame, one row per case, with ``ontology``,
+        ``issue_number`` (str), ``case`` join key, and the quality columns.
+
+    >>> q = load_case_quality(Path("tests/fixtures/gallery"))
+    >>> q.set_index("issue_number").loc["190", "case_quality"]
+    'poor'
+    >>> q.set_index("issue_number").loc["90", "case_quality"]
+    'unflagged'
+    """
+    import pandas as pd
+
+    rows = []
+    for ont_dir in sorted(p for p in analysis_dir.iterdir() if p.is_dir()):
+        cases_dir = ont_dir / "cases"
+        if not cases_dir.exists():
+            continue
+        for meta in sorted(cases_dir.glob("*/METADATA.md")):
+            text = meta.read_text()
+            if not text.startswith("---"):
+                continue
+            fm = yaml.safe_load(text[3 : text.index("---", 3)]) or {}
+            companion = fm.get("companion_prs")
+            if isinstance(companion, list):
+                companion = ",".join(str(x) for x in companion)
+            rows.append(
+                {
+                    "ontology": ont_dir.name,
+                    "issue_number": str(fm.get("issue_number", "")),
+                    "case_quality": fm.get("case_quality") or "unflagged",
+                    "case_quality_reason": fm.get("case_quality_reason"),
+                    "scoring_caveat": fm.get("scoring_caveat"),
+                    "companion_prs": companion,
+                    "eval_suitability": fm.get("eval_suitability"),
+                    "quality_flagged_by": fm.get("quality_flagged_by"),
+                    "quality_flagged_at": fm.get("quality_flagged_at"),
+                }
+            )
+
+    df = pd.DataFrame(rows, columns=["ontology", "issue_number", *_QUALITY_COLS])
+    if df.empty:
+        return df
+
+    # An issue resolved by several companion PRs has one case dir each,
+    # sometimes flagged differently. Scores are keyed by issue, so collapse
+    # to one row per (ontology, issue_number) — conservatively: if ANY
+    # companion is poor the issue is poor (keeping that row's reason/caveat).
+    rank = {"poor": 0, "ok": 1, "good": 2, "unflagged": 3}
+    df["_rank"] = df["case_quality"].map(lambda v: rank.get(v, 3))
+    df = (
+        df.sort_values("_rank")
+        .drop_duplicates(["ontology", "issue_number"], keep="first")
+        .drop(columns="_rank")
+        .reset_index(drop=True)
+    )
+    df["case"] = df["ontology"].str[:3] + "#" + df["issue_number"]
+    return df
+
+
+def attach_case_quality(scores_df, analysis_dir: Path = Path("analysis")):
+    """Left-join case-quality flags onto a scores DataFrame.
+
+    Idempotent: pre-existing quality columns are dropped before the
+    re-join. Score rows whose case has no METADATA flag get
+    ``case_quality='unflagged'``.
+
+    Args:
+        scores_df: DataFrame from :func:`load_scores`
+        analysis_dir: Root analysis directory
+
+    Returns:
+        Copy of ``scores_df`` with the quality columns added.
+    """
+    df = scores_df.drop(
+        columns=[c for c in _QUALITY_COLS if c in scores_df.columns],
+        errors="ignore",
+    ).copy()
+    q = load_case_quality(analysis_dir)
+    if q.empty:
+        df["case_quality"] = "unflagged"
+        return df
+
+    # issue_number may be float (e.g. 190.0) when the frame has NaNs;
+    # normalise to a clean integer string so it matches the metadata key.
+    def _norm_issue(v):
+        import pandas as pd
+
+        if pd.isna(v):
+            return None
+        s = str(v)
+        return s[:-2] if s.endswith(".0") else s
+
+    df["_iss"] = df["issue_number"].map(_norm_issue)
+    q = q.rename(columns={"issue_number": "_iss"})
+    merged = df.merge(
+        q[["ontology", "_iss", *_QUALITY_COLS]],
+        on=["ontology", "_iss"],
+        how="left",
+    ).drop(columns="_iss")
+    merged["case_quality"] = merged["case_quality"].fillna("unflagged")
+    return merged
+
+
+def load_reviews(analysis_dir: Path = Path("analysis")):
+    """Load all review markdown files into a pandas DataFrame.
+
+    Parses YAML frontmatter from review files under
+    analysis/{ont}/results/reviews/*.md
+
+    Args:
+        analysis_dir: Root analysis directory
+
+    Returns:
+        pandas DataFrame with one row per review
+    """
+    import pandas as pd
+
+    rows = []
+    skipped: list[str] = []
+    for ont_dir in analysis_dir.iterdir():
+        if not ont_dir.is_dir():
+            continue
+        reviews_dir = ont_dir / "results" / "reviews"
+        if not reviews_dir.exists():
+            continue
+        for review_file in reviews_dir.glob("*.md"):
+            text = review_file.read_text()
+            if not text.startswith("---") or "---" not in text[3:]:
+                continue
+            end_idx = text.index("---", 3)
+            # Review files are bulk agent-generated; a single malformed
+            # frontmatter must not sink the whole analysis. Skip + record.
+            try:
+                frontmatter = yaml.safe_load(text[3:end_idx])
+            except yaml.YAMLError:
+                skipped.append(str(review_file))
+                continue
+            if not isinstance(frontmatter, dict):
+                skipped.append(str(review_file))
+                continue
+            frontmatter["_file"] = str(review_file)
+            rows.append(frontmatter)
+
+    if skipped:
+        print(
+            f"load_reviews: skipped {len(skipped)} review file(s) with "
+            f"unparseable frontmatter (e.g. {skipped[0]})"
+        )
+    return pd.DataFrame(rows)
+
+
+def balanced_comparison(
+    df,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+    min_shared: int = 2,
+):
+    """Find agent pairs that share enough cases for fair comparison.
+
+    Only compares agents that ran on the same set of cases (at least
+    min_shared). Returns paired scores for valid comparisons.
+
+    Args:
+        df: DataFrame with scores
+        agent_col: Column identifying agent configurations
+        case_col: Column identifying test cases
+        score_col: Column with scores to compare
+        min_shared: Minimum shared cases for a valid comparison
+
+    Returns:
+        DataFrame with columns: agent_a, agent_b, case, score_a, score_b, n_shared
+    """
+    import pandas as pd
+    from itertools import combinations
+
+    agents = df.groupby(agent_col)[case_col].apply(set).to_dict()
+    rows = []
+    for a1, a2 in combinations(sorted(agents.keys()), 2):
+        shared = agents[a1] & agents[a2]
+        if len(shared) < min_shared:
+            continue
+        for case in sorted(shared):
+            s1 = df[(df[agent_col] == a1) & (df[case_col] == case)][score_col].values
+            s2 = df[(df[agent_col] == a2) & (df[case_col] == case)][score_col].values
+            if len(s1) > 0 and len(s2) > 0:
+                rows.append(
+                    {
+                        "agent_a": a1,
+                        "agent_b": a2,
+                        "case": case,
+                        "score_a": s1[0],
+                        "score_b": s2[0],
+                        "n_shared": len(shared),
+                    }
+                )
+    return pd.DataFrame(rows)
+
+
+def summary_by_agent(df, score_col: str = "f1"):
+    """Compute summary statistics grouped by agent (full config tuple).
+
+    Args:
+        df: DataFrame with scores (must have 'agent' column)
+        score_col: Column to summarize
+
+    Returns:
+        DataFrame with mean, std, count, min, max per agent
+    """
+    return (
+        df.groupby("agent")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
+
+
+def summary_by_model(df, score_col: str = "f1"):
+    """Compute summary statistics grouped by model.
+
+    CAUTION: aggregating by model alone ignores config and runtime
+    differences. Use summary_by_agent() for rigorous comparisons,
+    or balanced_comparison() for paired analysis.
+
+    Args:
+        df: DataFrame with scores
+        score_col: Column to summarize
+
+    Returns:
+        DataFrame with mean, std, count, min, max per model
+    """
+    return (
+        df.groupby("model")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
+
+
+def summary_by_runtime(df, score_col: str = "f1"):
+    """Compute summary statistics grouped by runtime."""
+    return (
+        df.groupby("runtime")[score_col]
+        .agg(["mean", "std", "count", "min", "max"])
+        .round(3)
+        .sort_values("mean", ascending=False)
+    )
+
+
+def pivot_scores(df, rows: str = "ontology", cols: str = "model", values: str = "f1"):
+    """Create a pivot table from scores.
+
+    Args:
+        df: DataFrame with scores
+        rows: Column for row index
+        cols: Column for columns
+        values: Column for cell values
+
+    Returns:
+        Pivoted DataFrame
+    """
+    import pandas as pd
+
+    return pd.pivot_table(
+        df, values=values, index=rows, columns=cols, aggfunc="mean"
+    ).round(3)
+
+
+def rubric_summary(reviews_df):
+    """Compute mean rubric scores across all reviews.
+
+    Args:
+        reviews_df: DataFrame from load_reviews()
+
+    Returns:
+        DataFrame with mean rubric scores per model
+    """
+    rubric_cols = [
+        "instruction_following",
+        "correctness",
+        "completeness",
+        "scope_discipline",
+        "methodology",
+        "overall",
+    ]
+    cols_present = [c for c in rubric_cols if c in reviews_df.columns]
+    if not cols_present:
+        return None
+    return reviews_df.groupby("model")[cols_present].mean().round(2)
+
+
+def outcome_distribution(reviews_df):
+    """Count outcome types per model.
+
+    Args:
+        reviews_df: DataFrame from load_reviews()
+
+    Returns:
+        Crosstab of model x outcome
+    """
+    import pandas as pd
+
+    if "outcome" not in reviews_df.columns:
+        return None
+    return pd.crosstab(reviews_df["model"], reviews_df["outcome"])
+
+
+# Reviewer verdict -> numeric score. The 1-5 rubric is populated on only
+# a handful of files; ``outcome`` is the broadly-available reviewer signal
+# and is robust where metadiff F1 is not (mis-paired / leaked gold).
+_OUTCOME_SCORE = {
+    "success": 1.0,
+    "partial_success": 0.5,
+    "failure": 0.0,
+    "no_output": 0.0,
+    "no_changes": 0.0,
+}
+
+
+def reviewer_score(reviews_df, by: str = "agent"):
+    """Aggregate the reviewer ``outcome`` verdict into a numeric score.
+
+    success=1.0, partial_success=0.5, failure/no_output/no_changes=0.0.
+    Rows without a recognised outcome are excluded (no verdict).
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews`
+        by: grouping column (``agent``, ``model``, ``runtime``, ...)
+
+    Returns:
+        DataFrame indexed by ``by`` with columns ``n``, ``success_rate``,
+        ``partial_rate``, ``failure_rate``, ``mean_score``. Empty if there
+        are no scored reviews.
+    """
+    import pandas as pd
+
+    empty = pd.DataFrame(
+        columns=["n", "success_rate", "partial_rate", "failure_rate", "mean_score"]
+    )
+    if "outcome" not in reviews_df.columns or by not in reviews_df.columns:
+        return empty
+
+    r = reviews_df[reviews_df["outcome"].isin(_OUTCOME_SCORE)].copy()
+    if r.empty:
+        return empty
+    r["_score"] = r["outcome"].map(_OUTCOME_SCORE)
+
+    def _agg(g):
+        n = len(g)
+        return pd.Series(
+            {
+                "n": n,
+                "success_rate": (g["outcome"] == "success").sum() / n,
+                "partial_rate": (g["outcome"] == "partial_success").sum() / n,
+                "failure_rate": (g["_score"] == 0.0).sum() / n,
+                "mean_score": g["_score"].mean(),
+            }
+        )
+
+    out = r.groupby(by, group_keys=False).apply(_agg).round(3)
+    out["n"] = out["n"].astype(int)
+    return out
+
+
+_REVIEWER_RE = re.compile(r"pr\d+-(claude|claudecode|codex)-(?:complete|stub)\.md$")
+
+
+def reviewer_label(file_path: str):
+    """Reviewer identity from a review filename.
+
+    Review files are ``pr{N}-{reviewer}-{complete|stub}.md``; ``claudecode``
+    is an early alias for ``claude``.
+
+    >>> reviewer_label("x/pr40-codex-complete.md")
+    'codex'
+    >>> reviewer_label("pr7-claudecode-complete.md")
+    'claude'
+    >>> reviewer_label("pr7-stub.md") is None
+    True
+    """
+    m = _REVIEWER_RE.search(str(file_path))
+    if not m:
+        return None
+    return "claude" if m.group(1) in ("claude", "claudecode") else "codex"
+
+
+def cohen_kappa(a, b, weights=None):
+    """Cohen's kappa between two label sequences (no sklearn dependency).
+
+    Args:
+        a, b: equal-length sequences of labels.
+        weights: ``None`` for nominal kappa, ``"linear"`` or
+            ``"quadratic"`` for weighted kappa (labels must be numeric).
+
+    >>> cohen_kappa([1, 2, 3], [1, 2, 3])
+    1.0
+    """
+    a = list(a)
+    b = list(b)
+    if len(a) != len(b) or not a:
+        raise ValueError("a and b must be non-empty and equal length")
+    cats = sorted(set(a) | set(b))
+    idx = {c: i for i, c in enumerate(cats)}
+    n = len(a)
+    k = len(cats)
+    obs = [[0] * k for _ in range(k)]
+    for x, y in zip(a, b):
+        obs[idx[x]][idx[y]] += 1
+
+    if weights is None:
+        w = [[0.0 if i == j else 1.0 for j in range(k)] for i in range(k)]
+    else:
+        rng = (cats[-1] - cats[0]) or 1
+        w = [
+            [
+                (abs(cats[i] - cats[j]) / rng) ** (2 if weights == "quadratic" else 1)
+                for j in range(k)
+            ]
+            for i in range(k)
+        ]
+
+    row = [sum(obs[i]) for i in range(k)]
+    col = [sum(obs[i][j] for i in range(k)) for j in range(k)]
+    obs_disagree = sum(w[i][j] * obs[i][j] for i in range(k) for j in range(k))
+    exp_disagree = sum(
+        w[i][j] * row[i] * col[j] / n for i in range(k) for j in range(k)
+    )
+    if exp_disagree == 0:
+        return 1.0
+    return round(1.0 - obs_disagree / exp_disagree, 4)
+
+
+def pair_reviewers(reviews_df):
+    """Pivot reviews so each scored eval PR has one row per reviewer.
+
+    Keyed on **(ontology, eval_repo_pr)** only — a PR is one artifact
+    regardless of the (unreliable, often hallucinated) free-text
+    ``agent`` field each reviewer wrote. Join the canonical agent from
+    the scores afterward. Adds the mapped reviewer score for ``claude``
+    and ``codex``, the number of reviewers, and the per-PR
+    ``consensus_score`` (mean of available reviewers).
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews` (needs ``_file``
+            or ``reviewer``, plus ``ontology``, ``eval_repo_pr``,
+            ``outcome``).
+
+    Returns:
+        DataFrame with one row per (ontology, eval_repo_pr).
+    """
+    import pandas as pd
+
+    r = reviews_df.copy()
+    if "reviewer" not in r.columns:
+        r["reviewer"] = r["_file"].map(reviewer_label)
+    r = r[
+        r["reviewer"].notna()
+        & r["outcome"].isin(_OUTCOME_SCORE)
+        & r["eval_repo_pr"].notna()
+    ].copy()
+    if r.empty:
+        return pd.DataFrame(
+            columns=[
+                "ontology",
+                "eval_repo_pr",
+                "claude_outcome",
+                "codex_outcome",
+                "claude_score",
+                "codex_score",
+                "n_reviewers",
+                "consensus_score",
+            ]
+        )
+    r["_score"] = r["outcome"].map(_OUTCOME_SCORE)
+    keys = ["ontology", "eval_repo_pr"]
+    out = []
+    for kv, g in r.groupby(keys):
+        rec = dict(zip(keys, kv))
+        scores = []
+        for rev in ("claude", "codex"):
+            sub = g[g["reviewer"] == rev]
+            if len(sub):
+                rec[f"{rev}_outcome"] = sub["outcome"].iloc[0]
+                rec[f"{rev}_score"] = float(sub["_score"].iloc[0])
+                scores.append(rec[f"{rev}_score"])
+            else:
+                rec[f"{rev}_outcome"] = None
+                rec[f"{rev}_score"] = float("nan")
+        rec["n_reviewers"] = len(scores)
+        rec["consensus_score"] = sum(scores) / len(scores) if scores else float("nan")
+        out.append(rec)
+    return pd.DataFrame(out)
+
+
+def reviewer_case_scores(reviews_df, scores_df):
+    """One reviewer score per (canonical agent, case) for paired tests.
+
+    Pairs reviews per eval PR (:func:`pair_reviewers`), joins the
+    authoritative ``(ontology, eval_repo_pr)`` metadata from the scores
+    (canonical agent, case, model, runtime, case_type, difficulty,
+    case_quality), then averages the per-PR consensus to a single
+    ``rscore`` per (agent, case) so it slots straight into
+    :func:`paired_test` / :func:`significance_summary` /
+    :func:`summary_by_model` with ``score_col="rscore"``.
+
+    Args:
+        reviews_df: DataFrame from :func:`load_reviews`.
+        scores_df: DataFrame from :func:`load_scores` with the canonical
+            agent in ``agent`` and :func:`attach_case_quality` applied.
+
+    Returns:
+        DataFrame: agent, case, ontology, model, runtime, case_type,
+        difficulty, case_quality, n_prs, rscore.
+    """
+    import pandas as pd
+
+    paired = pair_reviewers(reviews_df)
+    if paired.empty:
+        return pd.DataFrame(
+            columns=[
+                "agent",
+                "case",
+                "ontology",
+                "model",
+                "runtime",
+                "case_type",
+                "difficulty",
+                "case_quality",
+                "n_prs",
+                "rscore",
+            ]
+        )
+    paired["eval_repo_pr"] = pd.to_numeric(paired["eval_repo_pr"], errors="coerce")
+    meta_cols = [
+        "agent",
+        "case",
+        "model",
+        "runtime",
+        "case_type",
+        "difficulty",
+        "case_quality",
+    ]
+    s = scores_df.copy()
+    s["eval_repo_pr"] = pd.to_numeric(s["eval_repo_pr"], errors="coerce")
+    meta = (
+        s.dropna(subset=["eval_repo_pr"])
+        .drop_duplicates(["ontology", "eval_repo_pr"])
+        .set_index(["ontology", "eval_repo_pr"])[meta_cols]
+    )
+    idx = paired.set_index(["ontology", "eval_repo_pr"]).index
+    for c in meta_cols:
+        paired[c] = idx.map(meta[c])
+    paired = paired.dropna(subset=["agent", "case", "consensus_score"])
+    g = paired.groupby(["agent", "case"], as_index=False).agg(
+        ontology=("ontology", "first"),
+        model=("model", "first"),
+        runtime=("runtime", "first"),
+        case_type=("case_type", "first"),
+        difficulty=("difficulty", "first"),
+        case_quality=("case_quality", "first"),
+        n_prs=("consensus_score", "size"),
+        rscore=("consensus_score", "mean"),
+    )
+    return g
+
+
+def failure_mode_counts(reviews_df):
+    """Count failure modes across all reviews.
+
+    Args:
+        reviews_df: DataFrame from load_reviews()
+
+    Returns:
+        Series with failure mode counts, sorted descending
+    """
+    import pandas as pd
+
+    if "failure_modes" not in reviews_df.columns:
+        return None
+    modes = []
+    for fm_list in reviews_df["failure_modes"].dropna():
+        if isinstance(fm_list, list):
+            modes.extend(fm_list)
+    return pd.Series(modes).value_counts()
+
+
+def paired_test(
+    df,
+    agent_a: str,
+    agent_b: str,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+):
+    """Perform paired statistical tests between two agents on shared cases.
+
+    Returns a dict with test statistics, p-values, effect sizes,
+    confidence intervals, and power analysis.
+
+    Args:
+        df: DataFrame with scores
+        agent_a: First agent code
+        agent_b: Second agent code
+        agent_col: Column identifying agents
+        case_col: Column identifying cases
+        score_col: Score column
+
+    Returns:
+        Dict with statistical results, or None if insufficient shared cases
+    """
+    import numpy as np
+    from scipy import stats
+
+    # Get shared cases
+    cases_a = set(df[df[agent_col] == agent_a][case_col])
+    cases_b = set(df[df[agent_col] == agent_b][case_col])
+    shared = sorted(cases_a & cases_b)
+
+    if len(shared) < 2:
+        return None
+
+    scores_a = []
+    scores_b = []
+    for case in shared:
+        sa = df[(df[agent_col] == agent_a) & (df[case_col] == case)][score_col].values
+        sb = df[(df[agent_col] == agent_b) & (df[case_col] == case)][score_col].values
+        if len(sa) > 0 and len(sb) > 0:
+            scores_a.append(sa[0])
+            scores_b.append(sb[0])
+
+    arr_a = np.array(scores_a)
+    arr_b = np.array(scores_b)
+    n = len(arr_a)
+
+    if n < 2:
+        return None
+
+    diff = arr_b - arr_a
+    mean_diff = diff.mean()
+    std_diff = diff.std(ddof=1) if n > 1 else 0
+
+    result = {
+        "agent_a": agent_a,
+        "agent_b": agent_b,
+        "n_shared": n,
+        "mean_a": arr_a.mean(),
+        "mean_b": arr_b.mean(),
+        "mean_diff": mean_diff,
+        "std_diff": std_diff,
+    }
+
+    # Paired t-test
+    if n >= 3:
+        t_stat, p_val = stats.ttest_rel(arr_b, arr_a)
+        result["t_statistic"] = t_stat
+        result["p_value_ttest"] = p_val
+    else:
+        result["t_statistic"] = None
+        result["p_value_ttest"] = None
+
+    # Wilcoxon (needs n >= 6 for reliability)
+    if n >= 6:
+        try:
+            w_stat, w_p = stats.wilcoxon(arr_b, arr_a)
+            result["p_value_wilcoxon"] = w_p
+        except ValueError:
+            result["p_value_wilcoxon"] = None
+    else:
+        result["p_value_wilcoxon"] = None
+
+    # Effect size (Cohen's d for paired)
+    if std_diff > 0:
+        result["cohens_d"] = mean_diff / std_diff
+    else:
+        result["cohens_d"] = 0.0
+
+    # Bootstrap 95% CI
+    rng = np.random.default_rng(42)
+    boot_diffs = []
+    for _ in range(10000):
+        idx = rng.integers(0, n, size=n)
+        boot_diffs.append(diff[idx].mean())
+    boot_arr = np.array(boot_diffs)
+    result["ci_95_low"] = np.percentile(boot_arr, 2.5)
+    result["ci_95_high"] = np.percentile(boot_arr, 97.5)
+    result["significant"] = result["ci_95_low"] > 0 or result["ci_95_high"] < 0
+
+    # Power analysis (for the observed effect size)
+    if result["cohens_d"] != 0 and n >= 3:
+        d = abs(result["cohens_d"])
+        crit = stats.t.ppf(0.975, df=n - 1)
+        ncp = d * np.sqrt(n)
+        result["power"] = 1 - stats.t.cdf(crit, df=n - 1, loc=ncp)
+
+        # Minimum n for 80% power
+        for target_n in range(3, 100):
+            crit_t = stats.t.ppf(0.975, df=target_n - 1)
+            ncp_t = d * np.sqrt(target_n)
+            pwr = 1 - stats.t.cdf(crit_t, df=target_n - 1, loc=ncp_t)
+            if pwr >= 0.80:
+                result["n_for_80_power"] = target_n
+                break
+    else:
+        result["power"] = None
+        result["n_for_80_power"] = None
+
+    return result
+
+
+def significance_summary(
+    df,
+    agents: Optional[list] = None,
+    agent_col: str = "agent",
+    case_col: str = "case",
+    score_col: str = "f1",
+    min_shared: int = 2,
+):
+    """Run paired tests for all agent pairs with sufficient shared cases.
+
+    Args:
+        df: DataFrame with scores
+        agents: List of agent codes to compare (None = all)
+        agent_col: Column identifying agents
+        case_col: Column identifying cases
+        score_col: Score column
+        min_shared: Minimum shared cases
+
+    Returns:
+        DataFrame with one row per valid agent pair
+    """
+    import pandas as pd
+    from itertools import combinations
+
+    if agents is None:
+        agents = sorted(df[agent_col].unique())
+
+    results = []
+    for a, b in combinations(agents, 2):
+        r = paired_test(df, a, b, agent_col, case_col, score_col)
+        if r is not None:
+            results.append(r)
+
+    if not results:
+        return pd.DataFrame()
+
+    return pd.DataFrame(results).sort_values("p_value_ttest", na_position="last")

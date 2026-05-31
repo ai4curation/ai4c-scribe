@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# RNU12-related minor spliceopathy disorder (MONDO:7770747)\n\nThis PR addresses issue #9963 by creating a new parent term for RNU12-related disorders as requested by ClinGen.",
+  "issue_comment": "Thank you for submitting this request! I've successfully created the new parent term MONDO:7770747 \"RNU12-related minor spliceopathy disorder\" with the ClinGen preferred label.\n\nThe changes have been committed in PR #<NN>.",
+  "workflow_run": "25939832689",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-mondo/tree/master/traces/25939832689",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-mondo/pull/522"
+}

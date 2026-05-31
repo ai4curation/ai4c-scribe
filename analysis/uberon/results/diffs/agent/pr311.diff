@@ -1,0 +1,105 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 218542b97..d1787a715 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -224947,6 +224947,100 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++
++[Term]
++id: UBERON:9900001
++name: mesosalpinx epithelium
++def: "An epithelium that is part of the mucosa of the fallopian tube and is located in the mesosalpinx region. It is composed of simple squamous epithelium that forms the outer layer in the mesosalpinx region." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++is_a: UBERON:0000483 ! epithelium
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: antimesosalpinx epithelium
++def: "An epithelium that is part of the mucosa of the fallopian tube and is located in the antimesosalpinx region (posterior free edge of mesosalpinx). It is composed of simple squamous epithelium." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++is_a: UBERON:0000483 ! epithelium
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: mesosalpinx muscularis
++def: "A muscle layer that is part of the muscle layer of oviduct and is located in the mesosalpinx region. The muscular layer consists primarily of an inner layer of circularly arranged muscle fibers covered by an outer layer of longitudinally oriented fibers, with the longitudinally arranged fibers being continuous with the smooth muscle present in the mesosalpinx." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "mesosalpinx muscularus" EXACT []
++is_a: UBERON:0006660 ! muscular coat
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: antimesosalpinx muscularis
++def: "A muscle layer that is part of the muscle layer of oviduct and is located in the antimesosalpinx region (posterior free edge of mesosalpinx). The muscular layer consists primarily of an inner layer of circularly arranged muscle fibers covered by an outer layer of longitudinally oriented fibers." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "antimesosalpinx muscularus" EXACT []
++is_a: UBERON:0006660 ! muscular coat
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900005
++name: superior epithelium of fallopian tube
++def: "An epithelium that is part of the mucosa of the fallopian tube and is located in the superior region. It is composed of simple squamous epithelium." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "superior epithelium" EXACT []
++is_a: UBERON:0000483 ! epithelium
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900006
++name: inferior epithelium of fallopian tube
++def: "An epithelium that is part of the mucosa of the fallopian tube and is located in the inferior region. It is composed of simple squamous epithelium." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "inferior epithelium" EXACT []
++is_a: UBERON:0000483 ! epithelium
++relationship: part_of UBERON:0005048 ! mucosa of fallopian tube
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900007
++name: superior muscularis of fallopian tube
++def: "A muscle layer that is part of the muscle layer of oviduct and is located in the superior region. The muscular layer consists primarily of an inner layer of circularly arranged muscle fibers covered by an outer layer of longitudinally oriented fibers." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "superior muscularus" EXACT []
++is_a: UBERON:0006660 ! muscular coat
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900008
++name: inferior muscularis of fallopian tube
++def: "A muscle layer that is part of the muscle layer of oviduct and is located in the inferior region. The muscular layer consists primarily of an inner layer of circularly arranged muscle fibers covered by an outer layer of longitudinally oriented fibers." [https://www.pathologyoutlines.com/topic/fallopiantubesnormal.html]
++synonym: "inferior muscularus" EXACT []
++is_a: UBERON:0006660 ! muscular coat
++relationship: part_of UBERON:0006642 ! muscle layer of oviduct
++relationship: dc-contributor https://orcid.org/0000-0001-7655-4833
++property_value: dcterms-date "2026-05-14T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3414" xsd:anyURI
++created_by: dragon-ai-agent
+ [Typedef]
+ id: aboral_to
+ name: aboral to

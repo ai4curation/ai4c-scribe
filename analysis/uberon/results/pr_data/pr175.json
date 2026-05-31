@@ -1,0 +1,7 @@
+{
+  "pr_comment": "# PR: Add HRA Skeleton Bone Part Terms to UBERON",
+  "issue_comment": "# Issue #3678 - Add bone part terms from HubMap - HRA",
+  "workflow_run": "25762010221",
+  "trace_url": "https://github.com/ai4curation/eval-ont-agent-uberon/tree/master/traces/25762010221",
+  "eval_pr_url": "https://github.com/ai4curation/eval-ont-agent-uberon/pull/175"
+}

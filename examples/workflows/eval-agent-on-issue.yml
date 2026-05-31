@@ -88,16 +88,24 @@ on:
         required: false
         default: "."
       agent_runtime:
-        description: "Agent runtime to use (claude or codex)"
+        description: "Agent runtime to use (claude, codex, opencode, pi, or gemini)"
         required: false
         default: "claude"
         type: choice
         options:
           - claude
           - codex
+          - opencode
+          - pi
+          - gemini
+          - copilot
       model:
         description: "Model to use (e.g. claude-sonnet-4-5-20250929, gpt-5.4)"
         required: true
+      reasoning_effort:
+        description: "Reasoning effort level. Codex: minimal/low/medium/high/xhigh. Claude: low/medium/high/xhigh/max. Leave empty for defaults."
+        required: false
+        default: ""
       force_new_branch:
         description: "Whether to force a new branch. Defaults to false."
         required: false
@@ -295,14 +303,24 @@ jobs:
           if git ls-remote --exit-code origin "refs/heads/${{ env.eval_base_branch }}" 2>/dev/null; then
             echo "✓ Branch ${{ env.eval_base_branch }} already exists on remote"
             echo "  Reusing this baseline for all experiments on issue #${{ inputs.issue_number }}"
-            echo "  (This ensures all agent runs are compared against the same starting point)"
           else
             echo "✓ Creating eval-base branch at PR base commit with all setup applied"
             echo "  Base commit: ${{ steps.pr_base.outputs.base_sha }}"
-            echo "  This is the 'clean baseline' for all experiments on this issue"
             git checkout -b "${{ env.eval_base_branch }}"
-            git push -u origin "${{ env.eval_base_branch }}"
-            echo "  Pushed ${{ env.eval_base_branch }} to remote"
+            # Push with force-if-includes to handle race condition:
+            # if another run already pushed this branch, just continue
+            if ! git push -u origin "${{ env.eval_base_branch }}" 2>/dev/null; then
+              echo "  Push failed (likely another run created it first) — verifying it exists"
+              git fetch origin
+              if git ls-remote --exit-code origin "refs/heads/${{ env.eval_base_branch }}" 2>/dev/null; then
+                echo "  ✓ Confirmed: branch exists on remote (created by concurrent run)"
+              else
+                echo "  ✗ Branch still doesn't exist after failed push — real error"
+                exit 1
+              fi
+            else
+              echo "  Pushed ${{ env.eval_base_branch }} to remote"
+            fi
           fi
 
           # Detach HEAD back to base commit for agent work
@@ -423,15 +441,21 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           # Write a runner script to avoid shell quoting issues
-          cat > /tmp/run-claude.sh << 'SCRIPT'
+          EFFORT_FLAG=""
+          if [ -n "${{ inputs.reasoning_effort }}" ]; then
+            EFFORT_FLAG="--effort ${{ inputs.reasoning_effort }}"
+          fi
+
+          cat > /tmp/run-claude.sh << SCRIPT
           #!/bin/bash
-          cd "$1"
-          PROMPT=$(cat __agent_prompt__.md)
-          claude -p "$PROMPT" \
-            --model "$2" \
+          cd "\$1"
+          PROMPT=\$(cat __agent_prompt__.md)
+          claude -p "\$PROMPT" \
+            --model "\$2" \
             --dangerously-skip-permissions \
             --output-format stream-json \
             --verbose \
+            $EFFORT_FLAG \
             2>&1 | tee /tmp/claude-trace.json
           SCRIPT
           chmod +x /tmp/run-claude.sh
@@ -462,11 +486,203 @@ jobs:
       - name: Run Codex
         if: inputs.agent_runtime == 'codex'
         run: |
+          REASONING_FLAG=""
+          if [ -n "${{ inputs.reasoning_effort }}" ]; then
+            REASONING_FLAG="-c model_reasoning_effort=${{ inputs.reasoning_effort }}"
+          fi
           codex exec "$(cat __agent_prompt__.md)" \
             --model ${{ inputs.model }} \
             --sandbox danger-full-access \
             --json \
+            $REASONING_FLAG \
             2>&1 | tee /tmp/codex-trace.json
+
+      - name: Install and authenticate OpenCode
+        if: inputs.agent_runtime == 'opencode'
+        env:
+          CODEX_AUTH_JSON: ${{ secrets.CODEX_AUTH_JSON }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          curl -fsSL https://opencode.ai/install | bash
+          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
+          # OpenCode reads Codex auth for OpenAI models
+          export CODEX_HOME="${HOME}/.codex"
+          mkdir -p "$CODEX_HOME"
+          if [ -n "$CODEX_AUTH_JSON" ]; then
+            echo "$CODEX_AUTH_JSON" > "$CODEX_HOME/auth.json"
+            chmod 600 "$CODEX_HOME/auth.json"
+          fi
+
+      - name: Run OpenCode
+        if: inputs.agent_runtime == 'opencode'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          export PATH="$HOME/.opencode/bin:$PATH"
+          MODEL="${{ inputs.model }}"
+          OC_MODEL="$MODEL"
+
+          # OpenAI gpt-5.x: OpenCode's built-in `openai` provider needs an
+          # OPENAI_API_KEY, which we deliberately do NOT carry (subscription /
+          # OAuth only). Instead run a local OpenAI-compatible proxy backed by
+          # the ChatGPT/Codex subscription OAuth token already written to
+          # ~/.codex/auth.json, and point a custom opencode provider at it.
+          case "$MODEL" in
+            openai/gpt-*|gpt-5.*)
+              # openai-oauth requires Node >= 20
+              if ! command -v node >/dev/null 2>&1 || [ "$(node -v 2>/dev/null | sed 's/v//;s/\..*//')" -lt 20 ]; then
+                curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+                export NVM_DIR="$HOME/.nvm"
+                . "$NVM_DIR/nvm.sh"
+                nvm install 22
+                nvm use 22
+                hash -r 2>/dev/null || true
+              fi
+              echo "node (post-setup): $(command -v node) $(node -v 2>/dev/null)"
+              echo "node: $(command -v node) $(node -v 2>/dev/null)"
+              nohup npx -y openai-oauth \
+                --oauth-file "$HOME/.codex/auth.json" \
+                --host 127.0.0.1 --port 10531 \
+                > /tmp/oauth-proxy.log 2>&1 &
+              PROXY_PID=$!
+              # wait up to ~4 min for the proxy (npx may download the pkg first)
+              PROXY_UP=0
+              for i in $(seq 1 80); do
+                if curl -sf http://127.0.0.1:10531/v1/models >/dev/null 2>&1; then
+                  PROXY_UP=1; break
+                fi
+                kill -0 "$PROXY_PID" 2>/dev/null || { echo "proxy process died"; break; }
+                sleep 3
+              done
+              echo "===== /tmp/oauth-proxy.log ====="
+              cat /tmp/oauth-proxy.log 2>/dev/null || true
+              echo "===== /v1/models ====="
+              curl -s -m 15 http://127.0.0.1:10531/v1/models || true
+              echo
+              if [ "$PROXY_UP" != "1" ]; then
+                echo "ERROR: Codex-OAuth proxy did not become ready" >&2
+                exit 1
+              fi
+              echo "===== proxy smoke test (chat/completions) ====="
+              curl -s -m 60 http://127.0.0.1:10531/v1/chat/completions \
+                -H 'Content-Type: application/json' \
+                -d '{"model":"gpt-5.5","messages":[{"role":"user","content":"say hi"}],"max_tokens":5}' \
+                | head -c 800 || true
+              echo
+              # global config (not repo-local, so it never pollutes the diff)
+              mkdir -p "$HOME/.config/opencode"
+              cat > "$HOME/.config/opencode/opencode.json" <<'OCJSON'
+          {
+            "$schema": "https://opencode.ai/config.json",
+            "provider": {
+              "codexoauth": {
+                "npm": "@ai-sdk/openai-compatible",
+                "name": "Codex OAuth",
+                "options": {
+                  "baseURL": "http://127.0.0.1:10531/v1",
+                  "apiKey": "codex-oauth"
+                },
+                "models": {
+                  "gpt-5.5": {},
+                  "gpt-5.5-pro": {},
+                  "gpt-5.4": {},
+                  "gpt-5.4-pro": {}
+                }
+              }
+            }
+          }
+          OCJSON
+              OC_MODEL="codexoauth/${MODEL#openai/}"
+              echo "Using Codex-OAuth proxy; opencode model: $OC_MODEL"
+              ;;
+          esac
+
+          timeout 1500 opencode run "$(cat __agent_prompt__.md)" \
+            --model "$OC_MODEL" \
+            --format json \
+            2>&1 | tee /tmp/opencode-trace.json
+          OC_RC=${PIPESTATUS:-$?}
+          if [ -f /tmp/oauth-proxy.log ]; then
+            echo "===== /tmp/oauth-proxy.log (final) ====="
+            tail -c 4000 /tmp/oauth-proxy.log || true
+          fi
+          exit "$OC_RC"
+
+      - name: Install Pi
+        if: inputs.agent_runtime == 'pi'
+        run: |
+          # Pi requires Node >= 20.6.0 (unicode regex 'v' flag)
+          # Install recent Node via nvm if container has older version
+          NODE_VER=$(node --version 2>/dev/null | sed 's/v//' | cut -d. -f1)
+          if [ -z "$NODE_VER" ] || [ "$NODE_VER" -lt 20 ]; then
+            curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm install 22
+            nvm use 22
+            echo "$NVM_DIR/versions/node/$(nvm current)/bin" >> $GITHUB_PATH
+          fi
+          npm install -g @earendil-works/pi-coding-agent
+
+      - name: Run Pi
+        if: inputs.agent_runtime == 'pi'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          # Parse provider/model from inputs.model (e.g. "openai/gpt-5.4" -> provider=openai model=gpt-5.4)
+          FULL_MODEL="${{ inputs.model }}"
+          if echo "$FULL_MODEL" | grep -q "/"; then
+            PROVIDER=$(echo "$FULL_MODEL" | cut -d/ -f1)
+            MODEL=$(echo "$FULL_MODEL" | cut -d/ -f2-)
+          else
+            PROVIDER="openai"
+            MODEL="$FULL_MODEL"
+          fi
+          pi -p "$(cat __agent_prompt__.md)" \
+            --provider "$PROVIDER" \
+            --model "$MODEL" \
+            --mode json \
+            --no-session \
+            2>&1 | tee /tmp/pi-trace.json
+
+      - name: Install Gemini CLI
+        if: inputs.agent_runtime == 'gemini'
+        run: |
+          npm install -g @google/gemini-cli
+
+      - name: Run Gemini CLI
+        if: inputs.agent_runtime == 'gemini'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_CLI_TRUST_WORKSPACE: "true"
+        run: |
+          gemini -p "$(cat __agent_prompt__.md)" \
+            --model ${{ inputs.model }} \
+            --yolo \
+            --output-format stream-json \
+            2>&1 | tee /tmp/gemini-trace.json
+
+      - name: Install Copilot CLI
+        if: inputs.agent_runtime == 'copilot'
+        run: |
+          npm install -g @github/copilot
+
+      - name: Run Copilot CLI
+        if: inputs.agent_runtime == 'copilot'
+        env:
+          GH_TOKEN: ${{ secrets.COPILOT_GH_TOKEN || secrets.GH_PAT }}
+        run: |
+          copilot -p "$(cat __agent_prompt__.md)" \
+            --model ${{ inputs.model }} \
+            --autopilot \
+            --allow-all \
+            2>&1 | tee /tmp/copilot-trace.json
 
       - name: Add signature blocks to comment files
         run: |
@@ -641,16 +857,26 @@ jobs:
 
           See workflow artifacts for full agent trace."
 
-          # Create the PR with iteration number included in the title
-          # This helps track multiple runs of the same configuration (iter_num=1, 2, 3, etc.)
+          # Create the PR (handle race condition: if PR already exists for this branch, find it)
           PR_URL=$(gh pr create \
             --base "${{ env.eval_base_branch }}" \
             --head "${{ env.expt_branch_name }}" \
-            --title "[DO NOT MERGE] eval #${{ inputs.issue_number }} i:${{ inputs.iter_num }}: ${{ steps.issue_context.outputs.issue_title }} (${{ env.model_short }}, ${{ env.config_short }})" \
-            --body "$PR_BODY")
+            --title "[DO NOT MERGE] eval #${{ inputs.issue_number }} i:${{ inputs.iter_num }}: ${{ steps.issue_context.outputs.issue_title }} (${{ inputs.agent_runtime }}/${{ env.model_short }}, ${{ env.config_short }})" \
+            --body "$PR_BODY" 2>&1) || {
+            # PR creation failed — check if one already exists for this branch
+            EXISTING_PR=$(gh pr list --head "${{ env.expt_branch_name }}" --base "${{ env.eval_base_branch }}" --json url -q '.[0].url' 2>/dev/null)
+            if [ -n "$EXISTING_PR" ]; then
+              echo "PR already exists (concurrent run): $EXISTING_PR"
+              PR_URL="$EXISTING_PR"
+            else
+              echo "PR creation failed and no existing PR found"
+              exit 1
+            fi
+          }
 
-          # Extract PR number from URL
-          CREATED_PR_NUMBER=$(echo "$PR_URL" | grep -oE '[0-9]+$')
+          # Extract PR number from URL (handle multi-line output from gh pr create)
+          PR_URL=$(echo "$PR_URL" | grep -o 'https://[^ ]*' | tail -1 | tr -d '\n\r')
+          CREATED_PR_NUMBER=$(echo "$PR_URL" | grep -oE '[0-9]+$' | tr -d '\n\r')
           echo "created_pr_url=${PR_URL}" >> $GITHUB_OUTPUT
           echo "created_pr_number=${CREATED_PR_NUMBER}" >> $GITHUB_OUTPUT
           echo "Created PR #${CREATED_PR_NUMBER}: ${PR_URL}"
@@ -741,12 +967,16 @@ jobs:
           mkdir -p "$WORK/$TRACE_DIR"
 
           # Copy trace files
-          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json; do
+          for src in __issue_context__.json /tmp/run-metadata.json ISSUE_COMMENTS.md PR_COMMENTS.md /tmp/claude-trace.json /tmp/codex-trace.json /tmp/opencode-trace.json /tmp/pi-trace.json /tmp/gemini-trace.json /tmp/copilot-trace.json; do
             if [ -f "$src" ]; then
               fname=$(basename "$src")
               # Rename runtime-specific traces to agent-trace.json
               [ "$fname" = "claude-trace.json" ] && fname="agent-trace.json"
               [ "$fname" = "codex-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "opencode-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "pi-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "gemini-trace.json" ] && fname="agent-trace.json"
+              [ "$fname" = "copilot-trace.json" ] && fname="agent-trace.json"
               cp "$src" "$WORK/$TRACE_DIR/$fname"
               echo "  Added $fname ($(wc -c < "$src") bytes)"
             fi

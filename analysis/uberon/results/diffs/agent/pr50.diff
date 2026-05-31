@@ -1,0 +1,157 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 76d60d4dd..9a93c87ba 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -223,10 +223,10 @@ subset: common_anatomy
+ subset: upper_level
+ xref: BFO:0000003
+ disjoint_from: UBERON:0001062 ! anatomical entity
+-property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ relationship: present_in_taxon NCBITaxon:33090 ! Viridiplantae
+ relationship: present_in_taxon NCBITaxon:33208 ! Metazoa
+ relationship: present_in_taxon NCBITaxon:4751 ! Fungi
++property_value: seeAlso "https://github.com/OBOFoundry/COB/issues/51" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000002
+@@ -225075,6 +225075,140 @@ relationship: dc-contributor https://orcid.org/0000-0002-1909-7004
+ relationship: in_taxon NCBITaxon:6692 ! Pleocyemata
+ relationship: part_of UBERON:8910000 ! stomatogastric nervous system
+ 
++[Term]
++id: UBERON:9900000
++name: ascending colon epithelium
++def: "An epithelial layer that lines the ascending colon." [UBERON:0001277]
++synonym: "epithelium of ascending colon" EXACT []
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001156 ! ascending colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900001
++name: transverse colon epithelium
++def: "An epithelial layer that lines the transverse colon." [UBERON:0001277]
++synonym: "epithelium of transverse colon" EXACT []
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001157 ! transverse colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: descending colon epithelium
++def: "An epithelial layer that lines the descending colon." [UBERON:0001277]
++synonym: "epithelium of descending colon" EXACT []
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001158 ! descending colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: sigmoid colon epithelium
++def: "An epithelial layer that lines the sigmoid colon." [UBERON:0001277]
++synonym: "epithelium of sigmoid colon" EXACT []
++intersection_of: UBERON:0001277 ! intestinal epithelium
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: ascending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the ascending colon." [UBERON:0000030]
++synonym: "lamina propria of ascending colon" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001156 ! ascending colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900005
++name: transverse colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the transverse colon." [UBERON:0000030]
++synonym: "lamina propria of transverse colon" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001157 ! transverse colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900006
++name: descending colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the descending colon." [UBERON:0000030]
++synonym: "lamina propria of descending colon" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001158 ! descending colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900007
++name: sigmoid colon lamina propria
++def: "The lamina propria that underlies the epithelial lining of the sigmoid colon." [UBERON:0000030]
++synonym: "lamina propria of sigmoid colon" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001159 ! sigmoid colon
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900008
++name: stomach lamina propria
++def: "The lamina propria that underlies the epithelial lining of the stomach." [UBERON:0000030]
++synonym: "lamina propria of stomach" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0000945 ! stomach
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900009
++name: caecum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the caecum." [UBERON:0000030]
++synonym: "cecum lamina propria" EXACT []
++synonym: "lamina propria of caecum" EXACT []
++synonym: "lamina propria of cecum" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001153 ! caecum
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900010
++name: rectum lamina propria
++def: "The lamina propria that underlies the epithelial lining of the rectum." [UBERON:0000030]
++synonym: "lamina propria of rectum" EXACT []
++intersection_of: UBERON:0000030 ! lamina propria
++intersection_of: part_of UBERON:0001052 ! rectum
++relationship: dc-contributor https://orcid.org/0000-0002-7073-9172 ! David Osumi-Sutherland
++property_value: dcterms-date "2026-05-10T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3495" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

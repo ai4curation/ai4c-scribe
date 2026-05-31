@@ -1,0 +1,1654 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index ccb7aa216..8b1a7d901 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -1468,7 +1468,7 @@ synonym: "exocyst complex" EXACT []
+ synonym: "Sec6/8 complex" EXACT []
+ xref: Wikipedia:Exocyst
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0090522 ! vesicle tethering involved in exocytosis
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0005938 ! cell cortex
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31922" xsd:anyURI
+ 
+@@ -2914,14 +2914,16 @@ consider: GO:0005575
+ 
+ [Term]
+ id: GO:0000268
+-name: peroxisome targeting sequence binding
++name: peroxisome signal sequence receptor activity
+ namespace: molecular_function
+ alt_id: GO:0005051
+-def: "Binding to a peroxisomal targeting sequence, a sequence of amino acids within a protein that acts as a signal for the localization of a protein into the peroxisome." [GOC:mah, ISBN:0879693568]
++def: "Binding to a peroxisomal targeting sequence, a short stretch of amino acids found in a protein that acts as a signal to localize the protein to the peroxisome." [PMID:20659419]
++synonym: "peroxisome targeting sequence binding" NARROW []
+ synonym: "peroxisome targeting signal receptor" NARROW []
+ synonym: "PTS binding" EXACT []
+ synonym: "PTS receptor" NARROW []
+-is_a: GO:0005048 ! signal sequence binding
++is_a: GO:0005048 ! signal sequence receptor activity
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31419" xsd:anyURI
+ 
+ [Term]
+ id: GO:0000269
+@@ -6943,7 +6945,7 @@ synonym: "Golgi associated retrograde protein complex" EXACT []
+ synonym: "VFT tethering complex" EXACT []
+ synonym: "Vps fifty three tethering complex" EXACT []
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0099022 ! vesicle tethering
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0005794 ! Golgi apparatus
+ relationship: part_of GO:0031410 ! cytoplasmic vesicle
+ 
+@@ -29440,11 +29442,13 @@ creation_date: 2009-12-09T10:03:32Z
+ 
+ [Term]
+ id: GO:0003400
+-name: regulation of COPII vesicle coating
++name: obsolete regulation of COPII vesicle coating
+ namespace: biological_process
+-def: "Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+-intersection_of: GO:0065007 ! biological regulation
+-intersection_of: regulates GO:0048208 ! COPII vesicle coating
++def: "OBSOLETE. Any process that modulates the rate, frequency, or extent of the addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
++comment: This term was obsoleted because the proteins previously annotated to it are part_of the COPII vesicle coating pathway rather than upstream regulators of it. Annotations should be moved to GO:0048208 COPII vesicle coat assembly.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31945" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0048208
+ created_by: dph
+ creation_date: 2009-12-17T08:38:14Z
+ 
+@@ -50846,7 +50850,7 @@ name: KDEL sequence binding
+ namespace: molecular_function
+ def: "Binding to a KDEL sequence, the C terminus tetrapeptide sequence Lys-Asp-Glu-Leu found in proteins that are to be retained in the endoplasmic reticulum." [GOC:ai]
+ synonym: "KDEL receptor activity" NARROW []
+-is_a: GO:0046923 ! ER retention sequence binding
++is_a: GO:0046923 ! ER lumen protein retrieval receptor activity
+ 
+ [Term]
+ id: GO:0005047
+@@ -50862,14 +50866,16 @@ intersection_of: has_primary_input GO:0048500 ! signal recognition particle
+ 
+ [Term]
+ id: GO:0005048
+-name: signal sequence binding
++name: signal sequence receptor activity
+ namespace: molecular_function
+ alt_id: GO:0008249
+-def: "Binding to a signal sequence, a specific peptide sequence found on protein precursors or mature proteins that dictates where the mature protein is localized." [GOC:ai]
++def: "Binding to a signal sequence, a short stretch of amino acids found in a protein that acts as a signal for its proper localization in the cell." [GOC:curators]
+ synonym: "leader sequence binding" NARROW []
+ synonym: "protein signal sequence binding" NARROW []
++synonym: "signal sequence binding" NARROW []
+ synonym: "signal sequence receptor" NARROW []
+-is_a: GO:0042277 ! peptide binding
++is_a: GO:0003674 ! molecular_function
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31419" xsd:anyURI
+ 
+ [Term]
+ id: GO:0005049
+@@ -50907,7 +50913,7 @@ synonym: "peroxisome targeting signal-1 receptor" NARROW []
+ synonym: "PEX5" NARROW []
+ synonym: "PTS1 binding" EXACT [PMID:14709540]
+ synonym: "PTS1 receptor" NARROW []
+-is_a: GO:0000268 ! peroxisome targeting sequence binding
++is_a: GO:0000268 ! peroxisome signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0005053
+@@ -50920,7 +50926,7 @@ synonym: "peroxisome targeting signal-2 receptor" NARROW []
+ synonym: "PEX7" NARROW []
+ synonym: "PTS2 binding" EXACT [PMID:14709540]
+ synonym: "PTS2 receptor" EXACT []
+-is_a: GO:0000268 ! peroxisome targeting sequence binding
++is_a: GO:0000268 ! peroxisome signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0005054
+@@ -69216,10 +69222,10 @@ creation_date: 2013-12-19T15:26:17Z
+ 
+ [Term]
+ id: GO:0006901
+-name: vesicle coating
++name: vesicle coat assembly
+ namespace: biological_process
+ def: "A protein coat is added to the vesicle to form the proper shape of the vesicle and to target the vesicle for transport to its destination." [GOC:jid]
+-synonym: "vesicle coat assembly" BROAD []
++synonym: "vesicle coating" EXACT []
+ is_a: GO:0016050 ! vesicle organization
+ relationship: has_participant GO:0031982 ! vesicle
+ relationship: part_of GO:0006900 ! vesicle budding from membrane
+@@ -77982,7 +77988,7 @@ def: "Binding to a nuclear localization sequence, a specific peptide sequence th
+ synonym: "NLS binding" EXACT []
+ synonym: "nuclear localisation sequence binding" EXACT [GOC:mah]
+ synonym: "nuclear localization signal binding" EXACT []
+-is_a: GO:0005048 ! signal sequence binding
++is_a: GO:0005048 ! signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0008140
+@@ -85574,12 +85580,15 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0008785
+-name: alkyl hydroperoxide reductase activity
++name: obsolete alkyl hydroperoxide reductase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: octane hydroperoxide + NADH + H+ = H2O + NAD+ + 1-octanol." [GOC:curators]
+-is_a: GO:0016668 ! oxidoreductase activity, acting on a sulfur group of donors, NAD(P) as acceptor
++def: "OBSOLETE. Catalysis of the reaction: octane hydroperoxide + NADH + H+ = H2O + NAD+ + 1-octanol." [GOC:curators]
++comment: The reason for obsoletion is that, despite the generic-sounding name, this term represented a substrate-specific activity that is more specific than the specificity of any known gene product. 'Alkyl hydroperoxide reductase' is listed as a synonym of EC 1.11.1.26, which corresponds to GO:0102039 NADH-dependent peroxiredoxin activity, the appropriate replacement.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28261" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28340" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31961" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0102039
+ 
+ [Term]
+ id: GO:0008786
+@@ -86903,39 +86912,47 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0008873
+-name: gluconate 2-dehydrogenase activity
++name: gluconate 2-dehydrogenase (NADP+) activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: D-gluconate + NADP+ = 2-dehydro-D-gluconate + NADPH + H+." [EC:1.1.1.215]
+ synonym: "2-keto-D-gluconate reductase activity" RELATED [EC:1.1.1.215]
+ synonym: "2-ketogluconate reductase activity" RELATED [EC:1.1.1.215]
++synonym: "gluconate 2-dehydrogenase activity" BROAD []
+ xref: EC:1.1.1.215 {source="skos:exactMatch"}
+ xref: MetaCyc:1.1.1.215-RXN
+ xref: RHEA:16653 {source="skos:exactMatch"}
+-is_a: GO:0008875 ! gluconate dehydrogenase activity
++is_a: GO:0016616 ! oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+ 
+ [Term]
+ id: GO:0008874
+-name: gluconate 5-dehydrogenase activity
++name: gluconate 5-dehydrogenase [NAD(P)+] activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: D-gluconate + NADP+ = 5-dehydro-D-gluconate + NADPH + H+." [EC:1.1.1.69]
++def: "Catalysis of the reaction: D-gluconate + NAD(P)+ = 5-dehydro-D-gluconate + NAD(P)H + H+." [EC:1.1.1.69]
+ synonym: "5-keto-D-gluconate 5-reductase activity" RELATED [EC:1.1.1.69]
+ synonym: "5-keto-D-gluconate reductase" RELATED [EC:1.1.1.69]
+ synonym: "5-ketogluconate 5-reductase activity" RELATED [EC:1.1.1.69]
+ synonym: "5-ketogluconate reductase activity" RELATED [EC:1.1.1.69]
+ synonym: "D-gluconate:NAD(P)+ 5-oxidoreductase" RELATED [EC:1.1.1.69]
++synonym: "gluconate 5-dehydrogenase activity" EXACT []
+ xref: EC:1.1.1.69 {source="skos:exactMatch"}
+ xref: MetaCyc:GLUCONATE-5-DEHYDROGENASE-RXN
+-is_a: GO:0008875 ! gluconate dehydrogenase activity
++xref: RHEA:23936 {source="skos:narrowMatch"}
++xref: RHEA:23940 {source="skos:narrowMatch"}
++is_a: GO:0016616 ! oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31989" xsd:anyURI
+ 
+ [Term]
+ id: GO:0008875
+-name: gluconate dehydrogenase activity
++name: obsolete gluconate dehydrogenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: D-gluconate + NADP+ = dehydro-D-gluconate + NADPH + H+." [GOC:curators]
+-is_a: GO:0016616 ! oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28243" xsd:anyURI
++def: "OBSOLETE. Catalysis of the reaction: D-gluconate + NADP+ = dehydro-D-gluconate + NADPH + H+." [GOC:curators]
++comment: This term was obsoleted because it is an unnecessary grouping term.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31989" xsd:anyURI
++is_obsolete: true
++consider: GO:0008873
++consider: GO:0008874
+ 
+ [Term]
+ id: GO:0008876
+@@ -89952,14 +89969,15 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0009074
+-name: aromatic amino acid family catabolic process
++name: aromatic amino acid catabolic process
+ namespace: biological_process
+-def: "The chemical reactions and pathways resulting in the breakdown of aromatic amino acid family, amino acids with aromatic ring (phenylalanine, tyrosine, tryptophan)." [GOC:curators]
++def: "The chemical reactions and pathways resulting in the breakdown of an amino acid whose structure includes an aromatic ring." [GOC:curators]
+ synonym: "aromatic amino acid family breakdown" EXACT []
+ synonym: "aromatic amino acid family catabolism" EXACT []
+ synonym: "aromatic amino acid family degradation" EXACT []
+ intersection_of: GO:0009056 ! catabolic process
+ intersection_of: has_primary_input CHEBI:33856 ! aromatic amino acid
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32000" xsd:anyURI
+ 
+ [Term]
+ id: GO:0009075
+@@ -90247,20 +90265,14 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0009095
+-name: aromatic amino acid biosynthetic process, prephenate pathway
+-namespace: biological_process
+-def: "The chemical reactions and pathways resulting in the formation of phenylalanine and tyrosine from other compounds, including chorismate, via the intermediate prephenate." [GOC:mah, ISBN:0471331309, MetaCyc:PWY-3481]
+-synonym: "aromatic amino acid family anabolism, prephenate pathway" EXACT []
+-synonym: "aromatic amino acid family biosynthetic process via prephenate" EXACT [GOC:pr]
+-synonym: "aromatic amino acid family biosynthetic process via prephenate(2-)" EXACT [GOC:pr]
+-synonym: "aromatic amino acid family formation, prephenate pathway" EXACT []
+-synonym: "aromatic amino acid family synthesis, prephenate pathway" EXACT []
+-xref: MetaCyc:PWY-3481
+-is_a: GO:0009073 ! aromatic amino acid biosynthetic process
+-intersection_of: GO:0009058 ! biosynthetic process
+-intersection_of: has_intermediate CHEBI:57852 ! prephenate(2-)
+-intersection_of: has_primary_output CHEBI:33856 ! aromatic amino acid
+-property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31091" xsd:anyURI
++name: obsolete aromatic amino acid biosynthetic process, prephenate pathway
++namespace: biological_process
++def: "OBSOLETE. The chemical reactions and pathways resulting in the formation of phenylalanine and tyrosine from other compounds, including chorismate, via the intermediate prephenate." [GOC:mah, ISBN:0471331309, MetaCyc:PWY-3481]
++comment: The reason for obsoletion is that this term is pre-composed and should be represented as the two distinct pathways for L-phenylalanine and L-tyrosine biosynthesis. MetaCyc:PWY-3481 is a superpathway combining PWY-3462 (L-phenylalanine biosynthesis II) and PWY-3461 (L-tyrosine biosynthesis II), which are properly represented by distinct GO terms.
++consider: GO:0009094 ! L-phenylalanine biosynthetic process
++consider: GO:0006571 ! L-tyrosine biosynthetic process
++is_obsolete: true
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32005" xsd:anyURI
+ 
+ [Term]
+ id: GO:0009097
+@@ -92076,19 +92088,13 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0009255
+-name: Entner-Doudoroff pathway through 6-phosphogluconate
++name: obsolete Entner-Doudoroff pathway through 6-phosphogluconate
+ namespace: biological_process
+-def: "A pathway that converts a carbohydrate to pyruvate and glyceraldehyde-3 phosphate by producing 6-phosphogluconate and then dehydrating it." [GOC:jl, MetaCyc:PWY-8004, PMID:12921356, PMID:12981024]
+-xref: MetaCyc:PWY-8004
+-is_a: GO:0005975 ! carbohydrate metabolic process
+-is_a: GO:0044281 ! small molecule metabolic process
+-is_a: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: ends_with GO:0008675 ! 2-dehydro-3-deoxy-phosphogluconate aldolase activity
+-intersection_of: has_intermediate CHEBI:58759 ! 6-phosphonatooxy-D-gluconate
+-intersection_of: has_part GO:0004456 ! phosphogluconate dehydratase activity
+-intersection_of: has_primary_output CHEBI:15361 ! pyruvate
+-intersection_of: has_primary_output CHEBI:58027 ! glyceraldehyde 3-phosphate(2-)
++def: "OBSOLETE. A pathway that converts a carbohydrate to pyruvate and glyceraldehyde-3 phosphate by producing 6-phosphogluconate and then dehydrating it." [GOC:jl, MetaCyc:PWY-8004, PMID:12921356, PMID:12981024]
++comment: This term was obsoleted because the variant Entner-Doudoroff pathways are better represented by the parent term GO:0061678 (Entner-Doudoroff pathway). MetaCyc treats these as 'variant pathways' and such variants are better captured as GO-CAMs rather than as nested ontology terms.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ 
+ [Term]
+ id: GO:0009256
+@@ -123047,7 +123053,7 @@ name: synaptic vesicle coating
+ namespace: biological_process
+ def: "The formation of clathrin coated pits in the presynaptic membrane endocytic zone, triggered by the presence of high concentrations of synaptic vesicle components. This process leads to, but does not include budding of the membrane to form new vesicles." [GOC:curators, PMID:10099709, PMID:20448150]
+ subset: goslim_synapse
+-is_a: GO:0006901 ! vesicle coating
++is_a: GO:0006901 ! vesicle coat assembly
+ relationship: part_of GO:0016185 ! synaptic vesicle budding from presynaptic endocytic zone membrane
+ 
+ [Term]
+@@ -131917,7 +131923,7 @@ synonym: "conserved oligomeric Golgi complex" EXACT []
+ synonym: "Golgi transport complex" EXACT []
+ synonym: "Sec34/35 complex" NARROW []
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0099041 ! vesicle tethering to Golgi
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0005794 ! Golgi apparatus
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31397" xsd:anyURI
+ 
+@@ -138332,16 +138338,14 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0018581
+-name: hydroxyquinol 1,2-dioxygenase activity
++name: obsolete hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+-def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
+-xref: EC:1.13.11.37 {source="skos:broadMatch"}
+-xref: MetaCyc:RXN-17556
+-xref: RHEA:19441 {source="skos:exactMatch"}
+-xref: UM-BBD_reactionID:r0232
+-is_a: GO:0016702 ! oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen
++def: "OBSOLETE. Catalysis of the reaction: benzene-1,2,4-triol + O2 = 3-hydroxy-cis,cis-muconate + 2 H+." [RHEA:19441]
++comment: The reason for obsoletion is that this term described a sub-reaction of the complete two-step reaction represented by GO:0047074. The second step (non-enzymatic conversion of 3-hydroxy-cis,cis-muconate to maleylacetate) is not catalyzed separately, so this term is equivalent to GO:0047074 hydroxyquinol 1,2-dioxygenase activity.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/25870" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0047074
+ 
+ [Term]
+ id: GO:0018582
+@@ -161603,7 +161607,7 @@ synonym: "TRAPP1" NARROW [GOC:vw]
+ synonym: "TRAPP2" NARROW [GOC:vw]
+ xref: Wikipedia:TRAPP_complex
+ is_a: GO:0140535 ! intracellular protein-containing complex
+-relationship: capable_of_part_of GO:0099022 ! vesicle tethering
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ 
+ [Term]
+ id: GO:0030009
+@@ -171206,7 +171210,7 @@ name: HOPS complex
+ namespace: cellular_component
+ def: "A multimeric protein complex that associates with the vacuolar membrane, late endosomal (multivesicular body) and lysosomal membranes. HOPS is a tethering complex involved in vesicle fusion." [PMID:10944212, PMID:23645161]
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0099022 ! vesicle tethering
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0016020 ! membrane
+ 
+ [Term]
+@@ -171593,18 +171597,22 @@ consider: GO:0048572
+ 
+ [Term]
+ id: GO:0030941
+-name: chloroplast targeting sequence binding
++name: chloroplast targeting sequence receptor activity
+ namespace: molecular_function
+-def: "Binding to a chloroplast targeting sequence, a specific peptide sequence that acts as a signal to localize the protein within the chloroplast." [GOC:mah]
+-is_a: GO:0005048 ! signal sequence binding
++def: "Binding to a chloroplast targeting sequence, a short stretch of amino acids found in a protein that acts as a signal to localize the protein to the chloroplast." [PMID:35929083]
++synonym: "chloroplast targeting sequence binding" NARROW []
++is_a: GO:0005048 ! signal sequence receptor activity
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31419" xsd:anyURI
+ 
+ [Term]
+ id: GO:0030942
+-name: endoplasmic reticulum signal peptide binding
++name: endoplasmic reticulum signal sequence receptor activity
+ namespace: molecular_function
+-def: "Binding to an endoplasmic reticulum signal peptide, a specific peptide sequence that acts as a signal to localize the protein within the endoplasmic reticulum." [GOC:mah]
++def: "Binding to an endoplasmic reticulum signal peptide, a short stretch of amino acids found in a protein that acts as a signal to localize the protein to the endoplasmic reticulum." [GOC:mah]
++synonym: "endoplasmic reticulum signal peptide binding" NARROW []
+ synonym: "ER signal peptide binding" EXACT []
+-is_a: GO:0005048 ! signal sequence binding
++is_a: GO:0005048 ! signal sequence receptor activity
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31419" xsd:anyURI
+ 
+ [Term]
+ id: GO:0030943
+@@ -171612,14 +171620,14 @@ name: mitochondrion targeting sequence binding
+ namespace: molecular_function
+ def: "Binding to a mitochondrion targeting sequence, a specific peptide sequence that acts as a signal to localize the protein within the mitochondrion." [GOC:mah]
+ synonym: "mitochondrial targeting sequence binding" EXACT []
+-is_a: GO:0005048 ! signal sequence binding
++is_a: GO:0005048 ! signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0030944
+ name: DDEL sequence binding
+ namespace: molecular_function
+ def: "Binding to a KDEL sequence, the C terminus tetrapeptide sequence Asp-Asp-Glu-Leu found in proteins that are to be retained in the endoplasmic reticulum." [GOC:mah]
+-is_a: GO:0046923 ! ER retention sequence binding
++is_a: GO:0046923 ! ER lumen protein retrieval receptor activity
+ 
+ [Term]
+ id: GO:0030945
+@@ -196043,7 +196051,7 @@ name: CORVET complex
+ namespace: cellular_component
+ def: "A multimeric protein complex that acts as an endosomal tethering complex (CORVET = class C core vacuole/endosome tethering) by cooperating with Rab GTPases to capture endosomal vesicles and trap them prior to the action of SNAREs; the complex is involved in endo-lysosomal biogenesis and required for transport between endosome and vacuole. The Saccharomyces cerevisiae complex contains Vps8p, Vps3p, Pep5p, Vps16p, Pep3p, and Vps33p." [PMID:17488625]
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0099022 ! vesicle tethering
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0005768 ! endosome
+ 
+ [Term]
+@@ -196720,7 +196728,7 @@ synonym: "mPTS binding" EXACT []
+ synonym: "peroxisomal membrane protein (PMP) targeting signal (mPTS) binding" EXACT [PMID:14709540]
+ synonym: "PMP targeting signal (mPTS) binding" EXACT [PMID:14709540]
+ synonym: "PMP targeting signal binding" EXACT [PMID:14709540]
+-is_a: GO:0000268 ! peroxisome targeting sequence binding
++is_a: GO:0000268 ! peroxisome signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0033329
+@@ -268883,7 +268891,7 @@ name: HDEL sequence binding
+ namespace: molecular_function
+ def: "Binding to a HDEL sequence, the C terminus tetrapeptide sequence His-Asp-Glu-Leu found in proteins that are to be retained in the endoplasmic reticulum." [PMID:1327759]
+ synonym: "HDEL receptor activity" NARROW []
+-is_a: GO:0046923 ! ER retention sequence binding
++is_a: GO:0046923 ! ER lumen protein retrieval receptor activity
+ 
+ [Term]
+ id: GO:0045016
+@@ -273453,10 +273461,13 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0045550
+-name: geranylgeranyl reductase activity
++name: obsolete geranylgeranyl reductase activity
+ namespace: molecular_function
+-def: "Catalysis of the formation of phytyl group from the stepwise reduction of a geranylgeranyl group." [PMID:9492312]
+-is_a: GO:0016491 ! oxidoreductase activity
++def: "OBSOLETE. Catalysis of the formation of phytyl group from the stepwise reduction of a geranylgeranyl group." [PMID:9492312]
++comment: This term was obsoleted because it lacked a proper enzyme cross-reference and is equivalent to GO:0102067 'geranylgeranyl diphosphate reductase activity' (EC:1.3.1.83, RHEA:26229), which describes the same reaction (PMID:9492312: reduction of geranylgeranyl diphosphate to phytyl diphosphate, also acting on geranylgeranyl-chlorophyll a).
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31963" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0102067
+ 
+ [Term]
+ id: GO:0045551
+@@ -289697,11 +289708,12 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0046923
+-name: ER retention sequence binding
++name: ER lumen protein retrieval receptor activity
+ namespace: molecular_function
+-def: "Binding to an endoplasmic reticulum (ER) retention sequence, a specific peptide sequence that ensures a protein is retained within the ER." [GOC:ai]
++def: "Binding to an endoplasmic reticulum (ER) retention sequence, a short stretch of amino acids found in a protein that acts as a signal to retain the protein within the ER." [GOC:ai]
+ synonym: "endoplasmic reticulum retention sequence binding" EXACT []
+-is_a: GO:0005048 ! signal sequence binding
++synonym: "ER retention sequence binding" NARROW []
++is_a: GO:0005048 ! signal sequence receptor activity
+ 
+ [Term]
+ id: GO:0046924
+@@ -291741,9 +291753,10 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0047074
+-name: 4-hydroxycatechol 1,2-dioxygenase activity
++name: hydroxyquinol 1,2-dioxygenase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: benzene-1,2,4-triol + O2 = maleylacetate + 2 H+." [RHEA:35595]
++synonym: "4-hydroxycatechol 1,2-dioxygenase activity" EXACT []
+ xref: EC:1.13.11.37 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN-10137
+ xref: RHEA:35595 {source="skos:exactMatch"}
+@@ -307904,7 +307917,7 @@ name: Golgi transport vesicle coating
+ namespace: biological_process
+ def: "The addition of specific coat proteins to Golgi membranes during the formation of transport vesicles." [GOC:jid, GOC:mah, ISBN:0716731363, PMID:10219233]
+ synonym: "dictyosome transport vesicle coating" NARROW []
+-is_a: GO:0006901 ! vesicle coating
++is_a: GO:0006901 ! vesicle coat assembly
+ relationship: part_of GO:0048194 ! Golgi vesicle budding
+ relationship: part_of GO:0048199 ! vesicle targeting, to, from or within Golgi
+ 
+@@ -307980,13 +307993,13 @@ relationship: part_of GO:0006888 ! endoplasmic reticulum to Golgi vesicle-mediat
+ 
+ [Term]
+ id: GO:0048208
+-name: COPII vesicle coating
++name: COPII vesicle coat assembly
+ namespace: biological_process
+ def: "The addition of COPII proteins and adaptor proteins to ER membranes during the formation of transport vesicles, forming a vesicle coat." [GOC:ascb_2009, GOC:dph, GOC:jid, GOC:mah, GOC:tb, ISBN:0716731363, PMID:10219233]
+ synonym: "COPII coating of ER-derived vesicle" EXACT [GOC:tb]
+-synonym: "COPII vesicle coat assembly" EXACT [GOC:ascb_2009, GOC:dph, GOC:tb]
+ synonym: "COPII vesicle coat formation" EXACT [GOC:ascb_2009, GOC:dph, GOC:jp, GOC:tb]
+-is_a: GO:0006901 ! vesicle coating
++synonym: "COPII vesicle coating" EXACT [GOC:ascb_2009, GOC:dph, GOC:tb]
++is_a: GO:0006901 ! vesicle coat assembly
+ intersection_of: GO:0022607 ! cellular component assembly
+ intersection_of: results_in_assembly_of GO:0030127 ! COPII vesicle coat
+ relationship: part_of GO:0048207 ! vesicle targeting, rough ER to cis-Golgi
+@@ -346799,8 +346812,11 @@ synonym: "ergothioneine anabolism" EXACT []
+ synonym: "ergothioneine biosynthesis" EXACT []
+ synonym: "ergothioneine formation" EXACT []
+ synonym: "ergothioneine synthesis" EXACT []
++xref: MetaCyc:PWY-7255 {source="skos:narrowMatch"}
++xref: MetaCyc:PWY-7550 {source="skos:narrowMatch"}
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:134344 ! ergothioneine(1+)
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ created_by: ai
+ creation_date: 2011-08-01T03:56:19Z
+ 
+@@ -346891,6 +346907,7 @@ synonym: "ergothioneine biosynthesis from histidine via N-alpha,N-alpha,N-alpha-
+ xref: Wikipedia:Ergothioneine
+ is_a: GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
+ creation_date: 2011-08-05T11:31:52Z
+ 
+ [Term]
+@@ -369482,7 +369499,10 @@ id: GO:0061678
+ name: Entner-Doudoroff pathway
+ namespace: biological_process
+ def: "A cellular carbohydrate catabolic process that converts a carbohydrate to pyruvate and either glyceraldehyde or glyceraldehyde-3 phosphate by dehydration and aldol cleavage via a gluconate or 6-phosphogluconate intermediate." [GOC:dph, PMID:12921536]
+-xref: MetaCyc:Entner-Doudoroff-Pathways
++xref: MetaCyc:ENTNER-DOUDOROFF-PWY {source="skos:narrowMatch"}
++xref: MetaCyc:NPGLUCAT-PWY {source="skos:narrowMatch"}
++xref: MetaCyc:PWY-2221 {source="skos:narrowMatch"}
++xref: MetaCyc:PWY-8004 {source="skos:narrowMatch"}
+ is_a: GO:0016052 ! carbohydrate catabolic process
+ relationship: has_primary_output CHEBI:15361 ! pyruvate
+ created_by: dph
+@@ -369490,45 +369510,38 @@ creation_date: 2015-01-16T15:28:25Z
+ 
+ [Term]
+ id: GO:0061679
+-name: Entner-Doudoroff pathway through gluconate
+-namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate." [GOC:dph, PMID:12921536]
+-synonym: "gluconate pathway" RELATED []
+-is_a: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: GO:0061678 ! Entner-Doudoroff pathway
+-intersection_of: has_intermediate CHEBI:18391 ! D-gluconate
+-intersection_of: has_part GO:0047929 ! gluconate dehydratase activity
+-intersection_of: has_part GO:0047935 ! glucose 1-dehydrogenase (NADP+) activity
+-intersection_of: has_primary_output CHEBI:15361 ! pyruvate
++name: obsolete Entner-Doudoroff pathway through gluconate
++namespace: biological_process
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate." [GOC:dph, PMID:12921536]
++comment: This term was obsoleted because the variant Entner-Doudoroff pathways are better represented by the parent term GO:0061678 (Entner-Doudoroff pathway). MetaCyc treats these as 'variant pathways' and such variants are better captured as GO-CAMs rather than as nested ontology terms.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ created_by: dph
+ creation_date: 2015-01-16T15:41:22Z
+ 
+ [Term]
+ id: GO:0061680
+-name: Entner-Doudoroff pathway through gluconate to D-glyceraldehyde
+-namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde." [GOC:dph, MetaCyc:NPGLUCAT-PWY, PMID:12921536]
+-xref: MetaCyc:NPGLUCAT-PWY
+-is_a: GO:0019595 ! non-phosphorylated glucose catabolic process
+-is_a: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: ends_with GO:0061677 ! 2-dehydro-3-deoxy-D-gluconate aldolase activity
+-intersection_of: has_primary_output CHEBI:17378 ! D-glyceraldehyde
++name: obsolete Entner-Doudoroff pathway through gluconate to D-glyceraldehyde
++namespace: biological_process
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde." [GOC:dph, MetaCyc:NPGLUCAT-PWY, PMID:12921536]
++comment: This term was obsoleted because the variant Entner-Doudoroff pathways are better represented by the parent term GO:0061678 (Entner-Doudoroff pathway). MetaCyc treats these as 'variant pathways' and such variants are better captured as GO-CAMs rather than as nested ontology terms.
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/28392" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ created_by: dph
+ creation_date: 2015-01-22T08:51:31Z
+ 
+ [Term]
+ id: GO:0061681
+-name: Entner-Doudoroff pathway through gluconate to D-glyceraldehyde-3-phosphate
+-namespace: biological_process
+-def: "The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde-3-phosphate." [GOC:dph, PMID:12921536]
+-xref: MetaCyc:PWY-2221
+-is_a: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: GO:0061679 ! Entner-Doudoroff pathway through gluconate
+-intersection_of: ends_with GO:0008675 ! 2-dehydro-3-deoxy-phosphogluconate aldolase activity
+-intersection_of: has_part GO:0008673 ! 2-dehydro-3-deoxygluconokinase activity
+-intersection_of: has_primary_output CHEBI:58027 ! glyceraldehyde 3-phosphate(2-)
++name: obsolete Entner-Doudoroff pathway through gluconate to D-glyceraldehyde-3-phosphate
++namespace: biological_process
++def: "OBSOLETE. The Entner-Doudoroff pathway that proceeds through a D-gluconate intermediate and yields pyruvate and D-glyceraldehyde-3-phosphate." [GOC:dph, PMID:12921536]
++comment: This term was obsoleted because the variant Entner-Doudoroff pathways are better represented by the parent term GO:0061678 (Entner-Doudoroff pathway). MetaCyc treats these as 'variant pathways' and such variants are better captured as GO-CAMs rather than as nested ontology terms.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0061678
+ created_by: dph
+ creation_date: 2015-01-22T08:55:22Z
+ 
+@@ -369601,7 +369614,7 @@ synonym: "hercynylcysteine sulfoxide synthase" EXACT []
+ xref: EC:1.21.3.10 {source="skos:exactMatch"}
+ xref: RHEA:42704 {source="skos:exactMatch"}
+ is_a: GO:0046993 ! oxidoreductase activity, acting on X-H and Y-H to form an X-Y bond, with oxygen as acceptor
+-relationship: part_of GO:0140479 ! ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++relationship: part_of GO:0052699 ! ergothioneine biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/11163" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24051" xsd:anyURI
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
+@@ -369621,13 +369634,13 @@ creation_date: 2015-03-09T09:16:23Z
+ 
+ [Term]
+ id: GO:0061688
+-name: glycolytic process via Entner-Doudoroff Pathway
++name: obsolete glycolytic process via Entner-Doudoroff Pathway
+ namespace: biological_process
+-def: "A glycolytic process in which the glucose is catabolized to pyruvate by first entering the Entner-Doudoroff pathway to yield pyruvate and glyceraldehyde-3-phosphate. The glyceraldehyde-3-phosphate is subsequently converted to pyruvate by the core glycolytic enzymes." [GOC:dph, PMID:9657988]
+-synonym: "gluconate pathway" RELATED []
+-is_a: GO:0006096 ! glycolytic process
+-intersection_of: GO:0006096 ! glycolytic process
+-intersection_of: starts_with GO:0061678 ! Entner-Doudoroff pathway
++def: "OBSOLETE. A glycolytic process in which the glucose is catabolized to pyruvate by first entering the Entner-Doudoroff pathway to yield pyruvate and glyceraldehyde-3-phosphate. The glyceraldehyde-3-phosphate is subsequently converted to pyruvate by the core glycolytic enzymes." [GOC:dph, PMID:9657988]
++comment: This term was obsoleted because the existing IEA annotations are better captured by the parent term GO:0006096 (glycolytic process); pathway variants are better represented as GO-CAMs rather than as nested ontology terms.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31916" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0006096
+ created_by: dph
+ creation_date: 2015-03-12T14:39:00Z
+ 
+@@ -371164,12 +371177,14 @@ creation_date: 2016-12-01T20:21:28Z
+ 
+ [Term]
+ id: GO:0061817
+-name: endoplasmic reticulum-plasma membrane tethering
++name: obsolete endoplasmic reticulum-plasma membrane tethering
+ namespace: biological_process
+-def: "The attachment of an endoplasmic reticulum membrane to the plasma membrane via molecular tethers." [GOC:dph, GOC:vw, PMID:23237950, PMID:26877082, PMID:27875684]
+-synonym: "ER-plasma membrane tethering" EXACT [GOC:dph]
+-is_a: GO:0051643 ! endoplasmic reticulum localization
+-is_a: GO:0140056 ! organelle localization by membrane tethering
++def: "OBSOLETE. The attachment of an endoplasmic reticulum membrane to the plasma membrane via molecular tethers." [GOC:dph, GOC:vw, PMID:23237950, PMID:26877082, PMID:27875684]
++comment: This term was obsoleted because it represents a molecular function. Annotations should be migrated to GO:0160214 'endoplasmic reticulum-plasma membrane adaptor activity'; the biological process aspect (if any) is captured by GO:0051643 'endoplasmic reticulum localization'.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31873" xsd:anyURI
++is_obsolete: true
++consider: GO:0051643
++consider: GO:0160214
+ created_by: dph
+ creation_date: 2016-12-05T14:43:58Z
+ 
+@@ -377432,13 +377447,15 @@ is_a: GO:0019417 ! sulfur oxidation
+ 
+ [Term]
+ id: GO:0070221
+-name: sulfide oxidation, using sulfide:quinone oxidoreductase
++name: obsolete sulfide oxidation, using sulfide:quinone oxidoreductase
+ namespace: biological_process
+-def: "A sulfide oxidation process that proceeds via the reaction catalyzed by sulfide:quinone oxidoreductase." [GOC:ew]
++def: "OBSOLETE. A sulfide oxidation process that proceeds via the reaction catalyzed by sulfide:quinone oxidoreductase." [GOC:ew]
++comment: The reason for obsoletion is that this term represents a GO-CAM.
+ synonym: "sulfide oxidation, using sulfide-quinone reductase" EXACT [GOC:mah]
+ synonym: "sulphide oxidation, using sulfide:quinone oxidoreductase" EXACT [GOC:mah]
+-is_a: GO:0019418 ! sulfide oxidation
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31842" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0019418
+ 
+ [Term]
+ id: GO:0070222
+@@ -385476,7 +385493,7 @@ synonym: "CATCHR family complex" BROAD []
+ synonym: "Dsl1p complex" EXACT [PMID:19151722]
+ synonym: "NZR complex" EXACT [PMID:25364732]
+ is_a: GO:0032991 ! protein-containing complex
+-relationship: capable_of_part_of GO:0099022 ! vesicle tethering
++relationship: capable_of GO:7770062 ! vesicle membrane tethering activity
+ relationship: part_of GO:0005783 ! endoplasmic reticulum
+ created_by: mah
+ creation_date: 2009-09-22T03:41:38Z
+@@ -418672,12 +418689,14 @@ creation_date: 2013-01-08T11:08:57Z
+ 
+ [Term]
+ id: GO:0090522
+-name: vesicle tethering involved in exocytosis
++name: obsolete vesicle tethering involved in exocytosis
+ namespace: biological_process
+-def: "The initial, indirect interaction between a secretory vesicle membrane and a site of exocytosis in the plasma membrane. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior to docking and fusion." [GOC:rn, PMID:10559876, PMID:17052174, PMID:17488620, PMID:22420621, PMID:27243008]
+-synonym: "vesicle tethering to plasma membrane" NARROW []
+-intersection_of: GO:0099022 ! vesicle tethering
+-intersection_of: part_of GO:0006887 ! exocytosis
++def: "OBSOLETE. The initial, indirect interaction between a secretory vesicle membrane and a site of exocytosis in the plasma membrane. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior to docking and fusion." [GOC:rn, PMID:10559876, PMID:17052174, PMID:17488620, PMID:22420621, PMID:27243008]
++comment: This term was obsoleted because it represents a molecular function (vesicle membrane tethering activity) rather than a biological process, and is pre-composed; the same information is better represented as a GO-CAM model. Annotations should be reviewed and reannotated to the new MF term GO:7770062 'vesicle membrane tethering activity', combined with GO:0006887 'exocytosis' or a descendant as appropriate.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31872" xsd:anyURI
++is_obsolete: true
++consider: GO:0006887
++consider: GO:7770062
+ created_by: tb
+ creation_date: 2013-01-08T15:07:50Z
+ 
+@@ -435254,11 +435273,13 @@ intersection_of: part_of GO:0032541 ! cortical endoplasmic reticulum
+ 
+ [Term]
+ id: GO:0099022
+-name: vesicle tethering
++name: obsolete vesicle tethering
+ namespace: biological_process
+-def: "The initial, indirect interaction between a vesicle membrane and a membrane to which it is targeted for fusion. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior to interaction between factors involved in fusion." [PMID:27243008]
+-is_a: GO:0016043 ! cellular component organization
+-relationship: part_of GO:0006903 ! vesicle targeting
++def: "OBSOLETE. The initial, indirect interaction between a vesicle membrane and a membrane to which it is targeted for fusion. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior to interaction between factors involved in fusion." [PMID:27243008]
++comment: This term was obsoleted because it represents a molecular function (vesicle membrane tethering activity) rather than a biological process. Annotations should be reviewed and reannotated to the new MF term GO:7770062 'vesicle membrane tethering activity', and where appropriate combined with the relevant vesicle-mediated transport / exocytosis process term in a GO-CAM model.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31881" xsd:anyURI
++is_obsolete: true
++consider: GO:7770062
+ 
+ [Term]
+ id: GO:0099023
+@@ -435266,7 +435287,7 @@ name: vesicle tethering complex
+ namespace: cellular_component
+ def: "Any protein complex that plays a role in vesicle tethering." [GOC:dos, GOC:vw, PMID:27243008]
+ intersection_of: GO:0032991 ! protein-containing complex
+-intersection_of: capable_of_part_of GO:0099022 ! vesicle tethering
++intersection_of: capable_of GO:7770062 ! vesicle membrane tethering activity
+ 
+ [Term]
+ id: GO:0099024
+@@ -435438,11 +435459,13 @@ intersection_of: has_primary_input CHEBI:17761 ! ceramide
+ 
+ [Term]
+ id: GO:0099041
+-name: vesicle tethering to Golgi
++name: obsolete vesicle tethering to Golgi
+ namespace: biological_process
+-def: "The initial, indirect interaction between a transport vesicle membrane and the membrane of the Golgi. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior fusion." [PMID:27243008]
+-intersection_of: GO:0099022 ! vesicle tethering
+-intersection_of: immediately_causally_upstream_of GO:0048280 ! vesicle fusion with Golgi apparatus
++def: "OBSOLETE. The initial, indirect interaction between a transport vesicle membrane and the membrane of the Golgi. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior fusion." [PMID:27243008]
++comment: This term was obsoleted because it represents a molecular function rather than a biological process, and is pre-composed; the same information is better represented as a GO-CAM model. Annotations should be reviewed and reannotated to GO:7770062 'vesicle membrane tethering activity', combined with the appropriate vesicle transport pathway BP term as part of a GO-CAM model.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31872" xsd:anyURI
++is_obsolete: true
++consider: GO:7770062
+ created_by: tb
+ creation_date: 2013-01-08T15:07:50Z
+ 
+@@ -435466,11 +435489,13 @@ is_obsolete: true
+ 
+ [Term]
+ id: GO:0099044
+-name: vesicle tethering to endoplasmic reticulum
++name: obsolete vesicle tethering to endoplasmic reticulum
+ namespace: biological_process
+-def: "The initial, indirect interaction between a transport vesicle membrane and the membrane of the endoplasmic reticulum. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior fusion." [PMID:27243008]
+-intersection_of: GO:0099022 ! vesicle tethering
+-intersection_of: immediately_causally_upstream_of GO:0048279 ! vesicle fusion with endoplasmic reticulum
++def: "OBSOLETE. The initial, indirect interaction between a transport vesicle membrane and the membrane of the endoplasmic reticulum. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. Interaction can occur via direct binding to membrane phospholipids or membrane proteins, or via binding to vesicle coat proteins. This process is distinct from and prior fusion." [PMID:27243008]
++comment: This term was obsoleted because it represents a molecular function rather than a biological process. Annotations should be reviewed; the VAP-related proteins previously annotated here are lipid transfer/adaptor proteins rather than vesicle tethers, and other types of membrane adaptor terms may be more appropriate. Where the activity is genuinely vesicle tethering, reannotate to GO:7770062 'vesicle membrane tethering activity'.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31868" xsd:anyURI
++is_obsolete: true
++consider: GO:7770062
+ created_by: tb
+ creation_date: 2013-01-08T15:07:50Z
+ 
+@@ -435704,12 +435729,14 @@ relationship: part_of GO:0007416 ! synapse assembly
+ 
+ [Term]
+ id: GO:0099069
+-name: synaptic vesicle tethering involved in synaptic vesicle exocytosis
++name: obsolete synaptic vesicle tethering involved in synaptic vesicle exocytosis
+ namespace: biological_process
+-def: "The initial, indirect interaction between a synaptic vesicle membrane and a the preseynaptic membrane active zone. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. This process is distinct from and prior to synaptic vesicle priming and fusion." [GOC:rn]
+-intersection_of: GO:0099022 ! vesicle tethering
+-intersection_of: has_participant GO:0008021 ! synaptic vesicle
+-intersection_of: part_of GO:0016081 ! synaptic vesicle docking
++def: "OBSOLETE. The initial, indirect interaction between a synaptic vesicle membrane and a the preseynaptic membrane active zone. This interaction is mediated by tethering factors (or complexes), which interact with both membranes. This process is distinct from and prior to synaptic vesicle priming and fusion." [GOC:rn]
++comment: This term was obsoleted because it represents a molecular function (vesicle membrane tethering activity) rather than a biological process, and is pre-composed; the same information is better represented as a GO-CAM model. Annotations should be reviewed and reannotated to the new MF term GO:7770062 'vesicle membrane tethering activity', combined with GO:0016079 'synaptic vesicle exocytosis' as appropriate.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31871" xsd:anyURI
++is_obsolete: true
++consider: GO:0016079
++consider: GO:7770062
+ 
+ [Term]
+ id: GO:0099070
+@@ -460684,7 +460711,7 @@ id: GO:0120521
+ name: 4-hydroxysphinganine ceramide fatty acyl 2-hydroxylase activity
+ namespace: molecular_function
+ def: "Catalysis of the reaction: an N-(1,2 saturated acyl)-(4R)-hydroxysphinganine + 2 Fe(II)-[cytochrome b5] + 2 H+ + O2 = an N-(2R-hydroxyacyl)-4R-hydroxysphinganine + 2 Fe(III)-[cytochrome b5] + H2O." [RHEA:46520]
+-xref: EC:1.14.18.6 {source="skos:broadMatch"}
++xref: EC:1.14.18.6 {source="skos:exactMatch"}
+ xref: MetaCyc:RXN3O-4042 {source="skos:exactMatch"}
+ xref: RHEA:46520 {source="skos:exactMatch"}
+ xref: RHEA:64532 {source="skos:narrowMatch"}
+@@ -466618,6 +466645,16 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: pg
+ creation_date: 2020-01-29T21:24:42Z
+ 
++[Term]
++id: GO:0140419
++name: cytoplasmic lattice complex
++namespace: cellular_component
++def: "A protein complex at least composed of PADI6, TLE6, NLRP14 and KHDC3 that forms fibrous structures in the mammalian ooplasm." [PMID:41845018, PMID:41917274, PMID:41986725]
++is_a: GO:0032991 ! protein-containing complex
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31998" xsd:anyURI
++created_by: pg
++creation_date: 2026-04-30T10:01:02Z
++
+ [Term]
+ id: GO:0140420
+ name: heme import into cell
+@@ -467211,10 +467248,13 @@ creation_date: 2020-06-23T15:54:56Z
+ 
+ [Term]
+ id: GO:0140479
+-name: ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
++name: obsolete ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase
+ namespace: biological_process
+-def: "A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
+-is_a: GO:0052699 ! ergothioneine biosynthetic process
++def: "OBSOLETE. A biosynthetic process that results in the formation of ergothioneine from histidine via a set of steps including the hercynylcysteine sulfoxide synthase reaction, which converts N-alpha,N-alpha,N-alpha-trimethyl-L-histidine directly to hercynylcysteine sulfoxide." [PMID:22209968, PMID:24828577]
++comment: The reason for obsoletion is that this term represents a GO-CAM model
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32018" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0052699
+ created_by: pg
+ creation_date: 2020-06-25T09:58:21Z
+ 
+@@ -468391,7 +468431,7 @@ creation_date: 2021-02-09T19:43:51Z
+ id: GO:0140597
+ name: protein carrier activity
+ namespace: molecular_function
+-def: "Binding to and carrying a protein to an acceptor molecule or to a specific location by moving along with the target protein." [PMID:7628437]
++def: "Directly binding to a protein and delivering it either to an acceptor molecule or to a specific location." [PMID:7628437]
+ synonym: "protein carrier chaperone" EXACT []
+ synonym: "protein chaperone" BROAD []
+ intersection_of: GO:0140104 ! molecular carrier activity
+@@ -481778,6 +481818,7 @@ id: GO:0170038
+ name: proteinogenic amino acid biosynthetic process
+ namespace: biological_process
+ def: "The chemical reactions and pathways resulting in the formation of any amino acid that is incorporated into protein naturally by ribosomal translation of mRNA, and that has a specific codon for translation from mRNA to protein." [GOC:ew]
++subset: gocheck_do_not_annotate
+ synonym: "proteinogenic amino acid anabolism" EXACT []
+ synonym: "proteinogenic amino acid biosynthesis" EXACT []
+ synonym: "proteinogenic amino acid formation" EXACT []
+@@ -481785,6 +481826,7 @@ synonym: "proteinogenic amino acid synthesis" EXACT []
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:83813 ! proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23268" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T16:28:19Z
+ 
+@@ -481793,11 +481835,13 @@ id: GO:0170039
+ name: proteinogenic amino acid metabolic process
+ namespace: biological_process
+ def: "The chemical reactions and pathways involving any amino acid that is incorporated into protein naturally by ribosomal translation of mRNA, and that has a specific codon for translation from mRNA to protein." [GOC:ew]
++subset: gocheck_do_not_annotate
+ synonym: "proteinogenic amino acid metabolism" EXACT []
+ is_a: GO:0006520 ! amino acid metabolic process
+ intersection_of: GO:0008152 ! metabolic process
+ intersection_of: has_primary_input_or_output CHEBI:83813 ! proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23268" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T17:31:08Z
+ 
+@@ -481806,12 +481850,14 @@ id: GO:0170040
+ name: proteinogenic amino acid catabolic process
+ namespace: biological_process
+ def: "The chemical reactions and pathways resulting in the breakdown of any amino acid that is incorporated into protein naturally by ribosomal translation of mRNA, and that has a specific codon for translation from mRNA to protein." [GOC:ew]
++subset: gocheck_do_not_annotate
+ synonym: "proteinogenic amino acid breakdown" EXACT []
+ synonym: "proteinogenic amino acid catabolism" EXACT []
+ synonym: "proteinogenic amino acid degradation" EXACT []
+ intersection_of: GO:0009056 ! catabolic process
+ intersection_of: has_primary_input CHEBI:83813 ! proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23268" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T17:41:14Z
+ 
+@@ -481825,6 +481871,7 @@ is_a: GO:0006520 ! amino acid metabolic process
+ intersection_of: GO:0008152 ! metabolic process
+ intersection_of: has_primary_input_or_output CHEBI:83820 ! non-proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23269" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T17:57:55Z
+ 
+@@ -481833,6 +481880,7 @@ id: GO:0170043
+ name: non-proteinogenic amino acid biosynthetic process
+ namespace: biological_process
+ def: "The chemical reactions and pathways resulting in the formation of non-proteinogenic amino acids." [GOC:ew]
++subset: gocheck_do_not_annotate
+ synonym: "non-proteinogenic amino acid anabolism" EXACT []
+ synonym: "non-proteinogenic amino acid formation" EXACT []
+ synonym: "non-proteinogenic amino acid synthesis" EXACT []
+@@ -481840,6 +481888,7 @@ synonym: "non-proteinogenic biosynthesis" EXACT []
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:83820 ! non-proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23269" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T19:03:08Z
+ 
+@@ -481848,12 +481897,14 @@ id: GO:0170044
+ name: non-proteinogenic amino acid catabolic process
+ namespace: biological_process
+ def: "The chemical reactions and pathways resulting in the breakdown of non-proteinogenic amino acids." [GOC:ew]
++subset: gocheck_do_not_annotate
+ synonym: "non-proteinogenic amino acid breakdown" EXACT []
+ synonym: "non-proteinogenic amino acid catabolism" EXACT []
+ synonym: "non-proteinogenic amino acid degradation" EXACT []
+ intersection_of: GO:0009056 ! catabolic process
+ intersection_of: has_primary_input CHEBI:83820 ! non-proteinogenic amino acid
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/23269" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31996" xsd:anyURI
+ created_by: ew
+ creation_date: 2023-12-18T19:27:05Z
+ 
+@@ -594999,7 +595050,7 @@ name: ciliary targeting signal binding
+ namespace: molecular_function
+ def: "Binding to a ciliary targeting sequence, a specific peptide sequence that acts as a signal to localize a membrane protein to the ciliary membrane." [GOC:krc, PMID:18256283, PMID:19575670, PMID:20603001, PMID:20697559]
+ synonym: "CTS binding" EXACT []
+-is_a: GO:0005048 ! signal sequence binding
++is_a: GO:0005048 ! signal sequence receptor activity
+ created_by: pr
+ creation_date: 2014-09-02T08:22:03Z
+ 
+@@ -617398,6 +617449,17 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-04-28T09:37:41Z
+ 
++[Term]
++id: GO:7770069
++name: ferritinophagy
++namespace: biological_process
++def: "The selective degradation of ferritin to release iron by macroautophagy." [PMID:25327288, PMID:26436293, PMID:38714719]
++synonym: "ferritin-specific autophagy" EXACT []
++is_a: GO:0016236 ! macroautophagy
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30894" xsd:anyURI
++created_by: dragon-ai-agent
++creation_date: 2026-04-29T15:27:39Z
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of
+diff --git a/src/ontology/imports/go-catalytic-activities-participants.owl b/src/ontology/imports/go-catalytic-activities-participants.owl
+index fb8b76d32..f80973982 100644
+--- a/src/ontology/imports/go-catalytic-activities-participants.owl
++++ b/src/ontology/imports/go-catalytic-activities-participants.owl
+@@ -69756,37 +69756,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0018581 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018581">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15378"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_15379"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_16971"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000057"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/CHEBI_58139"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0018582 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0018582">
+diff --git a/src/ontology/imports/go_taxon_constraints.owl b/src/ontology/imports/go_taxon_constraints.owl
+index 21690045f..6855bdb88 100644
+--- a/src/ontology/imports/go_taxon_constraints.owl
++++ b/src/ontology/imports/go_taxon_constraints.owl
+@@ -28202,25 +28202,6 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0052704 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0052704">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+-                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0052907 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0052907">
+@@ -29325,12 +29306,12 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0061708 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0061708">
+-        <rdfs:subClassOf rdf:nodeID="genid3967"/>
+-        <rdfs:subClassOf rdf:nodeID="genid3970"/>
+-        <owl:disjointWith rdf:nodeID="genid3973"/>
++        <rdfs:subClassOf rdf:nodeID="genid3965"/>
++        <rdfs:subClassOf rdf:nodeID="genid3968"/>
++        <owl:disjointWith rdf:nodeID="genid3971"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Class>
+-    <owl:Class rdf:nodeID="genid3967">
++    <owl:Class rdf:nodeID="genid3965">
+         <owl:complementOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -29338,7 +29319,7 @@
+             </owl:Restriction>
+         </owl:complementOf>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid3970">
++    <owl:Restriction rdf:nodeID="genid3968">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom>
+             <owl:Class>
+@@ -29346,26 +29327,26 @@
+             </owl:Class>
+         </owl:someValuesFrom>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid3973">
++    <owl:Restriction rdf:nodeID="genid3971">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0061708"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid3967"/>
++        <owl:annotatedTarget rdf:nodeID="genid3965"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0061708"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid3970"/>
++        <owl:annotatedTarget rdf:nodeID="genid3968"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0061708"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+-        <owl:annotatedTarget rdf:nodeID="genid3973"/>
++        <owl:annotatedTarget rdf:nodeID="genid3971"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+@@ -29705,27 +29686,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0062200 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0062200">
++        <rdfs:subClassOf rdf:nodeID="genid4024"/>
+         <rdfs:subClassOf rdf:nodeID="genid4026"/>
+-        <rdfs:subClassOf rdf:nodeID="genid4028"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid4026">
++    <owl:Restriction rdf:nodeID="genid4024">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid4028">
++    <owl:Restriction rdf:nodeID="genid4026">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0062200"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4026"/>
++        <owl:annotatedTarget rdf:nodeID="genid4024"/>
+         <oboInOwl:source>PMID:23212898</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0062200"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4028"/>
++        <owl:annotatedTarget rdf:nodeID="genid4026"/>
+         <oboInOwl:source>PMID:23212898</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -33375,27 +33356,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0080188 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0080188">
++        <rdfs:subClassOf rdf:nodeID="genid4564"/>
+         <rdfs:subClassOf rdf:nodeID="genid4566"/>
+-        <rdfs:subClassOf rdf:nodeID="genid4568"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid4566">
++    <owl:Restriction rdf:nodeID="genid4564">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33090"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid4568">
++    <owl:Restriction rdf:nodeID="genid4566">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33090"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0080188"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4566"/>
++        <owl:annotatedTarget rdf:nodeID="genid4564"/>
+         <oboInOwl:source>PMID:33031395</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0080188"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4568"/>
++        <owl:annotatedTarget rdf:nodeID="genid4566"/>
+         <oboInOwl:source>PMID:33031395</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -36484,12 +36465,12 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0103016 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0103016">
+-        <rdfs:subClassOf rdf:nodeID="genid4975"/>
+-        <rdfs:subClassOf rdf:nodeID="genid4978"/>
+-        <owl:disjointWith rdf:nodeID="genid4981"/>
++        <rdfs:subClassOf rdf:nodeID="genid4973"/>
++        <rdfs:subClassOf rdf:nodeID="genid4976"/>
++        <owl:disjointWith rdf:nodeID="genid4979"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33208"/>
+     </owl:Class>
+-    <owl:Class rdf:nodeID="genid4975">
++    <owl:Class rdf:nodeID="genid4973">
+         <owl:complementOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -36497,7 +36478,7 @@
+             </owl:Restriction>
+         </owl:complementOf>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid4978">
++    <owl:Restriction rdf:nodeID="genid4976">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom>
+             <owl:Class>
+@@ -36505,26 +36486,26 @@
+             </owl:Class>
+         </owl:someValuesFrom>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid4981">
++    <owl:Restriction rdf:nodeID="genid4979">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33208"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0103016"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4975"/>
++        <owl:annotatedTarget rdf:nodeID="genid4973"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0103016"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4978"/>
++        <owl:annotatedTarget rdf:nodeID="genid4976"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0103016"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+-        <owl:annotatedTarget rdf:nodeID="genid4981"/>
++        <owl:annotatedTarget rdf:nodeID="genid4979"/>
+         <oboInOwl:source>PMID:28732077</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+@@ -36985,12 +36966,12 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0106340 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0106340">
+-        <rdfs:subClassOf rdf:nodeID="genid5051"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5054"/>
+-        <owl:disjointWith rdf:nodeID="genid5057"/>
++        <rdfs:subClassOf rdf:nodeID="genid5049"/>
++        <rdfs:subClassOf rdf:nodeID="genid5052"/>
++        <owl:disjointWith rdf:nodeID="genid5055"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2157"/>
+     </owl:Class>
+-    <owl:Class rdf:nodeID="genid5051">
++    <owl:Class rdf:nodeID="genid5049">
+         <owl:complementOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -36998,7 +36979,7 @@
+             </owl:Restriction>
+         </owl:complementOf>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5054">
++    <owl:Restriction rdf:nodeID="genid5052">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom>
+             <owl:Class>
+@@ -37006,26 +36987,26 @@
+             </owl:Class>
+         </owl:someValuesFrom>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5057">
++    <owl:Restriction rdf:nodeID="genid5055">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2157"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0106340"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5051"/>
++        <owl:annotatedTarget rdf:nodeID="genid5049"/>
+         <oboInOwl:source>PMID:18068186</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0106340"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5054"/>
++        <owl:annotatedTarget rdf:nodeID="genid5052"/>
+         <oboInOwl:source>PMID:18068186</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0106340"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5057"/>
++        <owl:annotatedTarget rdf:nodeID="genid5055"/>
+         <oboInOwl:source>PMID:18068186</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+@@ -37855,27 +37836,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0140400 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0140400">
++        <rdfs:subClassOf rdf:nodeID="genid5161"/>
+         <rdfs:subClassOf rdf:nodeID="genid5163"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5165"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5163">
++    <owl:Restriction rdf:nodeID="genid5161">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_6231"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5165">
++    <owl:Restriction rdf:nodeID="genid5163">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_6231"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0140400"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5163"/>
++        <owl:annotatedTarget rdf:nodeID="genid5161"/>
+         <oboInOwl:source>PMID:28526752</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0140400"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5165"/>
++        <owl:annotatedTarget rdf:nodeID="genid5163"/>
+         <oboInOwl:source>PMID:28526752</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -37900,50 +37881,31 @@
+     
+ 
+ 
+-    <!-- http://purl.obolibrary.org/obo/GO_0140479 -->
+-
+-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0140479">
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-        <rdfs:subClassOf>
+-            <owl:Restriction>
+-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+-                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+-            </owl:Restriction>
+-        </rdfs:subClassOf>
+-    </owl:Class>
+-    
+-
+-
+     <!-- http://purl.obolibrary.org/obo/GO_0140494 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0140494">
+-        <rdfs:subClassOf rdf:nodeID="genid5171"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5173"/>
++        <rdfs:subClassOf rdf:nodeID="genid5167"/>
++        <rdfs:subClassOf rdf:nodeID="genid5169"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5171">
++    <owl:Restriction rdf:nodeID="genid5167">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2759"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5173">
++    <owl:Restriction rdf:nodeID="genid5169">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2759"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0140494"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5171"/>
++        <owl:annotatedTarget rdf:nodeID="genid5167"/>
+         <oboInOwl:source>PMID:25342562</oboInOwl:source>
+         <oboInOwl:source>PMID:40712579</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0140494"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5173"/>
++        <owl:annotatedTarget rdf:nodeID="genid5169"/>
+         <oboInOwl:source>PMID:25342562</oboInOwl:source>
+         <oboInOwl:source>PMID:40712579</oboInOwl:source>
+     </owl:Axiom>
+@@ -38423,27 +38385,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0141133 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0141133">
+-        <rdfs:subClassOf rdf:nodeID="genid5233"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5235"/>
++        <rdfs:subClassOf rdf:nodeID="genid5229"/>
++        <rdfs:subClassOf rdf:nodeID="genid5231"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5233">
++    <owl:Restriction rdf:nodeID="genid5229">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2759"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5235">
++    <owl:Restriction rdf:nodeID="genid5231">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_2759"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141133"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5233"/>
++        <owl:annotatedTarget rdf:nodeID="genid5229"/>
+         <oboInOwl:source>PMID:24739148</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141133"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5235"/>
++        <owl:annotatedTarget rdf:nodeID="genid5231"/>
+         <oboInOwl:source>PMID:24739148</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -38486,27 +38448,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0141153 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0141153">
+-        <rdfs:subClassOf rdf:nodeID="genid5242"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5244"/>
++        <rdfs:subClassOf rdf:nodeID="genid5238"/>
++        <rdfs:subClassOf rdf:nodeID="genid5240"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5242">
++    <owl:Restriction rdf:nodeID="genid5238">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_Union_0000004"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5244">
++    <owl:Restriction rdf:nodeID="genid5240">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_Union_0000004"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141153"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5242"/>
++        <owl:annotatedTarget rdf:nodeID="genid5238"/>
+         <oboInOwl:source>PMID:15557260</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141153"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5244"/>
++        <owl:annotatedTarget rdf:nodeID="genid5240"/>
+         <oboInOwl:source>PMID:15557260</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -38515,27 +38477,27 @@
+     <!-- http://purl.obolibrary.org/obo/GO_0141169 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_0141169">
+-        <rdfs:subClassOf rdf:nodeID="genid5246"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5248"/>
++        <rdfs:subClassOf rdf:nodeID="genid5242"/>
++        <rdfs:subClassOf rdf:nodeID="genid5244"/>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5246">
++    <owl:Restriction rdf:nodeID="genid5242">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002160"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33090"/>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5248">
++    <owl:Restriction rdf:nodeID="genid5244">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33090"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141169"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5246"/>
++        <owl:annotatedTarget rdf:nodeID="genid5242"/>
+         <oboInOwl:source>PMID:31546611</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_0141169"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5248"/>
++        <owl:annotatedTarget rdf:nodeID="genid5244"/>
+         <oboInOwl:source>PMID:31546611</oboInOwl:source>
+     </owl:Axiom>
+     
+@@ -39528,7 +39490,7 @@
+                 </owl:complementOf>
+             </owl:Class>
+         </rdfs:subClassOf>
+-        <rdfs:subClassOf rdf:nodeID="genid5399"/>
++        <rdfs:subClassOf rdf:nodeID="genid5395"/>
+         <rdfs:subClassOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -39539,18 +39501,18 @@
+                 </owl:someValuesFrom>
+             </owl:Restriction>
+         </rdfs:subClassOf>
+-        <rdfs:subClassOf rdf:nodeID="genid5404"/>
++        <rdfs:subClassOf rdf:nodeID="genid5400"/>
+         <owl:disjointWith>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33208"/>
+             </owl:Restriction>
+         </owl:disjointWith>
+-        <owl:disjointWith rdf:nodeID="genid5408"/>
++        <owl:disjointWith rdf:nodeID="genid5404"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_33208"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4896"/>
+     </owl:Class>
+-    <owl:Class rdf:nodeID="genid5399">
++    <owl:Class rdf:nodeID="genid5395">
+         <owl:complementOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -39558,7 +39520,7 @@
+             </owl:Restriction>
+         </owl:complementOf>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5404">
++    <owl:Restriction rdf:nodeID="genid5400">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom>
+             <owl:Class>
+@@ -39566,26 +39528,26 @@
+             </owl:Class>
+         </owl:someValuesFrom>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5408">
++    <owl:Restriction rdf:nodeID="genid5404">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4896"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1901174"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5399"/>
++        <owl:annotatedTarget rdf:nodeID="genid5395"/>
+         <oboInOwl:source>PMID:35209220</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1901174"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5404"/>
++        <owl:annotatedTarget rdf:nodeID="genid5400"/>
+         <oboInOwl:source>PMID:35209220</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1901174"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5408"/>
++        <owl:annotatedTarget rdf:nodeID="genid5404"/>
+         <oboInOwl:source>PMID:35209220</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+@@ -40493,12 +40455,12 @@
+     <!-- http://purl.obolibrary.org/obo/GO_1990244 -->
+ 
+     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GO_1990244">
+-        <rdfs:subClassOf rdf:nodeID="genid5535"/>
+-        <rdfs:subClassOf rdf:nodeID="genid5538"/>
+-        <owl:disjointWith rdf:nodeID="genid5541"/>
++        <rdfs:subClassOf rdf:nodeID="genid5531"/>
++        <rdfs:subClassOf rdf:nodeID="genid5534"/>
++        <owl:disjointWith rdf:nodeID="genid5537"/>
+         <obo:RO_0002161 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Class>
+-    <owl:Class rdf:nodeID="genid5535">
++    <owl:Class rdf:nodeID="genid5531">
+         <owl:complementOf>
+             <owl:Restriction>
+                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+@@ -40506,7 +40468,7 @@
+             </owl:Restriction>
+         </owl:complementOf>
+     </owl:Class>
+-    <owl:Restriction rdf:nodeID="genid5538">
++    <owl:Restriction rdf:nodeID="genid5534">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom>
+             <owl:Class>
+@@ -40514,26 +40476,26 @@
+             </owl:Class>
+         </owl:someValuesFrom>
+     </owl:Restriction>
+-    <owl:Restriction rdf:nodeID="genid5541">
++    <owl:Restriction rdf:nodeID="genid5537">
+         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_4751"/>
+     </owl:Restriction>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1990244"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5535"/>
++        <owl:annotatedTarget rdf:nodeID="genid5531"/>
+         <oboInOwl:source>PMID:19965387</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1990244"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5538"/>
++        <owl:annotatedTarget rdf:nodeID="genid5534"/>
+         <oboInOwl:source>PMID:19965387</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GO_1990244"/>
+         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#disjointWith"/>
+-        <owl:annotatedTarget rdf:nodeID="genid5541"/>
++        <owl:annotatedTarget rdf:nodeID="genid5537"/>
+         <oboInOwl:source>PMID:19965387</oboInOwl:source>
+     </owl:Axiom>
+     <owl:Axiom>
+diff --git a/src/taxon_constraints/only_in_taxon.ofn b/src/taxon_constraints/only_in_taxon.ofn
+index 15bc61a69..bbff9d4a7 100644
+--- a/src/taxon_constraints/only_in_taxon.ofn
++++ b/src/taxon_constraints/only_in_taxon.ofn
+@@ -28,6 +28,7 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000755>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000908>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000911>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000936>))
++Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000956>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000957>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000958>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0000959>))
+@@ -642,7 +643,6 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0051882>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0051960>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052324>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052325>))
+-Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052704>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0052907>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0055044>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0055045>))
+@@ -863,7 +863,6 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140266>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140384>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140400>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140446>))
+-Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140479>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140494>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140495>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140525>))
+@@ -877,6 +876,7 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140782>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0140783>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141035>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141063>))
++Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141065>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141091>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141133>))
+ Declaration(Class(<http://purl.obolibrary.org/obo/GO_0141153>))
+@@ -1110,6 +1110,11 @@ SubClassOf(<http://purl.obolibrary.org/obo/GO_0000911> ObjectAllValuesFrom(<http
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0000936> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0000936> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
+ 
++# Class: <http://purl.obolibrary.org/obo/GO_0000956> (<http://purl.obolibrary.org/obo/GO_0000956>)
++
++SubClassOf(<http://purl.obolibrary.org/obo/GO_0000956> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
++SubClassOf(<http://purl.obolibrary.org/obo/GO_0000956> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
++
+ # Class: <http://purl.obolibrary.org/obo/GO_0000957> (<http://purl.obolibrary.org/obo/GO_0000957>)
+ 
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0000957> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
+@@ -4188,11 +4193,6 @@ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052324> ObjectAllValuesFrom(<http
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052325> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052325> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ 
+-# Class: <http://purl.obolibrary.org/obo/GO_0052704> (<http://purl.obolibrary.org/obo/GO_0052704>)
+-
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0052704> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2>))
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0052704> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2>))
+-
+ # Class: <http://purl.obolibrary.org/obo/GO_0052907> (<http://purl.obolibrary.org/obo/GO_0052907>)
+ 
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0052907> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_Union_0000004>))
+@@ -5293,15 +5293,10 @@ SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMI
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0140446> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0140446> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+ 
+-# Class: <http://purl.obolibrary.org/obo/GO_0140479> (<http://purl.obolibrary.org/obo/GO_0140479>)
+-
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0140479> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+-SubClassOf(<http://purl.obolibrary.org/obo/GO_0140479> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_4751>))
+-
+ # Class: <http://purl.obolibrary.org/obo/GO_0140494> (<http://purl.obolibrary.org/obo/GO_0140494>)
+ 
+-SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "Eukaryota  PMID:40712579"^^xsd:string) Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:25342562"^^xsd:string) <http://purl.obolibrary.org/obo/GO_0140494> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_7742>))
+-SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "Eukaryota  PMID:40712579"^^xsd:string) Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:25342562"^^xsd:string) <http://purl.obolibrary.org/obo/GO_0140494> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7742>))
++SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:25342562"^^xsd:string) Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:40712579"^^xsd:string) <http://purl.obolibrary.org/obo/GO_0140494> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
++SubClassOf(Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:25342562"^^xsd:string) Annotation(<http://www.geneontology.org/formats/oboInOwl#source> "PMID:40712579"^^xsd:string) <http://purl.obolibrary.org/obo/GO_0140494> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
+ 
+ # Class: <http://purl.obolibrary.org/obo/GO_0140495> (<http://purl.obolibrary.org/obo/GO_0140495>)
+ 
+@@ -5363,6 +5358,11 @@ SubClassOf(<http://purl.obolibrary.org/obo/GO_0141035> ObjectAllValuesFrom(<http
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0141063> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0141063> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_33090>))
+ 
++# Class: <http://purl.obolibrary.org/obo/GO_0141065> (<http://purl.obolibrary.org/obo/GO_0141065>)
++
++SubClassOf(<http://purl.obolibrary.org/obo/GO_0141065> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
++SubClassOf(<http://purl.obolibrary.org/obo/GO_0141065> ObjectAllValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_2759>))
++
+ # Class: <http://purl.obolibrary.org/obo/GO_0141091> (<http://purl.obolibrary.org/obo/GO_0141091>)
+ 
+ SubClassOf(<http://purl.obolibrary.org/obo/GO_0141091> ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002160> <http://purl.obolibrary.org/obo/NCBITaxon_6072>))
+diff --git a/src/taxon_constraints/only_in_taxon.tsv b/src/taxon_constraints/only_in_taxon.tsv
+index e3ab62640..d6018154d 100644
+--- a/src/taxon_constraints/only_in_taxon.tsv
++++ b/src/taxon_constraints/only_in_taxon.tsv
+@@ -742,8 +742,6 @@ GO:0006836	neurotransmitter transport	NCBITaxon:33208	Metazoa
+ GO:0140446	fumigermin biosynthetic process	NCBITaxon:4751	Fungi	
+ GO:0036411	H-NS-Cnu complex	NCBITaxon:2	Bacteria	
+ GO:1990198	ModE complex	NCBITaxon:2	Bacteria	
+-GO:0052704	ergothioneine biosynthesis from histidine via gamma-glutamyl-hercynylcysteine sulfoxide	NCBITaxon:2	Bacteria	
+-GO:0140479	ergothioneine biosynthesis from histidine via hercynylcysteine sulfoxide synthase	NCBITaxon:4751	Fungi	
+ GO:0140495	migracytosis	NCBITaxon:7742	Vertebrata <Metazoa>	
+ GO:0120259	7SK snRNP	NCBITaxon:33208	Metazoa	
+ GO:0120260	ciliary microtubule quartet	NCBITaxon:5653	Kinetoplastida	

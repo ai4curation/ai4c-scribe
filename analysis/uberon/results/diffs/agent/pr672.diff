@@ -1,0 +1,12 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 281bbce91..02593cf1b 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -77096,7 +77096,6 @@ synonym: "vestibular root of eighth cranial nerve" EXACT [FMA:53401]
+ synonym: "vestibulocochlear nerve vestibular root" RELATED [BAMS:vVIIIn]
+ synonym: "vestibulocochlear VIII nerve vestibular component" EXACT [MA:0001111]
+ xref: BAMS:vVIIIn
+-xref: DHBA:12869
+ xref: EHDAA2:0002200
+ xref: EHDAA:3749
+ xref: EMAPA:17803

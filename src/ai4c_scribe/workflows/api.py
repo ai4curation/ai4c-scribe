@@ -32,6 +32,7 @@ from ai4c_scribe.workflows.db import (
     insert_job,
 )
 from ai4c_scribe.workflows.executor import (
+    count_active_runs,
     run_until_complete,
     submit_batch,
     update_active_run_statuses,
@@ -192,8 +193,12 @@ def run_workflows(
             # Refresh pending list (submit_batch updates their status)
             pending_jobs = get_pending_jobs(conn)
 
-        if wait and total_submitted > 0:
-            run_until_complete(conn, config.limits, timeout_minutes, verbose=verbose)
+        if wait:
+            # Enter poll loop if there are any pending or active jobs
+            pending_remaining = get_pending_jobs(conn)
+            active = count_active_runs(conn)
+            if pending_remaining or active > 0 or total_submitted > 0:
+                run_until_complete(conn, config.limits, timeout_minutes, verbose=verbose)
 
         # Get final run states
         runs = get_all_runs(conn, limit=len(jobs))

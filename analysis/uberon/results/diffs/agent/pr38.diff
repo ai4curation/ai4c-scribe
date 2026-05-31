@@ -1,0 +1,45 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 36afa06ed..be1ace046 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -2889,13 +2889,14 @@ xref: BILS:0000110
+ xref: XAO:1000006
+ is_a: UBERON:0000105 ! life cycle stage
+ relationship: dubious_for_taxon NCBITaxon:7955 ! Danio rerio
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 {source="https://github.com/obophenotype/uberon/issues/3478"} ! Chordata
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by UBERON:0000109 ! gastrula stage
+ relationship: simultaneous_with GO:0001841 ! neural tube formation
+ property_value: seeAlso "https://github.com/obophenotype/developmental-stage-ontologies/issues/84" xsd:anyURI
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/343" xsd:anyURI
+ property_value: taxon_notes "In zebrafish, the times of neurulation and segmentation overlap so extensively there is no distinct neurula period of development, such as occurs largely before segmentation in amphibian embryos." xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3478" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0000111
+@@ -90625,10 +90626,11 @@ xref: OGES:000006
+ xref: Wikipedia:Pharyngula
+ xref: ZFS:0000050
+ is_a: UBERON:0000105 ! life cycle stage
+-relationship: in_taxon NCBITaxon:6072 ! Eumetazoa
++relationship: in_taxon NCBITaxon:7711 {source="https://github.com/obophenotype/uberon/issues/3478"} ! Chordata
+ relationship: part_of UBERON:0000111 ! organogenesis stage
+ relationship: preceded_by UBERON:0000110 ! neurula stage
+ property_value: taxon_notes "Corresponds to E7-E11 in Mouse (Galis et al, TREE, 2001)" xsd:string
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3478" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0004708
+@@ -119536,9 +119538,10 @@ is_a: UBERON:0000105 ! life cycle stage
+ relationship: part_of UBERON:0000068 ! embryo stage
+ relationship: preceded_by RnorDv:0000010 {gci_relation="part_of", gci_filler="NCBITaxon:10116"}
+ relationship: preceded_by UBERON:0000111 ! organogenesis stage
+-relationship: preceded_by UBERON:0004707 ! pharyngula stage
++relationship: preceded_by UBERON:0004707 {gci_filler="NCBITaxon:7711", gci_relation="in_taxon", source="https://github.com/obophenotype/uberon/issues/3478"} ! pharyngula stage
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/355" xsd:anyURI
+ property_value: seeAlso "https://github.com/obophenotype/uberon/issues/565" xsd:anyURI
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3478" xsd:anyURI
+ 
+ [Term]
+ id: UBERON:0007221

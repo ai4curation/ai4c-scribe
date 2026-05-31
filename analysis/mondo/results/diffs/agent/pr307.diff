@@ -1,0 +1,13 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 3616a71b6..ccaea8618 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -210483,7 +210483,7 @@ xref: MedDRA:10012750 {source="Orphanet:1671", source="Orphanet:1671/e"}
+ xref: MEDGEN:3801 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: NCIT:C98913 {source="MONDO:equivalentTo"}
+ xref: OMIM:222500 {source="Orphanet:1671", source="MONDO:equivalentTo", source="Orphanet:1671/e"}
+-xref: Orphanet:1671 {source="MONDO:equivalentTo", source="OMIM:222500"}
++xref: Orphanet:573278 {source="MONDO:equivalentTo"}
+ xref: SCTID:49351009 {source="MONDO:equivalentTo"}
+ xref: UMLS:C0011999 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:3801"}
+ is_a: MONDO:0002320 {source="NCIT:C98913"} ! congenital nervous system disorder

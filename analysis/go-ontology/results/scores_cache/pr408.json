@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 32044,
+  "pr_number": 32054,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 408,
+  "f1": 0.762,
+  "precision": 0.667,
+  "recall": 0.889,
+  "jaccard": 0.615
+}

@@ -1,0 +1,24 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8fe17dbb4..7d6012170 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -539379,15 +539379,14 @@ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/
+ 
+ [Term]
+ id: MONDO:0023124
+-name: familial pulmonary arterial hypertension leucopenia and atrial septal defect
+-comment: This term is scheduled for obsoletion based on the fact that it is a historical disease and there is currently no evidence that this term represents an actual existing disease. After obsoletion, this term will not have a replacement ID, but one could consider the following term: none-
+-subset: obsoletion_candidate
++name: Dursun syndrome
+ synonym: "familial PAH, leucopenia and ASD" RELATED [GARD:0010455]
++synonym: "familial pulmonary arterial hypertension leucopenia and atrial septal defect" EXACT [OMIM:612541]
+ synonym: "familial pulmonary arterial hypertension, leucopenia and ASD" RELATED [GARD:0010455]
++xref: OMIM:612541 {source="MONDO:includedEntryInOMIM"}
++xref: Orphanet:178503 {source="MONDO:equivalentObsolete"}
+ is_a: MONDO:0002254 {source="https://orcid.org/0000-0002-6601-2165"} ! syndromic disease
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9799" xsd:anyURI
+-property_value: IAO:0006012 "2026-02-01" xsd:string
+-property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/10455/familial-pulmonary-arterial-hypertension-leucopenia-and-atrial-septal-defect" xsd:anyURI {source="GARD:0010455"}
+ 
+ [Term]
+ id: MONDO:0023129

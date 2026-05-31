@@ -93,6 +93,29 @@ classes:
           Brief explanation of scoping assessment. Note any unrelated changes,
           scope creep, or reasons the PR is not cleanly scoped.
 
+      eval_suitability:
+        description: >-
+          Whether this case is suitable for fair agent evaluation. Orthogonal
+          to difficulty — a case can be simple but unusable if the issue-to-PR
+          mapping is misleading.
+        range: EvalSuitabilityEnum
+
+      eval_suitability_notes:
+        description: >-
+          Explanation of eval_suitability rating. Describe what makes the case
+          flawed or unusable (e.g. wrong issue linked, contradictory instructions).
+
+      diff_noise:
+        description: >-
+          Whether the gold-standard diff contains noise unrelated to the
+          actual task (e.g. Protege serialization reordering, whitespace,
+          tool-generated comment changes). Affects scoring fairness.
+        range: DiffNoiseEnum
+
+      diff_noise_notes:
+        description: >-
+          Description of what noise is present in the diff.
+
       # === Custom Tagging ===
       task_type:
         description: Primary task type for this case
@@ -135,6 +158,48 @@ classes:
       rationale:
         description: One-liner explaining why this is a good test case
         required: true
+
+      # === Quality Flagging (post-curation review) ===
+      case_quality:
+        description: Overall quality assessment for use as an eval case (good, ok, poor)
+        range: string
+
+      case_quality_reason:
+        description: Free-form machine-readable reason code for the quality assessment
+        range: string
+
+      companion_prs:
+        description: Other PR numbers that, together with the gold PR, fully resolve the issue
+        multivalued: true
+        range: integer
+
+      scoring_caveat:
+        description: Human-readable note on how to interpret metadiff scores for this case
+        range: string
+
+      quality_flagged_by:
+        description: Who or what flagged the quality assessment (agent model or username)
+        range: string
+
+      quality_flagged_at:
+        description: When the quality assessment was made
+        range: date
+
+      agent_coverage:
+        description: Whether any agent eval attempts exist for this case (e.g. none, partial, full)
+        range: string
+
+      agent_coverage_note:
+        description: Free-form note on agent eval coverage status
+        range: string
+
+      task_type_correction:
+        description: Corrected task_type when the curated value is imprecise
+        range: string
+
+      task_type_note:
+        description: Explanation of a task_type correction or imprecision
+        range: string
 
 
   FileChange:
@@ -203,6 +268,26 @@ enums:
         description: One round of changes requested before merge
       multiple_rounds:
         description: Multiple rounds of review feedback before merge
+
+  EvalSuitabilityEnum:
+    description: Whether this case is suitable for fair agent evaluation
+    permissible_values:
+      good:
+        description: Issue clearly describes the task, PR directly addresses it, agent can reasonably produce comparable output
+      flawed:
+        description: Issue-to-PR mapping is imperfect (vague issue, PR does more/less than requested) but still somewhat evaluable
+      unusable:
+        description: Issue and PR are fundamentally disconnected; scoring against the gold PR is meaningless
+
+  DiffNoiseEnum:
+    description: Whether the gold-standard diff contains serialization noise
+    permissible_values:
+      clean:
+        description: Diff contains only intentional changes
+      minor_noise:
+        description: Some tool-generated noise (reordering, whitespace) but core changes are clear
+      noisy:
+        description: Significant serialization artifacts that make character-level diff comparison unreliable
 
   ScopingEnum:
     description: How well-scoped the PR is relative to its issue

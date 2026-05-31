@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3533,
+  "pr_number": 3571,
+  "case_type": "new_term",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-opus-4.7",
+  "runtime": "claude",
+  "eval_repo_pr": 193,
+  "f1": 0.005,
+  "precision": 0.003,
+  "recall": 0.457,
+  "jaccard": 0.003
+}

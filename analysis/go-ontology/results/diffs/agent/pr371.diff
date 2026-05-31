@@ -1,0 +1,42 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 455454c0f..18691e07d 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -270021,10 +270021,11 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ 
+ [Term]
+ id: GO:0045136
+-name: development of secondary sexual characteristics, sensu Metazoa
++name: development of animal secondary sexual characteristics
+ namespace: biological_process
+ def: "The process whose specific outcome is the progression of the secondary sexual characteristics over time, from their formation to the mature structures. In mammals, examples include growth of axillary, chest, and pubic hair, voice changes, testicular/penile enlargement, breast development and menstrual periods. Development occurs in response to sex hormone secretion." [GOC:ai]
+ synonym: "development of secondary sexual characteristics" EXACT []
++synonym: "development of secondary sexual characteristics, sensu Metazoa" EXACT []
+ is_a: GO:0003006 ! developmental process involved in reproduction
+ relationship: part_of GO:0007275 ! multicellular organism development
+ relationship: part_of GO:0007548 ! sex differentiation
+@@ -285691,20 +285692,22 @@ consider: GO:0015833
+ 
+ [Term]
+ id: GO:0046543
+-name: development of secondary female sexual characteristics, sensu Metazoa
++name: development of animal secondary female sexual characteristics
+ namespace: biological_process
+ def: "The process whose specific outcome is the progression of the secondary female sexual characteristics over time, from their formation to the mature structures. In female mammals, examples include growth of axillary and pubic hair, breast development and menstrual periods. Their development occurs in response to sex hormone secretion." [GOC:ai]
+ synonym: "development of secondary female sexual characteristics" EXACT []
++synonym: "development of secondary female sexual characteristics, sensu Metazoa" EXACT []
+ is_a: GO:0045136 ! development of secondary sexual characteristics, sensu Metazoa
+ relationship: part_of GO:0046660 ! female sex differentiation
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31051" xsd:anyURI
+ 
+ [Term]
+ id: GO:0046544
+-name: development of secondary male sexual characteristics, sensu Metazoa
++name: development of animal secondary male sexual characteristics
+ namespace: biological_process
+ def: "The process whose specific outcome is the progression of the secondary male sexual characteristics over time, from their formation to the mature structures. In male mammals, examples include growth of axillary, chest, and pubic hair, voice changes, and testicular/penile enlargement. Development occurs in response to sex hormone secretion." [GOC:ai]
+ synonym: "development of secondary male sexual characteristics" EXACT []
++synonym: "development of secondary male sexual characteristics, sensu Metazoa" EXACT []
+ is_a: GO:0045136 ! development of secondary sexual characteristics, sensu Metazoa
+ relationship: part_of GO:0046661 ! male sex differentiation
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31051" xsd:anyURI

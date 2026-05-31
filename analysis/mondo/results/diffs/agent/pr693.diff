@@ -1,0 +1,39 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8f53dcf30..06f67c52c 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -197648,16 +197648,11 @@ is_obsolete: true
+ 
+ [Term]
+ id: MONDO:0008549
+-name: thoracic dysostosis, isolated
+-comment: This term is scheduled to be merged with MONDO:0979242 short-rib thoracic dysplasia 22 without polydactyly, based on the fact that the concept of these 2 terms are the same. This ID will therefore be obsoleted and replaced with MONDO:0979242
+-subset: obsoletion_candidate
+-synonym: "thoracic dysostosis, isolated" EXACT []
+-xref: MESH:C566063 {source="MONDO:equivalentTo"}
+-xref: OMIM:187750 {source="MONDO:equivalentObsolete"}
+-is_a: MONDO:0003847 {source="https://orcid.org/0000-0001-5208-3432"} ! hereditary disease
+-property_value: curated_content_resource "https://www.malacards.org/card/thoracic_dysostosis_isolated" xsd:anyURI {source="MONDO:MalaCards"}
++name: obsolete thoracic dysostosis, isolated
++property_value: IAO:0000231 MONDO:TermsMerged
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9826" xsd:anyURI
+-property_value: IAO:0006012 "2026-03-01" xsd:string
++is_obsolete: true
++replaced_by: MONDO:0979242
+ 
+ [Term]
+ id: MONDO:0008550
+@@ -627197,10 +627192,13 @@ name: short-rib thoracic dysplasia 22 without polydactyly
+ subset: gard_rare {source="GARD:0028115", source="MONDO:GARD"}
+ subset: omim {source="OMIM:621260"}
+ subset: rare
++xref: MESH:C566063 {source="MONDO:equivalentTo"}
+ xref: GARD:0028115 {source="MONDO:GARD"}
+ xref: OMIM:621260 {source="MONDO:equivalentTo"}
+ is_a: MONDO:0018770 {source="OMIM:621260", source="https://orcid.org/0000-0002-4142-7153"} ! Jeune syndrome
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/3682 {source="OMIM:621260"} ! FGF4
++synonym: "thoracic dysostosis, isolated" EXACT [OMIM:187750]
++property_value: curated_content_resource "https://www.malacards.org/card/thoracic_dysostosis_isolated" xsd:anyURI {source="MONDO:MalaCards"}
+ 
+ [Term]
+ id: MONDO:0979243

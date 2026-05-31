@@ -1,0 +1,12 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 8262d5a8a..74726b190 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -440018,6 +440018,7 @@ xref: MetaCyc:RXN-10625
+ xref: RHEA:26229 {source="skos:exactMatch"}
+ is_a: GO:0016628 ! oxidoreductase activity, acting on the CH-CH group of donors, NAD or NADP as acceptor
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/30193" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31963" xsd:anyURI
+ 
+ [Term]
+ id: GO:0102068

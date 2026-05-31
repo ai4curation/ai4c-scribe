@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3522,
+  "pr_number": 3525,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.5",
+  "runtime": "codex",
+  "eval_repo_pr": 26,
+  "f1": 0.286,
+  "precision": 0.286,
+  "recall": 0.286,
+  "jaccard": 0.167
+}

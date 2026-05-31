@@ -1,0 +1,15 @@
+diff --git a/src/taxon_constraints/never_in_taxon.tsv b/src/taxon_constraints/never_in_taxon.tsv
+index e1e596ac7..7602abc2a 100644
+--- a/src/taxon_constraints/never_in_taxon.tsv
++++ b/src/taxon_constraints/never_in_taxon.tsv
+@@ -748,3 +748,10 @@ GO:0030202	heparin proteoglycan metabolic process	NCBITaxon:4751	Fungi
+ GO:0030202	heparin proteoglycan metabolic process	NCBITaxon:6656	Arthropoda	
+ GO:0042339	keratan sulfate proteoglycan metabolic proces	NCBITaxon:4751	Fungi	
+ GO:0042339	keratan sulfate proteoglycan metabolic proces	NCBITaxon:6656	Arthropoda	
++GO:0000184	nuclear-transcribed mRNA catabolic process, nonsense-mediated decay	NCBITaxon:2	Bacteria	
++GO:0070478	nuclear-transcribed mRNA catabolic process, 3'-5' exonucleolytic nonsense-mediated decay	NCBITaxon:2	Bacteria	
++GO:0070479	nuclear-transcribed mRNA catabolic process, 5'-3' exonucleolytic nonsense-mediated decay	NCBITaxon:2	Bacteria	
++GO:0170010	nonsense-mediated decay complex	NCBITaxon:2	Bacteria	
++GO:2000622	regulation of nuclear-transcribed mRNA catabolic process, nonsense-mediated decay	NCBITaxon:2	Bacteria	
++GO:2000623	negative regulation of nuclear-transcribed mRNA catabolic process, nonsense-mediated decay	NCBITaxon:2	Bacteria	
++GO:2000624	positive regulation of nuclear-transcribed mRNA catabolic process, nonsense-mediated decay	NCBITaxon:2	Bacteria	

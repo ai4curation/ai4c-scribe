@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 31962,
+  "pr_number": 31970,
+  "case_type": "axiom_repair",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "gemma-4-31b",
+  "runtime": "opencode",
+  "eval_repo_pr": 518,
+  "f1": 0.842,
+  "precision": 0.8,
+  "recall": 0.889,
+  "jaccard": 0.727
+}

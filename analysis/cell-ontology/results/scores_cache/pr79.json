@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3239,
+  "pr_number": 3245,
+  "case_type": "reclassification",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.5",
+  "runtime": "codex",
+  "eval_repo_pr": 79,
+  "f1": 0.316,
+  "precision": 0.273,
+  "recall": 0.375,
+  "jaccard": 0.188
+}

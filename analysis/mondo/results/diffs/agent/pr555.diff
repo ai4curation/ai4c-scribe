@@ -1,0 +1,28 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..6b376a044 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -395274,12 +395274,14 @@ synonym: "giant platelet syndrome with thrombocytopenia" EXACT [OMIM:155100]
+ synonym: "macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss" EXACT [NCIT:C158788, OMIM:155100] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+ synonym: "macrothrombocytopenia and progressive sensorineural deafness" EXACT [OMIM:155100]
+ synonym: "macrothrombocytopenia progressive deafness" RELATED [GARD:0000179]
++synonym: "MATINS" EXACT ABBREVIATION [MEDGEN:1704278, OMIM:155100]
+ synonym: "May-Hegglin anomaly" EXACT [GARD:0000180, NCIT:C131646, OMIM:155100]
+ synonym: "MHA" RELATED ABBREVIATION []
+ synonym: "MYH9 related disorders" RELATED [GARD:0000180]
+ synonym: "MYH9 related thrombocytopenia" RELATED [GARD:0000180]
+ synonym: "MYH9-RD" EXACT ABBREVIATION [Orphanet:182050]
+-synonym: "MYH9-related disease" EXACT []
++synonym: "MYH9-Related Disease" EXACT [MEDGEN:1704278]
++synonym: "MYH9-related disease" EXACT [GARD:0000180]
+ synonym: "MYH9-related disorder" EXACT [Orphanet:182050]
+ synonym: "MYH9-related syndrome" EXACT [Orphanet:182050]
+ synonym: "MYH9-related syndromic thrombocytopenia" EXACT [Orphanet:182050]
+@@ -395319,6 +395321,7 @@ relationship: curated_content_resource https://search.clinicalgenome.org/kb/cond
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/7579 {source="OMIM:155100"} ! MYH9
+ property_value: curated_content_resource "https://www.malacards.org/card/macrothrombocytopenia_and_granulocyte_inclusions_with_or_without_nephritis_or_sensorineural_hearing_loss" xsd:anyURI {source="MONDO:MalaCards"}
+ property_value: curated_content_resource "https://www.malacards.org/card/myh_9_related_disease" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9909" xsd:anyURI
+ property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/180/myh9-related-thrombocytopenia" xsd:anyURI {source="GARD:0000180"}
+ 
+ [Term]

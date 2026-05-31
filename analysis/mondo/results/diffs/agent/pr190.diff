@@ -1,0 +1,12 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 027d104ca..6b06d2ec6 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -484708,7 +484708,6 @@ subset: ordo_group_of_disorders {source="Orphanet:95506"}
+ subset: orphanet {source="Orphanet:95506"}
+ subset: rare
+ synonym: "autoimmune hypophysitis" EXACT [NCIT:C132055, Orphanet:95506]
+-synonym: "lymphocytic hypophysitis" EXACT [NCIT:C132055]
+ xref: GARD:0019281 {source="MONDO:GARD"}
+ xref: ICD10CM:E23.6 {source="Orphanet:95506"}
+ xref: ICD9:253.8 {source="MONDO:relatedTo", source="MONDO:i2s"}

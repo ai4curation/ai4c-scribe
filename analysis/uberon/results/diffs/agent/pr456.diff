@@ -1,0 +1,24 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index a653f8d41..b77979538 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -47946,16 +47946,17 @@ relationship: part_of UBERON:0001515 ! thoracic aorta
+ 
+ [Term]
+ id: UBERON:0002346
+-name: neurectoderm
++name: neuroectoderm
+ def: "Embryonic ectoderm that gives rise to nervous tissue." [Wikipedia:Neuroectoderm]
+ subset: uberon_slim
+ subset: vertebrate_core
+ synonym: "epithelium tubi neuralis; neuroectoderma" RELATED OMO:0003011 [Wikipedia:Neuroectoderm]
+ synonym: "neuaral ectoderm" RELATED []
+ synonym: "neural ectoderm" EXACT []
+-synonym: "neuroectoderm" EXACT []
++synonym: "neurectoderm" EXACT []
+ synonym: "presumptive central nervous system" RELATED []
+ synonym: "ventral neurogenic region" RELATED [VHOG:0000150]
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3682" xsd:anyURI
+ xref: AAO:0011074
+ xref: BILA:0000039
+ xref: CALOHA:TS-1212

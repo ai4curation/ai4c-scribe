@@ -1,0 +1,15 @@
+{
+  "ontology": "mondo",
+  "issue_number": 9963,
+  "pr_number": 10222,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "claude-sonnet-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 442,
+  "f1": 0.5,
+  "precision": 0.7,
+  "recall": 0.389,
+  "jaccard": 0.333
+}

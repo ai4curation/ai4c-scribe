@@ -1,0 +1,29 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index 1b7244e11..388ac2a7c 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -483087,7 +483087,7 @@ is_a: GO:0009058 ! biosynthetic process
+ intersection_of: GO:0009058 ! biosynthetic process
+ intersection_of: has_primary_output CHEBI:233617 ! terreate
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31114" xsd:anyURI
+-created_by: PomBase:vw
++created_by: GOC:vw
+ creation_date: 2026-02-23T10:27:33Z
+ 
+ [Term]
+@@ -483104,12 +483104,13 @@ creation_date: 2026-01-19T11:52:03Z
+ id: GO:0180069
+ name: positive regulation of terreate biosynthetic process
+ namespace: biological_process
+-def: "Any process that modulates the frequency, rate or extent of the chemical reactions and pathways resulting in the formation of terreate." [PMID:25265334]
++def: "Any process that activates or increases the frequency, rate or extent of terreate biosynthetic process." [PMID:25265334]
++synonym: "positive regulation of terreic acid biosynthetic process" RELATED []
+ is_a: GO:0009889 ! regulation of biosynthetic process
+ intersection_of: GO:0065007 ! biological regulation
+ intersection_of: positively_regulates GO:0180067 ! terreate biosynthetic process
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31114" xsd:anyURI
+-created_by: PomBase:vw
++created_by: GOC:vw
+ creation_date: 2026-02-23T15:24:17Z
+ 
+ [Term]

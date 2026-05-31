@@ -1,0 +1,38 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index a42b54384..04a201679 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -617522,6 +617522,33 @@ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/i
+ created_by: dragon-ai-agent
+ creation_date: 2026-05-07T07:41:13Z
+ 
++[Term]
++id: GO:7770072
++name: double-stranded RNA immune receptor activity
++namespace: molecular_function
++def: "Combining with a double-stranded RNA and transmitting the signal across the cell membrane to initiate an innate immune response." [PMID:33243852, PMID:34678144, PMID:23273991]
++synonym: "dsRNA immune receptor activity" EXACT []
++synonym: "dsRNA receptor activity" BROAD []
++is_a: GO:0038187 ! pattern recognition receptor activity
++intersection_of: GO:0038023 ! signaling receptor activity
++relationship: has_part GO:0043548 ! double-stranded RNA binding
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T00:00:00Z
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32046" xsd:anyURI
++
++[Term]
++id: GO:7770073
++name: left-handed Z-RNA immune receptor activity
++namespace: molecular_function
++def: "Combining with a left-handed Z-RNA and transmitting the signal across the cell membrane to initiate an innate immune response." [PMID:32200799]
++synonym: "Z-RNA immune receptor activity" EXACT []
++synonym: "Z-RNA receptor activity" BROAD []
++is_a: GO:7770072 ! double-stranded RNA immune receptor activity
++intersection_of: GO:0038023 ! signaling receptor activity
++created_by: dragon-ai-agent
++creation_date: 2026-05-10T00:00:00Z
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/32046" xsd:anyURI
++
+ [Typedef]
+ id: acts_on_population_of
+ name: acts on population of

@@ -1,0 +1,10 @@
+diff --git a/src/taxon_constraints/only_in_taxon.tsv b/src/taxon_constraints/only_in_taxon.tsv
+index 3266d81e1..3b53a69ec 100644
+--- a/src/taxon_constraints/only_in_taxon.tsv
++++ b/src/taxon_constraints/only_in_taxon.tsv
+@@ -951,3 +951,5 @@ GO:0019905	syntaxin binding	NCBITaxon:2	Bacteria
+ GO:0098795	global gene silencing by mRNA cleavage	NCBITaxon:2	Bacteria	
+ GO:0140400	embryonic sheath	NCBITaxon:6231	Nematoda	PMID:28526752
+ GO:0019658	bifid shunt	NCBITaxon:2	Bacteria	
++GO:0000956	nuclear-transcribed mRNA catabolic process	NCBITaxon:2759	Eukaryota	
++GO:0141065	maternal mRNA clearance	NCBITaxon:2759	Eukaryota	

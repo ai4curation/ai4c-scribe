@@ -1,0 +1,30 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 4d324a187..4545e5251 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3259,6 +3259,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -34981,6 +34982,17 @@ SubClassOf(obo:CL_7770006 obo:CL_0002367)
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_7770006 ObjectSomeValuesFrom(obo:RO_0002292 obo:PR_Q9UIK5))
+ 
++# Class: obo:CL_9900001 (chandelier pvalb GABAergic cortical interneuron, human)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:27477017") Annotation(oboInOwl:hasDbXref "PMID:37824655") Annotation(oboInOwl:hasDbXref "https://cellxgene.cziscience.com/e/9c63201d-bfd9-41a8-bbbc-18d947556f3d.cxg/") obo:IAO_0000115 obo:CL_9900001 "A transcriptomically distinct pvalb GABAergic cortical interneuron found in Homo sapiens that is recognizable by the straight terminal axonal 'cartridges' of vertically oriented strings of synaptic boutons. Chandelier PV cells' boutons target exclusively the axon initial segment (AIS) of pyramidal cells, with a single cell innervating hundreds of pyramidal cells in a clustered manner. The standard transcriptomic reference data for this cell type in humans can be found on the CellxGene census under the collection: 'Transcriptomic cytoarchitecture reveals principles of human neocortex organization', dataset: 'Supercluster: CGE-derived interneurons', Author Categories: 'CrossArea_subclass', clusters Chandelier.")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-14T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 "https://github.com/obophenotype/cell-ontology/issues/3353")
++AnnotationAssertion(obo:IAO_0000028 obo:CL_9900001 "human chandelier PV interneuron")
++AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_9900001 "human chandelier PV")
++AnnotationAssertion(rdfs:label obo:CL_9900001 "chandelier pvalb GABAergic cortical interneuron, human")
++SubClassOf(obo:CL_9900001 obo:CL_4023036)
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
++
+ # Class: obo:CP_0000000 (obsolete CP:0000000)
+ 
+ AnnotationAssertion(obo:IAO_0100001 obo:CP_0000000 obo:CL_0017500)

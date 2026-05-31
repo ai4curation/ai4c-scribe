@@ -1,0 +1,88 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index a84557c7c..977ff8edd 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -225499,6 +225499,83 @@ is_a: UBERON:0006914 ! squamous epithelium
+ relationship: has_part CL:4030023 ! respiratory tract hillock cell
+ relationship: part_of UBERON:0007196 ! tracheobronchial tree
+ 
++[Term]
++id: UBERON:9900000
++name: facial surface of tooth
++def: "An anatomical surface of a tooth that faces the lips or cheek." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:0006984 ! anatomical surface
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900001
++name: labial surface of tooth
++def: "A facial surface of a tooth that faces the lips." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:9900000 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900002
++name: buccal surface of tooth
++def: "A facial surface of a tooth that faces the cheek." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:9900000 ! facial surface of tooth
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900003
++name: lingual surface of tooth
++def: "An anatomical surface of a tooth that faces the tongue or its anatomical equivalent." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:0006984 ! anatomical surface
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900004
++name: mesial surface of tooth
++def: "An anatomical surface of a tooth that is oriented toward the median plane of the dental arch." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:0006984 ! anatomical surface
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900005
++name: distal surface of tooth
++def: "An anatomical surface of a tooth that is oriented away from the median plane of the dental arch or oral cavity." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:0006984 ! anatomical surface
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
++[Term]
++id: UBERON:9900006
++name: incisal surface of tooth
++def: "An anatomical surface of a tooth that forms the cutting edge of an incisor or canine tooth." [https://dentaleducationhub.com/surfaces-of-the-teeth/, https://terminology.hl7.org/CodeSystem-FDI-surface.html]
++is_a: UBERON:0006984 ! anatomical surface
++relationship: dc-contributor https://orcid.org/0000-0001-6677-8489 ! Aleix Puig-Barbé
++relationship: part_of UBERON:0001091 ! calcareous tooth
++property_value: dcterms-date "2026-05-17T00:00:00Z" xsd:dateTime
++property_value: term_tracker_item "https://github.com/obophenotype/uberon/issues/3583" xsd:anyURI
++created_by: dragon-ai-agent
++
+ [Typedef]
+ id: aboral_to
+ name: aboral to

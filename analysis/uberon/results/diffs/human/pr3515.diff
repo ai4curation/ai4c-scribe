@@ -1,0 +1,13 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index e3220d8bc9..887747153c 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -101453,7 +101453,7 @@ property_value: taxon_notes "In dogs, it is located to the left and often ventra
+ [Term]
+ id: UBERON:0005436
+ name: common hepatic artery
+-def: "In anatomy, the common hepatic artery is a short blood vessel that supplies oxygenated blood to the liver, pylorus (a part of the stomach), duodenum (a part of the small intestine) and pancreas. It arises from the celiac artery and has the following branches:." [Wikipedia:Common_hepatic_artery]
++def: "In anatomy, the common hepatic artery is a short blood vessel that supplies oxygenated blood to the liver, pylorus (a part of the stomach), duodenum (a part of the small intestine), pancreas, and gall bladder. It arises from the celiac artery and has the following branches: the hepatic artery proper, the gastroduodenal artery and the right gastric artery." [https://www.elsevier.com/resources/anatomy/cardiovascular-system/arteries/common-hepatic-artery/22763, Wikipedia:Common_hepatic_artery]
+ synonym: "arteria hepatica communis" RELATED OMO:0003011 [Wikipedia:Common_hepatic_artery]
+ synonym: "common hepatic" RELATED [Wikipedia:Common_hepatic_artery]
+ xref: EHDAA2:0000308

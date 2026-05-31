@@ -1,0 +1,13 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..f82142ca2 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -618921,6 +618921,8 @@ property_value: curated_content_resource "https://www.malacards.org/card/fibromu
+ [Term]
+ id: MONDO:0859152
+ name: neurodevelopmental disorder with cerebellar atrophy and motor dysfunction
++synonym: "GEMIN5 disorders" EXACT [PMID:33963192, PMID:38773790]
++synonym: "GEMIN5-related neurodevelopmental disorders" EXACT [PMID:33963192, PMID:38773790]
+ subset: doid {source="DOID:0070443"}
+ subset: omim {source="OMIM:619333"}
+ xref: DOID:0070443 {source="MONDO:equivalentTo"}

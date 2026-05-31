@@ -1,0 +1,42 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 4d324a187..b9a0f0323 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3259,6 +3259,7 @@ Declaration(Class(obo:CL_7770003))
+ Declaration(Class(obo:CL_7770004))
+ Declaration(Class(obo:CL_7770005))
+ Declaration(Class(obo:CL_7770006))
++Declaration(Class(obo:CL_9900001))
+ Declaration(Class(obo:CP_0000000))
+ Declaration(Class(obo:CP_0000025))
+ Declaration(Class(obo:CP_0000027))
+@@ -34694,6 +34695,22 @@ SubClassOf(obo:CL_4072029 obo:CL_4023018)
+ SubClassOf(obo:CL_4072029 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
+ SubClassOf(obo:CL_4072029 ObjectSomeValuesFrom(obo:RO_0015004 obo:CLM_1000080))
+ 
++# Class: obo:CL_9900001 (chandelier pvalb GABAergic cortical interneuron (Homo sapiens))
++
++AnnotationAssertion(obo:IAO_0000028 obo:CL_9900001 "chandelier PV interneuron (Homo sapiens)")
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:27477017") Annotation(oboInOwl:hasDbXref "PMID:37824655") Annotation(oboInOwl:hasDbXref "https://cellxgene.cziscience.com/e/9c63201d-bfd9-41a8-bbbc-18d947556f3d.cxg/") obo:IAO_0000115 obo:CL_9900001 "A transcriptomically distinct pvalb GABAergic cortical interneuron in Homo sapiens that is recognizable by the straight terminal axonal 'cartridges' of vertically oriented strings of synaptic boutons. Chandelier PV cells' boutons target exclusively the axon initial segment (AIS) of pyramidal cells, with a single cell innervating hundreds of pyramidal cells in a clustered manner. The standard transcriptomic reference data for this human cell type can be found on the CellxGene census under the collection: 'Transcriptomic cytoarchitecture reveals principles of human neocortex organization', dataset: 'Supercluster: CGE-derived interneurons', Author Categories: 'CrossArea_subclass', clusters Chandelier.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_9900001 <https://github.com/obophenotype/cell-ontology/issues/3353>)
++AnnotationAssertion(obo:RO_0002175 obo:CL_9900001 obo:NCBITaxon_9606)
++AnnotationAssertion(terms:creator obo:CL_9900001 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_9900001 "2026-05-10T00:49:25Z"^^xsd:dateTime)
++AnnotationAssertion(oboInOwl:hasExactSynonym obo:CL_9900001 "Chandelier PV (Homo sapiens)")
++AnnotationAssertion(oboInOwl:inSubset obo:CL_9900001 cl:BDS_subset)
++AnnotationAssertion(oboInOwl:inSubset obo:CL_9900001 cl:cellxgene_subset)
++AnnotationAssertion(rdfs:label obo:CL_9900001 "chandelier pvalb GABAergic cortical interneuron (Homo sapiens)")
++SubClassOf(obo:CL_9900001 obo:CL_4023036)
++SubClassOf(obo:CL_9900001 obo:CL_4072029)
++SubClassOf(obo:CL_9900001 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_9606))
++
+ # Class: obo:CL_4072031 (sst chodl GABAergic interneuron (Homo sapiens))
+ 
+ AnnotationAssertion(obo:IAO_0000028 obo:CL_4072031 "sst chodl interneuron (Homo sapiens)")
+@@ -35060,4 +35077,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

@@ -1,0 +1,24 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index fe2f8414b..1b6aea2af 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -371189,12 +371189,14 @@ creation_date: 2016-12-01T20:21:28Z
+ 
+ [Term]
+ id: GO:0061817
+-name: endoplasmic reticulum-plasma membrane tethering
++name: obsolete endoplasmic reticulum-plasma membrane tethering
+ namespace: biological_process
+-def: "The attachment of an endoplasmic reticulum membrane to the plasma membrane via molecular tethers." [GOC:dph, GOC:vw, PMID:23237950, PMID:26877082, PMID:27875684]
+-synonym: "ER-plasma membrane tethering" EXACT [GOC:dph]
+-is_a: GO:0051643 ! endoplasmic reticulum localization
+-is_a: GO:0140056 ! organelle localization by membrane tethering
++def: "OBSOLETE. The attachment of an endoplasmic reticulum membrane to the plasma membrane via molecular tethers." [GOC:dph, GOC:vw, PMID:23237950, PMID:26877082, PMID:27875684]
++comment: The reason for obsoletion is that this term represents a molecular function.
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31873" xsd:anyURI
++is_obsolete: true
++replaced_by: GO:0160214
++consider: GO:0051643
+ created_by: dph
+ creation_date: 2016-12-05T14:43:58Z
+ 

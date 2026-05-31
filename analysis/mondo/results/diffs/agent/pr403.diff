@@ -1,0 +1,28 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 1d63d0424..3f8f0d383 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -617093,13 +617093,23 @@ is_a: MONDO:0016660 {source="OMIM:621507", source="https://orcid.org/0000-0002-4
+ [Term]
+ id: MONDO:0980992
+ name: Meier-Gorlin syndrome 9
++def: "Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the GINS3 gene." [MONDO:patterns/disease_series_by_gene, PMID:35603789, PMID:38773883]
+ subset: doid {source="DOID:0051069"}
+ subset: inferred_rare
+ subset: omim {source="OMIM:621512"}
+ subset: rare
++synonym: "GINS3 Meier-Gorlin syndrome" EXACT [MONDO:design_pattern, MONDO:patterns/disease_series_by_gene]
++synonym: "Meier-Gorlin syndrome 9" EXACT [DOID:0051069, OMIM:621512]
++synonym: "Meier-Gorlin syndrome caused by mutation in GINS3" EXACT [MONDO:design_pattern]
++synonym: "Meier-Gorlin syndrome type 9" EXACT []
++synonym: "MGORS9" RELATED ABBREVIATION []
+ xref: DOID:0051069 {source="MONDO:equivalentTo"}
+ xref: OMIM:621512 {source="MONDO:equivalentTo"}
+ is_a: MONDO:0016817 {source="OMIM:621512", source="https://orcid.org/0000-0002-4142-7153"} ! Meier-Gorlin syndrome
++intersection_of: MONDO:0016817 ! Meier-Gorlin syndrome
++intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/25851 ! GINS3
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/25851 {source="OMIM:621512", source="PMID:35603789", source="PMID:38773883"} ! GINS3
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9933" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0980997

@@ -1,0 +1,15 @@
+{
+  "ontology": "go-ontology",
+  "issue_number": 25870,
+  "pr_number": 32008,
+  "case_type": "obsoletion",
+  "difficulty": "medium",
+  "agent_config_tag": "v9",
+  "model": "gemma-4-31b",
+  "runtime": "opencode",
+  "eval_repo_pr": 252,
+  "f1": 0.634,
+  "precision": 0.481,
+  "recall": 0.929,
+  "jaccard": 0.464
+}

@@ -1,0 +1,70 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8aaf2a57d..391e147b1 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -257842,6 +257842,7 @@ xref: OMIM:601144 {source="DOID:0110218", source="MONDO:equivalentTo"}
+ xref: Orphanet:130 {source="OMIM:601144"}
+ xref: UMLS:C4551804 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1646402"}
+ is_a: MONDO:0015263 {source="DC-OMIM:601144", source="DOID:0110218", source="MONDO:Redundant", source="OMIM:601144"} ! Brugada syndrome
++is_a: MONDO:7770004 ! SCN5A-related cardiac rhythm disorder
+ intersection_of: MONDO:0015263 ! Brugada syndrome
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
+ relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0011001 {source="MONDO:CLINGEN"}
+@@ -267530,6 +267531,7 @@ xref: Orphanet:228140 {source="OMIM:603829"}
+ xref: SCTID:233915000 {source="MONDO:equivalentTo"}
+ xref: UMLS:C2751898 {source="MEDGEN:414502", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0100234 {source="DC-OMIM:603829", source="MESH:C567851"} ! paroxysmal familial ventricular fibrillation
++is_a: MONDO:7770004 ! SCN5A-related cardiac rhythm disorder
+ intersection_of: MONDO:0100234 ! paroxysmal familial ventricular fibrillation
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 {source="OMIM:603829"} ! SCN5A
+@@ -267562,6 +267564,7 @@ xref: Orphanet:101016 {source="OMIM:603830", source="MONDO:directSiblingOf"}
+ xref: Orphanet:768 {source="OMIM:603830"}
+ xref: UMLS:C1859062 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:349087"}
+ is_a: MONDO:0019171 {source="OMIM:603830", source="Orphanet:101016-prototype"} ! familial long QT syndrome
++is_a: MONDO:7770004 ! SCN5A-related cardiac rhythm disorder
+ intersection_of: MONDO:0019171 ! familial long QT syndrome
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 {source="OMIM:603830"} ! SCN5A
+@@ -323947,6 +323950,7 @@ xref: OMIM:614022 {source="MONDO:equivalentTo"}
+ xref: Orphanet:334 {source="OMIM:614022"}
+ xref: UMLS:C3151464 {source="MEDGEN:462814", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ is_a: MONDO:0018054 {source="DC-OMIM:614022", source="MONDO:Redundant", source="OMIM:614022"} ! familial atrial fibrillation
++is_a: MONDO:7770004 ! SCN5A-related cardiac rhythm disorder
+ intersection_of: MONDO:0018054 ! familial atrial fibrillation
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 {source="OMIM:614022"} ! SCN5A
+@@ -513335,6 +513339,7 @@ xref: OMIM:608567 {source="MONDO:equivalentTo"}
+ xref: Orphanet:166282 {source="OMIM:608567"}
+ xref: UMLS:C1837845 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:325270"}
+ is_a: MONDO:0012061 {source="MONDO:0024562/inferred", source="MONDO:Redundant", source="OMIM:608567"} ! familial sick sinus syndrome
++is_a: MONDO:7770004 ! SCN5A-related cardiac rhythm disorder
+ intersection_of: MONDO:0012061 ! familial sick sinus syndrome
+ intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 {source="OMIM:608567"} ! SCN5A
+@@ -621534,6 +621539,25 @@ is_a: MONDO:0005451 {source="PMID:38849953"} ! eating disorder
+ property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0003-3311-7320
+ property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9408" xsd:anyURI
+ 
++[Term]
++id: MONDO:7770003
++name: cardiogenetic rhythm disorders
++def: "A heterogeneous group of cardiac rhythm phenotypes with a monogenic etiology that include, but are not limited to, atrial fibrillation, sick sinus syndrome, progressive cardiac conduction disease, ventricular fibrillation, Brugada syndrome, long QT syndrome, short QT syndrome, tachycardia with fibrillation, etc." [https://www.clinicalgenome.org/affiliation/40104/]
++is_a: MONDO:0100547 ! cardiogenetic disease
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-0736-9199
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9707" xsd:anyURI
++
++[Term]
++id: MONDO:7770004
++name: SCN5A-related cardiac rhythm disorder
++def: "A heterogeneous collection of cardiac rhythm disorders caused by genetic variation in the SCN5A gene with autosomal dominant inheritance. Affected individuals are commonly reported to have unremarkable cardiac morphology and at least one cardiac rhythm phenotype that includes, but is not limited to, atrial fibrillation, sick sinus syndrome, progressive cardiac conduction disease, ventricular fibrillation, long QT syndrome, and Brugada syndrome. Individuals with pathogenic variants in SCN5A may also exhibit overlapping or mixed cardiac rhythm phenotypes and intrafamilial variability." [https://www.clinicalgenome.org/affiliation/40104/]
++is_a: MONDO:0100547 ! cardiogenetic disease
++is_a: MONDO:0007263 ! cardiac rhythm disease
++is_a: MONDO:7770003 ! cardiogenetic rhythm disorders
++relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10593 ! SCN5A
++property_value: http://purl.org/dc/terms/creator https://orcid.org/0000-0002-0736-9199
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9707" xsd:anyURI
++
+ [Term]
+ id: MONDO:8000000
+ name: infectious discitis

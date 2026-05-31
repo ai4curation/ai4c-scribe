@@ -1,0 +1,37 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index e5192d5f3..48c713c1a 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -2278,6 +2278,7 @@ Declaration(Class(obo:CL_0020018))
+ Declaration(Class(obo:CL_0020019))
+ Declaration(Class(obo:CL_0020020))
+ Declaration(Class(obo:CL_0020021))
++Declaration(Class(obo:CL_0020022))
+ Declaration(Class(obo:CL_0700009))
+ Declaration(Class(obo:CL_1000001))
+ Declaration(Class(obo:CL_1000022))
+@@ -25647,6 +25648,17 @@ SubClassOf(obo:CL_0020021 obo:CL_0008019)
+ SubClassOf(obo:CL_0020021 obo:CL_0011026)
+ SubClassOf(obo:CL_0020021 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001995))
+ 
++# Class: obo:CL_0020022 (prehypertrophic chondrocyte)
++
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:29985449") Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasDbXref "PMID:34137454") obo:IAO_0000115 obo:CL_0020022 "A post-proliferative chondrocyte located between the proliferative and hypertrophic zones of the growth plate. This cell is characterised by increased cell volume and expression of Indian hedgehog (Ihh), PTH1R, and Runx2/3, and coordinates the PTHrP-Ihh feedback loop that regulates chondrocyte differentiation.")
++AnnotationAssertion(obo:IAO_0000233 obo:CL_0020022 <https://github.com/obophenotype/cell-ontology/issues/3460>)
++AnnotationAssertion(terms:contributor obo:CL_0020022 <https://orcid.org/0009-0000-8480-9277>)
++AnnotationAssertion(terms:creator obo:CL_0020022 "GitHub Copilot")
++AnnotationAssertion(terms:date obo:CL_0020022 "2026-05-17T00:00:00Z"^^xsd:dateTime)
++AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:31871141") Annotation(oboInOwl:hasSynonymType obo:OMO_0003000) oboInOwl:hasRelatedSynonym obo:CL_0020022 "preHTC")
++AnnotationAssertion(rdfs:label obo:CL_0020022 "prehypertrophic chondrocyte")
++SubClassOf(obo:CL_0020022 obo:CL_1000217)
++
+ # Class: obo:CL_0700009 (obsolete kidney collecting duct beta-intercalated cell)
+ 
+ AnnotationAssertion(Annotation(oboInOwl:hasDbXref "PMID:24051376") Annotation(oboInOwl:hasDbXref "PMID:31300091") Annotation(oboInOwl:hasDbXref "PMID:32016094") obo:IAO_0000115 obo:CL_0700009 "OBSOLETE. A renal beta-intercalated cell that is part of the cortical collecting duct. The medullary collecting duct does not contain the renal beta-intercalated cell type.")
+@@ -35483,4 +35495,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

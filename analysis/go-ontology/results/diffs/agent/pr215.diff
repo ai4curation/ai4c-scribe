@@ -1,0 +1,15 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index f53920e0d..ae07bb5e7 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -401425,8 +401425,10 @@ synonym: "clathrin-coated vesicle uncoating" EXACT [GOC:mah]
+ is_a: GO:0072319 ! vesicle uncoating
+ intersection_of: GO:0022411 ! cellular component disassembly
+ intersection_of: results_in_disassembly_of GO:0030118 ! clathrin coat
++relationship: part_of GO:0072583 ! clathrin-dependent endocytosis
+ created_by: mah
+ creation_date: 2010-10-26T12:03:37Z
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31981" xsd:anyURI
+ 
+ [Term]
+ id: GO:0072319

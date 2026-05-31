@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3490,
+  "pr_number": 3585,
+  "case_type": "axiom_repair",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "claude-haiku-4.5",
+  "runtime": "claude",
+  "eval_repo_pr": 98,
+  "f1": 0.4,
+  "precision": 0.333,
+  "recall": 0.5,
+  "jaccard": 0.25
+}

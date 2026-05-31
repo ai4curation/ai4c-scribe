@@ -1,0 +1,11 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index 87628d1c8..74c48b028 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -1,5 +1,6 @@
+ format-version: 1.2
+ subsetdef: added_for_HCA "Classes tagged with this subset property were added upon request from the Human Cell Atlas (HCA)."
++subsetdef: addedByHRA "Classes tagged with this subset property were added upon request from the Human Reference Atlas (HRA) and HuBMAP teams."
+ subsetdef: common_anatomy "Terms applicable across life, not restricted to Metazoa"
+ subsetdef: cumbo "CUMBO"
+ subsetdef: cyclostome_subset "cyclostome structures"

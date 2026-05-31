@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3408,
+  "pr_number": 3522,
+  "case_type": "other",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "opencode",
+  "eval_repo_pr": 580,
+  "f1": 0.357,
+  "precision": 0.299,
+  "recall": 0.442,
+  "jaccard": 0.217
+}

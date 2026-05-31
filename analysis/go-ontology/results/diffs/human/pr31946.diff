@@ -1,0 +1,28 @@
+diff --git a/src/ontology/go-edit.obo b/src/ontology/go-edit.obo
+index f0596951e..b1c0cb0c3 100644
+--- a/src/ontology/go-edit.obo
++++ b/src/ontology/go-edit.obo
+@@ -371414,17 +371414,19 @@ intersection_of: part_of GO:0030027 ! lamellipodium
+ 
+ [Term]
+ id: GO:0061852
+-name: retrograde transporter complex, Golgi to ER
++name: retrograde cargo receptor complex, Golgi to ER
+ namespace: cellular_component
+-def: "Transporter complex that recognises, binds and returns endoplasmic reticulum (ER) resident proteins that have trafficked to Golgi compartments. Targets proteins lacking the HDEL motif recognised by COPI-coated vesicles." [GOC:bhm, PMID:16093310]
++def: "Cargo receptor complex that recognizes, binds and returns endoplasmic reticulum (ER) resident proteins that have trafficked to Golgi compartments. Targets proteins lacking the HDEL motif recognised by COPI-coated vesicles." [GOC:bhm, PMID:16093310]
+ comment: An example of this is ERV41 in Saccharomyces cerevisiae (Q04651) in PMID:16093310 (inferred from direct assay).
+ synonym: "ERV41-ERV46 retrograde receptor complex" NARROW []
++synonym: "retrograde cargo receptor complex, Golgi to endoplasmic reticulum" EXACT []
+ synonym: "retrograde receptor complex, Golgi to endoplasmic reticulum" EXACT []
+ synonym: "retrograde receptor complex, Golgi to ER" EXACT []
+-synonym: "retrograde transporter complex, Golgi to endoplasmic reticulum" EXACT []
+-is_a: GO:1990351 ! transporter complex
++synonym: "retrograde transporter complex, Golgi to ER" BROAD []
++is_a: GO:0062137 ! cargo receptor complex
+ relationship: capable_of_part_of GO:0006890 ! retrograde vesicle-mediated transport, Golgi to endoplasmic reticulum
+ property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/24444" xsd:anyURI
++property_value: term_tracker_item "https://github.com/geneontology/go-ontology/issues/31935" xsd:anyURI
+ created_by: dph
+ creation_date: 2017-02-28T13:56:56Z
+ 

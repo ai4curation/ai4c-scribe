@@ -1,0 +1,112 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 33b355012..fdd96576e 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -3526,26 +3526,6 @@ Declaration(AnnotationProperty(owl:deprecated))
+ #   Annotation Properties
+ ############################
+ 
+-# Annotation Property: obo:IAO_0000028 (symbol)
+-
+-AnnotationAssertion(rdfs:label obo:IAO_0000028 "symbol")
+-
+-# Annotation Property: obo:IAO_0000115 (definition)
+-
+-AnnotationAssertion(rdfs:label obo:IAO_0000115 "definition")
+-
+-# Annotation Property: obo:IAO_0000424 (expand expression to)
+-
+-AnnotationAssertion(rdfs:label obo:IAO_0000424 "expand expression to")
+-
+-# Annotation Property: obo:IAO_0000700 (has ontology root term)
+-
+-AnnotationAssertion(rdfs:label obo:IAO_0000700 "preferred_root")
+-
+-# Annotation Property: obo:IAO_0100001 (term replaced by)
+-
+-AnnotationAssertion(rdfs:label obo:IAO_0100001 "term replaced by")
+-
+ # Annotation Property: cl:BDS_subset (cl:BDS_subset)
+ 
+ SubAnnotationPropertyOf(cl:BDS_subset oboInOwl:SubsetProperty)
+@@ -3586,17 +3566,14 @@ SubAnnotationPropertyOf(pato:location_grouping oboInOwl:SubsetProperty)
+ 
+ # Annotation Property: uberon:HUMAN_PREFERRED (preferred term when talking about an instance of this class in Homo sapiens)
+ 
+-AnnotationAssertion(rdfs:label uberon:HUMAN_PREFERRED "preferred term when talking about an instance of this class in Homo sapiens")
+ SubAnnotationPropertyOf(uberon:HUMAN_PREFERRED oboInOwl:SynonymTypeProperty)
+ 
+ # Annotation Property: uberon:LATIN (latin term)
+ 
+-AnnotationAssertion(rdfs:label uberon:LATIN "latin term")
+ SubAnnotationPropertyOf(uberon:LATIN oboInOwl:SynonymTypeProperty)
+ 
+ # Annotation Property: uberon:PLURAL (plural term)
+ 
+-AnnotationAssertion(rdfs:label uberon:PLURAL "plural term")
+ SubAnnotationPropertyOf(uberon:PLURAL oboInOwl:SynonymTypeProperty)
+ 
+ # Annotation Property: core:human_reference_atlas (core:human_reference_atlas)
+@@ -3608,55 +3585,10 @@ SubAnnotationPropertyOf(core:human_reference_atlas oboInOwl:SubsetProperty)
+ AnnotationAssertion(rdfs:comment ubprop:_upper_level "abstract upper-level terms not directly useful for analysis")
+ SubAnnotationPropertyOf(ubprop:_upper_level oboInOwl:SubsetProperty)
+ 
+-# Annotation Property: oboInOwl:SubsetProperty (subset_property)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:SubsetProperty "subset_property")
+-
+-# Annotation Property: oboInOwl:SynonymTypeProperty (synonym_type_property)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:SynonymTypeProperty "synonym_type_property")
+-
+-# Annotation Property: oboInOwl:consider (consider)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:consider "consider")
+-
+-# Annotation Property: oboInOwl:hasBroadSynonym (has_broad_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasBroadSynonym "has_broad_synonym")
+-
+-# Annotation Property: oboInOwl:hasDbXref (has cross-reference)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasDbXref "database_cross_reference")
+-
+-# Annotation Property: oboInOwl:hasExactSynonym (has exact synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasExactSynonym "has_exact_synonym")
+-
+-# Annotation Property: oboInOwl:hasNarrowSynonym (has narrow synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasNarrowSynonym "has_narrow_synonym")
+-
+-# Annotation Property: oboInOwl:hasRelatedSynonym (has_related_synonym)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasRelatedSynonym "has_related_synonym")
+-
+-# Annotation Property: oboInOwl:hasSynonymType (has_synonym_type)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:hasSynonymType "has_synonym_type")
+-
+-# Annotation Property: oboInOwl:inSubset (in_subset)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:inSubset "in_subset")
+-
+-# Annotation Property: oboInOwl:shorthand (shorthand)
+-
+-AnnotationAssertion(rdfs:label oboInOwl:shorthand "shorthand")
+-
+ # Annotation Property: rdfs:seeAlso (see also)
+ 
+ AnnotationAssertion(oboInOwl:hasDbXref rdfs:seeAlso "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+ AnnotationAssertion(oboInOwl:shorthand rdfs:seeAlso "seeAlso")
+-AnnotationAssertion(rdfs:label rdfs:seeAlso "see also")
+ 
+ 
+ ############################
+@@ -34976,4 +34908,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

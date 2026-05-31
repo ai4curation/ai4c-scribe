@@ -1,0 +1,15 @@
+{
+  "ontology": "uberon",
+  "issue_number": 3446,
+  "pr_number": 3507,
+  "case_type": "new_term",
+  "difficulty": "medium",
+  "agent_config_tag": "v3",
+  "model": "kimi-k2.6",
+  "runtime": "opencode",
+  "eval_repo_pr": 463,
+  "f1": 0.588,
+  "precision": 0.556,
+  "recall": 0.625,
+  "jaccard": 0.417
+}

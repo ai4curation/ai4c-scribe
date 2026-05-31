@@ -1,0 +1,15 @@
+{
+  "ontology": "cell-ontology",
+  "issue_number": 3536,
+  "pr_number": 3537,
+  "case_type": "axiom_repair",
+  "difficulty": "hard",
+  "agent_config_tag": "v3",
+  "model": "gpt-5.4",
+  "runtime": "codex",
+  "eval_repo_pr": 591,
+  "f1": 0.344,
+  "precision": 0.265,
+  "recall": 0.491,
+  "jaccard": 0.208
+}

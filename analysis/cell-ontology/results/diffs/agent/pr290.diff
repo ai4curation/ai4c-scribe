@@ -1,0 +1,19 @@
+diff --git a/src/ontology/cl-edit.owl b/src/ontology/cl-edit.owl
+index 41d571084..29941151c 100644
+--- a/src/ontology/cl-edit.owl
++++ b/src/ontology/cl-edit.owl
+@@ -24729,6 +24729,7 @@ AnnotationAssertion(rdfs:label obo:CL_0011006 "Lugaro cell")
+ AnnotationAssertion(Annotation(dc:license <https://creativecommons.org/licenses/by-nc-nd/4.0/>) Annotation(oboInOwl:hasDbXref "doi:10.1016/j.cnp.2022.11.002") foaf:depiction obo:CL_0011006 <http://purl.obolibrary.org/obo/cl/images/CB_circuits_PMID3650468_f2.png>)
+ AnnotationAssertion(Annotation(dc:license <https://creativecommons.org/licenses/by-nc-nd/4.0/>) Annotation(oboInOwl:hasDbXref "doi:10.3389/fnins.2020.00293") foaf:depiction obo:CL_0011006 <http://purl.obolibrary.org/obo/cl/images/Candelabrum_cell.jpg>)
+ SubClassOf(obo:CL_0011006 obo:CL_0000099)
++SubClassOf(obo:CL_0011006 obo:CL_4072102)
+ SubClassOf(obo:CL_0011006 ObjectSomeValuesFrom(obo:RO_0002100 obo:UBERON_0002956))
+ SubClassOf(obo:CL_0011006 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0061534))
+ SubClassOf(obo:CL_0011006 ObjectSomeValuesFrom(obo:RO_0002215 obo:GO_0061537))
+@@ -35729,4 +35730,4 @@ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0000945)) obo:CL_0000164)
+ SubClassOf(ObjectIntersectionOf(obo:CL_0000163 ObjectSomeValuesFrom(obo:BFO_0000050 obo:UBERON_0001264)) obo:CL_0000164)
+ SubClassOf(Annotation(oboInOwl:hasDbXref <https://github.com/obophenotype/cell-ontology/issues/757>) ObjectIntersectionOf(obo:CL_0000540 ObjectSomeValuesFrom(obo:RO_0002162 obo:NCBITaxon_7742)) ObjectSomeValuesFrom(obo:RO_0002202 obo:CL_0000031))
+-)
+\ No newline at end of file
++)

@@ -1,0 +1,21 @@
+diff --git a/src/ontology/mondo-edit.obo b/src/ontology/mondo-edit.obo
+index 8013937e4..0ca798d07 100644
+--- a/src/ontology/mondo-edit.obo
++++ b/src/ontology/mondo-edit.obo
+@@ -618923,6 +618923,8 @@ id: MONDO:0859152
+ name: neurodevelopmental disorder with cerebellar atrophy and motor dysfunction
+ subset: doid {source="DOID:0070443"}
+ subset: omim {source="OMIM:619333"}
++synonym: "GEMIN5-related neurodevelopmental disorders" EXACT [https://github.com/monarch-initiative/mondo/issues/9862]
++synonym: "GEMIN5 disorders" EXACT [https://github.com/monarch-initiative/mondo/issues/9862]
+ xref: DOID:0070443 {source="MONDO:equivalentTo"}
+ xref: MEDGEN:1781936 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+ xref: OMIM:619333 {source="MONDO:equivalentTo"}
+@@ -618930,6 +618932,7 @@ xref: UMLS:C5543427 {source="MONDO:equivalentTo", source="MEDGEN:1781936", sourc
+ is_a: MONDO:0700092 {source="OMIM:619333"} ! neurodevelopmental disorder
+ relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/20043 {source="OMIM:619333"} ! GEMIN5
+ property_value: curated_content_resource "https://www.malacards.org/card/neurodevelopmental_disorder_with_cerebellar_atrophy_and_motor_dysfunction" xsd:anyURI {source="MONDO:MalaCards"}
++property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9862" xsd:anyURI
+ 
+ [Term]
+ id: MONDO:0859154

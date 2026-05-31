@@ -1,0 +1,22 @@
+diff --git a/src/ontology/uberon-edit.obo b/src/ontology/uberon-edit.obo
+index b727e1726e..08cef2747b 100644
+--- a/src/ontology/uberon-edit.obo
++++ b/src/ontology/uberon-edit.obo
+@@ -217321,6 +217321,17 @@ intersection_of: UBERON:4000172 ! lepidotrichium
+ intersection_of: part_of UBERON:0002534 ! paired fin
+ relationship: part_of UBERON:0010713 ! paired fin skeleton
+ 
++[Term]
++id: UBERON:4450000
++name: medial prefrontal cortex
++def: "The medial prefrontal cortex (mPFC) is a subdivision of the prefrontal cortex composed of BA12, BA25, and anterior cingulate cortex: BA32, BA33, BA24. Within this region is the dorsal nexus, which interconnects multiple brain networks and plays a role in maintenance and manipulation of information (working memory), as well as supporting the control of cognitive functions such as emotion processing and regulation, memory, decision making, and conflict resolution." [Wikipedia:Prefrontal_cortex, https://orcid.org/0000-0001-7628-5565, https://orcid.org/0000-0002-4964-5083]
++synonym: "mPFC" EXACT OMO:0003000 []
++is_a: UBERON:0002616 ! regional part of brain
++relationship: part_of UBERON:0000451 ! prefrontal cortex
++property_value: dc-contributor https://orcid.org/0000-0001-7628-5565 
++property_value: dc-contributor https://orcid.org/0000-0002-4964-5083
++creation_date: 2025-04-23
++
+ [Term]
+ id: UBERON:4500002
+ name: upper uroneural
