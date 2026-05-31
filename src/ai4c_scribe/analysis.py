@@ -797,9 +797,9 @@ def paired_test(
     for _ in range(10000):
         idx = rng.integers(0, n, size=n)
         boot_diffs.append(diff[idx].mean())
-    boot_diffs = np.array(boot_diffs)
-    result["ci_95_low"] = np.percentile(boot_diffs, 2.5)
-    result["ci_95_high"] = np.percentile(boot_diffs, 97.5)
+    boot_arr = np.array(boot_diffs)
+    result["ci_95_low"] = np.percentile(boot_arr, 2.5)
+    result["ci_95_high"] = np.percentile(boot_arr, 97.5)
     result["significant"] = result["ci_95_low"] > 0 or result["ci_95_high"] < 0
 
     # Power analysis (for the observed effect size)
